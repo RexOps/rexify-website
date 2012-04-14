@@ -1,0 +1,149 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration</title>
+
+      <link rel="stylesheet" href="/css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point">
+      <meta name="keywords" content="Systemadministration, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
+
+      
+      
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Miss a Feature? Tell us about it!</h1>
+         <p>If you miss a feature  just tell us about it and we will put it on our task list.</p>
+
+         <div class="vspace"></div>
+
+         <form action="" method="post" accept-charset="utf-8">
+            <!--{if $error}-->
+      <p class="error"><!--{$error}--></p>
+      <!--{/if}-->
+
+   <!--{if $posted}-->
+   <p class="info"><!--{$posted}--></p>
+   <!--{else}-->
+   <table border="0">
+      <tr>
+         <td width="150">
+            <label for="email">E-Mail<br /><small><i>If we have inquiries.</i></small></label>
+         </td>
+         <td>
+            <input type="text" name="email" id="email" size="30" value="<!--{$email}-->" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <label for="question">Please calculate: <!--{$calc}--></label>
+         </td>
+         <td>
+            <input type="text" name="question" id="question" size="30" />
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <label for="feature">Feature Request</label><br />
+            <br />
+            <i>Use [code]...[/code] for a code block.</i>
+         </td>
+         <td>
+            <textarea cols="50" rows="10" name="feature" id="feature"><!--{$feature}--></textarea>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            &nbsp;
+         </td>
+         <td>
+            <input type="submit" value="Post" /> 
+         </td>
+      </tr>
+   </table>
+   <!--{/if}-->
+
+         </form>
+
+         <div class="vspace"></div>
+
+         <h1>Requested Features</h1>
+
+<!--{foreach $features as $feature}-->
+         <ul class="simple-list">
+            <li>
+               <!--{$feature.feature|escape|parse_comment}-->
+               <div class="vspace"></div>
+               <div class="vspace" style="border-top: 1px dotted #c3c3c3;"></div>
+            </li>
+         </ul>
+<!--{/foreach}-->
+
+
+
+
+
+
+      </div>
+
+      <!--{$page_footer}-->
+
+   </div>
+      
+   </body>
+
+   <!--{$footer}-->
+
+   <script type="text/javascript" charset="utf-8">
+      var to_move = 724;
+      if($.browser.msie) {
+         $("#nav_img").css("float", "left");
+         to_move = 730;
+      }
+      if($.browser.opera) {
+         $("#nav_img").css("float", "left");
+      }
+
+      function slide_left() {
+
+         $("#bilderlinie").animate({"left": "-=" + to_move}, 2000, function() {
+                  if(parseInt($("#bilderlinie").css("left")) < -750) {
+                     window.setTimeout(function() { slide_right(); }, 7000);
+                  }
+                  else {
+                     window.setTimeout(function() { slide_left(); }, 7000);
+                  }
+               });
+
+      }
+
+      function slide_right() {
+         $("#bilderlinie").animate({"left": "+=" + to_move}, 2000, function() {
+                  if(parseInt($("#bilderlinie").css("left")) == 0) { 
+                     window.setTimeout(function() { slide_left(); }, 7000);
+                  }
+                  else {
+                     window.setTimeout(function() { slide_right(); }, 7000);
+                  }
+               
+               });
+      }
+
+      window.setTimeout(function() { slide_left(); }, 5000);
+
+   </script>
+
+
+</html>

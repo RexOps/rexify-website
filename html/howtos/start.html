@@ -1,0 +1,111 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - The beginning</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Howto start">
+      <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Howto start using (R)?ex</h1>
+         <p>This is a small howto showing the first steps with (R)?ex.</p>
+
+         <div class="vspace"></div>
+
+         <h1>Preparation</h1>
+         <ul class="simple-list">
+            <li>Download and install rex &gt;= 0.6.0 (See the <a href="/get">get</a> page)</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>Creating a Rexfile</h1>
+         <p>At first create a file named <i>Rexfile</i> in your $HOME directory (or anywhere else).</p>
+
+         <div class="black-box">
+            <pre class="perl">user "my-user";
+password "my-password";
+pass_auth;
+
+group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+
+desc "Get the uptime of all server";
+task "uptime", group =&gt; "myserver", sub {
+
+   say run "uptime";
+
+};
+            </pre>
+
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myserver</i> and run the command "uptime".</p>
+
+         <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
+
+         <div class="black-box">
+            <pre class="bash">cd /home/jan
+$ rex uptime</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Adding a second task</h1>
+         <p>To add a second task, just add the next lines to your <i>Rexfile</i>.</p>
+
+         <div class="black-box">
+            <pre class="perl">desc "Start Apache Service";
+task "free", group =&gt; "myserver", sub {
+
+    service "apache2" =&gt; "start";
+
+}
+            </pre>
+
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>This task will start the service <i>apache2</i> on all the servers in the <i>myserver</i> group.</p>
+
+         <div class="vspace"></div>
+         <h1>Display all tasks in a Rexfile</h1>
+
+         <p>If you want to display all tasks in your Rexfile use the following command.</p>
+         <div class="black-box">
+            <pre class="bash">bash# rex -T
+Tasks
+  free                           Start Apache Service
+  uptime                         Get the uptime of all server
+Batches </pre>
+         </div>
+
+
+   </div>
+
+      <!--{$page_footer}-->
+   </div>
+</body>
+
+<!--{$footer}-->
+
+</html>

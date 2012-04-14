@@ -1,0 +1,142 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - Configuration Manipulation with Augeas</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="Rex - Configuration Manipulation with Augeas">
+      <meta name="keywords" content="Rex, Augeas, Configuration, Modify, Update">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Modify Configuration Files</h1>
+
+         <p>If you want to modify some configuration files on your servers you can do this by using this module.</p>
+         <p>This module is based on augeas found <a href="http://augeas.net/">here</a>.</p>
+
+         <div class="vspace"></div>
+
+         <h1>Installation</h1>
+
+         <h2>Debian (Squeeze)</h2>
+
+         <div class="black-box">
+            <pre class="bash">apt-get install rex-augeas</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h2>CentOS</h2>
+
+         <div class="black-box">
+            <pre class="bash">yum install rex-augeas</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h2>Source</h2>
+
+         <div class="black-box">
+            <pre class="bash">
+git clone https://github.com/krimdomu/rex-augeas.git rex-augeas
+cd rex-augeas
+perl Makefile.PL
+make
+make install
+</pre>
+         </div>
+
+         <div class="vspace"></div>
+         <h1>API</h1>
+
+         <p>You'll find the API documentation <a href="/api/Rex/Augeas.pm.html">here</a>.</p>
+
+         <div class="vspace"></div>
+         <h1>Examples</h1>
+
+
+         <h2>Add a new entry to /etc/hosts</h2>
+
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Augeas;
+
+user "root";
+public_key "/root/.ssh/id_rsa.pub";
+private_key "/root/.ssh/id_rsa";
+
+group "servers" =&gt; "servers[01..04]";
+
+parallelism 4;
+
+desc "Update hosts";
+task "hosts", group =&gt; "servers", sub {
+    
+   augeas insert =&gt; "/files/etc/hosts",
+            label     =&gt; "01",
+            after     =&gt; "/1",
+            ipaddr    =&gt; "192.168.5.15",
+            canonical =&gt; "server05.company.tld",
+            alias     =&gt; "server05";
+    
+};
+            </pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h2>Modify an entry in /etc/hosts</h2>
+
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Augeas;
+
+user "root";
+public_key "/root/.ssh/id_rsa.pub";
+private_key "/root/.ssh/id_rsa";
+
+group "servers" =&gt; "servers[01..04]";
+
+parallelism 4;
+
+desc "Update hosts";
+task "hosts", group =&gt; "servers", sub {
+    
+    augeas modify =&gt;
+            "/files/etc/host/7/ipaddr"    =&gt; "192.168.5.88",
+            "/files/etc/host/7/canonical" =&gt; "www08";
+    
+};
+            </pre>
+         </div>
+
+
+      </div>
+      
+      <!--{$page_footer}-->
+
+   </div>
+
+   </body>
+
+   <!--{$footer}-->
+
+
+</html>

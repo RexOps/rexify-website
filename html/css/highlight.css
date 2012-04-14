@@ -1,0 +1,39 @@
+.quotedString
+{
+	color: #ffde00;
+}
+.comment
+{
+	color: #999999;
+}
+.operator
+{
+	color: #00CCCC;
+}
+.builtinVariable
+{
+	color: #CCCC00;
+}
+.variableSpecifier
+{
+	color: #FF0000;
+}
+.keyword
+{
+	color: #5A8091;
+}
+.builtinFunction
+{
+	color: #FF00FF;
+}
+.identifier
+{
+	color: #cfcfcf;
+}
+.number
+{
+	color: #9999FF;
+}
+.rex {
+   color: #66dca9;
+}

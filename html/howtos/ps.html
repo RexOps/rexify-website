@@ -1,0 +1,116 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - Process Management</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Process Management">
+      <meta name="keywords" content="Process, Management, ps, kill, killall">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Listing all running processes</h1>
+         <p>To list all running process you can use the <i>ps</i> function. It will return an array of hashs with all information about the processes.</p>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Commands::Process;
+
+user "my-user";
+password "my-password";
+pass_auth;
+
+group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+
+desc "List all running processes";
+task "ps", group =&gt; "myserver", sub {
+
+   for my $process ( ps() ) {
+      say "command: " . $process-&gt;{"command"};
+      say "pid    : " . $process-&gt;{"pid"};
+      say "user   : " . $process-&gt;{"user"};
+   }
+
+};
+            </pre>
+
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>If you want to see all the available options just use the <i>Data::Dumper</i> module.</p>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Commands::Process;
+use Data::Dumper;
+            
+user "my-user";
+password "my-password";
+pass_auth;
+
+group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+
+desc "List all running processes";
+task "ps", group =&gt; "myserver", sub {
+
+   for my $process ( ps() ) {
+      say Dumper($process);
+   }
+
+};
+            </pre>
+
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Getting the PID of a programm</h1>
+         <p>If you want to get the pid of a running programm you can use the perl function <i>grep</i>.</p>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Commands::Process;
+            
+user "my-user";
+password "my-password";
+pass_auth;
+
+group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+
+desc "Get all PIDs of apache";
+task "ps", group =&gt; "myserver", sub {
+
+   my @apaches = grep { $_-&gt;{"command"} =~ m/httpd/ } ps();
+
+   for my $apache (@apaches) {
+      say "PID: " . $apache-&gt;{"pid"};
+   }
+
+};
+            </pre>
+
+         </div>
+
+
+   </div>
+
+      <!--{$page_footer}-->
+   </div>
+</body>
+
+<!--{$footer}-->
+
+</html>

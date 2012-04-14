@@ -1,0 +1,251 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration -//- Installation</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - Installation">
+      <meta name="keywords" content="Systemadministration, Rex, Remote, Configuration, Management, Framework, SSH, Linux">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>CentOS 6</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
+
+cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
+[rex]
+name=Fedora \$releasever - \$basearch - Rex Repository
+baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+enabled=1
+EOF
+
+yum install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+
+         <h1>CentOS 5</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS5
+
+cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
+[rex]
+name=Fedora \$releasever - \$basearch - Rex Repository
+baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+enabled=1
+EOF
+
+yum install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Debian</h1>
+         <div class="small-vspace"></div>
+
+         <p>For Squeeze</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>For Lenny</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/debian/ lenny rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+
+
+
+         <h1>Fedora Core 15 &amp; 16</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+
+cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
+[rex]
+name=Fedora \$releasever - \$basearch - Rex Repository
+baseurl=http://rex.linux-files.org/Fedora/Core/\$releasever/rex/\$basearch/
+enabled=1
+EOF
+
+yum install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Gentoo</h1>
+         <div class="small-vspace"></div>
+            <p>There is an overly for portage. To use this overlay open the file /var/lib/layman/cache_*.xml and add the following snippet.</p>
+         <div class="black-box">
+            <pre class="bash">
+&lt;repo priority="50" quality="experimental" status="unofficial"&gt;
+    &lt;name&gt;rex&lt;/name&gt;
+    &lt;description&gt;overlay for using rex on gentoo&lt;/description&gt;
+    &lt;homepage&gt;http://rexify.org/&lt;/homepage&gt;
+    &lt;owner&gt;
+      &lt;email&gt;jan.gehring@gmail.com&lt;/email&gt;
+      &lt;name&gt;Jan Gehring&lt;/name&gt;
+    &lt;/owner&gt;
+    &lt;source type="git"&gt;git://github.com/krimdomu/gentoo-overlay.git&lt;/source&gt;
+&lt;/repo&gt;</pre>
+
+
+         </div>
+         <div class="small-vspace"></div>
+         <p>And execute</p>
+         <div class="black-box">
+            <pre class="bash">bash# layman -a rex
+bash# emerge -av app-admin/rex </pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Mageia</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+urpmi.addmedia rex http://rex.linux-files.org/Mageia/1/x86_64/
+urpmi rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+
+
+         <h1>OpenSuSE 11.4</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
+zypper install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Ubuntu</h1>
+         <div class="small-vspace"></div>
+
+         <p>For Lucid (10.04)</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>For Natty (11.04)</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/ubuntu/ natty rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>For Oneiric (11.10)</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/ubuntu/ oneiric rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+
+         <h1>Windows</h1>
+         <div class="small-vspace"></div>
+
+         <p>Tested with Windows 7 (64bit) and Strawberry Perl 5.12</p>
+
+         <div class="black-box">
+            <pre class="bash">cpanp -i Rex</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+
+         <h1>Via CPAN</h1>
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="bash">
+bash# perl -MCPAN -eshell
+cpan[1]&gt; install Rex
+</pre>
+         </div>
+
+
+         <div class="vspace"></div>
+
+
+         <h1>Need Help?</h1>
+         <div class="small-vspace"></div>
+         <ul class="simple-list">
+            <li><a href="https://github.com/krimdomu/Rex/wiki">Wiki</a> on GitHub</li>
+            <li><a href="https://rt.cpan.org/Dist/Display.html?Queue=Rex">Bug Tracker</a> on rt.cpan.org</li>
+            <li>IRC: Join us on <a href="http://webchat.freenode.net/?channels=rex">irc.freenode.net</a> -&gt; #rex</li>
+         </ul>
+
+
+      </div>
+      
+      <!--{$page_footer}-->
+   </div>
+   </body>
+
+<!--{$footer}-->
+
+</html>

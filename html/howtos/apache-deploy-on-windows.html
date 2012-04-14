@@ -1,0 +1,68 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - Apache::Deploy on Windows</title>
+
+      <link rel="stylesheet" href="/css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Use Apache::Deploy on Windows">
+      <meta name="keywords" content="Apache, Tomcat, Deploy, PHP, Java, Rails, Perl">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="/images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Installing Apache::Deploy on Windows</h1>
+         <p>To install Apache::Deploy on Windows you need to install a few dependencies.
+
+         Go to <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a> and install the following packages.</p>
+
+         <div class="vspace"></div>
+
+         <ul class="simple-list">
+            <li>bzip2</li>
+            <li>coreutils</li>
+            <li>gzip</li>
+            <li>findutils</li>
+            <li>openssl</li>
+            <li>tar</li>
+            <li>wget</li>
+            <li>which</li>
+            <li>zip</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <p>Now, add the <i>bin</i> folder of the installations to your %PATH% environment variable. Example: "C:\Program Files (x86)\GnuWin32\bin". And rename the <i>find.exe</i> to <i>find2.exe</i>.</p>
+         <p>If you want to use yuicompress you need to install Java and add the path to java.exe to your %PATH% environment variable, too.</p>
+         <p>If you want to use sprocketize, sass and coffeescript, you have to install these tools and add the path to the executables to your %PATH% variable, too.</p>
+
+         <div class="vspace"></div>
+
+         <p>Now you can install Apache::Deploy with ppd.</p>
+         <div class="black-box">
+            <pre class="bash">ppm install http://rex.linux-files.org/Windows/12xx/Rex.ppd
+ppm install http://rex.linux-files.org/Windows/12xx/Rex-Apache-Deploy.ppd</pre>
+         </div>
+
+   </div>
+
+      <!--{$page_footer}-->
+   </div>
+</body>
+
+<!--{$footer}-->
+
+</html>

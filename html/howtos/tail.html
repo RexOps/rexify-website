@@ -1,0 +1,120 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - Tail Logfiles</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Example Tail Logfiles">
+      <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>Starting Point</h1>
+         <p>This is a small example that will show you how to watch logfiles live.</p>
+
+         <div class="vspace"></div>
+
+         <h1>Preparation</h1>
+         <ul class="simple-list">
+            <li>Download and install rex &gt;= 0.6.0 (See the <a href="/get">get</a> page)</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>Creating a simple Rexfile</h1>
+         <p>At first create a simple Rexfile in your $HOME directory.</p>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Commands::Tail;
+
+user "my-user";
+password "my-password";
+pass_auth;
+
+group fe =&gt; "fe[01..20]";
+
+# run the tasks in parallel
+parallelism 20;
+
+desc "Tail Frontend Apache Access Logs";
+task "tail-fe", group =&gt; "fe", sub {
+
+        tail "/opt/instances/httpd/fe-i01/logs/access_log";
+
+};
+            </pre>
+
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers, from fe01 to fe20 and tail the logfile continuously.</p>
+
+         <div class="small-vspace"></div>
+
+         <p>If you want to tail the logs on many servers, you need to add parallelism to (R)?ex. So that you can see the logs of all servers at the same time.</p>
+
+         <div class="black-box">
+            <pre class="bash">$ rex tail-fe</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Customizing the tail output</h1>
+         <p>If you want to customize the tail output, you can add a callback function as 2nd parameter.</p>
+
+         <div class="black-box">
+            <pre class="perl">use Rex::Commands::Tail;
+
+user "my-user";
+password "my-password";
+pass_auth;
+
+group fe =&gt; "fe[01..20]";
+
+# run the tasks in parallel
+parallelism 20;
+
+desc "Tail Frontend Apache Access Logs";
+task "tail-fe", group =&gt; "fe", sub {
+
+        tail "/opt/instances/httpd/fe-i01/logs/access_log", sub {
+            my ($data) = @_;
+            my $server_name = Rex->get_current_connection()->{'server'};
+            print "[$server_name] $data\n";
+        };
+
+};
+            </pre>
+
+         </div>
+
+
+         <div class="small-vspace"></div>
+
+         <p>This example will prepend the servername to every line.</p>
+
+   </div>
+
+      <!--{$page_footer}-->
+   </div>
+</body>
+
+<!--{$footer}-->
+
+</html>
