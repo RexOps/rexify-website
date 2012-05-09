@@ -667,7 +667,7 @@ desc &quot;Tail Frontend System Logs&quot;;
 task &quot;tail-srv&quot;, group =&gt; &quot;servers&quot;, sub {
    tail &quot;/var/log/messages&quot;, sub {
       my ($data) = @_;
-      my $server_name = Rex-&gt;get_current_connection()-&gt;{'server'};
+      my $server_name = connection-&gt;server;
       print &quot;[$server_name] $data\n&quot;;
    };
 };
@@ -1208,7 +1208,7 @@ group &quot;servers&quot; =&gt; &quot;test1&quot;, &quot;test2&quot;;
 
 desc &quot;Liste des RPM&quot;;
 task &quot;rpm&quot;, group =&gt; &quot;servers&quot;, sub {
-   my $current_server = Rex-&gt;get_current_connection-&gt;{&quot;server&quot;};
+   my $current_server = connection-&gt;server;
 
    for my $rpm (run &quot;rpm -qa&quot;) {
       print &quot;$current_server&gt;&gt; $rpm\n&quot;;
@@ -1217,7 +1217,7 @@ task &quot;rpm&quot;, group =&gt; &quot;servers&quot;, sub {
 
 desc &quot;Liste des fichiers dans /etc&quot;;
 task &quot;ll_etc&quot;, group =&gt; &quot;servers&quot;, sub {
-   my $current_server = Rex-&gt;get_current_connection-&gt;{&quot;server&quot;};
+   my $current_server = connection-&gt;server;
 
    for my $ls (run &quot;ls -l /etc/&quot;) {
       print &quot;$current_server&gt;&gt; $ls\n&quot;;
