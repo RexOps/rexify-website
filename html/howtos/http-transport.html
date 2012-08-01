@@ -1,0 +1,265 @@
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+      <title>(R)?ex - A simple framework to simplify systemadministration - HTTP Transport Layer</title>
+
+      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - HTTP Transport Layer">
+      <meta name="keywords" content="Rex, HTTP, HTTPS">
+      
+
+   </head>
+   <body>
+
+      <!--{$navigation}-->
+
+      <div id="header">
+         <img src="../images/new-header.png" />
+      </div>
+
+
+      <div id="site">
+      <div id="page">
+
+         <h1>HTTP Transport Layer / Why?</h1>
+         <p>The default transport layer for Rex is SSH. But there are always some cases where SSH isn't supported or isn't the best choice.</p>
+         <p>For those cases the transport layer of Rex is modular so that other transport layers can be created.</p>
+
+         <div class="vspace"></div>
+
+         <h1>Limitations</h1>
+         <p>Rex::Endpoint::HTTP has (right now) some limitations</p>
+
+         <div class="vspace"></div>
+
+         <ul class="simple-list">
+            <li>The <i>sync</i> command doesn't work. (yet)</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>Installation</h1>
+         <p>Currently Rex::Endpoint::HTTP is available for Debian, Ubuntu and CentOS 6. You can install it via the Rex repositories. Just search for rex-endpoint-http.</p>
+         <p>Rex::Endpoint::HTTP must be installed on the target machine (on your servers).</p>
+
+         <div class="vspace"></div>
+         <p>For example on a Debian/Ubuntu box just type the following to install Rex::Endpoint::HTTP.</p>
+         <div class="black-box">
+            <pre class="bash">bash# apt-get install rex-endpoint-http</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <h1>Configuration</h1>
+         <p>After the installation create a configuration file in the directory <i>/etc/rex</i> named <i>httpd.conf</i>. In this file you can configure on what ip/port the daemon should listen on and where to find the (optional) user database.</p>
+
+         <div class="vspace"></div>
+
+         <p>There are 2 options on how to configure Rex::Endpoint::HTTP.</p>
+
+         <div class="vspace"></div>
+
+         <h2>Standalone</h2>
+         <p>You can use the buildin webserver <i>Hypnotoad</i> from Mojolicious to directly serve the requests. It is a stable server and so you don't need to setup Apache or an other server.</p>
+
+         <div class="small-vspace"></div>
+
+         <p>We recommend to use SSL encryption and SSL authentication for your setup but it is also possible to run it without SSL. To learn how to setup your own CA in a few easy steps read the chapter <i>Setting Up Your Own CA</i>.</p>
+
+         <div class="small-vspace"></div>
+
+         <p>It is also possible to use SSL with user/password authentication. This is the default setup if you install Rex::Endpoint::HTTP via the packages. Read the chapter <i>Managing The User Database</i> for more information on that.</p>
+
+         <p>Open the file <i>/etc/rex/httpd.conf</i> and paste the following lines in it.</p>
+
+         <div class="black-box">
+            <pre class="perl">{
+   user_file =&gt; "/etc/rex/user.db", 
+      
+   hypnotoad =&gt; {
+      listen =&gt; ["http://*:80"],
+   }
+};</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>Save the file but before you start the daemon you have to create the user database file (if you want to use user authentication).</p>
+
+         <div class="small-vspace"></div>
+
+         <p>Open the file <i>/etc/rex/user.db</i> and add the following entry. The password is <i>test</i>. Please create your own sha1 string as shown below.</p>
+
+         <div class="black-box">
+            <pre class="bash">root:a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
+         <p>You can create these strings with the following command:</p>
+
+         <div class="black-box">
+            <pre class="bash">perl -MDigest::SHA1 -e 'print Digest::SHA1::sha1_hex("your-password")'</pre>
+         </div>
+
+
+         <div class="small-vspace"></div>
+
+         <p>Now you can start the daemon. If you've installed it via the packages you can use the init script. (as root)</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# /etc/init.d/rex-endpoint-http start</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>You can download the initscript from the git repository at <a href="https://github.com/krimdomu/rex-endpoint-http/tree/master/doc">https://github.com/krimdomu/rex-endpoint-http/tree/master/doc</a>.</p>
+
+         <p>To start the daemon by hand you can use the following command. (as root)</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# hypnotoad /usr/local/bin/rex_endpoint_http</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>This will start the endpoint on port 80 without SSL encryption.</p>
+         
+         
+         
+         <p>If you want to use SSL encryption modify the <i>listen</i> line.</p>
+
+         <div class="small-vspace"></div>
+
+         <div class="black-box">
+            <pre class="perl">listen =&gt; ["https://*:443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;verify=0x00"],</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>This will start the endpoint on port 443 with SSL encryption. But without client verification! If you want to use Client verification (and this is the recommended way) change the listen line to the following:</p>
+
+         <div class="black-box">
+            <pre class="perl">listen =&gt; ["https://*:443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;ca=/path/to/your/ca-file.crt"],</pre>
+         </div>
+
+         <p>And to setup your own CA read the chapter <i>Setting Up Your Own CA</i>.</p>
+
+
+         <div class="vspace"></div>
+
+         <h2>Use A Frontend Server Like Apache</h2>
+         <p>It is also possible to use Apache (or any other Webserver with a proxy feature) in front of Rex::Endpoint::HTTP. So it is possible to implement better ACLs or different authentication methods.</p>
+         <p>An example Apache configuration looks like this:</p>
+
+         <div class="black-box">
+            <pre class="bash">&lt;VirtualHost _default_:443&gt;
+    ServerName your-server.your-domain.tld
+    ServerAlias your-server
+    
+    SSLEngine on
+    
+    SSLCertificateFile    /etc/apache2/ssl/cert-file.pem
+    SSLCertificateKeyFile /etc/apache2/ssl/cert-key.key
+    SSLCACertificateFile  /etc/apache2/ssl/ca-file.crt
+    
+    SSLVerifyClient require
+    SSLVerifyDepth  10
+    SSLOptions +FakeBasicAuth +ExportCertData +StrictRequire
+    
+    RequestHeader set SSL_CLIENT_VERIFY  ""
+    
+    &lt;Location /&gt;
+       RequestHeader set SSL_CLIENT_VERIFY "%{SSL_CLIENT_VERIFY}s"
+       
+       ProxyPass http://localhost:8080/
+       ProxyPassReverse http://localhost:8080/
+   &lt;/Location&gt;
+   
+ &lt;/VirtualHost&gt;</pre>
+         </div>
+
+
+
+         <div class="vspace"></div>
+
+         <h1>Setting Up Your Own CA</h1>
+
+         <p>There is a simple way to setup your own CA. For this you can use a Rex Recipe <i>Rex::SSL::CA</i>.</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# rexify ca --use Rex::SSL::CA
+bash# cd ca
+bash ~/ca# cat &gt;Rexfile&lt;&lt;EOF
+require Rex::SSL::CA;
+require Rex::SSL::CA::Server;
+EOF</pre>
+         </div>
+
+         <p>Please don't use a servername for the <i>cn</i> parameter here!</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# rex SSL:CA:create --password=pass \
+            [--country=cn \
+             --state=state \
+             --city=city \
+             --org=organization \
+             --unit=organizational-unit \
+             --cn=name-of-the-ca \
+             --email=email]</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>And to create a server/client certificate you can use the following task. Here you have to use the server name for the <i>cn</i> parameter.</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# rex SSL:CA:Server:create --cn=name-of-the-server --password=password \
+            [--challenge-password=challenge-password \
+             --country=country \
+             --state=state \
+             --city=city \
+             --org=organization \
+             --unit=organizational-unit \
+             --email=email]</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
+         <p>After that you can copy the cert file from ca/certs/$cn.crt and the keyfile from ca/private/$cn.key. The CA Cert file is located at ca/certs/ca.crt.</p>
+
+
+         <div class="vspace"></div>
+
+         <h1>Managing The User Database</h1>
+
+         <p>The default location for the user database is <i>/etc/rex/user.db</i>. If you installed Rex::Endpoint::HTTP with the packages from the repositories you will find it there.</p>
+
+         <div class="small-vspace"></div>
+
+         <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
+         <p>You can create these strings with the following command:</p>
+
+         <div class="black-box">
+            <pre class="bash">perl -MDigest::SHA1 -e 'print Digest::SHA1::sha1_hex("your-password")'</pre>
+         </div>
+
+
+
+         <div class="vspace"></div>
+
+         <h1>Usage</h1>
+
+   </div>
+
+      <!--{$page_footer}-->
+   </div>
+</body>
+
+<!--{$footer}-->
+
+</html>
