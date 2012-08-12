@@ -41,15 +41,40 @@
 
          <div class="vspace"></div>
 
-         <h1>Installation</h1>
-         <p>Currently Rex::Endpoint::HTTP is available for Debian, Ubuntu and CentOS 6. You can install it via the Rex repositories. Just search for rex-endpoint-http.</p>
-         <p>Rex::Endpoint::HTTP must be installed on the target machine (on your servers).</p>
+         <h1>Supported Platforms</h1>
+         <p>For these platforms we have build packages. Rex::Endpoint::HTTP will also run on other platforms. You have to install it via CPAN.</p>
 
          <div class="vspace"></div>
-         <p>For example on a Debian/Ubuntu box just type the following to install Rex::Endpoint::HTTP.</p>
+         
+         <ul class="simple-list">
+            <li>Debian Squeeze</li>
+            <li>Ubuntu</li>
+            <li>CentOS 6</li>
+            <li>Fedora</li>
+            <li>SuSE</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>Installation</h1>
+         <p>Currently Rex::Endpoint::HTTP is available for Debian, Ubuntu, CentOS 6, Fedora and SuSE. You can install it via the Rex repositories. Just search for rex-endpoint-http.</p>
+         <p>Rex::Endpoint::HTTP must be installed on the target machine (on your servers).</p>
+         <p>You can install it with the following command on other platforms.</p>
+
+         <div class="black-box">
+            <pre class="bash">bash# curl -L get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</pre>
+         </div>
+
+
+         <div class="vspace"></div>
+         <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Endpoint::HTTP.</p>
          <div class="black-box">
             <pre class="bash">bash# apt-get install rex-endpoint-http</pre>
          </div>
+
+
+         <div class="vspace"></div>
+         <p>If you installed Rex::Endpoint::HTTP <b>via the package repository, the password is the hostname</b>! (hostname -s)</p>
 
          <div class="vspace"></div>
 
@@ -73,6 +98,7 @@
 
          <p>It is also possible to use SSL with user/password authentication. This is the default setup if you install Rex::Endpoint::HTTP via the packages. Read the chapter <i>Managing The User Database</i> for more information on that.</p>
 
+         <div class="vspace"></div>
          <p>Open the file <i>/etc/rex/httpd.conf</i> and paste the following lines in it.</p>
 
          <div class="black-box">
@@ -80,7 +106,7 @@
    user_file =&gt; "/etc/rex/user.db", 
       
    hypnotoad =&gt; {
-      listen =&gt; ["http://*:80"],
+      listen =&gt; ["https://*:8433"],
    }
 };</pre>
          </div>
@@ -92,10 +118,14 @@
          <div class="small-vspace"></div>
 
          <p>Open the file <i>/etc/rex/user.db</i> and add the following entry. The password is <i>test</i>. Please create your own sha1 string as shown below.</p>
+         <div class="small-vspace"></div>
 
          <div class="black-box">
             <pre class="bash">root:a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</pre>
          </div>
+
+         <div class="small-vspace"></div>
+         <p>If you installed Rex::Endpoint::HTTP <b>via the package repository, the password is the hostname</b>! (hostname -s)</p>
 
          <div class="small-vspace"></div>
 
@@ -103,7 +133,7 @@
          <p>You can create these strings with the following command:</p>
 
          <div class="black-box">
-            <pre class="bash">perl -MDigest::SHA1 -e 'print Digest::SHA1::sha1_hex("your-password")'</pre>
+            <pre class="bash">perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</pre>
          </div>
 
 
@@ -127,24 +157,25 @@
 
          <div class="small-vspace"></div>
 
-         <p>This will start the endpoint on port 80 without SSL encryption.</p>
+         <p>This will start the endpoint on port 8433 with SSL encryption.</p>
+         
+         <div class="small-vspace"></div>
          
          
-         
-         <p>If you want to use SSL encryption modify the <i>listen</i> line.</p>
+         <p>If you want to use SSL encryption with your own certificates modify the <i>listen</i> line.</p>
 
          <div class="small-vspace"></div>
 
          <div class="black-box">
-            <pre class="perl">listen =&gt; ["https://*:443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;verify=0x00"],</pre>
+            <pre class="perl">listen =&gt; ["https://*:8443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;verify=0x00"],</pre>
          </div>
 
          <div class="small-vspace"></div>
 
-         <p>This will start the endpoint on port 443 with SSL encryption. But without client verification! If you want to use Client verification (and this is the recommended way) change the listen line to the following:</p>
+         <p>This will start the endpoint on port 8443 with SSL encryption. But without client verification! If you want to use Client verification (and this is the recommended way) change the listen line to the following:</p>
 
          <div class="black-box">
-            <pre class="perl">listen =&gt; ["https://*:443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;ca=/path/to/your/ca-file.crt"],</pre>
+            <pre class="perl">listen =&gt; ["https://*:8443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;ca=/path/to/your/ca-file.crt"],</pre>
          </div>
 
          <p>And to setup your own CA read the chapter <i>Setting Up Your Own CA</i>.</p>
@@ -157,7 +188,7 @@
          <p>An example Apache configuration looks like this:</p>
 
          <div class="black-box">
-            <pre class="bash">&lt;VirtualHost _default_:443&gt;
+            <pre class="bash">&lt;VirtualHost 10.68.20.3:8443&gt;
     ServerName your-server.your-domain.tld
     ServerAlias your-server
     
@@ -171,11 +202,11 @@
     SSLVerifyDepth  10
     SSLOptions +FakeBasicAuth +ExportCertData +StrictRequire
     
-    RequestHeader set SSL_CLIENT_VERIFY  ""
-    
     &lt;Location /&gt;
-       RequestHeader set SSL_CLIENT_VERIFY "%{SSL_CLIENT_VERIFY}s"
-       
+       Order deny,allow
+       Deny from all
+       Allow from 10.253.1.15
+
        ProxyPass http://localhost:8080/
        ProxyPassReverse http://localhost:8080/
    &lt;/Location&gt;
@@ -218,7 +249,7 @@ EOF</pre>
          <p>And to create a server/client certificate you can use the following task. Here you have to use the server name for the <i>cn</i> parameter.</p>
 
          <div class="black-box">
-            <pre class="bash">bash# rex SSL:CA:Server:create --cn=name-of-the-server --password=password \
+            <pre class="bash">bash# rex SSL:CA:Server:create --cn=name-of-the-server --password=pass \
             [--challenge-password=challenge-password \
              --country=country \
              --state=state \
@@ -245,7 +276,7 @@ EOF</pre>
          <p>You can create these strings with the following command:</p>
 
          <div class="black-box">
-            <pre class="bash">perl -MDigest::SHA1 -e 'print Digest::SHA1::sha1_hex("your-password")'</pre>
+            <pre class="bash">perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</pre>
          </div>
 
 
@@ -253,6 +284,33 @@ EOF</pre>
          <div class="vspace"></div>
 
          <h1>Usage</h1>
+
+         <p>If you want to use Rex::Endpoint::HTTP you just need to set the connection type.</p>
+         <div class="black-box">
+            <pre class="perl"># Rexfile
+set connection =&gt; "http";</pre>
+         </div>
+         <div class="vspace"></div>
+         <p>With this setting rex tries to connect to your servers via HTTP on port 8080. If you want to use SSL you have to set the connection type to <i>https</i>. This defaults to port 8433.</p>
+
+         <div class="black-box">
+            <pre class="perl"># Rexfile
+set connection =&gt; "https";</pre>
+         </div>
+
+         <div class="vspace"></div>
+
+         <p>To use SSL authentication you can define the Cert and Keyfiles. Remember, if you want to use SSL authentication you have to create your own CA and create a SSL certificate for every server and for your client.</p>
+          
+         <div class="black-box">
+            <pre class="perl"># Rexfile
+set connection =&gt; "https";
+set ca =&gt; "/path/to/ca.cert";
+set cert =&gt; "/path/to/cert-file.crt";
+set key =&gt; "/path/to/key-file.key";</pre>
+         </div>
+
+
 
    </div>
 
