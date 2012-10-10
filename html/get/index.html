@@ -130,26 +130,10 @@ yum install rex</pre>
 
          <h1>Gentoo</h1>
          <div class="small-vspace"></div>
-            <p>There is an overly for portage. To use this overlay open the file /var/lib/layman/cache_*.xml and add the following snippet.</p>
-         <div class="black-box">
-            <pre class="bash">
-&lt;repo priority="50" quality="experimental" status="unofficial"&gt;
-    &lt;name&gt;rex&lt;/name&gt;
-    &lt;description&gt;overlay for using rex on gentoo&lt;/description&gt;
-    &lt;homepage&gt;http://rexify.org/&lt;/homepage&gt;
-    &lt;owner&gt;
-      &lt;email&gt;jan.gehring@gmail.com&lt;/email&gt;
-      &lt;name&gt;Jan Gehring&lt;/name&gt;
-    &lt;/owner&gt;
-    &lt;source type="git"&gt;git://github.com/krimdomu/gentoo-overlay.git&lt;/source&gt;
-&lt;/repo&gt;</pre>
-
-
-         </div>
+            <p>Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repository.</p>
          <div class="small-vspace"></div>
-         <p>And execute</p>
          <div class="black-box">
-            <pre class="bash">bash# layman -a rex
+         <pre class="bash">
 bash# emerge -av app-admin/rex </pre>
          </div>
 
