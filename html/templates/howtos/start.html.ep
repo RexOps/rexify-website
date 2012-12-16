@@ -1,28 +1,10 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - The beginning</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - The beginning';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Howto start">
       <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
-      
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="../images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
+% end
 
          <h1>Howto start using (R)?ex</h1>
          <p>This is a small howto showing the first steps with (R)?ex.</p>
@@ -101,11 +83,3 @@ Batches </pre>
 
 
    </div>
-
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

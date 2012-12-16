@@ -1,20 +1,12 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration -//- French Howto';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
+ 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Example Tomcat deployment">
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
-   </head>
-   <body>
-      <!--{$navigation}-->
-      <div id="header">
-         <img src="../images/new-header.png" />
-      </div>
-      <div id="site">
-      <div id="page">
+% end
+
 <div class="vspace"></div><h1>
 Introduction</H1>
 <p> Ce document décrit l'installation et l'utilisation de l'outil de déploiement Rexify. Rexify ou Rex permet de pouvoir gérer tous les serveurs d'une plateforme à partir d'un point central. Il est ainsi possible de déployer, de maintenir ou de configurer des machines avec quelques commandes, il est ainsi possible de gagner un temps considérable.</p>
@@ -688,14 +680,14 @@ group &quot;servers&quot; =&gt; &quot;test1&quot;, &quot;test2&quot;, &quot;test
 
 desc &quot;Hardware informations&quot;;
 task &quot;get-info&quot;, group =&gt; &quot;servers&quot;, sub {
-   %hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
-   print Dumper(%hw_info);
+   %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
+   print Dumper(%%hw_info);
 };
 
 desc &quot;All Hardware informations&quot;;
 task &quot;get-all-info&quot;, group =&gt; &quot;servers&quot;, sub {
-   %hw_info = Rex::Hardware-&gt;get(qw/ All /);
-   print Dumper(%hw_info);
+   %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
+   print Dumper(%%hw_info);
 };
 EoT
 [root]# rex -T
@@ -1231,8 +1223,3 @@ EoT</pre></div>
 <p> <BR> </p>
 
       </div>
-      <!--{$page_footer}-->
-   </div>
-</body>
-      <!--{$footer}-->
-</html>

@@ -1,27 +1,11 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - Perl Howto</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - Perl Howto';
 
-      <link rel="stylesheet" href="/css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Perl Howto">
       <meta name="keywords" content="Perl, Howto, Rex">
-      
+% end 
 
-   </head>
-   <body>
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="/images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
          <h1>Just enough Perl for Rex</h1>
 
          <p>This is a work-in-progress guide. If you have suggestions or whishes, just post a comment or join our irc channel on freenode -&gt; #rex.</p>
@@ -219,11 +203,3 @@ say Dumper(%hash);
          </div>
 
       </div>
- 
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

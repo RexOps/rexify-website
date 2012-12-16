@@ -1,29 +1,11 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - Apache::Deploy on Windows</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - Apache::Deploy on Windows';
 
-      <link rel="stylesheet" href="/css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Use Apache::Deploy on Windows">
       <meta name="keywords" content="Apache, Tomcat, Deploy, PHP, Java, Rails, Perl">
+% end
       
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="/images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
-
          <h1>Installing Apache::Deploy on Windows</h1>
          <p>To install Apache::Deploy on Windows you need to install a few dependencies.
 
@@ -58,11 +40,3 @@ ppm install http://rex.linux-files.org/Windows/12xx/Rex-Apache-Deploy.ppd</pre>
          </div>
 
    </div>
-
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

@@ -1,28 +1,12 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration -//- Contribute';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - Contribute to Rex">
       <meta name="keywords" content="Rex, Contribute, Project">
-      
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="/images/new-header.png" />
-      </div>
+% end
 
 
-      <div id="site">
-      <div id="page">
 
       <h1>Contribute to (R)?ex</h1>
       <p>There is no company behind (R)?ex. Everything is developed by volunteers arround the globe during their free time. (R)?ex is a free, open source project. Every contribution is welcome.</p>
@@ -52,13 +36,3 @@
       <p>One special case is hardware. There can't be enough hardware / environments where we can test (R)?ex. Especially when it comes to the soon release of Rex.IO - a bare metal deployer and webfrontend for (R)?ex. If you want to sponsor any kind of hardware please contact us at <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>
 
    </div>
-
-      <!--{$page_footer}-->
-
-   </div>
-
-</body>
-
-      <!--{$footer}-->
-
-</html>

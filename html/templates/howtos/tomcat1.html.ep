@@ -1,28 +1,10 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - Tomcat deployment</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - Tomcat deployment';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Example Tomcat deployment">
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
-      
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="../images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
+% end
 
          <h1>Starting Point</h1>
          <p>This is a small example that will show you how to deploy services, the configuration and the application to your servers. In this example we will install <a href="http://tomcat.apache.org/">tomcat</a>, change the <i>tomcat-users.xml</i> file and upload <a href="http://code.google.com/p/psi-probe/">psi-probe</a>.</p>
@@ -512,11 +494,3 @@ Rexfile syntax OK
 
 
    </div>
-
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

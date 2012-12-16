@@ -1,28 +1,10 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - Tail Logfiles</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - Tail Logfiles';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Example Tail Logfiles">
       <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
-      
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="../images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
+% end
 
          <h1>Starting Point</h1>
          <p>This is a small example that will show you how to watch logfiles live.</p>
@@ -110,11 +92,3 @@ task "tail-fe", group =&gt; "fe", sub {
          <p>This example will prepend the servername to every line.</p>
 
    </div>
-
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

@@ -1,28 +1,10 @@
-<html>
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-   
-      <title>(R)?ex - A simple framework to simplify systemadministration - Process Management</title>
+% layout 'default';
+% title '(R)?ex - A simple framework to simplify systemadministration - Process Management';
 
-      <link rel="stylesheet" href="../css/default.css" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="../css/highlight.css" type="text/css" media="screen" charset="utf-8">
-
+% content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Process Management">
       <meta name="keywords" content="Process, Management, ps, kill, killall">
-      
-
-   </head>
-   <body>
-
-      <!--{$navigation}-->
-
-      <div id="header">
-         <img src="../images/new-header.png" />
-      </div>
-
-
-      <div id="site">
-      <div id="page">
+% end
 
          <h1>Listing all running processes</h1>
          <p>To list all running process you can use the <i>ps</i> function. It will return an array of hashs with all information about the processes.</p>
@@ -106,11 +88,3 @@ task "ps", group =&gt; "myserver", sub {
 
 
    </div>
-
-      <!--{$page_footer}-->
-   </div>
-</body>
-
-<!--{$footer}-->
-
-</html>

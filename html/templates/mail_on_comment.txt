@@ -1,7 +1,0 @@
-Hello <!--{$author}-->,
-
-<!--{$comment_from}--> has commented on your post on rexify.org.
-
-<!--{$comment_text}-->
-
-URL: http://rexify.org<!--{$url}-->
