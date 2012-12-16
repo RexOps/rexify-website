@@ -13,10 +13,4 @@ debian/*.log
 *.old
 *.bak
 README
-*.php
 Rexfile
-templates_c
-js
-lib
-api
-.htaccess
