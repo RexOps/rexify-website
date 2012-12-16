@@ -36,11 +36,12 @@
 
          <h1>Latest News</h1>
 
-         <p><b>2012-12-22</b> (R)?ex 0.35.0 released. This release brings support for VirtualBox and <a href="http://box.rexify.org/">Rex/Boxes</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.35">Github.</a></p>
          <p><b>2012-11-09</b> (R)?ex 0.34.0 released. This is mostly a bugfix release. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.34">Github.</a></p>
          <p><b>2012-09-01</b> (R)?ex 0.33.1 released. See the complete list of changes in the <a href="https://github.com/krimdomu/Rex/wiki/New0.33">ChangeLog</a></p>
          <p><b>2012-08-26</b> Distributed Rex released. Read <a href="/howtos/gearman.html">this article</a> howto setup distributed Rex.</p>
          <p><b>2012-08-23</b> (R)?ex 0.32.0 released. This release adds the ability to change the worker model. For example to <a href="https://github.com/krimdomu/distributed-rex">distribute the work</a> with the help of Gearman. For a complete list of changes see <a href="https://github.com/krimdomu/Rex/wiki/New0.32">ChangeLog</a></p>
+         <p><b>2012-08-12</b> (R)?ex 0.31.3 released. This release adds a <a href="/howtos/http-transport.html">HTTP Transport Layer</a> and more flexible authentication settings. For a complete list of changes see <a href="https://github.com/krimdomu/Rex/wiki/New0.31">ChangeLog</a></p>
+         <p><b>2012-07-26</b> Many thanks to Daniel B&auml;urer for his presentation at <a href="http://linuxtag.de/">Linuxtag</a> He uploaded his presentation to <a href="http://www.slideshare.net/inovex/rex-linuxtag2012">Slideshare</a>.</p>
 
          <div class="vspace"></div>
 
@@ -55,6 +56,7 @@
 
          <div class="vspace"></div>
 
+<!--
          <h1>Development Boxes</h1>
          <p>Build your own development environment in seconds with <a href="http://box.rexify.org/">Rex/Boxes</a>, share it with your team and don't fiddle arround with dependency problems or version mismatches anymore.</p>
          <div class="small-vspace"></div>
@@ -64,6 +66,7 @@
          <h2>Living DevOps</h2>
          <div class="small-vspace"></div>
          <p>You can also work together with your Ops-Team to build a <b>live-like</b> development environment. So the quality of your builds will increase dramatically. Because failing early is better than failing live.</p>
+-->
 
          <div class="vspace"></div>
          <h1>Need Help?</h1>
