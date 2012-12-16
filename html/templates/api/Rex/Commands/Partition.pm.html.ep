@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this Module you can partition your harddrive.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -82,5 +82,7 @@
     onvg   =&gt; &quot;vg0&quot;;</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

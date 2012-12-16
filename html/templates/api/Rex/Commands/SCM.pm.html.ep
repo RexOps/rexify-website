@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::SCM - Sourcecontrol for Subversion and Git.';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can checkout subversion and git repositories.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -71,5 +71,7 @@
 <p>With this function you can checkout a repository defined with <em>set repository</em>. See Synopsis.</p>
 
 </ul>
+
+
 
 

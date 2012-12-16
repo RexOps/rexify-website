@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::DB - Simple Database Access';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -104,5 +104,7 @@
             };</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::Host - Edit /etc/hosts';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can manage the host entries in /etc/hosts.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -74,5 +74,7 @@
  say &quot;Host-IP: &quot; . $host_info[0]-&gt;{&quot;ip&quot;};</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

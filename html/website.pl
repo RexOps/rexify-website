@@ -9,6 +9,7 @@ use DateTime;
 use Cwd qw(getcwd);
 use Mojolicious::Lite;
 use Mojo::UserAgent;
+use Data::Dumper;
 
 use lib 'lib';
 
@@ -227,7 +228,15 @@ __DATA__
 <h1>API</h1>
    <ul class="simple-list">
    % for my $r (@api_results) {
-      <li><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></li>
+      <li>
+         <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
+         <div class="small-vspace"></div>
+         <p><b>Found here:</b></p>
+         % for my $h (@{ $r->{highlight}->{file} }) {
+         <p class="highlight-search" style="margin-left: 0px"><%== $h %></p>
+         % }
+         <div class="small-vspace"></div>
+      </li>
    % }
    </ul>
 % }
@@ -237,7 +246,15 @@ __DATA__
 <h1>Website</h1>
    <ul class="simple-list">
    % for my $r (@webpage_results) {
-      <li><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></li>
+      <li>
+         <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
+         <div class="small-vspace"></div>
+         <p><b>Found here:</b></p>
+         % for my $h (@{ $r->{highlight}->{file} }) {
+         <p class="highlight-search" style="margin-left: 0px"><%== $h %></p>
+         % }
+         <div class="small-vspace"></div>
+      </li>
    % }
    </ul>
 % }
@@ -264,13 +281,13 @@ __DATA__
    <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a>
       <div class="searchbox">
          Search: <input type="text" name="q" id="q" />
-         <div class="result_field">
-            <p>I'm sorry. Your query had no results!</p>
-         </div>
       </div>
    </div>
 </div>
 
+<div class="result_field">
+   <p>I'm sorry. Your query had no results!</p>
+</div>
 
 
 @@ layouts/frontpage.html.ep

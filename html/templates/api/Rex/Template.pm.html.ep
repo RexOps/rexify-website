@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Template - Simple Template Engine.';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="This is a simple template engine for configuration files.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -53,5 +53,7 @@
  ServerTokens &lt;%= is_defined($::server_tokens, &quot;Prod&quot;) %&gt;</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

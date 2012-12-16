@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::Fs - Filesystem commands';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can do file system tasks like creating a directory, removing files, move files, and more.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -353,5 +353,7 @@
  };</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

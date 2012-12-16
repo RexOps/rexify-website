@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::Virtualization - Virtualization module';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can manage your virtualization.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -301,5 +301,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
 <h2><a name="request_info_from_the_underlying_hypervisor">Request info from the underlying hypervisor</a></h2>
 <div class="black-box"><pre class="perl">
  vm hypervisor =&gt; &quot;capabilities&quot;;</pre></div><div class="vspace"></div>
+
+
 
 

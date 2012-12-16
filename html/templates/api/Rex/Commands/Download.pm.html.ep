@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::Download - Download remote files';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can download a remotefile via sftp, http and ftp from a host to your local computer.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -65,5 +65,7 @@
  };</pre></div><div class="vspace"></div>
 
 </ul>
+
+
 
 

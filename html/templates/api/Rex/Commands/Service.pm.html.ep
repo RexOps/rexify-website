@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex API Documentation';
+% title 'Rex::Commands::Service - Manage System Services';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="description" content="With this module you can manage Linux services.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -141,5 +141,7 @@
 <p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
 
 </ul>
+
+
 
 

@@ -395,6 +395,10 @@ table.tb-support td {
    display: none;
 }
 
+.result_field h1 {
+   text-align: right;
+}
+
 .result_field a,
 .result_field a:link,
 .result_field a:visited,
@@ -402,3 +406,7 @@ table.tb-support td {
    color: #0c0c0c;
 }
 
+
+.highlight-search em {
+   background-color: #ff0;
+}
