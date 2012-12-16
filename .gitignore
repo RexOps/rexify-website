@@ -13,6 +13,5 @@ debian/*.log
 *.old
 *.bak
 README
-Rexfile
 config.pl
 elasticsearch
