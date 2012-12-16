@@ -242,8 +242,13 @@ __DATA__
    </ul>
 % }
 
+<h1>&nbsp;</h1>
+<div class="small-vspace"></div>
+<a href="#" class="search_button">Close</a>
+<div class="small-vspace"></div>
 
 % }
+
 @@ 404.html.ep
 
 % layout 'default';
@@ -307,6 +312,7 @@ __DATA__
       <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
 
    <script type="text/javascript" charset="utf-8">
 
@@ -433,6 +439,7 @@ piwikTracker.enableLinkTracking();
       <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
 
    <script type="text/javascript" charset="utf-8">
 
