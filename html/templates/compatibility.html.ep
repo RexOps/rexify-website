@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration - Compatibility List';
+% title 'Which systems are compatible to Rex';
 
 % content_for header => begin
       <meta name="description" content="Rex compatibility list">

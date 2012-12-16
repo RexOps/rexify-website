@@ -1,8 +1,8 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration - HTTP Transport Layer';
+% title 'Use Gearman to distribute the workload across multiple servers.';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Gearman">
+      <meta name="description" content="Use Gearman to distribute the workload across multiple servers.">
       <meta name="keywords" content="Rex, Gearman, Scale, Scaling, Systemadministration, System, Administration">
 % end
 

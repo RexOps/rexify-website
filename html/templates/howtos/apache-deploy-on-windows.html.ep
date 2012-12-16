@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration - Apache::Deploy on Windows';
+% title 'Install Apache::Deploy on Windows';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Use Apache::Deploy on Windows">

@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration -//- Installation';
+% title 'Installation instructions for Rex';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - Installation">

@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration - Application Deployment';
+% title 'Using Rex to deploy your applications';
 
 % content_for header => begin
       <meta name="description" content="Rex - Application Deployment">

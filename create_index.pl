@@ -80,6 +80,10 @@ sub index_document {
    my $title = "";
 
    for (@content) {
+      if(m/^\%# no_index/) {
+         print "\r   [_] $doc    \n";
+         return;
+      }
       if(m/^% title '([^']+)'/) {
          $title = $1;
       }

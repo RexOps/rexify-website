@@ -1,9 +1,9 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration - The beginning';
+% title 'First steps guide with Rex.';
 
 % content_for header => begin
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Howto start">
-      <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
+      <meta name="description" content="A first steps guide for Rex.">
+      <meta name="keywords" content="Guide, Howto, First, Steps">
 % end
 
          <h1>Howto start using (R)?ex</h1>

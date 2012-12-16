@@ -14,3 +14,5 @@ debian/*.log
 *.bak
 README
 Rexfile
+config.pl
+elasticsearch

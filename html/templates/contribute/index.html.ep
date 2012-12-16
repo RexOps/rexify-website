@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration -//- Contribute';
+% title 'Contribute to Rex';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - Contribute to Rex">

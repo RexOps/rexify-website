@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration -//- French Howto';
+% title 'French Howto';
 
 % content_for header => begin
  

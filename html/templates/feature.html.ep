@@ -1,5 +1,6 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration';
+% title 'Request new features';
+%# no_index
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point">
