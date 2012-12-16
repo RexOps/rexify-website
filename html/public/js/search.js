@@ -16,7 +16,8 @@
          if(len >= 3) {
             // start searching at a length of min. 3 chars
             var search_qry = $("#q").val();
-            $(".result_field").load("/search?q=" + search_qry, null, function() {
+            console.log("qry: " + encodeURIComponent(search_qry));
+            $(".result_field").load("/search?q=" + encodeURIComponent(search_qry), null, function() {
 
                $(".search_button").click(function() {
                   $(".result_field").hide().html("");

@@ -165,14 +165,14 @@ get '/search' => sub {
    my $ua = Mojo::UserAgent->new;
    my $tx = $ua->post_json("http://localhost:9200/_search?pretty=true", {
       query => {
-         query_string => {
-            query => $term . '*',
+         prefix => {
+            content => $term,
          },
       },
       fields => [qw/fs title/],
       highlight => {
          fields => {
-            file => {},
+            content => {},
          },
       },
    });
@@ -233,7 +233,7 @@ __DATA__
          <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
-         % for my $h (@{ $r->{highlight}->{file} }) {
+         % for my $h (@{ $r->{highlight}->{content} }) {
          <p class="highlight-search" style="margin-left: 0px"><%== $h %></p>
          % }
          <div class="small-vspace"></div>
@@ -251,7 +251,7 @@ __DATA__
          <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
-         % for my $h (@{ $r->{highlight}->{file} }) {
+         % for my $h (@{ $r->{highlight}->{content} }) {
          <p class="highlight-search" style="margin-left: 0px"><%== $h %></p>
          % }
          <div class="small-vspace"></div>
