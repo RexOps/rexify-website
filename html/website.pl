@@ -12,6 +12,7 @@ use Mojo::UserAgent;
 use Data::Dumper;
 
 use lib 'lib';
+use lib 'vendor/perl';
 
 use DBIx::ORMapper;
 use DBIx::ORMapper::Connection::Server::MySQL;
