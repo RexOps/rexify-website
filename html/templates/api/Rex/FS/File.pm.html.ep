@@ -1,0 +1,95 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#class_methods">CLASS METHODS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::FS::File - File Class</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>This is the File Class used by <em>write_file</em> and <em>read_file</em>.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);
+ $file-&gt;read($len);
+ $file-&gt;read_all;
+ $file-&gt;write($buf);
+ $file-&gt;close;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>CLASS METHODS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>new</strong></li>
+
+
+<p>This is the constructor. You need to set the filehandle which the object should work on.</p>
+<div class="black-box"><pre class="perl">
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>write($buf)</code></strong></li>
+
+
+<p>Write $buf into the filehandle.</p>
+<div class="black-box"><pre class="perl">
+ $file-&gt;write(&quot;Hello World&quot;);</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>seek($offset)</code></strong></li>
+
+
+<p>Seek to the file position $offset.</p>
+<p>Set the file pointer to the 5th byte.</p>
+<div class="black-box"><pre class="perl">
+ $file-&gt;seek(5);</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>read($len)</code></strong></li>
+
+
+<p>Read $len bytes out of the filehandle.</p>
+<div class="black-box"><pre class="perl">
+ my $content = $file-&gt;read(1024);</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>read_all</strong></li>
+
+
+<p>Read everything out of the filehandle.</p>
+<div class="black-box"><pre class="perl">
+ my $content = $file-&gt;read_all;</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>close</strong></li>
+
+
+<p>Close the file.</p>
+<div class="black-box"><pre class="perl">
+ $file-&gt;close;</pre></div><div class="vspace"></div>
+
+</ul>
+
+

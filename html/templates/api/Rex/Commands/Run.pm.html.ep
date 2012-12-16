@@ -1,0 +1,110 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Run - Execute a remote command</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can run a command.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ my $output = run &quot;ls -l&quot;;
+ sudo &quot;id&quot;;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>run($command [, $callback])</strong></li>
+
+
+<p>This function will execute the given command and returns the output.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;uptime&quot;, &quot;server01&quot;, sub {
+    say run &quot;uptime&quot;;
+    run &quot;uptime&quot;, sub {
+       my ($stdout, $stderr) = @_;
+       my $server = Rex::get_current_connection()-&gt;{server};
+       say &quot;[$server] $stdout\n&quot;;
+    };
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>can_run($command)</code></strong></li>
+
+
+<p>This function checks if a command is in the path or is available.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;uptime&quot;, sub {
+    if(can_run &quot;uptime&quot;) {
+       say run &quot;uptime&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>sudo</strong></li>
+
+
+<p>Run a command with <em>sudo</em>. Define the password for sudo with <em>sudo_password</em>.</p>
+<p>You can use this function to run one command with sudo privileges or to turn on sudo globaly.</p>
+<div class="black-box"><pre class="perl">
+ user &quot;unprivuser&quot;;
+ sudo_password &quot;f00b4r&quot;;
+ sudo -on;   # turn sudo globaly on
+     
+ task prepare =&gt; sub {
+    install &quot;apache2&quot;;
+    file &quot;/etc/ntp.conf&quot;,
+       source =&gt; &quot;files/etc/ntp.conf&quot;,
+       owner  =&gt; &quot;root&quot;,
+       mode   =&gt; 640;
+ };</pre></div><div class="vspace"></div>
+<p>Or, if you don't turning sudo globaly on.</p>
+<div class="black-box"><pre class="perl">
+ task prepare =&gt; sub {
+    file &quot;/tmp/foo.txt&quot;,
+       content =&gt; &quot;this file was written without sudo privileges\n&quot;;
+        
+    # everything in this section will be executed with sudo privileges
+    sudo sub {
+       install &quot;apache2&quot;;
+       file &quot;/tmp/foo2.txt&quot;,
+          content =&gt; &quot;this file was written with sudo privileges\n&quot;;
+    };
+ };</pre></div><div class="vspace"></div>
+<p>Run only one command within sudo.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;eth1-down&quot;, sub {
+   sudo &quot;ifconfig eth1 down&quot;;
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

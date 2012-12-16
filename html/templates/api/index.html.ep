@@ -1,0 +1,87 @@
+% layout 'default';
+% title 'API Documentation for (R)?ex Version 0.35';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+         <h1>This is the <%= title %></h1>
+
+         <div class="vspace"></div>
+
+         <h1>Rex</h1>
+         <ul class="simple-list">
+            <li><a href="Rex.pm.html">Rex.pm</a></li>
+            <li><a href="Rex/Commands.pm.html">Commands.pm</a></li>
+            <li><a href="Rex/Hardware.pm.html">Hardware.pm</a></li>
+            <li><a href="Rex/Logger.pm.html">Logger.pm</a></li>
+            <li><a href="Rex/Task.pm.html">Task.pm</a></li>
+            <li><a href="Rex/Template.pm.html">Template.pm</a></li>
+            <li><a href="Rex/Transaction.pm.html">Transaction.pm</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>Rex::FS</h1>
+         <ul class="simple-list">
+            <li><a href="Rex/FS/File.pm.html">File.pm</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+         <h1>Rex::Commands</h1>
+         <ul class="simple-list">
+            <li><a href="Rex/Commands/Cloud.pm.html">Cloud.pm</a></li>
+            <li><a href="Rex/Commands/Cron.pm.html">Cron.pm</a></li>
+            <li><a href="Rex/Commands/DB.pm.html">DB.pm</a></li>
+            <li><a href="Rex/Commands/Download.pm.html">Download.pm</a></li>
+            <li><a href="Rex/Commands/File.pm.html">File.pm</a></li>
+            <li><a href="Rex/Commands/Fs.pm.html">Fs.pm</a></li>
+            <li><a href="Rex/Commands/Gather.pm.html">Gather.pm</a></li>
+            <li><a href="Rex/Commands/Host.pm.html">Host.pm</a></li>
+            <li><a href="Rex/Commands/Inventory.pm.html">Inventory.pm</a></li>
+            <li><a href="Rex/Commands/Iptables.pm.html">Iptables.pm</a></li>
+            <li><a href="Rex/Commands/Kernel.pm.html">Kernel.pm</a></li>
+            <li><a href="Rex/Commands/LVM.pm.html">LVM.pm</a></li>
+            <li><a href="Rex/Commands/MD5.pm.html">MD5.pm</a></li>
+            <li><a href="Rex/Commands/Network.pm.html">Network.pm</a></li>
+            <li><a href="Rex/Commands/Partition.pm.html">Partition.pm</a></li>
+            <li><a href="Rex/Commands/Pkg.pm.html">Pkg.pm</a></li>
+            <li><a href="Rex/Commands/Process.pm.html">Process.pm</a></li>
+            <li><a href="Rex/Commands/Rsync.pm.html">Rsync.pm</a></li>
+            <li><a href="Rex/Commands/Run.pm.html">Run.pm</a></li>
+            <li><a href="Rex/Commands/SCM.pm.html">SCM.pm</a></li>
+            <li><a href="Rex/Commands/Service.pm.html">Service.pm</a></li>
+            <li><a href="Rex/Commands/SimpleCheck.pm.html">SimpleCheck.pm</a></li>
+            <li><a href="Rex/Commands/Sysctl.pm.html">Sysctl.pm</a></li>
+            <li><a href="Rex/Commands/Tail.pm.html">Tail.pm</a></li>
+            <li><a href="Rex/Commands/Upload.pm.html">Upload.pm</a></li>
+            <li><a href="Rex/Commands/User.pm.html">User.pm</a></li>
+            <li><a href="Rex/Commands/Virtualization.pm.html">Virtualization.pm</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>This is the API documentation for (R)?ex Apache-Deploy Version 0.7</h1>
+
+         <div class="vspace"></div>
+         <ul class="simple-list">
+            <li><a href="Rex/Apache/Build.pm.html">Rex::Apache::Build</a></li>
+            <li><a href="Rex/Apache/Deploy.pm.html">Rex::Apache::Deploy</a></li>
+            <li><a href="Rex/Apache/Inject.pm.html">Rex::Apache::Inject</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>This is the API documentation for (R)?ex Augeas Version 0.2</h1>
+
+         <div class="vspace"></div>
+         <ul class="simple-list">
+            <li><a href="Rex/Augeas.pm.html">Rex::Augeas</a></li>
+         </ul>
+
+         <br />
+         <br />
+
+
+      </div>

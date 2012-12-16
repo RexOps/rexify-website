@@ -1,0 +1,57 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Template - Simple Template Engine.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>This is a simple template engine for configuration files.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ my $template = Rex::Template-&gt;new;
+ print $template-&gt;parse($content, \%template_vars);</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>is_defined($variable, $default_value)</strong></li>
+
+
+<p>This function will check if $variable is defined. If it is defined it will return the value of $variable. If not, it will return $default_value.</p>
+<p>You can use this function inside your templates.</p>
+<div class="black-box"><pre class="perl">
+ ServerTokens &lt;%= is_defined($::server_tokens, &quot;Prod&quot;) %&gt;</pre></div><div class="vspace"></div>
+
+</ul>
+
+

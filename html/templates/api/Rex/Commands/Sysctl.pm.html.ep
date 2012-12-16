@@ -1,0 +1,63 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Sysctl - Manipulate sysctl</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can set and get sysctl parameters.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::Sysctl;
+ 
+ my $data = sysctl &quot;net.ipv4.tcp_keepalive_time&quot;;
+ sysctl &quot;net.ipv4.tcp_keepalive_time&quot; =&gt; 1800;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>sysctl($key [, $val])</strong></li>
+
+
+<p>This function will read the sysctl key $key.</p>
+<p>If $val is given, then this function will set the sysctl key $key.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;tune&quot;, &quot;server01&quot;, sub {
+    if( sysctl(&quot;net.ipv4.ip_forward&quot;) == 0 ) {
+       sysctl &quot;net.ipv4.ip_forward&quot; =&gt; 1;
+    }
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

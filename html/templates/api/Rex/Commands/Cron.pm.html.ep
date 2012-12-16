@@ -1,0 +1,105 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Cron - Simple Cron Management</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this Module you can manage your cronjobs.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::Cron;
+     
+ cron add =&gt; &quot;root&quot;, {
+            minute =&gt; '5',
+            hour   =&gt; '*',
+            day_of_month    =&gt; '*',
+            month =&gt; '*',
+            day_of_week =&gt; '*',
+            command =&gt; '/path/to/your/cronjob',
+         };
+           
+ cron list =&gt; &quot;root&quot;;
+      
+ cron delete =&gt; &quot;root&quot;, 3;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>cron($action =&gt; $user, ...)</strong></li>
+
+
+<p>With this function you can manage cronjobs.</p>
+<p>List cronjobs.</p>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::Cron;
+ use Data::Dumper;
+    
+ task &quot;listcron&quot;, &quot;server1&quot;, sub {
+    my @crons = cron list =&gt; &quot;root&quot;;
+    print Dumper(\@crons);
+ };</pre></div><div class="vspace"></div>
+<p>Add a cronjob.</p>
+<p>This example will add a cronjob running on minute 1, 5, 19 and 40. Every hour and every day.</p>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::Cron;
+ use Data::Dumper;
+    
+ task &quot;addcron&quot;, &quot;server1&quot;, sub {
+     cron add =&gt; &quot;root&quot;, {
+        minute =&gt; &quot;1,5,19,40&quot;,
+        command =&gt; '/path/to/your/cronjob',
+     };
+ };</pre></div><div class="vspace"></div>
+<p>This example will add a cronjob only running on the 1st, 3rd and 5th day of a month. But only when these days are monday or wednesday. And only in January and May. To the 11th and 23th hour. And to the 1st and 5th minute.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;addcron&quot;, &quot;server1&quot;, sub {
+     cron add =&gt; &quot;root&quot;, {
+        minute =&gt; &quot;1,5&quot;,
+        hour   =&gt; &quot;11,23&quot;,
+        month  =&gt; &quot;1,5&quot;,
+        day_of_week =&gt; &quot;1,3&quot;,
+        day_of_month =&gt; &quot;1,3,5&quot;,
+        command =&gt; '/path/to/your/cronjob',
+     };
+ };</pre></div><div class="vspace"></div>
+<p>Delete a cronjob.</p>
+<p>This example will delete the 4th cronjob. It starts counting by zero (0).</p>
+<div class="black-box"><pre class="perl">
+ task &quot;delcron&quot;, &quot;server1&quot;, sub {
+     cron delete =&gt; &quot;root&quot;, 3;
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

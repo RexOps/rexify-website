@@ -1,0 +1,208 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Pkg - Install/Remove Software packages</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can install packages and files.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ install file =&gt; &quot;/etc/passwd&quot;, {
+                     source =&gt; &quot;/export/files/etc/passwd&quot;
+                 };
+ 
+ install package =&gt; &quot;perl&quot;;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>install($type, $data, $options)</strong></li>
+
+
+<p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files.</p>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>installing a package (This is only supported on CentOS, OpenSuSE and Debian systems.)</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server01&quot;, sub {
+    install package =&gt; &quot;perl&quot;;
+    
+    # or if you have to install more packages.
+    install package =&gt; [ 
+                           &quot;perl&quot;,
+                           &quot;ntp&quot;,
+                           &quot;dbus&quot;,
+                           &quot;hal&quot;,
+                           &quot;sudo&quot;,
+                           &quot;vim&quot;,
+                       ];
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>installing a file</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+
+This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</pre></div><div class="vspace"></div>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server01&quot;, sub {
+    install file =&gt; &quot;/etc/passwd&quot;, {
+                        source =&gt; &quot;/export/files/etc/passwd&quot;,
+                        owner  =&gt; &quot;root&quot;,
+                        group  =&gt; &quot;root&quot;,
+                        mode   =&gt; 644,
+                    };
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>installing a file and do somthing if the file was changed.</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server01&quot;, sub {
+    install file =&gt; &quot;/etc/httpd/apache2.conf&quot;, {
+                        source    =&gt; &quot;/export/files/etc/httpd/apache2.conf&quot;,
+                        owner     =&gt; &quot;root&quot;,
+                        group     =&gt; &quot;root&quot;,
+                        mode      =&gt; 644,
+                        on_change =&gt; sub { say &quot;File was modified!&quot;; }
+                    };
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>installing a file from a template.</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server01&quot;, sub {
+    install file =&gt; &quot;/etc/httpd/apache2.tpl&quot;, {
+                        source    =&gt; &quot;/export/files/etc/httpd/apache2.conf&quot;,
+                        owner     =&gt; &quot;root&quot;,
+                        group     =&gt; &quot;root&quot;,
+                        mode      =&gt; 644,
+                        on_change =&gt; sub { say &quot;File was modified!&quot;; },
+                        template  =&gt; {
+                                        greeting =&gt; &quot;hello&quot;,
+                                        name     =&gt; &quot;Ben&quot;,
+                                     },
+                    };
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+<li><div class="vspace"></div><strong>remove($type, $package, $options)</strong></li>
+
+
+<p>This function will remove the given package from a system.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;cleanup&quot;, &quot;server01&quot;, sub {
+    remove package =&gt; &quot;vim&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>installed_packages</strong></li>
+
+
+<p>This function returns all installed packages and their version.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get-installed&quot;, &quot;server1&quot;, sub {
+    
+     for my $pkg (installed_packages()) {
+        say &quot;name     : &quot; . $pkg-&gt;{&quot;name&quot;};
+        say &quot;  version: &quot; . $pkg-&gt;{&quot;version&quot;};
+     }
+     
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>update_package_db</strong></li>
+
+
+<p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;update-pkg-db&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    update_package_db;
+    install package =&gt; &quot;apache2&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>repository($action, %data)</strong></li>
+
+
+<p>Add or remove a repository from the package manager.</p>
+<p>For Debian: If you have no source repository, or if you don't want to add it, just remove the <em>source</em> parameter.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    repository &quot;add&quot; =&gt; &quot;repository-name&quot;,
+         url        =&gt; &quot;<a href="http://rex.linux-files.org/debian/squeeze&quot">http://rex.linux-files.org/debian/squeeze&quot</a>;,
+         distro     =&gt; &quot;squeeze&quot;,
+         repository =&gt; &quot;rex&quot;,
+         source     =&gt; 1;
+ };</pre></div><div class="vspace"></div>
+<p>For ALT Linux: If repository is unsigned, just remove the <em>sign_key</em> parameter.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    repository &quot;add&quot; =&gt; &quot;altlinux-sisyphus&quot;,
+         url        =&gt; &quot;<a href="ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus&quot">ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus&quot</a>;,
+         sign_key   =&gt; &quot;alt&quot;,
+         arch       =&gt; &quot;noarch, x86_64&quot;,
+         repository =&gt; &quot;classic&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>For CentOS, Mageia and SuSE only the name and the url are needed.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    repository add =&gt; &quot;repository-name&quot;,
+         url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
+     
+ };</pre></div><div class="vspace"></div>
+<p>To remove a repository just delete it with its name.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;rm-repo&quot;, &quot;server1&quot;, sub {
+    repository remove =&gt; &quot;repository-name&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>package_provider_for $os =&gt; $type;</strong></li>
+
+
+<p>To set an other package provider as the default, use this function.</p>
+<div class="black-box"><pre class="perl">
+ user &quot;root&quot;;
+     
+ group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
+ package_provider_for SunOS =&gt; &quot;blastwave&quot;;
+    
+ task &quot;prepare&quot;, group =&gt; &quot;db&quot;, sub {
+     install package =&gt; &quot;vim&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>This example will install <em>vim</em> on every db server. If the server is a Solaris (SunOS) it will use the <em>blastwave</em> Repositories.</p>
+
+</ul>
+
+

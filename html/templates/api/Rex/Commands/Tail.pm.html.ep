@@ -1,0 +1,68 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Tail - Tail a file</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can tail a file</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ tail &quot;/var/log/syslog&quot;;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong><code>tail($file)</code></strong></li>
+
+
+<p>This function will tail the given file.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;syslog&quot;, &quot;server01&quot;, sub {
+    tail &quot;/var/log/syslog&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>Or, if you want to format the output by yourself, you can define a callback function.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;syslog&quot;, &quot;server01&quot;, sub {
+    tail &quot;/var/log/syslog&quot;, sub {
+      my ($data) = @_;
+      
+      my $server = Rex-&gt;get_current_connection()-&gt;{'server'};
+      
+      print &quot;$server&gt;&gt; $data\n&quot;;
+    };
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

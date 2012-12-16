@@ -1,0 +1,62 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Inventory - Inventor your systems</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can get an inventory of your system.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Data::Dumper;
+ task &quot;inventory&quot;, &quot;remoteserver&quot;, sub {
+    my $inventory = inventor();
+    print Dumper($inventory);
+ };</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>inventory</strong></li>
+
+
+<p>This function returns an hashRef of all gathered hardware. Use the Data::Dumper module to see its structure.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get-inventory&quot;, sub {
+    my $inventory = inventor();
+    print Dumper($inventory);
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

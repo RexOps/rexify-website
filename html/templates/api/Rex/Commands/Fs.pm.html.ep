@@ -1,0 +1,357 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Fs - Filesystem commands</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can do file system tasks like creating a directory, removing files, move files, and more.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ my @files = list_files &quot;/etc&quot;;
+ 
+ unlink(&quot;/tmp/file&quot;);
+ 
+ rmdir(&quot;/tmp&quot;);
+ mkdir(&quot;/tmp&quot;);
+ 
+ my %stat = stat(&quot;/etc/passwd&quot;);
+ 
+ my $link = readlink(&quot;/path/to/a/link&quot;);
+ symlink(&quot;/source&quot;, &quot;/dest&quot;);
+ 
+ rename(&quot;oldname&quot;, &quot;newname&quot;);
+ 
+ chdir(&quot;/tmp&quot;);
+ 
+ is_file(&quot;/etc/passwd&quot;);
+ is_dir(&quot;/etc&quot;);
+ is_writeable(&quot;/tmp&quot;);
+ is_writable(&quot;/tmp&quot;);
+    
+ chmod 755, &quot;/tmp&quot;;
+ chown &quot;user&quot;, &quot;/tmp&quot;;
+ chgrp &quot;group&quot;, &quot;/tmp&quot;;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>list_files(&quot;/path&quot;);</strong></li>
+
+
+<p>This function list all entries (files, directories, ...) in a given directory and returns a array.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;ls-etc&quot;, &quot;server01&quot;, sub {
+    my @tmp_files = grep { /\.tmp$/ } list_files(&quot;/etc&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>ls($path)</code></strong></li>
+
+
+<p>Just an alias for <em>list_files</em></p>
+
+<li><div class="vspace"></div><strong>symlink($from, $to)</strong></li>
+
+
+<p>This function will create a symlink from $from to $to.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;symlink&quot;, &quot;server01&quot;, sub {
+    symlink(&quot;/var/www/versions/1.0.0&quot;, &quot;/var/www/html&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>ln($from, $to)</strong></li>
+
+
+<p>ln is an alias for <em>symlink</em></p>
+
+<li><div class="vspace"></div><strong><code>unlink($file)</code></strong></li>
+
+
+<p>This function will remove the given file.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;unlink&quot;, &quot;server01&quot;, sub {
+    unlink(&quot;/tmp/testfile&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>rm($file)</code></strong></li>
+
+
+<p>This is an alias for unlink.</p>
+
+<li><div class="vspace"></div><strong><code>rmdir($dir)</code></strong></li>
+
+
+<p>This function will remove the given directory.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;rmdir&quot;, &quot;server01&quot;, sub {
+    rmdir(&quot;/tmp&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>mkdir($newdir)</code></strong></li>
+
+
+<p>This function will create a new directory.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;mkdir&quot;, &quot;server01&quot;, sub {
+    mkdir &quot;/tmp&quot;;
+         
+    mkdir &quot;/tmp&quot;,
+      owner =&gt; &quot;root&quot;,
+      group =&gt; &quot;root&quot;,
+      mode =&gt; 1777;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>chown($owner, $file)</strong></li>
+
+
+<p>Change the owner of a file or a directory.</p>
+<div class="black-box"><pre class="perl">
+ chown &quot;www-data&quot;, &quot;/var/www/html&quot;;
+     
+ chown &quot;www-data&quot;, &quot;/var/www/html&quot;,
+                        recursive =&gt; 1;</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>chgrp($group, $file)</strong></li>
+
+
+<p>Change the group of a file or a directory.</p>
+<div class="black-box"><pre class="perl">
+ chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;;
+    
+ chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;,
+                     recursive =&gt; 1;</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>chmod($mode, $file)</strong></li>
+
+
+<p>Change the permissions of a file or a directory.</p>
+<div class="black-box"><pre class="perl">
+ chmod 755, &quot;/var/www/html&quot;;
+    
+ chmod 755, &quot;/var/www/html&quot;,
+               recursive =&gt; 1;</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>stat($file)</code></strong></li>
+
+
+<p>This function will return a hash with the following information about a file or directory.</p>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>mode</strong></li>
+
+<li><div class="vspace"></div><strong>size</strong></li>
+
+<li><div class="vspace"></div><strong>uid</strong></li>
+
+<li><div class="vspace"></div><strong>gid</strong></li>
+
+<li><div class="vspace"></div><strong>atime</strong></li>
+
+<li><div class="vspace"></div><strong>mtime</strong></li>
+
+</ul>
+<div class="black-box"><pre class="perl">
+ task &quot;stat&quot;, &quot;server01&quot;, sub {
+    my %file_stat = stat(&quot;/etc/passwd&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>is_file($file)</code></strong></li>
+
+
+<p>This function tests if $file is a file. Returns 1 if true. 0 if false.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;isfile&quot;, &quot;server01&quot;, sub {
+    if( is_file(&quot;/etc/passwd&quot;) ) {
+       say &quot;it is a file.&quot;;
+    }
+    else {
+       say &quot;hm, this is not a file.&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>is_dir($dir)</code></strong></li>
+
+
+<p>This function tests if $dir is a directory. Returns 1 if true. 0 if false.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;isdir&quot;, &quot;server01&quot;, sub {
+    if( is_dir(&quot;/etc&quot;) ) {
+       say &quot;it is a directory.&quot;;
+    }
+    else {
+       say &quot;hm, this is not a directory.&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>is_readable($file)</code></strong></li>
+
+
+<p>This function tests if $file is readable. It returns 1 if true. 0 if false.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;readable&quot;, &quot;server01&quot;, sub {
+    if( is_readable(&quot;/etc/passwd&quot;) ) {
+       say &quot;passwd is readable&quot;;
+    }
+    else {
+       say &quot;not readable.&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>is_writable($file)</code></strong></li>
+
+
+<p>This function tests if $file is writable. It returns 1 if true. 0 if false.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;writable&quot;, &quot;server01&quot;, sub {
+    if( is_writable(&quot;/etc/passwd&quot;) ) {
+       say &quot;passwd is writable&quot;;
+    }
+    else {
+       say &quot;not writable.&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>is_writeable($file)</code></strong></li>
+
+
+<p>This is only an alias for <em>is_writable</em>.</p>
+
+<li><div class="vspace"></div><strong><code>readlink($link)</code></strong></li>
+
+
+<p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;islink&quot;, &quot;server01&quot;, sub {
+    my $link;
+    eval {
+       $link = readlink(&quot;/tmp/testlink&quot;);
+    };
+    
+    say &quot;this is a link&quot; if($link);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>rename($old, $new)</strong></li>
+
+
+<p>This function will rename $old to $new. Will return 1 on success and 0 on failure.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;rename&quot;, &quot;server01&quot;, sub {
+    rename(&quot;/tmp/old&quot;, &quot;/tmp/new&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>mv($old, $new)</strong></li>
+
+
+<p>mv is an alias for <em>rename</em>.</p>
+
+<li><div class="vspace"></div><strong><code>chdir($newdir)</code></strong></li>
+
+
+<p>This function will change the current workdirectory to $newdir. This function currently only works local.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;chdir&quot;, &quot;server01&quot;, sub {
+    chdir(&quot;/tmp&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>cd($newdir)</code></strong></li>
+
+
+<p>This is an alias of <em>chdir</em>.</p>
+
+<li><div class="vspace"></div><strong><code>df([$device])</code></strong></li>
+
+
+<p>This function returns a hashRef reflecting the output of <em>df</em></p>
+<div class="black-box"><pre class="perl">
+ task &quot;df&quot;, &quot;server01&quot;, sub {
+     my $df = df();
+     my $df_on_sda1 = df(&quot;/dev/sda1&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>du($path)</code></strong></li>
+
+
+<p>Returns the disk usage of $path.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;du&quot;, &quot;server01&quot;, sub {
+    say &quot;size of /var/www: &quot; . du(&quot;/var/www&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>cp($source, $destination)</strong></li>
+
+
+<p>cp will copy $source to $destination (it is recursive)</p>
+<div class="black-box"><pre class="perl">
+ task &quot;cp&quot;, &quot;server01&quot;, sub {
+     cp(&quot;/var/www&quot;, &quot;/var/www.old&quot;);
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>mount($device, $mount_point, @options)</strong></li>
+
+
+<p>Mount devices.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;mount&quot;, &quot;server01&quot;, sub {
+    mount &quot;/dev/sda5&quot;, &quot;/tmp&quot;;
+    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+               fs =&gt; &quot;ext3&quot;,
+               options =&gt; [qw/noatime async/];
+    #
+    # mount persistent with entry in /etc/fstab
+      
+    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+               fs =&gt; &quot;ext3&quot;,
+               options =&gt; [qw/noatime async/],
+               persistent =&gt; TRUE;</pre></div><div class="vspace"></div>
+<div class="black-box"><pre class="perl">
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>umount($mount_point)</code></strong></li>
+
+
+<p>Unmount device.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;umount&quot;, &quot;server01&quot;, sub {
+    umount &quot;/tmp&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>glob($glob)</code></strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;glob&quot;, &quot;server1&quot;, sub {
+    my @files_with_p = grep { is_file($_) } glob(&quot;/etc/p*&quot;);
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

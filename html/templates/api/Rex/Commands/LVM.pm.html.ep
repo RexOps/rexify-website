@@ -1,0 +1,100 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::LVM - Get LVM Information</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can get information of your lvm setup.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::LVM;
+    
+ my @physical_devices = pvs;
+ my @volume_groups = vgs;
+ my @logical_volumes = lvs;</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>pvs</strong></li>
+
+
+<p>Get Information of all your physical volumes.</p>
+<div class="black-box"><pre class="perl">
+ use Data::Dumper;
+ use Rex::Commands::LVM;
+   
+ task &quot;lvm&quot;, sub {
+    my @physical_volumes = pvs;
+      
+    for my $physical_volume (@physical_volumes) {
+       say Dumper($physical_volume);
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>vgs</strong></li>
+
+
+<p>Get Information of all your volume groups.</p>
+<div class="black-box"><pre class="perl">
+ use Data::Dumper;
+ use Rex::Commands::LVM;
+    
+ task &quot;lvm&quot;, sub {
+    my @volume_groups = vgs;
+      
+    for my $volume_group (@volume_groups) {
+       say Dumper($volume_group);
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>lvs</strong></li>
+
+
+<p>Get Information of all your logical volumes.</p>
+<div class="black-box"><pre class="perl">
+ use Data::Dumper;
+ use Rex::Commands::LVM;
+    
+ task &quot;lvm&quot;, sub {
+    my @logical_volumes = lvs;
+      
+    for my $logical_volume (@logical_volumes) {
+       say Dumper($logical_volume);
+    }
+ };</pre></div><div class="vspace"></div>
+
+</ul>
+
+

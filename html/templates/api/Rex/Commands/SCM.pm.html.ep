@@ -1,0 +1,75 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::SCM - Sourcecontrol for Subversion and Git.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can checkout subversion and git repositories.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Commands::SCM;
+     
+ set repository =&gt; &quot;myrepo&quot;,
+      url =&gt; &quot;git@foo.bar:myrepo.git&quot;;
+        
+ set repository =&gt; &quot;myrepo2&quot;,
+      url =&gt; &quot;https://foo.bar/myrepo&quot;,
+      type =&gt; &quot;subversion&quot;,
+      username =&gt; &quot;myuser&quot;,
+      password =&gt; &quot;mypass&quot;;
+           
+ task &quot;checkout&quot;, sub {
+    checkout &quot;myrepo&quot;;
+        
+    checkout &quot;myrepo&quot;,
+       path =&gt; &quot;webapp&quot;;
+           
+    checkout &quot;myrepo&quot;,
+       path =&gt; &quot;webapp&quot;,
+       branch =&gt; 1.6;      # branch only for git
+           
+    checkout &quot;myrepo2&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>checkout($name, %data);</strong></li>
+
+
+<p>With this function you can checkout a repository defined with <em>set repository</em>. See Synopsis.</p>
+
+</ul>
+
+

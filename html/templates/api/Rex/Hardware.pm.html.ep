@@ -1,0 +1,78 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#class_methods">CLASS METHODS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Hardware - Base Class for hardware / information gathering</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>This module is the base class for hardware/information gathering.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Hardware;
+ 
+ my %host_info = Rex::Hardware-&gt;get(qw/ Host /)
+ my %all_info  = Rex::Hardware-&gt;get(qw/ All /)</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>CLASS METHODS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong><code>get(@modules)</code></strong></li>
+
+
+<p>Returns a hash with the wanted information.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get-info&quot;, &quot;server1&quot;, sub {
+    %hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
+ };</pre></div><div class="vspace"></div>
+<p>Or if you want to get all information</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get-all-info&quot;, &quot;server1&quot;, sub {
+    %hw_info = Rex::Hardware-&gt;get(qw/ All /);
+ };</pre></div><div class="vspace"></div>
+<p>Available modules:</p>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>Host</strong></li>
+
+<li><div class="vspace"></div><strong>Kernel</strong></li>
+
+<li><div class="vspace"></div><strong>Memory</strong></li>
+
+<li><div class="vspace"></div><strong>Network</strong></li>
+
+<li><div class="vspace"></div><strong>Swap</strong></li>
+
+</ul>
+
+</ul>
+
+

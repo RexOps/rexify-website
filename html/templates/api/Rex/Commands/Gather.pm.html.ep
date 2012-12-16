@@ -1,0 +1,256 @@
+% layout 'default';
+% title '(R)?ex API Documentation';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - API documentation">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Commands::Gather - Hardware and Information gathering</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>With this module you can gather hardware and software information.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ operating_system_is(&quot;SuSE&quot;);</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>get_operating_system</strong></li>
+
+
+<p>Will return the current operating system name.</p>
+<div class="black-box"><pre class="perl">
+
+ task &quot;get-os&quot;, &quot;server01&quot;, sub {
+    say get_operating_system();
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>get_system_information</strong></li>
+
+
+<p>Will return a hash of all system information. These Information will be also used by the template function.</p>
+
+<li><div class="vspace"></div><strong><code>operating_system_is($string)</code></strong></li>
+
+
+<p>Will return 1 if the operating system is $string.</p>
+<div class="black-box"><pre class="perl">
+
+ task &quot;is_it_suse&quot;, &quot;server01&quot;, sub {
+    if( operating_system_is(&quot;SuSE&quot;) ) {
+       say &quot;This is a SuSE system.&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>operating_system_version()</code></strong></li>
+
+
+<p>Will return the os release number as an integer. For example, it will convert 5.10 to 510, 10.04 to 1004 or 6.0.3 to 603.</p>
+<div class="black-box"><pre class="perl">
+
+ task &quot;prepare&quot;, &quot;server01&quot;, sub {
+    if( operating_system_version() &gt;= 510 ) {
+       say &quot;OS Release is higher or equal to 510&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>network_interfaces</strong></li>
+
+
+<p>Return an HashRef of all the networkinterfaces and their configuration.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get_network_information&quot;, &quot;server01&quot;, sub {
+    my $net_info = network_interfaces();
+ };</pre></div><div class="vspace"></div>
+<p>You can interate over the devices as follow</p>
+<div class="black-box"><pre class="perl">
+ my $net_info = network_interfaces();
+ for my $dev ( keys %{ $net_info } ) {
+    say &quot;$dev has the ip: &quot; . $net_info-&gt;{$dev}-&gt;{&quot;ip&quot;} . &quot; and the netmask: &quot; . $net_info-&gt;{$dev}-&gt;{&quot;netmask&quot;};
+ }</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>memory</strong></li>
+
+
+<p>Return an HashRef of all memory information.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;get_memory_information&quot;, &quot;server01&quot;, sub {
+    my $memory = memory();
+     
+    say &quot;Total:   &quot; . $memory-&gt;{&quot;total&quot;};
+    say &quot;Free:    &quot; . $memory-&gt;{&quot;free&quot;};
+    say &quot;Used:    &quot; . $memory-&gt;{&quot;used&quot;};
+    say &quot;Cached:  &quot; . $memory-&gt;{&quot;cached&quot;};
+    say &quot;Buffers: &quot; . $memory-&gt;{&quot;buffers&quot;};
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_freebsd</strong></li>
+
+
+<p>Returns true if the target system is a FreeBSD.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_freebsd) {
+       say &quot;This is a freebsd system...&quot;;
+    }
+    else {
+       say &quot;This is not a freebsd system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_redhat</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, sub {
+    if(is_redhat) {
+       # do something on a redhat system (like RHEL, Fedora, CentOS, Scientific Linux
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_suse</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, sub {
+    if(is_suse) {
+       # do something on a suse system
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_mageia</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, sub {
+    if(is_mageia) {
+       # do something on a mageia system
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_debian</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, sub {
+    if(is_debian) {
+       # do something on a debian system
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_alt</strong></li>
+
+
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, sub {
+    if(is_alt) {
+       # do something on a ALT Linux system
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_netbsd</strong></li>
+
+
+<p>Returns true if the target system is a NetBSD.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_netbsd) {
+       say &quot;This is a netbsd system...&quot;;
+    }
+    else {
+       say &quot;This is not a netbsd system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_openbsd</strong></li>
+
+
+<p>Returns true if the target system is an OpenBSD.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_openbsd) {
+       say &quot;This is an openbsd system...&quot;;
+    }
+    else {
+       say &quot;This is not an openbsd system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_linux</strong></li>
+
+
+<p>Returns true if the target system is a Linux System.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_linux) {
+      say &quot;This is a linux system...&quot;;
+    }
+    else {
+      say &quot;This is not a linux system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_bsd</strong></li>
+
+
+<p>Returns true if the target system is a BSD System.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_bsd) {
+      say &quot;This is a BSD system...&quot;;
+    }
+    else {
+      say &quot;This is not a BSD system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_solaris</strong></li>
+
+
+<p>Returns true if the target system is a Solaris System.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    if(is_solaris) {
+      say &quot;This is a Solaris system...&quot;;
+    }
+    else {
+      say &quot;This is not a Solaris system...&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>is_windows</strong></li>
+
+
+<p>Returns true if the target system is a Windows System.</p>
+
+</ul>
+
+
