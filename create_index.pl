@@ -38,43 +38,8 @@ for my $idx (qw/webpage api/) {
    print "[-] creating index ($idx)";
    my $tx = _put("/$idx", {
       "settings" => {
-         "index" => {
-            "analysis" => {
-               "analyzer" => {
-                  "str_search_analyzer" => {
-                     "type" => "snowball",
-                     "language" => "English",
-                  },
-               },
-            },
             "number_of_shards" => 1,
             "number_of_replicas" => 0
-         },
-      },
-      "mappings" => {
-         "document" => {
-            "properties" => {
-               "fs" => {
-                  "type" => "string",
-               },
-               "title" => {
-                  "type" => "string",
-                  "index_analyzer" => "str_search_analyzer",
-                  "search_analyzer" => "str_search_analyzer",
-               },
-               "content" => {
-                  "type" => "string",
-                  "index_analyzer" => "str_search_analyzer",
-                  "search_analyzer" => "str_search_analyzer",
-               },
-               "file" => {
-                  "type" => "attachment",
-                  "fields" => {
-                     "file" => { "term_vector" => "with_positions_offsets", "store" => "yes" }
-                  }
-               },
-            },
-         },
       },
    });
    if($tx->success) {
@@ -86,20 +51,20 @@ for my $idx (qw/webpage api/) {
    }
 
    # create attachment options
-   #print "[+] creating attachment mapping for ($idx)\n";
-   #_put("/$idx/attachment/_mapping", {
-   #   "attachment" => {
-   #      "properties" => {
-   #         "file" => {
-   #            "type" => "attachment",
-   #            "fields" => {
-   #               "title" => { "store" => "yes" },
-   #               "file"  => { "term_vector" => "with_positions_offsets", "store" => "yes" }
-   #            }
-   #         }
-   #      }
-   #   }
-   #});
+   print "[+] creating attachment mapping for ($idx)\n";
+   _put("/$idx/attachment/_mapping", {
+      "attachment" => {
+         "properties" => {
+            "file" => {
+               "type" => "attachment",
+               "fields" => {
+                  "title" => { "store" => "yes" },
+                  "file"  => { "term_vector" => "with_positions_offsets", "store" => "yes" }
+               }
+            }
+         }
+      }
+   });
 }
 
 my @dir = ($index_dir);
@@ -155,13 +120,13 @@ sub index_document {
 
    my $ref = {
       file  => $base64_content,
-      content  => join("\n", @content),
+      #content  => join("\n", @content),
       fs    => $fs,
       title => $title,
    };
 
-   #my $tx = _post("/$idx/attachment/", $ref);
-   my $tx = _post("/$idx/document/", $ref);
+   my $tx = _post("/$idx/attachment/", $ref);
+   #my $tx = _post("/$idx/document/", $ref);
 
    print "\r";
    print " "x80;
