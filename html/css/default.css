@@ -85,6 +85,11 @@ pre.perl {
 
 }
 
+pre.perl span,
+pre.bash span {
+   font-family: courier !important;
+}
+
 div.perl {
 
    padding: 10px;
