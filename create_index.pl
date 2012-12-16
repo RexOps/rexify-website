@@ -29,29 +29,31 @@ if(! $index_dir) {
    exit 3;
 }
 
-# first delete index
-print "[+] Deleting index\n";
-_delete("/webpage/");
+for my $idx (qw/webpage api/) {
+   # first delete index
+   print "[+] Deleting index ($idx)\n";
+   _delete("/$idx/");
 
-# create new index
-print "[+] creating index\n";
-_put("/webpage", {"settings" => { "index" => { "number_of_shards" => 1, "number_of_replicas" => 0 }}});
+   # create new index
+   print "[+] creating index ($idx)\n";
+   _put("/$idx", {"settings" => { "index" => { "number_of_shards" => 1, "number_of_replicas" => 0 }}});
 
-# create attachment options
-print "[+] creating attachment mapping\n";
-_put("/webpage/attachment/_mapping", {
-   "attachment" => {
-      "properties" => {
-         "file" => {
-            "type" => "attachment",
-            "fields" => {
-               "title" => { "store" => "yes" },
-               "file"  => { "term_vector" => "with_positions_offsets", "store" => "yes" }
+   # create attachment options
+   print "[+] creating attachment mapping for ($idx)\n";
+   _put("/$idx/attachment/_mapping", {
+      "attachment" => {
+         "properties" => {
+            "file" => {
+               "type" => "attachment",
+               "fields" => {
+                  "title" => { "store" => "yes" },
+                  "file"  => { "term_vector" => "with_positions_offsets", "store" => "yes" }
+               }
             }
          }
       }
-   }
-});
+   });
+}
 
 my @dir = ($index_dir);
 
@@ -66,22 +68,28 @@ for my $d (@dir) {
          next;
       }
 
-      index_document("$d/$entry");
+      my $_d = "$d/$entry";
+      if($_d =~ m/api\//) {
+         index_api_document("$d/$entry");
+      }
+      else {
+         index_webpage_document("$d/$entry");
+      }
    }
    closedir($dh);
 }
 
 sub index_document {
-   my ($doc) = @_;
+   my ($idx, $doc) = @_;
 
-   print "   [-] $doc    ";
+   print "   [-] $doc ($idx)   ";
    my @content = eval { local(@ARGV) = ($doc); <>; };   
 
    my $title = "";
 
    for (@content) {
       if(m/^\%# no_index/) {
-         print "\r   [_] $doc    \n";
+         print "\r   [_] $doc ($idx)   \n";
          return;
       }
       if(m/^% title '([^']+)'/) {
@@ -94,23 +102,37 @@ sub index_document {
    my $base64_content = encode_base64(join("\n", @content));
 
    my $json = Mojo::JSON->new;
+   my $fs = $doc;
+   $fs =~ s/$index_dir//;
+   $fs =~ s/\.ep$//;
+
    my $ref = {
       file  => $base64_content,
-      fs    => $doc,
+      fs    => $fs,
       title => $title,
    };
 
-   my $tx = _post("/webpage/attachment/", $ref);
+   my $tx = _post("/$idx/attachment/", $ref);
 
    print "\r";
    print " "x80;
 
    if($tx->res->json && $tx->res->json->{ok}) {
-      print "\r   [+] $doc    \n";
+      print "\r   [+] $doc ($idx)   \n";
    }
    else {
-      print "\r   [!] $doc    \n";
+      print "\r   [!] $doc ($idx)   \n";
    }
+}
+
+sub index_api_document {
+   my ($doc) = @_;
+   index_document("api", $doc);
+}
+
+sub index_webpage_document {
+   my ($doc) = @_;
+   index_document("webpage", $doc);
 }
 
 sub _ua {

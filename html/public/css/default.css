@@ -360,3 +360,28 @@ table.tb-support td {
    background-color: #f9d900;
 }
 
+.searchbox {
+   position: absolute;
+   z-index: 5000;
+   top: 15px;
+   color: #cecece;
+}
+
+.result_field {
+   position: absolute;
+   z-index: 6000;
+   background-color: #fff;
+   padding: 10px;
+   border: 4px solid #0c0c0c;
+   color: 000;
+   width: 400px;
+   display: none;
+}
+
+.result_field a,
+.result_field a:link,
+.result_field a:visited,
+.result_field a:active {
+   color: #0c0c0c;
+}
+

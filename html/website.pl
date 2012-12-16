@@ -8,6 +8,7 @@ use DateTime;
 
 use Cwd qw(getcwd);
 use Mojolicious::Lite;
+use Mojo::UserAgent;
 
 use lib 'lib';
 
@@ -154,13 +155,41 @@ get '/get/mod/*mod' => sub {
    $self->render_file(filepath => "/tmp/scratch/$u.tar.gz");
 };
 
+get '/search' => sub {
+   my ($self) = @_;
+
+   my $term = $self->param("q");
+
+   my $ua = Mojo::UserAgent->new;
+   my $tx = $ua->post_json("http://localhost:9200/_search?pretty=true", {
+      query => {
+         query_string => {
+            query => $term . '*',
+         },
+      },
+      fields => [qw/fs title/],
+      highlight => {
+         fields => {
+            file => {},
+         },
+      },
+   });
+
+   if(my $json = $tx->res->json) {
+      return $self->render("search", hits => $json->{hits});
+   }
+   else {
+      return $self->render("search", hits => { total => 0, });
+   }
+};
+
+
 get '/*file' => sub {
    my ($self) = @_;
 
    my $template = $self->param("file");
 
    if(-f "public/$template") {
-      warn "Found file\n";
       return $self->render_file(filepath => "public/$template");
    }
 
@@ -178,10 +207,43 @@ get '/*file' => sub {
 
 };
 
+
 app->start;
 
 __DATA__
 
+@@ search.html.ep
+
+% if( $hits->{total} == 0 ) {
+
+<p>I'm sorry. Your query had no results!</p>
+
+% } else {
+
+% my @api_results     = grep { $_->{_index} eq "api" } @{ $hits->{hits} };
+% my @webpage_results = grep { $_->{_index} eq "webpage" } @{ $hits->{hits} };
+
+% if(@api_results) {
+<h1>API</h1>
+   <ul class="simple-list">
+   % for my $r (@api_results) {
+      <li><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></li>
+   % }
+   </ul>
+% }
+
+% if(@webpage_results) {
+<div class="vspace"></div>
+<h1>Website</h1>
+   <ul class="simple-list">
+   % for my $r (@webpage_results) {
+      <li><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></li>
+   % }
+   </ul>
+% }
+
+
+% }
 @@ 404.html.ep
 
 % layout 'default';
@@ -194,7 +256,14 @@ __DATA__
 
 <div id="nav">
    <a href="http://rexify.org/"><img id="nav_img" src="http://rexify.org/images/title.png" alt="(R)?ex - What do you want to deploy today?"></a>
-   <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a></div>
+   <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a>
+      <div class="searchbox">
+         Search: <input type="text" name="q" id="q" />
+         <div class="result_field">
+            <p>I'm sorry. Your query had no results!</p>
+         </div>
+      </div>
+   </div>
 </div>
 
 
@@ -235,8 +304,9 @@ __DATA__
       
    </body>
 
-      <script type="text/javascript" charset="utf-8" src="http://rexify.org/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="http://rexify.org/js/highlight.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
 
    <script type="text/javascript" charset="utf-8">
 
@@ -360,8 +430,9 @@ piwikTracker.enableLinkTracking();
       
    </body>
 
-      <script type="text/javascript" charset="utf-8" src="http://rexify.org/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="http://rexify.org/js/highlight.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
 
    <script type="text/javascript" charset="utf-8">
 
