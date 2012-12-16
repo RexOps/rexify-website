@@ -4,3 +4,9 @@
 
 Don't blame me for the code... i'm hating creating websites...
 
+=head2 Run it local
+
+If you want to make changes and test these changes on your workstation follow these steps:
+
+... tbd ...
+
