@@ -4,10 +4,49 @@ use strict;
 use warnings;
 use utf8;
 
+use DateTime;
+
 use Cwd qw(getcwd);
 use Mojolicious::Lite;
 
+use lib 'lib';
+
+use DBIx::ORMapper;
+use DBIx::ORMapper::Connection::Server::MySQL;
+use DBIx::ORMapper::DM;
+
+use FeatureRequest;
+
+my $config = {};
+
+if(-f "./config.pl") {
+   my $content = eval { local(@ARGV, $/) = ("./config.pl"); <>; };
+   $config  = eval 'package Foo::Config::Loader;'
+                        . "no warnings; $content";
+
+   die "Couldn't load configuration file: $@" if(!$config && $@);
+   die "Config file invalid. Did not return HASH reference." if( ref($config) ne "HASH" );
+}
+else {
+   die "Config file ./config.pl not found.";
+}
+
 plugin 'RenderFile';
+
+DBIx::ORMapper::setup(default => "MySQL://" . $config->{database}->{server} . "/" 
+                                            . $config->{database}->{schema} . 
+                               "?username=" . $config->{database}->{username}  .
+                               "&password=" . $config->{database}->{password}
+);
+
+eval {
+   my $db = DBIx::ORMapper::get_connection("default");
+   $db->connect;
+
+   FeatureRequest->set_data_source($db);
+} or do {
+   die "Can't connect to database: $@";
+};
 
 sub get_random {
 	my $count = shift;
@@ -24,7 +63,62 @@ sub get_random {
 
 get '/' => sub {
    my ($self) = @_;
-   $self->render('index');
+   $self->render("index");
+};
+
+get '/feature.html' => sub {
+   my ($self) = @_;
+
+   my @op = ('+', '-');
+   $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
+
+   my $wishes = FeatureRequest->all;
+
+   my $posted = $self->param("posted")?"Your feature request has been posted successfully.":"";
+   $self->render("feature", wishes => $wishes, question => $self->session->{question}, email => "", feature => "", error => 0, posted => $posted);
+};
+
+post '/feature.html' => sub {
+   my ($self) = @_;
+
+   my $wishes = FeatureRequest->all;
+
+   my @error = ();
+
+   my $answer = eval $self->session->{question};
+   if($self->param("question") ne $answer) {
+      push(@error, "The magic answer is wrong. Please try again.");
+   }
+
+   if(! $self->param("feature")) {
+      push(@error, "Please fill out the feature field.");
+   }
+
+   if(! @error) {
+
+      my $new_wish = FeatureRequest->new(
+         created => DateTime->now,
+         email   => $self->param("email")   || "<not given>",
+         feature => $self->param("feature") || "<not given>",
+      );
+
+      $new_wish->save;
+
+      return $self->redirect_to('/feature.html?posted=1');
+   }
+   else {
+      my @op = ('+', '-');
+      $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
+
+      $self->render("feature", 
+                        wishes   => $wishes, 
+                        question => $self->session->{question}, 
+                        email    => $self->param("email"), 
+                        feature  => $self->param("feature"), 
+                        error    => \@error, 
+                        posted   => 0
+      );
+   }
 };
 
 # special code to handle ,,rexify --search'' requests

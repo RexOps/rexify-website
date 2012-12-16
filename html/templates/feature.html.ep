@@ -11,26 +11,30 @@
 
          <div class="vspace"></div>
 
-         <form action="" method="post" accept-charset="utf-8">
-            <!--{if $error}-->
-      <p class="error"><!--{$error}--></p>
-      <!--{/if}-->
+         <form action="/feature.html" method="post" accept-charset="utf-8">
+% if($error) {
+   <ul class="simple-list error">
+      % for my $e (@{ $error }) {
+      <li><%= $e %></li>
+      % }
+   </ul>
+% }
 
-   <!--{if $posted}-->
-   <p class="info"><!--{$posted}--></p>
-   <!--{else}-->
+% if($posted) {
+   <p class="info"><%= $posted %></p>
+% } else {
    <table border="0">
       <tr>
          <td width="150">
             <label for="email">E-Mail<br /><small><i>If we have inquiries.</i></small></label>
          </td>
          <td>
-            <input type="text" name="email" id="email" size="30" value="<!--{$email}-->" />
+            <input type="text" name="email" id="email" size="30" value="<%= $email %>" />
          </td>
       </tr>
       <tr>
          <td>
-            <label for="question">Please calculate: <!--{$calc}--></label>
+            <label for="question">Please calculate: <%= $question %></label>
          </td>
          <td>
             <input type="text" name="question" id="question" size="30" />
@@ -43,7 +47,7 @@
             <i>Use [code]...[/code] for a code block.</i>
          </td>
          <td>
-            <textarea cols="50" rows="10" name="feature" id="feature"><!--{$feature}--></textarea>
+            <textarea cols="50" rows="10" name="feature" id="feature"><%= $feature %></textarea>
          </td>
       </tr>
       <tr>
@@ -55,23 +59,26 @@
          </td>
       </tr>
    </table>
-   <!--{/if}-->
-
+% }
          </form>
 
          <div class="vspace"></div>
 
          <h1>Requested Features</h1>
 
-<!--{foreach $features as $feature}-->
+% while(my $wish = $wishes->next) {
          <ul class="simple-list">
             <li>
-               <!--{$feature.feature|escape|parse_comment}-->
+               % my $feature = $wish->feature;
+               % $feature =~ s/</&lt;/g;
+               % $feature =~ s/</&gt;/g;
+               % $feature =~ s/\[code\](.*?)\[\/code\]/<div class="black-box"><pre class="perl">$1<\/pre><\/div>/gms;
+               <%== $feature %>
                <div class="vspace"></div>
                <div class="vspace" style="border-top: 1px dotted #c3c3c3;"></div>
             </li>
          </ul>
-<!--{/foreach}-->
+% }
 
 
 
