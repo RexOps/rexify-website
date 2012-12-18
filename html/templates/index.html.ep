@@ -34,6 +34,16 @@
 
          <div class="vspace"></div>
 
+         <h1>New Feature: Development Boxes</h1>
+         <p>Build a live-like development environment for your developers in minutes with <a href="http://box.rexify.org/">Rex/Boxes</a>. Your devs will love you. No more fiddeling with dependency problems, version mismatches or "works on my system" excuses.</p>
+         <div class="small-vspace"></div>
+         <p>With <a href="http://box.rexify.org/">Rex/Boxes</a> your devs can work with a live-like environment and keep their workstations clean.</p>
+         <div class="small-vspace"></div>
+         <p>Read <a href="http://box.rexify.org/help">more ...</a></p>
+
+         <div class="vspace"></div>
+
+
          <h1>Latest News</h1>
 
          <p><b>2012-11-09</b> (R)?ex 0.34.0 released. This is mostly a bugfix release. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.34">Github.</a></p>
@@ -56,19 +66,6 @@
 
          <div class="vspace"></div>
 
-<!--
-         <h1>Development Boxes</h1>
-         <p>Build your own development environment in seconds with <a href="http://box.rexify.org/">Rex/Boxes</a>, share it with your team and don't fiddle arround with dependency problems or version mismatches anymore.</p>
-         <div class="small-vspace"></div>
-         <p>With Rex/Boxes you can keep your workstation clean and have one seperated Box for every project.</p>
-
-         <div class="vspace"></div>
-         <h2>Living DevOps</h2>
-         <div class="small-vspace"></div>
-         <p>You can also work together with your Ops-Team to build a <b>live-like</b> development environment. So the quality of your builds will increase dramatically. Because failing early is better than failing live.</p>
--->
-
-         <div class="vspace"></div>
          <h1>Need Help?</h1>
          <div class="small-vspace"></div>
          <ul class="simple-list">
