@@ -77,6 +77,18 @@ apt-get install rex</pre>
 
          <div class="small-vspace"></div>
 
+         <p>For Wheezy</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
+
+         <div class="small-vspace"></div>
+
          <p>For Lenny</p>
 
          <div class="black-box">
@@ -213,6 +225,17 @@ apt-get update
 apt-get install rex</pre>
          </div>
 
+         <div class="small-vspace"></div>
+
+         <p>For Quantal (12.10)</p>
+
+         <div class="black-box">
+            <pre class="bash">
+echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</pre>
+         </div>
 
 
          <div class="vspace"></div>
