@@ -318,7 +318,25 @@ __DATA__
 
       <div id="footer">
          <div class="links">
-            Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+            <div class="vspace"></div>
+            <div class="bottom_box">
+               <table border="0">
+                  <tr>
+                     <td width="50%">
+                        <h1>Looking for Modules?</h1>
+                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
+                     </td>
+                     <td>
+                        <h1>Unify your Team!</h1>
+                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
+                        create clean development environments for your projects. Test your software in a production like environment.
+                     </td>
+                  </tr>
+               </table>
+            </div>
+
+            
          </div>
       </div>
 
@@ -445,7 +463,25 @@ piwikTracker.enableLinkTracking();
 
       <div id="footer">
          <div class="links">
-            Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+            <div class="vspace"></div>
+            <div class="bottom_box">
+               <table border="0">
+                  <tr>
+                     <td width="50%">
+                        <h1>Looking for Modules?</h1>
+                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
+                     </td>
+                     <td>
+                        <h1>Unify your Team!</h1>
+                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
+                        create clean development environments for your projects. Test your software in a production like environment.
+                     </td>
+                  </tr>
+               </table>
+            </div>
+
+            
          </div>
       </div>
 

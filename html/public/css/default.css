@@ -410,3 +410,42 @@ table.tb-support td {
 .highlight-search em {
    background-color: #ff0;
 }
+
+.bottom_box {
+   width: 550px;
+   margin: auto;
+}
+
+.bottom_box table {
+}
+
+.bottom_box td {
+   color: #ffffff !important;
+   vertical-align: top;
+   padding-right: 5px;
+   padding-left: 5px;
+}
+
+.bottom_box td a,
+.bottom_box td a:link,
+.bottom_box td a:visited,
+.bottom_box td a:active {
+
+   color: #5A8091 !important;
+   text-decoration: none;
+
+}
+
+.bottom_box td a:hover {
+
+   color: #cecece !important;
+   text-decoration: underline;
+
+}
+
+
+.bottom_box td h1 {
+   font-size: 14px;
+}
+
+
