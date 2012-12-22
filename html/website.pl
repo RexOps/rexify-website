@@ -300,7 +300,7 @@ __DATA__
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?6" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/default.css?10" type="text/css" media="screen" charset="utf-8">
       <link rel="stylesheet" href="/css/highlight.css?6" type="text/css" media="screen" charset="utf-8">
 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management">
@@ -437,7 +437,7 @@ piwikTracker.enableLinkTracking();
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?6" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/default.css?10" type="text/css" media="screen" charset="utf-8">
       <link rel="stylesheet" href="/css/highlight.css?6" type="text/css" media="screen" charset="utf-8">
 
       %= content_for 'header';
