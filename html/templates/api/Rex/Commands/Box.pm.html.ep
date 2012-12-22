@@ -1,0 +1,172 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports only VirtualBox.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>DESCRIPTION</h1>
+<p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports only VirtualBox.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ task mytask =&gt; sub {
+    
+    box {
+       my ($box) = @_;
+       $box-&gt;name(&quot;vmname&quot;);
+       $box-&gt;url(&quot;<a href="http://box.rexify.org/box/base-image.box&quot">http://box.rexify.org/box/base-image.box&quot</a>;);
+          
+       $box-&gt;network(1 =&gt; {
+         type =&gt; &quot;nat&quot;,
+       });
+           
+       $box-&gt;network(1 =&gt; {
+         type =&gt; &quot;bridged&quot;,
+         bridge =&gt; &quot;eth0&quot;,
+       });
+          
+       $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+          
+       $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
+          
+       $box-&gt;auth(
+         user =&gt; &quot;root&quot;,
+         password =&gt; &quot;box&quot;,
+       );
+         
+       $box-&gt;setup(qw/task_to_customize_box/);
+       
+    };
+    
+ };</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>EXPORTED FUNCTIONS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>new(name =&gt; $vmname)</strong></li>
+
+
+<p>Constructor if used in OO mode.</p>
+<div class="black-box"><pre class="perl">
+ my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;vmname&quot;);</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>name($vmname)</code></strong></li>
+
+
+<p>Sets the name of the virtual machine.</p>
+
+<li><div class="vspace"></div><strong><code>setup(@tasks)</code></strong></li>
+
+
+<p>Sets the tasks that should be executed as soon as the VM is available throu SSH.</p>
+
+<li><div class="vspace"></div><strong><code>stop()</code></strong></li>
+
+
+<p>Stops the VM.</p>
+
+<li><div class="vspace"></div><strong><code>start()</code></strong></li>
+
+
+<p>Starts the VM.</p>
+
+<li><div class="vspace"></div><strong><code>provision([@tasks])</code></strong></li>
+
+
+<p>Execute's the given tasks on the VM.</p>
+
+<li><div class="vspace"></div><strong><code>cpus($count)</code></strong></li>
+
+
+<p>Set the amount of CPUs for the VM.</p>
+
+<li><div class="vspace"></div><strong><code>forward_port(%option)</code></strong></li>
+
+
+<p>Set ports to be forwarded to the VM. This only work with VirtualBox in NAT network mode.</p>
+<div class="black-box"><pre class="perl">
+ $box-&gt;forward_port(
+    name =&gt; [$from_host_port, $to_vm_port],
+    name2 =&gt; [$from_host_port_2, $to_vm_port_2],
+    ...
+ );</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>share_folder(%option)</code></strong></li>
+
+
+<p>Creates a shared folder inside the VM with the content from a folder from the Host machine. This only works with VirtualBox.</p>
+<div class="black-box"><pre class="perl">
+ $box-&gt;share_folder(
+    name =&gt; &quot;/path/on/host&quot;,
+    name2 =&gt; &quot;/path_2/on/host&quot;,
+ );</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>memory($memory_size)</code></strong></li>
+
+
+<p>Sets the memory of a VM in megabyte.</p>
+
+<li><div class="vspace"></div><strong><code>network(%option)</code></strong></li>
+
+
+<p>Configure the network for a VM.</p>
+<p>Currently it supports 2 modes. <em>nat</em> and <em>bridged</em>. Currently it supports only one network card.</p>
+<div class="black-box"><pre class="perl">
+ $box-&gt;network(
+    1 =&gt; {
+       type =&gt; &quot;nat&quot;,
+    },
+ }
+    
+ $box-&gt;network(
+    1 =&gt; {
+       type =&gt; &quot;bridged&quot;,
+       bridge =&gt; &quot;eth0&quot;,
+    },
+ );</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong><code>url($url)</code></strong></li>
+
+
+<p>The URL where to download the Base VM Image. You can use self-made images or prebuild images from <a href="http://box.rexify.org/.">http://box.rexify.org/.</a></p>
+
+<li><div class="vspace"></div><strong><code>auth(%option)</code></strong></li>
+
+
+<p>Configure the authentication to the VM.</p>
+<div class="black-box"><pre class="perl">
+ $box-&gt;auth(
+    user =&gt; $user,
+    password =&gt; $password,
+    private_key =&gt; $private_key,
+    public_key =&gt; $public_key,
+ );</pre></div><div class="vspace"></div>
+
+</ul>
+
+
+
+

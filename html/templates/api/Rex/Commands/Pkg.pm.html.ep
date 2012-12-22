@@ -187,6 +187,25 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</p
  task &quot;rm-repo&quot;, &quot;server1&quot;, sub {
     repository remove =&gt; &quot;repository-name&quot;;
  };</pre></div><div class="vspace"></div>
+<p>You can also use one call to repository to add repositories on multiple platforms:</p>
+<div class="black-box"><pre class="perl">
+ task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   repository add =&gt; myrepo =&gt; {
+      Ubuntu =&gt; {
+         url =&gt; &quot;<a href="http://foo.bar/repo&quot">http://foo.bar/repo&quot</a>;,
+         distro =&gt; &quot;precise&quot;,
+         repository =&gt; &quot;foo&quot;,
+      },
+      Debian =&gt; {
+         url =&gt; &quot;<a href="http://foo.bar/repo&quot">http://foo.bar/repo&quot</a>;,
+         distro =&gt; &quot;squeeze&quot;,
+         repository =&gt; &quot;foo&quot;,
+      },
+      CentOS =&gt; {
+         url =&gt; &quot;<a href="http://foo.bar/repo&quot">http://foo.bar/repo&quot</a>;,
+      },
+   };
+ };</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong>package_provider_for $os =&gt; $type;</strong></li>
 

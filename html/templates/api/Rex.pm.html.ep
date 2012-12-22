@@ -111,6 +111,11 @@
 
 <p>Returns 1 if the current connection is a ssh connection. 0 if not.</p>
 
+<li><div class="vspace"></div><strong>is_local</strong></li>
+
+
+<p>Returns 1 if the current connection is local. Otherwise 0.</p>
+
 <li><div class="vspace"></div><strong>is_sudo</strong></li>
 
 
@@ -174,6 +179,8 @@
 <li><div class="vspace"></div><strong>Jose Luis Martinez</strong></li>
 
 <li><div class="vspace"></div><strong>Laird Liu</strong></li>
+
+<li><div class="vspace"></div><strong>Mario Domgoergen</strong></li>
 
 <li><div class="vspace"></div><strong>Nikolay Fetisov</strong></li>
 

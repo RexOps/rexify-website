@@ -50,7 +50,8 @@
 <div class="black-box"><pre class="perl">
  use Rex::Commands::Virtualization;
     
- set virtualization =&gt; {type =&gt; &quot;LibVirt&quot;};
+ set virtualization =&gt; &quot;LibVirt&quot;;
+ set virtualization =&gt; &quot;VBox&quot;;
     
  use Data::Dumper;</pre></div><div class="vspace"></div>
 <div class="black-box"><pre class="perl">
@@ -101,6 +102,23 @@
 <p>
 </p>
 <h2><a name="creating_a_virtual_machine">Creating a Virtual Machine</a></h2>
+<p>Create a (VirtualBox) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
+With a cdrom as an iso image and a natted network. The bootorder is set to &quot;dvd&quot;.</p>
+<div class="black-box"><pre class="perl">
+ vm create =&gt; &quot;vm01&quot;,
+      storage     =&gt; [
+         {   
+            file   =&gt; &quot;/mnt/data/vbox/vm01.img&quot;,
+            size   =&gt; &quot;10G&quot;,
+         },
+         {
+            file =&gt; &quot;/mnt/iso/debian6.iso&quot;,
+         }
+      ],
+      memory =&gt; 512,
+      type =&gt; &quot;Linux26&quot;, 
+      cpus =&gt; 1,
+      boot =&gt; &quot;dvd&quot;;</pre></div><div class="vspace"></div>
 <p>Create a (KVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
 With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to &quot;cdrom&quot;.</p>
 <div class="black-box"><pre class="perl">
