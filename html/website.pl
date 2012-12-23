@@ -149,6 +149,7 @@ get '/get/mod/*mod' => sub {
    my $u = get_random(32, 'a' .. 'z');  
    system("git clone git://github.com/krimdomu/rex-recipes.git $u >/dev/null 2>&1");
    chdir("$u");
+   system("git checkout master");
 
    system("tar czf ../$u.tar.gz $mod $mod_name >/dev/null 2>&1");
 
