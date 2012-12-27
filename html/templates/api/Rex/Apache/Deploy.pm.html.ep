@@ -1,0 +1,150 @@
+% layout 'default';
+% title 'Rex::Apache::Deploy - Deploy module for Rex';
+
+% content_for header => begin
+      <meta name="description" content="This is a (R)?ex module to ease the deployments of Tomcat, Perl, Rails, PHP or other languages.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#getting_help">GETTING HELP</a></li>
+	<li><a href="#dependencies">DEPENDENCIES</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#deploy_methods">DEPLOY METHODS</a></li>
+	<ul class="simple-list">
+
+		<li><a href="#switching_instances">SWITCHING INSTANCES</a></li>
+	</ul>
+
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Apache::Deploy - Deploy module for Rex</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>This is a (R)?ex module to ease the deployments of Tomcat, Perl, Rails, PHP or other languages.</p>
+<p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>GETTING HELP</h1>
+<ul class="simple-list">
+<li><div class="vspace"></div><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
+
+</li>
+<li><div class="vspace"></div><strong>IRC: irc.freenode.net #rex</strong>
+
+</li>
+</ul>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DEPENDENCIES</h1>
+<ul class="simple-list">
+<li>
+<p><em>Rex</em></p>
+</li>
+<li>
+<p><em>YAML</em></p>
+</li>
+<li>
+<p><a href="/LWP/Simple.html">the LWP::Simple manpage</a></p>
+</li>
+<li>
+<p>zip</p>
+</li>
+<li>
+<p>unzip</p>
+</li>
+<li>
+<p>tar</p>
+</li>
+<li>
+<p>bzip2</p>
+</li>
+<li>
+<p>wget</p>
+</li>
+</ul>
+<p>If you're using windows, you can install them from here: <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a>
+Don't forget to add the bin directory of the installation to your %PATH% environment variable.</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Apache::Deploy Symlink;
+   
+ deploy_to &quot;/var/deploy&quot;;
+   
+ document_root &quot;/var/www/myhost/htdocs&quot;;
+   
+ generate_deploy_directory sub {
+    my ($file) = @_;
+    $file =~ m/-(\d+\.\d+\.\d+)\.tar\.gz$/;
+    return $1;
+ };
+   
+ desc &quot;Deploy to Apache&quot;;
+ task &quot;deploy&quot;, group =&gt; &quot;frontend&quot;, sub {
+    deploy &quot;mypkg-1.0.1.tar.gz&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DEPLOY METHODS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>Symlink</strong></li>
+
+
+<p>This method will upload your package (*.tar.gz, *.tar.bz2 or *.zip) all you servers and extract it in the directory you specified with <em>deploy_to</em> concatenated with the result of <em>generate_deploy_directory</em>. After that it will create a symlink from <em>document_root</em> to this new directory.</p>
+<div class="black-box"><pre class="perl">
+ deploy_to &quot;/var/deploy&quot;;
+ document_root &quot;/var/www&quot;;
+ generate_deploy_directory sub { return &quot;1.0&quot;; };</pre></div><div class="vspace"></div>
+<p>This will upload the file to <em>/var/deploy/1.0</em> and create a symlink from <em>/var/www</em> to <em>/var/deploy/1.0</em>.</p>
+
+<li><div class="vspace"></div><strong>Tomcat</strong></li>
+
+
+<p>This method is for Tomcat deployments. You need to have the Tomcat Manage application running on your Tomcat servers. It will upload your package to <em>/tmp/some-random-chars.war</em>, call the Tomcat Manager to undeploy the current context and deploy the new war archive. After that it will delete the uploaded temporary war file.</p>
+<div class="black-box"><pre class="perl">
+ context_path &quot;/myapp&quot;;
+     
+ task &quot;deploy&quot;, group =&gt; &quot;middleware&quot;, sub {
+     deploy &quot;myapp.war&quot;,
+         username    =&gt; &quot;manager-user&quot;,
+         password    =&gt; &quot;manager-password&quot;,
+         port        =&gt; 8080,
+         manager_url =&gt;  &quot;/manager&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>This will deploy <em>myapp.war</em> to the tomcat listening on port <em>8080</em> with the manager application found under <em><a href="http://the-server:8080/manager">http://the-server:8080/manager</a></em>.</p>
+
+</ul>
+<p>
+</p>
+<h2><a name="switching_instances">SWITCHING INSTANCES</a></h2>
+<p>If you have multiple Tomcat Instances you can manage them with the <em>jk</em> command.</p>
+<div class="black-box"><pre class="perl">
+ jk disable =&gt; 'name';
+ jk enable  =&gt; 'name';</pre></div><div class="vspace"></div>
+
+
+
+

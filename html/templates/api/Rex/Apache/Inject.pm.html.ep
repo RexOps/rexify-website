@@ -1,0 +1,172 @@
+% layout 'default';
+% title 'Rex::Apache::Inject - Configuration Injection module for Rex::Apache::Deploy';
+
+% content_for header => begin
+      <meta name="description" content="This is a (R)?ex module to inject configuration parameters into packages (*.tar.gz, *.tar.bz2, *.zip or *.war).">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul class="simple-list">
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#getting_help">GETTING HELP</a></li>
+	<li><a href="#dependencies">DEPENDENCIES</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#inject_methods">INJECT METHODS</a></li>
+</ul>
+
+<div class="vspace"></div>
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1>NAME</h1>
+<p>Rex::Apache::Inject - Configuration Injection module for Rex::Apache::Deploy</p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DESCRIPTION</h1>
+<p>This is a (R)?ex module to inject configuration parameters into packages (*.tar.gz, *.tar.bz2, *.zip or *.war).</p>
+<p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>GETTING HELP</h1>
+<ul class="simple-list">
+<li><div class="vspace"></div><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
+
+</li>
+<li><div class="vspace"></div><strong>IRC: irc.freenode.net #rex</strong>
+
+</li>
+</ul>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>DEPENDENCIES</h1>
+<ul class="simple-list">
+<li>
+<p><em>Rex</em></p>
+</li>
+</ul>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>SYNOPSIS</h1>
+<div class="black-box"><pre class="perl">
+ use Rex::Apache::Inject Properties;
+     
+ template_file &quot;inject.conf&quot;;
+ template_search_for &quot;*.properties&quot;;
+    
+ desc &quot;Inject LIVE Configuration&quot;;
+ task &quot;inject&quot;, sub {
+    inject &quot;mypkg-1.0.1.tar.gz&quot;;
+ };
+    
+ desc &quot;Inject LIVE Configuration&quot;;
+ task &quot;inject&quot;, sub {
+    inject &quot;mypkg-1.0.1.tar.gz&quot;,
+            pre_pack_hook =&gt; sub {
+                 say &quot;Pre Pack Hook&quot;;
+            },
+            post_pack_hook =&gt; {
+                 say &quot;Post Pack Hook&quot;;
+            };
+ };</pre></div><div class="vspace"></div>
+<p>
+</p>
+<div class="vspace"></div>
+<h1>INJECT METHODS</h1>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>Properties</strong></li>
+
+
+<p>This method is for Java-Like Property files.</p>
+<div class="black-box"><pre class="perl">
+ use Rex::Apache::Inject Properties;
+    
+ template_file &quot;inject.conf&quot;;
+ template_search_for &quot;*.properties&quot;;
+   
+ task &quot;inject&quot;, sub {
+     inject &quot;myapp.war&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>This will search all files named <em>*.properties</em> inside of myapp.war and replace the parameters with these defined in <em>template_file</em>.</p>
+<p>Format of the <em>template_file</em> is the same as the property files.</p>
+<div class="black-box"><pre class="perl">
+ my.property.one = Value1
+ my.property.two = Value no two</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>Template</strong></li>
+
+
+<p>This is a special method. It will search for template files within the archive and will generate new ones with the parameters defined in <em>template_file</em>.</p>
+<div class="black-box"><pre class="perl">
+ use Rex::Apache::Inject Template;
+     
+ template_file &quot;inject.conf&quot;;
+ template_search_for &quot;*.template.*&quot;;
+   
+ generate_real_name sub {
+    my ($template_file_name) = @_;
+    $template_file_name =~ s/\.template//;
+    return $template_file_name;
+ };
+   
+ task &quot;inject&quot;, sub {
+     inject &quot;myapp.tar.gz&quot;;
+ };</pre></div><div class="vspace"></div>
+<p>This will search for files named <em>*.template.*</em> inside of myapp.tar.gz. And will generate new files on the basis of <em>generate_real_name</em>.</p>
+<p>Example:</p>
+<div class="black-box"><pre class="perl">
+ # Template Configuration file (inside myapp.tar.gz): config.template.php
+ &lt;?php
+    $db['host'] = &quot;@db.host@&quot;;
+    $db['port'] = @db.port@;
+    $db['user'] = &quot;@db.user@&quot;;
+    $db['pass'] = &quot;@db.pass@&quot;;
+ ?&gt;
+     
+ # Template file (specified by ,,template_file'')
+ db.host = &quot;db01&quot;
+ db.port = 3306
+ db.user = &quot;myuser&quot;
+ db.pass = &quot;mypass&quot;</pre></div><div class="vspace"></div>
+<p>The <em>inject</em> action will generate a file called <em>config.php</em> with the following content:</p>
+<div class="black-box"><pre class="perl">
+ &lt;?php
+    $db['host'] = &quot;db01&quot;;
+    $db['port'] = 3306;
+    $db['user'] = &quot;myuser&quot;;
+    $db['pass'] = &quot;mypass&quot;;
+ ?&gt;</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>YAML</strong></li>
+
+
+<p>This method will parse YAML files inside the archive. For this method you need to have the <em>YAML</em> Module installed.</p>
+<div class="black-box"><pre class="perl">
+ template_file &quot;live_config.yml&quot;;
+ template_search_for &quot;application.yml&quot;;
+     
+ task &quot;inject&quot;, sub {
+     inject &quot;myapp.tar.gz&quot;,
+         pre_pack_hook =&gt; sub {
+             run &quot;BUNDLE_PATH=vendor/bundle bundle install&quot;;
+         };
+ };</pre></div><div class="vspace"></div>
+<p>This will search the file <em>application.yml</em> inside of myapp.tar.gz and replace the configuration values inside of it with these defined in <em>live_config.yml</em>. Also it do a pre pack hook that will run <em>bundle install</em>.</p>
+
+</ul>
+
+
+
+
