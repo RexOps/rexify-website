@@ -230,7 +230,10 @@
 
 
 <p>With this function you can modify/set special authentication parameters for tasks and groups. If you want to modify a task's or group's authentication you first have to create it.</p>
+<p>If you want to set special login information for a group you have to activate that feature first.</p>
 <div class="black-box"><pre class="perl">
+ use Rex -feature =&gt; 0.31; # activate setting auth for a group
+  
  group frontends =&gt; &quot;web[01..10]&quot;;
  group backends =&gt; &quot;be[01..05]&quot;;
       

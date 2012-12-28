@@ -204,5 +204,5 @@ task "configure", group =&gt; "frontend", sub {
 </pre>
          </div>
 
-
       </div>
+   </div>

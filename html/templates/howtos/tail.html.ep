@@ -91,4 +91,3 @@ task "tail-fe", group =&gt; "fe", sub {
 
          <p>This example will prepend the servername to every line.</p>
 
-   </div>

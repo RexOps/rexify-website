@@ -229,7 +229,6 @@ div.perl {
    padding-bottom: 25px;
    background-color: #1d1d1d;
    color: #5A8091;
-   text-align: center;
    border-top: 7px solid #2d2d2d;
 
 }
@@ -244,6 +243,10 @@ div.perl {
 
 #footer a:hover {
    color: #5A8091;
+}
+
+#footer .links {
+   text-align: center;
 }
 
 
@@ -414,6 +417,7 @@ table.tb-support td {
 .bottom_box {
    width: 550px;
    margin: auto;
+   text-align: left;
 }
 
 .bottom_box table {
@@ -462,3 +466,5 @@ table.tb-support td {
 .feature-table td {
    padding: 5px;
 }
+
+

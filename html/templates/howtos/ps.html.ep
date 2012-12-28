@@ -87,4 +87,3 @@ task "ps", group =&gt; "myserver", sub {
          </div>
 
 
-   </div>

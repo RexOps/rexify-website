@@ -281,7 +281,7 @@ __DATA__
 @@ navigation.html.ep
 
 <div id="nav">
-   <a href="http://rexify.org/"><img id="nav_img" src="http://rexify.org/images/title.png" alt="(R)?ex - What do you want to deploy today?"></a>
+   <a href="http://rexify.org/"><img id="nav_img" src="http://rexify.org/images/title.png" alt="(R)?ex - What do you want to deploy today?" /></a>
    <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a>
       <div class="searchbox">
          Search: <input type="text" name="q" id="q" />
@@ -295,17 +295,20 @@ __DATA__
 
 
 @@ layouts/frontpage.html.ep
-<html>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
    <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?10" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="/css/highlight.css?6" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/default.css?16" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/highlight.css?16" type="text/css" media="screen" charset="utf-8" />
 
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management">
-      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
+      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
 
       
       
@@ -341,14 +344,11 @@ __DATA__
          </div>
       </div>
 
-     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
 
-   </div>
-      
-   </body>
 
-      <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
@@ -388,58 +388,25 @@ piwikTracker.enableLinkTracking();
 <!-- End Piwik Tracking Code -->
 
 
-   <script type="text/javascript" charset="utf-8">
-      var to_move = 724;
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-         to_move = 730;
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
+   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
 
-      function slide_left() {
-
-         $("#bilderlinie").animate({"left": "-=" + to_move}, 2000, function() {
-                  if(parseInt($("#bilderlinie").css("left")) < -1650) {
-                     window.setTimeout(function() { slide_right(); }, 7000);
-                  }
-                  else {
-                     window.setTimeout(function() { slide_left(); }, 7000);
-                  }
-               });
-
-      }
-
-      function slide_right() {
-         $("#bilderlinie").animate({"left": "+=" + to_move}, 2000, function() {
-                  if(parseInt($("#bilderlinie").css("left")) == 0) { 
-                     window.setTimeout(function() { slide_left(); }, 7000);
-                  }
-                  else {
-                     window.setTimeout(function() { slide_right(); }, 7000);
-                  }
-               
-               });
-      }
-
-      window.setTimeout(function() { slide_left(); }, 5000);
-
-   </script>
-
+   </body>
 
 </html>
 
 
 @@ layouts/default.html.ep
-<html>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
    <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?10" type="text/css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="/css/highlight.css?6" type="text/css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="/css/default.css?16" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/highlight.css?16" type="text/css" media="screen" charset="utf-8" />
 
       %= content_for 'header';
       
@@ -455,7 +422,10 @@ piwikTracker.enableLinkTracking();
       <div id="site">
       <div id="page">
 
+
+
          <%= content %>
+
 
       </div>
       </div>
@@ -486,12 +456,9 @@ piwikTracker.enableLinkTracking();
          </div>
       </div>
 
-     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
 
-   </div>
-      
-   </body>
 
       <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
@@ -533,45 +500,9 @@ piwikTracker.enableLinkTracking();
 <!-- End Piwik Tracking Code -->
 
 
-   <script type="text/javascript" charset="utf-8">
-      var to_move = 724;
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-         to_move = 730;
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
+   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
 
-      function slide_left() {
-
-         $("#bilderlinie").animate({"left": "-=" + to_move}, 2000, function() {
-                  if(parseInt($("#bilderlinie").css("left")) < -1650) {
-                     window.setTimeout(function() { slide_right(); }, 7000);
-                  }
-                  else {
-                     window.setTimeout(function() { slide_left(); }, 7000);
-                  }
-               });
-
-      }
-
-      function slide_right() {
-         $("#bilderlinie").animate({"left": "+=" + to_move}, 2000, function() {
-                  if(parseInt($("#bilderlinie").css("left")) == 0) { 
-                     window.setTimeout(function() { slide_left(); }, 7000);
-                  }
-                  else {
-                     window.setTimeout(function() { slide_right(); }, 7000);
-                  }
-               
-               });
-      }
-
-      window.setTimeout(function() { slide_left(); }, 5000);
-
-   </script>
-
+   </body>
 
 </html>
 

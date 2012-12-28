@@ -305,4 +305,3 @@ Rexfile syntax OK
             <pre class="bash">$ rex -H "mynewserver" mysite:vhosts</pre>
          </div>
 
-   </div>

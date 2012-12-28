@@ -93,4 +93,3 @@ task "db-rollout-accounts", group =&gt; "db", sub {
             <pre class="bash">bash# rex fe-mw-rollout-accounts db-rollout-accounts</pre>
          </div>
           
-   </div>

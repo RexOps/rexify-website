@@ -39,8 +39,8 @@
 <div class="black-box"><pre class="perl">
  use Rex::Hardware;
  
- my %host_info = Rex::Hardware-&gt;get(qw/ Host /)
- my %all_info  = Rex::Hardware-&gt;get(qw/ All /)</pre></div><div class="vspace"></div>
+ my %host_info = Rex::Hardware-&gt;get(qw/ Host /);
+ my %all_info  = Rex::Hardware-&gt;get(qw/ All /);</pre></div><div class="vspace"></div>
 <p>
 </p>
 <div class="vspace"></div>
@@ -52,12 +52,12 @@
 <p>Returns a hash with the wanted information.</p>
 <div class="black-box"><pre class="perl">
  task &quot;get-info&quot;, &quot;server1&quot;, sub {
-    %hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
+    %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
  };</pre></div><div class="vspace"></div>
 <p>Or if you want to get all information</p>
 <div class="black-box"><pre class="perl">
  task &quot;get-all-info&quot;, &quot;server1&quot;, sub {
-    %hw_info = Rex::Hardware-&gt;get(qw/ All /);
+    %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
  };</pre></div><div class="vspace"></div>
 <p>Available modules:</p>
 <div class="vspace"></div><ul class="simple-list">

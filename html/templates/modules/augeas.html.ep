@@ -112,4 +112,3 @@ task "hosts", group =&gt; "servers", sub {
          </div>
 
 
-      </div>
