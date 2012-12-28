@@ -78,7 +78,7 @@ get '/feature.html' => sub {
    my $wishes = FeatureRequest->all;
 
    my $posted = $self->param("posted")?"Your feature request has been posted successfully.":"";
-   $self->render("feature", wishes => $wishes, question => $self->session->{question}, email => "", feature => "", error => 0, posted => $posted);
+   $self->render("feature", wishes => $wishes, question => $self->session->{question}, email => "", feature => "", error => 0, posted => $posted, no_disqus => 1);
 };
 
 post '/feature.html' => sub {
@@ -119,7 +119,8 @@ post '/feature.html' => sub {
                         email    => $self->param("email"), 
                         feature  => $self->param("feature"), 
                         error    => \@error, 
-                        posted   => 0
+                        posted   => 0,
+                        no_disqus => 1,
       );
    }
 };
@@ -195,7 +196,7 @@ get '/*file' => sub {
    my $template = $self->param("file");
 
    if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template");
+      return $self->render_file(filepath => "public/$template", no_disqus => 0);
    }
 
    if(-d "templates/$template") {
@@ -204,10 +205,10 @@ get '/*file' => sub {
 
    if(-f "templates/$template.ep") {
       $template =~ s/\.html$//;
-      $self->render($template);
+      $self->render($template, no_disqus => 0);
    }
    else {
-      $self->render('404', status => 404);
+      $self->render('404', status => 404, no_disqus => 1);
    }
 
 };
@@ -426,6 +427,26 @@ piwikTracker.enableLinkTracking();
 
          <%= content %>
 
+   <div class="vspace"></div>
+
+   % if( ! $no_disqus) {
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    % }
 
       </div>
       </div>
