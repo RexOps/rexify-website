@@ -1,0 +1,43 @@
+% layout 'default';
+% title 'A word on backward compatibility';
+
+% content_for header => begin
+      <meta name="description" content="Backward compatibility if important">
+      <meta name="keywords" content="Rex, Systemadministration, System, Administration, Compatibility">
+% end
+
+         <h1>A word on backward compatibility</h1>
+         <p>Everyone knows the pain if something gets deprecated and one have to port his old code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+         <div class="small-vspace"></div>
+         <p>So there is one premise new versions of Rex has to fulfill. They must be backward compatible.</p>
+         <div class="small-vspace"></div>
+         <p>I know this might be impossible in the one or other way, but to minimize this danger there is a thing called feature flags. If there is the need to break backward compatibility in favor of a new feature there will be a feature flag for this change. And only if this feature flag gets enabled in the <i>Rexfile</i> it will break compatibility.</p>
+         <div class="small-vspace"></div>
+         <p>So the default is always to be compatible.</p>
+         <div class="small-vspace"></div>
+         <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a>.</p>
+
+         <div class="vspace"></div>
+         <h1>Feature Flags</h1>
+
+         <p>Currently there is one feature flag to enable special authentication options for a server group.</p>
+
+         <div class="vspace"></div>
+         <table border="0" class="feature-table">
+            <tr class="head">
+               <td>Flag</td>
+               <td>Since</td>
+               <td>Description</td>
+            </tr>
+            <tr>
+               <td>0.31</td>
+               <td>0.31</td>
+               <td>To enable special authentication options for a server group.</td>
+            </tr>
+         </table>
+
+         <div class="vspace"></div>
+         <h1>Howto enable Feature Flags</h1>
+         <p>You can enable feature flags in your <i>Rexfile</i> with the following code:</p>
+         <div class="black-box"><pre class="perl"># Rexfile
+use Rex -feature =&gt; 0.31;</pre></div>

@@ -37,6 +37,13 @@
          </ul>
 
          <div class="vspace"></div>
+         <h1>Additional Documentation</h1>
+         <ul class="simple-list">
+            <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
+         </ul>
+
+
+         <div class="vspace"></div>
          <h1>External Howtos</h1>
          <ul class="simple-list">
             <li><a href="http://www.livebyt.es/using-rex-to-automate-your-datacentre/">Using Rex To Automate Your Datacentre</a> (thanks to Amer Grgic)</li>

@@ -448,4 +448,17 @@ table.tb-support td {
    font-size: 14px;
 }
 
+.feature-table {
+   width: 100%;
+   border-collapse: collapse;
+	border-spacing: 0;
+}
+.feature-table tr.head {
 
+   background-color: #efefef;
+   border: 1px solid #c3c3c3;
+}
+
+.feature-table td {
+   padding: 5px;
+}
