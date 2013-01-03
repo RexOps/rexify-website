@@ -8,7 +8,7 @@
 
 <h1>Write an own Cloud Provider</h1>
 
-<p>If you want to write an own cloud provider for Rex your module have to fullfill some interface requirements.</p>
+<p>If you want to write an own cloud provider for Rex your module have to fullfill some interface requirements. For a working reference you can checkout the <a href="https://github.com/krimdomu/rex-recipes/blob/0.36/Rex/Cloud/OpenNebula/CloudLayer.pm">OpenNebula</a> module.</p>
 
 
 <div class="vspace"></div>
