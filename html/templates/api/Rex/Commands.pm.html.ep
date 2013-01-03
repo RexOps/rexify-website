@@ -298,6 +298,37 @@
 <div class="black-box"><pre class="perl">
  do_task [ qw/task1 task2 task3/ ];</pre></div><div class="vspace"></div>
 
+<li><div class="vspace"></div><strong>run_task($task_name, %option)</strong></li>
+
+
+<p>Run a task on a given host.</p>
+<div class="black-box"><pre class="perl">
+ my $return = run_task &quot;taskname&quot;, on =&gt; &quot;192.168.3.56&quot;;</pre></div><div class="vspace"></div>
+<p>Do something on server5 if memory is less than 100 MB free on server3.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server5&quot;, sub {
+    my $free_mem = run_task &quot;get_free_mem&quot;, on =&gt; &quot;server3&quot;;
+    if($free_mem &lt; 100) {
+       say &quot;Less than 100 MB free mem on server3&quot;;
+       # create a new server instance on server5 to unload server3
+    }
+ };
+    
+ task &quot;get_free_mem&quot;, sub {
+     return memory-&gt;{free};
+ };</pre></div><div class="vspace"></div>
+<p>If called without a hostname the task is run localy.</p>
+<div class="black-box"><pre class="perl">
+ # this task will run on server5
+ task &quot;prepare&quot;, &quot;server5&quot;, sub {
+    # this will call task check_something. but this task will run on localhost.
+    my $check = run_task &quot;check_something&quot;;
+ }
+   
+ task &quot;check_something&quot;, &quot;server4&quot;, sub {
+    return &quot;foo&quot;;
+ };</pre></div><div class="vspace"></div>
+
 <li><div class="vspace"></div><strong><code>public_key($key)</code></strong></li>
 
 

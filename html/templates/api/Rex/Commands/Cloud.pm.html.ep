@@ -87,10 +87,16 @@
 
 </ul>
 
-<li><div class="vspace"></div><strong>cloud_auth($access_key, $secret_access_key)</strong></li>
+<li><div class="vspace"></div><strong>cloud_auth($param1, $param2, ...)</strong></li>
 
 
 <p>Set the authentication for the cloudservice.</p>
+<p>For example for Amazon it is:</p>
+<div class="black-box"><pre class="perl">
+ cloud_auth($access_key, $secret_access_key);</pre></div><div class="vspace"></div>
+<p>For JiffyBox:</p>
+<div class="black-box"><pre class="perl">
+ cloud_auth($auth_key);</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong><code>cloud_region($region)</code></strong></li>
 
