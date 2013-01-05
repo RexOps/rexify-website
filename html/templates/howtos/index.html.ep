@@ -6,6 +6,34 @@
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
 % end
 
+
+         <h1>Beginner Guides</h1>
+         <ul class="simple-list">
+            <li><a href="start.html">Start using (R)?ex</a></li>
+            <li><a href="working_with_packages.html">Working with packages</a></li>
+            <li><a href="perl.html">Small Perl Reference Guide (Just enough Perl for Rex)</a></li>
+            <!--
+            <li><a href="working_with_files.html">Working with files</a></li>
+            <li><a href="working_with_templates.html">Working with templates</a></li>
+            -->
+         </ul>
+
+         <div class="vspace"></div>
+         <h1>Howtos</h1>
+         <ul class="simple-list">
+            <li><a href="usermgmt.html">Manage user rollouts</a></li>
+            <li><a href="amazon.html">Manage your Amazon EC2 instances</a></li>
+            <li><a href="apache-vhosts.html">Manage Apache VirtualHosts in a MySQL Database</a></li>
+            <li><a href="tomcat1.html">Software and Tomcat deployment</a></li>
+            <li><a href="apache-deploy-on-windows.html">Use Apache::Deploy on Windows</a></li>
+            <li><a href="http-transport.html">Use Rex over HTTP (Rex::Endpoint::HTTP)</a></li>
+            <li><a href="gearman.html">Scale Rex with Gearman</a></li>
+            <li><a href="http://modules.rexify.org/contribute">Writing Modules</a></li>
+            <li><a href="http://box.rexify.org/guide">Using Rex/Boxes to ease development and testing</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
          <h1>Modules</h1>
          <ul class="simple-list">
             <li><a href="/modules/application_deployment.html">Application Deployment</a></li>
@@ -17,26 +45,10 @@
          <h1>Snippets</h1>
          <ul class="simple-list">
             <li><a href="ps.html">Working with processes</a></li>
+            <li><a href="tail.html">Tail logfiles continuously</a></li>
             <li><a href="https://gist.github.com/3490661">A code snippet showing the Template functionality</a></li>
          </ul>
 
-         <div class="vspace"></div>
-
-         <h1>Howtos</h1>
-         <ul class="simple-list">
-            <li><a href="start.html">Start using (R)?ex</a></li>
-            <li><a href="perl.html">Small Perl Reference Guide (Just enough Perl for Rex)</a></li>
-            <li><a href="usermgmt.html">Manage user rollouts</a></li>
-            <li><a href="amazon.html">Manage your Amazon EC2 instances</a></li>
-            <li><a href="apache-vhosts.html">Manage Apache VirtualHosts in a MySQL Database</a></li>
-            <li><a href="tomcat1.html">Software and Tomcat deployment</a></li>
-            <li><a href="tail.html">Tail logfiles continuously</a></li>
-            <li><a href="apache-deploy-on-windows.html">Use Apache::Deploy on Windows</a></li>
-            <li><a href="http-transport.html">Use Rex over HTTP (Rex::Endpoint::HTTP)</a></li>
-            <li><a href="gearman.html">Scale Rex with Gearman</a></li>
-            <li><a href="http://modules.rexify.org/contribute">Writing Modules</a></li>
-            <li><a href="http://box.rexify.org/guide">Using Rex/Boxes to ease development and testing</a></li>
-         </ul>
 
          <div class="vspace"></div>
          <h1>Extending the API</h1>
