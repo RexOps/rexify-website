@@ -1,0 +1,22 @@
+% layout 'default';
+% title 'FAQ';
+
+% content_for header => begin
+      <meta name="description" content="FAQ">
+      <meta name="keywords" content="FAQ, run, authentication">
+% end
+
+<h1>FAQ</h1>
+<p>Here we will maintain a list of frequently asked questions with their answers.</p>
+
+<div class="vspace"></div>
+<h1>Why does the run command doesn't format the output?</h1>
+<p>The <i>run</i> command - called in array context - will return an array.</p>
+<p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
+<div class="black-box">
+   <pre class="perl">my $output = run "df -h";
+say $output;</pre>
+</div>
+
+
+

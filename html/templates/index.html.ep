@@ -96,14 +96,15 @@
          <div class="small-vspace"></div>
 
          <div class="black-box">
-            <pre class="perl">desc "Get uptime";
-task "uptime", sub {
-   say run "uptime";
+            <pre class="perl">desc "Get Disk Free";
+task "disk_free", sub {
+   my $output = run "df -h";
+   say $output;
 };</pre>
          </div>
 
          <div class="black-box">
-            <pre class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" uptime</pre>
+            <pre class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free</pre>
          </div>
 
 

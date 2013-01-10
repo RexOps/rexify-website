@@ -10,6 +10,7 @@
          <h1>Beginner Guides</h1>
          <ul class="simple-list">
             <li><a href="start.html">Start using (R)?ex</a></li>
+            <li><a href="faq.html">Frequently asked Questions</a></li>
             <li><a href="working_with_packages.html">Working with packages</a></li>
             <li><a href="perl.html">Small Perl Reference Guide (Just enough Perl for Rex)</a></li>
             <!--
