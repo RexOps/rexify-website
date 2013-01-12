@@ -19,27 +19,58 @@
 
       <div id="site">
       <div id="page">
+         
+         <div class="d2columns">
 
-         <h1>What is (R)?ex</h1>
-         <p>With (R)?ex you can <b>manage all your boxes</b> from a central point through the complete process of configuration management and software deployment.</p>
-         <div class="vspace"></div>
-         <p>(R)?ex uses SSH as its default transport layer. So there is no need to install anything on your servers. You just need a ssh enabled account.</p>
-         <div class="vspace"></div>
+            <div class="col1">
 
-         <p>Start exploring (R)?ex with this <a href="howtos/start.html">First Steps Guide</a>.</p>
+               <div class="colbox">
+                  <h1>What is (R)?ex</h1>
+                  <p>With (R)?ex you can <b>manage all your boxes</b> from a central point through the complete process of configuration management and software deployment.</p>
+                  <div class="vspace"></div>
+                  <p>(R)?ex uses SSH as its default transport layer. So there is no need to install anything on your servers. You just need a ssh enabled account.</p>
+                  <div class="vspace"></div>
 
-         <div class="small-vspace"></div>
+                  <p>Start exploring (R)?ex with this <a href="howtos/start.html">First Steps Guide</a>.</p>
 
-         <p>We are always open for <a href="/feature.html" title="Drop us a feature request">new suggestions</a> and <a href="/feature.html" title="Drop us a feature request">whishes</a>. If you miss a feature just <a href="/feature.html" title="Drop us a feature request">drop us a request</a>.</p>
+                  <div class="small-vspace"></div>
 
-         <div class="vspace"></div>
+                  <p>We are always open for <a href="/feature.html" title="Drop us a feature request">new suggestions</a> and <a href="/feature.html" title="Drop us a feature request">whishes</a>. If you miss a feature just <a href="/feature.html" title="Drop us a feature request">drop us a request</a>.</p>
 
-         <h1>New Feature: Development Boxes</h1>
-         <p>Build a live-like development environment for your developers in minutes with <a href="http://box.rexify.org/">Rex/Boxes</a>. Your devs will love you. No more fiddeling with dependency problems, version mismatches or "works on my system" excuses.</p>
-         <div class="small-vspace"></div>
-         <p>With <a href="http://box.rexify.org/">Rex/Boxes</a> your devs can work with a live-like environment and keep their workstations clean.</p>
-         <div class="small-vspace"></div>
-         <p>Read <a href="http://box.rexify.org/guide">more ...</a></p>
+                  <div class="vspace"></div>
+
+                  <h1>New Feature: Development Boxes</h1>
+                  <p>Build a live-like development environment for your developers in minutes with <a href="http://box.rexify.org/">Rex/Boxes</a>. Your devs will love you. No more fiddeling with dependency problems, version mismatches or "works on my system" excuses.</p>
+                  <div class="small-vspace"></div>
+                  <p>With <a href="http://box.rexify.org/">Rex/Boxes</a> your devs can work with a live-like environment and keep their workstations clean.</p>
+                  <div class="small-vspace"></div>
+                  <p>Read <a href="http://box.rexify.org/guide">more ...</a></p>
+
+               </div>
+
+            </div>
+
+            <div class="col2">
+
+               <div class="colbox">
+                  <h1>Conferences</h1>
+                  <ul class="simple-list">
+                     <li>
+                        <a href="http://act.yapc.eu/gpw2013/index.html">German Perl Workshop</a><br />from 13 to 15 March 2013 in Berlin.
+                        <div class="vspace"></div>
+                     </li>
+                     <li>
+                        <a href="http://www.osdc.de/">OSCD.de 2013</a><br />
+                        <a href="http://www.osdc.de/"><img src="/images/osdc.png" height="100" /></a>
+                     </li>
+                  </ul>
+               </div>
+
+            </div>
+
+         </div>
+
+         <div class="clearfix"></div>
 
          <div class="vspace"></div>
 

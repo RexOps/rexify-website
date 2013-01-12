@@ -471,4 +471,30 @@ table.tb-support td {
    padding: 5px;
 }
 
+.d2columns {
+   display: table;
+   table-layout: fixed;
 
+}
+
+.d2columns .col1 {
+
+   width: 70%;
+   float: left;
+   border-right: 1px dotted #c3c3c3;
+
+}
+
+.d2columns .col2 {
+   float: left;
+   width: 30%;
+   margin-right: -1px;
+}
+
+.colbox {
+   padding: 5px;
+}
+
+.clearfix {
+   clear: both;
+}
