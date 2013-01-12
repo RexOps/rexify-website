@@ -305,8 +305,8 @@ __DATA__
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?16" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?16" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
@@ -406,8 +406,8 @@ piwikTracker.enableLinkTracking();
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?16" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?16" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
 
       %= content_for 'header';
       
