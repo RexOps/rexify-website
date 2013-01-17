@@ -29,6 +29,13 @@
                <td>Since</td>
                <td>Description</td>
             </tr>
+
+            <tr>
+               <td>0.35</td>
+               <td>0.35</td>
+               <td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
+            </tr>
+
             <tr>
                <td>0.31</td>
                <td>0.31</td>
