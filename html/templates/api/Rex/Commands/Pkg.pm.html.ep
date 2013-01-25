@@ -129,6 +129,16 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</p
     remove package =&gt; &quot;vim&quot;;
  };</pre></div><div class="vspace"></div>
 
+<li><div class="vspace"></div><strong>update_system</strong></li>
+
+
+<p>This function do a complete system update.</p>
+<p>For example <em>apt-get upgrade</em> or <em>yum update</em>.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;update-system&quot;, &quot;server1&quot;, sub {
+    update_system;
+ };</pre></div><div class="vspace"></div>
+
 <li><div class="vspace"></div><strong>installed_packages</strong></li>
 
 

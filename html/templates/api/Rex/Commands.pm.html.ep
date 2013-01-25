@@ -328,6 +328,11 @@
  task &quot;check_something&quot;, &quot;server4&quot;, sub {
     return &quot;foo&quot;;
  };</pre></div><div class="vspace"></div>
+<p>If you want to add custom parameters for the task you can do it this way.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;prepare&quot;, &quot;server5&quot;, sub {
+   run_task &quot;check_something&quot;, on =&gt; &quot;foo&quot;, params =&gt; { param1 =&gt; &quot;value1&quot;, param2 =&gt; &quot;value2&quot; };
+ };</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong><code>public_key($key)</code></strong></li>
 
@@ -370,7 +375,7 @@
 <p>This sets the task distribution module. Default is &quot;Base&quot;.</p>
 <p>Possible values are: Base, Gearman</p>
 
-<li><div class="vspace"></div><strong>set_template_function(sub { ... })</strong></li>
+<li><div class="vspace"></div><strong>template_function(sub { ... })</strong></li>
 
 
 <p>This function sets the template processing function. So it is possible to change the template engine. For example to Template::Toolkit.</p>

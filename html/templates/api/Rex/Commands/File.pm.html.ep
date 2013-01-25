@@ -107,7 +107,7 @@
        source =&gt; &quot;/files/etc/httpd/conf/httpd.conf&quot;,
        on_change =&gt; sub { service httpd =&gt; &quot;restart&quot;; };
  };</pre></div><div class="vspace"></div>
-<p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em>.</p>
+<p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages.</p>
 
 <li><div class="vspace"></div><strong><code>file_write($file_name)</code></strong></li>
 
@@ -183,7 +183,7 @@ in $file.</p>
 <li><div class="vspace"></div><strong>extract($file [, %options])</strong></li>
 
 
-<p>This function extracts a file. Supported formats are .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
+<p>This function extracts a file. Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
 <div class="black-box"><pre class="perl">
  task prepare =&gt; sub {
     extract &quot;/tmp/myfile.tar.gz&quot;,
@@ -196,7 +196,7 @@ in $file.</p>
       mode =&gt; &quot;g+rwX&quot;;
  };
  
-Can use the type=&gt; option if the file suffix has been changed. (types are tgz, tbz, zip, gz, bz2)</pre></div><div class="vspace"></div>
+Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong>sed($search, $replace, $file)</strong></li>
 

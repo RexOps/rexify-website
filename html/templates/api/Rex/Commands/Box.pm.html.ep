@@ -31,11 +31,17 @@
 <div class="vspace"></div>
 <h1>SYNOPSIS</h1>
 <div class="black-box"><pre class="perl">
+ use Rex::Commands::Box;
+    
+ set box =&gt; &quot;VBox&quot;;
+   
+ group all_my_boxes =&gt; map { get_box($_-&gt;{name})-&gt;{ip} } list_boxes;
+   
  task mytask =&gt; sub {
     
     box {
        my ($box) = @_;
-       $box-&gt;name(&quot;vmname&quot;);
+       $box-&gt;name(&quot;boxname&quot;);
        $box-&gt;url(&quot;<a href="http://box.rexify.org/box/base-image.box&quot">http://box.rexify.org/box/base-image.box&quot</a>;);
           
        $box-&gt;network(1 =&gt; {
@@ -66,104 +72,99 @@
 <div class="vspace"></div>
 <h1>EXPORTED FUNCTIONS</h1>
 <div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>new(name =&gt; $vmname)</strong></li>
+<li><div class="vspace"></div><strong>new(name =&gt; $box_name)</strong></li>
 
 
 <p>Constructor if used in OO mode.</p>
 <div class="black-box"><pre class="perl">
- my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;vmname&quot;);</pre></div><div class="vspace"></div>
+ my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);</pre></div><div class="vspace"></div>
 
-<li><div class="vspace"></div><strong><code>name($vmname)</code></strong></li>
-
-
-<p>Sets the name of the virtual machine.</p>
-
-<li><div class="vspace"></div><strong><code>setup(@tasks)</code></strong></li>
+<li><div class="vspace"></div><strong>box(sub {})</strong></li>
 
 
-<p>Sets the tasks that should be executed as soon as the VM is available throu SSH.</p>
-
-<li><div class="vspace"></div><strong><code>stop()</code></strong></li>
-
-
-<p>Stops the VM.</p>
-
-<li><div class="vspace"></div><strong><code>start()</code></strong></li>
-
-
-<p>Starts the VM.</p>
-
-<li><div class="vspace"></div><strong><code>provision([@tasks])</code></strong></li>
-
-
-<p>Execute's the given tasks on the VM.</p>
-
-<li><div class="vspace"></div><strong><code>cpus($count)</code></strong></li>
-
-
-<p>Set the amount of CPUs for the VM.</p>
-
-<li><div class="vspace"></div><strong><code>forward_port(%option)</code></strong></li>
-
-
-<p>Set ports to be forwarded to the VM. This only work with VirtualBox in NAT network mode.</p>
+<p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box.</p>
 <div class="black-box"><pre class="perl">
- $box-&gt;forward_port(
-    name =&gt; [$from_host_port, $to_vm_port],
-    name2 =&gt; [$from_host_port_2, $to_vm_port_2],
-    ...
- );</pre></div><div class="vspace"></div>
+ box {
+    my ($box) = @_;
+    $box-&gt;name(&quot;boxname&quot;);
+    $box-&gt;url(&quot;<a href="http://box.rexify.org/box/base-image.box&quot">http://box.rexify.org/box/base-image.box&quot</a>;);
+       
+    $box-&gt;network(1 =&gt; {
+      type =&gt; &quot;nat&quot;,
+    });
+        
+    $box-&gt;network(1 =&gt; {
+      type =&gt; &quot;bridged&quot;,
+      bridge =&gt; &quot;eth0&quot;,
+    });
+       
+    $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+       
+    $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
+       
+    $box-&gt;auth(
+      user =&gt; &quot;root&quot;,
+      password =&gt; &quot;box&quot;,
+    );
+      
+    $box-&gt;setup(qw/task_to_customize_box/);
+ };</pre></div><div class="vspace"></div>
 
-<li><div class="vspace"></div><strong><code>share_folder(%option)</code></strong></li>
+<li><div class="vspace"></div><strong>list_boxes</strong></li>
 
 
-<p>Creates a shared folder inside the VM with the content from a folder from the Host machine. This only works with VirtualBox.</p>
+<p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn't start a Rex/Box.</p>
 <div class="black-box"><pre class="perl">
- $box-&gt;share_folder(
-    name =&gt; &quot;/path/on/host&quot;,
-    name2 =&gt; &quot;/path_2/on/host&quot;,
- );</pre></div><div class="vspace"></div>
+ use Data::Dumper;
+ task &quot;get_infos&quot;, sub {
+    my @all_boxes = list_boxes;
+    print Dumper(\@all_boxes);
+ };</pre></div><div class="vspace"></div>
 
-<li><div class="vspace"></div><strong><code>memory($memory_size)</code></strong></li>
-
-
-<p>Sets the memory of a VM in megabyte.</p>
-
-<li><div class="vspace"></div><strong><code>network(%option)</code></strong></li>
+<li><div class="vspace"></div><strong><code>get_box($box_name)</code></strong></li>
 
 
-<p>Configure the network for a VM.</p>
-<p>Currently it supports 2 modes. <em>nat</em> and <em>bridged</em>. Currently it supports only one network card.</p>
+<p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system.</p>
 <div class="black-box"><pre class="perl">
- $box-&gt;network(
-    1 =&gt; {
-       type =&gt; &quot;nat&quot;,
-    },
- }
-    
- $box-&gt;network(
-    1 =&gt; {
-       type =&gt; &quot;bridged&quot;,
-       bridge =&gt; &quot;eth0&quot;,
-    },
- );</pre></div><div class="vspace"></div>
+ use Data::Dumper;
+ task &quot;get_box_info&quot;, sub {
+    my $data = get_box($box_name);
+    print Dumper($data);
+ };</pre></div><div class="vspace"></div>
 
-<li><div class="vspace"></div><strong><code>url($url)</code></strong></li>
+<li><div class="vspace"></div><strong>boxes($action, @data)</strong></li>
 
 
-<p>The URL where to download the Base VM Image. You can use self-made images or prebuild images from <a href="http://box.rexify.org/.">http://box.rexify.org/.</a></p>
+<p>With this function you can control your boxes. Currently there are 3 actions.</p>
+<div class="vspace"></div><ul class="simple-list">
+<li><div class="vspace"></div><strong>init</strong></li>
 
-<li><div class="vspace"></div><strong><code>auth(%option)</code></strong></li>
 
-
-<p>Configure the authentication to the VM.</p>
+<p>This action can only  be used if you're using a YAML file to describe your Rex/Boxes.</p>
 <div class="black-box"><pre class="perl">
- $box-&gt;auth(
-    user =&gt; $user,
-    password =&gt; $password,
-    private_key =&gt; $private_key,
-    public_key =&gt; $public_key,
- );</pre></div><div class="vspace"></div>
+ task &quot;prepare_boxes&quot;, sub {
+    boxes &quot;init&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>start</strong></li>
+
+
+<p>This action start one or more Rex/Boxes.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;start_boxes&quot;, sub {
+    boxes &quot;start&quot;, &quot;box1&quot;, &quot;box2&quot;;
+ };</pre></div><div class="vspace"></div>
+
+<li><div class="vspace"></div><strong>stop</strong></li>
+
+
+<p>This action stop one or more Rex/Boxes.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;stop_boxes&quot;, sub {
+    boxes &quot;stop&quot;, &quot;box1&quot;, &quot;box2&quot;;
+ };</pre></div><div class="vspace"></div>
+
+</ul>
 
 </ul>
 

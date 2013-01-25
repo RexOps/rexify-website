@@ -90,7 +90,7 @@
  task &quot;get_network_information&quot;, &quot;server01&quot;, sub {
     my $net_info = network_interfaces();
  };</pre></div><div class="vspace"></div>
-<p>You can interate over the devices as follow</p>
+<p>You can iterate over the devices as follow</p>
 <div class="black-box"><pre class="perl">
  my $net_info = network_interfaces();
  for my $dev ( keys %{ $net_info } ) {
