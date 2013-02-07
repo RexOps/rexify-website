@@ -31,6 +31,12 @@
             </tr>
 
             <tr>
+               <td>exit_status</td>
+               <td>0.39</td>
+               <td>This option tells Rex to return a non zero value on exit if a task fails.</td>
+            </tr>
+
+            <tr>
                <td>0.35</td>
                <td>0.35</td>
                <td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
