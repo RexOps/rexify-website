@@ -77,10 +77,10 @@
 
          <h1>Latest News</h1>
 
+         <p><b>2013-02-07</b> (R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</p>
          <p><b>2013-01-27</b> (R)?ex 0.38.0 released. This release brings <a href="/api/Rex/Box/Amazon.pm.html">Box support for Amazon</a> and more <a href="/howtos/use_boxes_with_any_box_provider.html">usefull Box additions</a>. See <a href="https://github.com/krimdomu/Rex/wiki/New0.38">ChangeLog</a> for more information.</p>
          <p><b>2013-01-07</b> (R)?ex 0.37.0 released. This release enhanced the core to be mostly extendable through external modules. It also adds a module for BIND DNS and an Eclipse Plugin. See <a href="https://github.com/krimdomu/Rex/wiki/New0.37">ChangeLog</a> for more details.</p>
          <p><b>2013-01-03</b> (R)?ex 0.36.0 released. This release brings support for plugable Cloud Modules. It also comes with a module for <a href="http://modules.rexify.org/pod/Rex::Cloud::OpenNebula/file/CloudLayer.pm">OpenNebula</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.36">Github.</a></p>
-         <p><b>2012-12-22</b> (R)?ex 0.35.0 released. This release brings support for VirtualBox. It also brings a new service called <a href="http://box.rexify.org/">Rex/Boxes</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.35">Github.</a></p>
          <p><b>2012-12-22</b> There is now a module search to easily find Rex modules on <a href="http://modules.rexify.org/">http://modules.rexify.org/</a>.</p>
 
          <div class="vspace"></div>
