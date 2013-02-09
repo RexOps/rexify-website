@@ -63,7 +63,7 @@
     build;
         
     build &quot;webapp&quot;,
-      path =&gt; &quot;webapp/&quot;,
+      source  =&gt; &quot;webapp/&quot;,
       version =&gt; &quot;1.0&quot;;
  };</pre></div><div class="vspace"></div>
 <p>
@@ -129,7 +129,8 @@
     build &quot;my-web-app&quot;,
        path =&gt; &quot;html&quot;,
        version =&gt; &quot;1.0&quot;,
-       exclude =&gt; [&quot;yuicompressor.jar&quot;, &quot;foobar.html&quot;];
+       exclude =&gt; [&quot;yuicompressor.jar&quot;, &quot;foobar.html&quot;],
+       type =&gt; &quot;tgz&quot;;
  };</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong>get_version_from($file, $regexp)</strong></li>
