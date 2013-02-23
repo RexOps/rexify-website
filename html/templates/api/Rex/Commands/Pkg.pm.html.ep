@@ -153,6 +153,20 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</p
      
  };</pre></div><div class="vspace"></div>
 
+<li><div class="vspace"></div><strong>is_installed</strong></li>
+
+
+<p>This function tests if $package is installed. Returns 1 if true. 0 if false.</p>
+<div class="black-box"><pre class="perl">
+ task &quot;isinstalled&quot;, &quot;server01&quot;, sub {
+    if( is_installed(&quot;rex&quot;) ) {
+       say &quot;Rex is installed&quot;;
+    }
+    else {
+       say &quot;Rex is not installed&quot;;
+    }
+ };</pre></div><div class="vspace"></div>
+
 <li><div class="vspace"></div><strong>update_package_db</strong></li>
 
 

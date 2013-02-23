@@ -599,6 +599,11 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 
 <li><div class="vspace"></div><strong><code>report($string)</code></strong></li>
 
+<li><div class="vspace"></div><strong>source_global_profile(0|1)</strong></li>
+
+
+<p>If this option is set, every <code>run()</code> command will first source /etc/profile before getting executed.</p>
+
 </ul>
 
 

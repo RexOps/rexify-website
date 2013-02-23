@@ -77,6 +77,7 @@
 
          <h1>Latest News</h1>
 
+         <p><b>2013-02-24</b> (R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</p>
          <p><b>2013-02-07</b> (R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</p>
          <p><b>2013-01-27</b> (R)?ex 0.38.0 released. This release brings <a href="/api/Rex/Box/Amazon.pm.html">Box support for Amazon</a> and more <a href="/howtos/use_boxes_with_any_box_provider.html">usefull Box additions</a>. See <a href="https://github.com/krimdomu/Rex/wiki/New0.38">ChangeLog</a> for more information.</p>
          <p><b>2013-01-07</b> (R)?ex 0.37.0 released. This release enhanced the core to be mostly extendable through external modules. It also adds a module for BIND DNS and an Eclipse Plugin. See <a href="https://github.com/krimdomu/Rex/wiki/New0.37">ChangeLog</a> for more details.</p>
