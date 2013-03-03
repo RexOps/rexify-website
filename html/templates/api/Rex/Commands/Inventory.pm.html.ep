@@ -53,7 +53,7 @@
 <p>This function returns an hashRef of all gathered hardware. Use the Data::Dumper module to see its structure.</p>
 <div class="black-box"><pre class="perl">
  task &quot;get-inventory&quot;, sub {
-    my $inventory = inventor();
+    my $inventory = inventory();
     print Dumper($inventory);
  };</pre></div><div class="vspace"></div>
 
