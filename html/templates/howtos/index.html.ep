@@ -46,6 +46,7 @@
 
          <h1>Snippets</h1>
          <ul class="simple-list">
+            <li><a href="/howtos/groups_file.html">Howto use INI files for your server groups</a></li>
             <li><a href="ps.html">Working with processes</a></li>
             <li><a href="tail.html">Tail logfiles continuously</a></li>
             <li><a href="https://gist.github.com/3490661">A code snippet showing the Template functionality</a></li>
