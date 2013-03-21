@@ -39,14 +39,53 @@
 
                   <div class="vspace"></div>
 
+% if(1==2)  {
                   <h1>New Feature: Development Boxes</h1>
                   <p>Build a live-like development environment for your developers in minutes with <a href="http://box.rexify.org/">Rex/Boxes</a>. Your devs will love you. No more fiddeling with dependency problems, version mismatches or "works on my system" excuses.</p>
                   <div class="small-vspace"></div>
                   <p>With <a href="http://box.rexify.org/">Rex/Boxes</a> your devs can work with a live-like environment and keep their workstations clean.</p>
                   <div class="small-vspace"></div>
                   <p>Read <a href="http://box.rexify.org/guide">more ...</a></p>
-
+% }
                </div>
+
+
+               <div class="vspace"></div>
+
+               <h1>Latest News</h1>
+
+               <p><b>2013-03-16</b> Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</p>
+               <p><b>2013-02-24</b> (R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</p>
+               <p><b>2013-02-07</b> (R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</p>
+               <p><b>2013-01-27</b> (R)?ex 0.38.0 released. This release brings <a href="/api/Rex/Box/Amazon.pm.html">Box support for Amazon</a> and more <a href="/howtos/use_boxes_with_any_box_provider.html">usefull Box additions</a>. See <a href="https://github.com/krimdomu/Rex/wiki/New0.38">ChangeLog</a> for more information.</p>
+               <p><b>2013-01-07</b> (R)?ex 0.37.0 released. This release enhanced the core to be mostly extendable through external modules. It also adds a module for BIND DNS and an Eclipse Plugin. See <a href="https://github.com/krimdomu/Rex/wiki/New0.37">ChangeLog</a> for more details.</p>
+               <p><b>2013-01-03</b> (R)?ex 0.36.0 released. This release brings support for plugable Cloud Modules. It also comes with a module for <a href="http://modules.rexify.org/pod/Rex::Cloud::OpenNebula/file/CloudLayer.pm">OpenNebula</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.36">Github.</a></p>
+               <p><b>2012-12-22</b> There is now a module search to easily find Rex modules on <a href="http://modules.rexify.org/">http://modules.rexify.org/</a>.</p>
+
+               <div class="vspace"></div>
+
+               <h1>Features</h1>
+               <ul class="simple-list">
+                  <li>Integrates seamless in your running infrastructure.</li>
+                  <li>No need of an agent. You only need a ssh connection to your server.</li>
+                  <li>Simple definitions of tasks and profiles</li>
+                  <li>Currently supports Debian, Ubuntu, Gentoo, Fedora, CentOS, Mageia, OpenSuSE and other Operating Systems. Read <a href="/compatibility.html">Compatibility List</a> for more information.</li>
+                  <li>Tasks are written in Perl, so everything is possible. See <a href="/howtos/perl.html" title="Just enough Perl for Rex">Perl Guide</a> for a small introduction to Perl. (Just enough Perl for Rex)</li>
+               </ul>
+
+               <div class="vspace"></div>
+
+               <h1>Need Help?</h1>
+               <div class="small-vspace"></div>
+               <ul class="simple-list">
+                  <li>Join our <a href="https://groups.google.com/group/rex-users/">Google Group</a></li>
+                  <li>IRC: Join us on <a href="http://webchat.freenode.net/?channels=rex">irc.freenode.net</a> -&gt; #rex</li>
+                  <li>Sign in to our <a href="http://www.freelists.org/list/rex-users">mailinglist</a> (if you don't like google ;-))</li>
+                  <li><a href="https://github.com/Krimdomu/Rex/issues">Bug Tracker</a> on Github</li>
+                  <li><a href="https://github.com/krimdomu/Rex/wiki">Wiki</a> on GitHub</li>
+               </ul>
+
+
 
             </div>
 
@@ -61,9 +100,22 @@
                      </li>
                      <li>
                         <a href="http://www.osdc.de/">OSDC.de 2013</a><br />
-                        <a href="http://www.osdc.de/"><img src="/images/osdc.png" height="100" /></a>
+                        <a href="http://www.osdc.de/" style="float: right"><img src="/images/osdc.png" height="100" /></a>
                      </li>
                   </ul>
+                  <div class="vspace" style="clear: both;"></div>
+
+                  <h1>Awards</h1>
+                  <ul class="simple-list">
+                     <li>
+                        <p><img src="/images/init_mittelstand.png" style="float: right; margin-left: 15px;">
+                        We are proud to anounce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de/">inovex</a> for the support to make this happen.</p>
+                        <div class="small-vspace"></div>
+                        <p>Inovex is an owner-managed IT project company employing over 120 people at its four sites in Pforzheim, Karlsruhe, Munich and Cologne. Our excellent IT engineers and architects support IT departments in large companies and Internet firms with their expertise at managing the crucial tasks that occur in Internet environments. Inovex helps leading internet companies, like 1&1 Internet AG (WEB.DE, GMX), buch.de and maxdome, IT departments in traditional industry (such as Bosch, Daimler, Porsche and Volkswagen) and other leading industrial companies like EnBW or DB Schenker, to deal with their IT challenges.</p>
+
+                     </li>
+                  </ul>
+
                </div>
 
             </div>
@@ -72,41 +124,7 @@
 
          <div class="clearfix"></div>
 
-         <div class="vspace"></div>
 
-
-         <h1>Latest News</h1>
-
-         <p><b>2013-03-16</b> Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</p>
-         <p><b>2013-02-24</b> (R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</p>
-         <p><b>2013-02-07</b> (R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</p>
-         <p><b>2013-01-27</b> (R)?ex 0.38.0 released. This release brings <a href="/api/Rex/Box/Amazon.pm.html">Box support for Amazon</a> and more <a href="/howtos/use_boxes_with_any_box_provider.html">usefull Box additions</a>. See <a href="https://github.com/krimdomu/Rex/wiki/New0.38">ChangeLog</a> for more information.</p>
-         <p><b>2013-01-07</b> (R)?ex 0.37.0 released. This release enhanced the core to be mostly extendable through external modules. It also adds a module for BIND DNS and an Eclipse Plugin. See <a href="https://github.com/krimdomu/Rex/wiki/New0.37">ChangeLog</a> for more details.</p>
-         <p><b>2013-01-03</b> (R)?ex 0.36.0 released. This release brings support for plugable Cloud Modules. It also comes with a module for <a href="http://modules.rexify.org/pod/Rex::Cloud::OpenNebula/file/CloudLayer.pm">OpenNebula</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.36">Github.</a></p>
-         <p><b>2012-12-22</b> There is now a module search to easily find Rex modules on <a href="http://modules.rexify.org/">http://modules.rexify.org/</a>.</p>
-
-         <div class="vspace"></div>
-
-         <h1>Features</h1>
-         <ul class="simple-list">
-            <li>Integrates seamless in your running infrastructure.</li>
-            <li>No need of an agent. You only need a ssh connection to your server.</li>
-            <li>Simple definitions of tasks and profiles</li>
-            <li>Currently supports Debian, Ubuntu, Gentoo, Fedora, CentOS, Mageia, OpenSuSE and other Operating Systems. Read <a href="/compatibility.html">Compatibility List</a> for more information.</li>
-            <li>Tasks are written in Perl, so everything is possible. See <a href="/howtos/perl.html" title="Just enough Perl for Rex">Perl Guide</a> for a small introduction to Perl. (Just enough Perl for Rex)</li>
-         </ul>
-
-         <div class="vspace"></div>
-
-         <h1>Need Help?</h1>
-         <div class="small-vspace"></div>
-         <ul class="simple-list">
-            <li>Join our <a href="https://groups.google.com/group/rex-users/">Google Group</a></li>
-            <li>IRC: Join us on <a href="http://webchat.freenode.net/?channels=rex">irc.freenode.net</a> -&gt; #rex</li>
-            <li>Sign in to our <a href="http://www.freelists.org/list/rex-users">mailinglist</a> (if you don't like google ;-))</li>
-            <li><a href="https://github.com/Krimdomu/Rex/issues">Bug Tracker</a> on Github</li>
-            <li><a href="https://github.com/krimdomu/Rex/wiki">Wiki</a> on GitHub</li>
-         </ul>
 
 
          <div class="vspace"></div>
