@@ -31,16 +31,16 @@
          <p>You have to install Rex::Gearman on your workstation (or the server where you run Rex) and on the machines you want to use to distribute the work.</p>
          <p>If you don't want to use the packages you can install it with the following command:</p>
 
-            <pre><code class="bash">curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
+            <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
 
 
          
          <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Gearman.</p>
-            <pre><code class="bash">apt-get install rex-gearman</code></pre>
+            <pre><code class="bash">$ apt-get install rex-gearman</code></pre>
 
          
          <p>To install it on a CentOS or Fedora box you can use <i>yum</i>:</p>
-            <pre><code class="bash">yum install rex-gearman</code></pre>
+            <pre><code class="bash">$ yum install rex-gearman</code></pre>
 
          
 
@@ -99,7 +99,7 @@
 
          <p>Now you are able to start the workerprocess.</p>
 
-         <pre><code class="bash">rex-gearman-worker</code></pre>
+         <pre><code class="bash">$ rex-gearman-worker</code></pre>
 
          
          
@@ -124,8 +124,8 @@
 
          <p>For example:</i>
 
-            <pre><code class="bash">rex-gearman-client -h
-rex-gearman-client -Tv
-rex-gearman-client prepare</code></pre>
+            <pre><code class="bash">$ rex-gearman-client -h
+$ rex-gearman-client -Tv
+$ rex-gearman-client prepare</code></pre>
 
 

@@ -36,8 +36,8 @@ task "uptime", group =&gt; "myserver", sub {
 
          <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
 
-            <pre><code class="bash">cd /home/jan
-rex uptime</code></pre>
+            <pre><code class="bash">$ cd /home/jan
+$ rex uptime</code></pre>
 
          
 
@@ -55,7 +55,7 @@ task "free", group =&gt; "myserver", sub {
          <h2>Display all tasks in a Rexfile</h2>
 
          <p>If you want to display all tasks in your Rexfile use the following command.</p>
-            <pre><code class="bash">rex -T
+            <pre><code class="bash">$ rex -T
 Tasks
   free                           Start Apache Service
   uptime                         Get the uptime of all server

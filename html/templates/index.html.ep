@@ -40,7 +40,7 @@ automate it!</p>
 
 <h2>Uptime?</h2>
 <p>This command line example will execute "uptime" on all the given hosts (frontend01, frontend02, ...).</p>
-<pre><code class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
 </code></pre>
 
 <p>The same, but with a <i>Rexfile</i></p>
@@ -52,7 +52,7 @@ task "disk_free", sub {
 </code></pre>
 
 <p>Now you can run your Task with this command</p>
-<pre><code class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free
 </code></pre>
 
 

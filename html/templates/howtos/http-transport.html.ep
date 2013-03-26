@@ -43,12 +43,12 @@
          <p>Rex::Endpoint::HTTP must be installed on the target machine (on your servers).</p>
          <p>You can install it with the following command on other platforms.</p>
 
-            <pre><code class="bash">curl -L get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</code></pre>
+            <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</code></pre>
 
 
          
          <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Endpoint::HTTP.</p>
-            <pre><code class="bash">apt-get install rex-endpoint-http</code></pre>
+            <pre><code class="bash">$ apt-get install rex-endpoint-http</code></pre>
 
 
          
@@ -106,14 +106,14 @@
          <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
          <p>You can create these strings with the following command:</p>
 
-            <pre><code class="bash">perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
+            <pre><code class="bash">$ perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
 
 
          
 
          <p>Now you can start the daemon. If you've installed it via the packages you can use the init script. (as root)</p>
 
-            <pre><code class="bash">/etc/init.d/rex-endpoint-http start</code></pre>
+            <pre><code class="bash">$ /etc/init.d/rex-endpoint-http start</code></pre>
 
          
 
@@ -121,7 +121,7 @@
 
          <p>To start the daemon by hand you can use the following command. (as root)</p>
 
-            <pre><code class="bash">hypnotoad /usr/local/bin/rex_endpoint_http</code></pre>
+            <pre><code class="bash">$ hypnotoad /usr/local/bin/rex_endpoint_http</code></pre>
 
          
 
@@ -182,7 +182,7 @@
 
          <p>There is a simple way to setup your own CA. For this you can use a Rex Recipe <i>Rex::SSL::CA</i>.</p>
 
-            <pre><code class="bash">rexify ca --use Rex::SSL::CA
+            <pre><code class="bash">$ rexify ca --use Rex::SSL::CA
 cd ca
 bash ~/ca# cat &gt;Rexfile&lt;&lt;EOF
 require Rex::SSL::CA;
@@ -191,7 +191,7 @@ EOF</code></pre>
 
          <p>Please don't use a servername for the <i>cn</i> parameter here!</p>
 
-            <pre><code class="bash">rex SSL:CA:create --password=pass            \\
+            <pre><code class="bash">$ rex SSL:CA:create --password=pass            \\
             [--country=cn                    \\
              --state=state                   \\
              --city=city                     \\
@@ -203,7 +203,7 @@ EOF</code></pre>
 
          <p>And to create a server/client certificate you can use the following task. Here you have to use the server name for the <i>cn</i> parameter.</p>
 
-            <pre><code class="bash">rex SSL:CA:Server:create --cn=name-of-the-server --password=pass \\
+            <pre><code class="bash">$ rex SSL:CA:Server:create --cn=name-of-the-server --password=pass \\
             [--challenge-password=challenge-password  \\
              --country=country                        \\
              --state=state                            \\
@@ -228,7 +228,7 @@ EOF</code></pre>
          <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
          <p>You can create these strings with the following command:</p>
 
-            <pre><code class="bash">perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
+            <pre><code class="bash">$ perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
          
 
          <h2>Usage</h2>

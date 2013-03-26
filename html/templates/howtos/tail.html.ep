@@ -44,7 +44,7 @@ task "tail-fe", group =&gt; "fe", sub {
 
          <p>If you want to tail the logs on many servers, you need to add parallelism to (R)?ex. So that you can see the logs of all servers at the same time.</p>
 
-            <pre><code class="bash">rex tail-fe</code></pre>
+            <pre><code class="bash">$ rex tail-fe</code></pre>
 
          
 

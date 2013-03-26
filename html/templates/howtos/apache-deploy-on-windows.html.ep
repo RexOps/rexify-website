@@ -34,6 +34,6 @@
          
 
          <p>Now you can install Apache::Deploy with ppd.</p>
-            <pre><code class="bash">ppm install http://rex.linux-files.org/Windows/12xx/Rex.ppd
+            <pre><code class="bash">$ ppm install http://rex.linux-files.org/Windows/12xx/Rex.ppd
 ppm install http://rex.linux-files.org/Windows/12xx/Rex-Apache-Deploy.ppd</code></pre>
 

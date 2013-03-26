@@ -24,9 +24,9 @@
          <p>At first you need to create a <i>Rexfile</i> in a directory of your choice.</p>
 
 
-            <pre><code class="bash">bash# mkdir amazon
-bash# cd amazon
-bash# touch Rexfile</code></pre>
+            <pre><code class="bash">$ mkdir amazon
+$ cd amazon
+$ touch Rexfile</code></pre>
 
          
          <p>Open the Rexfile in your preferred editor.</p>
@@ -140,7 +140,7 @@ task "create", sub {
          
          <p>Now you can run Rex to create the instance and prepare the system for use.</p>
 
-            <pre><code class="bash">bash# rex create prepare
+            <pre><code class="bash">$ rex create prepare
 [2011-08-06 10:25:58] (5783) - INFO - Running task: create
 [2011-08-06 10:26:38] (5783) - INFO - Running task: prepare
 [2011-08-06 10:26:38] (5801) - INFO - Connecting to 46.51.135.11 (root)
