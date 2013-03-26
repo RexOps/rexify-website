@@ -200,3 +200,5 @@ make install</code></pre>
 <pre><code class="bash">perl -MCPAN -eshell
 cpan[1]&gt; install Rex</code></pre>
 
+<p><small><i>All logos are registered trademarks of their respective companies and are not affiliated with and do not necessarily indicate that they either sponsor or endorse the services of rexify.org (and Rex).</i></small></p>
+
