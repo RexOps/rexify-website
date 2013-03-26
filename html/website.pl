@@ -281,19 +281,7 @@ __DATA__
 
 @@ navigation.html.ep
 
-<div id="nav">
-   <a href="http://rexify.org/"><img id="nav_img" src="http://rexify.org/images/title.png" alt="(R)?ex - What do you want to deploy today?" /></a>
-   <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a>
-      <div class="searchbox">
-         Search: <input type="text" name="q" id="q" />
-      </div>
-   </div>
-</div>
-
-<div class="result_field">
-   <p>I'm sorry. Your query had no results!</p>
-</div>
-
+nav
 
 @@ layouts/frontpage.html.ep
 <!DOCTYPE html 
@@ -305,75 +293,111 @@ __DATA__
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
+      <meta name="viewport" content="width=1024, initial-scale=0.5">
+
+      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20130325" type="text/css" media="screen" charset="utf-8" />
 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
 
-      
-      
    </head>
    <body>
 
-      %= include 'navigation';
+      <div id="page">
 
-      <%= content %>
-      
-
-      <div id="footer">
-         <div class="links">
-            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
-            <div class="vspace"></div>
-            <div class="bottom_box">
-               <table border="0">
-                  <tr>
-                     <td width="50%">
-                        <h1>Looking for Modules?</h1>
-                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
-                     </td>
-                     <td>
-                        <h1>Unify your Team!</h1>
-                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
-                        create clean development environments for your projects. Test your software in a production like environment.
-                     </td>
-                  </tr>
-               </table>
-            </div>
-
-            
+         <div id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
          </div>
-      </div>
+
+         <div id="head-div">
+            <div class="head_container">
+               <div class="slogan">
+                  <h1>Automate Everything, Relax Anytime</h1>
+                  <div class="slogan_list">
+                     <ul>
+                        <li>&gt; Integrated seamless in your running Environment</li>
+                        <li>&gt; Easy to use and extend</li>
+                        <li>&gt; Easy to learn, it's just plain Perl</li>
+                        <li>&gt; Apache 2.0 Licensed</li>
+                     </ul>
+                  </div> <!-- slogan_list -->
+
+                  <div class="source">
+                     <pre><code class="perl">task prepare => sub {
+   install "apache2";
+   service apache2 => ensure => "started";
+};</code></pre>
+                  </div> <!-- source -->
+                  <a class="headlink" href="#">Read the Getting Started Guide</a>
+               </div> <!-- slogan -->
+
+            </div> <!-- head_container -->
+         </div>
+
+         <div id="nav-div">
+            <div class="nav_title">
+               <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
+            </div>
+            <div class="nav_links">
+               <ul>
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Get Rex</a></li>
+                  <li><a href="#">Contribute</a></li>
+                  <li><a href="#">Docs</a></li>
+                  <li><a href="#">API</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>News</h2>
+               <div class="news_widget">
+                  <div class="news_date">2013-03-16</div>
+                  <div class="news_content">Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-02-24</div>
+                  <div class="news_content">(R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-01-27</div>
+                  <div class="news_content">(R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</div>
+               </div>
+
+
+               <h2>Conferences</h2>
+               <img src="/img/osdc.png" style="float: left; width: 100px;" />
+               <p><a href="http://www.osdc.de/">Open Source Data Center Conference</a></p>
+               <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
+               <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
+
+               <h2>Awards</h2>
+               <img src="/img/init_mittelstand.png" style="float: left;" />
+               <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
+
+<p>Inovex is an owner-managed IT project company employing over 120 people at its four sites in Pforzheim, Karlsruhe, Munich and Cologne. Our excellent IT engineers and architects support IT departments in large companies and Internet firms with their expertise at managing the crucial tasks that occur in Internet environments. Inovex helps leading internet companies, like 1&1 Internet AG (WEB.DE, GMX), buch.de and maxdome, IT departments in traditional industry (such as Bosch, Daimler, Porsche and Volkswagen) and other leading industrial companies like EnBW or DB Schenker, to deal with their IT challenges.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+               <%= content %>
+            </div>
+         </div> <!-- content -->
+
+      </div> <!-- page -->
+      
 
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
 
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
-
-   <script type="text/javascript" charset="utf-8">
-
-
-      $(".perl").each(function(a,b) {
-
-         HighlightCode(b);
-            
-      });
-
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
-
-
-      $(".navlinks").show();
-
-   </script>
 
 <!-- Piwik --> 
 <script type="text/javascript">
@@ -389,139 +413,12 @@ piwikTracker.enableLinkTracking();
 <!-- End Piwik Tracking Code -->
 
 
-   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+  hljs.initHighlightingOnLoad();
+</script>
 
-   </body>
-
-</html>
-
-
-@@ layouts/default.html.ep
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   
-      <title><%= title %></title>
-
-      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
-
-      %= content_for 'header';
-      
-   </head>
-   <body>
-
-      %= include 'navigation';
-
-      <div id="header">
-         <img src="http://rexify.org/images/new-header.png" />
-      </div>
-
-      <div id="site">
-      <div id="page">
-
-
-
-         <%= content %>
-
-   <div class="vspace"></div>
-
-   % if( ! $no_disqus) {
-
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-    % }
-
-      </div>
-      </div>
-
-      
-
-      <div id="footer">
-         <div class="links">
-            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
-            <div class="vspace"></div>
-            <div class="bottom_box">
-               <table border="0">
-                  <tr>
-                     <td width="50%">
-                        <h1>Looking for Modules?</h1>
-                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
-                     </td>
-                     <td>
-                        <h1>Unify your Team!</h1>
-                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
-                        create clean development environments for your projects. Test your software in a production like environment.
-                     </td>
-                  </tr>
-               </table>
-            </div>
-
-            
-         </div>
-      </div>
-
-     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
-
-
-
-      <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
-
-   <script type="text/javascript" charset="utf-8">
-
-
-      $(".perl").each(function(a,b) {
-
-         HighlightCode(b);
-            
-      });
-
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
-
-
-      $(".navlinks").show();
-
-   </script>
-
-<!-- Piwik --> 
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://rexify.org/stats/" : "http://rexify.org/stats/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://rexify.org/stats/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tracking Code -->
-
-
-   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
 
    </body>
 
