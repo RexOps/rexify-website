@@ -9,14 +9,14 @@
          <h1>Rex::Gearman / Why?</h1>
          <p>If you have a lot of servers to manage it may be slow to run all the tasks from a central server. To scale the execution of your Tasks Rex is able to use Gearman to distribute the work to many Worker Nodes.</p>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Supported Platforms</h1>
+         <h2>Supported Platforms</h2>
          <p>For these platforms we have build packages. Rex::Gearman will also run on other platforms. You have to install it via CPAN.</p>
 
-         <div class="vspace"></div>
          
-         <ul class="simple-list">
+         
+         <ul>
             <li>Debian Squeeze</li>
             <li>Ubuntu</li>
             <li>CentOS 5</li>
@@ -24,45 +24,38 @@
             <li>Fedora</li>
          </ul>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Installation</h1>
+         <h2>Installation</h2>
  
          <p>You have to install Rex::Gearman on your workstation (or the server where you run Rex) and on the machines you want to use to distribute the work.</p>
          <p>If you don't want to use the packages you can install it with the following command:</p>
 
-         <div class="black-box">
-            <pre class="bash">bash# curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</pre>
-         </div>
+            <pre><code class="bash">curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
 
 
-         <div class="vspace"></div>
+         
          <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Gearman.</p>
-         <div class="black-box">
-            <pre class="bash">bash# apt-get install rex-gearman</pre>
-         </div>
+            <pre><code class="bash">apt-get install rex-gearman</code></pre>
 
-         <div class="vspace"></div>
+         
          <p>To install it on a CentOS or Fedora box you can use <i>yum</i>:</p>
-         <div class="black-box">
-            <pre class="bash">bash# yum install rex-gearman</pre>
-         </div>
+            <pre><code class="bash">yum install rex-gearman</code></pre>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Configuration</h1>
+         <h2>Configuration</h2>
          <p>If you're using Debian or Ubuntu you have to configure gearman on your worker nodes to listen on the network. It defaults to listen only on the loopback device.</p>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Usage</h1>
+         <h2>Usage</h2>
 
          <p>First you have to distribute your Rexfile (and all other files and directories you need) to your worker nodes. It is import to name the basedirectory the same way as on the controlling server.</p> 
 
          <p>On the controll server (the server where you have rex installed)</p>
 
-         <div class="black-box">
-            <pre class="bash">/home/user/projects/frontend
+            <pre><code class="bash">/home/user/projects/frontend
                         |-- Rexfile
                         |-- client.conf
                         +-- lib
@@ -71,15 +64,12 @@
                         |       +-- Apache.pm
                         |           +-- templates
                         |               +-- httpd.conf
-                        +-- worker.conf</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-         <div class="small-vspace"></div>
+                        +-- worker.conf</code></pre>
+         
+         
          <p>Example directory structure on the worker nodes:</p>
 
-         <div class="black-box">
-            <pre class="bash">/opt/rex/frontend
+            <pre><code class="bash">/opt/rex/frontend
              |-- Rexfile
              |-- client.conf
              +-- lib
@@ -88,61 +78,54 @@
              |       +-- Apache.pm
              |           +-- templates
              |               +-- httpd.conf
-             +-- worker.conf</pre>
-         </div>
+             +-- worker.conf</code></pre>
 
-         <div class="small-vspace"></div>
-         <div class="small-vspace"></div>
+         
+         
 
          <p>Now (on the worker nodes) change into the directory where your <i>Rexfile</i> is located and create a file <i>worker.conf</i>.</p>
 
          <p>Here you have to configure all your gearmand servers so that the Worker module can register its functions to them.</p>
-         <div class="black-box">
-            <pre class="perl">{
+            <pre><code class="perl">{
     job_servers =&gt; [
       "127.0.0.1:4730",
       "192.168.7.10:4730",
       "192.168.7.11:4730",
     ],
- };</pre>
-         </div>
+ };</code></pre>
 
-         <div class="small-vspace"></div>
-         <div class="small-vspace"></div>
+         
+         
 
          <p>Now you are able to start the workerprocess.</p>
 
-         <div class="black-box"><pre class="bash">rex-gearman-worker</pre></div>
+         <pre><code class="bash">rex-gearman-worker</code></pre>
 
          
-         <div class="small-vspace"></div>
-         <div class="small-vspace"></div>
+         
+         
 
          <p>Now you can switch back to the controll server.</p>
 
          <p>Again, change to the directory where your <i>Rexfile</i> lives and create a file called <i>client.conf</i>. In this file you have to configure your gearmand servers.</p>
 
-         <div class="black-box">
-            <pre class="perl">{
+            <pre><code class="perl">{
     job_servers =&gt; [
       "127.0.0.1:4730",
       "192.168.7.10:4730",
       "192.168.7.11:4730",
     ],
- };</pre>
-         </div>
+ };</code></pre>
 
-         <div class="small-vspace"></div>
-         <div class="small-vspace"></div>
+         
+         
 
          <p>Now you're able to run your tasks as known. But you have to replace the <i>rex</i> command with <i>rex-gearman-client</i>. The CLI parameter are the same. So you can use <i>rex-gearman-client</i> the same way as you used <i>rex</i>.</p>
 
          <p>For example:</i>
 
-         <div class="black-box">
-            <pre class="bash">rex-gearman-client -h
+            <pre><code class="bash">rex-gearman-client -h
 rex-gearman-client -Tv
-rex-gearman-client prepare</pre>
-         </div>
+rex-gearman-client prepare</code></pre>
 
 

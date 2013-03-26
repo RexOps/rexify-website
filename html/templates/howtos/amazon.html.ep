@@ -9,7 +9,7 @@
          <h1>Starting Point</h1>
          <p>In this howto i will show you how to create and manage your Amazon EC2 instances.</p>
 
-         <div class="vspace"></div>
+         
          <h1>Preparation</h1>
          <ul class="simple-list">
             <li>Register at http://aws.amazon.com/de/</li>
@@ -18,26 +18,23 @@
             <li>Create a public key out of your just downloaded private key. You can do this with <i>ssh-keygen -y -f your-aws-private-key.pem</i></li>
          </ul>
 
-         <div class="vspace"></div>
+         
          <h1>Creating a Rexfile</h1>
 
          <p>At first you need to create a <i>Rexfile</i> in a directory of your choice.</p>
 
 
-         <div class="black-box">
-            <pre class="bash">bash# mkdir amazon
+            <pre><code class="bash">bash# mkdir amazon
 bash# cd amazon
-bash# touch Rexfile</pre>
-         </div>
+bash# touch Rexfile</code></pre>
 
-         <div class="vspace"></div>
+         
          <p>Open the Rexfile in your preferred editor.</p>
 
-         <div class="vspace"></div>
+         
          <p>Insert the following code in your new Rexfile.</p>
 
-         <div class="black-box">
-            <pre class="perl">use Rex::Commands::Cloud;
+            <pre><code class="perl">use Rex::Commands::Cloud;
 
 user "root";
 public_key "/path/to/your/just/created/amazon-public.key";
@@ -51,25 +48,21 @@ cloud_auth "$access_key", "$secret_access_key";
 cloud_region "ec2.eu-west-1.amazonaws.com";
 
 task "create", sub {
-
    cloud_instance create =&gt; { 
             image_id =&gt; "ami-02103876",
             name     =&gt; "static01",
             key      =&gt; "dev-test",
          };
-
-};</pre>
-         </div>
+};</code></pre>
 
          <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
 
-         <div class="vspace"></div>
+         
          <h2>Create an instance with an EBS block volume</h2>
 
          <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
 
-         <div class="black-box">
-            <pre class="perl">task "create", sub {
+            <pre><code class="perl">task "create", sub {
    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
 
    cloud_instance create =&gt; { 
@@ -80,69 +73,53 @@ task "create", sub {
             zone     =&gt; "eu-west-1a",
          };
 
-};</pre>
-         </div>
+};</code></pre>
 
-         <div class="vspace"></div>
+         
          <h2>Listing Regions and zones</h2>
 
          <p>To get a list of all regions and zone you can use the following functions.</p>
 
-         <div class="black-box">
-            <pre class="perl">task "list", sub {
-
+            <pre><code class="perl">task "list", sub {
    print Dumper get_cloud_regions;
    print Dumper get_cloud_availability_zones;
+};</code></pre>
 
-};</pre>
-         </div>
-
-         <div class="vspace"></div>
+         
          <h2>List your instances</h2>
 
          <p>To get a list of all your instances and volumes you can use these functions.</p>
 
-         <div class="black-box">
-            <pre class="perl">task "list", sub {
-
+            <pre><code class="perl">task "list", sub {
    print Dumper cloud_instance_list;
    print Dumper cloud_volume_list;
-
-};</pre>
-         </div>
+};</code></pre>
  
-         <div class="vspace"></div>
+         
          <h2>Destroy your instances / volumes</h2>
 
          <p>If you don't need your instances or volumes anymore, you can just destroy them.</p>
 
-         <div class="black-box">
-            <pre class="perl">task "destroy", sub {
-
+            <pre><code class="perl">task "destroy", sub {
    cloud_volume delete =&gt; "$volume_id";
    cloud_instance terminate =&gt; "$instance_id";
-
-};</pre>
-         </div>
+};</code></pre>
  
 
-         <div class="vspace"></div>
+         
          <h2>Put all your EC2 instances in a host group</h2>
 
          <p>If you have many instances you can easily add them all into a hostgroup.</p>
 
-         <div class="black-box">
-            <pre class="perl">group ec2 =&gt; get_cloud_instances_as_group();</pre>
-         </div>
+            <pre><code class="perl">group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
 
 
 
-         <div class="vspace"></div>
+         
          <h2>Installing some Software and run Rex</h2>
          <p>Now we need to add some software to our fresh EC2 instance.</p>
 
-         <div class="black-box">
-            <pre class="perl">task "prepare", group => "ec2", sub {
+            <pre><code class="perl">task "prepare", group =&gt; "ec2", sub {
    run "apt-get update";
    install package =&gt; "apache2";
 
@@ -158,18 +135,15 @@ task "create", sub {
    # do what ever you want
    use Rex::Commands::Iptables;
    close_port "all";
-};</pre>
-         </div>
+};</code></pre>
 
-         <div class="vspace"></div>
+         
          <p>Now you can run Rex to create the instance and prepare the system for use.</p>
 
-         <div class="back-box">
-            <pre class="bash">bash# rex create prepare
+            <pre><code class="bash">bash# rex create prepare
 [2011-08-06 10:25:58] (5783) - INFO - Running task: create
 [2011-08-06 10:26:38] (5783) - INFO - Running task: prepare
 [2011-08-06 10:26:38] (5801) - INFO - Connecting to 46.51.135.11 (root)
 [2011-08-06 10:27:14] (5801) - INFO - Installing apache2.
-[2011-08-06 10:27:30] (5801) - INFO - Uploadling files/index.html -&gt; /var/www/index.html</pre>
-         </div>
+[2011-08-06 10:27:30] (5801) - INFO - Uploadling files/index.html -&gt; /var/www/index.html</code></pre>
   

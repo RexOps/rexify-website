@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Commands - All the basic commands';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="This module is the core commands module.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -20,24 +20,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands - All the basic commands</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This module is the core commands module.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  desc &quot;Task description&quot;;
  
  task &quot;taskname&quot;, sub { ... };
@@ -54,184 +54,184 @@
     password &quot;foobar&quot;;
     pass_auth;
     group frontend =&gt; &quot;www01&quot;, &quot;www02&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>COMMANDLIST</h1>
-<ul class="simple-list">
-<li><div class="vspace"></div><strong>Cloud Management <a href="/api/Rex/Commands/Cloud.pm.html">Rex::Commands::Cloud</a></strong>
+
+<h2>COMMANDLIST</h2>
+<ul>
+<li><strong>Cloud Management <a href="/api/Rex/Commands/Cloud.pm.html">Rex::Commands::Cloud</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Cron Management <a href="/api/Rex/Commands/Cron.pm.html">Rex::Commands::Cron</a></strong>
+<li><strong>Cron Management <a href="/api/Rex/Commands/Cron.pm.html">Rex::Commands::Cron</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Database Commands <a href="/api/Rex/Commands/DB.pm.html">Rex::Commands::DB</a></strong>
+<li><strong>Database Commands <a href="/api/Rex/Commands/DB.pm.html">Rex::Commands::DB</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>SCP Up- and Download <a href="/api/Rex/Commands/Upload.pm.html">Rex::Commands::Upload</a>, <a href="/api/Rex/Commands/Download.pm.html">Rex::Commands::Download</a></strong>
+<li><strong>SCP Up- and Download <a href="/api/Rex/Commands/Upload.pm.html">Rex::Commands::Upload</a>, <a href="/api/Rex/Commands/Download.pm.html">Rex::Commands::Download</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>File Manipulation <a href="/api/Rex/Commands/File.pm.html">Rex::Commands::File</a></strong>
+<li><strong>File Manipulation <a href="/api/Rex/Commands/File.pm.html">Rex::Commands::File</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Filesystem Manipulation <a href="/api/Rex/Commands/Fs.pm.html">Rex::Commands::Fs</a></strong>
+<li><strong>Filesystem Manipulation <a href="/api/Rex/Commands/Fs.pm.html">Rex::Commands::Fs</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Information Gathering <a href="/api/Rex/Commands/Gather.pm.html">Rex::Commands::Gather</a></strong>
+<li><strong>Information Gathering <a href="/api/Rex/Commands/Gather.pm.html">Rex::Commands::Gather</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Manipulation of /etc/hosts <a href="/api/Rex/Commands/Host.pm.html">Rex::Commands::Host</a></strong>
+<li><strong>Manipulation of /etc/hosts <a href="/api/Rex/Commands/Host.pm.html">Rex::Commands::Host</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Get an inventory of your Hardware <a href="/api/Rex/Commands/Inventory.pm.html">Rex::Commands::Inventory</a></strong>
+<li><strong>Get an inventory of your Hardware <a href="/api/Rex/Commands/Inventory.pm.html">Rex::Commands::Inventory</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Manage your iptables rules <a href="/api/Rex/Commands/Iptables.pm.html">Rex::Commands::Iptables</a></strong>
+<li><strong>Manage your iptables rules <a href="/api/Rex/Commands/Iptables.pm.html">Rex::Commands::Iptables</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Kernel Commands <a href="/api/Rex/Commands/Kernel.pm.html">Rex::Commands::Kernel</a></strong>
+<li><strong>Kernel Commands <a href="/api/Rex/Commands/Kernel.pm.html">Rex::Commands::Kernel</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>LVM Commands <a href="/api/Rex/Commands/LVM.pm.html">Rex::Commands::LVM</a></strong>
+<li><strong>LVM Commands <a href="/api/Rex/Commands/LVM.pm.html">Rex::Commands::LVM</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Package Commands <a href="/api/Rex/Commands/Pkg.pm.html">Rex::Commands::Pkg</a></strong>
+<li><strong>Package Commands <a href="/api/Rex/Commands/Pkg.pm.html">Rex::Commands::Pkg</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Process Management <a href="/api/Rex/Commands/Process.pm.html">Rex::Commands::Process</a></strong>
+<li><strong>Process Management <a href="/api/Rex/Commands/Process.pm.html">Rex::Commands::Process</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Rsync Files <a href="/api/Rex/Commands/Rsync.pm.html">Rex::Commands::Rsync</a></strong>
+<li><strong>Rsync Files <a href="/api/Rex/Commands/Rsync.pm.html">Rex::Commands::Rsync</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Run Remote Commands <a href="/api/Rex/Commands/Run.pm.html">Rex::Commands::Run</a></strong>
+<li><strong>Run Remote Commands <a href="/api/Rex/Commands/Run.pm.html">Rex::Commands::Run</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Manage System Services (sysvinit) <a href="/api/Rex/Commands/Service.pm.html">Rex::Commands::Service</a></strong>
+<li><strong>Manage System Services (sysvinit) <a href="/api/Rex/Commands/Service.pm.html">Rex::Commands::Service</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Sysctl Commands <a href="/api/Rex/Commands/Sysctl.pm.html">Rex::Commands::Sysctl</a></strong>
+<li><strong>Sysctl Commands <a href="/api/Rex/Commands/Sysctl.pm.html">Rex::Commands::Sysctl</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Live Tail files <a href="/api/Rex/Commands/Tail.pm.html">Rex::Commands::Tail</a></strong>
+<li><strong>Live Tail files <a href="/api/Rex/Commands/Tail.pm.html">Rex::Commands::Tail</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Manage user and group accounts <a href="/api/Rex/Commands/User.pm.html">Rex::Commands::User</a></strong>
+<li><strong>Manage user and group accounts <a href="/api/Rex/Commands/User.pm.html">Rex::Commands::User</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Manage your virtual environments <a href="/api/Rex/Commands/Virtualization.pm.html">Rex::Commands::Virtualization</a></strong>
+<li><strong>Manage your virtual environments <a href="/api/Rex/Commands/Virtualization.pm.html">Rex::Commands::Virtualization</a></strong>
 
 </li>
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong><code>no_ssh([$task])</code></strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>no_ssh([$task])</strong></li>
 
 
 <p>Disable ssh for all tasks or a specified task.</p>
 <p>If you want to disable ssh connection for your complete tasks (for example if you only want to use libVirt) put this in the main section of your Rexfile.</p>
-<div class="black-box"><pre class="perl">
- no_ssh;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ no_ssh;</code></pre>
 <p>If you want to disable ssh connection for a given task, put <em>no_ssh</em> in front of the task definition.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  no_ssh task &quot;mytask&quot;, &quot;myserver&quot;, sub {
     say &quot;Do something without a ssh connection&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>task($name [, @servers], $funcref)</strong></li>
+<li><strong>task($name [, @servers], $funcref)</strong></li>
 
 
 <p>This function will create a new task.</p>
-<div class="vspace"></div><ul class="simple-list">
+<ul>
 <li><strong>Create a local task (a server independent task)</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, sub {
     say &quot;Do something&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If you call this task with (R)?ex it will run on your local machine. You can explicit run this task on other machines if you specify the <em>-H</em> command line parameter.</p>
 
-<li><div class="vspace"></div><strong>Create a server bound task.</strong></li>
+<li><strong>Create a server bound task.</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server1&quot;, sub {
     say &quot;Do something&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>You can also specify more than one server.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server1&quot;, &quot;server2&quot;, &quot;server3&quot;, sub {
     say &quot;Do something&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>Or you can use some expressions to define more than one server.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server[1..3]&quot;, sub {
     say &quot;Do something&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If you want, you can overwrite the servers with the <em>-H</em> command line parameter.</p>
 
-<li><div class="vspace"></div><strong>Create a group bound task.</strong></li>
+<li><strong>Create a group bound task.</strong></li>
 
 
 <p>You can define server groups with the <em>group</em> function.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  group &quot;allserver&quot; =&gt; &quot;server[1..3]&quot;, &quot;workstation[1..10]&quot;;
  
  task &quot;mytask&quot;, group =&gt; &quot;allserver&quot;, sub {
     say &quot;Do something&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 
-<li><div class="vspace"></div><strong><code>desc($description)</code></strong></li>
+<li><strong>desc($description)</strong></li>
 
 
 <p>Set the description of a task.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  desc &quot;This is a task description of the following task&quot;;
  task &quot;mytask&quot;, sub {
     say &quot;Do something&quot;;
- }</pre></div><div class="vspace"></div>
+ }</code></pre>
 
-<li><div class="vspace"></div><strong>group($name, @servers)</strong></li>
+<li><strong>group($name, @servers)</strong></li>
 
 
 <p>With this function you can group servers, so that you don't need to write too much ;-)</p>
-<div class="black-box"><pre class="perl">
- group &quot;servergroup&quot;, &quot;www1&quot;, &quot;www2&quot;, &quot;www3&quot;, &quot;memcache01&quot;, &quot;memcache02&quot;, &quot;memcache03&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ group &quot;servergroup&quot;, &quot;www1&quot;, &quot;www2&quot;, &quot;www3&quot;, &quot;memcache01&quot;, &quot;memcache02&quot;, &quot;memcache03&quot;;</code></pre>
 <p>Or with the expression syntax.</p>
-<div class="black-box"><pre class="perl">
- group &quot;servergroup&quot;, &quot;www[1..3]&quot;, &quot;memcache[01..03]&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ group &quot;servergroup&quot;, &quot;www[1..3]&quot;, &quot;memcache[01..03]&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>batch($name, @tasks)</strong></li>
+<li><strong>batch($name, @tasks)</strong></li>
 
 
 <p>With the batch function you can call tasks in a batch.</p>
-<div class="black-box"><pre class="perl">
- batch &quot;name&quot;, &quot;task1&quot;, &quot;task2&quot;, &quot;task3&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ batch &quot;name&quot;, &quot;task1&quot;, &quot;task2&quot;, &quot;task3&quot;;</code></pre>
 <p>And call it with the <em>-b</em> console parameter. <em>rex -b name</em></p>
 
-<li><div class="vspace"></div><strong><code>user($user)</code></strong></li>
+<li><strong>user($user)</strong></li>
 
 
 <p>Set the user for the ssh connection.</p>
 
-<li><div class="vspace"></div><strong><code>password($password)</code></strong></li>
+<li><strong>password($password)</strong></li>
 
 
 <p>Set the password for the ssh connection (or for the private key file).</p>
 
-<li><div class="vspace"></div><strong>auth(for =&gt; $entity, %data)</strong></li>
+<li><strong>auth(for =&gt; $entity, %data)</strong></li>
 
 
 <p>With this function you can modify/set special authentication parameters for tasks and groups. If you want to modify a task's or group's authentication you first have to create it.</p>
 <p>If you want to set special login information for a group you have to activate that feature first.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Rex -feature =&gt; 0.31; # activate setting auth for a group
   
  group frontends =&gt; &quot;web[01..10]&quot;;
@@ -252,40 +252,40 @@
  };
     
  auth for =&gt; &quot;prepare&quot; =&gt;
-                  user =&gt; &quot;root&quot;;</pre></div><div class="vspace"></div>
+                  user =&gt; &quot;root&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong><code>port($port)</code></strong></li>
+<li><strong>port($port)</strong></li>
 
 
 <p>Set the port where the ssh server is listening.</p>
 
-<li><div class="vspace"></div><strong><code>sudo_password($password)</code></strong></li>
+<li><strong>sudo_password($password)</strong></li>
 
 
 <p>Set the password for the sudo command.</p>
 
-<li><div class="vspace"></div><strong><code>timeout($seconds)</code></strong></li>
+<li><strong>timeout($seconds)</strong></li>
 
 
 <p>Set the timeout for the ssh connection and other network related stuff.</p>
 
-<li><div class="vspace"></div><strong><code>max_connect_retries($count)</code></strong></li>
+<li><strong>max_connect_retries($count)</strong></li>
 
 
 <p>Set the maximum number of connection retries.</p>
 
-<li><div class="vspace"></div><strong>get_random($count, @chars)</strong></li>
+<li><strong>get_random($count, @chars)</strong></li>
 
 
 <p>Returns a random string of $count characters on the basis of @chars.</p>
-<div class="black-box"><pre class="perl">
- my $rnd = get_random(8, 'a' .. 'z');</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ my $rnd = get_random(8, 'a' .. 'z');</code></pre>
 
-<li><div class="vspace"></div><strong><code>do_task($task)</code></strong></li>
+<li><strong>do_task($task)</strong></li>
 
 
 <p>Call $task from an other task. Will execute the given $task with the servers defined in $task.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;task1&quot;, &quot;server1&quot;, sub {
     say &quot;Running on server1&quot;;
     do_task &quot;task2&quot;;
@@ -293,19 +293,19 @@
  
  task &quot;task2&quot;, &quot;server2&quot;, sub {
     say &quot;Running on server2&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>You may also use an arrayRef for $task if you want to call multiple tasks.</p>
-<div class="black-box"><pre class="perl">
- do_task [ qw/task1 task2 task3/ ];</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ do_task [ qw/task1 task2 task3/ ];</code></pre>
 
-<li><div class="vspace"></div><strong>run_task($task_name, %option)</strong></li>
+<li><strong>run_task($task_name, %option)</strong></li>
 
 
 <p>Run a task on a given host.</p>
-<div class="black-box"><pre class="perl">
- my $return = run_task &quot;taskname&quot;, on =&gt; &quot;192.168.3.56&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ my $return = run_task &quot;taskname&quot;, on =&gt; &quot;192.168.3.56&quot;;</code></pre>
 <p>Do something on server5 if memory is less than 100 MB free on server3.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, &quot;server5&quot;, sub {
     my $free_mem = run_task &quot;get_free_mem&quot;, on =&gt; &quot;server3&quot;;
     if($free_mem &lt; 100) {
@@ -316,9 +316,9 @@
     
  task &quot;get_free_mem&quot;, sub {
      return memory-&gt;{free};
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If called without a hostname the task is run localy.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  # this task will run on server5
  task &quot;prepare&quot;, &quot;server5&quot;, sub {
     # this will call task check_something. but this task will run on localhost.
@@ -327,119 +327,121 @@
    
  task &quot;check_something&quot;, &quot;server4&quot;, sub {
     return &quot;foo&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If you want to add custom parameters for the task you can do it this way.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, &quot;server5&quot;, sub {
    run_task &quot;check_something&quot;, on =&gt; &quot;foo&quot;, params =&gt; { param1 =&gt; &quot;value1&quot;, param2 =&gt; &quot;value2&quot; };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>public_key($key)</code></strong></li>
+<li><strong>public_key($key)</strong></li>
 
 
 <p>Set the public key.</p>
 
-<li><div class="vspace"></div><strong><code>private_key($key)</code></strong></li>
+<li><strong>private_key($key)</strong></li>
 
 
 <p>Set the private key.</p>
 
-<li><div class="vspace"></div><strong>pass_auth</strong></li>
+<li><strong>pass_auth</strong></li>
 
 
 <p>If you want to use password authentication, then you need to call <em>pass_auth</em>.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  user &quot;root&quot;;
  password &quot;root&quot;;
  
- pass_auth;</pre></div><div class="vspace"></div>
+ pass_auth;</code></pre>
 
-<li><div class="vspace"></div><strong>key_auth</strong></li>
+<li><strong>key_auth</strong></li>
 
 
 <p>If you want to use pubkey authentication, then you need to call <em>key_auth</em>.</p>
-<div class="black-box"><pre class="perl">
- user &quot;root&quot;;
- password &quot;root&quot;;
+<pre><code class="perl">
+ user &quot;bob&quot;;
+ private_key &quot;/home/bob/.ssh/id_rsa&quot;; # passphrase-less key
+ public_key &quot;/home/bob/.ssh/id_rsa.pub&quot;;
  
- pass_auth;</pre></div><div class="vspace"></div>
+ 
+ key_auth;</code></pre>
 
-<li><div class="vspace"></div><strong><code>parallelism($count)</code></strong></li>
+<li><strong>parallelism($count)</strong></li>
 
 
 <p>Will execute the tasks in parallel on the given servers. $count is the thread count to be used.</p>
 
-<li><div class="vspace"></div><strong><code>set_distributor($distributor)</code></strong></li>
+<li><strong>set_distributor($distributor)</strong></li>
 
 
 <p>This sets the task distribution module. Default is &quot;Base&quot;.</p>
 <p>Possible values are: Base, Gearman</p>
 
-<li><div class="vspace"></div><strong>template_function(sub { ... })</strong></li>
+<li><strong>template_function(sub { ... })</strong></li>
 
 
 <p>This function sets the template processing function. So it is possible to change the template engine. For example to Template::Toolkit.</p>
 
-<li><div class="vspace"></div><strong>logging</strong></li>
+<li><strong>logging</strong></li>
 
 
 <p>With this function you can define the logging behaviour of (R)?ex.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Logging to a file</strong></li>
+<ul>
+<li><strong>Logging to a file</strong></li>
 
 
-<div class="black-box"><pre class="perl">
- logging to_file =&gt; &quot;rex.log&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ logging to_file =&gt; &quot;rex.log&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>Logging to syslog</strong></li>
+<li><strong>Logging to syslog</strong></li>
 
 
-<div class="black-box"><pre class="perl">
- logging to_syslog =&gt; $facility;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ logging to_syslog =&gt; $facility;</code></pre>
 
 </ul>
 
-<li><div class="vspace"></div><strong>needs($package [, @tasks])</strong></li>
+<li><strong>needs($package [, @tasks])</strong></li>
 
 
 <p>With <em>needs</em> you can define dependencies between tasks. The &quot;needed&quot; tasks will be called with the same server configuration as the calling task.</p>
 <p><em>needs</em> will not execute before, around and after hooks.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Depend on all tasks in a given package.</strong></li>
+<ul>
+<li><strong>Depend on all tasks in a given package.</strong></li>
 
 
 <p>Depend on all tasks in the package MyPkg. All tasks will be called with the server <em>server1</em>.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server1&quot;, sub {
     needs MyPkg;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>Depend on a single task in a given package.</strong></li>
+<li><strong>Depend on a single task in a given package.</strong></li>
 
 
 <p>Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task will be called with the server <em>server1</em>.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server1&quot;, sub {
     needs MyPkg &quot;uname&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 
-<li><div class="vspace"></div><strong>include Module::Name</strong></li>
+<li><strong>include Module::Name</strong></li>
 
 
 <p>Include a module without registering its tasks.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
    include qw/
       Module::One
       Module::Two
-   /;</pre></div><div class="vspace"></div>
+   /;</code></pre>
 
-<li><div class="vspace"></div><strong>environment($name =&gt; $code)</strong></li>
+<li><strong>environment($name =&gt; $code)</strong></li>
 
 
 <p>Define an environment. With environments one can use the same task for different hosts. For example if you want to use the same task on your integration-, test- and production servers.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  # define default user/password
  user &quot;root&quot;;
  password &quot;foobar&quot;;
@@ -466,23 +468,23 @@
     
  task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, sub {
      say run &quot;hostname&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>Calling this task <em>rex prepare</em> will execute on testwww01. 
 Calling this task with <em>rex -E live prepare</em> will execute on www01, www02, www03.
 Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>You can call the function within a task to get the current environment.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, sub {
     if(environment() eq &quot;dev&quot;) {
        say &quot;i'm in the dev environment&quot;;
     }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>LOCAL(&amp;)</strong></li>
+<li><strong>LOCAL(&amp;)</strong></li>
 
 
 <p>With the LOCAL function you can do local commands within a task that is defined to work on remote servers.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;mytask&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
      # this will call 'uptime' on the servers 'server1' and 'server2'
      say run &quot;uptime&quot;;
@@ -491,76 +493,76 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
      LOCAL {
         say run &quot;uptime&quot;;
      };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>path(@path)</code></strong></li>
+<li><strong>path(@path)</strong></li>
 
 
 <p>Set the execution path for all commands.</p>
-<div class="black-box"><pre class="perl">
- path &quot;/bin&quot;, &quot;/sbin&quot;, &quot;/usr/bin&quot;, &quot;/usr/sbin&quot;, &quot;/usr/pkg/bin&quot;, &quot;/usr/pkg/sbin&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ path &quot;/bin&quot;, &quot;/sbin&quot;, &quot;/usr/bin&quot;, &quot;/usr/sbin&quot;, &quot;/usr/pkg/bin&quot;, &quot;/usr/pkg/sbin&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>set($key, $value)</strong></li>
+<li><strong>set($key, $value)</strong></li>
 
 
 <p>Set a configuration parameter. These Variables can be used in templates as well.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  set database =&gt; &quot;db01&quot;;
       
  task &quot;prepare&quot;, sub {
     my $db = get &quot;database&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>Or in a template</p>
-<div class="black-box"><pre class="perl">
- DB: &lt;%= $::database %&gt;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ DB: &lt;%= $::database %&gt;</code></pre>
 
-<li><div class="vspace"></div><strong>get($key, $value)</strong></li>
+<li><strong>get($key, $value)</strong></li>
 
 
 <p>Get a configuration parameter.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  set database =&gt; &quot;db01&quot;;
       
  task &quot;prepare&quot;, sub {
     my $db = get &quot;database&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>Or in a template</p>
-<div class="black-box"><pre class="perl">
- DB: &lt;%= $::database %&gt;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ DB: &lt;%= $::database %&gt;</code></pre>
 
-<li><div class="vspace"></div><strong>before($task =&gt; sub {})</strong></li>
+<li><strong>before($task =&gt; sub {})</strong></li>
 
 
 <p>Run code before executing the specified task. 
 (if called repeatedly, each sub will be appended to a list of 'before' functions)</p>
 <p>Note: must come after the definition of the specified task</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  before mytask =&gt; sub {
    my ($server) = @_;
    run &quot;vzctl start vm$server&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>after($task =&gt; sub {})</strong></li>
+<li><strong>after($task =&gt; sub {})</strong></li>
 
 
 <p>Run code after the task is finished.
 (if called repeatedly, each sub will be appended to a list of 'after' functions)</p>
 <p>Note: must come after the definition of the specified task</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  after mytask =&gt; sub {
    my ($server, $failed) = @_;
    if($failed) { say &quot;Connection to $server failed.&quot;; }
     
    run &quot;vzctl stop vm$server&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>around($task =&gt; sub {})</strong></li>
+<li><strong>around($task =&gt; sub {})</strong></li>
 
 
 <p>Run code before and after the task is finished.
 (if called repeatedly, each sub will be appended to a list of 'around' functions)</p>
 <p>Note: must come after the definition of the specified task</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  around mytask =&gt; sub {
    my ($server, $position) = @_;
    
@@ -570,9 +572,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
    else {
       say &quot;After Task\n&quot;;
    }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>logformat($format)</code></strong></li>
+<li><strong>logformat($format)</strong></li>
 
 
 <p>You can define the logging format with the following parameters.</p>
@@ -583,26 +585,37 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>%s - The Logstring</p>
 <p>Default is: [%D] %l - %s</p>
 
-<li><div class="vspace"></div><strong>connection</strong></li>
+<li><strong>connection</strong></li>
 
 
 <p>This function returns the current connection object.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;foo&quot;, group =&gt; &quot;baz&quot;, sub {
     say &quot;Current Server: &quot; . connection-&gt;server;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>profiler</strong></li>
+<li><strong>profiler</strong></li>
 
 
 <p>Returns the profiler object for the current connection.</p>
 
-<li><div class="vspace"></div><strong><code>report($string)</code></strong></li>
+<li><strong>report($string)</strong></li>
 
-<li><div class="vspace"></div><strong>source_global_profile(0|1)</strong></li>
+<li><strong>source_global_profile(0|1)</strong></li>
 
 
-<p>If this option is set, every <code>run()</code> command will first source /etc/profile before getting executed.</p>
+<p>If this option is set, every run() command will first source /etc/profile before getting executed.</p>
+
+<li><strong>last_command_output</strong></li>
+
+
+<p>This function returns the output of the last &quot;run&quot; command.</p>
+<p>On a debian system this example will return the output of <em>apt-get install foobar</em>.</p>
+<pre><code class="perl">
+ task &quot;mytask&quot;, &quot;myserver&quot;, sub {
+    install &quot;foobar&quot;;
+    say last_command_output();
+ };</code></pre>
 
 </ul>
 

@@ -7,25 +7,25 @@
 % end
       
          <h1>Compatibility List</h1>
-         <div class="small-vspace"></div>
+         
 
          <p>(R)?ex can be executed on many platforms.</p>
 
-         <div class="small-vspace"></div>
+         
 
-         <ul class="simple-list">
+         <ul>
             <li>Linux (Debian, CentOS, Fedora, SuSE, Ubuntu, Gentoo, Mageia, Slackware, ...)</li>
             <li>*BSD (FreeBSD, NetBSD, OpenBSD)</li>
             <li>Windows (with ActiveState Perl)</li>
             <li>MacOS X (with MacPorts Perl)</li>
          </ul>
 
-         <div class="vspace"></div>
+         
 
          <h2>Manageable Platforms</h2>
 
 
-         <div class="vspace"></div>
+         
          <table border="0" class="tb-support">
             <tr>
                <td class="supported">Fully supported</td>
@@ -33,9 +33,9 @@
                <td class="not-supported">Not supported</td>
             </tr>
          </table>
-         <div class="vspace"></div>
+         
          <h2>Linux</h2>
-         <div class="vspace"></div>
+         
 
          <table border="0" class="tb-support">
             <tr>
@@ -307,12 +307,12 @@
 
          </table>
 
-         <div class="vspace"></div>
+         
          <a name="virt"></a>
          <h2>Virtualization</h2>
          <p>Virtualization was tested under following setups. To use the Virtualization Module libvirt must be installed and configured right.</p>
          <p>The virtualization module should also work on untested Linux Distributions if you setup libvirt correctly. If you run this module on a distribution not listed please feel free to post your setup on our <a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a>.</p>
-         <div class="vspace"></div>
+         
 
          <table border="0" class="tb-support">
             <tr>
@@ -359,11 +359,11 @@
          </table>
 
 
-         <div class="vspace"></div>
+         
 
-         <div class="vspace"></div>
+         
          <h2>Solaris</h2>
-         <div class="vspace"></div>
+         
 
          <table border="0" class="tb-support">
             <tr>
@@ -450,9 +450,9 @@
          </table>
 
             
-         <div class="vspace"></div>
+         
          <h2>BSD</h2>
-         <div class="vspace"></div>
+         
 
          <table border="0" class="tb-support">
             <tr>

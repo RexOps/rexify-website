@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Commands::File - Transparent File Manipulation';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can manipulate files.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,39 +11,39 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::File - Transparent File Manipulation</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manipulate files.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  task &quot;read-passwd&quot;, &quot;server01&quot;, sub {
     my $fh = file_read &quot;/etc/passwd&quot;;
     for my $line = ($fh-&gt;read_all) {
        print $line;
     }
     $fh-&gt;close;
- };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+ };</code></pre>
+<pre><code class="perl">
  task &quot;read-passwd2&quot;, &quot;server01&quot;, sub {
     say cat &quot;/etc/passwd&quot;;
  };
@@ -73,22 +73,22 @@
     mode   =&gt; 400,
     on_change =&gt; sub { say &quot;File was changed.&quot;; };
  
-=head1 EXPORTED FUNCTIONS</pre></div><div class="vspace"></div>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>template($file, @params)</strong></li>
+=head1 EXPORTED FUNCTIONS</code></pre>
+<ul>
+<li><strong>template($file, @params)</strong></li>
 
 
 <p>Parse a template and return the content.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my $content = template(&quot;/files/templates/vhosts.tpl&quot;, 
                      name =&gt; &quot;test.lan&quot;,
-                     webmaster =&gt; 'webmaster@test.lan');</pre></div><div class="vspace"></div>
+                     webmaster =&gt; 'webmaster@test.lan');</code></pre>
 
-<li><div class="vspace"></div><strong>file($file_name, %options)</strong></li>
+<li><strong>file($file_name, %options)</strong></li>
 
 
 <p>This function is the successor of <em>install file</em>. Please use this function to upload files to you server.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
     file &quot;/file/on/remote/machine&quot;,
        source =&gt; &quot;/file/on/local/machine&quot;;
@@ -106,15 +106,15 @@
     file &quot;/etc/httpd/conf/httpd.conf&quot;,
        source =&gt; &quot;/files/etc/httpd/conf/httpd.conf&quot;,
        on_change =&gt; sub { service httpd =&gt; &quot;restart&quot;; };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages.</p>
 
-<li><div class="vspace"></div><strong><code>file_write($file_name)</code></strong></li>
+<li><strong>file_write($file_name)</strong></li>
 
 
 <p>This function opens a file for writing (it will truncate the file if it already exists). It returns a Rex::FS::File object on success.</p>
 <p>On failure it will die.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my $fh;
  eval {
     $fh = file_write(&quot;/etc/groups&quot;);
@@ -128,16 +128,16 @@
  
  # work with the filehandle
  $fh-&gt;write(&quot;...&quot;);
- $fh-&gt;close;</pre></div><div class="vspace"></div>
+ $fh-&gt;close;</code></pre>
 
-<li><div class="vspace"></div><strong><code>file_append($file_name)</code></strong></li>
+<li><strong>file_append($file_name)</strong></li>
 
-<li><div class="vspace"></div><strong><code>file_read($file_name)</code></strong></li>
+<li><strong>file_read($file_name)</strong></li>
 
 
 <p>This function opens a file for reading. It returns a Rex::FS::File object on success.</p>
 <p>On failure it will die.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my $fh;
  eval {
     $fh = read(&quot;/etc/groups&quot;);
@@ -151,61 +151,61 @@
  
  # work with the filehandle
  my $content = $fh-&gt;read_all;
- $fh-&gt;close;</pre></div><div class="vspace"></div>
+ $fh-&gt;close;</code></pre>
 
-<li><div class="vspace"></div><strong><code>cat($file_name)</code></strong></li>
+<li><strong>cat($file_name)</strong></li>
 
 
 <p>This function returns the complete content of $file_name as a string.</p>
-<div class="black-box"><pre class="perl">
- print cat &quot;/etc/passwd&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ print cat &quot;/etc/passwd&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>delete_lines_matching($file, $regexp)</strong></li>
+<li><strong>delete_lines_matching($file, $regexp)</strong></li>
 
 
 <p>Delete lines that match $regexp in $file.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;clean-logs&quot;, sub {
      delete_lines_matching &quot;/var/log/auth.log&quot; =&gt; &quot;root&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>append_if_no_such_line($file, $new_line, @regexp)</strong></li>
+<li><strong>append_if_no_such_line($file, $new_line, @regexp)</strong></li>
 
 
 <p>Append $new_line to $file if none in @regexp is found. If no regexp is
 supplied, the line is appended unless there already an identical line
 in $file.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;add-group&quot;, sub {
     append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, on_change =&gt; sub { service sshd =&gt; &quot;restart&quot;; };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>extract($file [, %options])</strong></li>
+<li><strong>extract($file [, %options])</strong></li>
 
 
 <p>This function extracts a file. Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task prepare =&gt; sub {
     extract &quot;/tmp/myfile.tar.gz&quot;,
       owner =&gt; &quot;root&quot;,
       group =&gt; &quot;root&quot;,
-      to    =&gt; &quot;/etc&quot;;</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+      to    =&gt; &quot;/etc&quot;;</code></pre>
+<pre><code class="perl">
     extract &quot;/tmp/foo.tgz&quot;,
       type =&gt; &quot;tgz&quot;,
       mode =&gt; &quot;g+rwX&quot;;
  };
  
-Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</pre></div><div class="vspace"></div>
+Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</code></pre>
 
-<li><div class="vspace"></div><strong>sed($search, $replace, $file)</strong></li>
+<li><strong>sed($search, $replace, $file)</strong></li>
 
 
 <p>Search some string in a file and replace it.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task sar =&gt; sub {
     sed qr{search}, &quot;replace&quot;, &quot;/var/log/auth.log&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

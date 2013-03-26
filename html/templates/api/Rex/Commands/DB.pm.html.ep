@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Rex::Commands::DB - Simple Database Access';
+% title '';
 
 % content_for header => begin
       <meta name="description" content="">
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::DB - Simple Database Access</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This module gives you simple access to a database. Currently <em>select</em>, <em>delete</em>, <em>insert</em> and <em>update</em> is supported.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::DB {
                            dsn      =&gt; &quot;DBI:mysql:database=test;host=dbhost&quot;,
                            user     =&gt; &quot;username&quot;,
@@ -68,17 +68,17 @@
                  where =&gt; &quot;id &lt; 5&quot;,
               };
            
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>db</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>db</strong></li>
 
 
 <p>Do a database action.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my @data = db select =&gt; {
                fields =&gt; &quot;*&quot;,
                from   =&gt; &quot;table&quot;,
@@ -101,7 +101,7 @@
              
  db delete =&gt; &quot;table&quot;, {
                where =&gt; &quot;id &lt; 5&quot;,
-            };</pre></div><div class="vspace"></div>
+            };</code></pre>
 
 </ul>
 

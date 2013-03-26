@@ -63,6 +63,7 @@
          <h1>Additional Documentation</h1>
          <ul class="simple-list">
             <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
+            <li><a href="/howtos/compatibility.html">Rex Compatibility List</a></li>
          </ul>
 
 
@@ -79,7 +80,7 @@
 
          <h1>User Contributed Documentation</h1>
          <ul class="simple-list">
-            <li style="background-image: url(/images/fr.gif); background-repeat: no-repeat; padding-left: 30px;"><a href="french.html">en français</a> (many thanks to Gilles Gaudin and Olivier Raginel)</li>
+            <li style="background-image: url(/img/fr.gif); background-repeat: no-repeat; padding-left: 30px;"><a href="french.html">en français</a> (many thanks to Gilles Gaudin and Olivier Raginel)</li>
          </ul>
 
          <div class="vspace"></div>

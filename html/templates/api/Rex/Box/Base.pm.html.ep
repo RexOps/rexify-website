@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Box::Base - Rex/Boxes Base Module';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="This is a Rex/Boxes base module.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,94 +11,94 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#methods">METHODS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Box::Base - Rex/Boxes Base Module</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This is a Rex/Boxes base module.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>METHODS</h1>
+
+<h2>METHODS</h2>
 <p>These methods are shared across all other Rex::Box modules.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>info</strong></li>
+<ul>
+<li><strong>info</strong></li>
 
 
 <p>Returns a hashRef of vm information.</p>
 
-<li><div class="vspace"></div><strong><code>name($vmname)</code></strong></li>
+<li><strong>name($vmname)</strong></li>
 
 
 <p>Sets the name of the virtual machine.</p>
 
-<li><div class="vspace"></div><strong><code>setup(@tasks)</code></strong></li>
+<li><strong>setup(@tasks)</strong></li>
 
 
 <p>Sets the tasks that should be executed as soon as the VM is available throu SSH.</p>
 
-<li><div class="vspace"></div><strong><code>import_vm()</code></strong></li>
+<li><strong>import_vm()</strong></li>
 
 
 <p>This method must be overwriten by the implementing class.</p>
 
-<li><div class="vspace"></div><strong><code>stop()</code></strong></li>
+<li><strong>stop()</strong></li>
 
 
 <p>Stops the VM.</p>
 
-<li><div class="vspace"></div><strong><code>start()</code></strong></li>
+<li><strong>start()</strong></li>
 
 
 <p>Starts the VM.</p>
 
-<li><div class="vspace"></div><strong><code>ip()</code></strong></li>
+<li><strong>ip()</strong></li>
 
 
 <p>Return the ip:port to which rex will connect to.</p>
 
-<li><div class="vspace"></div><strong><code>status()</code></strong></li>
+<li><strong>status()</strong></li>
 
 
 <p>Returns the status of a VM.</p>
 <p>Valid return values are &quot;running&quot; and &quot;stopped&quot;.</p>
 
-<li><div class="vspace"></div><strong><code>provision_vm([@tasks])</code></strong></li>
+<li><strong>provision_vm([@tasks])</strong></li>
 
 
 <p>Execute's the given tasks on the VM.</p>
 
-<li><div class="vspace"></div><strong><code>cpus($count)</code></strong></li>
+<li><strong>cpus($count)</strong></li>
 
 
 <p>Set the amount of CPUs for the VM.</p>
 
-<li><div class="vspace"></div><strong><code>memory($memory_size)</code></strong></li>
+<li><strong>memory($memory_size)</strong></li>
 
 
 <p>Sets the memory of a VM in megabyte.</p>
 
-<li><div class="vspace"></div><strong><code>network(%option)</code></strong></li>
+<li><strong>network(%option)</strong></li>
 
 
 <p>Configure the network for a VM.</p>
 <p>Currently it supports 2 modes. <em>nat</em> and <em>bridged</em>. Currently it supports only one network card.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  $box-&gt;network(
     1 =&gt; {
        type =&gt; &quot;nat&quot;,
@@ -110,24 +110,24 @@
        type =&gt; &quot;bridged&quot;,
        bridge =&gt; &quot;eth0&quot;,
     },
- );</pre></div><div class="vspace"></div>
+ );</code></pre>
 
-<li><div class="vspace"></div><strong><code>url($url)</code></strong></li>
+<li><strong>url($url)</strong></li>
 
 
 <p>The URL where to download the Base VM Image. You can use self-made images or prebuild images from <a href="http://box.rexify.org/.">http://box.rexify.org/.</a></p>
 
-<li><div class="vspace"></div><strong><code>auth(%option)</code></strong></li>
+<li><strong>auth(%option)</strong></li>
 
 
 <p>Configure the authentication to the VM.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  $box-&gt;auth(
     user =&gt; $user,
     password =&gt; $password,
     private_key =&gt; $private_key,
     public_key =&gt; $public_key,
- );</pre></div><div class="vspace"></div>
+ );</code></pre>
 
 </ul>
 

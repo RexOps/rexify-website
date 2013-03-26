@@ -14,12 +14,6 @@ use Data::Dumper;
 use lib 'lib';
 use lib 'vendor/perl';
 
-use DBIx::ORMapper;
-use DBIx::ORMapper::Connection::Server::MySQL;
-use DBIx::ORMapper::DM;
-
-use FeatureRequest;
-
 my $config = {};
 
 if(-f "./config.pl") {
@@ -36,93 +30,10 @@ else {
 
 plugin 'RenderFile';
 
-DBIx::ORMapper::setup(default => "MySQL://" . $config->{database}->{server} . "/" 
-                                            . $config->{database}->{schema} . 
-                               "?username=" . $config->{database}->{username}  .
-                               "&password=" . $config->{database}->{password}
-);
-
-eval {
-   my $db = DBIx::ORMapper::get_connection("default");
-   $db->connect;
-
-   FeatureRequest->set_data_source($db);
-} or do {
-   die "Can't connect to database: $@";
-};
-
-sub get_random {
-	my $count = shift;
-	my @chars = @_;
-	
-	srand();
-	my $ret = "";
-	for(1..$count) {
-		$ret .= $chars[int(rand(scalar(@chars)-1))];
-	}
-	
-	return $ret;
-}
-
 get '/' => sub {
    my ($self) = @_;
-   $self->render("index");
-};
-
-get '/feature.html' => sub {
-   my ($self) = @_;
-
-   my @op = ('+', '-');
-   $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
-
-   my $wishes = FeatureRequest->all;
-
-   my $posted = $self->param("posted")?"Your feature request has been posted successfully.":"";
-   $self->render("feature", wishes => $wishes, question => $self->session->{question}, email => "", feature => "", error => 0, posted => $posted, no_disqus => 1);
-};
-
-post '/feature.html' => sub {
-   my ($self) = @_;
-
-   my $wishes = FeatureRequest->all;
-
-   my @error = ();
-
-   my $answer = eval $self->session->{question};
-   if($self->param("question") ne $answer) {
-      push(@error, "The magic answer is wrong. Please try again.");
-   }
-
-   if(! $self->param("feature")) {
-      push(@error, "Please fill out the feature field.");
-   }
-
-   if(! @error) {
-
-      my $new_wish = FeatureRequest->new(
-         created => DateTime->now,
-         email   => $self->param("email")   || "<not given>",
-         feature => $self->param("feature") || "<not given>",
-      );
-
-      $new_wish->save;
-
-      return $self->redirect_to('/feature.html?posted=1');
-   }
-   else {
-      my @op = ('+', '-');
-      $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
-
-      $self->render("feature", 
-                        wishes   => $wishes, 
-                        question => $self->session->{question}, 
-                        email    => $self->param("email"), 
-                        feature  => $self->param("feature"), 
-                        error    => \@error, 
-                        posted   => 0,
-                        no_disqus => 1,
-      );
-   }
+   $self->stash("no_side_bar", 0);
+   $self->render("index", root => 1, cat => "", no_disqus => 1);
 };
 
 # special code to handle ,,rexify --search'' requests
@@ -195,20 +106,31 @@ get '/*file' => sub {
 
    my $template = $self->param("file");
 
+   my ($cat) = ($template =~ m/^([^\/]+)\//);
+   $cat ||= "";
+   $self->stash("cat", $cat);
+
+   if($template eq "howtos/compatibility.html") {
+      $self->stash("no_side_bar", 1);
+   }
+   else {
+      $self->stash("no_side_bar", 0);
+   }
+
    if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template", no_disqus => 0);
+      return $self->render_file(filepath => "public/$template", no_disqus => 0, root => 0);
    }
 
    if(-d "templates/$template") {
-      return $self->redirect_to("$template/index.html");
+      return $self->redirect_to("$template/index.html", root => 0);
    }
 
    if(-f "templates/$template.ep") {
       $template =~ s/\.html$//;
-      $self->render($template, no_disqus => 0);
+      $self->render($template, no_disqus => 0, root => 0);
    }
    else {
-      $self->render('404', status => 404, no_disqus => 1);
+      $self->render('404', status => 404, no_disqus => 1, root => 0);
    }
 
 };
@@ -279,37 +201,7 @@ __DATA__
 <h1>404 - I'm really sorry :(</h1>
 <p>Hello. I'm a Webserver. And i'm there to serve files for you. But i'm really sorry :( I can't find the file you want to see.</p>
 
-@@ navigation.html.ep
-
-nav
-
-@@ layouts/frontpage.html.ep
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   
-      <title><%= title %></title>
-
-      <meta name="viewport" content="width=1024, initial-scale=0.5">
-
-      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
-      <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20130325" type="text/css" media="screen" charset="utf-8" />
-
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
-      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
-
-   </head>
-   <body>
-
-      <div id="page">
-
-         <div id="top-div">
-            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
-         </div>
+@@ index_head.html.ep
 
          <div id="head-div">
             <div class="head_container">
@@ -317,7 +209,7 @@ nav
                   <h1>Automate Everything, Relax Anytime</h1>
                   <div class="slogan_list">
                      <ul>
-                        <li>&gt; Integrated seamless in your running Environment</li>
+                        <li>&gt; Integrates seamless in your running Environment</li>
                         <li>&gt; Easy to use and extend</li>
                         <li>&gt; Easy to learn, it's just plain Perl</li>
                         <li>&gt; Apache 2.0 Licensed</li>
@@ -336,24 +228,89 @@ nav
             </div> <!-- head_container -->
          </div>
 
-         <div id="nav-div">
-            <div class="nav_title">
-               <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
-            </div>
-            <div class="nav_links">
+
+
+@@ navigation.html.ep
+
+             <div class="nav_links">
                <ul>
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Get Rex</a></li>
-                  <li><a href="#">Contribute</a></li>
-                  <li><a href="#">Docs</a></li>
-                  <li><a href="#">API</a></li>
+                  <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
+                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get">Get Rex</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute">Contribute</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos">Docs</a></li>
+                  <li <% if($cat eq "api") { %>class="active" <% } %>><a href="/api">API</a></li>
                </ul>
             </div>
+
+@@ layouts/default.html.ep
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   
+      <title><%= title %></title>
+
+      <meta name="viewport" content="width=1024, initial-scale=0.5">
+
+      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20130325" type="text/css" media="screen" charset="utf-8" />
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
+      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
+
+      <style>
+      % if($no_side_bar) {
+         #content_container {
+            margin-left: 5px;
+         }
+
+         #widgets {
+            display: none;
+         }
+      % }
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+      % if($root) {
+         <div id="index-top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
          </div>
+
+         %= include 'index_head';
+         <div class="nav_title">
+            <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
+         </div>
+
+         <div id="index-nav-div">
+            %= include 'navigation';
+         </div>
+      % } else {
+         <div id="top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               %= include 'navigation';
+            </div>
+         </div>
+      % }
 
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+               <div class="news_widget">
+                  <div class="news_date">2013-03-20</div>
+                  <div class="news_content">
+                     <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
+                     <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
+                  </div>
+               </div>
+
                <div class="news_widget">
                   <div class="news_date">2013-03-16</div>
                   <div class="news_content">Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</div>
@@ -376,17 +333,40 @@ nav
                <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
                <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
 
-               <h2>Awards</h2>
-               <img src="/img/init_mittelstand.png" style="float: left;" />
-               <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
-
-<p>Inovex is an owner-managed IT project company employing over 120 people at its four sites in Pforzheim, Karlsruhe, Munich and Cologne. Our excellent IT engineers and architects support IT departments in large companies and Internet firms with their expertise at managing the crucial tasks that occur in Internet environments. Inovex helps leading internet companies, like 1&1 Internet AG (WEB.DE, GMX), buch.de and maxdome, IT departments in traditional industry (such as Bosch, Daimler, Porsche and Volkswagen) and other leading industrial companies like EnBW or DB Schenker, to deal with their IT challenges.</p>
+               <h2>Need Help?</h2>
+               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
+               <ul>
+                  <li>IRC: #rex on freenode</li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
+                  <li>Issues: <a href="https://github.com/Krimdomu/Rex/issues">on Github</a></li>
+                  <li>Feature: You miss a <a href="/feature.html">feature</a>?</li>
+               </ul>
             </div>
          </div> <!-- widgets -->
 
          <div id="content_container">
             <div id="content">
                <%= content %>
+
+ % if( ! $no_disqus) {
+
+    <div id="disqus_thread" style="margin-top: 45px;"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    % }
+
             </div>
          </div> <!-- content -->
 
@@ -397,7 +377,8 @@ nav
 
 
 
-   <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
 
 <!-- Piwik --> 
 <script type="text/javascript">

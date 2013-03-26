@@ -9,22 +9,14 @@
          <h1>Use a INI-style groups file</h1>
          <p>To use a INI-style groups file you can use the <i>groups_file</i> function. It will read in the ini file you provide as a parameter, after which you can use it as if you defined groups as usual in your rex file.</p>
 
-         <div class="black-box">
-            <pre class="perl">
-use Rex::Group::Lookup::INI;
+            <pre><code class="perl">use Rex::Group::Lookup::INI;
+groups_file "file.ini";</code></pre>
 
-groups_file "file.ini";
-            </pre>
-
-         </div>
-
-         <div class="small-vspace"></div>
+         
 
          <p>And this is an example of a INI-style groups file:</p>
 
-         <div class="black-box">
-            <pre class="perl">
-; my group file
+            <pre><code class="perl">; my group file
 [frontends]
 fe01
 fe02
@@ -41,7 +33,4 @@ be02
 be04
 
 [db]
-db[01..02]
-            </pre>
-
-         </div>
+db[01..02] </code></pre>

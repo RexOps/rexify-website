@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Rex::Commands::Rsync - Simple Rsync Frontend';
+% title '';
 
 % content_for header => begin
       <meta name="description" content="">
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -20,73 +20,73 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Rsync - Simple Rsync Frontend</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can sync 2 directories via the <em>rsync</em> command.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DEPENDENCIES</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Expect</strong></li>
+
+<h2>DEPENDENCIES</h2>
+<ul>
+<li><strong>Expect</strong></li>
 
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Rsync;
  
- sync &quot;dir1&quot;, &quot;dir2&quot;;</pre></div><div class="vspace"></div>
+ sync &quot;dir1&quot;, &quot;dir2&quot;;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>sync($source, $dest, $opts)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>sync($source, $dest, $opts)</strong></li>
 
 
 <p>This function executes rsync to sync $source and $dest.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>UPLOAD - Will upload all from the local directory <em>html</em> to the remote directory <em>/var/www/html</em>.</strong></li>
+<ul>
+<li><strong>UPLOAD - Will upload all from the local directory <em>html</em> to the remote directory <em>/var/www/html</em>.</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;sync&quot;, &quot;server01&quot;, sub {
     sync &quot;html/*&quot;, &quot;/var/www/html&quot;, {
       exclude =&gt; &quot;*.sw*&quot;,
       parameters =&gt; '--backup --delete',
     };
- };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+ };</code></pre>
+<pre><code class="perl">
  task &quot;sync&quot;, &quot;server01&quot;, sub {
     sync &quot;html/*&quot;, &quot;/var/www/html&quot;, {
       exclude =&gt; [&quot;*.sw*&quot;, &quot;*.tmp&quot;],
       parameters =&gt; '--backup --delete',
     };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>DOWNLOAD - Will download all from the remote directory <em>/var/www/html</em> to the local directory <em>html</em>.</strong></li>
+<li><strong>DOWNLOAD - Will download all from the remote directory <em>/var/www/html</em> to the local directory <em>html</em>.</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;sync&quot;, &quot;server01&quot;, sub {
     sync &quot;/var/www/html/*&quot;, &quot;html/&quot;, {
       download =&gt; 1,
       parameters =&gt; '--backup',
     };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

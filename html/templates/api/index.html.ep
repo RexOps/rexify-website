@@ -10,7 +10,7 @@
 
          <div class="vspace"></div>
 
-         <h1>Rex</h1>
+         <h2>Rex</h2>
          <ul class="simple-list">
             <li><a href="Rex.pm.html">Rex.pm</a></li>
             <li><a href="Rex/Commands.pm.html">Commands.pm</a></li>
@@ -23,13 +23,13 @@
 
          <div class="vspace"></div>
 
-         <h1>Rex::FS</h1>
+         <h2>Rex::FS</h2>
          <ul class="simple-list">
             <li><a href="Rex/FS/File.pm.html">File.pm</a></li>
          </ul>
 
          <div class="vspace"></div>
-         <h1>Rex::Commands</h1>
+         <h2>Rex::Commands</h2>
          <ul class="simple-list">
             <li><a href="Rex/Commands/Box.pm.html">Box.pm</a></li>
             <li><a href="Rex/Commands/Cloud.pm.html">Cloud.pm</a></li>
@@ -63,14 +63,14 @@
 
 
          <div class="vspace"></div>
-         <h1>Rex::Virtualization</h1>
+         <h2>Rex::Virtualization</h2>
          <ul class="simple-list">
             <li><a href="Rex/Virtualization/VBox.pm.html">VBox.pm</a></li>
             <li><a href="Rex/Virtualization/LibVirt.pm.html">LibVirt.pm</a></li>
          </ul>
 
          <div class="vspace"></div>
-         <h1>Rex::Box</h1>
+         <h2>Rex::Box</h2>
          <ul class="simple-list">
             <li><a href="Rex/Box/Base.pm.html">Base.pm</a></li>
             <li><a href="Rex/Box/VBox.pm.html">VBox.pm</a></li>
@@ -91,7 +91,7 @@
          </ul>
 
          <div class="vspace"></div>
-         <h1>Rex::Apache::Build</h1>
+         <h2>Rex::Apache::Build</h2>
          <ul class="simple-list">
             <li><a href="Rex/Apache/Build/rpm.pm.html">rpm.pm</a></li>
             <li><a href="Rex/Apache/Build/deb.pm.html">deb.pm</a></li>
@@ -99,7 +99,7 @@
          </ul>
 
          <div class="vspace"></div>
-         <h1>Rex::Apache::Deploy</h1>
+         <h2>Rex::Apache::Deploy</h2>
          <ul class="simple-list">
             <li><a href="Rex/Apache/Deploy/Git.pm.html">Git.pm</a></li>
             <li><a href="Rex/Apache/Deploy/Symlink.pm.html">Symlink.pm</a></li>
@@ -107,7 +107,7 @@
          </ul>
 
          <div class="vspace"></div>
-         <h1>Rex::Apache::Deploy::Package</h1>
+         <h2>Rex::Apache::Deploy::Package</h2>
          <ul class="simple-list">
             <li><a href="Rex/Apache/Deploy/Package/rpm.pm.html">rpm.pm</a></li>
             <li><a href="Rex/Apache/Deploy/Package/deb.pm.html">deb.pm</a></li>

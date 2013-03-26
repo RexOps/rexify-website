@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Commands::Virtualization - Virtualization module';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can manage your virtualization.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,14 +11,14 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 	<li><a href="#examples">EXAMPLES</a></li>
-	<ul class="simple-list">
+	<ul>
 
 		<li><a href="#creating_a_virtual_machine">Creating a Virtual Machine</a></li>
 		<li><a href="#start_stop_destroy">Start/Stop/Destroy</a></li>
@@ -30,31 +30,31 @@
 
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Virtualization - Virtualization module</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage your virtualization.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Virtualization;
     
  set virtualization =&gt; &quot;LibVirt&quot;;
  set virtualization =&gt; &quot;VBox&quot;;
     
- use Data::Dumper;</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+ use Data::Dumper;</code></pre>
+<pre><code class="perl">
  print Dumper vm list =&gt; &quot;all&quot;;
  print Dumper vm list =&gt; &quot;running&quot;;
     
@@ -83,13 +83,13 @@
          }   
       ];  
        
- print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</pre></div><div class="vspace"></div>
+ print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>vm($action =&gt; $name, %option)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>vm($action =&gt; $name, %option)</strong></li>
 
 
 <p>This module exports only the <em>vm</em> function. You can manage everything with this function.</p>
@@ -97,14 +97,14 @@
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXAMPLES</h1>
+
+<h2>EXAMPLES</h2>
 <p>
 </p>
 <h2><a name="creating_a_virtual_machine">Creating a Virtual Machine</a></h2>
 <p>Create a (VirtualBox) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
 With a cdrom as an iso image and a natted network. The bootorder is set to &quot;dvd&quot;.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       storage     =&gt; [
          {   
@@ -118,10 +118,10 @@ With a cdrom as an iso image and a natted network. The bootorder is set to &quot
       memory =&gt; 512,
       type =&gt; &quot;Linux26&quot;, 
       cpus =&gt; 1,
-      boot =&gt; &quot;dvd&quot;;</pre></div><div class="vspace"></div>
+      boot =&gt; &quot;dvd&quot;;</code></pre>
 <p>Create a (KVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
 With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to &quot;cdrom&quot;.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       boot =&gt; &quot;cdrom&quot;,
       storage     =&gt; [
@@ -133,9 +133,9 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
          {
             file     =&gt; &quot;/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso&quot;,
          },
-      ];</pre></div><div class="vspace"></div>
+      ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       memory   =&gt; 512*1024,
       cpus     =&gt; 1,      
@@ -187,9 +187,9 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
                function =&gt; &quot;0x0&quot;,
             },
          },
-      ];</pre></div><div class="vspace"></div>
+      ];</code></pre>
 <p>Create a (Xen/HVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       type   =&gt; &quot;hvm&quot;,
       storage     =&gt; [
@@ -197,9 +197,9 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             file     =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
             template =&gt; &quot;/mnt/data/libvirt/images/svn01.img&quot;,                                                                           
          },
-      ];</pre></div><div class="vspace"></div>
+      ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       memory =&gt; 512*1024,
       cpus   =&gt; 1,
@@ -229,9 +229,9 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             bridge  =&gt; &quot;virbr0&quot;,
          },
       ],
-      type =&gt; &quot;hvm&quot;;</pre></div><div class="vspace"></div>
+      type =&gt; &quot;hvm&quot;;</code></pre>
 <p>Create a (Xen/PVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size).</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       type   =&gt; &quot;pvm&quot;,
       storage     =&gt; [
@@ -244,9 +244,9 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             file   =&gt; &quot;/mnt/data/libvirt/images/domains/vm01/swap.img&quot;,
             dev    =&gt; &quot;xvda1&quot;,
          },
-      ];</pre></div><div class="vspace"></div>
+      ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm create =&gt; &quot;vm01&quot;,
       type   =&gt; &quot;pvm&quot;,
       memory =&gt; 512*1024,
@@ -283,42 +283,42 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
          {  type    =&gt; &quot;bridge&quot;,
             bridge  =&gt; &quot;virbr0&quot;,
          },
-      ];</pre></div><div class="vspace"></div>
+      ];</code></pre>
 <p>
 </p>
 <h2><a name="start_stop_destroy">Start/Stop/Destroy</a></h2>
 <p>Start a stopped vm</p>
-<div class="black-box"><pre class="perl">
- vm start =&gt; &quot;name&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm start =&gt; &quot;name&quot;;</code></pre>
 <p>Stop a running vm (send shutdown signal)</p>
-<div class="black-box"><pre class="perl">
- vm shutdown =&gt; &quot;name&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm shutdown =&gt; &quot;name&quot;;</code></pre>
 <p>Hard Stop a running vm</p>
-<div class="black-box"><pre class="perl">
- vm destroy =&gt; &quot;name&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm destroy =&gt; &quot;name&quot;;</code></pre>
 <p>
 </p>
 <h2><a name="delete">Delete</a></h2>
-<div class="black-box"><pre class="perl">
- vm delete =&gt; &quot;name&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm delete =&gt; &quot;name&quot;;</code></pre>
 <p>
 </p>
 <h2><a name="modifying_a_vm">Modifying a VM</a></h2>
 <p>Currently you can only modify the memory.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  vm option =&gt; &quot;name&quot;,
          max_memory =&gt; 1024*1024, # in bytes
-         memory     =&gt; 512*1024;</pre></div><div class="vspace"></div>
+         memory     =&gt; 512*1024;</code></pre>
 <p>
 </p>
 <h2><a name="request_information_of_a_vm">Request information of a vm</a></h2>
-<div class="black-box"><pre class="perl">
- vm info =&gt; &quot;name&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm info =&gt; &quot;name&quot;;</code></pre>
 <p>
 </p>
 <h2><a name="request_info_from_the_underlying_hypervisor">Request info from the underlying hypervisor</a></h2>
-<div class="black-box"><pre class="perl">
- vm hypervisor =&gt; &quot;capabilities&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
 
 
 

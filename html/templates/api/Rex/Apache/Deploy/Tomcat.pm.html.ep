@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Apache::Deploy::Tomcat - Deploy application to tomcat 6.';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can deploy WAR archives to Tomcat. Currently it works with Tomcat 6.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#functions">FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Apache::Deploy::Tomcat - Deploy application to tomcat 6.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can deploy WAR archives to Tomcat. Currently it works with Tomcat 6.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Apache::Deploy qw/Tomcat/;
    
  context_path &quot;/myapp&quot;;
@@ -46,17 +46,17 @@
        username =&gt; &quot;manager&quot;,
        password =&gt; &quot;manager&quot;,
        port     =&gt; 8080;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>deploy($file, %option)</strong></li>
+
+<h2>FUNCTIONS</h2>
+<ul>
+<li><strong>deploy($file, %option)</strong></li>
 
 
 <p>This function deploys the given WAR archive. For that it will connect to the Tomcat manager. You have to define username and password for the Tomcat manager in the %option hash. If the Tomcat manager isn't available under its default location /manager you can also define the location with the <em>manager_url</em> option.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;dodeploy&quot;, &quot;tc01&quot;, &quot;tc02&quot;, sub {
     deploy &quot;myapp.war&quot;,
        username     =&gt; &quot;manager&quot;,
@@ -64,14 +64,14 @@
        manager_url  =&gt; &quot;_manager&quot;,
        port         =&gt; 8080,
        context_path =&gt; &quot;/foo&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>context_path($path)</code></strong></li>
+<li><strong>context_path($path)</strong></li>
 
 
 <p>This function sets the context path for the application that gets deployed. This is a global setting. If you want to specify a custom context path for your application you can also do this as an option for the <em>deploy</em> function.</p>
-<div class="black-box"><pre class="perl">
- context_path &quot;/myapp&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ context_path &quot;/myapp&quot;;</code></pre>
 
 </ul>
 

@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Virtualization::LibVirt - LibVirt Virtualization Module';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can manage LibVirt.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,31 +11,31 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Virtualization::LibVirt - LibVirt Virtualization Module</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage LibVirt.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Virtualization;
     
  set virtualization =&gt; &quot;LibVirt&quot;;
@@ -68,7 +68,7 @@
          }   
       ];  
        
- print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</pre></div><div class="vspace"></div>
+ print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
 
 
 

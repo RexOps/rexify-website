@@ -1,4 +1,4 @@
-% layout 'frontpage';
+% layout 'default';
 % title '(R)?ex - A simple framework to simplify systemadministration and datacenter automation';
 
 
@@ -30,10 +30,10 @@ automate it!</p>
       <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
    </div><!--/span-->
    <div class="span4">
-      <p><a class="btn" href="#">Just enough Perl for Rex &raquo;</a></p>
+      <p><a class="btn" href="/howtos/perl.html">Just enough Perl for Rex &raquo;</a></p>
    </div><!--/span-->
    <div class="span4">
-      <p><a class="btn" href="#">View details &raquo;</a></p>
+      <p><a class="btn" href="/contribute">View details &raquo;</a></p>
    </div><!--/span-->
 </div><!--/row-->
 
@@ -72,15 +72,15 @@ desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
    prepare();
 
-   file "/etc/httpd/conf/httpd.conf",
-        source    =&gt; "files/etc/httpd/conf/httpd.conf",
-        on_change =&gt; sub { service httpd =&gt; "reload"; };
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
 
 <h2>Running under sudo?</h2>
 <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
-<pre><code class="perl">user "root";
+<pre><code class="perl">user "ubuntu";
 group "frontend" =&gt; "frontend[01..05]";
 sudo TRUE;
 
@@ -93,9 +93,9 @@ desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
    prepare();
 
-   file "/etc/httpd/conf/httpd.conf",
-        source    =&gt; "files/etc/httpd/conf/httpd.conf",
-        on_change =&gt; sub { service httpd =&gt; "reload"; };
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
 

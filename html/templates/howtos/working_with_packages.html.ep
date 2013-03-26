@@ -10,95 +10,81 @@
 
 <p>If you want to install or remove packages on your server Rex gives you a few functions to do this. Rex tries to guess the right package provider based on the platform Rex connects to.</p>
 
-<div class="small-vspace"></div>
+
 
 <p>If you want to use a special package provider (for example, if you're using SunOS and want to use OpenCSW) you can define the package provider with <i>package_provider_for $os =&gt; $provider_name</i>.</p>
 
-<div class="vspace"></div>
-<h1>Installing a Package</h1>
+
+<h2>Installing a Package</h2>
 
 <p>To install a package you can use the <i>install</i> function.</p>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server1", sub {
+   <pre><code class="perl">task "prepare", "server1", sub {
    install "apache2";
-};</pre>
-</div>
+};</code></pre>
 
-<div class="small-vspace"></div>
+
 
 <p>If you want to install multiple packages you can do it by providing an array reference.</p>
-<div class="black-box">
-   <pre class="perl">task "prepare", "server1", sub {
+   <pre><code class="perl">task "prepare", "server1", sub {
    install [ qw/apache2 vim php5/ ];
-};</pre>
-</div>
+};</code></pre>
 
-<div class="small-vspace"></div>
+
 <p>If you want to install a special version of a package you just need to specify the <i>version</i> option.</p>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server1", sub {
+   <pre><code class="perl">task "prepare", "server1", sub {
    install "apache2", version =&gt; "2.2.4";
-};</pre>
-</div>
+};</code></pre>
 
-<div class="vspace"></div>
-<h1>Removing a Package</h1>
+
+<h2>Removing a Package</h2>
 <p>If you don't need a package anymore you can remove it with the <i>remove</i> function.</p>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server1", sub {
+   <pre><code class="perl">task "prepare", "server1", sub {
    remove "apache2";
-};</pre>
-</div>
+};</code></pre>
 
-<div class="vspace"></div>
-<h1>Adding a Package Repository</h1>
+
+<h2>Adding a Package Repository</h2>
 
 <p>Sometimes you have to add custom repositories to your Server. This can be done with the <i>repository</i> function. In the following code block you'll see an example for Debian and CentOS.</p>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server2", sub {
+   <pre><code class="perl">task "prepare", "server2", sub {
    # add a repository for debian/ubuntu
    repository add =&gt; "myrepo",
       url =&gt; "http://foo.bar/repo",
       distro =&gt; "squeeze",
       repository =&gt; "stable";
-};</pre>
-</div>
+};</code></pre>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server2", sub {
+   <pre><code class="perl">task "prepare", "server2", sub {
    # add a repository for redhat/centos
    repository add =&gt; "myrepo",
       url =&gt; "http://foo.bar/repo";
-};</pre>
-</div>
+};</code></pre>
 
-<div class="small-vspace"></div>
+
 
 <p>After you've added a new repository you need to run <i>update_package_db</i> to update the package database so that you can install packages from these repositories.</p>
 
-<div class="black-box">
-   <pre class="perl">task "prepare", "server2", sub {
+   <pre><code class="perl">task "prepare", "server2", sub {
    # add a repository for redhat/centos
    repository add =&gt; "myrepo",
       url =&gt; "http://foo.bar/repo";
        
    # update package database
    update_package_db;
-};</pre>
-</div>
+};</code></pre>
 
 
 
-<div class="vspace"></div>
-<h1>Supported Package Providers</h1>
+
+<h2>Supported Package Providers</h2>
 
 <p>Rex supports the following package providers:</p>
 
-<ul class="simple-list">
+<ul>
    <li>For ALT Linux: rpm</li>
    <li>For Debian Linux: apt</li>
    <li>For FreeBSD: pkg</li>
@@ -112,10 +98,10 @@
    <li>For Ubuntu: apt</li>
 </ul>
 
-<div class="vspace"></div>
-<h1>More Documentation</h1>
 
-<ul class="simple-list">
+<h2>More Documentation</h2>
+
+<ul>
    <li><a href="/api/Rex/Commands/Pkg.pm.html">API Documentation</a></li>
 </ul>
 

@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Apache::Build::rpm - Build rpm packages';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can build RedHat packages to distribute your application.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,31 +11,31 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Apache::Build::rpm - Build rpm packages</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can build RedHat packages to distribute your application.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  build &quot;my-software&quot;,
     type    =&gt; &quot;rpm&quot;,
     version =&gt; &quot;1.0&quot;,
@@ -60,7 +60,7 @@
     pre_uninstall  =&gt; &quot;filename or script to run before uninstall&quot;,
     exclude        =&gt; [qw/file1 file2/],
     maintainer     =&gt; &quot;your name&quot;,
-    config_files   =&gt; [qw/special files for configuration mostly for etc directory/];</pre></div><div class="vspace"></div>
+    config_files   =&gt; [qw/special files for configuration mostly for etc directory/];</code></pre>
 
 
 

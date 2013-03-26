@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Commands::User - Manipulate users and groups';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can manage user and groups.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::User - Manipulate users and groups</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage user and groups.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  task &quot;create-user&quot;, &quot;remoteserver&quot;, sub {
     create_user &quot;root&quot;,
        uid =&gt; 0,
@@ -48,70 +48,70 @@
        system =&gt; 1,
        no_create_home =&gt; TRUE,
        ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>create_user($user =&gt; {})</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>create_user($user =&gt; {})</strong></li>
 
 
 <p>Create or update a user.</p>
 
-<li><div class="vspace"></div><strong><code>get_uid($user)</code></strong></li>
+<li><strong>get_uid($user)</strong></li>
 
 
 <p>Returns the uid of $user.</p>
 
-<li><div class="vspace"></div><strong><code>get_user($user)</code></strong></li>
+<li><strong>get_user($user)</strong></li>
 
 
 <p>Returns all information about $user.</p>
 
-<li><div class="vspace"></div><strong><code>user_group($user)</code></strong></li>
+<li><strong>user_group($user)</strong></li>
 
 
 <p>Returns group membership about $user.</p>
 
-<li><div class="vspace"></div><strong><code>list_user()</code></strong></li>
+<li><strong>user_list()</strong></li>
 
 
 <p>Returns user list via getent passwd</p>
 
-<li><div class="vspace"></div><strong><code>delete_user($user)</code></strong></li>
+<li><strong>delete_user($user)</strong></li>
 
 
 <p>Delete a user from the system.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  delete_user &quot;trak&quot;, {
     delete_home =&gt; 1,
     force       =&gt; 1,
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>create_group($group, {})</strong></li>
+<li><strong>create_group($group, {})</strong></li>
 
 
 <p>Create or update a group.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  create_group $group, {
     gid =&gt; 1500,
     system =&gt; 1,
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>get_gid($group)</code></strong></li>
+<li><strong>get_gid($group)</strong></li>
 
 
 <p>Return the group id of $group.</p>
 
-<li><div class="vspace"></div><strong><code>get_group($group)</code></strong></li>
+<li><strong>get_group($group)</strong></li>
 
 
 <p>Return information of $group.</p>
-<div class="black-box"><pre class="perl">
- $info = get_group(&quot;wheel&quot;);</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ $info = get_group(&quot;wheel&quot;);</code></pre>
 
-<li><div class="vspace"></div><strong><code>delete_group($group)</code></strong></li>
+<li><strong>delete_group($group)</strong></li>
 
 
 <p>Delete a group.</p>

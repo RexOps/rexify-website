@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Transaction - Transaction support.';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can define transactions and rollback szenarios on failure.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,46 +19,46 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Transaction - Transaction support.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can define transactions and rollback szenarios on failure.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  task &quot;do-something&quot;, &quot;server01&quot;, sub {
    on_rollback {
       rmdir &quot;/tmp/mydata&quot;;
-   };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+   };</code></pre>
+<pre><code class="perl">
    transaction {
       mkdir &quot;/tmp/mydata&quot;;
       upload &quot;files/myapp.tar.gz&quot;, &quot;/tmp/mydata&quot;;
       run &quot;cd /tmp/mydata; tar xzf myapp.tar.gz&quot;;
       if($? != 0) { die(&quot;Error extracting myapp.tar.gz&quot;); }
    };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong><code>transaction($codeRef)</code></strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>transaction($codeRef)</strong></li>
 
 
 <p>Start a transaction for $codeRef. If $codeRef dies it will rollback the transaction.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;deploy&quot;, group =&gt; &quot;frontend&quot;, sub {
      on_rollback {
          rmdir &quot;...&quot;;
@@ -74,9 +74,9 @@
      transaction {
          do_task qw/deploy restart_server/;
      };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>on_rollback($codeRef)</code></strong></li>
+<li><strong>on_rollback($codeRef)</strong></li>
 
 
 <p>This code will be executed if one step in the transaction fails.</p>

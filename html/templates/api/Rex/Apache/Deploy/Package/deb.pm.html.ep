@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Apache::Deploy::deb - Deploy deb package';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can deploy a Debian package.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,32 +11,32 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Apache::Deploy::deb - Deploy deb package</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can deploy a Debian package.</p>
-<p>If the package is not build yet, it will pass all the arguments to the <code>build()</code> function and executes the build on the local machine.</p>
+<p>If the package is not build yet, it will pass all the arguments to the build() function and executes the build on the local machine.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  deploy &quot;my-software.deb&quot;;
   
  deploy &quot;my-software&quot;,
@@ -63,7 +63,7 @@
     pre_uninstall  =&gt; &quot;filename or script to run before uninstall&quot;,
     exclude        =&gt; [qw/file1 file2/],
     maintainer     =&gt; &quot;your name&quot;,
-    config_files   =&gt; [qw/special files for configuration mostly for etc directory/];</pre></div><div class="vspace"></div>
+    config_files   =&gt; [qw/special files for configuration mostly for etc directory/];</code></pre>
 
 
 
