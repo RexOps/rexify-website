@@ -209,10 +209,10 @@ __DATA__
                   <h1>Automate Everything, Relax Anytime</h1>
                   <div class="slogan_list">
                      <ul>
-                        <li>&gt; Integrates seamless in your running Environment</li>
+                        <li>&gt; Integrates seamless in your running environment</li>
                         <li>&gt; Easy to use and extend</li>
                         <li>&gt; Easy to learn, it's just plain Perl</li>
-                        <li>&gt; Apache 2.0 Licensed</li>
+                        <li>&gt; Apache 2.0 licensed</li>
                      </ul>
                   </div> <!-- slogan_list -->
 
