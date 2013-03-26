@@ -222,7 +222,7 @@ __DATA__
    service apache2 => ensure => "started";
 };</code></pre>
                   </div> <!-- source -->
-                  <a class="headlink" href="#">Read the Getting Started Guide</a>
+                  <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>
                </div> <!-- slogan -->
 
             </div> <!-- head_container -->
