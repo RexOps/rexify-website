@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Virtualization::LibVirt - LibVirt Virtualization Module';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can manage LibVirt.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

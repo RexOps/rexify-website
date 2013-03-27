@@ -2,7 +2,7 @@
 % title '';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports only VirtualBox.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

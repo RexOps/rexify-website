@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Gather - Hardware and Information gathering';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can gather hardware and software information.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Virtualization - Virtualization module';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can manage your virtualization.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

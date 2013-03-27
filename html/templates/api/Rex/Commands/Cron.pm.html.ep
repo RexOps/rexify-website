@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Cron - Simple Cron Management';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this Module you can manage your cronjobs.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

@@ -1,5 +1,5 @@
 % layout 'default';
-% title '';
+% title 'Rex::FS::File - File Class';
 
 % content_for header => begin
       <meta name="description" content="">

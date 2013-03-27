@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::MD5 - Calculate MD5 sum of files';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you calculate the md5 sum of a file.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

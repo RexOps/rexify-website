@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Upload - Upload a local file to a remote server';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can upload a local file via sftp to a remote host.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

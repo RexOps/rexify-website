@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::SCM - Sourcecontrol for Subversion and Git.';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can checkout subversion and git repositories.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

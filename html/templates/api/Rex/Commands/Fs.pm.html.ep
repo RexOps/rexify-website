@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Fs - Filesystem commands';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can do file system tasks like creating a directory, removing files, move files, and more.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

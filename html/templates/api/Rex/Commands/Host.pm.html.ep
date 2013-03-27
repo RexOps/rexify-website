@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Host - Edit /etc/hosts';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can manage the host entries in /etc/hosts.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

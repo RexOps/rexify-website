@@ -2,7 +2,7 @@
 % title '';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="The Task Object. Typically you only need this class if you want to manipulate tasks after their initial creation.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Run - Execute a remote command';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can run a command.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

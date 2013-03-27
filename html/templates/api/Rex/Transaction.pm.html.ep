@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Transaction - Transaction support.';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can define transactions and rollback szenarios on failure.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

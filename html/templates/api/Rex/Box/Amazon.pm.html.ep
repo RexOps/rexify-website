@@ -2,7 +2,7 @@
 % title '';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="This is a Rex/Boxes module to use Amazon EC2.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

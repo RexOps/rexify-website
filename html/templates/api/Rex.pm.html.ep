@@ -1,5 +1,5 @@
 % layout 'default';
-% title '';
+% title 'Rex - Remote Execution';
 
 % content_for header => begin
       <meta name="description" content="">

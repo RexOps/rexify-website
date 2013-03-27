@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Template - Simple Template Engine.';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="This is a simple template engine for configuration files.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

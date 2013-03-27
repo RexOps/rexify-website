@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Tail - Tail a file';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can tail a file">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

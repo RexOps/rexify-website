@@ -97,6 +97,7 @@ get '/search' => sub {
    $self->stash("no_disqus", 1);
    $self->stash("cat", "");
 
+
    if(my $json = $tx->res->json) {
       return $self->render("search", hits => $json->{hits});
    }

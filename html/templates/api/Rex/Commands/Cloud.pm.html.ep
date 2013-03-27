@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Cloud - Cloud Management Commands';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this Module you can manage different Cloud services. Currently it supports Amazon EC2 and Jiffybox.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

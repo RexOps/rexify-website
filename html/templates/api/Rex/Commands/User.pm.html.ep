@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::User - Manipulate users and groups';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can manage user and groups.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

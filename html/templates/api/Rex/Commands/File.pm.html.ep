@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::File - Transparent File Manipulation';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can manipulate files.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

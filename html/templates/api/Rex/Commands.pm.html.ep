@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands - All the basic commands';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="This module is the core commands module.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

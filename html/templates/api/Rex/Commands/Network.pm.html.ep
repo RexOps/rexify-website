@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Network - Network Module';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="With this module you can get information of the routing table, current network connections, open ports, ...">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

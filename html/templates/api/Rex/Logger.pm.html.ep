@@ -1,8 +1,8 @@
 % layout 'default';
-% title '';
+% title 'Rex::Logger - Logging Module';
 
 % content_for header => begin
-      <meta name="description" content="">
+      <meta name="description" content="This module if the logging module. You can define custom logformats.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 

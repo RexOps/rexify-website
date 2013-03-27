@@ -1,5 +1,5 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Rsync - Simple Rsync Frontend';
 
 % content_for header => begin
       <meta name="description" content="">
