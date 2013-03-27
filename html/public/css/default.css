@@ -328,3 +328,8 @@ table.tb-support td {
    background-color: #f9d900;
 }
 
+.search_field {
+   width: 180px;
+   margin-bottom: 0px !important;
+   margin-right: 5px;
+}

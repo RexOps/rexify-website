@@ -92,6 +92,11 @@ get '/search' => sub {
       },
    });
 
+   $self->stash("no_side_bar", 0);
+   $self->stash("root", 0);
+   $self->stash("no_disqus", 1);
+   $self->stash("cat", "");
+
    if(my $json = $tx->res->json) {
       return $self->render("search", hits => $json->{hits});
    }
@@ -142,6 +147,9 @@ __DATA__
 
 @@ search.html.ep
 
+% layout 'default';
+% title 'Search for ' . param('q');
+
 % if( $hits->{total} == 0 ) {
 
 <p>I'm sorry. Your query had no results!</p>
@@ -153,7 +161,7 @@ __DATA__
 
 % if(@api_results) {
 <h1>API</h1>
-   <ul class="simple-list">
+   <ul>
    % for my $r (@api_results) {
       <li>
          <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
@@ -171,7 +179,7 @@ __DATA__
 % if(@webpage_results) {
 <div class="vspace"></div>
 <h1>Website</h1>
-   <ul class="simple-list">
+   <ul>
    % for my $r (@webpage_results) {
       <li>
          <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
@@ -185,11 +193,6 @@ __DATA__
    % }
    </ul>
 % }
-
-<h1>&nbsp;</h1>
-<div class="small-vspace"></div>
-<a href="#" class="search_button">Close</a>
-<div class="small-vspace"></div>
 
 % }
 
@@ -302,6 +305,10 @@ __DATA__
 
          <div id="widgets_container">
             <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search" method="GET">
+                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
+               </form>
                <h2>News</h2>
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
@@ -398,6 +405,7 @@ piwikTracker.enableLinkTracking();
 <script>
   hljs.tabReplace = '    ';
   hljs.initHighlightingOnLoad();
+  $("#q").focus();
 </script>
 
 
