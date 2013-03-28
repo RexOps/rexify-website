@@ -11,23 +11,6 @@ use Mojolicious::Lite;
 use Mojo::UserAgent;
 use Data::Dumper;
 
-use lib 'lib';
-use lib 'vendor/perl';
-
-my $config = {};
-
-if(-f "./config.pl") {
-   my $content = eval { local(@ARGV, $/) = ("./config.pl"); <>; };
-   $config  = eval 'package Foo::Config::Loader;'
-                        . "no warnings; $content";
-
-   die "Couldn't load configuration file: $@" if(!$config && $@);
-   die "Config file invalid. Did not return HASH reference." if( ref($config) ne "HASH" );
-}
-else {
-   die "Config file ./config.pl not found.";
-}
-
 plugin 'RenderFile';
 
 get '/' => sub {
@@ -239,10 +222,10 @@ __DATA__
              <div class="nav_links">
                <ul>
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
-                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get">Get Rex</a></li>
-                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute">Contribute</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos">Docs</a></li>
-                  <li <% if($cat eq "api") { %>class="active" <% } %>><a href="/api">API</a></li>
+                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">Docs</a></li>
+                  <li <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
                </ul>
             </div>
 
