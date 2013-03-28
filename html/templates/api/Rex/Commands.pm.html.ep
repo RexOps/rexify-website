@@ -362,7 +362,7 @@
  user &quot;root&quot;;
  password &quot;root&quot;;
  
- pass_auth;</pre></div><div class="vspace"></div>
+ key_auth;</pre></div><div class="vspace"></div>
 
 <li><div class="vspace"></div><strong><code>parallelism($count)</code></strong></li>
 
