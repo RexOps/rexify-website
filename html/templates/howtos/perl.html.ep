@@ -9,100 +9,78 @@
          <h1>Just enough Perl for Rex</h1>
 
          <p>This is a work-in-progress guide. If you have suggestions or whishes, just post a comment or join our irc channel on freenode -&gt; #rex.</p>
-         <div class="small-vspace"></div>
+         
 
          <p>Perl is a scripting language designed to keep easy things easy and hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.</p>
 
-         <div class="vspace"></div>
+         
          <h2>Variables</h2>
          <p>Scalar variables. Scalars can contain Strings, Numbers, Objects, References.</p>
-         <div class="black-box">
-            <pre class="perl">my $name = "John";    # this is a string
+            <pre><code class="perl">my $name = "John";    # this is a string
 my $age = 28;   # this is a number (integer)
 my $float = 28.5;   # also a number, but a float
-my $car = Car-&gt;new();   # this is an object from the class Car
-</pre>
-         </div>
+my $car = Car-&gt;new();   # this is an object from the class Car</code></pre>
 
-         <div class="vspace"></div>
+         
 
          <p>Array variables. Arrays are lists. Like a grocery list. They contains lot of scalars.</p>
-         <div class="black-box">
-            <pre class="perl">my @names = ("John", "Fred", "Charley");
-my @to_buy = qw(Cheese Butter Salt Lemons Oranges Apples);</pre>
-         </div>
+            <pre><code class="perl">my @names = ("John", "Fred", "Charley");
+my @to_buy = qw(Cheese Butter Salt Lemons Oranges Apples);</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>To access an array element you had to use the index. It starts a zero.</p>
 
-         <div class="black-box">
-            <pre class="perl">say "First name: " . $names[0];
+            <pre><code class="perl">say "First name: " . $names[0];
 say "Last name: " . $name[2];
-say "Also last name: " . $name[-1];</pre>
-         </div>
+say "Also last name: " . $name[-1];</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>Split a string to an array</p>
 
-         <div class="black-box">
-            <pre class="perl">my $string = "John,Fred,Carl,Lewis";
-my @names = split(/,/, $string);
-</pre>
-         </div>
+            <pre><code class="perl">my $string = "John,Fred,Carl,Lewis";
+my @names = split(/,/, $string);</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>Join an array to a String</p>
 
-         <div class="black-box">
-            <pre class="perl">my @names = ("John", "Fred", "Carl", "Lewis");
-my $string = join(",", @names);     # -&gt; John,Fred,Carl,Lewis
-</pre>
-         </div>
+            <pre><code class="perl">my @names = ("John", "Fred", "Carl", "Lewis");
+my $string = join(",", @names);     # -&gt; John,Fred,Carl,Lewis</code></pre>
 
 
 
-         <div class="small-vspace"></div>
+         
          <p>If you want to iterate over an array do it like this</p>
-         <div class="black-box">
-            <pre class="perl">for my $name (@names) {
+            <pre><code class="perl">for my $name (@names) {
    say "Current name: $name";
-}</pre>
-         </div>
+}</code></pre>
 
-         <div class="vspace"></div>
+         
          <p>Hash variables. Hashs are like arrays, but with named indexes.</p>
-         <div class="black-box">
-            <pre class="perl">my %person = (
+            <pre><code class="perl">my %person = (
    name =&gt; "John",
    age =&gt; 28,
    city =&gt; "New York"
 );
-</pre>
-         </div>
+</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>To access an hash element you had to use the key.</p>
 
-         <div class="black-box">
-            <pre class="perl">say "Name: " . $person{"name"};
+            <pre><code class="perl">say "Name: " . $person{"name"};
 say "Age: " . $person{"age"};
-say "City: " . $person{"city"};</pre>
-         </div>
+say "City: " . $person{"city"};</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>If you want to iterate over a hash do it like this. But always remember. Hashs are always unsorted.</p>
-         <div class="black-box">
-            <pre class="perl">for my $key (keys %person) {
+            <pre><code class="perl">for my $key (keys %person) {
    say "key: $key -&gt; value: " . $person{$key};
-}</pre>
-         </div>
+}</code></pre>
 
 
 
-         <div class="vspace"></div>
+         
          <h2>Conditional statements</h2>
-         <div class="black-box">
-            <pre class="perl">if($name eq "John") {
+            <pre><code class="perl">if($name eq "John") {
    say "Hello, my name is John!";
 }
 else {
@@ -124,32 +102,24 @@ elsif($age &gt;= 30 &amp;&amp; $age &lt;= 50) {
 }
 else {
    say "I'm older than 50...";
-}
-
-</pre>
-         </div>
+} </code></pre>
 
 
 
-         <div class="vspace"></div>
+         
          <h2>Loops</h2>
-         <div class="black-box">
-            <pre class="perl">for my $num (1..5) {
+            <pre><code class="perl">for my $num (1..5) {
    say "&gt; $num";
 }
 
 # looping over an array
 for my $item (@array) {
    say "&gt; $item";
-}
+} </code></pre>
 
-</pre>
-         </div>
-
-         <div class="vspace"></div>
+         
          <h2>Regular Expressions</h2>
-         <div class="black-box">
-            <pre class="perl">my $name = "John";
+            <pre><code class="perl">my $name = "John";
 if($name =~ m/john/) {    # will not match, because the J in $name is uppercase.
 }
 
@@ -157,17 +127,12 @@ if($name =~ m/john/i) {    # _will_ match, because we use the "i" modifier (for 
 }
 
 $name =~ s/john/Fred/i;    # this will replace the first match of john (regardless of its case) with "Fred"
-
-$name =~ s/john/Fred/ig;   # this will replace all matchs of john (regardless of its case) with "Fred"
-
-</pre>
-         </div>
+$name =~ s/john/Fred/ig;   # this will replace all matchs of john (regardless of its case) with "Fred" </code></pre>
 
 
-         <div class="vspace"></div>
+         
          <h2>Functions</h2>
-         <div class="black-box">
-            <pre class="perl">sub my_function {      # define the function "my_function"
+            <pre><code class="perl">sub my_function {      # define the function "my_function"
 }
 
 sub my_function {      # define the function "my_function" 
@@ -184,21 +149,15 @@ sub my_function {     # the same as above.
 my_function();     # call the function "my_function"
 my_function;    # also calls "my_function"
 my_function("john", 28);    # call the function "my_function" with 2 parameters.
-my_function "john", 28;     # also calls "my_function" with 2 parameters. the brackets are not needed.
+my_function "john", 28;     # also calls "my_function" with 2 parameters. the brackets are not needed.  </code></pre>
 
-</pre>
-         </div>
-
-         <div class="vspace"></div>
+         
          <h2>Useful Helpers</h2>
 
          <p>Dump the content of a scalar, array or hash</p>
-         <div class="black-box">
-            <pre class="perl">use Data::Dumper;
+            <pre><code class="perl">use Data::Dumper;
 
 say Dumper($scalar);
 say Dumper(@array);
-say Dumper(%hash);
-</pre>
-         </div>
+say Dumper(%hash); </code></pre>
 

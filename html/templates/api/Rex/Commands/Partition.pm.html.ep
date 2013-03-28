@@ -11,47 +11,47 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>DESCRIPTION</h1>
+<h2>DESCRIPTION</h2>
 <p>With this Module you can partition your harddrive.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
- use Rex::Commands::Partition;</pre></div><div class="vspace"></div>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Partition;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong><code>clearpart($drive)</code></strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>clearpart($drive)</strong></li>
 
 
 <p>Clear partitions on $drive.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  clearpart &quot;sda&quot;;
    
  clearpart &quot;sda&quot;,
-   initialize =&gt; &quot;gpt&quot;;</pre></div><div class="vspace"></div>
+   initialize =&gt; &quot;gpt&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>partition($mountpoint, %option)</strong></li>
+<li><strong>partition($mountpoint, %option)</strong></li>
 
 
 <p>Create a partition with mountpoint $mountpoint.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  partition &quot;/&quot;,
     fstype  =&gt; &quot;ext3&quot;,
     size    =&gt; 15000,
@@ -79,7 +79,7 @@
  partition &quot;/&quot;,
     fstype =&gt; &quot;ext3&quot;,
     size   =&gt; 10000,
-    onvg   =&gt; &quot;vg0&quot;;</pre></div><div class="vspace"></div>
+    onvg   =&gt; &quot;vg0&quot;;</code></pre>
 
 </ul>
 

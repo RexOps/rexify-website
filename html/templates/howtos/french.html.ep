@@ -7,12 +7,12 @@
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
 % end
 
-<div class="vspace"></div><h1>
+<h1>
 Introduction</H1>
 <p> Ce document décrit l'installation et l'utilisation de l'outil de déploiement Rexify. Rexify ou Rex permet de pouvoir gérer tous les serveurs d'une plateforme à partir d'un point central. Il est ainsi possible de déployer, de maintenir ou de configurer des machines avec quelques commandes, il est ainsi possible de gagner un temps considérable.</p>
 <p> Les principales fonctionnalités de Rex sont&nbsp;:</p>
-<div class="small-vspace"></div>
-<ul class="simple-list">
+
+<ul>
  <LI><p> Définition simple des tâches et des profils</p>
  <LI><p> Pas d'agent nécessaire, seule une connexion SSH est requise</p>
  <LI><p> Exécuter des tâches en parallèle</p>
@@ -20,11 +20,11 @@ Introduction</H1>
  <LI><p> Supporte actuellement Debian, Ubuntu, Fedora, CentOS, OpenSuSE, Mageia, Gentoo and Windows</p>
 </UL>
 <p> <BR> </p>
-<div class="vspace"></div><h1>
+<h1>
 Installation</H1>
 <p> L'installation est très simple et il existe 2 moyens d'installer Rex sur une distribution CentOS&nbsp;:</p>
-<div class="small-vspace"></div>
-<ul class="simple-list">
+
+<ul>
  <LI><p> A partir du dépôt git de Rex</p>
  <LI><p> A partir du dépôt yum de Rex</p>
 </UL>
@@ -55,15 +55,15 @@ enabled=1
 EOF
 
 [root]# yum install rex</pre></div>
-<div class="vspace"></div><h1>
+<h1>
 Utilisation</H1>
 <p> L'installation de Rex fournit 2 commandes dans le shell&nbsp;: rex et rexify</p>
-<div class="vspace"></div><h2>
+<h2>
 rexify</H2>
 <p> rexify est la commande qui permet de créer des projets Rex, on va ainsi créer un répertoire dans lequel se trouve un fichier de configuration appelé 'Rexfile' et un répertoire lib.</p>
 <p> Le fichier Rexfile contient&nbsp;:</p>
-<div class="small-vspace"></div>
-<ul class="simple-list">
+
+<ul>
  <LI><p> le login et password que l'on va utiliser pour se connecter en ssh sur les serveurs distants,</p>
  <LI><p> les serveurs distants déclaré dans un groupe,</p>
  <LI><p> le package perl qui contient les 'task' Rex et qui se trouve dans le répertoire 'lib'</p>
@@ -87,8 +87,8 @@ group &quot;servers&quot; =&gt; &quot;server1&quot;, &quot;server2&quot;;
 
 # now load every module via ,,require''
 require Rex::test;</pre></div>
-<div class="small-vspace"></div>
-<ul class="simple-list">
+
+<ul>
 <li> 'use lib 'lib';' permet d'inclure le répertoire lib (celui du répertoire courant) lorsque l'on passera les commandes rex</li>
 <li> 'user' indique l'utilisateur</li>
 <li> 'password' indique le mot de passe</li>
@@ -97,7 +97,7 @@ require Rex::test;</pre></div>
 <li> 'require Rex::test;' indique que le package perl Rex::test est requis. Ce package est définit dans le répertoire lib.</li>
 </ul>
 
-<div class="small-vspace"></div>
+
 
 
 <p> Dans le répertoire lib, on trouve un autre répertoire nommé 'Rex' qui contient le package perl 'test.pm'. Par défaut, lorsque on utilise la commande rexify pour créer un projet, on va se retrouver avec un package perl contenant une tâche 'uptime'. Cette tâche permet d'avoir un exemple et l'on peut voir ainsi la syntaxe à utiliser.</p>
@@ -114,19 +114,19 @@ task &quot;uptime&quot;, group =&gt; 'servers', sub {
 
 1;</pre></div>
 
-<div class="small-vspace"></div>
 
-<ul class="simple-list">
+
+<ul>
 <li> 'package Rex::test;'  permet de déclarer le package perl 'test'</li>
 <li> 'use Rex::Commands;' et 'use Rex::Commands::Run;' permettent d'indiquer quels modules Rex seront utilisés pour exécuter la ou les tâches</li>
 <li> 'desc «&nbsp;…&nbsp;» ;' est la description de la tâche</li>
 <li> 'task ….' est la définition de la tâche&nbsp;: on indique le nom de la tâche, le serveur ou le groupe de serveurs qui seront la cible de cette tâche et on définit la commande exécutée par la tâche.</li>
 </ul>
 
-<div class="small-vspace"></div>
+
 
 <p> Le contenu de ce fichier sera toujours le même à partir du moment où l'on a employé la commande rexify. Seul le nom du paquet change, le nom est celui que l'on a choisit lors de la création du projet rex (ici test).</p>
-<div class="vspace"></div><h2>
+<h2>
 rex</H2>
 <p> On peut maintenant visualiser le fonctionnement de la commande rex. Pour lancer la commande rex, il faut qu'un fichier Rexfile soit présent dans le répertoire courant. A partir de la commande rex, on va pouvoir exécuter les tâches définies dans le package perl vu ci-dessus sur tous les serveurs distants définis dans le groupe 'servers'.</p>
 <p> La commande rex est assez simple à utiliser, il y a plusieurs options possibles&nbsp;:</p>
@@ -157,7 +157,7 @@ rex</H2>
 <p> <BR> </p>
 <p> Parmi ces options nous utiliserons principalement le '-T' pour lister les tâches présentes dans le projet rex courant, le '-f' pour utiliser un fichier Rexfile autre que celui du répertoire courant, le '-b' pour lancer un batch (on en parlera à la fin de ce document) et le '-d' pour le mode Debug qui permettra souvent de mieux comprendre pourquoi les commandes ne fonctionnent pas.</p>
 <p> Toutes les autres options possibles sont généralement écrites directement dans le fichier Rexfile, comme l'utilisateur, les hôtes, etc …</p>
-<div class="vspace"></div><h2>Exemple d'utilisation</H2>
+<h2>Exemple d'utilisation</H2>
 <p> On va maintenant voir comment créer un projet rex et le configurer pour récupérer l'uptime de 2 serveurs distants</p>
 <div class="black-box"><pre class="bash">[root]# mkdir /home/rex &amp;&amp; cd /home/rex
 [root]# rexify example
@@ -227,12 +227,12 @@ Batches
 <p> Ainsi depuis la première machine, on a pu aller exécuter la commande uptime sur les 2 serveurs test1 et test2 et récupérer la sortie de cette commande localement sur notre première machine.</p>
 <p> Rex permet de faire beaucoup de choses sur plusieurs serveurs. Ici nous avons vu un simple exemple mais nous allons pouvoir faire des tâches plus complexes et les exécuter sur plusieurs machines distantes.</p>
 <p> On peut noter qu'il est tout à fait possible de n'avoir qu'un seul fichier Rexfile qui contient toutes les informations&nbsp;: user, serveurs, tâches. On verra un peu plus tard la syntaxe d'un fichier Rexfile de ce type.</p>
-<div class="vspace"></div><h1>API REXIFY</H1>
+<h1>API REXIFY</H1>
 <p> On va essayer de faire le tour des différentes tâches qu'il est possible d'éxecuter avec les modules perl Rexify. Au programme&nbsp;: uptime (commandes système), filesystem, file, upload / download, status, start / stop services, tail, hardware, database, host, kernel, md5, package, rsync, sysctl, user.</p>
 <p> Et ensuite, on étudiera quelques fonctions exportées de rex&nbsp;: batch, logging, do_task, needs, local.</p>
 <p> Les explications pour utiliser ces différents modules seront très succinctes voire inexistantes. En effet, les quelques éléments détaillés ci-dessus permettent de comprendre le fonctionnement simple de Rex. Par déduction, il sera en général assez facile d'assimiler comment marche ces différents modules.</p>
 <p> <BR> </p>
-<div class="vspace"></div><h2>Uptime &amp; commandes systèmes (Rex::Commands::Run)</H2>
+<h2>Uptime &amp; commandes systèmes (Rex::Commands::Run)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/
 [root]# mkdir rex
 [root]# cd rex/
@@ -294,7 +294,7 @@ Batches</pre></div>
 <p> On peut ainsi définir autant de tâches que l'on veut, en prenant garde de bien respecter la syntaxe. Il est possible d'utiliser toutes les commandes système avec le module Rex::Commands::Run, cependant la sortie sur plusieurs lignes de certaines commandes peuvent paraître illisible car elles seront retournées sur une seule ligne.</p>
 <p> Il existe toutefois des astuces pour avoir une sortie lisible et également pour pouvoir mettre le nom du serveur devant la ligne retournée. On verra tout ça un peu plus loin.</p>
 <p> <BR> </p>
-<div class="vspace"></div><h2>File System (Rex::Commands::Fs)</H2>
+<h2>File System (Rex::Commands::Fs)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# rexify FS
 [root]# cd FS
@@ -355,7 +355,7 @@ Rexfile syntax OK
  [2011-06-07 16:22:10] - INFO - Running task: rm-my-own-tmp
  [2011-06-07 16:22:10] - INFO - Connecting to test1 (root)
  [2011-06-07 16:22:11] - INFO - Connecting to test2 (root)</pre></div>
-<div class="vspace"></div><h2>File (Rex::Commands::File)</H2>
+<h2>File (Rex::Commands::File)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# rexify File
 [root]# cd File
@@ -408,7 +408,7 @@ Rexfile syntax OK
  [2011-06-07 16:37:06] - INFO - Running task: testfile
  [2011-06-07 16:37:06] - INFO - Connecting to test1 (root)
  [2011-06-07 16:37:06] - INFO - Connecting to test2 (root)</pre></div>
-<div class="vspace"></div><h2>Upload / Download (Rex::Commands::Upload / Rex::Commands::Download)</H2>
+<h2>Upload / Download (Rex::Commands::Upload / Rex::Commands::Download)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# rexify ULDL
 [root]# cd ULDL
@@ -461,7 +461,7 @@ Rexfile syntax OK
  [2011-06-07 16:44:42] - INFO - Uploadling testul.txt -&gt; /tmp/testul.txt
  [2011-06-07 16:44:42] - INFO - Connecting to test2 (root)
  [2011-06-07 16:44:42] - INFO - Uploadling testul.txt -&gt; /tmp/testul.txt</pre></div>
-<div class="vspace"></div>
+
 <h2>Status (Rex::Commands::Run)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# rexify status
@@ -510,7 +510,7 @@ httpd (pid16502) en cours d'exécution...
  [2011-06-09 11:24:02] - INFO - Connecting to test4 (root)
 httpd est mort mais subsys est verrouillé</pre></div>
 <p> On voit ci-dessus que l'authentification ne se fait plus par mot de passe mais par clef ssh. Également, on récupère le status du service avec le module Run donc via une commande système, on peut récupérer le status d'un service avec le module prévu à cet effet&nbsp;: le module service.</p>
-<div class="vspace"></div><h2>Status (Rex::Commands::Service)</H2>
+<h2>Status (Rex::Commands::Service)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# rexify services
 [root]# cd services
@@ -558,7 +558,7 @@ Rexfile syntax OK
  [2011-06-09 11:24:02] - INFO - Connecting to test4 (root)
  [2011-06-09 11:24:03] - INFO - Service ntpd is running.</pre></div>
 <p> On va maintenant arrêter et démarrer le service ntpd à l'aide de ce même module, on ajoute donc 2 tâches au package définit précédemment.</p>
-<div class="vspace"></div><h2>Start/stop (Rex::Commands::Service)</H2>
+<h2>Start/stop (Rex::Commands::Service)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex/service/lib/Rex
 [root]# cat &gt; services.pm &lt;&lt;EoT
 package Rex::services;
@@ -615,7 +615,7 @@ Rexfile syntax OK
  [2011-06-09 16:59:03] - INFO - Running task: services:ntpd_status
  [2011-06-09 16:59:03] - INFO - Connecting to test1 (root)
  [2011-06-09 16:59:05] - INFO - Service ntpd is running.</pre></div>
-<div class="vspace"></div><h2>Tail (Rex::Commands::Tail)</H2>
+<h2>Tail (Rex::Commands::Tail)</H2>
 <p> A partir de maintenant, on ne sert plus de la commande rexify pour créer les projets rex et on va tout écrire dans un seul et même fichier Rexfile. Tail permet de consulter des fichiers en temps réel sur plusieurs machines distantes.</p>
 <p> <BR> </p>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
@@ -664,7 +664,7 @@ task &quot;tail-srv&quot;, group =&gt; &quot;servers&quot;, sub {
    };
 };
 EoT</pre></div>
-<div class="vspace"></div><h2>Hardware (Rex::Commands::Hardware)</H2>
+<h2>Hardware (Rex::Commands::Hardware)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir hardware
 [root]# cd hardware
@@ -697,7 +697,7 @@ Tasks
 Batches
 
 [root]# rex get-all-info | tee info.log</pre></div>
-<div class="vspace"></div><h2>Gather (Rex::Commands::Gather)</H2>
+<h2>Gather (Rex::Commands::Gather)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir gather
 [root]# cd gather
@@ -717,7 +717,7 @@ task &quot;get_network_information&quot;, group =&gt; &quot;servers&quot;, sub {
    print Dumper($net_info);
 };
 EoT</pre></div>
-<div class="vspace"></div><h2>Database (Rex::Commands::DB)</H2>
+<h2>Database (Rex::Commands::DB)</H2>
 <p> Ce module ne permet pour le moment que de faire des SELECT&nbsp;:</p>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir db
@@ -756,7 +756,7 @@ EoT</pre></div>
     }
 
 };</pre></div>
-<div class="vspace"></div><h2>Host (Rex::Commands::Host)</H2>
+<h2>Host (Rex::Commands::Host)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir host
 [root]# cd host
@@ -796,7 +796,7 @@ Tasks
   delete-host             Delete Host
   get-host                Get Host
 Batches</pre></div>
-<div class="vspace"></div><h2>Kernel (Rex::Commands::Kernel)</H2>
+<h2>Kernel (Rex::Commands::Kernel)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir kernel
 [root]# cd kernel
@@ -824,7 +824,7 @@ Tasks
   load-ip_conntrack_ftp            Load ip_conntrack_ftp kernel module
   unload-ip_conntrack_ftp          Unload ip_conntrack_ftp kernel module
 Batches</pre></div>
-<div class="vspace"></div><h2>MD5 (Rex::Commands::MD5)</H2>
+<h2>MD5 (Rex::Commands::MD5)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir md5
 [root]# cd md5
@@ -848,7 +848,7 @@ EoT
 Tasks
   md5           MD5 passwd file
 Batches</pre></div>
-<div class="vspace"></div><h2>Package (Rex::Commands::Pkg)</H2>
+<h2>Package (Rex::Commands::Pkg)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir package
 [root]# cd package
@@ -888,7 +888,7 @@ Tasks
    install_test.txt        Install test.txt file
    remove_lshw             Remove lshw package
 Batches</pre></div>
-<div class="vspace"></div><h2>Rsync (Rex::Commands::Rsync)</H2>
+<h2>Rsync (Rex::Commands::Rsync)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir rsync
 [root]# cd rsync
@@ -926,7 +926,7 @@ task &quot;sync&quot;, group =&gt; &quot;servers&quot;, sub {
    sync &quot;/tmp/sync&quot;, &quot;/home/sync&quot;, { download =&gt; 1 };
 };
 EoT</pre></div>
-<div class="vspace"></div><h2>Sysctl (Rex::Commands::Sysctl)</H2>
+<h2>Sysctl (Rex::Commands::Sysctl)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir sysctl
 [root]# cd sysctl
@@ -961,7 +961,7 @@ Batches
 
 [root@test1 ~]# cat /proc/sys/net/ipv4/ip_forward
 1</pre></div>
-<div class="vspace"></div><h2>User (Rex::Commands::User)</H2>
+<h2>User (Rex::Commands::User)</H2>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir user
 [root]# cd user
@@ -1008,11 +1008,11 @@ task &quot;get_group_info&quot;, group =&gt; &quot;servers&quot;, sub {
    print Dumper($info);
 };
 EoT</pre></div>
-<div class="vspace"></div><h1>
+<h1>
 </H1>
-<div class="vspace"></div><h1>Fonctions exportées rexify</H1>
+<h1>Fonctions exportées rexify</H1>
 <p> Nous allons détailler quelques fonctions intéressantes de Rex. On ne les traitera pas toutes car certaines ne nous servirons pas forcément et surtout elles sont plus que simples à comprendre.</p>
-<div class="vspace"></div><h2>Batch</H2>
+<h2>Batch</H2>
 <p> Avec cette fonction, on peut appeler plusieurs tâches dans un même batch&nbsp;:</p>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir status &amp;&amp; cd status
@@ -1067,7 +1067,7 @@ Batches
  [2011-06-16 17:49:15] - INFO - Service vsftpd is running.
  [2011-06-16 17:49:15] - INFO - Connecting to test2 (root)
  [2011-06-16 17:49:17] - INFO - Service vsftpd is running.</pre></div>
-<div class="vspace"></div><h2>Logging</H2>
+<h2>Logging</H2>
 <p> Cette fonction, comme son nom l'indique, permet de logguer la sortie de rexify dans un fichier&nbsp;:</p>
 <div class="black-box"><pre class="perl">[root]# cat &gt;&gt; Rexfile &lt;&lt;EoT
 ## logging to file
@@ -1079,7 +1079,7 @@ logging to_syslog =&gt; $facility;
 [root]# rex -b status_services
 [root]# ls
 Rexfile rex.log</pre></div>
-<div class="vspace"></div><h2>do_task</H2>
+<h2>do_task</H2>
 <p> Cette fonction permet d'appeler une tâche depuis une autre tâche, voici la syntaxe&nbsp;:</p>
 <div class="black-box"><pre class="perl">task &quot;task1&quot;, &quot;server1&quot;, sub {
 say &quot;Running on server1&quot;;
@@ -1139,7 +1139,7 @@ Batches
  [2011-06-16 18:28:03] - INFO - Service ntpd is running.
  </pre></div>
 <p> Explication&nbsp;: vérification du status du service httpd sur test1 puis vérification du status du service ntpd sur test1 et sur test2. Ensuite vérification du status du service httpd sur test2 puis vérification du status du service ntpd sur test1 et sur test2.</p>
-<div class="vspace"></div><h2>Needs</H2>
+<h2>Needs</H2>
 <p> La fonction needs fonctionne quasiment comme la fonction do_task sauf que celle-ci ne lancera que le contenu de la tâche et pas la totalité de la tâche, c'est donc totalement indépendant du serveur concerné dans la tâche appelée par needs. Voici un exemple illustrant clairement comment fonctionne needs par rapport à do_task&nbsp;:</p>
 <div class="black-box"><pre class="perl">[root]# cat &gt; Rexfile &lt;&lt;EoT
 use Rex::Commands::Run;
@@ -1169,7 +1169,7 @@ EoT</pre></div>
 <p> La sortie de la tâche 'task2' sera le hostname du 'server01' et du 'server02',</p>
 <p> La sortie de la tâche 'task3' sera 2 fois le hostname du 'server03'.</p>
 <p> <BR> </p>
-<div class="vspace"></div><h2>Local</H2>
+<h2>Local</H2>
 <p> La fonction local permet d'exécuter des commandes en local. Par exemple&nbsp;:</p>
 <div class="black-box"><pre class="perl">task &quot;mytask&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
    # this will call 'uptime' on the servers 'server1' and 'server2'
@@ -1182,9 +1182,9 @@ EoT</pre></div>
 };</pre></div>
 <p> <BR> </p>
 <p> Ici la tâche va se dérouler en 2 étapes&nbsp;; la première étape va retourner l'uptime des serveurs 'server01' et 'server02' et la seconde étape va retourner l'uptime de la machine locale (celle depuis laquelle on exécute les commandes rex).</p>
-<div class="vspace"></div><h1>Exemples</H1>
+<h1>Exemples</H1>
 <p> Voici quelques exemples complémentaires de tâches rex qui peuvent être très utiles.</p>
-<div class="vspace"></div><h2>RPM</H2>
+<h2>RPM</H2>
 <p> On veut lister les RPM installés sur 2 de nos serveurs. Avec cette tâche, chaque ligne retournée sera préfixée par le nom du serveur source, il sera ainsi facile de repérer quel RPM est installé sur quelle machine.</p>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir rpm

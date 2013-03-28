@@ -7,47 +7,97 @@
 % end
 
 
-         <div class="vspace"></div>
+<h1>Get Rex</h1>
 
-   <a href="#source">Source</a>&nbsp;|&nbsp;
-   <a href="#centos">CentOS</a>&nbsp;|&nbsp;
-   <a href="#debian">Debian</a>&nbsp;|&nbsp;
-   <a href="#fedora">Fedora</a>&nbsp;|&nbsp;
-   <a href="#gentoo">Gentoo</a>&nbsp;|&nbsp;
-   <a href="#mageia">Mageia</a>&nbsp;|&nbsp;
-   <a href="#suse">SuSE</a>&nbsp;|&nbsp;
-   <a href="#ubuntu">Ubuntu</a>&nbsp;|&nbsp;
-   <a href="#macosx">Mac OSX</a>&nbsp;|&nbsp;
-   <a href="#windows">Windows</a>&nbsp;|&nbsp;
-   <a href="#cpan">CPAN</a>
+<p>You can install Rex with a simple one-liner</p>
+<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
-         <div class="vspace"></div>
+<h2>Linux</h2>
+<p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown.</p>
 
-         <h1><a name="source"></a>Source from github</h1>
-         <div class="small-vspace"></div>
+ <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+       <li class="active"><a href="#tab1" data-toggle="tab"><img src="/img/ubuntu.png" /></a></li>
+       <li><a href="#tab2" data-toggle="tab"><img src="/img/debian.png" /></a></li>
+       <li><a href="#tab3" data-toggle="tab"><img src="/img/gentoo.png" /></a></li>
+       <li><a href="#tab4" data-toggle="tab"><img src="/img/centos.png" /></a></li>
+       <li><a href="#tab5" data-toggle="tab"><img src="/img/suse.png" /></a></li>
+       <li><a href="#tab6" data-toggle="tab"><img src="/img/mageia.png" /></a></li>
+       <li><a href="#tab7" data-toggle="tab"><img src="/img/fedora.png" /></a></li>
+    </ul>
+    <div class="tab-content">
+       <div class="tab-pane active" id="tab1">
+         <h3>For Lucid (10.04)</h3>
 
-         <div class="black-box">
-            <pre class="bash">
-bash# git clone https://github.com/krimdomu/Rex.git
-bash# cd Rex
-bash# perl Makefile.PL
-bash# make
-bash# make test
-bash# make install
-</pre>
-         </div>
+         <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
 
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+         <h3>For Natty (11.04)</h3>
 
-         <div class="vspace"></div>
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ natty rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
 
-         <h1><a name="centos"></a>CentOS 6</h1>
-         <div class="small-vspace"></div>
+         <h3>For Oneiric (11.10)</h3>
 
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ oneiric rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+         <h3>For Precise (12.04)</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ precise rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+         <h3>For Quantal (12.10)</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+
+       </div>
+       <div class="tab-pane" id="tab2">
+         <h3>For Squeeze</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+         <h3>For Wheezy</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+         <h3>For Lenny</h3>
+
+         <p>For Lenny we have stopped building new packages since 0.31.</p>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ lenny rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+       </div>
+       <div class="tab-pane" id="tab3">
+         <h3>Installation with emerge</h3>
+         <p>Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repository.</p>
+         <pre><code class="bash">emerge -av app-admin/rex</code></pre>
+       </div>
+       <div class="tab-pane" id="tab4">
+         <h3>CentOS 6</h3>
+
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
@@ -56,20 +106,11 @@ baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
-yum install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+yum install rex</code></pre>
 
-         <div class="vspace"></div>
+         <h3>CentOS 5</h3>
 
-
-         <h1>CentOS 5</h1>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS5
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS5
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
@@ -78,63 +119,34 @@ baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
-yum install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+yum install rex</code></pre>
+ 
 
-         <div class="vspace"></div>
+       </div>
+       <div class="tab-pane" id="tab5">
+         <h3>For 11.4</h3>
 
-         <h1><a name="debian"></a>Debian</h1>
-         <div class="small-vspace"></div>
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
+zypper install rex</code></pre>
 
-         <p>For Squeeze</p>
+         <h3>For 12.1</h3>
 
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.1/x86_64/ rex
+zypper install rex</code></pre>
+ 
+       </div>
+       <div class="tab-pane" id="tab6">
+         <h3>Mageia 1</h3>
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+urpmi.addmedia rex http://rex.linux-files.org/Mageia/1/x86_64/
+urpmi rex</code></pre>
 
-         <div class="small-vspace"></div>
-
-         <p>For Wheezy</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-
-         <p>For Lenny</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/debian/ lenny rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-         <div class="vspace"></div>
-
-
-
-
-         <h1><a name="fedora"></a>Fedora Core 15 &amp; 16</h1>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+       </div>
+       <div class="tab-pane" id="tab7">
+         <h3>Fedora 15, 16 and 17</h3>
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
@@ -143,198 +155,50 @@ baseurl=http://rex.linux-files.org/Fedora/Core/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
-yum install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-         <div class="vspace"></div>
-
-         <h1><a name="gentoo"></a>Gentoo</h1>
-         <div class="small-vspace"></div>
-            <p>Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repository.</p>
-         <div class="small-vspace"></div>
-         <div class="black-box">
-         <pre class="bash">
-bash# emerge -av app-admin/rex </pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-         <div class="vspace"></div>
-
-         <h1><a name="mageia"></a>Mageia</h1>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-urpmi.addmedia rex http://rex.linux-files.org/Mageia/1/x86_64/
-urpmi rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-         <div class="vspace"></div>
+yum install rex</code></pre>
 
 
-
-         <h1><a name="suse"></a>OpenSuSE</h1>
-         <div class="small-vspace"></div>
-
-         <p>For 11.4</p>
-
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
-zypper install rex</pre>
-         </div>
+       </div>
 
 
-         <div class="small-vspace"></div>
+    </div>
+ </div>
 
-         <p>For 12.1</p>
+ <h2>Apple Mac OS X</h2>
 
-         <div class="black-box">
-            <pre class="bash">
-rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.1/x86_64/ rex
-zypper install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+<p>To install Rex on Mac OSX you have to install <a href="http://libssh2.org/">libssh2</a> first. You can do this with <a href="http://www.macports.org/">MacPorts</a> or with <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
+<p>We recommend using MacPorts. First you need to install XCode. After you've installed it you'll find a package for your system <a href="http://www.macports.org/install.php">here</a>.</p>
+<p>If you're using homebrew we recommend to install a custom perl with <a href="http://perlbrew.pl/">Perlbrew</a>.</p>
 
+<p>Installation instructions for MacPorts:</p>
+<pre><code class="bash">sudo port install libssh2 perl5
+curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+ 
 
+<h2>Microsoft Windows</h2>
 
-         <div class="vspace"></div>
+<p>Tested with Windows Vista and Windows 7 (64bit) and Strawberry Perl 5.x</p>
+<p>Start a CMD window and type:</p>
 
-         <h1><a name="ubuntu"></a>Ubuntu</h1>
-         <div class="small-vspace"></div>
+<pre><code class="bash">cpanm Rex</code></pre>
 
-         <p>For Lucid (10.04)</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-
-         <p>For Natty (11.04)</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/ubuntu/ natty rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-
-         <p>For Oneiric (11.10)</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/ubuntu/ oneiric rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-
-         <p>For Precise (12.04)</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/ubuntu/ precise rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-
-         <div class="small-vspace"></div>
-
-         <p>For Quantal (12.10)</p>
-
-         <div class="black-box">
-            <pre class="bash">
-echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+<p>If you want to use <a href="http://box.rexify.org/">Rex/Boxes</a> you need to add the installation path of VirtualBox to your <i>PATH</i> environment variable. The default installation path is <i>C:\Program Files\Oracle\VirtualBox</i>. If you need instructions how to do that you can read this article on <a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
 
 
-         <div class="vspace"></div>
+<h2>Other / From Source</h2>
 
-         <h1><a name="macosx"></a>Mac OSX</h1>
-         <div class="small-vspace"></div>
+<p>If you want to download the latest sources from Github you can do it this way. The master branch is the current latest stable version. Every development is done in its own version branch.</p>
 
-         <p>To install Rex on Mac OSX you have to install <a href="http://libssh2.org/">libssh2</a> first. You can do this with <a href="http://www.macports.org/">MacPorts</a> or with <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
-         <p>We recommend using MacPorts. First you need to install XCode. After you've installed it you'll find a package for your system <a href="http://www.macports.org/install.php">here</a>.</p>
-         <p>If you're using homebrew we recommend to install a custom perl with <a href="http://perlbrew.pl/">Perlbrew</a>.</p>
+<pre><code class="bash">git clone https://github.com/krimdomu/Rex.git
+cd Rex
+perl Makefile.PL
+make
+make test
+make install</code></pre>
 
-         <div class="small-vspace"></div>
-         <p>Installation instructions for MacPorts:</p>
-         <div class="black-box">
-            <pre class="bash">bash# sudo port install libssh2 perl5
-bash# curl -L get.rexify.org | perl - --sudo -n Rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
+<p>You can also use the CPAN shell to install Rex. This will download the latest release form CPAN.</p>
+<pre><code class="bash">perl -MCPAN -eshell
+cpan[1]&gt; install Rex</code></pre>
 
-         <div class="vspace"></div>
-
-
-         <h1><a name="windows"></a>Windows</h1>
-         <div class="small-vspace"></div>
-
-         <p>Tested with Windows Vista and Windows 7 (64bit) and Strawberry Perl 5.x</p>
-         <p>Start a CMD window and type:</p>
-
-         <div class="black-box">
-            <pre class="bash">cpanm Rex</pre>
-         </div>
-         <div class="small-vspace"></div>
-
-         <p>If you want to use <a href="http://box.rexify.org/">Rex/Boxes</a> you need to add the installation path of VirtualBox to your <i>PATH</i> environment variable. The default installation path is <i>C:\Program Files\Oracle\VirtualBox</i>. If you need instructions how to do that you can read this article on <a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
-
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-         <div class="vspace"></div>
-
-
-         <h1><a name="cpan"></a>Via CPAN (the newest stable version)</h1>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="bash">
-bash# perl -MCPAN -eshell
-cpan[1]&gt; install Rex
-</pre>
-         </div>
-         <div class="small-vspace"></div>
-         <a href="#top">Top</a>
-
-
-         <div class="vspace"></div>
-
-
-         <h1>Need Help?</h1>
-         <div class="small-vspace"></div>
-         <ul class="simple-list">
-            <li><a href="https://github.com/krimdomu/Rex/wiki">Wiki</a> on GitHub</li>
-            <li><a href="https://rt.cpan.org/Dist/Display.html?Queue=Rex">Bug Tracker</a> on rt.cpan.org</li>
-            <li>IRC: Join us on <a href="http://webchat.freenode.net/?channels=rex">irc.freenode.net</a> -&gt; #rex</li>
-         </ul>
-
+<p><small><i>All logos are registered trademarks of their respective companies and are not affiliated with and do not necessarily indicate that they either sponsor or endorse the services of rexify.org (and Rex).</i></small></p>
 

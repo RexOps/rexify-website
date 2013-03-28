@@ -1,259 +1,102 @@
-% layout 'frontpage';
+% layout 'default';
 % title '(R)?ex - A simple framework to simplify systemadministration and datacenter automation';
 
-      <div id="header">
-         <div id="slider">
-            <div id="bilderlinie">
-               <img src="/images/headpics/admin1.png" alt="Manage and Deploy your Servers" /> 
-               <img src="/images/headpics/deploy.png" alt="Deploy your Web Applications" />
-               <img src="/images/headpics/cloud1.png" alt="Keep your Cloud in Sync with your Configuration" />
-               <img src="/images/headpics/example1.png" alt="Keep your systems in consistant state" />
-               <a href="/feature.html" class="button" id="button_feature">M<span class="smaller">ISS</span> A F<span class="smaller">EATURE?</span></a>
-               <a href="/howtos/start.html" class="button" id="button_explore_rex">E<span class="smaller">XPLORE</span> R<span class="smaller">EX</span></a>
-               <a href="/modules/application_deployment.html" class="button" id="button_app_deploy">R<span class="smaller">EAD</span> M<span class="smaller">ORE</span></a>
-               <a href="/howtos/amazon.html" class="button" id="button_amazon">C<span class="smaller">REATE</span> Y<span class="smaller">OUR</span> C<span class="smaller">LOUD</span></a>
-            </div>
-         </div>
-      </div>
+
+<div class="row-fluid">
+   <div class="span4">
+      <h2>Why use Rex?</h2>
+      <p>If you have to do a task more than once,
+automate it!</p>
+      <p>Don‘t forget an installation step anymore. Automation reduces the risk of failure and let you do your real work.</p>
+   </div><!--/span-->
+   <div class="span4">
+      <h2>Advantages</h2>
+      <ul class="no-list">
+         <li>uses ssh, no agent required</li>
+         <li>seamless integration, no conflicts</li>
+         <li>easy to use and to extend</li>
+         <li>easy to learn, it‘s just plain perl</li>
+      </ul>
+   </div><!--/span-->
+   <div class="span4">
+      <h2>Open Source</h2>
+      <p>We belive in the idea of open source. So Rex and all its parts are released under Apache 2.0 license.</p>
+      <p>You‘re invited to join the community to make Rex better and better.</p>
+   </div><!--/span-->
+</div><!--/row-->
+
+<div class="row-fluid">
+   <div class="span4">
+      <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+   </div><!--/span-->
+   <div class="span4">
+      <p><a class="btn" href="/howtos/perl.html">Just enough Perl for Rex &raquo;</a></p>
+   </div><!--/span-->
+   <div class="span4">
+      <p><a class="btn" href="/contribute">View details &raquo;</a></p>
+   </div><!--/span-->
+</div><!--/row-->
 
 
-      <div id="site">
-      <div id="page">
-         
-         <div class="d2columns">
+<h2>Uptime?</h2>
+<p>This command line example will execute "uptime" on all the given hosts (frontend01, frontend02, ...).</p>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
+</code></pre>
 
-            <div class="col1">
-
-               <div class="colbox">
-                  <h1>What is (R)?ex</h1>
-                  <p>With (R)?ex you can <b>manage all your boxes</b> from a central point through the complete process of configuration management and software deployment.</p>
-                  <div class="vspace"></div>
-                  <p>(R)?ex uses SSH as its default transport layer. So there is no need to install anything on your servers. You just need a ssh enabled account.</p>
-                  <div class="vspace"></div>
-
-                  <p>Start exploring (R)?ex with this <a href="howtos/start.html">First Steps Guide</a>.</p>
-
-                  <div class="small-vspace"></div>
-
-                  <p>We are always open for <a href="/feature.html" title="Drop us a feature request">new suggestions</a> and <a href="/feature.html" title="Drop us a feature request">whishes</a>. If you miss a feature just <a href="/feature.html" title="Drop us a feature request">drop us a request</a>.</p>
-
-                  <div class="vspace"></div>
-
-% if(1==2)  {
-                  <h1>New Feature: Development Boxes</h1>
-                  <p>Build a live-like development environment for your developers in minutes with <a href="http://box.rexify.org/">Rex/Boxes</a>. Your devs will love you. No more fiddeling with dependency problems, version mismatches or "works on my system" excuses.</p>
-                  <div class="small-vspace"></div>
-                  <p>With <a href="http://box.rexify.org/">Rex/Boxes</a> your devs can work with a live-like environment and keep their workstations clean.</p>
-                  <div class="small-vspace"></div>
-                  <p>Read <a href="http://box.rexify.org/guide">more ...</a></p>
-% }
-               </div>
-
-
-               <div class="vspace"></div>
-
-               <h1>Latest News</h1>
-
-               <p><b>2013-03-16</b> Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</p>
-               <p><b>2013-02-24</b> (R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</p>
-               <p><b>2013-02-07</b> (R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</p>
-               <p><b>2013-01-27</b> (R)?ex 0.38.0 released. This release brings <a href="/api/Rex/Box/Amazon.pm.html">Box support for Amazon</a> and more <a href="/howtos/use_boxes_with_any_box_provider.html">usefull Box additions</a>. See <a href="https://github.com/krimdomu/Rex/wiki/New0.38">ChangeLog</a> for more information.</p>
-               <p><b>2013-01-07</b> (R)?ex 0.37.0 released. This release enhanced the core to be mostly extendable through external modules. It also adds a module for BIND DNS and an Eclipse Plugin. See <a href="https://github.com/krimdomu/Rex/wiki/New0.37">ChangeLog</a> for more details.</p>
-               <p><b>2013-01-03</b> (R)?ex 0.36.0 released. This release brings support for plugable Cloud Modules. It also comes with a module for <a href="http://modules.rexify.org/pod/Rex::Cloud::OpenNebula/file/CloudLayer.pm">OpenNebula</a>. See the Changelog on <a href="https://github.com/krimdomu/Rex/wiki/New0.36">Github.</a></p>
-               <p><b>2012-12-22</b> There is now a module search to easily find Rex modules on <a href="http://modules.rexify.org/">http://modules.rexify.org/</a>.</p>
-
-               <div class="vspace"></div>
-
-               <h1>Features</h1>
-               <ul class="simple-list">
-                  <li>Integrates seamless in your running infrastructure.</li>
-                  <li>No need of an agent. You only need a ssh connection to your server.</li>
-                  <li>Simple definitions of tasks and profiles</li>
-                  <li>Currently supports Debian, Ubuntu, Gentoo, Fedora, CentOS, Mageia, OpenSuSE and other Operating Systems. Read <a href="/compatibility.html">Compatibility List</a> for more information.</li>
-                  <li>Tasks are written in Perl, so everything is possible. See <a href="/howtos/perl.html" title="Just enough Perl for Rex">Perl Guide</a> for a small introduction to Perl. (Just enough Perl for Rex)</li>
-               </ul>
-
-               <div class="vspace"></div>
-
-               <h1>Need Help?</h1>
-               <div class="small-vspace"></div>
-               <ul class="simple-list">
-                  <li>Join our <a href="https://groups.google.com/group/rex-users/">Google Group</a></li>
-                  <li>IRC: Join us on <a href="http://webchat.freenode.net/?channels=rex">irc.freenode.net</a> -&gt; #rex</li>
-                  <li>Sign in to our <a href="http://www.freelists.org/list/rex-users">mailinglist</a> (if you don't like google ;-))</li>
-                  <li><a href="https://github.com/Krimdomu/Rex/issues">Bug Tracker</a> on Github</li>
-                  <li><a href="https://github.com/krimdomu/Rex/wiki">Wiki</a> on GitHub</li>
-               </ul>
-
-
-
-            </div>
-
-            <div class="col2">
-
-               <div class="colbox">
-                  <h1>Conferences</h1>
-                  <ul class="simple-list">
-                     <li>
-                        <a href="http://act.yapc.eu/gpw2013/index.html">German Perl Workshop</a><br />from 13 to 15 March 2013 in Berlin.
-                        <div class="vspace"></div>
-                     </li>
-                     <li>
-                        <a href="http://www.osdc.de/">OSDC.de 2013</a><br />
-                        <a href="http://www.osdc.de/" style="float: right"><img src="/images/osdc.png" height="100" /></a>
-                     </li>
-                  </ul>
-                  <div class="vspace" style="clear: both;"></div>
-
-                  <h1>Awards</h1>
-                  <ul class="simple-list">
-                     <li>
-                        <p><img src="/images/init_mittelstand.png" style="float: right; margin-left: 15px;">
-                        We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de/">inovex</a> for the support to make this happen.</p>
-                        <div class="small-vspace"></div>
-                        <p>Inovex is an owner-managed IT project company employing over 120 people at its four sites in Pforzheim, Karlsruhe, Munich and Cologne. Our excellent IT engineers and architects support IT departments in large companies and Internet firms with their expertise at managing the crucial tasks that occur in Internet environments. Inovex helps leading internet companies, like 1&1 Internet AG (WEB.DE, GMX), buch.de and maxdome, IT departments in traditional industry (such as Bosch, Daimler, Porsche and Volkswagen) and other leading industrial companies like EnBW or DB Schenker, to deal with their IT challenges.</p>
-
-                     </li>
-                  </ul>
-
-               </div>
-
-            </div>
-
-         </div>
-
-         <div class="clearfix"></div>
-
-
-
-
-         <div class="vspace"></div>
-
-         <h1>Some Examples</h1>
-
-<!-- cli uptime -->
-
-         <div class="small-vspace"></div>
-         <h2>Uptime?</h2>
-         <p>This command line example will execute "uptime" on all the given hosts (frontend01, frontend02, ...).</p>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"</pre>
-         </div>
-
-         <div class="vspace"></div>
-         <h2>The same, but with a <i>Rexfile</i></h2>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="perl">desc "Get Disk Free";
+<p>The same, but with a <i>Rexfile</i></p>
+<pre><code class="perl">desc "Get Disk Free";
 task "disk_free", sub {
    my $output = run "df -h";
    say $output;
-};</pre>
-         </div>
+};
+</code></pre>
 
-         <div class="black-box">
-            <pre class="bash">rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free</pre>
-         </div>
-
-
-<!-- simple website deployment -->
-
-         <div class="vspace"></div>
-         <h2>Simple Website Deployment</h2>
-         <p>This example will sync all files (and directories) in <i>html</i> to <i>/var/www/rexify.org/html</i> on the server <i>rexify.org</i>.</p>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="perl">
-
-user "my-user";
-password "my-password";
-
-pass_auth;
-
-desc "Upload website";
-task "upload", "rexify.org", sub {
-
-   sync "html/*", "/var/www/rexify.org/html";
-
-};</pre>
-         </div>
+<p>Now you can run your Task with this command</p>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free
+</code></pre>
 
 
-<!-- simple service installation -->
+<h2>Keep Your Configuration In Sync</h2>
+<p>This example will install the Apache Webserver on 5 servers and keep the configuration in sync. If the configuration file was changed it will automatically reload apache.</p>
+<p>If this task gets executed against a virgin host (where no apache is installed) it will first install it.</p>
 
-         <div class="vspace"></div>
-         <h2>Keep Your Configuration In Sync</h2>
-         <p>This example will install the Apache Webserver on 5 servers and keep the configuration in sync. If the configuration file was changed it will automatically reload apache.</p>
-         <p>If this task gets executed against a virgin host (where no apache is installed) it will first install it.</p>
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="perl">
-
-user "root";
-
+<pre><code class="perl">user "root";
 group "frontend" =&gt; "frontend[01..05]";
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-
    install "apache2";
-
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-
    prepare();
 
-   file "/etc/httpd/conf/httpd.conf",
-        source    =&gt; "files/etc/httpd/conf/httpd.conf",
-        on_change =&gt; sub { service httpd =&gt; "reload"; };
-
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
-</pre>
-         </div>
+</code></pre>
 
-         <div class="vspace"></div>
-
-         <h2>Running under sudo</h2>
-         <div class="small-vspace"></div>
-         <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
-
-         <div class="small-vspace"></div>
-
-         <div class="black-box">
-            <pre class="perl">
-
-user "joe";
-sudo_password "foo";
+<h2>Running under sudo?</h2>
+<p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
+<pre><code class="perl">user "ubuntu";
+group "frontend" =&gt; "frontend[01..05]";
 sudo TRUE;
 
-group "frontend" =&gt; "frontend[01..05]";
-
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-
    install "apache2";
-
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-
    prepare();
 
-   file "/etc/httpd/conf/httpd.conf",
-        source    =&gt; "files/etc/httpd/conf/httpd.conf",
-        on_change =&gt; sub { service httpd =&gt; "reload"; };
-
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
-</pre>
-         </div>
+</code></pre>
 
-      </div>
-   </div>
+

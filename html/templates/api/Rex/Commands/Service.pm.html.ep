@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Service - Manage System Services</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage Linux services.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Service
      
  service apache2 =&gt; &quot;start&quot;;
@@ -51,45 +51,45 @@
     
  service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
    
- service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;</pre></div><div class="vspace"></div>
+ service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>service($service, $action, [$option])</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>service($service, $action, [$option])</strong></li>
 
 
 <p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>starting a service</strong></li>
+<ul>
+<li><strong>starting a service</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;start-service&quot;, &quot;server01&quot;, sub {
     service apache2 =&gt; &quot;start&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>stopping a service</strong></li>
+<li><strong>stopping a service</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;stop-service&quot;, &quot;server01&quot;, sub {
     service apache2 =&gt; &quot;stop&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>restarting a service</strong></li>
+<li><strong>restarting a service</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;restart-service&quot;, &quot;server01&quot;, sub {
     service apache2 =&gt; &quot;restart&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>checking status of a service</strong></li>
+<li><strong>checking status of a service</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;status-service&quot;, &quot;server01&quot;, sub {
     if( service apache2 =&gt; &quot;status&quot; ) {
        say &quot;Apache2 is running&quot;;
@@ -97,39 +97,39 @@
     else {
        say &quot;Apache2 is not running&quot;;
     }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>reloading a service</strong></li>
+<li><strong>reloading a service</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;reload-service&quot;, &quot;server01&quot;, sub {
     service apache2 =&gt; &quot;reload&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>ensure that a service will started at boot time</strong></li>
+<li><strong>ensure that a service will started at boot time</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, sub {
     service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>ensure that a service will NOT be started.</strong></li>
+<li><strong>ensure that a service will NOT be started.</strong></li>
 
 
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare&quot;, sub {
     service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 
-<li><div class="vspace"></div><strong>service_provider_for $os =&gt; $type;</strong></li>
+<li><strong>service_provider_for $os =&gt; $type;</strong></li>
 
 
 <p>To set an other service provider as the default, use this function.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  user &quot;root&quot;;
      
  group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
@@ -137,7 +137,7 @@
     
  task &quot;start&quot;, group =&gt; &quot;db&quot;, sub {
      service ssh =&gt; &quot;restart&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
 
 </ul>

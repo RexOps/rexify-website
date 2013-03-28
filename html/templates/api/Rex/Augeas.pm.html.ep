@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Augeas - An augeas module for (R)?ex';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="This is a simple module to manipulate configuration files with the help of augeas.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Augeas - An augeas module for (R)?ex</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This is a simple module to manipulate configuration files with the help of augeas.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  my $k = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot;, &quot;127.0.0.1&quot;;
     
  augeas insert =&gt; &quot;/files/etc/hosts&quot;,
@@ -45,68 +45,68 @@
            ipaddr =&gt; &quot;192.168.2.23&quot;,
            canonical =&gt; &quot;test&quot;;
    
- augeas dump =&gt; &quot;/files/etc/hosts&quot;;</pre></div><div class="vspace"></div>
+ augeas dump =&gt; &quot;/files/etc/hosts&quot;;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>augeas($action, @options)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>augeas($action, @options)</strong></li>
 
 
 <p>It returns 1 on success and 0 on failure.</p>
 <p>Actions:</p>
 
-<li><div class="vspace"></div><strong>modify</strong></li>
+<li><strong>modify</strong></li>
 
 
 <p>This modifies the keys given in @options in $file.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  augeas modify =&gt;
            &quot;/files/etc/hosts/7/ipaddr&quot;    =&gt; &quot;127.0.0.2&quot;,
-           &quot;/files/etc/hosts/7/canonical&quot; =&gt; &quot;test01&quot;;</pre></div><div class="vspace"></div>
+           &quot;/files/etc/hosts/7/canonical&quot; =&gt; &quot;test01&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>remove</strong></li>
+<li><strong>remove</strong></li>
 
 
 <p>Remove an entry.</p>
-<div class="black-box"><pre class="perl">
- augeas remove =&gt; &quot;/files/etc/hosts/2&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ augeas remove =&gt; &quot;/files/etc/hosts/2&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>insert</strong></li>
+<li><strong>insert</strong></li>
 
 
 <p>Insert an item into the file. Here, the order of the options is important. If the order is wrong it won't save your changes.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  augeas insert =&gt; &quot;/files/etc/hosts&quot;,
            label  =&gt; &quot;01&quot;,
            after  =&gt; &quot;/7&quot;,
            ipaddr =&gt; &quot;192.168.2.23&quot;,
-           alias  =&gt; &quot;test02&quot;;</pre></div><div class="vspace"></div>
+           alias  =&gt; &quot;test02&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>dump</strong></li>
+<li><strong>dump</strong></li>
 
 
 <p>Dump the contents of a file to STDOUT.</p>
-<div class="black-box"><pre class="perl">
- augeas dump =&gt; &quot;/files/etc/hosts&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ augeas dump =&gt; &quot;/files/etc/hosts&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>exists</strong></li>
+<li><strong>exists</strong></li>
 
 
 <p>Check if an item exists.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my $exists = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot; =&gt; &quot;127.0.0.1&quot;;
  if($exists) {
      say &quot;127.0.0.1 exists!&quot;;
- }</pre></div><div class="vspace"></div>
+ }</code></pre>
 
-<li><div class="vspace"></div><strong>get</strong></li>
+<li><strong>get</strong></li>
 
 
 <p>Returns the value of the given item.</p>
-<div class="black-box"><pre class="perl">
- my $val = augeas get =&gt; &quot;/files/etc/hosts/1/ipaddr&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ my $val = augeas get =&gt; &quot;/files/etc/hosts/1/ipaddr&quot;;</code></pre>
 
 </ul>
 

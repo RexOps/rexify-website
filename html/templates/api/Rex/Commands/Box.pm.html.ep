@@ -11,26 +11,26 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>DESCRIPTION</h1>
+<h2>DESCRIPTION</h2>
 <p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports only VirtualBox.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Box;
     
  set box =&gt; &quot;VBox&quot;;
@@ -66,24 +66,24 @@
        
     };
     
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>new(name =&gt; $box_name)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>new(name =&gt; $box_name)</strong></li>
 
 
 <p>Constructor if used in OO mode.</p>
-<div class="black-box"><pre class="perl">
- my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);</code></pre>
 
-<li><div class="vspace"></div><strong>box(sub {})</strong></li>
+<li><strong>box(sub {})</strong></li>
 
 
 <p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  box {
     my ($box) = @_;
     $box-&gt;name(&quot;boxname&quot;);
@@ -108,61 +108,61 @@
     );
       
     $box-&gt;setup(qw/task_to_customize_box/);
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>list_boxes</strong></li>
+<li><strong>list_boxes</strong></li>
 
 
 <p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn't start a Rex/Box.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Data::Dumper;
  task &quot;get_infos&quot;, sub {
     my @all_boxes = list_boxes;
     print Dumper(\@all_boxes);
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>get_box($box_name)</code></strong></li>
+<li><strong>get_box($box_name)</strong></li>
 
 
 <p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Data::Dumper;
  task &quot;get_box_info&quot;, sub {
     my $data = get_box($box_name);
     print Dumper($data);
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>boxes($action, @data)</strong></li>
+<li><strong>boxes($action, @data)</strong></li>
 
 
 <p>With this function you can control your boxes. Currently there are 3 actions.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>init</strong></li>
+<ul>
+<li><strong>init</strong></li>
 
 
 <p>This action can only  be used if you're using a YAML file to describe your Rex/Boxes.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;prepare_boxes&quot;, sub {
     boxes &quot;init&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>start</strong></li>
+<li><strong>start</strong></li>
 
 
 <p>This action start one or more Rex/Boxes.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;start_boxes&quot;, sub {
     boxes &quot;start&quot;, &quot;box1&quot;, &quot;box2&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>stop</strong></li>
+<li><strong>stop</strong></li>
 
 
 <p>This action stop one or more Rex/Boxes.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;stop_boxes&quot;, sub {
     boxes &quot;stop&quot;, &quot;box1&quot;, &quot;box2&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Rex::Apache::Deploy::Git - Deploy applications with Git';
+% title '';
 
 % content_for header => begin
       <meta name="description" content="">
@@ -11,31 +11,31 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Apache::Deploy::Git - Deploy applications with Git</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This module gives you a simple interface to Git based deployments. It uses <em>git push</em> to upload a given commit to the server.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Apache::Deploy qw/Git/;
     
  task &quot;deploy&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
@@ -54,7 +54,7 @@
     switch_to_version $param-&gt;{commit};
  };
     
- #bash# rex rollback --commit=138274</pre></div><div class="vspace"></div>
+ #bash# rex rollback --commit=138274</code></pre>
 
 
 

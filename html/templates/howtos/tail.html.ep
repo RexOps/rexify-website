@@ -8,21 +8,19 @@
 
          <h1>Starting Point</h1>
          <p>This is a small example that will show you how to watch logfiles live.</p>
+         
 
-         <div class="vspace"></div>
-
-         <h1>Preparation</h1>
-         <ul class="simple-list">
-            <li>Download and install rex &gt;= 0.6.0 (See the <a href="/get">get</a> page)</li>
+         <h2>Preparation</h2>
+         <ul>
+            <li>Download and install rex (See the <a href="/get">get</a> page)</li>
          </ul>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Creating a simple Rexfile</h1>
+         <h2>Creating a simple Rexfile</h2>
          <p>At first create a simple Rexfile in your $HOME directory.</p>
 
-         <div class="black-box">
-            <pre class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex::Commands::Tail;
 
 user "my-user";
 password "my-password";
@@ -35,33 +33,25 @@ parallelism 20;
 
 desc "Tail Frontend Apache Access Logs";
 task "tail-fe", group =&gt; "fe", sub {
-
         tail "/opt/instances/httpd/fe-i01/logs/access_log";
+}; </code></pre>
 
-};
-            </pre>
-
-         </div>
-
-         <div class="small-vspace"></div>
+         
 
          <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers, from fe01 to fe20 and tail the logfile continuously.</p>
 
-         <div class="small-vspace"></div>
+         
 
          <p>If you want to tail the logs on many servers, you need to add parallelism to (R)?ex. So that you can see the logs of all servers at the same time.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ rex tail-fe</pre>
-         </div>
+            <pre><code class="bash">$ rex tail-fe</code></pre>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Customizing the tail output</h1>
+         <h2>Customizing the tail output</h2>
          <p>If you want to customize the tail output, you can add a callback function as 2nd parameter.</p>
 
-         <div class="black-box">
-            <pre class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex::Commands::Tail;
 
 user "my-user";
 password "my-password";
@@ -74,20 +64,14 @@ parallelism 20;
 
 desc "Tail Frontend Apache Access Logs";
 task "tail-fe", group =&gt; "fe", sub {
-
         tail "/opt/instances/httpd/fe-i01/logs/access_log", sub {
             my ($data) = @_;
             my $server_name = connection-&gt;server;
             print "[$server_name] $data\n";
         };
+}; </code></pre>
 
-};
-            </pre>
-
-         </div>
-
-
-         <div class="small-vspace"></div>
+         
 
          <p>This example will prepend the servername to every line.</p>
 

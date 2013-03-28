@@ -11,27 +11,27 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#examples">EXAMPLES</a></li>
 	<li><a href="#methods">METHODS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>DESCRIPTION</h1>
+<h2>DESCRIPTION</h2>
 <p>This is a Rex/Boxes module to use VirtualBox VMs.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXAMPLES</h1>
+
+<h2>EXAMPLES</h2>
 <p>To use this module inside your Rexfile you can use the following commands.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Rex::Commands::Boxes;
  set box =&gt; &quot;VBox&quot;;
    
@@ -62,9 +62,9 @@
            
        $box-&gt;setup(&quot;setup_task&quot;);
     };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If you want to use a YAML file you can use the following template.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  type: VBox
  vms:
     vmone:
@@ -75,54 +75,54 @@
              - 22
        share_folder:
           myhome: /home/myhome
-       setup: setup_task</pre></div><div class="vspace"></div>
+       setup: setup_task</code></pre>
 <p>And then you can use it the following way in your Rexfile.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Rex::Commands::Box init_file =&gt; &quot;file.yml&quot;;
     
  task &quot;prepare_vms&quot;, sub {
     boxes &quot;init&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>METHODS</h1>
+
+<h2>METHODS</h2>
 <p>See also the Methods of Rex::Box::Base. This module inherits all methods of it.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>new(name =&gt; $vmname)</strong></li>
+<ul>
+<li><strong>new(name =&gt; $vmname)</strong></li>
 
 
 <p>Constructor if used in OO mode.</p>
-<div class="black-box"><pre class="perl">
- my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);</code></pre>
 
-<li><div class="vspace"></div><strong><code>forward_port(%option)</code></strong></li>
+<li><strong>forward_port(%option)</strong></li>
 
 
 <p>Set ports to be forwarded to the VM. This only work with VirtualBox in NAT network mode.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  $box-&gt;forward_port(
     name =&gt; [$from_host_port, $to_vm_port],
     name2 =&gt; [$from_host_port_2, $to_vm_port_2],
     ...
- );</pre></div><div class="vspace"></div>
+ );</code></pre>
 
-<li><div class="vspace"></div><strong><code>share_folder(%option)</code></strong></li>
+<li><strong>share_folder(%option)</strong></li>
 
 
 <p>Creates a shared folder inside the VM with the content from a folder from the Host machine. This only works with VirtualBox.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  $box-&gt;share_folder(
     name =&gt; &quot;/path/on/host&quot;,
     name2 =&gt; &quot;/path_2/on/host&quot;,
- );</pre></div><div class="vspace"></div>
+ );</code></pre>
 
-<li><div class="vspace"></div><strong>info</strong></li>
+<li><strong>info</strong></li>
 
 
 <p>Returns a hashRef of vm information.</p>
 
-<li><div class="vspace"></div><strong>ip</strong></li>
+<li><strong>ip</strong></li>
 
 
 <p>This method return the ip of a vm on which the ssh daemon is listening.</p>

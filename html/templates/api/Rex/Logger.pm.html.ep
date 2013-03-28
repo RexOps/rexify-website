@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,51 +19,51 @@
 	<li><a href="#variables">VARIABLES</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Logger - Logging Module</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>This module if the logging module. You can define custom logformats.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  $Rex::Logger::format = '[%D] %s';
  # will output something like
  # [2012-04-12 18:35:12] Installing package vim
     
  $Rex::Logger::format = '%h - %D - %s';
  # will output something like
- # srv001 - 2012-04-12 18:35:12 - Installing package vim</pre></div><div class="vspace"></div>
+ # srv001 - 2012-04-12 18:35:12 - Installing package vim</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>VARIABLES</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>$debug</strong></li>
+
+<h2>VARIABLES</h2>
+<ul>
+<li><strong>$debug</strong></li>
 
 
 <p>Setting this variable to 1 will enable debug logging.</p>
-<div class="black-box"><pre class="perl">
- $Rex::Logger::debug = 1;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ $Rex::Logger::debug = 1;</code></pre>
 
-<li><div class="vspace"></div><strong>$silent</strong></li>
+<li><strong>$silent</strong></li>
 
 
 <p>If you set this variable to 1 nothing will be logged.</p>
-<div class="black-box"><pre class="perl">
- $Rex::Logger::silent = 1;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ $Rex::Logger::silent = 1;</code></pre>
 
-<li><div class="vspace"></div><strong>$format</strong></li>
+<li><strong>$format</strong></li>
 
 
 <p>You can define the logging format with the following parameters.</p>

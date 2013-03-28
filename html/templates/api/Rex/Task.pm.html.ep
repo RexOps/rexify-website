@@ -11,42 +11,42 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#methods">METHODS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>DESCRIPTION</h1>
+<h2>DESCRIPTION</h2>
 <p>The Task Object. Typically you only need this class if you want to manipulate tasks after their initial creation.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Task
      
   my $task = Rex::Task-&gt;new(name =&gt; &quot;testtask&quot;);
   $task-&gt;set_server(&quot;remoteserver&quot;);
   $task-&gt;set_code(sub { say &quot;Hello&quot;; });
-  $task-&gt;modify(&quot;no_ssh&quot;, 1);</pre></div><div class="vspace"></div>
+  $task-&gt;modify(&quot;no_ssh&quot;, 1);</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>METHODS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>new</strong></li>
+
+<h2>METHODS</h2>
+<ul>
+<li><strong>new</strong></li>
 
 
 <p>This is the constructor.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
    $task = Rex::Task-&gt;new(
       func =&gt; sub { some_code_here },
       server =&gt; [ @server ],
@@ -64,74 +64,74 @@
       around =&gt; [sub {}, sub {}, ...],
       name =&gt; $task_name,
       executor =&gt; Rex::Interface::Executor-&gt;create,
-   );</pre></div><div class="vspace"></div>
+   );</code></pre>
 
-<li><div class="vspace"></div><strong>connection</strong></li>
+<li><strong>connection</strong></li>
 
 
 <p>Returns the current connection object.</p>
 
-<li><div class="vspace"></div><strong>executor</strong></li>
+<li><strong>executor</strong></li>
 
 
 <p>Returns the current executor object.</p>
 
-<li><div class="vspace"></div><strong>hidden</strong></li>
+<li><strong>hidden</strong></li>
 
 
 <p>Returns true if the task is hidden. (Should not be displayed on ,,rex -T''.)</p>
 
-<li><div class="vspace"></div><strong>server</strong></li>
+<li><strong>server</strong></li>
 
 
 <p>Returns the servers on which the task should be executed as an ArrayRef.</p>
 
-<li><div class="vspace"></div><strong><code>set_server(@server)</code></strong></li>
+<li><strong>set_server(@server)</strong></li>
 
 
 <p>With this method you can set new servers on which the task should be executed on.</p>
 
-<li><div class="vspace"></div><strong>delete_server</strong></li>
+<li><strong>delete_server</strong></li>
 
 
 <p>Delete every server registered to the task.</p>
 
-<li><div class="vspace"></div><strong>current_server</strong></li>
+<li><strong>current_server</strong></li>
 
 
 <p>Returns the current server on which the tasks gets executed right now.</p>
 
-<li><div class="vspace"></div><strong>desc</strong></li>
+<li><strong>desc</strong></li>
 
 
 <p>Returns the description of a task.</p>
 
-<li><div class="vspace"></div><strong><code>set_desc($description)</code></strong></li>
+<li><strong>set_desc($description)</strong></li>
 
 
 <p>Set the description of a task.</p>
 
-<li><div class="vspace"></div><strong>is_remote</strong></li>
+<li><strong>is_remote</strong></li>
 
 
 <p>Returns true (1) if the task will be executed remotely.</p>
 
-<li><div class="vspace"></div><strong>is_local</strong></li>
+<li><strong>is_local</strong></li>
 
 
 <p>Returns true (1) if the task gets executed on the local host.</p>
 
-<li><div class="vspace"></div><strong>is_http</strong></li>
+<li><strong>is_http</strong></li>
 
 
 <p>Returns true (1) if the task gets executed over http protocol.</p>
 
-<li><div class="vspace"></div><strong>want_connect</strong></li>
+<li><strong>want_connect</strong></li>
 
 
 <p>Returns true (1) if the task will establish a connection to a remote system.</p>
 
-<li><div class="vspace"></div><strong>get_connection_type</strong></li>
+<li><strong>get_connection_type</strong></li>
 
 
 <p>This method tries to guess the right connection type for the task and returns it.</p>
@@ -140,86 +140,86 @@
 <p>Local - will not create any connections</p>
 <p>Fake - will not create any connections. But it populates the connection properties so you can use this type to iterate over a list of remote hosts but don't let rex build a connection. For example if you want to use Sys::Virt or other modules.</p>
 
-<li><div class="vspace"></div><strong>modify($key, $value)</strong></li>
+<li><strong>modify($key, $value)</strong></li>
 
 
 <p>With this method you can modify values of the task.</p>
 
-<li><div class="vspace"></div><strong>user</strong></li>
+<li><strong>user</strong></li>
 
 
 <p>Returns the current user the task will use.</p>
 
-<li><div class="vspace"></div><strong><code>set_user($user)</code></strong></li>
+<li><strong>set_user($user)</strong></li>
 
 
 <p>Set the user of a task.</p>
 
-<li><div class="vspace"></div><strong>password</strong></li>
+<li><strong>password</strong></li>
 
 
 <p>Returns the password that will be used.</p>
 
-<li><div class="vspace"></div><strong><code>set_password($password)</code></strong></li>
+<li><strong>set_password($password)</strong></li>
 
 
 <p>Set the password of the task.</p>
 
-<li><div class="vspace"></div><strong>name</strong></li>
+<li><strong>name</strong></li>
 
 
 <p>Returns the name of the task.</p>
 
-<li><div class="vspace"></div><strong>code</strong></li>
+<li><strong>code</strong></li>
 
 
 <p>Returns the code of the task.</p>
 
-<li><div class="vspace"></div><strong>set_code(\&amp;code_ref)</strong></li>
+<li><strong>set_code(\&amp;code_ref)</strong></li>
 
 
 <p>Set the code of the task.</p>
 
-<li><div class="vspace"></div><strong>run_hook($server, $hook)</strong></li>
+<li><strong>run_hook($server, $hook)</strong></li>
 
 
 <p>This method is used internally to execute the specified hooks.</p>
 
-<li><div class="vspace"></div><strong>set_auth($key, $value)</strong></li>
+<li><strong>set_auth($key, $value)</strong></li>
 
 
 <p>Set the authentication of the task.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  $task-&gt;set_auth(&quot;user&quot;, &quot;foo&quot;);
- $task-&gt;set_auth(&quot;password&quot;, &quot;bar&quot;);</pre></div><div class="vspace"></div>
+ $task-&gt;set_auth(&quot;password&quot;, &quot;bar&quot;);</code></pre>
 
-<li><div class="vspace"></div><strong><code>merge_auth($server)</code></strong></li>
+<li><strong>merge_auth($server)</strong></li>
 
 
 <p>Merges the authentication information from $server into the task.
 Tasks authentication information have precedence.</p>
 
-<li><div class="vspace"></div><strong>parallelism</strong></li>
+<li><strong>parallelism</strong></li>
 
 
 <p>Get the parallelism count of a task.</p>
 
-<li><div class="vspace"></div><strong><code>set_parallelism($count)</code></strong></li>
+<li><strong>set_parallelism($count)</strong></li>
 
 
 <p>Set the parallelism of the task.</p>
 
-<li><div class="vspace"></div><strong><code>connect($server)</code></strong></li>
+<li><strong>connect($server)</strong></li>
 
 
 <p>Initiate the connection to $server.</p>
 
-<li><div class="vspace"></div><strong>disconnect</strong></li>
+<li><strong>disconnect</strong></li>
 
 
 <p>Disconnect from the current connection.</p>
 
-<li><div class="vspace"></div><strong>run($server, %options)</strong></li>
+<li><strong>run($server, %options)</strong></li>
 
 
 <p>Run the task on $server.</p>

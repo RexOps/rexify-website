@@ -11,12 +11,11 @@
 <p>If you want to write an own cloud provider for Rex your module have to fullfill some interface requirements. For a working reference you can checkout the <a href="https://github.com/krimdomu/rex-recipes/blob/0.36/Rex/Cloud/OpenNebula/CloudLayer.pm">OpenNebula</a> module.</p>
 
 
-<div class="vspace"></div>
+
 <h2>Creating the Class</h2>
 <p>First you have to create your class. Your class have to be derived from Rex::Cloud::Base.</p>
 
-<div class="black-box">
-<pre class="perl">package Your::Cloud::Provider;
+<pre><code class="perl">package Your::Cloud::Provider;
    
 use strict;
 use warnings;
@@ -34,59 +33,52 @@ sub new {
    bless($self, $proto);
 
    return $self;
-}</pre>
-</div>
+}</code></pre>
 
-<div class="vspace"></div>
-<h2>Choosing a Region</h2>
+
+<h3>Choosing a Region</h3>
 <p>Some Cloud providers (like Amazon) let you choose a region where to manage your cloud instances. The Rex Cloud function for this is <i>cloud_region()</i>. This function will call the <i>set_endpoint()</i> method of the Cloud Provider's Class.</p>
 
-<div class="small-vspace"></div>
+
 <p>So, if you're Cloud Provider has the ability to choose different regions you have to define the <i>set_endpoint()</i> method.</p>
-<div class="small-vspace"></div>
+
 <p>The default <i>set_enpoint()</i> method just stores the first parameter into <i>$self-&gt;{__endpoint}</i>.</p>
-<div class="small-vspace"></div>
+
 <p>For example for the OpenNebula Module it sets the location of the OpenNebula RPC url.</p>
 
-<div class="black-box">
-   <pre class="perl">sub set_endpoint {
+   <pre><code class="perl">sub set_endpoint {
    my ($self, $endpoint) = @_;
    $self-&gt;{__endpoint} = $endpoint;
-}</pre></div>
-
-<div class="vspace"></div>
+}</code></pre>
 
 
-<h2>Authentication</h2>
+
+
+<h3>Authentication</h3>
 <p>Every Cloud Provider use different authentication methods. So you have to define a method <i>set_auth()</i> to store the authentication parameters that you want to use for every call against the Cloud API.</p>
-<div class="small-vspace"></div>
+
 <p>For example the Amazon API needs an Access Key and a Secret Access Key. The OpenNebula RPC Interface needs an username and a password.</p>
-<div class="black-box">
-<pre class="perl">sub set_auth {
+<pre><code class="perl">sub set_auth {
    my ($self, $user, $password) = @_;
    $self-&gt;{__user}     = $user;
    $self-&gt;{__password} = $password;
-}</pre>
-</div>
+}</code></pre>
 
-<div class="vspace"></div>
 
-<h2>Listing available Operating Systems</h2>
+
+<h3>Listing available Operating Systems</h3>
 
 <p>If your Cloud Provider supports the listing of available Operating Systems you can define a method called <i>list_operating_systems()</i>. This method should return an array of hashes.</p>
 
-<div class="small-vspace"></div>
+
 <p>The Hashes shoud contain at least a <i>name</i> and an <i>id</i>.</p>
 
-<div class="small-vspace"></div>
+
 <p>For example, the following code block shows the <i>list_operating_systems()</i> method from the OpenNebula Cloud provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub list_operating_systems {
+<pre><code class="perl">sub list_operating_systems {
    my ($self) = @_;
-
    my @templates = $self-&gt;_one-&gt;get_templates();
-
    my @ret = ();
 
    for my $tpl (@templates) {
@@ -94,25 +86,22 @@ sub new {
    }
 
    return @ret;
-}</pre></div>
+}</code></pre>
 
-<div class="vspace"></div>
-<h2>Listing Instances</h2>
+
+<h3>Listing Instances</h3>
 
 <p>To list your instances you have to define a method named <i>list_instances()</i>. This method should return all instances available to the user. If you only want to list running instances there is also a method called <i>list_running_instances()</i>.</p>
-<div class="small-vspace"></div>
+
 
 <p>Both methods have to return an array of hashes. The hashes should contain at least an <i>id</i>, an <i>ip</i> to connect to via ssh and a <i>state</i>. The <i>state</i> key should contain <i>running</i> (if the instance is running) or <i>stopped</i> (if the instance is stopped). It can also contain other states if the Cloud Provider supports it.</p>
 
-<div class="small-vspace"></div>
+
 <p>For example the next code block shows the 2 methods from the OpenNebula Cloud provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub list_instances {
+<pre><code class="perl">sub list_instances {
    my ($self) = @_;
-
    my @ret = ();
-
    my @vms = $self-&gt;_one-&gt;get_vms;
 
    for my $vm (@vms) {
@@ -134,22 +123,18 @@ sub new {
 sub list_running_instances { 
    my ($self) = @_;
    return grep { $_-&gt;{"state"} eq "running" } $self-&gt;list_instances();
-}</pre>
-</div>
+}</code></pre>
 
-<div class="vspace"></div>
-<h2>Creating a new Instance</h2>
+
+<h3>Creating a new Instance</h3>
 
 <p>To create a new instance you have to add the method <i>run_instance(%data)</i>. This method should return a hashRef of the instance information after the instance has created and started.</p>
 
 <p>The next code block shows this method from the OpenNebula provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub run_instance {
+<pre><code class="perl">sub run_instance {
    my ($self, %data) = @_;
-
    my $image_id   = $data{image_id};
-
    my $name = $data{name};
 
    if(! $name) {
@@ -184,76 +169,65 @@ sub list_running_instances {
       state =&gt; $vm-&gt;state,
       architecture =&gt; $vm-&gt;arch,
    };
-}</pre>
-</div>
+}</code></pre>
 
 
-<div class="vspace"></div>
-<h2>Stopping an  Instance</h2>
+
+<h3>Stopping an  Instance</h3>
 
 <p>There are 2 ways to stop an instance: <i>stop</i> and <i>terminate</i>. The first one should stop the instance but don't delete it. So it is possible to start the instance when it is needed again.</p>. The method name for this is <i>stop_instance()</i>.</p>
 
-<div class="small-vspace"></div>
+
 <p>The next code block shows the method from the OpenNebula Cloud provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub stop_instance {
+<pre><code class="perl">sub stop_instance {
    my ($self, %data) = @_;
    $self-&gt;_one-&gt;get_vm($data{instance_id})-&gt;stop;
-}</pre>
-</div>
+}</code></pre>
 
 
-<div class="vspace"></div>
-<h2>Terminating an  Instance</h2>
+
+<h3>Terminating an  Instance</h3>
 
 <p>This method should stop an instance and remove it. The method name for this is <i>terminate_instance()</i></p>
-<div class="small-vspace"></div>
+
 <p>The next code block shows the method from the OpenNebula Cloud provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub terminate_instance {
+<pre><code class="perl">sub terminate_instance {
    my ($self, %data) = @_;
    $self-&gt;_one-&gt;get_vm($data{instance_id})-&gt;shutdown;
-}</pre>
-</div>
+}</code></pre>
 
 
 
 
-<div class="vspace"></div>
-<h2>Starting an  Instance</h2>
+
+<h3>Starting an  Instance</h3>
 
 <p>To start a stopped instance you have to define a method named <i>start_instance()</i>.</p>
 
-<div class="small-vspace"></div>
+
 <p>The next code block shows the method from the OpenNebula Cloud provider.</p>
 
-<div class="black-box">
-<pre class="perl">sub start_instance {
+<pre><code class="perl">sub start_instance {
    my ($self, %data) = @_;
    $self-&gt;_one-&gt;get_vm($data{instance_id})-&gt;resume;
-}</pre>
-</div>
+}</code></pre>
 
 
-<div class="vspace"></div>
-<h2>Registering your Cloud Provider</h2>
+
+<h3>Registering your Cloud Provider</h3>
 <p>At last you have to register your Cloud Provider to Rex. For this you have to call <i>Rex::Cloud-&gt;register_cloud_service($yourhandle =&gt; "Your::Cloud::Provider")</i></p>
-<div class="small-vspace"></div>
+
 <p>You can just add this line to the end of your Class. (Just before the finishing "1;")</p>
 
-<div class="black-box">
-   <pre class="perl">Rex::Cloud-&gt;register_cloud_service(yourhandle =&gt; __PACKAGE__);</pre>
-</div>
+   <pre><code class="perl">Rex::Cloud-&gt;register_cloud_service(yourhandle =&gt; __PACKAGE__);</code></pre>
 
-<div class="vspace"></div>
+
 <h2>Using your Cloud Provider</h2>
 <p>To use your Cloud Provider within your Rexfiles just copy it into your <i>lib</i> directory and <i>use</i> it:</p>
-<div class="black-box">
-   <pre class="perl">use Your::Cloud::Provider;
+   <pre><code class="perl">use Your::Cloud::Provider;
 
 cloud_service "$yourhandle";
 cloud_auth "user", "password";
-# ...</pre>
-</div>
+# ...</code></pre>

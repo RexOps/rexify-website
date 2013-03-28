@@ -11,118 +11,12 @@ use Mojolicious::Lite;
 use Mojo::UserAgent;
 use Data::Dumper;
 
-use lib 'lib';
-use lib 'vendor/perl';
-
-use DBIx::ORMapper;
-use DBIx::ORMapper::Connection::Server::MySQL;
-use DBIx::ORMapper::DM;
-
-use FeatureRequest;
-
-my $config = {};
-
-if(-f "./config.pl") {
-   my $content = eval { local(@ARGV, $/) = ("./config.pl"); <>; };
-   $config  = eval 'package Foo::Config::Loader;'
-                        . "no warnings; $content";
-
-   die "Couldn't load configuration file: $@" if(!$config && $@);
-   die "Config file invalid. Did not return HASH reference." if( ref($config) ne "HASH" );
-}
-else {
-   die "Config file ./config.pl not found.";
-}
-
 plugin 'RenderFile';
-
-DBIx::ORMapper::setup(default => "MySQL://" . $config->{database}->{server} . "/" 
-                                            . $config->{database}->{schema} . 
-                               "?username=" . $config->{database}->{username}  .
-                               "&password=" . $config->{database}->{password}
-);
-
-eval {
-   my $db = DBIx::ORMapper::get_connection("default");
-   $db->connect;
-
-   FeatureRequest->set_data_source($db);
-} or do {
-   die "Can't connect to database: $@";
-};
-
-sub get_random {
-	my $count = shift;
-	my @chars = @_;
-	
-	srand();
-	my $ret = "";
-	for(1..$count) {
-		$ret .= $chars[int(rand(scalar(@chars)-1))];
-	}
-	
-	return $ret;
-}
 
 get '/' => sub {
    my ($self) = @_;
-   $self->render("index");
-};
-
-get '/feature.html' => sub {
-   my ($self) = @_;
-
-   my @op = ('+', '-');
-   $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
-
-   my $wishes = FeatureRequest->all;
-
-   my $posted = $self->param("posted")?"Your feature request has been posted successfully.":"";
-   $self->render("feature", wishes => $wishes, question => $self->session->{question}, email => "", feature => "", error => 0, posted => $posted, no_disqus => 1);
-};
-
-post '/feature.html' => sub {
-   my ($self) = @_;
-
-   my $wishes = FeatureRequest->all;
-
-   my @error = ();
-
-   my $answer = eval $self->session->{question};
-   if($self->param("question") ne $answer) {
-      push(@error, "The magic answer is wrong. Please try again.");
-   }
-
-   if(! $self->param("feature")) {
-      push(@error, "Please fill out the feature field.");
-   }
-
-   if(! @error) {
-
-      my $new_wish = FeatureRequest->new(
-         created => DateTime->now,
-         email   => $self->param("email")   || "<not given>",
-         feature => $self->param("feature") || "<not given>",
-      );
-
-      $new_wish->save;
-
-      return $self->redirect_to('/feature.html?posted=1');
-   }
-   else {
-      my @op = ('+', '-');
-      $self->session->{question} = int(rand(10)) . $op[int(rand(2))] . int(rand(10));
-
-      $self->render("feature", 
-                        wishes   => $wishes, 
-                        question => $self->session->{question}, 
-                        email    => $self->param("email"), 
-                        feature  => $self->param("feature"), 
-                        error    => \@error, 
-                        posted   => 0,
-                        no_disqus => 1,
-      );
-   }
+   $self->stash("no_side_bar", 0);
+   $self->render("index", root => 1, cat => "", no_disqus => 1);
 };
 
 # special code to handle ,,rexify --search'' requests
@@ -181,6 +75,12 @@ get '/search' => sub {
       },
    });
 
+   $self->stash("no_side_bar", 0);
+   $self->stash("root", 0);
+   $self->stash("no_disqus", 1);
+   $self->stash("cat", "");
+
+
    if(my $json = $tx->res->json) {
       return $self->render("search", hits => $json->{hits});
    }
@@ -195,20 +95,31 @@ get '/*file' => sub {
 
    my $template = $self->param("file");
 
+   my ($cat) = ($template =~ m/^([^\/]+)\//);
+   $cat ||= "";
+   $self->stash("cat", $cat);
+
+   if($template eq "howtos/compatibility.html") {
+      $self->stash("no_side_bar", 1);
+   }
+   else {
+      $self->stash("no_side_bar", 0);
+   }
+
    if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template", no_disqus => 0);
+      return $self->render_file(filepath => "public/$template", no_disqus => 0, root => 0);
    }
 
    if(-d "templates/$template") {
-      return $self->redirect_to("$template/index.html");
+      return $self->redirect_to("$template/index.html", root => 0);
    }
 
    if(-f "templates/$template.ep") {
       $template =~ s/\.html$//;
-      $self->render($template, no_disqus => 0);
+      $self->render($template, no_disqus => 0, root => 0);
    }
    else {
-      $self->render('404', status => 404, no_disqus => 1);
+      $self->render('404', status => 404, no_disqus => 1, root => 0);
    }
 
 };
@@ -219,6 +130,9 @@ app->start;
 __DATA__
 
 @@ search.html.ep
+
+% layout 'default';
+% title 'Search for ' . param('q');
 
 % if( $hits->{total} == 0 ) {
 
@@ -231,7 +145,7 @@ __DATA__
 
 % if(@api_results) {
 <h1>API</h1>
-   <ul class="simple-list">
+   <ul>
    % for my $r (@api_results) {
       <li>
          <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
@@ -249,7 +163,7 @@ __DATA__
 % if(@webpage_results) {
 <div class="vspace"></div>
 <h1>Website</h1>
-   <ul class="simple-list">
+   <ul>
    % for my $r (@webpage_results) {
       <li>
          <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
@@ -264,11 +178,6 @@ __DATA__
    </ul>
 % }
 
-<h1>&nbsp;</h1>
-<div class="small-vspace"></div>
-<a href="#" class="search_button">Close</a>
-<div class="small-vspace"></div>
-
 % }
 
 @@ 404.html.ep
@@ -279,122 +188,46 @@ __DATA__
 <h1>404 - I'm really sorry :(</h1>
 <p>Hello. I'm a Webserver. And i'm there to serve files for you. But i'm really sorry :( I can't find the file you want to see.</p>
 
+@@ index_head.html.ep
+
+         <div id="head-div">
+            <div class="head_container">
+               <div class="slogan">
+                  <h1>Automate Everything, Relax Anytime</h1>
+                  <div class="slogan_list">
+                     <ul>
+                        <li>&gt; Integrates seamless in your running environment</li>
+                        <li>&gt; Easy to use and extend</li>
+                        <li>&gt; Easy to learn, it's just plain Perl</li>
+                        <li>&gt; Apache 2.0 licensed</li>
+                     </ul>
+                  </div> <!-- slogan_list -->
+
+                  <div class="source">
+                     <pre><code class="perl">task prepare => sub {
+   install "apache2";
+   service apache2 => ensure => "started";
+};</code></pre>
+                  </div> <!-- source -->
+                  <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>
+               </div> <!-- slogan -->
+
+            </div> <!-- head_container -->
+         </div>
+
+
+
 @@ navigation.html.ep
 
-<div id="nav">
-   <a href="http://rexify.org/"><img id="nav_img" src="http://rexify.org/images/title.png" alt="(R)?ex - What do you want to deploy today?" /></a>
-   <div class="navlinks"><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/get" title="Install Rex on your systems">Get Rex</a>&nbsp;&nbsp;&nbsp;<a href="/contribute">Contribute</a>&nbsp;&nbsp;&nbsp;<a href="/howtos" title="Examples, Howtos and Documentation">Howtos/Docs</a>&nbsp;&nbsp;&nbsp;<a href="/api" title="The complete API documentation">API</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/krimdomu/Rex/wiki">Wiki</a>
-      <div class="searchbox">
-         Search: <input type="text" name="q" id="q" />
-      </div>
-   </div>
-</div>
-
-<div class="result_field">
-   <p>I'm sorry. Your query had no results!</p>
-</div>
-
-
-@@ layouts/frontpage.html.ep
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   
-      <title><%= title %></title>
-
-      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
-
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
-      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
-
-      
-      
-   </head>
-   <body>
-
-      %= include 'navigation';
-
-      <%= content %>
-      
-
-      <div id="footer">
-         <div class="links">
-            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
-            <div class="vspace"></div>
-            <div class="bottom_box">
-               <table border="0">
-                  <tr>
-                     <td width="50%">
-                        <h1>Looking for Modules?</h1>
-                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
-                     </td>
-                     <td>
-                        <h1>Unify your Team!</h1>
-                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
-                        create clean development environments for your projects. Test your software in a production like environment.
-                     </td>
-                  </tr>
-               </table>
+             <div class="nav_links">
+               <ul>
+                  <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
+                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">Docs</a></li>
+                  <li <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
+               </ul>
             </div>
-
-            
-         </div>
-      </div>
-
-     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
-
-
-
-   <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
-
-   <script type="text/javascript" charset="utf-8">
-
-
-      $(".perl").each(function(a,b) {
-
-         HighlightCode(b);
-            
-      });
-
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
-
-
-      $(".navlinks").show();
-
-   </script>
-
-<!-- Piwik --> 
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://rexify.org/stats/" : "http://rexify.org/stats/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://rexify.org/stats/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tracking Code -->
-
-
-   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
-
-   </body>
-
-</html>
-
 
 @@ layouts/default.html.ep
 <!DOCTYPE html 
@@ -406,32 +239,109 @@ piwikTracker.enableLinkTracking();
    
       <title><%= title %></title>
 
-      <link rel="stylesheet" href="/css/default.css?17" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/highlight.css?17" type="text/css" media="screen" charset="utf-8" />
+      <meta name="viewport" content="width=1024, initial-scale=0.5">
 
-      %= content_for 'header';
-      
+      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20130325" type="text/css" media="screen" charset="utf-8" />
+
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
+      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
+
+      <style>
+      % if($no_side_bar) {
+         #content_container {
+            margin-left: 5px;
+         }
+
+         #widgets {
+            display: none;
+         }
+      % }
+      </style>
+
    </head>
    <body>
 
-      %= include 'navigation';
-
-      <div id="header">
-         <img src="http://rexify.org/images/new-header.png" />
-      </div>
-
-      <div id="site">
       <div id="page">
 
+      % if($root) {
+         <div id="index-top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+         </div>
+
+         %= include 'index_head';
+         <div class="nav_title">
+            <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
+         </div>
+
+         <div id="index-nav-div">
+            %= include 'navigation';
+         </div>
+      % } else {
+         <div id="top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               %= include 'navigation';
+            </div>
+         </div>
+      % }
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search" method="GET">
+                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+               <div class="news_widget">
+                  <div class="news_date">2013-03-20</div>
+                  <div class="news_content">
+                     <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
+                     <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
+                  </div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-03-16</div>
+                  <div class="news_content">Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-02-24</div>
+                  <div class="news_content">(R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-01-27</div>
+                  <div class="news_content">(R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</div>
+               </div>
 
 
-         <%= content %>
+               <h2>Conferences</h2>
+               <img src="/img/osdc.png" style="float: left; width: 100px;" />
+               <p><a href="http://www.osdc.de/">Open Source Data Center Conference</a></p>
+               <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
+               <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
 
-   <div class="vspace"></div>
+               <h2>Need Help?</h2>
+               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
+               <ul>
+                  <li>IRC: #rex on freenode</li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
+                  <li>Issues: <a href="https://github.com/Krimdomu/Rex/issues">on Github</a></li>
+                  <li>Feature: You miss a <a href="/feature.html">feature</a>?</li>
+               </ul>
+            </div>
+         </div> <!-- widgets -->
 
-   % if( ! $no_disqus) {
+         <div id="content_container">
+            <div id="content">
+               <%= content %>
 
-    <div id="disqus_thread"></div>
+ % if( ! $no_disqus) {
+
+    <div id="disqus_thread" style="margin-top: 45px;"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
@@ -448,64 +358,18 @@ piwikTracker.enableLinkTracking();
     
     % }
 
-      </div>
-      </div>
-
-      
-
-      <div id="footer">
-         <div class="links">
-            <p>Stay in Touch: <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
-            <div class="vspace"></div>
-            <div class="bottom_box">
-               <table border="0">
-                  <tr>
-                     <td width="50%">
-                        <h1>Looking for Modules?</h1>
-                        <a href="http://modules.rexify.org/">modules.rexify.org</a> is a service where you can search, download and contribute Rex modules.
-                     </td>
-                     <td>
-                        <h1>Unify your Team!</h1>
-                        <a href="http://box.rexify.org/">box.rexify.org</a> is a service where you can download prebuild VirtualBox images to 
-                        create clean development environments for your projects. Test your software in a production like environment.
-                     </td>
-                  </tr>
-               </table>
             </div>
+         </div> <!-- content -->
 
-            
-         </div>
-      </div>
+      </div> <!-- page -->
+      
 
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
 
 
-      <script type="text/javascript" charset="utf-8" src="/js/jquery-1.5.2.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/highlight.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/search.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/mousetrap.min.js"></script>
-
-   <script type="text/javascript" charset="utf-8">
-
-
-      $(".perl").each(function(a,b) {
-
-         HighlightCode(b);
-            
-      });
-
-      if($.browser.msie) {
-         $("#nav_img").css("float", "left");
-      }
-      if($.browser.opera) {
-         $("#nav_img").css("float", "left");
-      }
-
-
-      $(".navlinks").show();
-
-   </script>
+   <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
 
 <!-- Piwik --> 
 <script type="text/javascript">
@@ -521,7 +385,13 @@ piwikTracker.enableLinkTracking();
 <!-- End Piwik Tracking Code -->
 
 
-   <script type="text/javascript" charset="utf-8" src="/js/main.js"></script>
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+  hljs.initHighlightingOnLoad();
+  $("#q").focus();
+</script>
+
 
    </body>
 

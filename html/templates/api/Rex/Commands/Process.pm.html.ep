@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,73 +19,73 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Process - Process management commands</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage processes. List, Kill, and so on.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  kill $pid;
  killall &quot;apache2&quot;;
- nice($pid, $level);</pre></div><div class="vspace"></div>
+ nice($pid, $level);</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>kill($pid, $sig)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>kill($pid, $sig)</strong></li>
 
 
 <p>Will kill the given process id. If $sig is specified it will kill with this.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;kill&quot;, &quot;server01&quot;, sub {
     kill 9931;
     kill 9931, -9;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>killall($name, $sig)</strong></li>
+<li><strong>killall($name, $sig)</strong></li>
 
 
 <p>Will kill the given process. If $sig is specified it will kill with this.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;kill-apaches&quot;, &quot;server01&quot;, sub {
     killall &quot;apache2&quot;;
     killall &quot;apache2&quot;, -9;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>ps</strong></li>
+<li><strong>ps</strong></li>
 
 
 <p>List all processes on a system. Will return all fields of a <em>ps aux</em>.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;ps&quot;, &quot;server01&quot;, sub {
     for my $process (ps()) {
       say &quot;command  &gt; &quot; . $process-&gt;{&quot;command&quot;};
       say &quot;pid      &gt; &quot; . $process-&gt;{&quot;pid&quot;};
       say &quot;cpu-usage&gt; &quot; . $process-&gt;{&quot;cpu&quot;};
     }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>nice($pid, $level)</strong></li>
+<li><strong>nice($pid, $level)</strong></li>
 
 
 <p>Renice a process identified by $pid with the priority $level.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;renice&quot;, &quot;server01&quot;, sub {
     renice (153, -5);
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

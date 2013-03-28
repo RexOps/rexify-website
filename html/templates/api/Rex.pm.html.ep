@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -22,43 +22,43 @@
 	<li><a href="#contributors">CONTRIBUTORS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex - Remote Execution</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>(R)?ex is a small script to ease the execution of remote commands. You can write small tasks in a file named <em>Rexfile</em>.</p>
 <p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>GETTING HELP</h1>
-<ul class="simple-list">
-<li><div class="vspace"></div><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
+
+<h2>GETTING HELP</h2>
+<ul>
+<li><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>IRC: irc.freenode.net #rex</strong>
+<li><strong>IRC: irc.freenode.net #rex</strong>
 
 </li>
-<li><div class="vspace"></div><strong>Bug Tracker: <a href="https://github.com/krimdomu/Rex/issues">https://github.com/krimdomu/Rex/issues</a></strong>
+<li><strong>Bug Tracker: <a href="https://github.com/krimdomu/Rex/issues">https://github.com/krimdomu/Rex/issues</a></strong>
 
 </li>
-<li><div class="vspace"></div><strong>Twitter: <a href="http://twitter.com/jfried83">http://twitter.com/jfried83</a></strong>
+<li><strong>Twitter: <a href="http://twitter.com/jfried83">http://twitter.com/jfried83</a></strong>
 
 </li>
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>Dependencies</h1>
-<ul class="simple-list">
+
+<h2>Dependencies</h2>
+<ul>
 <li>
 <p><em>Net::SSH2</em></p>
 </li>
@@ -73,64 +73,64 @@
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  desc &quot;Show Unix version&quot;;
  task &quot;uname&quot;, sub {
      say run &quot;uname -a&quot;;
- };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
- bash# rex -H &quot;server[01..10]&quot; uname</pre></div><div class="vspace"></div>
+ };</code></pre>
+<pre><code class="perl">
+ bash# rex -H &quot;server[01..10]&quot; uname</code></pre>
 <p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for a list of all commands you can use.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>CLASS METHODS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>get_current_connection</strong></li>
+
+<h2>CLASS METHODS</h2>
+<ul>
+<li><strong>get_current_connection</strong></li>
 
 
 <p>This function is deprecated since 0.28! See Rex::Commands::connection.</p>
 <p>Returns the current connection as a hashRef.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>server</strong></li>
+<ul>
+<li><strong>server</strong></li>
 
 
 <p>The server name</p>
 
-<li><div class="vspace"></div><strong>ssh</strong></li>
+<li><strong>ssh</strong></li>
 
 
 <p>1 if it is a ssh connection, 0 if not.</p>
 
 </ul>
 
-<li><div class="vspace"></div><strong>is_ssh</strong></li>
+<li><strong>is_ssh</strong></li>
 
 
 <p>Returns 1 if the current connection is a ssh connection. 0 if not.</p>
 
-<li><div class="vspace"></div><strong>is_local</strong></li>
+<li><strong>is_local</strong></li>
 
 
 <p>Returns 1 if the current connection is local. Otherwise 0.</p>
 
-<li><div class="vspace"></div><strong>is_sudo</strong></li>
+<li><strong>is_sudo</strong></li>
 
 
 <p>Returns 1 if the current operation is executed within sudo.</p>
 
-<li><div class="vspace"></div><strong>get_sftp</strong></li>
+<li><strong>get_sftp</strong></li>
 
 
 <p>Returns the sftp object for the current ssh connection.</p>
 
-<li><div class="vspace"></div><strong>connect</strong></li>
+<li><strong>connect</strong></li>
 
 
 <p>Use this function to create a connection if you use Rex as a library.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  use Rex;
  use Rex::Commands::Run;
  use Rex::Commands::Fs;
@@ -147,58 +147,66 @@
     print &quot;Do something...\n&quot;;
  }
      
- my $output = run(&quot;upime&quot;);</pre></div><div class="vspace"></div>
+ my $output = run(&quot;upime&quot;);</code></pre>
 
 </ul>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>CONTRIBUTORS</h1>
+
+<h2>CONTRIBUTORS</h2>
 <p>Many thanks to the contributors for their work (alphabetical order).</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Alexandr Ciornii</strong></li>
+<ul>
+<li><strong>Alexandr Ciornii</strong></li>
 
-<li><div class="vspace"></div><strong>Anders Ossowicki</strong></li>
+<li><strong>Anders Ossowicki</strong></li>
 
-<li><div class="vspace"></div><strong>Chenryn</strong></li>
+<li><strong>Chenryn</strong></li>
 
-<li><div class="vspace"></div><strong>Daniel Baeurer</strong></li>
+<li><strong>Daniel Baeurer</strong></li>
 
-<li><div class="vspace"></div><strong>Dominik Danter</strong></li>
+<li><strong>Dominik Danter</strong></li>
 
-<li><div class="vspace"></div><strong>Dominik Schulz</strong></li>
+<li><strong>Dominik Schulz</strong></li>
 
-<li><div class="vspace"></div><strong>Franky Van Liedekerke</strong></li>
+<li><strong>Fran Rodriguez</strong></li>
 
-<li><div class="vspace"></div><strong>Gilles Gaudin, for writing a french howto</strong></li>
+<li><strong>Ferenc Erki</strong></li>
 
-<li><div class="vspace"></div><strong>Hiroaki Nakamura</strong></li>
+<li><strong>Franky Van Liedekerke</strong></li>
 
-<li><div class="vspace"></div><strong>Jean Charles Passard</strong></li>
+<li><strong>Gilles Gaudin, for writing a french howto</strong></li>
 
-<li><div class="vspace"></div><strong>Jeen Lee</strong></li>
+<li><strong>Hiroaki Nakamura</strong></li>
 
-<li><div class="vspace"></div><strong>Jonathan Delgado</strong></li>
+<li><strong>Jean Charles Passard</strong></li>
 
-<li><div class="vspace"></div><strong>Joris</strong></li>
+<li><strong>Jeen Lee</strong></li>
 
-<li><div class="vspace"></div><strong>Jose Luis Martinez</strong></li>
+<li><strong>Jonathan Delgado</strong></li>
 
-<li><div class="vspace"></div><strong>Laird Liu</strong></li>
+<li><strong>Joris</strong></li>
 
-<li><div class="vspace"></div><strong>Naveed Massjouni</strong></li>
+<li><strong>Jose Luis Martinez</strong></li>
 
-<li><div class="vspace"></div><strong>Mario Domgoergen</strong></li>
+<li><strong>Laird Liu</strong></li>
 
-<li><div class="vspace"></div><strong>Nikolay Fetisov</strong></li>
+<li><strong>Naveed Massjouni</strong></li>
 
-<li><div class="vspace"></div><strong>Samuele Tognini</strong></li>
+<li><strong>Mario Domgoergen</strong></li>
 
-<li><div class="vspace"></div><strong>Sascha Guenther</strong></li>
+<li><strong>Nikolay Fetisov</strong></li>
 
-<li><div class="vspace"></div><strong>Sven Dowideit</strong></li>
+<li><strong>Peter H. Ezetta</strong></li>
 
-<li><div class="vspace"></div><strong>Tomohiro Hosaka</strong></li>
+<li><strong>Samuele Tognini</strong></li>
+
+<li><strong>Sascha Guenther</strong></li>
+
+<li><strong>Sven Dowideit</strong></li>
+
+<li><strong>Tokuhiro Matsuno</strong></li>
+
+<li><strong>Tomohiro Hosaka</strong></li>
 
 </ul>
 

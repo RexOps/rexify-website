@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Download - Download remote files</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can download a remotefile via sftp, http and ftp from a host to your local computer.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  # sftp
  task &quot;download&quot;, &quot;remoteserver&quot;, sub {
     download &quot;/remote/file&quot;, &quot;localfile&quot;;
@@ -45,24 +45,24 @@
  # http
  task &quot;download2&quot;, sub {
     download &quot;<a href="http://server/remote/file&quot">http://server/remote/file&quot</a>;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>download($remote, [$local])</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>download($remote, [$local])</strong></li>
 
 
 <p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;download&quot;, &quot;remoteserver&quot;, sub {
     download &quot;/remote/file&quot;, &quot;localfile&quot;;
- };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+ };</code></pre>
+<pre><code class="perl">
  task &quot;download&quot;, sub {
     download &quot;<a href="http://www.rexify.org/index.html&quot">http://www.rexify.org/index.html&quot</a>;, &quot;localfile.html&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

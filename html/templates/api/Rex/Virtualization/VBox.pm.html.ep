@@ -11,31 +11,31 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Virtualization::VBox - VirtualBox Virtualization Module</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage VirtualBox.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Virtualization;
     
  set virtualization =&gt; &quot;VBox&quot;;
@@ -84,7 +84,7 @@
     
  vm share_folder =&gt; &quot;vm01&quot;, add =&gt; { sharename =&gt; &quot;/path/to/share&quot; };
     
- vm share_folder =&gt; &quot;vm01&quot;, remove =&gt; &quot;sharename&quot;;</pre></div><div class="vspace"></div>
+ vm share_folder =&gt; &quot;vm01&quot;, remove =&gt; &quot;sharename&quot;;</code></pre>
 <p>For VirtualBox memory declaration is always in megabyte.</p>
 
 

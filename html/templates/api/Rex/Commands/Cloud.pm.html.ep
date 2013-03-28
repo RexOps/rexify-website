@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Cloud - Cloud Management Commands</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this Module you can manage different Cloud services. Currently it supports Amazon EC2 and Jiffybox.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  use Rex::Commands::Cloud;
      
  cloud_service &quot;Amazon&quot;;
@@ -65,49 +65,49 @@
     cloud_volume delete =&gt; &quot;vol-xxxxxxx&quot;;
        
     cloud_instance terminate =&gt; &quot;i-xxxxxxx&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong><code>cloud_service($cloud_service)</code></strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>cloud_service($cloud_service)</strong></li>
 
 
 <p>Define which cloud service to use.</p>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Services</strong></li>
+<ul>
+<li><strong>Services</strong></li>
 
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>Amazon</strong></li>
+<ul>
+<li><strong>Amazon</strong></li>
 
-<li><div class="vspace"></div><strong>Jiffybox</strong></li>
-
-</ul>
+<li><strong>Jiffybox</strong></li>
 
 </ul>
 
-<li><div class="vspace"></div><strong>cloud_auth($param1, $param2, ...)</strong></li>
+</ul>
+
+<li><strong>cloud_auth($param1, $param2, ...)</strong></li>
 
 
 <p>Set the authentication for the cloudservice.</p>
 <p>For example for Amazon it is:</p>
-<div class="black-box"><pre class="perl">
- cloud_auth($access_key, $secret_access_key);</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ cloud_auth($access_key, $secret_access_key);</code></pre>
 <p>For JiffyBox:</p>
-<div class="black-box"><pre class="perl">
- cloud_auth($auth_key);</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ cloud_auth($auth_key);</code></pre>
 
-<li><div class="vspace"></div><strong><code>cloud_region($region)</code></strong></li>
+<li><strong>cloud_region($region)</strong></li>
 
 
 <p>Set the cloud region.</p>
 
-<li><div class="vspace"></div><strong>cloud_instance_list</strong></li>
+<li><strong>cloud_instance_list</strong></li>
 
 
 <p>Get all instances of a cloud service.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;list&quot;, sub {
     for my $instance (cloud_instance_list()) {
        say &quot;Arch  : &quot; . $instance-&gt;{&quot;architecture&quot;};
@@ -115,13 +115,13 @@
        say &quot;ID    : &quot; . $instance-&gt;{&quot;id&quot;};
        say &quot;State : &quot; . $instance-&gt;{&quot;state&quot;};
     }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>cloud_volume_list</strong></li>
+<li><strong>cloud_volume_list</strong></li>
 
 
 <p>Get all volumes of a cloud service.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;list-volumes&quot;, sub {
     for my $volume (cloud_volume_list()) {
        say &quot;ID       : &quot; . $volume-&gt;{&quot;id&quot;};
@@ -129,61 +129,61 @@
        say &quot;State    : &quot; . $volume-&gt;{&quot;state&quot;};
        say &quot;Attached : &quot; . $volume-&gt;{&quot;attached_to&quot;};
     }
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>get_cloud_instances_as_group</strong></li>
+<li><strong>get_cloud_instances_as_group</strong></li>
 
 
 <p>Get a list of all running instances of a cloud service. This can be used for a <em>group</em> definition.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  group fe  =&gt; &quot;fe01&quot;, &quot;fe02&quot;, &quot;fe03&quot;;
- group ec2 =&gt; get_cloud_instances_as_group();</pre></div><div class="vspace"></div>
+ group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
 
-<li><div class="vspace"></div><strong>cloud_instance($action, $data)</strong></li>
+<li><strong>cloud_instance($action, $data)</strong></li>
 
 
 <p>This function controlls all aspects of a cloud instance.</p>
 
-<li><div class="vspace"></div><strong>create</strong></li>
+<li><strong>create</strong></li>
 
 
 <p>Create a new instance.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  cloud_instance create =&gt; {
        image_id =&gt; &quot;ami-xxxxxx&quot;,
        key      =&gt; &quot;ssh-key&quot;,
        name     =&gt; &quot;fe-ec2-01&quot;,   # name is not necessary
        volume   =&gt; &quot;vol-yyyyy&quot;,   # volume is not necessary
        zone     =&gt; &quot;eu-west-1a&quot;,  # zone is not necessary
-    };</pre></div><div class="vspace"></div>
+    };</code></pre>
 
-<li><div class="vspace"></div><strong>start</strong></li>
+<li><strong>start</strong></li>
 
 
 <p>Start an existing instance</p>
-<div class="black-box"><pre class="perl">
- cloud_instance start =&gt; &quot;instance-id&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ cloud_instance start =&gt; &quot;instance-id&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>stop</strong></li>
+<li><strong>stop</strong></li>
 
 
 <p>Stop an existing instance</p>
-<div class="black-box"><pre class="perl">
- cloud_instance stop =&gt; &quot;instance-id&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ cloud_instance stop =&gt; &quot;instance-id&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>terminate</strong></li>
+<li><strong>terminate</strong></li>
 
 
 <p>Terminate an instance. This will destroy all data and remove the instance.</p>
-<div class="black-box"><pre class="perl">
- cloud_instance terminate =&gt; &quot;i-zzzzzzz&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ cloud_instance terminate =&gt; &quot;i-zzzzzzz&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong>get_cloud_regions</strong></li>
+<li><strong>get_cloud_regions</strong></li>
 
 
 <p>Returns all regions as an array.</p>
 
-<li><div class="vspace"></div><strong>cloud_volume($action , $data)</strong></li>
+<li><strong>cloud_volume($action , $data)</strong></li>
 
 
 <p>This function controlls all aspects of a cloud volume.</p>
@@ -192,44 +192,44 @@
 
 
 <p>Create a new volume. Size is in Gigabytes.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;create-vol&quot;, sub {
     my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;, };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>detach</strong></li>
+<li><strong>detach</strong></li>
 
 
 <p>Detach a volume from an instance.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;detach-vol&quot;, sub {
     cloud_volume detach =&gt; &quot;vol-xxxxxx&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>delete</strong></li>
+<li><strong>delete</strong></li>
 
 
 <p>Delete a volume. This will destroy all data.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;delete-vol&quot;, sub {
     cloud_volume delete =&gt; &quot;vol-xxxxxx&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>get_cloud_availability_zones</strong></li>
+<li><strong>get_cloud_availability_zones</strong></li>
 
 
 <p>Returns all availability zones of a cloud services. If available.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;get-zones&quot;, sub {
     print Dumper get_cloud_availability_zones;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>get_cloud_plans</strong></li>
+<li><strong>get_cloud_plans</strong></li>
 
 
 <p>Retrieve information of the available cloud plans. If supported.</p>
 
-<li><div class="vspace"></div><strong>get_cloud_operating_systems</strong></li>
+<li><strong>get_cloud_operating_systems</strong></li>
 
 
 <p>Retrieve information of the available cloud plans. If supported.</p>

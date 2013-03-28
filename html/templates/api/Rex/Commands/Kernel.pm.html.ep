@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,50 +19,50 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Kernel - Load/Unload Kernel Modules</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can load and unload kernel modules.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  kmod load =&gt; &quot;ipmi_si&quot;;
  
- kmod unload =&gt; &quot;ipmi_si&quot;;</pre></div><div class="vspace"></div>
+ kmod unload =&gt; &quot;ipmi_si&quot;;</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>kmod($action =&gt; $module)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>kmod($action =&gt; $module)</strong></li>
 
 
 <p>This function load or unload a kernel module.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;load&quot;, sub {
     kmod load =&gt; &quot;ipmi_si&quot;;
- };</pre></div><div class="vspace"></div>
-<div class="black-box"><pre class="perl">
+ };</code></pre>
+<pre><code class="perl">
  task &quot;unload&quot;, sub {
     kmod unload =&gt; &quot;ipmi_si&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>If you're using NetBSD or OpenBSD you have to specify the complete path and, if needed the entry function.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;load&quot;, sub {
     kmod load =&gt; &quot;/usr/lkm/ntfs.o&quot;;
     kmod load =&gt; &quot;/path/to/module.o&quot;, entry =&gt; &quot;entry_function&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

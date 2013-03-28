@@ -9,13 +9,13 @@
          <h1>Starting Point</h1>
          <p>This is a small example that will show you how to deploy the configuration for virtual hosts for the <a href="http://httpd.apache.org/">Apache</a> Webserver managed in a MySQL Database.</p>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Preparation</h1>
-         <ul class="simple-list">
+         <h2>Preparation</h2>
+         <ul>
             <li>Download and install rex &gt;= 0.4 (<a href="https://github.com/krimdomu/Rex">github</a> Branch: master)</li>
             <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
-               <ul style="margin-left: 25px;">
+               <ul>
                   <li>This server will be our webserver.</li>
                   <li>Create an SSH-Key and upload the public-key to your server to the root user (/root/.ssh/authorized_keys).</li>
                   <li>Install openssh server</li>
@@ -23,7 +23,7 @@
                </ul>
             </li>
             <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
-               <ul style="margin-left: 25px;">
+               <ul>
                   <li>This Server will be our database server where we host the configuration database for the virtual hosts.</li>
                   <li>Install mysql-server</li>
                   <li>Edit /etc/mysql/my.cnf so that remote clients can connect to that server</li>
@@ -32,32 +32,27 @@
             </li>
          </ul>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Creating a (R)?ex Project</h1>
+         <h2>Creating a (R)?ex Project</h2>
          <p>At first we create a new (R)?ex Project.</p>
-         <div class="black-box">
-            <pre class="bash">$ rexify mysite</pre>
-         </div>
+            <pre><code class="bash">$ rexify mysite</code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>This command will create a directory called <i>mysite</i>. Change into that directory.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ cd mysite
+            <pre><code class="bash">$ cd mysite
 $ ls -l
 -rw-r--r--  1 jan  staff  359 16 Apr 14:08 Rexfile
-drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</pre>
-         </div>
+drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
 
          <p>You'll see one file and one directory. In the file <i>Rexfile</i> you can configure your servers and the authentication. You can also include Modules there. We will do this later.</p>
 
-         <div class="vspace"></div>
+         
 
          <p>Open the file <i>Rexfile</i> and change it to suite your needs.</p>
 
-         <div class="black-box">
-            <pre class="perl">use lib 'lib';
+            <pre><code class="perl">use lib 'lib';
 
 # set your username
 user "root";
@@ -70,90 +65,76 @@ public_key "/Users/jan/.ssh/id_rsa.pub";
 
 # put your server in this group
 # if you want to deploy multiple servers name them here
-# group "servers" => "www01", "www02", "www03", "www04";
+# group "servers" =&gt; "www01", "www02", "www03", "www04";
 #
 # or use the expression feature
-# group "servers" => "www[01..04]";
+# group "servers" =&gt; "www[01..04]";
 
 # if you just want to deploy one server
-group "servers" => "www01";
+group "servers" =&gt; "www01";
 
 # now load every module via ,,require''
-require Rex::mysite;</pre>
-
-         </div>
+require Rex::mysite;</code></pre>
 
          <p>The <i>Rexfile</i> is a normal Perl Code Snippet.</p>
          <p>After you have changed the <i>Rexfile</i> you can just test it.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ rex -T
+            <pre><code class="bash">$ rex -T
 Rexfile syntax OK
 Tasks
   mysite:uptime                  Get uptime of server
-Batches</pre>
-         </div>
+Batches</code></pre>
 
-         <div class="vspace"></div>
+         
 
          <p><i>rexify</i> created a small test task (mysite:uptime). If you run this command you will get the uptime of the systems you have defined in the <i>servers</i> group.</p>
 
 
-         <div class="black-box">
-            <pre class="bash">$ rex mysite:uptime
+            <pre><code class="bash">$ rex mysite:uptime
 Rexfile syntax OK
 [2011-04-16 16:08:03] - INFO - Running task: mysite:uptime
 [2011-04-16 16:08:03] - INFO - Connecting to www01 (root)
- 16:08:03 up  7:42,  1 user,  load average: 0.00, 0.00, 0.00 </pre>
-         </div>
+ 16:08:03 up  7:42,  1 user,  load average: 0.00, 0.00, 0.00 </code></pre>
 
-         <div class="vspace"></div>
+         
 
-         <h1>Creating the Management Database</h1>
-         <div class="small-vspace"></div>
+         <h2>Creating the Management Database</h2>
+         
 
          <p>First, we need to create a simple database layout and a database user.</p>
 
-         <div class="black-box">
-            <pre class="bash">[root@db01] $ mysql -uroot
-mysql&gt; CREATE DATABASE apache;
-mysql&gt; USE apache;
-mysql&gt; CREATE TABLE virtual_hosts (id int auto_increment NOT NULL, 
-                                    enabled tinyint default 1, 
-                                    servername varchar(100), 
-                                    serveraliases text, 
-                                    hostdirectory varchar(255), 
-                                    PRIMARY KEY(id));
-mysql&gt; GRANT USAGE,SELECT ON apache.virtual_hosts TO rex@'%' IDENTIFIED BY 'somerandomcharsandnumbers';</pre>
-         </div>
-
-
-         <div class="small-vspace"></div>
+            <pre><code class="sql">[root@db01] $ mysql -uroot
+CREATE DATABASE apache;
+USE apache;
+CREATE TABLE virtual_hosts (id int auto_increment NOT NULL, 
+                            enabled tinyint default 1, 
+                            servername varchar(100), 
+                            serveraliases text, 
+                            hostdirectory varchar(255), 
+                            PRIMARY KEY(id));
+GRANT USAGE,SELECT ON apache.virtual_hosts TO rex@'%' IDENTIFIED BY 'somerandomcharsandnumbers';</code></pre>
+         
 
          <p>Lets insert a few hosts</p>
 
-         <div class="black-box">
-            <pre class="bash">mysql&gt; INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
+            <pre><code class="sql">INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
                   VALUES(1, 'domain1.tld', 'www.domain1.tld', '/var/www/hosts/domain1.tld');
-mysql&gt; INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
+INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
                   VALUES(1, 'domain2.tld', 'www.domain2.tld', '/var/www/hosts/domain2.tld');
-mysql&gt; INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
+INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
                   VALUES(0, 'domain3.tld', 'www.domain3.tld', '/var/www/hosts/domain3.tld');
-mysql&gt; INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
-                  VALUES(1, 'domain4.tld', 'www.domain4.tld', '/var/www/hosts/domain4.tld'); </pre>
-         </div>
+INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory) 
+                  VALUES(1, 'domain4.tld', 'www.domain4.tld', '/var/www/hosts/domain4.tld'); </code></pre>
+         
 
-         <div class="vspace"></div>
-
-         <h1>Creating the Configuration Task</h1>
-         <div class="small-vspace"></div>
+         <h2>Creating the Configuration Task</h2>
+         
          <p>Now it's time to create the Task that will create the configuration files out of a template.</p>
 
-         <div class="small-vspace"></div>
+         
          <p>Create the file <i>lib/Rex/Apache/VHost.pm</i></p>
 
-         <div class="black-box">
-            <pre class="perl">package Rex::Apache::VHost;
+            <pre><code class="perl">package Rex::Apache::VHost;
 
 use strict;
 use warnings;
@@ -162,146 +143,128 @@ use Rex::Commands;
 use Rex::Commands::Service;
 use Rex::Commands::Pkg;
 use Rex::Commands::DB {
-                        dsn => "DBI:mysql:database=apache;host=db01",
-                        user => "rex",
-                        password => "somerandomcharsandnumbers",
+                        dsn =&gt; "DBI:mysql:database=apache;host=db01",
+                        user =&gt; "rex",
+                        password =&gt; "somerandomcharsandnumbers",
                      };
 
 desc "Create all Apache Virtual Host Files";
 task "create", sub {
 
-   my @data = db select => {
-      fields => "*",
-      from   => "virtual_hosts",
-      where  => "enabled=1",
+   my @data = db select =&gt; {
+      fields =&gt; "*",
+      from   =&gt; "virtual_hosts",
+      where  =&gt; "enabled=1",
    };
 
-   install file => "/etc/apache2/sites-enabled/vhosts.conf", {
-      source    => "files/vhost.tpl",
-      template  => { entries => \@data },
-      on_change => service(apache2 => "restart"),
-   };
+   file "/etc/apache2/sites-enabled/vhosts.conf",
+      content   =&gt; template("files/vhost.tpl", entries =&gt; \@data),
+      on_change =&gt; sub { service apache2 =&gt; "restart"; };
 };
 
-1; </pre>
-         </div>
+1; </code></pre>
 
-         <div class="small-vspace"></div>
+         
          <p>Here we create one task <i>create</i>. In that task we select from the table <i>virtual_hosts</i> every row that is enabled (<i>enabled=1</i>) and save all the returned rows in the array <i>@data</i>.</p>
          <p>After this we deploy the file <i>/etc/apache2/sites-enabled/vhosts.conf</i> through the template file <i>files/vhost.tpl</i>.</p>
 
-         <div class="vspace"></div>
+         
          <p>Now we need to create the file <i>files/vhost.tpl</i></p>
-         <div class="black-box">
-            <pre class="bash">$ mkdir files
+            <pre><code class="bash">$ mkdir files
 cat &gt;files/vhost.tpl&lt;&lt;EOF
 
-NameVirtualHost &lt;%+ $::Network-&gt;{"networkconfiguration"}-&gt;{"eth0"}-&gt;{"ip"} %&gt;:80
+NameVirtualHost &lt;%= $::eth0_ip %&gt;:80
 
 &lt;% for my $entry (@{$::entries}) { %&gt;
 
-&lt;VirtualHost &lt;%+ $::Network-&gt;{"networkconfiguration"}-&gt;{"eth0"}-&gt;{"ip"} %&gt;:80&gt;
-   ServerName &lt;%+ $entry-&gt;{"servername"} %&gt;
-   ServerAlias &lt;%+ $entry-&gt;{"serveraliases"} %&gt;
+&lt;VirtualHost &lt;%= $::eth0_ip %&gt;:80&gt;
+   ServerName &lt;%= $entry-&gt;{"servername"} %&gt;
+   ServerAlias &lt;%= $entry-&gt;{"serveraliases"} %&gt;
 
-   ServerAdmin webmaster@&lt;%+ $entry-&gt;{"servername"} %&gt; 
+   ServerAdmin webmaster@&lt;%= $entry-&gt;{"servername"} %&gt; 
 
-   DocumentRoot &lt;%+ $entry-&gt;{"hostdirectory"} %&gt;/htdocs
+   DocumentRoot &lt;%= $entry-&gt;{"hostdirectory"} %&gt;/htdocs
 
    &lt;Directory /&gt;
       Options FollowSymLinks
       AllowOverride None
    &lt;/Directory&gt;
 
-   &lt;Directory &lt;%+ $entry-&gt;{"hostdirectory"} %&gt;/htdocs&gt;
+   &lt;Directory &lt;%= $entry-&gt;{"hostdirectory"} %&gt;/htdocs&gt;
       Options Indexes FollowSymLinks MultiViews
       AllowOverride None
       Order allow,deny
       allow from all
    &lt;/Directory&gt;
 
-   ErrorLog &lt;%+ $entry-&gt;{"hostdirectory"} %&gt;/logs/error.log
-   CustomLog &lt;%+ $entry-&gt;{"hostdirectory"} %&gt;/logs/access.log combined
+   ErrorLog &lt;%= $entry-&gt;{"hostdirectory"} %&gt;/logs/error.log
+   CustomLog &lt;%= $entry-&gt;{"hostdirectory"} %&gt;/logs/access.log combined
 
 &lt;/VirtualHost&gt;
 
 &lt;% } %&gt;
-EOF</pre>
-         </div>
+EOF</code></pre>
 
-         <div class="vspace"></div>
+         
          <h2>The last step</h2>
-         <div class="small-vspace"></div>
+         
          <p>Now we have defined all tasks, but we haven't defined on which servers they should run on.</p>
 
-         <div class="small-vspace"></div>
+         
          <p>Open the file <i>lib/Rex/mysite.pm</i></p>
 
-         <div class="black-box">
-            <pre class="perl">package Rex::mysite;
+            <pre><code class="perl">package Rex::mysite;
 
 use Rex::Commands;
 use Rex::Commands::Run;
 
 desc "Get uptime of server";
-task "uptime", group => 'servers', sub {
+task "uptime", group =&gt; 'servers', sub {
    say run "uptime";
 };
 
 desc "Create Virtual Hosts";
-task "vhosts", group => 'servers', sub {
-
+task "vhosts", group =&gt; 'servers', sub {
    needs Rex::Apache::VHost;
-
 };
 
-1; </pre>
-         </div>
+1; </code></pre>
 
           <p>Here we define a task to deploy our Apache Virtual Host configuration onb all servers in the <i>servers</i> group.</p>
 
-          <div class="vspace"></div>
+          
 
           <p>Open the <i>Rexfile</i> and include all our modules at the bottom.</p>
 
 
-          <div class="black-box">
-            <pre class="perl">require Rex::Apache::VHost;</pre>
-          </div>
+            <pre><code class="perl">require Rex::Apache::VHost;</code></pre>
 
-         <div class="vspace"></div>
+         
          <h2>Running the task</h2>
-         <div class="small-vspace"></div>
+         
          <p>Now we are ready to run our task on our servers.</p>
          <p>Lets list all our tasks first.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ rex -T
+            <pre><code class="bash">$ rex -T
 Rexfile syntax OK
 Tasks
   Apache:VHost:create            Create all Apache Virtual Host Files
   mysite:uptime                  Get uptime of server
   mysite:vhosts                  Create Virtual Hosts
-Batches </pre>
-         </div>
-
-         <div class="vspace"></div>
+Batches </code></pre>
+         
 
          <p>And now we will deploy our servers.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ rex mysite:vhosts
+            <pre><code class="bash">$ rex mysite:vhosts
 Rexfile syntax OK
 [2011-04-17 11:37:49] - INFO - Running task: mysite:vhosts
 [2011-04-17 11:37:49] - INFO - Connecting to www01 (root)
-[2011-04-17 11:37:52] - INFO - Service apache2 restarted.  </pre>
-         </div>
+[2011-04-17 11:37:52] - INFO - Service apache2 restarted.  </code></pre>
 
-         <div class="vspace"></div>
+         
 
          <p>If you want, you can run tasks on other machines as defined. Perhaps when you need to install a new server.</p>
 
-         <div class="black-box">
-            <pre class="bash">$ rex -H "mynewserver" mysite:vhosts</pre>
-         </div>
+            <pre><code class="bash">$ rex -H "mynewserver" mysite:vhosts</code></pre>
 

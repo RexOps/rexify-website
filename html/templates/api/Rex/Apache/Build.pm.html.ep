@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Apache::Build - Build your WebApp Package';
+% title '';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can prepare your WebApp for deployment.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,24 +19,24 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Apache::Build - Build your WebApp Package</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can prepare your WebApp for deployment.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  yui_path &quot;./yuicompressor-2.4.6.jar&quot;;
      
  get_version_from &quot;webapp/lib/MyApp.pm&quot;, qr{\$VERSION=([^;]+);};
@@ -65,50 +65,50 @@
     build &quot;webapp&quot;,
       source  =&gt; &quot;webapp/&quot;,
       version =&gt; &quot;1.0&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong><code>yui_path($path_to_yui_compressor)</code></strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>yui_path($path_to_yui_compressor)</strong></li>
 
 
 <p>This function sets the path to the yui_compressor. If a relative path is given it will search from the path where the Rexfile is in.</p>
 
-<li><div class="vspace"></div><strong><code>coffee_path($path_to_coffee)</code></strong></li>
+<li><strong>coffee_path($path_to_coffee)</strong></li>
 
 
 <p>This function sets the path to the coffee compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
 
-<li><div class="vspace"></div><strong><code>sprocketize_path($path_to_sprocketize)</code></strong></li>
+<li><strong>sprocketize_path($path_to_sprocketize)</strong></li>
 
 
 <p>This function sets the path to the sprocketize compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
 
-<li><div class="vspace"></div><strong><code>sass_path($path_to_sass)</code></strong></li>
+<li><strong>sass_path($path_to_sass)</strong></li>
 
 
 <p>This function sets the path to the sass compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
 
-<li><div class="vspace"></div><strong>yui($action, @files)</strong></li>
+<li><strong>yui($action, @files)</strong></li>
 
 
 <p>Run a yui command.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;build&quot;, sub {
     # this will compress the given files
     yui compress =&gt; &quot;file1.js&quot;, &quot;file2.js&quot;, ...;
      
     # yui without any parameters will compress all files in public/javascripts
     yui;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>build([$name, %options])</strong></li>
+<li><strong>build([$name, %options])</strong></li>
 
 
 <p>This function builds your package. Currently only tar.gz packages are supported.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  # this will a package of the current directory named after the 
  # directory of the Rexfile and append the version provided by 
  # get_version_from() function
@@ -131,18 +131,18 @@
        version =&gt; &quot;1.0&quot;,
        exclude =&gt; [&quot;yuicompressor.jar&quot;, &quot;foobar.html&quot;],
        type =&gt; &quot;tgz&quot;;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>get_version_from($file, $regexp)</strong></li>
+<li><strong>get_version_from($file, $regexp)</strong></li>
 
 
 <p>Get the version out of a file.</p>
 
-<li><div class="vspace"></div><strong>sprocketize($path_to_js_files, %option)</strong></li>
+<li><strong>sprocketize($path_to_js_files, %option)</strong></li>
 
 
 <p>This function calls the sprocketize command with the given options.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;build&quot;, sub {
     sprocketize &quot;app/javascript/*.js&quot;,
                   include    =&gt; [qw|app/javascripts vendor/sprockets/prototype/src|],
@@ -164,13 +164,13 @@
     # - include  assets/javascripts
     # - asset_root public
     # - out public/${name_of_directory_where_Rexfile_lives}.js
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>coffee($path, %options)</strong></li>
+<li><strong>coffee($path, %options)</strong></li>
 
 
 <p>Compile coffee files to javascript.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;build&quot;, sub {
     # this command will build all files in &quot;coffeesrc&quot; and
     # write the output to &quot;javascripts&quot;
@@ -180,13 +180,13 @@
     # without parameters it will build all files in assets/coffee 
     # and write the output to public/javascripts.
     coffee;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong>sass($input_dir, %option)</strong></li>
+<li><strong>sass($input_dir, %option)</strong></li>
 
 
 <p>This command will compile all sass files in $input_dir.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  task &quot;build&quot;, sub {
     # this command will compile all sass files from app/assets/stylesheets
     # and put the output into public/stylesheets.
@@ -196,7 +196,7 @@
     # The default is to build all files in assets/sass and put the output
     # into public/css.
     sass;
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
 </ul>
 

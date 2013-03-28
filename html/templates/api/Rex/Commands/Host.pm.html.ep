@@ -11,7 +11,7 @@
 <div name="index">
 <h1>TABLE OF CONTENTS</h1>
 
-<ul class="simple-list">
+<ul>
 
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
@@ -19,59 +19,59 @@
 	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
 </ul>
 
-<div class="vspace"></div>
+
 </div>
 <!-- INDEX END -->
 
 <p>
 </p>
-<h1>NAME</h1>
+<h2>NAME</h2>
 <p>Rex::Commands::Host - Edit /etc/hosts</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>DESCRIPTION</h1>
+
+<h2>DESCRIPTION</h2>
 <p>With this module you can manage the host entries in /etc/hosts.</p>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>SYNOPSIS</h1>
-<div class="black-box"><pre class="perl">
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
  task &quot;create-host&quot;, &quot;remoteserver&quot;, sub {
     create_host &quot;rexify.org&quot; =&gt; {
       ip      =&gt; &quot;88.198.93.110&quot;,
       aliases =&gt; [&quot;www.rexify.org&quot;],
     };
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 <p>
 </p>
-<div class="vspace"></div>
-<h1>EXPORTED FUNCTIONS</h1>
-<div class="vspace"></div><ul class="simple-list">
-<li><div class="vspace"></div><strong>create_host($)</strong></li>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>create_host($)</strong></li>
 
 
 <p>Update or create a /etc/hosts entry.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  create_host &quot;rexify.org&quot;, {
     ip      =&gt; &quot;88.198.93.110&quot;,
     aliases =&gt; [&quot;www.rexify.org&quot;, ...]
- };</pre></div><div class="vspace"></div>
+ };</code></pre>
 
-<li><div class="vspace"></div><strong><code>delete_host($host)</code></strong></li>
+<li><strong>delete_host($host)</strong></li>
 
 
 <p>Delete a host from /etc/hosts.</p>
-<div class="black-box"><pre class="perl">
- delete_host &quot;www.rexify.org&quot;;</pre></div><div class="vspace"></div>
+<pre><code class="perl">
+ delete_host &quot;www.rexify.org&quot;;</code></pre>
 
-<li><div class="vspace"></div><strong><code>get_host($host)</code></strong></li>
+<li><strong>get_host($host)</strong></li>
 
 
 <p>Returns the information of $host in /etc/resolv.conf.</p>
-<div class="black-box"><pre class="perl">
+<pre><code class="perl">
  my @host_info = get_host &quot;localhost&quot;;
- say &quot;Host-IP: &quot; . $host_info[0]-&gt;{&quot;ip&quot;};</pre></div><div class="vspace"></div>
+ say &quot;Host-IP: &quot; . $host_info[0]-&gt;{&quot;ip&quot;};</code></pre>
 
 </ul>
 
