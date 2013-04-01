@@ -77,7 +77,13 @@
 <li><strong>user_list()</strong></li>
 
 
-<p>Returns user list via getent passwd</p>
+<p>Returns user list via getent passwd.</p>
+<pre><code class="perl">
+ task &quot;list_user&quot;, &quot;server01&quot;, sub {
+    for my $user (user_list) {
+       print &quot;name: $user / uid: &quot; . get_uid($user) . &quot;\n&quot;;
+    }
+ };</code></pre>
 
 <li><strong>delete_user($user)</strong></li>
 

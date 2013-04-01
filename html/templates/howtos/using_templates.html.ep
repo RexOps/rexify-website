@@ -1,0 +1,235 @@
+% layout 'default';
+% title 'Using modules and templates within Rex';
+
+% content_for header => begin
+      <meta name="description" content="Using modules and templates within Rex">
+      <meta name="keywords" content="Rex, Template, Configuration">
+% end
+
+<h1>Using Modules and Templates</h1>
+
+<p>Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.</p>
+
+<p>In this example i will show you how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.</p>
+
+<p>First, we create a new modul. For this guide you need at least Rex 0.41 (because of the <i>--create-module</i> command and the <i>case</i> keyword.) Execute the following command in the same directory where your <i>Rexfile</i> lives.</p>
+
+<pre><code class="bash">rexify --create-module=Service::NTP</code></pre>
+
+<p>This will create some new directories and files in your <i>lib</i> directory.</p>
+
+<pre><code class="bash">.
+├── Rexfile
+└── lib
+    └── Service
+        └── NTP
+            ├── __module__.pm
+            └── meta.yml</code></pre>
+
+<p>The meta.yml file can be ignored. This file is only important if you want to share your module on <a href="http://modules.rexify.org/">the Rex modules directory</a>. The important file is <i>__module__.pm</i>. Open this file in an editor.</p>
+
+<p>This file is a normal Perl module. The only special thing is the filename, but don't think too much for it at first.</p>
+
+<pre><code class="perl">package Service::NTP;
+use Rex -base;
+
+task prepare =&gt; sub {
+   my $service_name = case operating_system, {
+                         Debian  =&gt; "ntp",
+                         default =&gt; "ntpd",
+                      };
+
+   install "ntp";
+
+   file "/etc/ntp.conf",
+      source    =&gt; "files/etc/ntp.conf",
+      on_change =&gt; sub {
+         service $service_name =&gt; "restart";
+      };
+
+   service $service_name =&gt; ensure =&gt; "started";
+};
+
+1;</code></pre>
+
+<p>First the module checks if the OS is a debian (or ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the <i>on_change</i> hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.</p>
+
+<p>Now it is time to create a basic <i>ntp.conf</i> file. Create the directory <i>lib/Service/NTP/files/etc</i> and place the ntp.conf file in there.</p>
+
+<pre><code class="bash"># /etc/ntp.conf, managed by Rex
+
+driftfile /var/run/ntp.drift
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+server ntp01.company.tld
+server ntp02.company.tld</code></pre>
+
+<p>If you now want to distribute different <i>ntp.conf</i> files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the <i>-E $env</i> cli parameter which file to use. Rex first try to find a file named <i>ntp.conf.$environment</i> and if that file does not exist it fallback to <i>ntp.conf</i>.</p>
+
+<pre><code class="bash">.
+├── Rexfile
+└── lib
+    └── Service
+        └── NTP
+            ├── __module__.pm
+            ├── files
+            │   └── etc
+            │       ├── ntp.conf
+            │       ├── ntp.conf.preprod
+            │       ├── ntp.conf.prod
+            │       └── ntp.conf.test
+            └── meta.yml</code></pre>
+
+<p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
+
+<pre><code class="perl">package Service::NTP;
+use Rex -base;
+
+task prepare =&gt; sub {
+   my $service_name = case operating_system, {
+                         Debian  =&gt; "ntp",
+                         default =&gt; "ntpd",
+                      };
+
+   my $ntp_server   = case environment, {
+                         prod    =&gt; ["ntp01.company.tld", "ntp02.company.tld"],
+                         preprod =&gt; ["ntp01.preprod.company.tld"],
+                         test    =&gt; ["ntp01.test.company.tld"],
+                         default =&gt; ["ntp01.company.tld"],
+                      };
+
+   install "ntp";
+
+   file "/etc/ntp.conf",
+      content   =&gt; template("files/etc/ntp.conf", ntp_servers =&gt; $ntp_servers),
+      on_change =&gt; sub {
+         service $service_name =&gt; "restart";
+      };
+
+   service $service_name =&gt; ensure =&gt; "started";
+};
+
+1;</code></pre>
+
+<p>Now we can create our template. The default template of Rex looks similar to other templating engines. But you can also use other template engines like <a href="https://github.com/krimdomu/rex-template-tt">Template::Toolkit</a>.</p>
+
+<pre><code class="bash"># /etc/ntp.conf, managed by Rex
+
+driftfile /var/run/ntp.drift
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+&lt;% for my $server (@{ $ntp_servers }) { %&gt;
+server &lt;%= $server %&gt;
+&lt;% } %&gt;</code></pre>
+
+<h2>Predefined Variables</h2>
+
+<p>There are also some predefined variables you can use in your templates. For example the ip address of a network device if you want to bind a service on a specific ip. You can dump all predefined variable of a system with the following code.</p>
+
+<pre><code class="perl">task "get_infos", "server01", sub {
+   dump_system_information;
+};</code></pre>
+
+<p>For example this is the output of a CentOS VM.</p>
+
+<pre><code class="perl">$kernelversion = '#1 SMP Tue May 15 22:09:39 BST 2012'
+$memory_cached = '357'
+$memory_total = '498'
+$kernelrelease = '2.6.32-220.17.1.el6.i686'
+$Kernel = {
+      kernelversion =&gt; '#1 SMP Tue May 15 22:09:39 BST 2012'
+      architecture =&gt; 'i686'
+      kernel =&gt; 'Linux'
+      kernelrelease =&gt; '2.6.32-220.17.1.el6.i686'
+   }
+$hostname = 'c6test0232'
+$operatingsystem = 'CentOS'
+$operatingsystemrelease = '6.2'
+$architecture = 'i686'
+$domain = 'test.rexify.org'
+$eth0_mac = '00:1C:42:9E:0E:28'
+$kernel = 'Linux'
+$swap_free = '2005'
+$VirtInfo = {
+      virtualization_role =&gt; 'guest'
+      virtualization_type =&gt; 'parallels'
+   }
+$memory_shared = '0'
+$Network = {
+      networkdevices =&gt; [
+         'eth0'
+      ]
+      networkconfiguration =&gt; {
+         eth0 =&gt; {
+            broadcast =&gt; '10.211.55.255'
+            ip =&gt; '10.211.55.60'
+            netmask =&gt; '255.255.255.0'
+            mac =&gt; '00:1C:42:9E:0E:28'
+         }
+      }
+   }
+$memory_used = '440'
+$kernelname = 'Linux'
+$Swap = {
+      free =&gt; '2005'
+      used =&gt; '10'
+      total =&gt; '2015'
+   }
+$swap_total = '2015'
+$memory_buffers = '47'
+$eth0_ip = '10.211.55.60'
+$swap_used = '10'
+$memory_free = '57'
+$manufacturer = 'Parallels Software International Inc.'
+$Memory = {
+      shared =&gt; '0'
+      buffers =&gt; '47'
+      free =&gt; '57'
+      used =&gt; '440'
+      total =&gt; '498'
+      cached =&gt; '357'
+   }
+$eth0_broadcast = '10.211.55.255'
+$eth0_netmask = '255.255.255.0'
+$Host = {
+      domain =&gt; 'test.rexify.org'
+      manufacturer =&gt; 'Parallels Software International Inc.'
+      kernelname =&gt; 'Linux'
+      hostname =&gt; 'c6test0232'
+      operatingsystemrelease =&gt; '6.2'
+      operatingsystem =&gt; 'CentOS'
+   }</code></pre>
+
+<p>You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.</p>
+
+<pre><code class="bash">Listen &lt;%= $eth1_ip %&gt;:80</code></pre>
+
+<h2>Using the Module</h2>
+
+<p>To use your module you have to add it to your <i>Rexfile</i>. This can be simply achieved with one line.</p>
+
+<pre><code class="perl">use Rex -base;
+
+user "root";
+password "foo";
+
+require Service::NTP;
+
+1;</code></pre>
+
+<p>Than you can list your Tasks and execute them.</p>
+
+<pre><code class="bash">$ rex -T
+[2013-03-30 02:35:32] INFO - eval your Rexfile.
+Tasks
+  Service:NTP:prepare</code></pre>
+
+<pre><code class="bash">$ rex -H yourserver01 Service:NTP:prepare</code></pre>

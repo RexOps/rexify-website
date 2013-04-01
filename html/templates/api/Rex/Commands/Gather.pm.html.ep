@@ -58,6 +58,11 @@
 
 <p>Will return a hash of all system information. These Information will be also used by the template function.</p>
 
+<li><strong>dump_system_information</strong></li>
+
+
+<p>This function dumps all known system information on stdout.</p>
+
 <li><strong>operating_system_is($string)</strong></li>
 
 

@@ -10,12 +10,12 @@
          <h1>Beginner Guides</h1>
          <ul class="simple-list">
             <li><a href="start.html">Start using (R)?ex</a></li>
-            <li><a href="faq.html">Frequently asked Questions</a></li>
+            <li><a href="faq.html">Frequently asked questions</a></li>
             <li><a href="working_with_packages.html">Working with packages</a></li>
-            <li><a href="perl.html">Small Perl Reference Guide (Just enough Perl for Rex)</a></li>
+            <li><a href="using_templates.html">Using modules and templates</a></li>
+            <li><a href="perl.html">Small Perl reference guide (Just enough Perl for Rex)</a></li>
             <!--
             <li><a href="working_with_files.html">Working with files</a></li>
-            <li><a href="working_with_templates.html">Working with templates</a></li>
             -->
          </ul>
 
@@ -24,7 +24,7 @@
          <ul class="simple-list">
             <li><a href="usermgmt.html">Manage user rollouts</a></li>
             <li><a href="amazon.html">Manage your Amazon EC2 instances</a></li>
-            <li><a href="apache-vhosts.html">Manage Apache VirtualHosts in a MySQL Database</a></li>
+            <li><a href="apache-vhosts.html">Manage Apache VirtualHosts in a MySQL database</a></li>
             <li><a href="tomcat1.html">Software and Tomcat deployment</a></li>
             <li><a href="apache-deploy-on-windows.html">Use Apache::Deploy on Windows</a></li>
             <li><a href="http-transport.html">Use Rex over HTTP (Rex::Endpoint::HTTP)</a></li>
@@ -39,7 +39,7 @@
          <h1>Modules</h1>
          <ul class="simple-list">
             <li><a href="/modules/application_deployment.html">Application Deployment</a></li>
-            <li><a href="/modules/augeas.html">Configuration Manipulation with Augeas</a></li>
+            <li><a href="/modules/augeas.html">Configuration manipulation with augeas</a></li>
          </ul>
 
          <div class="vspace"></div>

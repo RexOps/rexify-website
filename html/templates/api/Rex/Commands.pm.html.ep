@@ -617,6 +617,42 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
     say last_command_output();
  };</code></pre>
 
+<li><strong>case($compare, $option)</strong></li>
+
+
+<p>This is a function to compare a string with some given options.</p>
+<pre><code class="perl">
+ task &quot;mytask&quot;, &quot;myserver&quot;, sub {
+    my $ntp_service = case operating_sytem, {
+                         Debian  =&gt; &quot;ntp&quot;,
+                         default =&gt; &quot;ntpd&quot;,
+                      };
+      
+    my $ntp_service = case operating_sytem, {
+                         qr{debian}i =&gt; &quot;ntp&quot;,
+                         default     =&gt; &quot;ntpd&quot;,
+                      };
+     
+    my $ntp_service = case operating_sytem, {
+                         qr{debian}i =&gt; &quot;ntp&quot;,
+                         default     =&gt; sub { return &quot;foo&quot;; },
+                      };
+ };</code></pre>
+
+<li><strong>inspect($varRef)</strong></li>
+
+
+<p>This function dumps the contents of a variable to STDOUT.</p>
+<p>task &quot;mytask&quot;, &quot;myserver&quot;, sub {
+   my $myvar = {
+      name =&gt; &quot;foo&quot;,
+      sys  =&gt; &quot;bar&quot;,
+   };</p>
+<pre><code class="perl">
+
+   inspect $myvar;
+};</code></pre>
+
 </ul>
 
 

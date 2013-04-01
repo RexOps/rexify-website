@@ -294,6 +294,13 @@ __DATA__
                   <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
                </form>
                <h2>News</h2>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-04-01</div>
+                  <div class="news_content">(R)?ex 0.41.0 released. This release brings a handfull of new functions that ease the use and bug fixes. See <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a> for more information.</div>
+                  <div class="news_content">There is also a new guide on <a href="/howtos/using_templates.html">howto use modules and templates</a> online.</div>
+               </div>
+
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
                   <div class="news_content">
@@ -310,11 +317,6 @@ __DATA__
                <div class="news_widget">
                   <div class="news_date">2013-02-24</div>
                   <div class="news_content">(R)?ex 0.40.0 released. This release added a common CMDB interface and a simple CMDB on YAML file basis. Read the <a href="https://github.com/krimdomu/Rex/wiki/New0.40">ChangeLog</a> for all changes.</div>
-               </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2013-01-27</div>
-                  <div class="news_content">(R)?ex 0.39.0 released. This release adds support for private module servers and fixes bugs. See <a href="https://github.com/krimdomu/Rex/wiki/New0.39">ChangeLog</a> for more information.</div>
                </div>
 
 
