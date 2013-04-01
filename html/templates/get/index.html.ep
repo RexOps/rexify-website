@@ -124,10 +124,10 @@ yum install rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab5">
-         <h3>For 11.4</h3>
+         <h3>For 12.3</h3>
 
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.3/x86_64/ rex
 zypper install rex</code></pre>
 
          <h3>For 12.1</h3>
@@ -135,6 +135,13 @@ zypper install rex</code></pre>
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.1/x86_64/ rex
 zypper install rex</code></pre>
+
+         <h3>For 11.4</h3>
+
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
+zypper install rex</code></pre>
+
  
        </div>
        <div class="tab-pane" id="tab6">
@@ -145,7 +152,7 @@ urpmi rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab7">
-         <h3>Fedora 15, 16 and 17</h3>
+         <h3>Fedora 15 - 18</h3>
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
