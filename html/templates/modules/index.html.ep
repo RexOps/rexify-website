@@ -1,0 +1,14 @@
+% layout 'default';
+% title 'A list of Rex modules';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Modules">
+      <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
+% end
+
+         <h1>Modules</h1>
+         <ul>
+            <li><a href="application_deployment.html">Application Deployment</a></li>
+            <li><a href="augeas.html">Configuration Manipulation with Augeas</a></li>
+         </ul>
+

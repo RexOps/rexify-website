@@ -1,0 +1,92 @@
+% layout 'default';
+% title 'Rex::Virtualization::VBox - VirtualBox Virtualization Module';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can manage VirtualBox.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Virtualization::VBox - VirtualBox Virtualization Module</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can manage VirtualBox.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Virtualization;
+    
+ set virtualization =&gt; &quot;VBox&quot;;
+    
+ use Data::Dumper;   
+   
+ print Dumper vm list =&gt; &quot;all&quot;;
+ print Dumper vm list =&gt; &quot;running&quot;;
+    
+ vm destroy =&gt; &quot;vm01&quot;;
+    
+ vm delete =&gt; &quot;vm01&quot;; 
+     
+ vm start =&gt; &quot;vm01&quot;;
+    
+ vm shutdown =&gt; &quot;vm01&quot;;
+    
+ vm reboot =&gt; &quot;vm01&quot;;
+    
+ vm option =&gt; &quot;vm01&quot;,
+          memory     =&gt; 512;
+              
+ print Dumper vm info =&gt; &quot;vm01&quot;;
+    
+ # creating a vm 
+ vm create =&gt; &quot;vm01&quot;,
+      storage     =&gt; [
+         {   
+            file   =&gt; &quot;/mnt/data/vbox/vm01.img&quot;,
+            size   =&gt; &quot;10G&quot;,
+         },
+         {
+            file =&gt; &quot;/mnt/iso/debian6.iso&quot;,
+         }
+      ],
+      memory =&gt; 512,
+      type =&gt; &quot;Linux26&quot;, 
+      cpus =&gt; 1,
+      boot =&gt; &quot;dvd&quot;;
+   
+ vm forward_port =&gt; &quot;vm01&quot;, add =&gt; { http =&gt; [8080, 80] };
+   
+ vm forward_port =&gt; &quot;vm01&quot;, remove =&gt; &quot;http&quot;;
+  
+ print Dumper vm guestinfo =&gt; &quot;vm01&quot;;
+    
+ vm share_folder =&gt; &quot;vm01&quot;, add =&gt; { sharename =&gt; &quot;/path/to/share&quot; };
+    
+ vm share_folder =&gt; &quot;vm01&quot;, remove =&gt; &quot;sharename&quot;;</code></pre>
+<p>For VirtualBox memory declaration is always in megabyte.</p>
+
+
+
+

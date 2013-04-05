@@ -1,0 +1,123 @@
+% layout 'default';
+% title 'Rex::Commands::User - Manipulate users and groups';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can manage user and groups.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::User - Manipulate users and groups</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can manage user and groups.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ task &quot;create-user&quot;, &quot;remoteserver&quot;, sub {
+    create_user &quot;root&quot;,
+       uid =&gt; 0,
+       home =&gt; '/root',
+       comment =&gt; 'Root Account',
+       expire =&gt; '2011-05-30',
+       groups  =&gt; ['root', '...'],
+       password =&gt; 'blahblah',
+       system =&gt; 1,
+       no_create_home =&gt; TRUE,
+       ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
+ };</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>create_user($user =&gt; {})</strong></li>
+
+
+<p>Create or update a user.</p>
+
+<li><strong>get_uid($user)</strong></li>
+
+
+<p>Returns the uid of $user.</p>
+
+<li><strong>get_user($user)</strong></li>
+
+
+<p>Returns all information about $user.</p>
+
+<li><strong>user_group($user)</strong></li>
+
+
+<p>Returns group membership about $user.</p>
+
+<li><strong>user_list()</strong></li>
+
+
+<p>Returns user list via getent passwd</p>
+
+<li><strong>delete_user($user)</strong></li>
+
+
+<p>Delete a user from the system.</p>
+<pre><code class="perl">
+ delete_user &quot;trak&quot;, {
+    delete_home =&gt; 1,
+    force       =&gt; 1,
+ };</code></pre>
+
+<li><strong>create_group($group, {})</strong></li>
+
+
+<p>Create or update a group.</p>
+<pre><code class="perl">
+ create_group $group, {
+    gid =&gt; 1500,
+    system =&gt; 1,
+ };</code></pre>
+
+<li><strong>get_gid($group)</strong></li>
+
+
+<p>Return the group id of $group.</p>
+
+<li><strong>get_group($group)</strong></li>
+
+
+<p>Return information of $group.</p>
+<pre><code class="perl">
+ $info = get_group(&quot;wheel&quot;);</code></pre>
+
+<li><strong>delete_group($group)</strong></li>
+
+
+<p>Delete a group.</p>
+
+</ul>
+
+
+
+

@@ -1,0 +1,147 @@
+% layout 'default';
+% title 'Rex::Commands::Service - Manage System Services';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can manage Linux services.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::Service - Manage System Services</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can manage Linux services.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Service
+     
+ service apache2 =&gt; &quot;start&quot;;
+     
+ service apache2 =&gt; &quot;stop&quot;;
+     
+ service apache2 =&gt; &quot;restart&quot;;
+     
+ service apache2 =&gt; &quot;status&quot;;
+    
+ service apache2 =&gt; &quot;reload&quot;;
+    
+ service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+   
+ service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>service($service, $action, [$option])</strong></li>
+
+
+<p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform.</p>
+<ul>
+<li><strong>starting a service</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;start-service&quot;, &quot;server01&quot;, sub {
+    service apache2 =&gt; &quot;start&quot;;
+ };</code></pre>
+
+<li><strong>stopping a service</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;stop-service&quot;, &quot;server01&quot;, sub {
+    service apache2 =&gt; &quot;stop&quot;;
+ };</code></pre>
+
+<li><strong>restarting a service</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;restart-service&quot;, &quot;server01&quot;, sub {
+    service apache2 =&gt; &quot;restart&quot;;
+ };</code></pre>
+
+<li><strong>checking status of a service</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;status-service&quot;, &quot;server01&quot;, sub {
+    if( service apache2 =&gt; &quot;status&quot; ) {
+       say &quot;Apache2 is running&quot;;
+    }
+    else {
+       say &quot;Apache2 is not running&quot;;
+    }
+ };</code></pre>
+
+<li><strong>reloading a service</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;reload-service&quot;, &quot;server01&quot;, sub {
+    service apache2 =&gt; &quot;reload&quot;;
+ };</code></pre>
+
+<li><strong>ensure that a service will started at boot time</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;prepare&quot;, sub {
+    service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+ };</code></pre>
+
+<li><strong>ensure that a service will NOT be started.</strong></li>
+
+
+<pre><code class="perl">
+ task &quot;prepare&quot;, sub {
+    service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
+ };</code></pre>
+
+</ul>
+
+<li><strong>service_provider_for $os =&gt; $type;</strong></li>
+
+
+<p>To set an other service provider as the default, use this function.</p>
+<pre><code class="perl">
+ user &quot;root&quot;;
+     
+ group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
+ service_provider_for SunOS =&gt; &quot;svcadm&quot;;
+    
+ task &quot;start&quot;, group =&gt; &quot;db&quot;, sub {
+     service ssh =&gt; &quot;restart&quot;;
+ };</code></pre>
+<p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
+
+</ul>
+
+
+
+

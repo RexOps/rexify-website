@@ -1,0 +1,37 @@
+% layout 'default';
+% title '贡献 Rex';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - Contribute to Rex">
+      <meta name="keywords" content="Rex, Contribute, Project">
+% end
+
+
+
+      <h1>贡献 (R)?ex</h1>
+      <p>(R)?ex 是没有一个背景的组织. 一切都是由志愿者在他们生活和工作的的空闲时间开发. (R)?ex 它是免费的开源项目.我们欢迎每一个贡献者.</p>
+
+      <div class="vspace"></div>
+      <h1>文档</h1>
+      <p>每一个成功的项目都离不开他的文档,如果没有文档他将不会成功.所以希望你也能写出友好的文档</p>
+      <div class="small-vspace"></div>
+      <p>通常很难找到一个好的平衡记录新特性(或移除过时的文档)和编写新的代码.所以如果你发现过时的文档,想添加指导,调整设计或修改完整的网页,不要犹豫联系我们.</p>
+      <div class="small-vspace"></div>
+      <p>你可以检出rex的网站代码 <a href="https://github.com/krimdomu/rexify-website">Github</a>.请阅读README 文件 ，它会告诉你怎么运行网站在你的本地环境.</p>
+
+      <div class="vspace"></div>
+      <h1>代码</h1>
+      <p>如果你想为新功能或者修改bug <a href="https://github.com/krimdomu">clone the repository</a> 请在github上提交.</p>
+      <div class="small-vspace"></div>
+
+      <p>你不需要遵循特殊的风格，如果关于怎么实现的有问题，请联系我们  irc.freenode.net/#rex.</p>
+
+      <div class="vspace"></div>
+      <h1>发起人</h1>
+      <p>上面提到的全部是志愿者开发的.所以不能保证一个特殊的bug或者功能在一个指定的日期发布. 如果你需要一个特殊的功能,你可以赞助他. 这样我们才能关注下一个版本的功能. 你可以联系我们  <a href="mailto:feature@rexify.org">feature@rexify.org</a>.</p>
+      <div class="small-vspace"></div>
+      <p>这些特殊的功能也被包含到开源代码离. 所以它是保证它是兼容版本后,你将有一个社区的利益寻找潜在的bug或贡献的增强.</p>
+      <div class="vspace"></div>
+      <h2>硬件</h2>
+      <p>特殊情况的环境或者硬件, 希望你能先测试 (R)?ex是否工作.  如有疑问请联系 <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>
+

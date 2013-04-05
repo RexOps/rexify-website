@@ -1,0 +1,137 @@
+% layout 'default';
+% title 'Using Rex to deploy your applications';
+
+% content_for header => begin
+      <meta name="description" content="Rex - Application Deployment">
+      <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation, Rexfile, Example">
+% end
+
+         <h1>Application Deployment</h1>
+
+         <p>If you have to deploy PHP, Rails, Tomcat or Perl Applications this module will help you automate the deployment task.</p>
+         <p>You can download this module at <a href="https://github.com/Krimdomu/rex-apache-deploy">github</a>.</p>
+         <p>There are also prebuilded packages. See <a href="/get/">get page</a> for more information.</p>
+         
+
+         <h2>See all commands</h2>
+         
+            <ul>
+               <li><a href="/api/Rex/Apache/Build.pm.html">Build Commands</a>
+               <li><a href="/api/Rex/Apache/Deploy.pm.html">Deploy Commands</a>
+               <li><a href="/api/Rex/Apache/Inject.pm.html">Configuration-Injection Commands</a>
+            </ul>
+
+         
+
+         <h2>Installation</h2>
+
+         <p>You can install this module out of our Repositories. See <a href="/get/">Get Rex</a> for more information.</p>
+
+         
+         <h2>Examples</h2>
+
+
+         <h3>Simple PHP Deployment</h3>
+
+         
+
+         <p>If you want to deploy your PHP Project just create a file <i>Rexfile</i> in the top directory of your project. And follow these steps.</p>
+         
+
+         <h4>Creating a Package</h4>
+
+         <p>Create a build task. This task will build a tar.gz archive of your application for distribution. You can give this file for example to your system administrators.</p>
+         <p>If you want to compress your JavaScript and CSS files, just download yuicompressor and place it anywhere in your filessystem. You also need an up-to-date java installation.</p>
+
+            <pre><code class="perl">use Rex::Apache::Build;
+
+# set the path to yuicompressor.jar
+yui_path "./yuicompressor.jar";
+
+# get the application version from the file index.php
+# search for a string $VERSION = "foobar"; and extract "foobar".
+# for example $VERSION = "1.0";
+get_version_from "index.php", qr{\$VERSION = "([^"]+)";};
+
+desc "Build a new package";
+task "build", sub {
+       
+   # compress all *.js files inside public/js
+   # and all *.css files inside public/css
+   yui compress =&gt; glob("public/js/*.js"), glob("public/css/*.css");
+       
+   # build the package
+   build;
+}; </code></pre>
+
+         
+         <h4>Uploading to the Server</h4>
+         <p>Now, after building the package you need to upload it to your server.</p>
+         <p>Add the next line to the other <i>use</i> line.</p>
+
+            <pre><code class="perl">use Rex::Apache::Deploy Symlink;</code></pre>
+
+         
+         <p>And specify the user and the key to connect via ssh to your server. Put this above the build task.</p>
+
+            <pre><code class="perl">user "deploy";
+public_key "/home/deploy/.ssh/id_rsa.pub";
+private_key "/home/deploy/.ssh/id_rsa";</code></pre>
+
+         
+         <p>Group all your servers so that you don't need to write so much. This will put the servers <i>php01, php02, php03 and php04</i> in the group named <i>php</i>.</p>
+
+            <pre><code class="perl">group "php" =&gt; "php[01..04]";</code></pre>
+         
+
+         <p>Now specify the directory for the deployment. (This is a directory outside your DocumentRoot. Because the DocumentRoot will be a symlink to the version of your application that you want to deploy. So it is easy and fast to rollback your deployment.) And specify the DocumentRoot. This will become a symlink.</p>
+
+            <pre><code class="perl">deploy_to "/var/deploy";
+document_root "/var/www/html";</code></pre>
+
+         
+
+         <p>Now create a deployment task. This task will upload packaged application to the servers defined in the <i>php</i> group and extract it into a subdirectory of the <i>deploy_to</i> directory (named after the version of your application) and will point your DocumentRoot to the new uploaded version.</p>
+
+            <pre><code class="perl">task "deploy", group =&gt; "php", sub {
+   deploy;
+};</code></pre>
+
+         
+
+         <h4>Running the tasks</h4>
+         <p>You can now run the tasks with <i>rex taskname</i>. You can list the tasks with <i>rex -T</i>.</p>
+            <pre><code class="bash">$ rex build deploy</code></pre>
+
+
+
+         
+         <h3>Simple Tomcat deployment</h3>
+         
+
+         <p>This example will deploy <i>myapp-1.0.war</i> to the servers <i>tomcat01, tomcat02, tomcat03</i> and <i>tomcat04</i>. It will deploy the application with the help of the <i>Tomcat Manager</i> Application to the context path <i>/myapp</i>.</p>
+
+            <pre><code class="perl">use Rex::Apache::Deploy Tomcat;
+
+# Version of the application
+my $VERSION = "1.0";
+
+user "deploy";
+public_key "/home/deploy/.ssh/id_rsa.pub";
+private_key "/home/deploy/.ssh/id_rsa";
+
+group "tomcat" =&gt; "tomcat[01..04]";
+
+parallelism 4;
+
+context_path "/myapp";
+
+desc "Deploy Application";
+task "deploy", group =&gt; "tomcat", sub {
+   deploy "myapp-$VERSION.war",
+      username =&gt; "manager-user",
+      password =&gt; "manager-password",
+      port     =&gt; 8080;   
+};</code></pre>
+
+

@@ -1,0 +1,65 @@
+% layout 'default';
+% title 'Rex::Commands::Sysctl - Manipulate sysctl';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can set and get sysctl parameters.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::Sysctl - Manipulate sysctl</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can set and get sysctl parameters.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Sysctl;
+ 
+ my $data = sysctl &quot;net.ipv4.tcp_keepalive_time&quot;;
+ sysctl &quot;net.ipv4.tcp_keepalive_time&quot; =&gt; 1800;</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>sysctl($key [, $val])</strong></li>
+
+
+<p>This function will read the sysctl key $key.</p>
+<p>If $val is given, then this function will set the sysctl key $key.</p>
+<pre><code class="perl">
+ task &quot;tune&quot;, &quot;server01&quot;, sub {
+    if( sysctl(&quot;net.ipv4.ip_forward&quot;) == 0 ) {
+       sysctl &quot;net.ipv4.ip_forward&quot; =&gt; 1;
+    }
+ };</code></pre>
+
+</ul>
+
+
+
+

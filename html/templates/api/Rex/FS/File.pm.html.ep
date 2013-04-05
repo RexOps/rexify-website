@@ -1,0 +1,97 @@
+% layout 'default';
+% title 'Rex::FS::File - File Class';
+
+% content_for header => begin
+      <meta name="description" content="">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#class_methods">CLASS METHODS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::FS::File - File Class</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>This is the File Class used by <em>write_file</em> and <em>read_file</em>.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);
+ $file-&gt;read($len);
+ $file-&gt;read_all;
+ $file-&gt;write($buf);
+ $file-&gt;close;</code></pre>
+<p>
+</p>
+
+<h2>CLASS METHODS</h2>
+<ul>
+<li><strong>new</strong></li>
+
+
+<p>This is the constructor. You need to set the filehandle which the object should work on.</p>
+<pre><code class="perl">
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);</code></pre>
+
+<li><strong>write($buf)</strong></li>
+
+
+<p>Write $buf into the filehandle.</p>
+<pre><code class="perl">
+ $file-&gt;write(&quot;Hello World&quot;);</code></pre>
+
+<li><strong>seek($offset)</strong></li>
+
+
+<p>Seek to the file position $offset.</p>
+<p>Set the file pointer to the 5th byte.</p>
+<pre><code class="perl">
+ $file-&gt;seek(5);</code></pre>
+
+<li><strong>read($len)</strong></li>
+
+
+<p>Read $len bytes out of the filehandle.</p>
+<pre><code class="perl">
+ my $content = $file-&gt;read(1024);</code></pre>
+
+<li><strong>read_all</strong></li>
+
+
+<p>Read everything out of the filehandle.</p>
+<pre><code class="perl">
+ my $content = $file-&gt;read_all;</code></pre>
+
+<li><strong>close</strong></li>
+
+
+<p>Close the file.</p>
+<pre><code class="perl">
+ $file-&gt;close;</code></pre>
+
+</ul>
+
+
+
+

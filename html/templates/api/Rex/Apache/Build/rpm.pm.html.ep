@@ -1,0 +1,67 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Apache::Build::rpm - Build rpm packages</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can build RedHat packages to distribute your application.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ build &quot;my-software&quot;,
+    type    =&gt; &quot;rpm&quot;,
+    version =&gt; &quot;1.0&quot;,
+    source  =&gt; &quot;/path/to/your/software&quot;,
+    path    =&gt; &quot;/path/to/deploy/target&quot;,
+    # below this, it is all optional
+    description    =&gt; &quot;some description of your package&quot;,
+    url            =&gt; &quot;website of the package&quot;,
+    depends        =&gt; [qw/httpd perl/],
+    release        =&gt; 1,
+    epoch          =&gt; 1,
+    vendor         =&gt; &quot;some vendor&quot;,
+    license        =&gt; &quot;your license for ex. GPL2&quot;,
+    section        =&gt; &quot;some/section&quot;,
+    conflicts      =&gt; [qw/somepkg/],
+    provides       =&gt; &quot;some-package-name&quot;,
+    arch           =&gt; &quot;x86_64&quot;,
+    target         =&gt; &quot;linux / the platform&quot;,
+    post_install   =&gt; &quot;filename or script to run after installation&quot;,
+    pre_install    =&gt; &quot;filename or script to run before installation&quot;,
+    post_uninstall =&gt; &quot;filename or script to run after uninstall&quot;,
+    pre_uninstall  =&gt; &quot;filename or script to run before uninstall&quot;,
+    exclude        =&gt; [qw/file1 file2/],
+    maintainer     =&gt; &quot;your name&quot;,
+    config_files   =&gt; [qw/special files for configuration mostly for etc directory/];</code></pre>
+
+
+
+

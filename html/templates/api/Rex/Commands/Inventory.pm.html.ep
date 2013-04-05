@@ -1,0 +1,64 @@
+% layout 'default';
+% title 'Rex::Commands::Inventory - Inventor your systems';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can get an inventory of your system.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::Inventory - Inventor your systems</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can get an inventory of your system.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Data::Dumper;
+ task &quot;inventory&quot;, &quot;remoteserver&quot;, sub {
+    my $inventory = inventor();
+    print Dumper($inventory);
+ };</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>inventory</strong></li>
+
+
+<p>This function returns an hashRef of all gathered hardware. Use the Data::Dumper module to see its structure.</p>
+<pre><code class="perl">
+ task &quot;get-inventory&quot;, sub {
+    my $inventory = inventory();
+    print Dumper($inventory);
+ };</code></pre>
+
+</ul>
+
+
+
+

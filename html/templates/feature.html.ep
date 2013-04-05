@@ -1,0 +1,15 @@
+% layout 'default';
+% title 'Request new features';
+%# no_index
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point">
+      <meta name="keywords" content="Systemadministration, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
+% end
+      
+         <h1>Miss a Feature? Tell us about it!</h1>
+         <p>If you miss a feature  just tell us about it and we will put it on our task list.</p>
+
+         
+
+

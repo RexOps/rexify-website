@@ -1,0 +1,56 @@
+% layout 'default';
+% title 'A word on backward compatibility';
+
+% content_for header => begin
+      <meta name="description" content="Backward compatibility if important">
+      <meta name="keywords" content="Rex, Systemadministration, System, Administration, Compatibility">
+% end
+
+         <h1>A word on backward compatibility</h1>
+         <p>Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+         
+         <p>So there is one premise new versions of Rex has to fulfill. They must be backward compatible.</p>
+         
+         <p>I know this might be impossible in the one or other way, but to minimize this danger there is a thing called feature flags. If there is the need to break backward compatibility in favor of a new feature there will be a feature flag for this change. And only if this feature flag gets enabled in the <i>Rexfile</i> it will break compatibility.</p>
+         
+         <p>So the default is always to be compatible.</p>
+         
+         <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a>.</p>
+
+         
+         <h2>Feature Flags</h2>
+
+         <p>Currently there is one feature flag to enable special authentication options for a server group.</p>
+
+         
+         <table border="0" class="feature-table">
+            <tr class="head">
+               <td>Flag</td>
+               <td>Since</td>
+               <td>Description</td>
+            </tr>
+
+            <tr>
+               <td>exit_status</td>
+               <td>0.39</td>
+               <td>This option tells Rex to return a non zero value on exit if a task fails.</td>
+            </tr>
+
+            <tr>
+               <td>0.35</td>
+               <td>0.35</td>
+               <td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
+            </tr>
+
+            <tr>
+               <td>0.31</td>
+               <td>0.31</td>
+               <td>To enable special authentication options for a server group. This will overwrite the default authentication options for a task.</td>
+            </tr>
+         </table>
+
+         
+         <h2>Howto enable Feature Flags</h2>
+         <p>You can enable feature flags in your <i>Rexfile</i> with the following code:</p>
+         <pre><code class="perl"># Rexfile
+use Rex -feature =&gt; 0.31;</code></pre>

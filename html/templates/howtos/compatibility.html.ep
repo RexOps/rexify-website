@@ -1,0 +1,563 @@
+% layout 'default';
+% title 'Which systems are compatible to Rex';
+
+% content_for header => begin
+      <meta name="description" content="Rex compatibility list">
+      <meta name="keywords" content="Systemadministration, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
+% end
+      
+         <h1>Compatibility List</h1>
+         
+
+         <p>(R)?ex can be executed on many platforms.</p>
+
+         
+
+         <ul>
+            <li>Linux (Debian, CentOS, Fedora, SuSE, Ubuntu, Gentoo, Mageia, Slackware, ...)</li>
+            <li>*BSD (FreeBSD, NetBSD, OpenBSD)</li>
+            <li>Windows (with ActiveState Perl)</li>
+            <li>MacOS X (with MacPorts Perl)</li>
+         </ul>
+
+         
+
+         <h2>Manageable Platforms</h2>
+
+
+         
+         <table border="0" class="tb-support">
+            <tr>
+               <td class="supported">Fully supported</td>
+               <td class="part-supported">Partially supported</td>
+               <td class="not-supported">Not supported</td>
+            </tr>
+         </table>
+         
+         <h2>Linux</h2>
+         
+
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>CentOS 5/6</td>
+               <td>Debian 5/6</td>
+               <td>Fedora</td>
+               <td>Gentoo</td>
+               <td>Mageia</td>
+               <td>OpenSuSE</td>
+               <td>RHEL 5/6</td>
+               <td>ScientificLinux</td>
+               <td>Ubuntu 10.04 LTS</td>
+               <td>Ubuntu 11.04 LTS</td>
+               <td>Ubuntu 12.04 LTS</td>
+            </tr>
+            <tr>
+               <td>Cron</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Transfer</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Manipulation / Configuration Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Filesystem Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Hardware Gathering</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage /etc/hosts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Inventory</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Network Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>IPTables</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Kernel Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>LVM</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Package Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Process Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Rsync</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Execute Commands</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Services</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Sysctl Entries</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage User- and Groupaccounts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+         </table>
+
+         
+         <a name="virt"></a>
+         <h2>Virtualization</h2>
+         <p>Virtualization was tested under following setups. To use the Virtualization Module libvirt must be installed and configured right.</p>
+         <p>The virtualization module should also work on untested Linux Distributions if you setup libvirt correctly. If you run this module on a distribution not listed please feel free to post your setup on our <a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a>.</p>
+         
+
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>XEN 4.0</td>
+               <td>KVM</td>
+            </tr>
+            <tr>
+               <td>CentOS 5</td>
+               <td class="supported">&nbsp;</td>
+               <td class="">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>CentOS 6</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+
+            <tr>
+               <td>Debian Squeeze</td>
+               <td class="supported">&nbsp;</td>
+               <td class="">&nbsp;</td>
+            </tr>
+
+            <tr>
+               <td>Fedora 15</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+            <tr>
+               <td>Ubuntu 10.04</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Ubuntu 11.04</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+
+         </table>
+
+
+         
+
+         
+         <h2>Solaris</h2>
+         
+
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>Solaris 10</td>
+               <td>Solaris 11</td>
+            </tr>
+            <tr>
+               <td>Cron</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Transfer</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Manipulation / Configuration Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Filesystem Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Hardware Gathering</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage /etc/hosts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Inventory</td>
+               <td class="not-supported">&nbsp;</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Network Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Kernel Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Package Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Process Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Rsync</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Execute Commands</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Services</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage User- and Groupaccounts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+         </table>
+
+            
+         
+         <h2>BSD</h2>
+         
+
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>FreeBSD</td>
+               <td>NetBSD</td>
+               <td>OpenBSD</td>
+            </tr>
+            <tr>
+               <td>Cron</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Transfer</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Manipulation / Configuration Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Filesystem Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Hardware Gathering</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage /etc/hosts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Inventory</td>
+               <td class="part-supported">&nbsp;</td>
+               <td class="not-supported">&nbsp;</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Network Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Kernel Operations</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Package Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Process Management</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Rsync</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Execute Commands</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Services</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Sysctl Entries</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage User- and Groupaccounts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+         </table>
+
+            

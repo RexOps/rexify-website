@@ -1,0 +1,442 @@
+% layout 'default';
+% title 'Tomcat deployment with Rex';
+
+% content_for header => begin
+      <meta name="description" content="Tomcat deployment with Rex">
+      <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
+% end
+
+         <h1>Tomcat deployment with Rex</h1>
+         <p>This is a small example that will show you how to deploy services, the configuration and the application to your servers. In this example we will install <a href="http://tomcat.apache.org/">tomcat</a>, change the <i>tomcat-users.xml</i> file and upload <a href="http://code.google.com/p/psi-probe/">psi-probe</a>.</p>
+
+         
+
+         <h2>Preparation</h2>
+         <ul>
+            <li>Download and install rex (see <a href="/get">get</a> page)</li>
+            <li>Download and install rex-apache-deploy &gt;= 0.4 (<a href="https://github.com/krimdomu/rex-apache-deploy">github</a> Branch: master)
+               <p>rex-apache-deploy is a Rex-Module to ease the deployment of PHP, Perl, Ruby and Tomcat applications</p>
+            </li>
+            <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
+               <ul>
+                  <li>Create an SSH-Key and upload the public-key to your server to the root user (/root/.ssh/authorized_keys).</li>
+                  <li>Install openssh server</li>
+                  <li>Add the contrib and non-free repository to your sources.list</li>
+               </ul>
+            </li>
+         </ul>
+
+         
+
+         <h2>Creating a (R)?ex Project</h2>
+         <p>At first we create a new (R)?ex Project.</p>
+            <pre><code class="bash">$ rexify mysite</code></pre>
+
+         
+         <p>This command will create a directory called <i>mysite</i>. Change into that directory.</p>
+
+            <pre><code class="bash">$ cd mysite
+$ ls -l
+-rw-r--r--  1 jan  staff  359 16 Apr 14:08 Rexfile
+drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
+
+         <p>You'll see one file and one directory. In the file <i>Rexfile</i> you can configure your servers and the authentication. You can also include Modules there. We will do this later.</p>
+
+         
+
+         <p>Open the file <i>Rexfile</i> and change it to suite your needs.</p>
+
+            <pre><code class="perl">use lib 'lib';
+
+# set your username
+user "root";
+
+# private key
+private_key "/Users/jan/.ssh/id_rsa";
+
+# public key
+public_key "/Users/jan/.ssh/id_rsa.pub";
+
+# put your server in this group
+# if you want to deploy multiple servers name them here
+# group "servers" =&gt; "tomcat01", "tomcat02", "tomcat03", "tomcat04";
+#
+# or use the expression feature
+# group "servers" =&gt; "tomcat[01..04]";
+
+# if you just want to deploy one server
+group "servers" =&gt; "tomcat01";
+
+# now load every module via ,,require''
+require Rex::mysite;</code></pre>
+
+         <p>The <i>Rexfile</i> is a normal Perl Code Snippet.</p>
+         <p>After you have changed the <i>Rexfile</i> you can just test it.</p>
+
+            <pre><code class="bash">$ rex -T
+Rexfile syntax OK
+Tasks
+  mysite:uptime                  Get uptime of server
+Batches</code></pre>
+
+         
+
+         <p><i>rexify</i> created a small test task (mysite:uptime). If you run this command you will get the uptime of the systems you have defined in the <i>servers</i> group.</p>
+
+
+            <pre><code class="bash">$ rex mysite:uptime
+Rexfile syntax OK
+[2011-04-16 16:08:03] - INFO - Running task: mysite:uptime
+[2011-04-16 16:08:03] - INFO - Connecting to tomcat01 (root)
+ 16:08:03 up  7:42,  1 user,  load average: 0.00, 0.00, 0.00 </code></pre>
+
+         
+
+         <h2>Creating the Tasks</h2>
+         
+
+         <p>So, if we want to manage the complete deployment of our server, we need to create some tasks.</p>
+         <p>In this example i will split these tasks into Operating-System relevant tasks, Tomcat relevant tasks and deployment relevant tasks.</p>
+         
+         <h3>Operating System</h3>
+         
+         <p>Lets create the Operating System tasks at first.</p>
+
+         
+         <p>Create the file <i>lib/Rex/OS.pm</i></p>
+
+            <pre><code class="perl">package Rex::OS;
+
+# include some Rex Modules
+use Rex::Commands;
+use Rex::Commands::Pkg;
+use Rex::Commands::Service;
+use Rex::Commands::Sysctl;
+
+desc "Install base packages";
+task "prepare", sub {
+   install package =&gt; [ 
+                        "ntp",
+                        "hal",
+                        "dbus",
+                        "sudo",
+                        "vim",
+                      ];
+};
+
+desc "Start base services";
+task "start-services", sub {
+   needs Rex::OS "prepare";
+
+   service hal     =&gt; "start";
+   service dbus    =&gt; "start";
+
+   service rsyslog =&gt; "start";
+};
+
+desc "Tune some /proc parameters";
+task "tune", sub {
+   sysctl "net.ipv4.tcp_keepalive_time" =&gt; 1800;  
+   sysctl "net.ipv4.tcp_fin_timeout"    =&gt;   15;
+   sysctl "net.ipv4.tcp_window_scaling" =&gt;    1;
+};
+
+1; </code></pre>
+         
+
+         <p>Well, this is a lot of stuff. But simple to understand.</p>
+         <p>We create 3 tasks <i>prepare</i>, <i>start-services</i> and <i>tune</i>.</p>
+
+         
+
+         <ul>
+            <li>
+               <i>prepare</i>
+               <p>This task will install ntp, hal, dbus, sudo and vim (if these packages are not installed)</p>
+            </li>
+            <li>
+               <i>start-services</i>
+               <p>This will start hal, dbus and rsyslog (if they are not running already). Also it has a dependency to the <i>prepare</i> Task in the Module <i>Rex::OS</i>. So it will run the <i>prepare</i> task before it run its own commands.</p>
+            </li>
+            <li>
+               <i>tune</i>
+               <p>This will set some sysctl parameters (if the are not already set)</p>
+            </li>
+         </ul>
+
+         
+
+         
+         <h3>Tomcat</h3>
+         
+         <p>After we created the operating system relevant tasks we will create the tomcat tasks. Here we will install and configure the tomcat server.</p>
+
+         
+         <p>Create the file <i>lib/Rex/Tomcat.pm</i></p>
+
+            <pre><code class="perl">package Rex::Tomcat;
+
+use strict;
+use warnings;
+
+# include our Rex::OS Module, so that we can build dependencies to that module
+use Rex::OS;
+
+# include Rex Modules
+use Rex::Commands;
+use Rex::Commands::Run;
+use Rex::Commands::Pkg;
+use Rex::Commands::File;
+use Rex::Commands::Service;
+
+desc "Install tomcat packages";
+task "prepare", sub {
+   needs Rex::OS;
+
+   install package =&gt; [ 
+                        "tomcat6-common",
+                        "tomcat6",
+                        "tomcat6-admin",
+                      ];
+};
+
+desc "Configure Tomcat Manager User";
+task "tomcat-user", sub {
+   needs Rex::Tomcat "prepare";
+
+   file "/etc/tomcat6/tomcat-users.xml",
+      source    =&gt; "files/tomcat-users.xml",
+      owner     =&gt; "root",
+      group     =&gt; "tomcat6",
+      mode      =&gt; 640,
+
+      on_change =&gt; sub { service tomcat6 =&gt; "restart"; },
+   };
+};
+
+
+1; </code></pre>
+
+         
+         <p>Here we have 2 tasks.</p>
+         <ul>
+            <li>
+               <i>prepare</i>
+               <p>This task installs the tomcat server</p>
+               <p>And it has a dependency to <b>all</b> tasks defined in the module <i>Rex::OS</i></p>
+            </li>
+            <li>
+               <i>tomcat-user</i>
+               <p>This task will copy a modified tomcat-users.xml file to the server and, if the file was changed, restart the tomcat server.</p>
+               <p>It will also check if the permissions of the remote file are correct. And alter them if needed.</p>
+            </li>
+         </ul>
+
+         
+         <p>Now you need to create the file <i>files/tomcat-users.xml</i></p>
+            <pre><code class="bash">$ mkdir files
+$ cat &gt;files/tomcat-users.xml&lt;&lt;EOF
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;tomcat-users&gt;
+
+  &lt;role rolename="manager"/&gt;
+  &lt;user username="manager" password="manager" roles="manager"/&gt;
+  
+&lt;/tomcat-users&gt;
+EOF </code></pre>
+
+         
+         <h3>Tomcat Software Deployment</h3>
+         
+         <p>So, for now we can install some default services and tune some sysctl parameters (Rex::OS) and install the tomcat application server (Rex::Tomcat). Now we will deploy our tomcat application (psi-probe)</p>
+
+         
+         <p>So, lets create the file <i>lib/Rex/Deploy/Live/Tomcat.pm</i></p>
+
+            <pre><code class="perl">package Rex::Deploy::Live::Tomcat;
+
+use strict;
+use warnings;
+
+# include Rex Modules
+use Rex::Commands;
+
+# include the deployer modules
+use Rex::Apache::Inject "Properties";
+use Rex::Apache::Deploy "Tomcat";
+
+# set configuration file
+template_file "live-inject.conf";
+
+# set files to change inside our tomcat application (probe.war)
+template_search_for "stats.properties";
+
+# inject our configuration from live-inject.conf to the file WEB-INF/stats.properties
+desc "Inject Live Configuration";
+task "inject", sub {
+   inject "files/probe.war";
+};
+
+
+# set the context path of our application
+context_path "/probe";
+
+# deploy probe.war to our tomcat server
+desc "Deploy probe.war to Live";
+task "deploy", sub {
+   # run the inject task before the deployment
+   do_task 'Deploy:Live:Tomcat:inject';
+
+   # the deployment requires a running tomcat
+   needs Rex::Tomcat;
+
+   # deploy probe.war
+   deploy "files/probe.war",
+      username =&gt; "manager",    # username of the tomcat manager
+      password =&gt; "manager",    # password of the tomcat manager
+      port     =&gt; 8080;         # port, tomcat is listening on
+};
+
+1; </code></pre>
+
+         
+         <p>Now we need to create the file <i>live-inject.conf</i></p>
+            <pre><code class="bash"># every 10 seconds
+com.googlecode.psiprobe.beans.stats.collectors.connector.period=10s
+com.googlecode.psiprobe.beans.stats.collectors.cluster.period=10s
+com.googlecode.psiprobe.beans.stats.collectors.memory.period=10s
+com.googlecode.psiprobe.beans.stats.collectors.runtime.period=10s </code></pre>
+
+
+         
+         <h4>Injecting? For what is it good for?</h4>
+         <p>In this example we just change some collectors periods from 30 seconds (default) to 10 seconds.</p>
+         <p>But if you have an application with database access you can inject different database parameters to the same war file. So you can deploy the exact same war file to a test environment, staging environment and live environment.</p>
+
+
+         
+         <h3>The last steps</h3>
+         
+         <p>Now we have defined all tasks, but we haven't defined on which servers they should run on.</p>
+
+         
+         <p>Open the file <i>lib/Rex/mysite.pm</i></p>
+
+            <pre><code class="perl">package Rex::mysite;
+
+# include Rex Modules
+use Rex::Commands;
+use Rex::Commands::Run;
+
+desc "Get uptime of server";
+task "uptime", group =&gt; "servers", sub {
+   say run "uptime";
+};
+
+# One task to prepare the server
+desc "Prepare Tomcat Server";
+task "tomcat", group =&gt; "servers", sub {
+   needs Rex::Tomcat;
+};
+
+# one task to deploy our application (probe.war)
+desc "Deploy Live Tomcats";
+task "deploy", group =&gt; "servers", sub {
+   needs Rex::Deploy::Live::Tomcat "deploy";
+};
+
+1; </code></pre>
+
+          <p>Here we define 2 tasks. One to prepare a system and one to deploy our software (probe.war)</p>
+
+          <ul>
+            <li>
+               <i>tomcat</i>
+               <p>This task will run on all servers in the <i>servers</i> group.</p>
+               <p>It will run all tasks that are defined in the <i>Rex::Tomcat</i> module.</p>
+            </li>
+            <li>
+               <i>deploy</i>
+               <p>This task will run on all servers in the <i>servers</i> group.</p>
+               <p>It will run only the <i>deploy</i> task in the <i>Rex::Deploy::Live::Tomcat</i> module (and all its dependencies).</p>
+          </ul>
+
+          
+
+          <p>Open the <i>Rexfile</i> and include all our modules at the bottom.</p>
+
+
+            <pre><code class="perl">require Rex::OS;
+require Rex::Tomcat;
+require Rex::Deploy::Live::Tomcat; </code></pre>
+
+          
+
+          <p>At last we need to extract the psi-probe zip file and place the file probe.war into the <i>files</i> directory.</p>
+
+            <pre><code class="bash">$ unzip probe-2.1.2.zip
+$ cp probe.war files/</code></pre>
+
+
+
+         
+         <h3>Running the tasks</h3>
+         
+         <p>Now we are ready to run our tasks on our servers.</p>
+         <p>Lets list all our tasks first.</p>
+
+            <pre><code class="bash">$ rex -T
+Rexfile syntax OK
+Tasks
+  Deploy:Live:Tomcat:deploy      Deploy probe.war to Live
+  Deploy:Live:Tomcat:inject      Inject Live Configuration
+  OS:prepare                     Install base packages
+  OS:start-services              Start base services
+  OS:tune                        Tune some /proc parameters
+  Tomcat:prepare                 Install tomcat packages
+  Tomcat:tomcat-user             Configure Tomcat Manager User
+  mysite:deploy                  Deploy Live Tomcats
+  mysite:tomcat                  Prepare Tomcat Server
+  mysite:uptime                  Get uptime of server </code></pre>
+
+         
+
+         <p>And now we will deploy our servers.</p>
+
+            <pre><code class="bash">$ rex mysite:deploy 
+Rexfile syntax OK
+[2011-04-16 17:14:28] - INFO - Running task: mysite:deploy
+[2011-04-16 17:14:28] - INFO - Connecting to tomcat01 (root)
+[2011-04-16 17:14:28] - INFO - Running task: Deploy:Live:Tomcat:inject
+[2011-04-16 17:14:29] - INFO - setting com.googlecode.psiprobe.beans.stats.collectors.memory.period to 10s (./WEB-INF/stats.properties)
+[2011-04-16 17:14:29] - INFO - setting com.googlecode.psiprobe.beans.stats.collectors.cluster.period to 10s (./WEB-INF/stats.properties)
+[2011-04-16 17:14:29] - INFO - setting com.googlecode.psiprobe.beans.stats.collectors.runtime.period to 10s (./WEB-INF/stats.properties)
+[2011-04-16 17:14:29] - INFO - setting com.googlecode.psiprobe.beans.stats.collectors.connector.period to 10s (./WEB-INF/stats.properties)
+[2011-04-16 17:14:30] - INFO - Installing ntp.
+[2011-04-16 17:14:36] - INFO - Installing hal.
+[2011-04-16 17:15:26] - INFO - Installing sudo.
+[2011-04-16 17:15:35] - INFO - Installing tomcat6-common.
+[2011-04-16 17:20:53] - INFO - Installing tomcat6.
+[2011-04-16 17:21:00] - INFO - Installing tomcat6-admin.
+[2011-04-16 17:21:05] - INFO - Uploadling files/tomcat-users.xml -&gt; /etc/tomcat6/tomcat-users.xml
+[2011-04-16 17:21:13] - INFO - Service tomcat6 restarted.
+[2011-04-16 17:21:13] - INFO - Uploadling files/probe.war -&gt; /tmp/5zttdpcya.war
+[2011-04-16 17:21:13] - INFO - FAIL - No context exists for path /probe
+
+[2011-04-16 17:21:18] - INFO - OK - Deployed application at context path /probe </code></pre>
+
+         
+         <p>The <i>FAIL</i> you see here is okay, because we deployed our application the first time.</p>
+
+         
+
+         <p>If you want, you can run tasks on other machines as defined. Perhaps when you need to install a new server.</p>
+
+            <pre><code class="bash">$ rex -H "mynewserver" mysite:deploy</code></pre>
+
+
+         
+
+         <p>Now you can connect to your tomcat server http://tomcat01:8080/probe.</p>
+
+

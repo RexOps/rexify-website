@@ -1,0 +1,161 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="With this Module you can manage basic Iptables rules.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>DESCRIPTION</h2>
+<p>With this Module you can manage basic Iptables rules.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Iptables;
+     
+ task &quot;firewall&quot;, sub {
+    iptables_clear;
+     
+    open_port 22;
+    open_port [22, 80] =&gt; {
+       dev =&gt; &quot;eth0&quot;,
+    };
+        
+    close_port 22 =&gt; {
+       dev =&gt; &quot;eth0&quot;,
+    };
+    close_port &quot;all&quot;;
+        
+    redirect_port 80 =&gt; 10080;
+    redirect_port 80 =&gt; {
+       dev =&gt; &quot;eth0&quot;,
+       to  =&gt; 10080,
+    };
+      
+    default_state_rule;
+    default_state_rule dev =&gt; &quot;eth0&quot;;
+        
+    is_nat_gateway;
+       
+    iptables t =&gt; &quot;nat&quot;,
+             A =&gt; &quot;POSTROUTING&quot;,
+             o =&gt; &quot;eth0&quot;,
+             j =&gt; &quot;MASQUERADE&quot;;
+    
+ };</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>open_port($port, $option)</strong></li>
+
+
+<p>Open a port for inbound connections.</p>
+<pre><code class="perl">
+ task &quot;firewall&quot;, sub {
+    open_port 22;
+    open_port [22, 80];
+    open_port [22, 80] =&gt; { dev =&gt; &quot;eth1&quot;, };
+ };</code></pre>
+
+<li><strong>close_port($port, $option)</strong></li>
+
+
+<p>Close a port for inbound connections.</p>
+<pre><code class="perl">
+ task &quot;firewall&quot;, sub {
+    close_port 22;
+    close_port [22, 80];
+    close_port [22, 80] =&gt; { dev =&gt; &quot;eth0&quot;, };
+ };</code></pre>
+
+<li><strong>redirect_port($in_port, $option)</strong></li>
+
+
+<p>Redirect $in_port to an other local port.</p>
+<pre><code class="perl">
+ task &quot;redirects&quot;, sub {
+    redirect_port 80 =&gt; 10080;
+    redirect_port 80 =&gt; {
+       to  =&gt; 10080,
+       dev =&gt; &quot;eth0&quot;,
+    };
+ };</code></pre>
+
+<li><strong>iptables(@params)</strong></li>
+
+
+<p>Write standard iptable comands.</p>
+<pre><code class="perl">
+ task &quot;firewall&quot;, sub {
+    iptables t =&gt; &quot;nat&quot;, A =&gt; &quot;POSTROUTING&quot;, o =&gt; &quot;eth0&quot;, j =&gt; &quot;MASQUERADE&quot;;
+    iptables t =&gt; &quot;filter&quot;, i =&gt; &quot;eth0&quot;, m =&gt; &quot;state&quot;, state =&gt; &quot;RELATED,ESTABLISHED&quot;, j =&gt; &quot;ACCEPT&quot;;
+        
+    iptables &quot;flush&quot;;
+    iptables -F;
+    iptables flush =&gt; &quot;filter&quot;;
+    iptables -F =&gt; &quot;filter&quot;;
+ };</code></pre>
+
+<li><strong>is_nat_gateway</strong></li>
+
+
+<p>This function create a nat gateway for the device the default route points to.</p>
+<pre><code class="perl">
+ task &quot;make-gateway&quot;, sub {
+    is_nat_gateway;
+ };</code></pre>
+
+<li><strong>default_state_rule(%option)</strong></li>
+
+
+<p>Set the default state rules for the given device.</p>
+<pre><code class="perl">
+ task &quot;firewall&quot;, sub {
+    default_state_rule(dev =&gt; &quot;eth0&quot;);
+ };</code></pre>
+
+<li><strong>iptables_list</strong></li>
+
+
+<p>List all iptables rules.</p>
+<pre><code class="perl">
+ task &quot;list-iptables&quot;, sub {
+    print Dumper iptables_list;
+ };</code></pre>
+
+<li><strong>iptables_clear</strong></li>
+
+
+<p>Remove all iptables rules.</p>
+<pre><code class="perl">
+ task &quot;no-firewall&quot;, sub {
+    iptables_clear;
+ };</code></pre>
+
+</ul>
+
+
+
+

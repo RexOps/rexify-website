@@ -1,0 +1,48 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Apache::Build::tgz - Build tgz packages</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can build TGZ packages to distribute your application.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ build &quot;my-software&quot;,
+    type    =&gt; &quot;tgz&quot;,
+    version =&gt; &quot;1.0&quot;,
+    source  =&gt; &quot;/path/to/your/software&quot;,
+    # below this, it is all optional
+    exclude =&gt; [qw/file1 file2/];</code></pre>
+
+
+
+

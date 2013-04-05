@@ -1,0 +1,75 @@
+% layout 'default';
+% title 'Rex::Virtualization::LibVirt - LibVirt Virtualization Module';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can manage LibVirt.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Virtualization::LibVirt - LibVirt Virtualization Module</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can manage LibVirt.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Virtualization;
+    
+ set virtualization =&gt; &quot;LibVirt&quot;;
+    
+ print Dumper vm list =&gt; &quot;all&quot;;
+ print Dumper vm list =&gt; &quot;running&quot;;
+    
+ vm destroy =&gt; &quot;vm01&quot;;
+    
+ vm delete =&gt; &quot;vm01&quot;; 
+     
+ vm start =&gt; &quot;vm01&quot;;
+    
+ vm shutdown =&gt; &quot;vm01&quot;;
+    
+ vm reboot =&gt; &quot;vm01&quot;;
+    
+ vm option =&gt; &quot;vm01&quot;,
+          max_memory =&gt; 1024*1024,
+          memory     =&gt; 512*1024;
+              
+ print Dumper vm info =&gt; &quot;vm01&quot;;
+    
+ # creating a vm on a kvm host
+ vm create =&gt; &quot;vm01&quot;,
+      storage     =&gt; [
+         {   
+            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
+            dev    =&gt; &quot;vda&quot;,
+         }   
+      ];  
+       
+ print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
+
+
+
+

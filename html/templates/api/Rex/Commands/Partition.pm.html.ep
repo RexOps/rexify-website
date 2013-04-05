@@ -1,0 +1,88 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="With this Module you can partition your harddrive.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>DESCRIPTION</h2>
+<p>With this Module you can partition your harddrive.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::Partition;</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>clearpart($drive)</strong></li>
+
+
+<p>Clear partitions on $drive.</p>
+<pre><code class="perl">
+ clearpart &quot;sda&quot;;
+   
+ clearpart &quot;sda&quot;,
+   initialize =&gt; &quot;gpt&quot;;</code></pre>
+
+<li><strong>partition($mountpoint, %option)</strong></li>
+
+
+<p>Create a partition with mountpoint $mountpoint.</p>
+<pre><code class="perl">
+ partition &quot;/&quot;,
+    fstype  =&gt; &quot;ext3&quot;,
+    size    =&gt; 15000,
+    ondisk  =&gt; &quot;sda&quot;,
+    type    =&gt; &quot;primary&quot;;
+    
+ partition &quot;none&quot;,
+    type   =&gt; &quot;extended&quot;,
+    ondisk =&gt; &quot;sda&quot;,
+    grow   =&gt; 1,
+    mount  =&gt; TRUE,
+    
+ partition &quot;swap&quot;,
+    fstype =&gt; &quot;swap&quot;,
+    type   =&gt; &quot;logical&quot;,
+    ondisk =&gt; &quot;sda&quot;,
+    size   =&gt; 8000;
+    
+ partition &quot;none&quot;,
+    lvm    =&gt; 1,
+    type   =&gt; &quot;primary&quot;,
+    size   =&gt; 15000,
+    ondisk =&gt; &quot;vda&quot;;
+    
+ partition &quot;/&quot;,
+    fstype =&gt; &quot;ext3&quot;,
+    size   =&gt; 10000,
+    onvg   =&gt; &quot;vg0&quot;;</code></pre>
+
+</ul>
+
+
+
+

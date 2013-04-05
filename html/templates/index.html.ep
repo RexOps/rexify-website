@@ -1,0 +1,111 @@
+% layout 'default';
+% title '(R)?ex - Perl 自动化的管理框架';
+
+
+<div class="row-fluid">
+   <div class="span4">
+      <h2>为什么使用 Rex?</h2>
+      <p>如果你要做一个任务，运行两次以上，
+ 请自动化它吧 !</p>
+      <p>不要忘记每一个安装的步骤,创建为自动化. 因为自动化可以减少失败的风险，让你真正的轻松工作.</p>
+   </div><!--/span-->
+   <div class="span4">
+      <h2>Rex 据有的优势</h2>
+      <ul class="no-list">
+         <li>Rex 没有客户端，太失望了</li>
+         <li>无缝集成，没有冲突</li>
+         <li>Rex 使用太简单了，太容易扩展,哎。</li>
+         <li>会点Perl 你就能很轻松的使用Rex</li>
+      </ul>
+   </div><!--/span-->
+   <div class="span4">
+      <h2>开放源代码</h2>
+      <p>我们相信开源coder 的想法.所以Rex 全部代码都是给予Apache 2.0 的许可协议开源</p>
+      <p>你可以加入我们社区让Rex 更加的完美.</p>
+   </div><!--/span-->
+</div><!--/row-->
+
+<div class="row-fluid">
+   <div class="span4">
+      <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+   </div><!--/span-->
+   <div class="span4">
+      <p><a class="btn" href="/howtos/perl.html">Rex 只需少量的Perl 知识 &raquo;</a></p>
+   </div><!--/span-->
+   <div class="span4">
+      <p><a class="btn" href="/contribute">查看细节文档 &raquo;</a></p>
+   </div><!--/span-->
+</div><!--/row-->
+
+<h2>简单的例子</h2>
+<br />
+<h2>Uptime?</h2>
+<p>这个命令行例子 将执行 "uptime" 在所有的主机上 如 (frontend01, frontend02, ...).</p>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
+</code></pre>
+
+<p>还有一些，基于 <i>Rexfile</i></p>
+<pre><code class="perl">desc "Get Disk Free";
+task "disk_free", sub {
+   my $output = run "df -h";
+   say $output;
+};
+</code></pre>
+
+<p>现在你可以用这个命令运行你的任务</p>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free
+</code></pre>
+
+
+<h2>保持你的配置文件同步</h2>
+<p>这个例子将安装Apache webserver 在 5 个服务器上 并且保持配置文件同步.如果配置文件改变了 他会自动reload 你的apache 服务.</p>
+<p>如果这个任务将执行首先安装好apahce服务在做再做配置文件同步.</p>
+
+<pre><code class="perl">user "root";
+group "frontend" =&gt; "frontend[01..05]";
+
+desc "Prepare Frontend Server";
+task "prepare", group =&gt; "frontend", sub {
+   install "apache2";
+};
+
+desc "Keep Configuration in sync";
+task "configure", group =&gt; "frontend", sub {
+   prepare();
+
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+};
+
+#--------------------------------------------
+
+$ rex configure #调用你的Rexfile 
+</code></pre>
+
+<h2>在 sudo 下执行 ?</h2>
+<p>你也可以在sudo 下 运行任何的任务. 只需要激活sudo 和定义sudo 的密码</p>
+<pre><code class="perl">user "ubuntu";
+group "frontend" =&gt; "frontend[01..05]";
+sudo TRUE;   #激活sudo
+sudo_password 'lairdnote';
+
+desc "Prepare Frontend Server";
+task "prepare", group =&gt; "frontend", sub {
+   install "apache2";
+};
+
+desc "Keep Configuration in sync";
+task "configure", group =&gt; "frontend", sub {
+   prepare();
+
+   file "/etc/apache2/apache2.conf",
+        source    =&gt; "files/etc/apache2/apache2.conf",
+        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+};
+
+
+
+</code></pre>
+
+

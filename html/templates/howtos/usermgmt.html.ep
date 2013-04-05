@@ -1,0 +1,87 @@
+% layout 'default';
+% title 'Manage user accounts with Rex';
+
+% content_for header => begin
+      <meta name="description" content="Manage user accounts with Rex">
+      <meta name="keywords" content="User, Group, Management, Linux, BSD, Rollout, SSH, Key, Auth, Authentication">
+% end
+
+         <h1> Rex 管理你的用户访问</h1>
+         <p>在这个指南,我将向您展示如何在你的系统推出用户帐户.</p>
+
+         
+         <h2>准备</h2>
+         <ul>
+            <li>创建一个项目目录. 例如 <i>usermgmt</i>.</li>
+            <li>创建一个子目录 <i>files</i>. 在这个目录中加入public key 用户名后加.a ".key" . (例如 "jay",文件名 "jay.key").</li>
+         </ul>
+
+         
+         <h2>下载 用户Rollout 模块 </h2>
+         <p>首先下载模块 <a href="http://rex.linux-files.org/modules/user_rollout.tgz">这里</a>.</p>
+         <p>在你的目录下，提取出文件.</p>
+
+            <pre><code class="bash">$ wget http://rex.linux-files.org/modules/user_rollout.tgz
+$ tar xvzf user_rollout.tgz</code></pre>
+
+         
+         <p>这个命令将会得到<i>lib</i>这个目录下会得到 <i>user.pm</i>.</p>
+
+         
+         <h2>创建一个Rexfile</h2>
+
+         <p>开始创建<i>Rexfile</i>.</p>
+
+            <pre><code class="bash">$ touch Rexfile</code></pre>
+
+         
+         <p>编辑你的Rexfile.</p>
+
+         
+         <p>在你的Rexfile中添加.</p>
+
+            <pre><code class="perl">user "root";
+
+group "webservers" =&gt; "fe[01..12]", "mw[01..05]]";
+group "db" =&gt; "db[01..04]";
+
+my @developer = qw/max ben jim marc/;
+my @admins   = qw/jay david jack/;
+
+task "fe-mw-rollout-accounts", group =&gt; "webservers", sub {
+   require user; # this will include the user rollout module
+
+   for (@developer) {
+      user::rollout_account({
+         user =&gt; $_,
+         group =&gt; "developer",
+      });
+   }
+
+   for (@admins) {
+      user::rollout_account({
+         user =&gt; $_,
+         group =&gt; "wheel",
+      });
+   }
+};
+
+task "db-rollout-accounts", group =&gt; "db", sub {
+   require user; # this will include the user rollout module
+
+   for (@admins) {
+      user::rollout_account({
+         user =&gt; $_,
+         group =&gt; "wheel",
+      });
+   }
+};</code></pre>
+
+         
+
+         <p>这两个task. 一个任务的开发人员和管理员账户的创建在你的前端和中间件系统. 另一个是只添加admin 到你的数据库系统中.</p>
+
+         <p>你可以在同一时间中调用多个. 在第一个时间它会创建用户、组和上传key.后续运行它将只是上传key,如此简单的添加新的keys是和改变keys</p>
+
+            <pre><code class="bash">$ rex fe-mw-rollout-accounts db-rollout-accounts</code></pre>
+          

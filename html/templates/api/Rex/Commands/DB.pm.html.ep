@@ -1,0 +1,110 @@
+% layout 'default';
+% title 'Rex::Commands::DB - Simple Database Access';
+
+% content_for header => begin
+      <meta name="description" content="">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::DB - Simple Database Access</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>This module gives you simple access to a database. Currently <em>select</em>, <em>delete</em>, <em>insert</em> and <em>update</em> is supported.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ use Rex::Commands::DB {
+                           dsn      =&gt; &quot;DBI:mysql:database=test;host=dbhost&quot;,
+                           user     =&gt; &quot;username&quot;,
+                           password =&gt; &quot;password&quot;,
+                       };
+ 
+ task &quot;list&quot;, sub {
+    my @data = db select =&gt; {
+                  fields =&gt; &quot;*&quot;,
+                  from   =&gt; &quot;table&quot;,
+                  where  =&gt; &quot;enabled=1&quot;,
+               };
+           
+   db insert =&gt; &quot;table&quot;, {
+                field1 =&gt; &quot;value1&quot;,
+                 field2 =&gt; &quot;value2&quot;,
+                 field3 =&gt; 5,
+               };
+                
+   db update =&gt; &quot;table&quot;, {
+                    set =&gt; {
+                       field1 =&gt; &quot;newvalue&quot;,
+                       field2 =&gt; &quot;newvalue2&quot;,
+                    },
+                    where =&gt; &quot;id=5&quot;,
+                };
+                
+   db delete =&gt; &quot;table&quot;, {
+                 where =&gt; &quot;id &lt; 5&quot;,
+              };
+           
+ };</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>db</strong></li>
+
+
+<p>Do a database action.</p>
+<pre><code class="perl">
+ my @data = db select =&gt; {
+               fields =&gt; &quot;*&quot;,
+               from   =&gt; &quot;table&quot;,
+               where  =&gt; &quot;host='myhost'&quot;,
+            };
+            
+ db insert =&gt; &quot;table&quot;, {
+               field1 =&gt; &quot;value1&quot;,
+               field2 =&gt; &quot;value2&quot;,
+               field3 =&gt; 5,
+            };
+             
+ db update =&gt; &quot;table&quot;, {
+                  set =&gt; {
+                     field1 =&gt; &quot;newvalue&quot;,
+                     field2 =&gt; &quot;newvalue2&quot;,
+                  },
+                  where =&gt; &quot;id=5&quot;,
+             };
+             
+ db delete =&gt; &quot;table&quot;, {
+               where =&gt; &quot;id &lt; 5&quot;,
+            };</code></pre>
+
+</ul>
+
+
+
+

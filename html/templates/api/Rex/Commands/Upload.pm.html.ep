@@ -1,0 +1,61 @@
+% layout 'default';
+% title 'Rex::Commands::Upload - Upload a local file to a remote server';
+
+% content_for header => begin
+      <meta name="description" content="With this module you can upload a local file via sftp to a remote host.">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Commands::Upload - Upload a local file to a remote server</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can upload a local file via sftp to a remote host.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
+    upload &quot;localfile&quot;, &quot;/remote/file&quot;;
+ };</code></pre>
+<p>
+</p>
+
+<h2>EXPORTED FUNCTIONS</h2>
+<ul>
+<li><strong>upload($local, $remote)</strong></li>
+
+
+<p>Perform an upload. If $remote is a directory the file will be uploaded to that directory.</p>
+<pre><code class="perl">
+ task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
+    upload &quot;localfile&quot;, &quot;/path&quot;;
+ };</code></pre>
+
+</ul>
+
+
+
+

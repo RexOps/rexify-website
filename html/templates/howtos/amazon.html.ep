@@ -1,0 +1,148 @@
+% layout 'default';
+% title 'Manage Amazon EC2 with Rex';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Amazon EC2 Management">
+      <meta name="keywords" content="Amazon, EC2, Manage, Deploy, Automation">
+% end
+      
+         <h1>开始</h1>
+         <p>怎么管理和创建的你的Amazon EC2 实例.</p>
+
+         
+         <h1>准备</h1>
+         <ul class="simple-list">
+            <li>常见你的amazone 账号</li>
+            <li>得到你的Accesskey</li>
+            <li>创建一个key 保存到本地</li>
+            <li>  创建一个公钥刚刚下载从你的私钥 你可以这样<i>ssh-keygen -y -f your-aws-private-key.pem</i></li>
+         </ul>
+
+         
+         <h1>创建一个 Rexfile</h1>
+
+         <p>首先在你的目录下建立一个 <i>Rexfile</i> .</p>
+
+
+            <pre><code class="bash">$ mkdir amazon
+$ cd amazon
+$ touch Rexfile</code></pre>
+
+         
+         <p>编辑你的Rexfile 文件.</p>
+
+         
+         <p>在 Rexfile 中插入下面的代码.</p>
+
+            <pre><code class="perl">use Rex::Commands::Cloud;
+
+user "root";
+public_key "/path/to/your/just/created/amazon-public.key";
+private_key "/path/to/your/just/downloaded/amazon-private-key.pem";
+
+my $access_key = "your-access-key";
+my $secret_access_key = "your-secret-key";
+
+cloud_service "Amazon";
+cloud_auth "$access_key", "$secret_access_key";
+cloud_region "ec2.eu-west-1.amazonaws.com";
+
+task "create", sub {
+   cloud_instance create =&gt; { 
+            image_id =&gt; "ami-02103876",
+            name     =&gt; "static01",
+            key      =&gt; "dev-test",
+         };
+};</code></pre>
+
+         <p>这个task 创建一个新的Amazon EC2 实例，不是在EBS block 设备.</p>
+
+         
+         <h2>创建一个实例在EBS block 卷上</h2>
+
+         <p>有时你需要一个实例运行在稳定的存储上. 这个列子可以完成你使用EBS block 卷.</p>
+
+            <pre><code class="perl">task "create", sub {
+   my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
+
+   cloud_instance create =&gt; { 
+            image_id =&gt; "ami-02103876",
+            name     =&gt; "static01",
+            key      =&gt; "dev-test",
+            volume   =&gt; $vol_id,
+            zone     =&gt; "eu-west-1a",
+         };
+
+};</code></pre>
+
+         
+         <h2>列出地域和地区</h2>
+
+         <p>你可以使用下面这个函数.</p>
+
+            <pre><code class="perl">task "list", sub {
+   print Dumper get_cloud_regions;
+   print Dumper get_cloud_availability_zones;
+};</code></pre>
+
+         
+         <h2>列出你的实例</h2>
+
+         <p>你可以使用下面的函数列出你的实例和存储卷.</p>
+
+            <pre><code class="perl">task "list", sub {
+   print Dumper cloud_instance_list;
+   print Dumper cloud_volume_list;
+};</code></pre>
+ 
+         
+         <h2>删除实例 或者  存储卷</h2>
+
+         <p>你不需要这些实例或者存储卷的时候 可以是用下面的函数删除.</p>
+
+            <pre><code class="perl">task "destroy", sub {
+   cloud_volume delete =&gt; "$volume_id";
+   cloud_instance terminate =&gt; "$instance_id";
+};</code></pre>
+ 
+
+         
+         <h2>添加 实例到你的主机组中</h2>
+
+         <p>你可以使用下面的函数轻松添加主机组中.</p>
+
+            <pre><code class="perl">group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
+
+
+
+         
+         <h2>在实例中运行Rex安装软件 </h2>
+
+            <pre><code class="perl">task "prepare", group =&gt; "ec2", sub {
+   run "apt-get update";
+   install package =&gt; "apache2";
+
+   service apache2 =&gt; "ensure", "started";
+
+   # deploy your webapp, see Rex::Apache::Deploy for more information.
+   deploy "my-site.tar.gz";
+
+   # or upload some files
+   file "/etc/passwd",
+      source =&gt; "/etc/passwd";
+
+   # do what ever you want
+   use Rex::Commands::Iptables;
+   close_port "all";
+};</code></pre>
+
+         
+         <p>现在运行rex 的create 任务.</p>
+
+            <pre><code class="bash">$ rex create prepare
+[2011-08-06 10:25:58] (5783) - INFO - Running task: create
+[2011-08-06 10:26:38] (5783) - INFO - Running task: prepare
+[2011-08-06 10:26:38] (5801) - INFO - Connecting to 46.51.135.11 (root)
+[2011-08-06 10:27:14] (5801) - INFO - Installing apache2.
+[2011-08-06 10:27:30] (5801) - INFO - Uploadling files/index.html -&gt; /var/www/index.html</code></pre>
+  

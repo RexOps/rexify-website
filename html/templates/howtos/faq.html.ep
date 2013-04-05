@@ -1,0 +1,20 @@
+% layout 'default';
+% title 'FAQ';
+
+% content_for header => begin
+      <meta name="description" content="FAQ">
+      <meta name="keywords" content="FAQ, run, authentication">
+% end
+
+<h1>常见问题</h1>
+<p>这里我们将维护一个常见问题列表和答案.</p>
+
+<div class="vspace"></div>
+<h2>为什么不run 命令不格式化输出</h2>
+<p>这个<i>run</i>命令 是一个数组上下文 -- 它将返回一个数组.</p>
+<p>如果你想打印输出到终端， 你可以say 标量上下文.</p>
+   <pre><code class="perl">my $output = run "df -h";
+say $output;</code></pre>
+
+
+

@@ -1,0 +1,129 @@
+% layout 'default';
+% title '';
+
+% content_for header => begin
+      <meta name="description" content="">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end 
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<h1>TABLE OF CONTENTS</h1>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+</ul>
+
+
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h2>NAME</h2>
+<p>Rex::Apache::Deploy::Symlink - Deploy application and symlink to live</p>
+<p>
+</p>
+
+<h2>DESCRIPTION</h2>
+<p>With this module you can deploy an application to a special folder and after that you can symlink it to the document root.</p>
+<p>
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code class="perl">
+ generate_deploy_directory {
+    my ($file) = @_;
+    $file =~ m/(\d+\.\d+)/;
+    return $1;
+ };
+   
+ deploy_to &quot;/data/myapp&quot;;
+ document_root &quot;/var/www/html&quot;;
+    
+ task &quot;dodeploy&quot;, &quot;server1&quot;, sub {
+    deploy &quot;myapp-1.2.tar.gz&quot;;
+ };
+   
+ task &quot;dodeploy&quot;, &quot;server1&quot;, sub {
+    deploy &quot;myapp&quot;,
+       version =&gt; &quot;1.2&quot;;
+ };</code></pre>
+<p>
+</p>
+
+<h2>FUNCTIONS</h2>
+<ul>
+<li><strong>deploy($file, %option)</strong></li>
+
+
+<p>This function will do the deployment. It uploads the file to the target server and extract it to the directory given by <em>deploy_to</em> concatenated with the return value of <em>generate_deploy_directory</em>.</p>
+<pre><code class="perl">
+ task &quot;dodeploy&quot;, &quot;server1&quot;, sub {
+    deploy &quot;myapp-1.2.tar.gz&quot;;
+ };
+   
+ task &quot;dodeploy&quot;, &quot;server1&quot;, sub {
+    deploy &quot;myapp&quot;,
+       version =&gt; &quot;1.2&quot;;
+ };</code></pre>
+
+<li><strong>list_versions</strong></li>
+
+
+<p>This function returns all available versions from the directory defined by <em>deploy_to</em> as an array.</p>
+
+<li><strong>switch_to_version($new_version)</strong></li>
+
+
+<p>This function switches to the given version.</p>
+<pre><code class="perl">
+ task &quot;switch&quot;, &quot;server1&quot;, sub {
+    my $param = shift;
+      
+    switch_to_version $param-&gt;{version};
+ };</code></pre>
+
+<li><strong>get_live_version</strong></li>
+
+
+<p>This function returns the current live version.</p>
+
+<li><strong>deploy_to($directory)</strong></li>
+
+
+<p>This function sets the directory where the uploaded archives should be extracted. This is not the document root of your webserver.</p>
+<pre><code class="perl">
+ deploy_to &quot;/data/myapp&quot;;</code></pre>
+
+<li><strong>document_root($doc_root)</strong></li>
+
+
+<p>This function sets the document root of your webserver. This will be a symlink to the deployed application.</p>
+
+<li><strong>generate_deploy_directory(sub{})</strong></li>
+
+
+<p>If you need a special directory naming of your uploaded version you can define it with this function.</p>
+<p>The default function is:</p>
+<pre><code class="perl">
+ sub {
+    my ($file) = @_;
+    if($file =~ m/-([0-9\._~\-]+)\.(zip|tar\.gz|war|tar\.bz2|jar)$/) {
+       return $1;
+    }
+    else {
+       return &quot;&quot; . time;
+    }
+ };</code></pre>
+
+</ul>
+
+
+
+

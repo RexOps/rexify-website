@@ -1,0 +1,96 @@
+% layout 'default';
+% title 'Howtos, Code Snippets and Module for Rex';
+
+% content_for header => begin
+      <meta name="description" content="Howtos, Code Snippets and Module for Rex">
+      <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
+% end
+
+
+         <h1>入门文档</h1>
+         <ul class="simple-list">
+            <li><a href="start.html">开始使用 (R)?ex</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="working_with_packages.html">包安装</a></li>
+            <li><a href="perl.html">简单的Perl 文档</a></li>
+            <!--
+            <li><a href="working_with_files.html">Working with files</a></li>
+            <li><a href="working_with_templates.html">Working with templates</a></li>
+            -->
+         </ul>
+
+         <div class="vspace"></div>
+         <h1>参考</h1>
+         <ul class="simple-list">
+            <li><a href="usermgmt.html">管理你的系统用户</a></li>
+            <li><a href="amazon.html">管理 你的Amazon EC2 实例</a></li>
+            <li><a href="apache-vhosts.html">管理你的mysql服务器上的 apache 虚拟主机 </a></li>
+            <li><a href="tomcat1.html">用Rex Tomcat 的开发环境管理</a></li>
+            <li><a href="http-transport.html">使用Rex 的HTTP 方式</a></li>
+            <li><a href="gearman.html">Rex 的Gearman 的扩展</a></li>
+            <li><a href="use_boxes_with_any_box_provider.html">用Rex/Boxes 管理多个实例</a> (不能改变你的Rexfile)</li>
+            <li><a href="http://modules.rexify.org/contribute">编写自己的模块</a></li>
+            <li><a href="http://box.rexify.org/guide">用 Rex/Boxes 切换你的开发环境和测试环境</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>模块</h1>
+         <ul class="simple-list">
+            <li><a href="/modules/application_deployment.html">应用程序发布</a></li>
+            <li><a href="/modules/augeas.html">配置文件操作</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>小记</h1>
+         <ul class="simple-list">
+            <li><a href="/howtos/groups_file.html">怎么在你的服务器组中使用 ini 文件</a></li>
+            <li><a href="ps.html">查看工作中的进程</a></li>
+            <li><a href="tail.html">Tail 日志文件</a></li>
+            <li><a href="https://gist.github.com/3490661">简单的模板系统实现</a></li>
+         </ul>
+
+
+         <div class="vspace"></div>
+         <h1>扩展中的API</h1>
+         <ul class="simple-list">
+            <li><a href="/howtos/writing_cloud_provider.html">怎么编写自己的私有云自动化</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+         <h1>附加文档</h1>
+         <ul class="simple-list">
+            <li><a href="/howtos/backward_compatibility.html">向后兼容方面</a></li>
+            <li><a href="/howtos/compatibility.html">Rex 兼容列表</a></li>
+         </ul>
+
+
+         <div class="vspace"></div>
+         <h1>扩展 参照</h1>
+         <ul class="simple-list">
+            <li><a href="http://www.howtoforge.com/how-to-manage-your-servers-with-rex-best-practice">Rex怎么管理你的服务器 - 最佳实践</a></li>
+            <li><a href="http://www.howtoforge.com/continuous-deployment-with-jenkins-and-rex">使用Jenkins 和Rex 做持续部署</a></li>
+            <li><a href="http://www.howtoforge.com/install-tomcat-and-deploy-web-applications-with-rex">使用Rex 安装Tomcat 和发布Web应用</a></li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>用户贡献的文档 - 德语的</h1>
+         <ul class="simple-list">
+            <li style="background-image: url(/img/fr.gif); background-repeat: no-repeat; padding-left: 30px;"><a href="french.html">en français</a> (many thanks to Gilles Gaudin and Olivier Raginel)</li>
+         </ul>
+
+         <div class="vspace"></div>
+
+         <h1>幻灯片 不翻译了去下载看看吧</h1>
+         <ul class="simple-list">
+            <li>Many thanks to Diogo Leal for his talk at Hack'n Rio. He has uploaded his slides to <a href="http://www.slideshare.net/diogoleal/automatizao-com-rex">Slideshare</a></li>
+            <li>Uploaded the lightning Talk from <a href="http://linuxday.at/">linuxday.at</a> to <a href="http://www.slideshare.net/jfried/linuxdayat-lightning-talk">Slideshare</a>. (German language)</li>
+            <li>Many thanks to Daniel B&auml;urer for his presentation at <a href="http://linuxtag.de/">Linuxtag</a> He uploaded his presentation to <a href="http://www.slideshare.net/inovex/rex-linuxtag2012">Slideshare</a>.</li>
+            <li>Talk from the German Perl Workshop is uploaded to Slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>)</li>
+
+         </ul>
+
+
+

@@ -1,0 +1,64 @@
+% layout 'default';
+% title 'First steps guide with Rex.';
+
+% content_for header => begin
+      <meta name="description" content="A first steps guide for Rex.">
+      <meta name="keywords" content="Guide, Howto, First, Steps">
+% end
+
+         <h1>Howto start using (R)?ex</h1>
+         <p>(R)?ex 开始第一步 参考</p>
+
+         <h2>准备</h2>
+         <ul>
+            <li>下载和安装 Rex  (查看 <a href="/get">安装</a> 页)</li>
+         </ul>
+
+         
+
+         <h2>创建一个Rexfile</h2>
+         <p>第一步在创建的rex 目录  在目录下创建一个名称为<i>Rexfile</i>的文件.</p>
+
+            <pre><code class="perl">user "my-user";
+password "my-password";
+pass_auth;
+
+group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+
+desc "Get the uptime of all server";
+task "uptime", group =&gt; "myserver", sub {
+   say run "uptime";
+};</code></pre>
+
+         
+
+         <p>这个列子将会用<i>my-user</i>和<i>my-password</i> 登陆 <i>myserver</i> 的服务器组上执行<i>uptime</i> 命令.</p>
+
+         <p>到你创建的 <i>Rexfile</i>目录下 (在终端中).</p>
+
+            <pre><code class="bash">$ cd /home/jan
+$ rex uptime</code></pre>
+
+         
+
+         <h2>添加第二task </h2>
+         <p>添加第二个task,只需要在<i>Rexfile</i>下一行添加如下.</p>
+
+            <pre><code class="perl">desc "Start Apache Service";
+task "free", group =&gt; "myserver", sub {
+    service "apache2" =&gt; "start";
+} </code></pre>
+
+         <p>这个task 将开启所有的 <i>apache2</i> 在 <i>myserver</i>组终的服务器.</p>
+
+         
+         <h2>显示所有的Rexfile 文件中的task</h2>
+
+         <p>显示所有的Rexfile 文件中的task 可以这样做.</p>
+            <pre><code class="bash">$ rex -T
+Tasks
+  free                           Start Apache Service
+  uptime                         Get the uptime of all server
+Batches </code></pre>
+
+
