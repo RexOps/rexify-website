@@ -24,7 +24,7 @@
          <ul class="simple-list">
             <li><a href="usermgmt.html">管理你的系统用户</a></li>
             <li><a href="amazon.html">管理 你的Amazon EC2 实例</a></li>
-            <li><a href="apache-vhosts.html">管理你的mysql服务器上的 apache 虚拟主机 </a></li>
+            <li><a href="apache-vhosts.html">基于你的mysql服务器管理的 apache 虚拟主机 </a></li>
             <li><a href="tomcat1.html">用Rex Tomcat 的开发环境管理</a></li>
             <li><a href="http-transport.html">使用Rex 的HTTP 方式</a></li>
             <li><a href="gearman.html">Rex 的Gearman 的扩展</a></li>
