@@ -187,7 +187,7 @@ __DATA__
 
 <h1>404 - I'm really sorry :(</h1>
 <p>Hello. I'm a Webserver. And i'm there to serve files for you. But i'm really sorry :( I can't find the file you want to see.</p>
-
+<div><a href="http://yibo.iyiyun.com/export/link/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/img/uid/509226" style="max-width: 690px;" /></a></div><div style="margin-top:1px;"><a href="http://yibo.iyiyun.com/export/sharelink/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/shareimg" alt="分享" border="0" title="分享" /></a><a href="http://yibo.iyiyun.com/export/spreadlink/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/spreadimg" alt="推广公益" border="0" title="推广公益" /></a></div>
 @@ index_head.html.ep
 
          <div id="head-div">
