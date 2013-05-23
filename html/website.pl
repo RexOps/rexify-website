@@ -296,6 +296,12 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2013-05-23</div>
+                  <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">just announced</a> that they offer professional support for Rex.</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-04-01</div>
                   <div class="news_content">(R)?ex 0.41.0 released. This release brings a handfull of new functions that ease the use and bug fixes. See <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a> for more information.</div>
                   <div class="news_content">There is also a new guide on <a href="/howtos/using_templates.html">howto use modules and templates</a> online.</div>
@@ -337,6 +343,7 @@ __DATA__
                   <li>Groups: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
                   <li>Issues: <a href="https://github.com/Krimdomu/Rex/issues">on Github</a></li>
                   <li>Feature: You miss a <a href="/feature.html">feature</a>?</li>
+                  <li>Professional Support: <a href="http://www.inovex.de/news-events/news/">by inovex</a></li>
                </ul>
             </div>
          </div> <!-- widgets -->
