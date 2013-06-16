@@ -123,7 +123,6 @@
  # catch an error
  if($@) {
     print &quot;An error occured. $@.\n&quot;;
-    exit;
  }
  
  # work with the filehandle
@@ -146,7 +145,6 @@
  # catch an error
  if($@) {
     print &quot;An error occured. $@.\n&quot;;
-    exit;
  }
  
  # work with the filehandle
@@ -169,16 +167,143 @@
      delete_lines_matching &quot;/var/log/auth.log&quot; =&gt; &quot;root&quot;;
  };</code></pre>
 
+<li><strong>delete_lines_according_to($search, $file, @options)</strong></li>
+
+
+<p>This is the successor of the <a href="#delete_lines_matching">delete_lines_matching()</a> function. This function also allows the usage of an on_change hook.</p>
+<p>It will search for $search in $file and remove the found lines. If on_change hook is present it will execute this if the file was changed.</p>
+<pre><code class="perl">
+ task &quot;cleanup&quot;, &quot;server1&quot;, sub {
+    delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;,
+      on_change =&gt; sub {
+         say &quot;removed user foo.&quot;;
+      };
+ };</code></pre>
+
 <li><strong>append_if_no_such_line($file, $new_line, @regexp)</strong></li>
 
 
 <p>Append $new_line to $file if none in @regexp is found. If no regexp is
-supplied, the line is appended unless there already an identical line
+supplied, the line is appended unless there is already an identical line
 in $file.</p>
 <pre><code class="perl">
  task &quot;add-group&quot;, sub {
     append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, on_change =&gt; sub { service sshd =&gt; &quot;restart&quot;; };
  };</code></pre>
+<p>Since 0.42 you can use named parameters as well</p>
+<pre><code class="perl">
+ task &quot;add-group&quot;, sub {
+    append_if_no_such_line &quot;/etc/groups&quot;,
+       line   =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+       regexp =&gt; qr{^mygroup},
+       on_change =&gt; sub {
+                       say &quot;file was changed, do something.&quot;;
+                    };
+          
+    append_if_no_such_line &quot;/etc/groups&quot;,
+       line   =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+       regexp =&gt; [qr{^mygroup:}, qr{^ourgroup:}]; # this is an OR
+ };
+=cut
+sub append_if_no_such_line {
+   my $file = shift;
+   my ($new_line, @m);</code></pre>
+<pre><code class="perl">
+   # check if parameters are in key =&gt; value format
+   my ($option, $on_change);</code></pre>
+<pre><code class="perl">
+   eval {
+      no warnings;
+      $option = { @_ };
+      # if there is no line parameter, it is the old parameter format
+      # so go dieing
+      if(! exists $option-&gt;{line}) {
+         die;
+      }
+      $new_line = $option-&gt;{line};
+      if(exists $option-&gt;{regexp} &amp;&amp; ref $option-&gt;{regexp} eq &quot;Regexp&quot;) {
+         @m = ($option-&gt;{regexp});
+      }
+      elsif(ref $option-&gt;{regexp} eq &quot;ARRAY&quot;) {
+         @m = @{ $option-&gt;{regexp} };
+      }
+      $on_change = $option-&gt;{on_change} || undef;
+      1;
+   } or do {
+      ($new_line, @m) = @_;
+      # check if something in @m (the regexpes) is named on_change
+      for (my $i = 0; $i&lt;$#m; $i++ ) {
+         if ( $m[$i] eq &quot;on_change&quot; &amp;&amp; ref($m[$i+1]) eq &quot;CODE&quot; ) {
+            $on_change = $m[$i+1];
+            splice(@m,$i,2);
+            last;
+         }
+      }
+   };</code></pre>
+<pre><code class="perl">
+   my $fs = Rex::Interface::Fs-&gt;create;</code></pre>
+<pre><code class="perl">
+   if ( !@m ) {
+      push @m, qr{^\Q$new_line\E$}m;
+   }</code></pre>
+<pre><code class="perl">
+   # i don't like this next line...
+   # normalizing regexp serialization for older perl versions
+   for (@m) {
+      $_ = _normalize_regex($_);
+   }</code></pre>
+<pre><code class="perl">
+   my $template = template(get_file_path(&quot;templates/append_if_no_such_line.tpl.pl&quot;),
+      line =&gt; $new_line,
+      regex =&gt; \@m,
+      file =&gt; $file,
+      __no_sys_info__ =&gt; 1);</code></pre>
+<pre><code class="perl">
+   my $old_md5;
+   if ($on_change) {
+      $old_md5 = md5($file);
+   }</code></pre>
+<pre><code class="perl">
+   my $f = upload_and_run $template, with =&gt; &quot;perl&quot;;</code></pre>
+<pre><code class="perl">
+   my $ret = $?;
+   if ($ret==1) {
+      die(&quot;Can't open $file for reading&quot;);
+   }
+   elsif ($ret==2) {
+      die(&quot;Can't open temp file for writing&quot;);
+   }
+   elsif ($ret==3) {
+      die(&quot;Can't open $file for writing&quot;);
+   }</code></pre>
+<pre><code class="perl">
+   if ($on_change) {
+      my $new_md5 = md5($file);
+      unless($old_md5 &amp;&amp; $new_md5 &amp;&amp; $old_md5 eq $new_md5) {
+         $old_md5 ||= &quot;&quot;;
+         $new_md5 ||= &quot;&quot;;</code></pre>
+<pre><code class="perl">
+         Rex::Logger::debug(&quot;File $file has been changed... Running on_change&quot;);
+         Rex::Logger::debug(&quot;old: $old_md5&quot;);
+         Rex::Logger::debug(&quot;new: $new_md5&quot;);
+         &amp;$on_change($file);
+      }
+   }</code></pre>
+<p>#   my $content = cat ($file);
+#   for my $match (@m) {
+#      if ( $content =~ /$match/m ) {
+#         return 0;
+#      }
+#   }</p>
+<p>#   $content .= &quot;$new_line\n&quot;;
+#   my $fh = file_write $file;
+#   unless($fh) {
+#      die(&quot;Can't open $file for writing&quot;);
+#   }
+#   $fh-&gt;write($content);
+#   $fh-&gt;close;</p>
+<p>#   &amp;$on_change() if defined $on_change;
+}</p>
 
 <li><strong>extract($file [, %options])</strong></li>
 

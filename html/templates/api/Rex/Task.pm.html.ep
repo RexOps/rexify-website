@@ -224,6 +224,11 @@ Tasks authentication information have precedence.</p>
 
 <p>Run the task on $server.</p>
 
+<li><strong>exit_on_connect_fail()</strong></li>
+
+
+<p>Returns true if rex should exit on connect failure.</p>
+
 </ul>
 
 

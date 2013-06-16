@@ -363,8 +363,17 @@
  private_key &quot;/home/bob/.ssh/id_rsa&quot;; # passphrase-less key
  public_key &quot;/home/bob/.ssh/id_rsa.pub&quot;;
  
- 
  key_auth;</code></pre>
+
+<li><strong>krb5_auth</strong></li>
+
+
+<p>If you want to use kerberos authentication, then you need to call <em>krb5_auth</em>.
+This authentication mechanism is only available if you use Net::OpenSSH.</p>
+<pre><code class="perl">
+ set connection =&gt; &quot;OpenSSH&quot;;
+ user &quot;root&quot;;
+ krb5_auth;</code></pre>
 
 <li><strong>parallelism($count)</strong></li>
 
@@ -638,6 +647,13 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
                          default     =&gt; sub { return &quot;foo&quot;; },
                       };
  };</code></pre>
+
+<li><strong>set_executor_for($type, $executor)</strong></li>
+
+
+<p>Set the executor for a special type. This is primary used for the upload_and_run helper function.</p>
+<pre><code class="perl">
+ set_executor_for perl =&gt; &quot;/opt/local/bin/perl&quot;;</code></pre>
 
 <li><strong>inspect($varRef)</strong></li>
 

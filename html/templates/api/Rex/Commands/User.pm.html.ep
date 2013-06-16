@@ -37,6 +37,8 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
+ use Rex::Commands::User;
+    
  task &quot;create-user&quot;, &quot;remoteserver&quot;, sub {
     create_user &quot;root&quot;,
        uid =&gt; 0,

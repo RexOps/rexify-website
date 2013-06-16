@@ -15,6 +15,7 @@
 
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#examples">EXAMPLES</a></li>
+	<li><a href="#headless_mode">HEADLESS MODE</a></li>
 	<li><a href="#methods">METHODS</a></li>
 </ul>
 
@@ -83,6 +84,13 @@
  task &quot;prepare_vms&quot;, sub {
     boxes &quot;init&quot;;
  };</code></pre>
+<p>
+</p>
+
+<h2>HEADLESS MODE</h2>
+<p>It is also possible to run VirtualBox in headless mode. This only works on Linux and MacOS. If you want to do this you can use the following option at the top of your <em>Rexfile</em>.</p>
+<pre><code class="perl">
+ set box_options =&gt; { headless =&gt; TRUE };</code></pre>
 <p>
 </p>
 
