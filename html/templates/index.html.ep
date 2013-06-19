@@ -2,6 +2,7 @@
 % title '(R)?ex - A simple framework to simplify systemadministration and datacenter automation';
 
 
+<div style="float: left"> <!-- needed for bootstrap ... -->
 <div class="row-fluid">
    <div class="span4">
       <h2>Why use Rex?</h2>
@@ -36,7 +37,7 @@ automate it!</p>
       <p><a class="btn" href="/contribute">View details &raquo;</a></p>
    </div><!--/span-->
 </div><!--/row-->
-
+</div>
 
 <h2>Uptime?</h2>
 <p>This command line example will execute "uptime" on all the given hosts (frontend01, frontend02, ...).</p>

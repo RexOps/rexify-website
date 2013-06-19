@@ -70,7 +70,7 @@ h1 {
 #widgets {
    margin-top: 40px;
    padding-left: 35px;
-   position: absolute;
+/*   position: absolute; */
    width: 290px;
 }
 
@@ -332,4 +332,26 @@ table.tb-support td {
    width: 180px;
    margin-bottom: 0px !important;
    margin-right: 5px;
+}
+
+.clearfix { clear: both; }
+
+.bottom_bar {
+   background-color: #071719;
+   color: #ffffff;
+   padding-top: 35px;
+   padding-bottom: 35px;
+   text-align: center;
+}
+
+.bottom_bar a,
+.bottom_bar a:link,
+.bottom_bar a:visited,
+.bottom_bar a:active {
+   color: #5A8091;
+}
+
+.tabbable:before,
+.tabbable:after {
+   display: inline !important;
 }

@@ -224,8 +224,9 @@ __DATA__
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
+                  <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">Support</a></li>
                   <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">Docs</a></li>
-                  <li <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
+                  <li id="li_api" <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
                </ul>
             </div>
 
@@ -379,10 +380,30 @@ __DATA__
 
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
-
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+   </div>
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+     
+      });
+   </script>
 
 <!-- Piwik --> 
 <script type="text/javascript">

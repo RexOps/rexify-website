@@ -15,6 +15,8 @@
 <h2>Linux</h2>
 <p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown.</p>
 
+
+<div style="foat: left"> <!-- needed for bootstrap ... -->
  <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
        <li class="active"><a href="#tab1" data-toggle="tab"><img src="/img/ubuntu.png" /></a></li>
@@ -170,6 +172,7 @@ yum install rex</code></pre>
 
     </div>
  </div>
+</div>
 
  <h2>Apple Mac OS X</h2>
 

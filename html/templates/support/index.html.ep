@@ -1,0 +1,35 @@
+% layout 'default';
+% title 'Support for (R)?ex';
+
+<h1>Community Support</h1>
+
+<p>Rex is an opensource project driven and supported by its community. If you need help you're invited to join us on our <a href="#">mailinglist</a> or on <a href="#">irc / freenode</a>.</p>
+
+
+<h1>Commercial Support</h1>
+
+<p>If you're looking for commercial support feel free to contact one of the listed companies.</p>
+<p>You want to provide commercial support for Rex? Just drop us a <a href="mailto:jfried@rexify.org">few lines</a> with a description of your company and service and we will add you to this list.</p>
+
+<h2>Inovex</h2>
+
+<p>inovex, the IT project company specialising in data centre engineering, is the first company which offers professionel support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centres.</p>
+<p>With Rex as their software deployment, configuration management and automation solution, inovex experts can automize infrastructures very quickly and operate them efficiently.</p>
+
+<p>So, if you're looking for professional Rex support, please contact us.</p>
+
+<table border="0">
+   <tr>
+      <td width="80">Mail</td>
+      <td><a href="mailto:sales@inovex.de">sales@inovex.de</a></td>
+   </tr>
+   <tr>
+      <td>Phone</td>
+      <td>+49 7231 31 91 0</td>
+   </tr>
+   <tr>
+      <td>Website</td>
+      <td><a href="http://www.inovex.de">http://www.inovex.de/</a></td>
+   </tr>
+</table>
+
