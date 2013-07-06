@@ -57,7 +57,7 @@
 <p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
 <pre><code class="perl">
  task &quot;download&quot;, &quot;remoteserver&quot;, sub {
-    download &quot;/remote/file&quot;, &quot;localfile&quot;;
+    download &quot;/remote/file&quot; &quot;localfile&quot;;
  };</code></pre>
 <pre><code class="perl">
  task &quot;download&quot;, sub {
