@@ -76,12 +76,12 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- desc &quot;Show Unix version&quot;;
- task &quot;uname&quot;, sub {
-     say run &quot;uname -a&quot;;
+ desc "Show Unix version";
+ task "uname", sub {
+     say run "uname -a";
  };</code></pre>
 <pre><code class="perl">
- bash# rex -H &quot;server[01..10]&quot; uname</code></pre>
+ bash# rex -H "server[01..10]" uname</code></pre>
 <p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for a list of all commands you can use.</p>
 <p>
 </p>
@@ -136,18 +136,18 @@
  use Rex::Commands::Fs;
    
  Rex::connect(
-    server      =&gt; &quot;remotehost&quot;,
-    user        =&gt; &quot;root&quot;,
-    password    =&gt; &quot;f00b4r&quot;,
-    private_key =&gt; &quot;/path/to/private/key/file&quot;,
-    public_key  =&gt; &quot;/path/to/public/key/file&quot;,
+    server      =&gt; "remotehost",
+    user        =&gt; "root",
+    password    =&gt; "f00b4r",
+    private_key =&gt; "/path/to/private/key/file",
+    public_key  =&gt; "/path/to/public/key/file",
  );
     
- if(is_file(&quot;/foo/bar&quot;)) {
-    print &quot;Do something...\n&quot;;
+ if(is_file("/foo/bar")) {
+    print "Do something...\n";
  }
      
- my $output = run(&quot;upime&quot;);</code></pre>
+ my $output = run("upime");</code></pre>
 
 </ul>
 <p>

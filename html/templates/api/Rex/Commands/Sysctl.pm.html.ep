@@ -39,8 +39,8 @@
 <pre><code class="perl">
  use Rex::Commands::Sysctl;
  
- my $data = sysctl &quot;net.ipv4.tcp_keepalive_time&quot;;
- sysctl &quot;net.ipv4.tcp_keepalive_time&quot; =&gt; 1800;</code></pre>
+ my $data = sysctl "net.ipv4.tcp_keepalive_time";
+ sysctl "net.ipv4.tcp_keepalive_time" =&gt; 1800;</code></pre>
 <p>
 </p>
 
@@ -52,9 +52,9 @@
 <p>This function will read the sysctl key $key.</p>
 <p>If $val is given, then this function will set the sysctl key $key.</p>
 <pre><code class="perl">
- task &quot;tune&quot;, &quot;server01&quot;, sub {
-    if( sysctl(&quot;net.ipv4.ip_forward&quot;) == 0 ) {
-       sysctl &quot;net.ipv4.ip_forward&quot; =&gt; 1;
+ task "tune", "server01", sub {
+    if( sysctl("net.ipv4.ip_forward") == 0 ) {
+       sysctl "net.ipv4.ip_forward" =&gt; 1;
     }
  };</code></pre>
 

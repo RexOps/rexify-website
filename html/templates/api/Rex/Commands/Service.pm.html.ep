@@ -39,19 +39,19 @@
 <pre><code class="perl">
  use Rex::Commands::Service
      
- service apache2 =&gt; &quot;start&quot;;
+ service apache2 =&gt; "start";
      
- service apache2 =&gt; &quot;stop&quot;;
+ service apache2 =&gt; "stop";
      
- service apache2 =&gt; &quot;restart&quot;;
+ service apache2 =&gt; "restart";
      
- service apache2 =&gt; &quot;status&quot;;
+ service apache2 =&gt; "status";
     
- service apache2 =&gt; &quot;reload&quot;;
+ service apache2 =&gt; "reload";
     
- service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+ service apache2 =&gt; "ensure", "started";
    
- service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;</code></pre>
+ service apache2 =&gt; "ensure", "stopped";</code></pre>
 <p>
 </p>
 
@@ -66,36 +66,36 @@
 
 
 <pre><code class="perl">
- task &quot;start-service&quot;, &quot;server01&quot;, sub {
-    service apache2 =&gt; &quot;start&quot;;
+ task "start-service", "server01", sub {
+    service apache2 =&gt; "start";
  };</code></pre>
 
 <li><strong>stopping a service</strong></li>
 
 
 <pre><code class="perl">
- task &quot;stop-service&quot;, &quot;server01&quot;, sub {
-    service apache2 =&gt; &quot;stop&quot;;
+ task "stop-service", "server01", sub {
+    service apache2 =&gt; "stop";
  };</code></pre>
 
 <li><strong>restarting a service</strong></li>
 
 
 <pre><code class="perl">
- task &quot;restart-service&quot;, &quot;server01&quot;, sub {
-    service apache2 =&gt; &quot;restart&quot;;
+ task "restart-service", "server01", sub {
+    service apache2 =&gt; "restart";
  };</code></pre>
 
 <li><strong>checking status of a service</strong></li>
 
 
 <pre><code class="perl">
- task &quot;status-service&quot;, &quot;server01&quot;, sub {
-    if( service apache2 =&gt; &quot;status&quot; ) {
-       say &quot;Apache2 is running&quot;;
+ task "status-service", "server01", sub {
+    if( service apache2 =&gt; "status" ) {
+       say "Apache2 is running";
     }
     else {
-       say &quot;Apache2 is not running&quot;;
+       say "Apache2 is not running";
     }
  };</code></pre>
 
@@ -103,24 +103,24 @@
 
 
 <pre><code class="perl">
- task &quot;reload-service&quot;, &quot;server01&quot;, sub {
-    service apache2 =&gt; &quot;reload&quot;;
+ task "reload-service", "server01", sub {
+    service apache2 =&gt; "reload";
  };</code></pre>
 
 <li><strong>ensure that a service will started at boot time</strong></li>
 
 
 <pre><code class="perl">
- task &quot;prepare&quot;, sub {
-    service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+ task "prepare", sub {
+    service apache2 =&gt; "ensure", "started";
  };</code></pre>
 
 <li><strong>ensure that a service will NOT be started.</strong></li>
 
 
 <pre><code class="perl">
- task &quot;prepare&quot;, sub {
-    service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
+ task "prepare", sub {
+    service apache2 =&gt; "ensure", "stopped";
  };</code></pre>
 
 </ul>
@@ -130,13 +130,13 @@
 
 <p>To set an other service provider as the default, use this function.</p>
 <pre><code class="perl">
- user &quot;root&quot;;
+ user "root";
      
- group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
- service_provider_for SunOS =&gt; &quot;svcadm&quot;;
+ group "db" =&gt; "db[01..10]";
+ service_provider_for SunOS =&gt; "svcadm";
     
- task &quot;start&quot;, group =&gt; &quot;db&quot;, sub {
-     service ssh =&gt; &quot;restart&quot;;
+ task "start", group =&gt; "db", sub {
+     service ssh =&gt; "restart";
  };</code></pre>
 <p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
 

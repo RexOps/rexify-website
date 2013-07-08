@@ -48,7 +48,7 @@
 <pre><code class="perl">
  use Rex::Commands::Rsync;
  
- sync &quot;dir1&quot;, &quot;dir2&quot;;</code></pre>
+ sync "dir1", "dir2";</code></pre>
 <p>
 </p>
 
@@ -63,16 +63,16 @@
 
 
 <pre><code class="perl">
- task &quot;sync&quot;, &quot;server01&quot;, sub {
-    sync &quot;html/*&quot;, &quot;/var/www/html&quot;, {
-      exclude =&gt; &quot;*.sw*&quot;,
+ task "sync", "server01", sub {
+    sync "html/*", "/var/www/html", {
+      exclude =&gt; "*.sw*",
       parameters =&gt; '--backup --delete',
     };
  };</code></pre>
 <pre><code class="perl">
- task &quot;sync&quot;, &quot;server01&quot;, sub {
-    sync &quot;html/*&quot;, &quot;/var/www/html&quot;, {
-      exclude =&gt; [&quot;*.sw*&quot;, &quot;*.tmp&quot;],
+ task "sync", "server01", sub {
+    sync "html/*", "/var/www/html", {
+      exclude =&gt; ["*.sw*", "*.tmp"],
       parameters =&gt; '--backup --delete',
     };
  };</code></pre>
@@ -81,8 +81,8 @@
 
 
 <pre><code class="perl">
- task &quot;sync&quot;, &quot;server01&quot;, sub {
-    sync &quot;/var/www/html/*&quot;, &quot;html/&quot;, {
+ task "sync", "server01", sub {
+    sync "/var/www/html/*", "html/", {
       download =&gt; 1,
       parameters =&gt; '--backup',
     };

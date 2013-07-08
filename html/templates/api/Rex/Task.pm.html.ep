@@ -33,10 +33,10 @@
 <pre><code class="perl">
  use Rex::Task
      
-  my $task = Rex::Task-&gt;new(name =&gt; &quot;testtask&quot;);
-  $task-&gt;set_server(&quot;remoteserver&quot;);
-  $task-&gt;set_code(sub { say &quot;Hello&quot;; });
-  $task-&gt;modify(&quot;no_ssh&quot;, 1);</code></pre>
+  my $task = Rex::Task-&gt;new(name =&gt; "testtask");
+  $task-&gt;set_server("remoteserver");
+  $task-&gt;set_code(sub { say "Hello"; });
+  $task-&gt;modify("no_ssh", 1);</code></pre>
 <p>
 </p>
 
@@ -190,8 +190,8 @@
 
 <p>Set the authentication of the task.</p>
 <pre><code class="perl">
- $task-&gt;set_auth(&quot;user&quot;, &quot;foo&quot;);
- $task-&gt;set_auth(&quot;password&quot;, &quot;bar&quot;);</code></pre>
+ $task-&gt;set_auth("user", "foo");
+ $task-&gt;set_auth("password", "bar");</code></pre>
 
 <li><strong>merge_auth($server)</strong></li>
 

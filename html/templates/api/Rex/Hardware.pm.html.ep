@@ -51,12 +51,12 @@
 
 <p>Returns a hash with the wanted information.</p>
 <pre><code class="perl">
- task &quot;get-info&quot;, &quot;server1&quot;, sub {
+ task "get-info", "server1", sub {
     %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
  };</code></pre>
 <p>Or if you want to get all information</p>
 <pre><code class="perl">
- task &quot;get-all-info&quot;, &quot;server1&quot;, sub {
+ task "get-all-info", "server1", sub {
     %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
  };</code></pre>
 <p>Available modules:</p>

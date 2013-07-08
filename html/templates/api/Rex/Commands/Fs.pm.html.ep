@@ -37,42 +37,42 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- my @files = list_files &quot;/etc&quot;;
+ my @files = list_files "/etc";
  
- unlink(&quot;/tmp/file&quot;);
+ unlink("/tmp/file");
  
- rmdir(&quot;/tmp&quot;);
- mkdir(&quot;/tmp&quot;);
+ rmdir("/tmp");
+ mkdir("/tmp");
  
- my %stat = stat(&quot;/etc/passwd&quot;);
+ my %stat = stat("/etc/passwd");
  
- my $link = readlink(&quot;/path/to/a/link&quot;);
- symlink(&quot;/source&quot;, &quot;/dest&quot;);
+ my $link = readlink("/path/to/a/link");
+ symlink("/source", "/dest");
  
- rename(&quot;oldname&quot;, &quot;newname&quot;);
+ rename("oldname", "newname");
  
- chdir(&quot;/tmp&quot;);
+ chdir("/tmp");
  
- is_file(&quot;/etc/passwd&quot;);
- is_dir(&quot;/etc&quot;);
- is_writeable(&quot;/tmp&quot;);
- is_writable(&quot;/tmp&quot;);
+ is_file("/etc/passwd");
+ is_dir("/etc");
+ is_writeable("/tmp");
+ is_writable("/tmp");
     
- chmod 755, &quot;/tmp&quot;;
- chown &quot;user&quot;, &quot;/tmp&quot;;
- chgrp &quot;group&quot;, &quot;/tmp&quot;;</code></pre>
+ chmod 755, "/tmp";
+ chown "user", "/tmp";
+ chgrp "group", "/tmp";</code></pre>
 <p>
 </p>
 
 <h2>EXPORTED FUNCTIONS</h2>
 <ul>
-<li><strong>list_files(&quot;/path&quot;);</strong></li>
+<li><strong>list_files("/path");</strong></li>
 
 
 <p>This function list all entries (files, directories, ...) in a given directory and returns a array.</p>
 <pre><code class="perl">
- task &quot;ls-etc&quot;, &quot;server01&quot;, sub {
-    my @tmp_files = grep { /\.tmp$/ } list_files(&quot;/etc&quot;);
+ task "ls-etc", "server01", sub {
+    my @tmp_files = grep { /\.tmp$/ } list_files("/etc");
  };</code></pre>
 
 <li><strong>ls($path)</strong></li>
@@ -85,8 +85,8 @@
 
 <p>This function will create a symlink from $from to $to.</p>
 <pre><code class="perl">
- task &quot;symlink&quot;, &quot;server01&quot;, sub {
-    symlink(&quot;/var/www/versions/1.0.0&quot;, &quot;/var/www/html&quot;);
+ task "symlink", "server01", sub {
+    symlink("/var/www/versions/1.0.0", "/var/www/html");
  };</code></pre>
 
 <li><strong>ln($from, $to)</strong></li>
@@ -99,8 +99,8 @@
 
 <p>This function will remove the given file.</p>
 <pre><code class="perl">
- task &quot;unlink&quot;, &quot;server01&quot;, sub {
-    unlink(&quot;/tmp/testfile&quot;);
+ task "unlink", "server01", sub {
+    unlink("/tmp/testfile");
  };</code></pre>
 
 <li><strong>rm($file)</strong></li>
@@ -113,8 +113,8 @@
 
 <p>This function will remove the given directory.</p>
 <pre><code class="perl">
- task &quot;rmdir&quot;, &quot;server01&quot;, sub {
-    rmdir(&quot;/tmp&quot;);
+ task "rmdir", "server01", sub {
+    rmdir("/tmp");
  };</code></pre>
 
 <li><strong>mkdir($newdir)</strong></li>
@@ -122,12 +122,12 @@
 
 <p>This function will create a new directory.</p>
 <pre><code class="perl">
- task &quot;mkdir&quot;, &quot;server01&quot;, sub {
-    mkdir &quot;/tmp&quot;;
+ task "mkdir", "server01", sub {
+    mkdir "/tmp";
          
-    mkdir &quot;/tmp&quot;,
-      owner =&gt; &quot;root&quot;,
-      group =&gt; &quot;root&quot;,
+    mkdir "/tmp",
+      owner =&gt; "root",
+      group =&gt; "root",
       mode =&gt; 1777;
  };</code></pre>
 
@@ -136,9 +136,9 @@
 
 <p>Change the owner of a file or a directory.</p>
 <pre><code class="perl">
- chown &quot;www-data&quot;, &quot;/var/www/html&quot;;
+ chown "www-data", "/var/www/html";
      
- chown &quot;www-data&quot;, &quot;/var/www/html&quot;,
+ chown "www-data", "/var/www/html",
                         recursive =&gt; 1;</code></pre>
 
 <li><strong>chgrp($group, $file)</strong></li>
@@ -146,9 +146,9 @@
 
 <p>Change the group of a file or a directory.</p>
 <pre><code class="perl">
- chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;;
+ chgrp "nogroup", "/var/www/html";
     
- chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;,
+ chgrp "nogroup", "/var/www/html",
                      recursive =&gt; 1;</code></pre>
 
 <li><strong>chmod($mode, $file)</strong></li>
@@ -156,9 +156,9 @@
 
 <p>Change the permissions of a file or a directory.</p>
 <pre><code class="perl">
- chmod 755, &quot;/var/www/html&quot;;
+ chmod 755, "/var/www/html";
     
- chmod 755, &quot;/var/www/html&quot;,
+ chmod 755, "/var/www/html",
                recursive =&gt; 1;</code></pre>
 
 <li><strong>stat($file)</strong></li>
@@ -180,8 +180,8 @@
 
 </ul>
 <pre><code class="perl">
- task &quot;stat&quot;, &quot;server01&quot;, sub {
-    my %file_stat = stat(&quot;/etc/passwd&quot;);
+ task "stat", "server01", sub {
+    my %file_stat = stat("/etc/passwd");
  };</code></pre>
 
 <li><strong>is_file($file)</strong></li>
@@ -189,12 +189,12 @@
 
 <p>This function tests if $file is a file. Returns 1 if true. 0 if false.</p>
 <pre><code class="perl">
- task &quot;isfile&quot;, &quot;server01&quot;, sub {
-    if( is_file(&quot;/etc/passwd&quot;) ) {
-       say &quot;it is a file.&quot;;
+ task "isfile", "server01", sub {
+    if( is_file("/etc/passwd") ) {
+       say "it is a file.";
     }
     else {
-       say &quot;hm, this is not a file.&quot;;
+       say "hm, this is not a file.";
     }
  };</code></pre>
 
@@ -203,12 +203,12 @@
 
 <p>This function tests if $dir is a directory. Returns 1 if true. 0 if false.</p>
 <pre><code class="perl">
- task &quot;isdir&quot;, &quot;server01&quot;, sub {
-    if( is_dir(&quot;/etc&quot;) ) {
-       say &quot;it is a directory.&quot;;
+ task "isdir", "server01", sub {
+    if( is_dir("/etc") ) {
+       say "it is a directory.";
     }
     else {
-       say &quot;hm, this is not a directory.&quot;;
+       say "hm, this is not a directory.";
     }
  };</code></pre>
 
@@ -217,12 +217,12 @@
 
 <p>This function tests if $file is readable. It returns 1 if true. 0 if false.</p>
 <pre><code class="perl">
- task &quot;readable&quot;, &quot;server01&quot;, sub {
-    if( is_readable(&quot;/etc/passwd&quot;) ) {
-       say &quot;passwd is readable&quot;;
+ task "readable", "server01", sub {
+    if( is_readable("/etc/passwd") ) {
+       say "passwd is readable";
     }
     else {
-       say &quot;not readable.&quot;;
+       say "not readable.";
     }
  };</code></pre>
 
@@ -231,12 +231,12 @@
 
 <p>This function tests if $file is writable. It returns 1 if true. 0 if false.</p>
 <pre><code class="perl">
- task &quot;writable&quot;, &quot;server01&quot;, sub {
-    if( is_writable(&quot;/etc/passwd&quot;) ) {
-       say &quot;passwd is writable&quot;;
+ task "writable", "server01", sub {
+    if( is_writable("/etc/passwd") ) {
+       say "passwd is writable";
     }
     else {
-       say &quot;not writable.&quot;;
+       say "not writable.";
     }
  };</code></pre>
 
@@ -250,13 +250,13 @@
 
 <p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die.</p>
 <pre><code class="perl">
- task &quot;islink&quot;, &quot;server01&quot;, sub {
+ task "islink", "server01", sub {
     my $link;
     eval {
-       $link = readlink(&quot;/tmp/testlink&quot;);
+       $link = readlink("/tmp/testlink");
     };
     
-    say &quot;this is a link&quot; if($link);
+    say "this is a link" if($link);
  };</code></pre>
 
 <li><strong>rename($old, $new)</strong></li>
@@ -264,8 +264,8 @@
 
 <p>This function will rename $old to $new. Will return 1 on success and 0 on failure.</p>
 <pre><code class="perl">
- task &quot;rename&quot;, &quot;server01&quot;, sub {
-    rename(&quot;/tmp/old&quot;, &quot;/tmp/new&quot;);
+ task "rename", "server01", sub {
+    rename("/tmp/old", "/tmp/new");
  };</code></pre>
 
 <li><strong>mv($old, $new)</strong></li>
@@ -278,8 +278,8 @@
 
 <p>This function will change the current workdirectory to $newdir. This function currently only works local.</p>
 <pre><code class="perl">
- task &quot;chdir&quot;, &quot;server01&quot;, sub {
-    chdir(&quot;/tmp&quot;);
+ task "chdir", "server01", sub {
+    chdir("/tmp");
  };</code></pre>
 
 <li><strong>cd($newdir)</strong></li>
@@ -292,9 +292,9 @@
 
 <p>This function returns a hashRef reflecting the output of <em>df</em></p>
 <pre><code class="perl">
- task &quot;df&quot;, &quot;server01&quot;, sub {
+ task "df", "server01", sub {
      my $df = df();
-     my $df_on_sda1 = df(&quot;/dev/sda1&quot;);
+     my $df_on_sda1 = df("/dev/sda1");
  };</code></pre>
 
 <li><strong>du($path)</strong></li>
@@ -302,8 +302,8 @@
 
 <p>Returns the disk usage of $path.</p>
 <pre><code class="perl">
- task &quot;du&quot;, &quot;server01&quot;, sub {
-    say &quot;size of /var/www: &quot; . du(&quot;/var/www&quot;);
+ task "du", "server01", sub {
+    say "size of /var/www: " . du("/var/www");
  };</code></pre>
 
 <li><strong>cp($source, $destination)</strong></li>
@@ -311,8 +311,8 @@
 
 <p>cp will copy $source to $destination (it is recursive)</p>
 <pre><code class="perl">
- task &quot;cp&quot;, &quot;server01&quot;, sub {
-     cp(&quot;/var/www&quot;, &quot;/var/www.old&quot;);
+ task "cp", "server01", sub {
+     cp("/var/www", "/var/www.old");
  };</code></pre>
 
 <li><strong>mount($device, $mount_point, @options)</strong></li>
@@ -320,16 +320,16 @@
 
 <p>Mount devices.</p>
 <pre><code class="perl">
- task &quot;mount&quot;, &quot;server01&quot;, sub {
-    mount &quot;/dev/sda5&quot;, &quot;/tmp&quot;;
-    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
-               fs =&gt; &quot;ext3&quot;,
+ task "mount", "server01", sub {
+    mount "/dev/sda5", "/tmp";
+    mount "/dev/sda6", "/mnt/sda6",
+               fs =&gt; "ext3",
                options =&gt; [qw/noatime async/];
     #
     # mount persistent with entry in /etc/fstab
       
-    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
-               fs =&gt; &quot;ext3&quot;,
+    mount "/dev/sda6", "/mnt/sda6",
+               fs =&gt; "ext3",
                options =&gt; [qw/noatime async/],
                persistent =&gt; TRUE;</code></pre>
 <pre><code class="perl">
@@ -340,16 +340,16 @@
 
 <p>Unmount device.</p>
 <pre><code class="perl">
- task &quot;umount&quot;, &quot;server01&quot;, sub {
-    umount &quot;/tmp&quot;;
+ task "umount", "server01", sub {
+    umount "/tmp";
  };</code></pre>
 
 <li><strong>glob($glob)</strong></li>
 
 
 <pre><code class="perl">
- task &quot;glob&quot;, &quot;server1&quot;, sub {
-    my @files_with_p = grep { is_file($_) } glob(&quot;/etc/p*&quot;);
+ task "glob", "server1", sub {
+    my @files_with_p = grep { is_file($_) } glob("/etc/p*");
  };</code></pre>
 
 </ul>

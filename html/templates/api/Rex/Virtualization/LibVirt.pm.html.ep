@@ -38,37 +38,37 @@
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
     
- set virtualization =&gt; &quot;LibVirt&quot;;
+ set virtualization =&gt; "LibVirt";
     
- print Dumper vm list =&gt; &quot;all&quot;;
- print Dumper vm list =&gt; &quot;running&quot;;
+ print Dumper vm list =&gt; "all";
+ print Dumper vm list =&gt; "running";
     
- vm destroy =&gt; &quot;vm01&quot;;
+ vm destroy =&gt; "vm01";
     
- vm delete =&gt; &quot;vm01&quot;; 
+ vm delete =&gt; "vm01"; 
      
- vm start =&gt; &quot;vm01&quot;;
+ vm start =&gt; "vm01";
     
- vm shutdown =&gt; &quot;vm01&quot;;
+ vm shutdown =&gt; "vm01";
     
- vm reboot =&gt; &quot;vm01&quot;;
+ vm reboot =&gt; "vm01";
     
- vm option =&gt; &quot;vm01&quot;,
+ vm option =&gt; "vm01",
           max_memory =&gt; 1024*1024,
           memory     =&gt; 512*1024;
               
- print Dumper vm info =&gt; &quot;vm01&quot;;
+ print Dumper vm info =&gt; "vm01";
     
  # creating a vm on a kvm host
- vm create =&gt; &quot;vm01&quot;,
+ vm create =&gt; "vm01",
       storage     =&gt; [
          {   
-            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
-            dev    =&gt; &quot;vda&quot;,
+            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
+            dev    =&gt; "vda",
          }   
       ];  
        
- print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
+ print Dumper vm hypervisor =&gt; "capabilities";</code></pre>
 
 
 

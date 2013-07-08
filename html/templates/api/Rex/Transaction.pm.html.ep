@@ -37,16 +37,16 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- task &quot;do-something&quot;, &quot;server01&quot;, sub {
+ task "do-something", "server01", sub {
    on_rollback {
-      rmdir &quot;/tmp/mydata&quot;;
+      rmdir "/tmp/mydata";
    };</code></pre>
 <pre><code class="perl">
    transaction {
-      mkdir &quot;/tmp/mydata&quot;;
-      upload &quot;files/myapp.tar.gz&quot;, &quot;/tmp/mydata&quot;;
-      run &quot;cd /tmp/mydata; tar xzf myapp.tar.gz&quot;;
-      if($? != 0) { die(&quot;Error extracting myapp.tar.gz&quot;); }
+      mkdir "/tmp/mydata";
+      upload "files/myapp.tar.gz", "/tmp/mydata";
+      run "cd /tmp/mydata; tar xzf myapp.tar.gz";
+      if($? != 0) { die("Error extracting myapp.tar.gz"); }
    };
  };</code></pre>
 <p>
@@ -59,18 +59,18 @@
 
 <p>Start a transaction for $codeRef. If $codeRef dies it will rollback the transaction.</p>
 <pre><code class="perl">
- task &quot;deploy&quot;, group =&gt; &quot;frontend&quot;, sub {
+ task "deploy", group =&gt; "frontend", sub {
      on_rollback {
-         rmdir &quot;...&quot;;
+         rmdir "...";
      };
-     deploy &quot;myapp.tar.gz&quot;;
+     deploy "myapp.tar.gz";
  };
    
- task &quot;restart_server&quot;, group =&gt; &quot;frontend&quot;, sub {
-     run &quot;/etc/init.d/apache2 restart&quot;;
+ task "restart_server", group =&gt; "frontend", sub {
+     run "/etc/init.d/apache2 restart";
  };
    
- task &quot;all&quot;, group =&gt; &quot;frontend&quot;, sub {
+ task "all", group =&gt; "frontend", sub {
      transaction {
          do_task qw/deploy restart_server/;
      };

@@ -59,7 +59,7 @@
 
 <p>Write $buf into the filehandle.</p>
 <pre><code class="perl">
- $file-&gt;write(&quot;Hello World&quot;);</code></pre>
+ $file-&gt;write("Hello World");</code></pre>
 
 <li><strong>seek($offset)</strong></li>
 

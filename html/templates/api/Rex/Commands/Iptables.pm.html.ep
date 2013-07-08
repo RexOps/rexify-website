@@ -33,34 +33,34 @@
 <pre><code class="perl">
  use Rex::Commands::Iptables;
      
- task &quot;firewall&quot;, sub {
+ task "firewall", sub {
     iptables_clear;
      
     open_port 22;
     open_port [22, 80] =&gt; {
-       dev =&gt; &quot;eth0&quot;,
+       dev =&gt; "eth0",
     };
         
     close_port 22 =&gt; {
-       dev =&gt; &quot;eth0&quot;,
+       dev =&gt; "eth0",
     };
-    close_port &quot;all&quot;;
+    close_port "all";
         
     redirect_port 80 =&gt; 10080;
     redirect_port 80 =&gt; {
-       dev =&gt; &quot;eth0&quot;,
+       dev =&gt; "eth0",
        to  =&gt; 10080,
     };
       
     default_state_rule;
-    default_state_rule dev =&gt; &quot;eth0&quot;;
+    default_state_rule dev =&gt; "eth0";
         
     is_nat_gateway;
        
-    iptables t =&gt; &quot;nat&quot;,
-             A =&gt; &quot;POSTROUTING&quot;,
-             o =&gt; &quot;eth0&quot;,
-             j =&gt; &quot;MASQUERADE&quot;;
+    iptables t =&gt; "nat",
+             A =&gt; "POSTROUTING",
+             o =&gt; "eth0",
+             j =&gt; "MASQUERADE";
     
  };</code></pre>
 <p>
@@ -73,10 +73,10 @@
 
 <p>Open a port for inbound connections.</p>
 <pre><code class="perl">
- task &quot;firewall&quot;, sub {
+ task "firewall", sub {
     open_port 22;
     open_port [22, 80];
-    open_port [22, 80] =&gt; { dev =&gt; &quot;eth1&quot;, };
+    open_port [22, 80] =&gt; { dev =&gt; "eth1", };
  };</code></pre>
 
 <li><strong>close_port($port, $option)</strong></li>
@@ -84,10 +84,10 @@
 
 <p>Close a port for inbound connections.</p>
 <pre><code class="perl">
- task &quot;firewall&quot;, sub {
+ task "firewall", sub {
     close_port 22;
     close_port [22, 80];
-    close_port [22, 80] =&gt; { dev =&gt; &quot;eth0&quot;, };
+    close_port [22, 80] =&gt; { dev =&gt; "eth0", };
  };</code></pre>
 
 <li><strong>redirect_port($in_port, $option)</strong></li>
@@ -95,11 +95,11 @@
 
 <p>Redirect $in_port to an other local port.</p>
 <pre><code class="perl">
- task &quot;redirects&quot;, sub {
+ task "redirects", sub {
     redirect_port 80 =&gt; 10080;
     redirect_port 80 =&gt; {
        to  =&gt; 10080,
-       dev =&gt; &quot;eth0&quot;,
+       dev =&gt; "eth0",
     };
  };</code></pre>
 
@@ -108,14 +108,14 @@
 
 <p>Write standard iptable comands.</p>
 <pre><code class="perl">
- task &quot;firewall&quot;, sub {
-    iptables t =&gt; &quot;nat&quot;, A =&gt; &quot;POSTROUTING&quot;, o =&gt; &quot;eth0&quot;, j =&gt; &quot;MASQUERADE&quot;;
-    iptables t =&gt; &quot;filter&quot;, i =&gt; &quot;eth0&quot;, m =&gt; &quot;state&quot;, state =&gt; &quot;RELATED,ESTABLISHED&quot;, j =&gt; &quot;ACCEPT&quot;;
+ task "firewall", sub {
+    iptables t =&gt; "nat", A =&gt; "POSTROUTING", o =&gt; "eth0", j =&gt; "MASQUERADE";
+    iptables t =&gt; "filter", i =&gt; "eth0", m =&gt; "state", state =&gt; "RELATED,ESTABLISHED", j =&gt; "ACCEPT";
         
-    iptables &quot;flush&quot;;
+    iptables "flush";
     iptables -F;
-    iptables flush =&gt; &quot;filter&quot;;
-    iptables -F =&gt; &quot;filter&quot;;
+    iptables flush =&gt; "filter";
+    iptables -F =&gt; "filter";
  };</code></pre>
 
 <li><strong>is_nat_gateway</strong></li>
@@ -123,7 +123,7 @@
 
 <p>This function create a nat gateway for the device the default route points to.</p>
 <pre><code class="perl">
- task &quot;make-gateway&quot;, sub {
+ task "make-gateway", sub {
     is_nat_gateway;
  };</code></pre>
 
@@ -132,8 +132,8 @@
 
 <p>Set the default state rules for the given device.</p>
 <pre><code class="perl">
- task &quot;firewall&quot;, sub {
-    default_state_rule(dev =&gt; &quot;eth0&quot;);
+ task "firewall", sub {
+    default_state_rule(dev =&gt; "eth0");
  };</code></pre>
 
 <li><strong>iptables_list</strong></li>
@@ -141,7 +141,7 @@
 
 <p>List all iptables rules.</p>
 <pre><code class="perl">
- task &quot;list-iptables&quot;, sub {
+ task "list-iptables", sub {
     print Dumper iptables_list;
  };</code></pre>
 
@@ -150,7 +150,7 @@
 
 <p>Remove all iptables rules.</p>
 <pre><code class="perl">
- task &quot;no-firewall&quot;, sub {
+ task "no-firewall", sub {
     iptables_clear;
  };</code></pre>
 

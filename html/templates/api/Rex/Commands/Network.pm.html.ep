@@ -43,10 +43,10 @@
  print Dumper(\@routes);
     
  my $default_gw = default_gateway;
- default_gateway &quot;192.168.2.1&quot;;
+ default_gateway "192.168.2.1";
      
  my @netstat = netstat;
- my @tcp_connections = grep { $_-&gt;{&quot;proto&quot;} eq &quot;tcp&quot; } netstat;</code></pre>
+ my @tcp_connections = grep { $_-&gt;{"proto"} eq "tcp" } netstat;</code></pre>
 <p>
 </p>
 

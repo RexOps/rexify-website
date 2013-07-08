@@ -39,32 +39,32 @@
 <pre><code class="perl">
  use Rex::Commands::Cloud;
      
- cloud_service &quot;Amazon&quot;;
- cloud_auth &quot;your-access-key&quot;, &quot;your-private-access-key&quot;;
- cloud_region &quot;ec2.eu-west-1.amazonaws.com&quot;;
+ cloud_service "Amazon";
+ cloud_auth "your-access-key", "your-private-access-key";
+ cloud_region "ec2.eu-west-1.amazonaws.com";
     
- task &quot;list&quot;, sub {
+ task "list", sub {
     print Dumper cloud_instance_list;
     print Dumper cloud_volume_list;
  };
       
- task &quot;create&quot;, sub {
-    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;, };
+ task "create", sub {
+    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
        
     cloud_instance create =&gt; {
-          image_id =&gt; &quot;ami-xxxxxxx&quot;,
-          name     =&gt; &quot;test01&quot;,
-          key      =&gt; &quot;my-key&quot;,
+          image_id =&gt; "ami-xxxxxxx",
+          name     =&gt; "test01",
+          key      =&gt; "my-key",
           volume   =&gt; $vol_id,
-          zone     =&gt; &quot;eu-west-1a&quot;,
+          zone     =&gt; "eu-west-1a",
        };
  };
      
- task &quot;destroy&quot;, sub {
-    cloud_volume detach =&gt; &quot;vol-xxxxxxx&quot;;
-    cloud_volume delete =&gt; &quot;vol-xxxxxxx&quot;;
+ task "destroy", sub {
+    cloud_volume detach =&gt; "vol-xxxxxxx";
+    cloud_volume delete =&gt; "vol-xxxxxxx";
        
-    cloud_instance terminate =&gt; &quot;i-xxxxxxx&quot;;
+    cloud_instance terminate =&gt; "i-xxxxxxx";
  };</code></pre>
 <p>
 </p>
@@ -108,12 +108,12 @@
 
 <p>Get all instances of a cloud service.</p>
 <pre><code class="perl">
- task &quot;list&quot;, sub {
+ task "list", sub {
     for my $instance (cloud_instance_list()) {
-       say &quot;Arch  : &quot; . $instance-&gt;{&quot;architecture&quot;};
-       say &quot;IP    : &quot; . $instance-&gt;{&quot;ip&quot;};
-       say &quot;ID    : &quot; . $instance-&gt;{&quot;id&quot;};
-       say &quot;State : &quot; . $instance-&gt;{&quot;state&quot;};
+       say "Arch  : " . $instance-&gt;{"architecture"};
+       say "IP    : " . $instance-&gt;{"ip"};
+       say "ID    : " . $instance-&gt;{"id"};
+       say "State : " . $instance-&gt;{"state"};
     }
  };</code></pre>
 
@@ -122,12 +122,12 @@
 
 <p>Get all volumes of a cloud service.</p>
 <pre><code class="perl">
- task &quot;list-volumes&quot;, sub {
+ task "list-volumes", sub {
     for my $volume (cloud_volume_list()) {
-       say &quot;ID       : &quot; . $volume-&gt;{&quot;id&quot;};
-       say &quot;Zone     : &quot; . $volume-&gt;{&quot;zone&quot;};
-       say &quot;State    : &quot; . $volume-&gt;{&quot;state&quot;};
-       say &quot;Attached : &quot; . $volume-&gt;{&quot;attached_to&quot;};
+       say "ID       : " . $volume-&gt;{"id"};
+       say "Zone     : " . $volume-&gt;{"zone"};
+       say "State    : " . $volume-&gt;{"state"};
+       say "Attached : " . $volume-&gt;{"attached_to"};
     }
  };</code></pre>
 
@@ -136,7 +136,7 @@
 
 <p>Get a list of all running instances of a cloud service. This can be used for a <em>group</em> definition.</p>
 <pre><code class="perl">
- group fe  =&gt; &quot;fe01&quot;, &quot;fe02&quot;, &quot;fe03&quot;;
+ group fe  =&gt; "fe01", "fe02", "fe03";
  group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
 
 <li><strong>cloud_instance($action, $data)</strong></li>
@@ -150,11 +150,11 @@
 <p>Create a new instance.</p>
 <pre><code class="perl">
  cloud_instance create =&gt; {
-       image_id =&gt; &quot;ami-xxxxxx&quot;,
-       key      =&gt; &quot;ssh-key&quot;,
-       name     =&gt; &quot;fe-ec2-01&quot;,   # name is not necessary
-       volume   =&gt; &quot;vol-yyyyy&quot;,   # volume is not necessary
-       zone     =&gt; &quot;eu-west-1a&quot;,  # zone is not necessary
+       image_id =&gt; "ami-xxxxxx",
+       key      =&gt; "ssh-key",
+       name     =&gt; "fe-ec2-01",   # name is not necessary
+       volume   =&gt; "vol-yyyyy",   # volume is not necessary
+       zone     =&gt; "eu-west-1a",  # zone is not necessary
     };</code></pre>
 
 <li><strong>start</strong></li>
@@ -162,21 +162,21 @@
 
 <p>Start an existing instance</p>
 <pre><code class="perl">
- cloud_instance start =&gt; &quot;instance-id&quot;;</code></pre>
+ cloud_instance start =&gt; "instance-id";</code></pre>
 
 <li><strong>stop</strong></li>
 
 
 <p>Stop an existing instance</p>
 <pre><code class="perl">
- cloud_instance stop =&gt; &quot;instance-id&quot;;</code></pre>
+ cloud_instance stop =&gt; "instance-id";</code></pre>
 
 <li><strong>terminate</strong></li>
 
 
 <p>Terminate an instance. This will destroy all data and remove the instance.</p>
 <pre><code class="perl">
- cloud_instance terminate =&gt; &quot;i-zzzzzzz&quot;;</code></pre>
+ cloud_instance terminate =&gt; "i-zzzzzzz";</code></pre>
 
 <li><strong>get_cloud_regions</strong></li>
 
@@ -193,8 +193,8 @@
 
 <p>Create a new volume. Size is in Gigabytes.</p>
 <pre><code class="perl">
- task &quot;create-vol&quot;, sub {
-    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;, };
+ task "create-vol", sub {
+    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
  };</code></pre>
 
 <li><strong>detach</strong></li>
@@ -202,8 +202,8 @@
 
 <p>Detach a volume from an instance.</p>
 <pre><code class="perl">
- task &quot;detach-vol&quot;, sub {
-    cloud_volume detach =&gt; &quot;vol-xxxxxx&quot;;
+ task "detach-vol", sub {
+    cloud_volume detach =&gt; "vol-xxxxxx";
  };</code></pre>
 
 <li><strong>delete</strong></li>
@@ -211,8 +211,8 @@
 
 <p>Delete a volume. This will destroy all data.</p>
 <pre><code class="perl">
- task &quot;delete-vol&quot;, sub {
-    cloud_volume delete =&gt; &quot;vol-xxxxxx&quot;;
+ task "delete-vol", sub {
+    cloud_volume delete =&gt; "vol-xxxxxx";
  };</code></pre>
 
 <li><strong>get_cloud_availability_zones</strong></li>
@@ -220,7 +220,7 @@
 
 <p>Returns all availability zones of a cloud services. If available.</p>
 <pre><code class="perl">
- task &quot;get-zones&quot;, sub {
+ task "get-zones", sub {
     print Dumper get_cloud_availability_zones;
  };</code></pre>
 

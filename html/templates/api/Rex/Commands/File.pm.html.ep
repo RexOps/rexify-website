@@ -37,42 +37,42 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- task &quot;read-passwd&quot;, &quot;server01&quot;, sub {
-    my $fh = file_read &quot;/etc/passwd&quot;;
+ task "read-passwd", "server01", sub {
+    my $fh = file_read "/etc/passwd";
     for my $line = ($fh-&gt;read_all) {
        print $line;
     }
     $fh-&gt;close;
  };</code></pre>
 <pre><code class="perl">
- task &quot;read-passwd2&quot;, &quot;server01&quot;, sub {
-    say cat &quot;/etc/passwd&quot;;
+ task "read-passwd2", "server01", sub {
+    say cat "/etc/passwd";
  };
  
  
- task &quot;write-passwd&quot;, &quot;server01&quot;, sub {
-    my $fh = file_write &quot;/etc/passwd&quot;;
-    $fh-&gt;write(&quot;root:*:0:0:root user:/root:/bin/sh\n&quot;);
+ task "write-passwd", "server01", sub {
+    my $fh = file_write "/etc/passwd";
+    $fh-&gt;write("root:*:0:0:root user:/root:/bin/sh\n");
     $fh-&gt;close;
  };
     
- delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; &quot;root&quot;;
- delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; qr{Failed};
- delete_lines_matching &quot;/var/log/auth.log&quot;, 
-                        matching =&gt; &quot;root&quot;, qr{Failed}, &quot;nobody&quot;;
+ delete_lines_matching "/var/log/auth.log", matching =&gt; "root";
+ delete_lines_matching "/var/log/auth.log", matching =&gt; qr{Failed};
+ delete_lines_matching "/var/log/auth.log", 
+                        matching =&gt; "root", qr{Failed}, "nobody";
     
- file &quot;/path/on/the/remote/machine&quot;,
-    source =&gt; &quot;/path/on/local/machine&quot;;
+ file "/path/on/the/remote/machine",
+    source =&gt; "/path/on/local/machine";
     
- file &quot;/path/on/the/remote/machine&quot;,
-    content =&gt; &quot;foo bar&quot;;
+ file "/path/on/the/remote/machine",
+    content =&gt; "foo bar";
     
- file &quot;/path/on/the/remote/machine&quot;,
-    source =&gt; &quot;/path/on/local/machine&quot;,
-    owner  =&gt; &quot;root&quot;,
-    group  =&gt; &quot;root&quot;,
+ file "/path/on/the/remote/machine",
+    source =&gt; "/path/on/local/machine",
+    owner  =&gt; "root",
+    group  =&gt; "root",
     mode   =&gt; 400,
-    on_change =&gt; sub { say &quot;File was changed.&quot;; };</code></pre>
+    on_change =&gt; sub { say "File was changed."; };</code></pre>
 <p>
 </p>
 
@@ -83,8 +83,8 @@
 
 <p>Parse a template and return the content.</p>
 <pre><code class="perl">
- my $content = template(&quot;/files/templates/vhosts.tpl&quot;, 
-                     name =&gt; &quot;test.lan&quot;,
+ my $content = template("/files/templates/vhosts.tpl", 
+                     name =&gt; "test.lan",
                      webmaster =&gt; 'webmaster@test.lan');</code></pre>
 
 <li><strong>file($file_name, %options)</strong></li>
@@ -92,23 +92,23 @@
 
 <p>This function is the successor of <em>install file</em>. Please use this function to upload files to you server.</p>
 <pre><code class="perl">
- task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    file &quot;/file/on/remote/machine&quot;,
-       source =&gt; &quot;/file/on/local/machine&quot;;
+ task "prepare", "server1", "server2", sub {
+    file "/file/on/remote/machine",
+       source =&gt; "/file/on/local/machine";
        
-    file &quot;/etc/hosts&quot;,
-       content =&gt; template(&quot;templates/etc/hosts.tpl&quot;),
-       owner   =&gt; &quot;user&quot;,
-       group   =&gt; &quot;group&quot;,
+    file "/etc/hosts",
+       content =&gt; template("templates/etc/hosts.tpl"),
+       owner   =&gt; "user",
+       group   =&gt; "group",
        mode    =&gt; 700,
-       on_change =&gt; sub { say &quot;Something was changed.&quot; };
+       on_change =&gt; sub { say "Something was changed." };
         
-    file &quot;/etc/motd&quot;,
+    file "/etc/motd",
        content =&gt; `fortune`;
       
-    file &quot;/etc/httpd/conf/httpd.conf&quot;,
-       source =&gt; &quot;/files/etc/httpd/conf/httpd.conf&quot;,
-       on_change =&gt; sub { service httpd =&gt; &quot;restart&quot;; };
+    file "/etc/httpd/conf/httpd.conf",
+       source =&gt; "/files/etc/httpd/conf/httpd.conf",
+       on_change =&gt; sub { service httpd =&gt; "restart"; };
  };</code></pre>
 <p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages.</p>
 
@@ -120,16 +120,16 @@
 <pre><code class="perl">
  my $fh;
  eval {
-    $fh = file_write(&quot;/etc/groups&quot;);
+    $fh = file_write("/etc/groups");
  };
  
  # catch an error
  if($@) {
-    print &quot;An error occured. $@.\n&quot;;
+    print "An error occured. $@.\n";
  }
  
  # work with the filehandle
- $fh-&gt;write(&quot;...&quot;);
+ $fh-&gt;write("...");
  $fh-&gt;close;</code></pre>
 
 <li><strong>file_append($file_name)</strong></li>
@@ -142,12 +142,12 @@
 <pre><code class="perl">
  my $fh;
  eval {
-    $fh = read(&quot;/etc/groups&quot;);
+    $fh = read("/etc/groups");
  };
  
  # catch an error
  if($@) {
-    print &quot;An error occured. $@.\n&quot;;
+    print "An error occured. $@.\n";
  }
  
  # work with the filehandle
@@ -159,15 +159,15 @@
 
 <p>This function returns the complete content of $file_name as a string.</p>
 <pre><code class="perl">
- print cat &quot;/etc/passwd&quot;;</code></pre>
+ print cat "/etc/passwd";</code></pre>
 
 <li><strong>delete_lines_matching($file, $regexp)</strong></li>
 
 
 <p>Delete lines that match $regexp in $file.</p>
 <pre><code class="perl">
- task &quot;clean-logs&quot;, sub {
-     delete_lines_matching &quot;/var/log/auth.log&quot; =&gt; &quot;root&quot;;
+ task "clean-logs", sub {
+     delete_lines_matching "/var/log/auth.log" =&gt; "root";
  };</code></pre>
 
 <li><strong>delete_lines_according_to($search, $file, @options)</strong></li>
@@ -176,10 +176,10 @@
 <p>This is the successor of the <a href="#delete_lines_matching">delete_lines_matching()</a> function. This function also allows the usage of an on_change hook.</p>
 <p>It will search for $search in $file and remove the found lines. If on_change hook is present it will execute this if the file was changed.</p>
 <pre><code class="perl">
- task &quot;cleanup&quot;, &quot;server1&quot;, sub {
-    delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;,
+ task "cleanup", "server1", sub {
+    delete_lines_according_to qr{^foo:}, "/etc/passwd",
       on_change =&gt; sub {
-         say &quot;removed user foo.&quot;;
+         say "removed user foo.";
       };
  };</code></pre>
 
@@ -190,21 +190,21 @@
 supplied, the line is appended unless there is already an identical line
 in $file.</p>
 <pre><code class="perl">
- task &quot;add-group&quot;, sub {
-    append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, on_change =&gt; sub { service sshd =&gt; &quot;restart&quot;; };
+ task "add-group", sub {
+    append_if_no_such_line "/etc/groups", "mygroup:*:100:myuser1,myuser2", on_change =&gt; sub { service sshd =&gt; "restart"; };
  };</code></pre>
 <p>Since 0.42 you can use named parameters as well</p>
 <pre><code class="perl">
- task &quot;add-group&quot;, sub {
-    append_if_no_such_line &quot;/etc/groups&quot;,
-       line   =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+ task "add-group", sub {
+    append_if_no_such_line "/etc/groups",
+       line   =&gt; "mygroup:*:100:myuser1,myuser2",
        regexp =&gt; qr{^mygroup},
        on_change =&gt; sub {
-                       say &quot;file was changed, do something.&quot;;
+                       say "file was changed, do something.";
                     };
           
-    append_if_no_such_line &quot;/etc/groups&quot;,
-       line   =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+    append_if_no_such_line "/etc/groups",
+       line   =&gt; "mygroup:*:100:myuser1,myuser2",
        regexp =&gt; [qr{^mygroup:}, qr{^ourgroup:}]; # this is an OR
  };</code></pre>
 
@@ -214,14 +214,14 @@ in $file.</p>
 <p>This function extracts a file. Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
-    extract &quot;/tmp/myfile.tar.gz&quot;,
-      owner =&gt; &quot;root&quot;,
-      group =&gt; &quot;root&quot;,
-      to    =&gt; &quot;/etc&quot;;</code></pre>
+    extract "/tmp/myfile.tar.gz",
+      owner =&gt; "root",
+      group =&gt; "root",
+      to    =&gt; "/etc";</code></pre>
 <pre><code class="perl">
-    extract &quot;/tmp/foo.tgz&quot;,
-      type =&gt; &quot;tgz&quot;,
-      mode =&gt; &quot;g+rwX&quot;;
+    extract "/tmp/foo.tgz",
+      type =&gt; "tgz",
+      mode =&gt; "g+rwX";
  };
  
 Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</code></pre>
@@ -232,7 +232,7 @@ Can use the type=&gt; option if the file suffix has been changed. (types are tar
 <p>Search some string in a file and replace it.</p>
 <pre><code class="perl">
  task sar =&gt; sub {
-    sed qr{search}, &quot;replace&quot;, &quot;/var/log/auth.log&quot;;
+    sed qr{search}, "replace", "/var/log/auth.log";
  };</code></pre>
 
 </ul>

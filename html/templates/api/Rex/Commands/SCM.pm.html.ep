@@ -39,26 +39,26 @@
 <pre><code class="perl">
  use Rex::Commands::SCM;
      
- set repository =&gt; &quot;myrepo&quot;,
-      url =&gt; &quot;git@foo.bar:myrepo.git&quot;;
+ set repository =&gt; "myrepo",
+      url =&gt; "git@foo.bar:myrepo.git";
         
- set repository =&gt; &quot;myrepo2&quot;,
-      url =&gt; &quot;https://foo.bar/myrepo&quot;,
-      type =&gt; &quot;subversion&quot;,
-      username =&gt; &quot;myuser&quot;,
-      password =&gt; &quot;mypass&quot;;
+ set repository =&gt; "myrepo2",
+      url =&gt; "https://foo.bar/myrepo",
+      type =&gt; "subversion",
+      username =&gt; "myuser",
+      password =&gt; "mypass";
            
- task &quot;checkout&quot;, sub {
-    checkout &quot;myrepo&quot;;
+ task "checkout", sub {
+    checkout "myrepo";
         
-    checkout &quot;myrepo&quot;,
-       path =&gt; &quot;webapp&quot;;
+    checkout "myrepo",
+       path =&gt; "webapp";
            
-    checkout &quot;myrepo&quot;,
-       path =&gt; &quot;webapp&quot;,
+    checkout "myrepo",
+       path =&gt; "webapp",
        branch =&gt; 1.6;      # branch only for git
            
-    checkout &quot;myrepo2&quot;;
+    checkout "myrepo2";
  };</code></pre>
 <p>
 </p>

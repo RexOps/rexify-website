@@ -39,8 +39,8 @@
 <pre><code class="perl">
  use Rex::Commands::User;
     
- task &quot;create-user&quot;, &quot;remoteserver&quot;, sub {
-    create_user &quot;root&quot;,
+ task "create-user", "remoteserver", sub {
+    create_user "root",
        uid =&gt; 0,
        home =&gt; '/root',
        comment =&gt; 'Root Account',
@@ -49,7 +49,7 @@
        password =&gt; 'blahblah',
        system =&gt; 1,
        no_create_home =&gt; TRUE,
-       ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
+       ssh_key =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
  };</code></pre>
 <p>
 </p>
@@ -81,9 +81,9 @@
 
 <p>Returns user list via getent passwd.</p>
 <pre><code class="perl">
- task &quot;list_user&quot;, &quot;server01&quot;, sub {
+ task "list_user", "server01", sub {
     for my $user (user_list) {
-       print &quot;name: $user / uid: &quot; . get_uid($user) . &quot;\n&quot;;
+       print "name: $user / uid: " . get_uid($user) . "\n";
     }
  };</code></pre>
 
@@ -92,7 +92,7 @@
 
 <p>Delete a user from the system.</p>
 <pre><code class="perl">
- delete_user &quot;trak&quot;, {
+ delete_user "trak", {
     delete_home =&gt; 1,
     force       =&gt; 1,
  };</code></pre>
@@ -117,7 +117,7 @@
 
 <p>Return information of $group.</p>
 <pre><code class="perl">
- $info = get_group(&quot;wheel&quot;);</code></pre>
+ $info = get_group("wheel");</code></pre>
 
 <li><strong>delete_group($group)</strong></li>
 

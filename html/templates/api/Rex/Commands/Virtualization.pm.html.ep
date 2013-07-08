@@ -50,40 +50,40 @@
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
     
- set virtualization =&gt; &quot;LibVirt&quot;;
- set virtualization =&gt; &quot;VBox&quot;;
+ set virtualization =&gt; "LibVirt";
+ set virtualization =&gt; "VBox";
     
  use Data::Dumper;</code></pre>
 <pre><code class="perl">
- print Dumper vm list =&gt; &quot;all&quot;;
- print Dumper vm list =&gt; &quot;running&quot;;
+ print Dumper vm list =&gt; "all";
+ print Dumper vm list =&gt; "running";
     
- vm destroy =&gt; &quot;vm01&quot;;
+ vm destroy =&gt; "vm01";
     
- vm delete =&gt; &quot;vm01&quot;; 
+ vm delete =&gt; "vm01"; 
      
- vm start =&gt; &quot;vm01&quot;;
+ vm start =&gt; "vm01";
     
- vm shutdown =&gt; &quot;vm01&quot;;
+ vm shutdown =&gt; "vm01";
     
- vm reboot =&gt; &quot;vm01&quot;;
+ vm reboot =&gt; "vm01";
     
- vm option =&gt; &quot;vm01&quot;,
+ vm option =&gt; "vm01",
           max_memory =&gt; 1024*1024,
           memory     =&gt; 512*1024;
               
- print Dumper vm info =&gt; &quot;vm01&quot;;
+ print Dumper vm info =&gt; "vm01";
     
  # creating a vm on a kvm host
- vm create =&gt; &quot;vm01&quot;,
+ vm create =&gt; "vm01",
       storage     =&gt; [
          {   
-            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
-            dev    =&gt; &quot;vda&quot;,
+            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
+            dev    =&gt; "vda",
          }   
       ];  
        
- print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
+ print Dumper vm hypervisor =&gt; "capabilities";</code></pre>
 <p>
 </p>
 
@@ -102,73 +102,73 @@
 <p>
 </p>
 <h2><a name="creating_a_virtual_machine">Creating a Virtual Machine</a></h2>
-<p>Create a (VirtualBox) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a natted network. The bootorder is set to &quot;dvd&quot;.</p>
+<p>Create a (VirtualBox) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
+With a cdrom as an iso image and a natted network. The bootorder is set to "dvd".</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
+ vm create =&gt; "vm01",
       storage     =&gt; [
          {   
-            file   =&gt; &quot;/mnt/data/vbox/vm01.img&quot;,
-            size   =&gt; &quot;10G&quot;,
+            file   =&gt; "/mnt/data/vbox/vm01.img",
+            size   =&gt; "10G",
          },
          {
-            file =&gt; &quot;/mnt/iso/debian6.iso&quot;,
+            file =&gt; "/mnt/iso/debian6.iso",
          }
       ],
       memory =&gt; 512,
-      type =&gt; &quot;Linux26&quot;, 
+      type =&gt; "Linux26", 
       cpus =&gt; 1,
-      boot =&gt; &quot;dvd&quot;;</code></pre>
-<p>Create a (KVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to &quot;cdrom&quot;.</p>
+      boot =&gt; "dvd";</code></pre>
+<p>Create a (KVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
+With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to "cdrom".</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
-      boot =&gt; &quot;cdrom&quot;,
+ vm create =&gt; "vm01",
+      boot =&gt; "cdrom",
       storage     =&gt; [
          {
-            size   =&gt; &quot;10G&quot;,
-            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
+            size   =&gt; "10G",
+            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
          },
                                                                                                                                         
          {
-            file     =&gt; &quot;/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso&quot;,
+            file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
          },
       ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
+ vm create =&gt; "vm01",
       memory   =&gt; 512*1024,
       cpus     =&gt; 1,      
-      arch     =&gt; &quot;x86_64&quot;,
-      boot     =&gt; &quot;cdrom&quot;,
-      clock    =&gt; &quot;utc&quot;, 
-      emulator =&gt; &quot;/usr/bin/qemu-system-x86_64&quot;,
-      on_poweroff =&gt; &quot;destroy&quot;,
-      on_reboot   =&gt; &quot;restart&quot;,
-      on_crash    =&gt; &quot;restart&quot;,
+      arch     =&gt; "x86_64",
+      boot     =&gt; "cdrom",
+      clock    =&gt; "utc", 
+      emulator =&gt; "/usr/bin/qemu-system-x86_64",
+      on_poweroff =&gt; "destroy",
+      on_reboot   =&gt; "restart",
+      on_crash    =&gt; "restart",
       storage     =&gt; [
-         {  type   =&gt; &quot;file&quot;,
-            size   =&gt; &quot;10G&quot;,
-            device =&gt; &quot;disk&quot;,
-            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
-            dev    =&gt; &quot;vda&quot;,
-            bus    =&gt; &quot;virtio&quot;,
+         {  type   =&gt; "file",
+            size   =&gt; "10G",
+            device =&gt; "disk",
+            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
+            dev    =&gt; "vda",
+            bus    =&gt; "virtio",
             address =&gt; {
-               type     =&gt; &quot;pci&quot;,
-               domain   =&gt; &quot;0x0000&quot;,
-               bus      =&gt; &quot;0x00&quot;,
-               slot     =&gt; &quot;0x05&quot;,
-               function =&gt; &quot;0x0&quot;,
+               type     =&gt; "pci",
+               domain   =&gt; "0x0000",
+               bus      =&gt; "0x00",
+               slot     =&gt; "0x05",
+               function =&gt; "0x0",
             },
          },
-         {  type     =&gt; &quot;file&quot;,
-            device   =&gt; &quot;cdrom&quot;,
-            file     =&gt; &quot;/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso&quot;,
-            dev      =&gt; &quot;hdc&quot;,
-            bus      =&gt; &quot;ide&quot;,
+         {  type     =&gt; "file",
+            device   =&gt; "cdrom",
+            file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
+            dev      =&gt; "hdc",
+            bus      =&gt; "ide",
             readonly =&gt; 1,
             address  =&gt; {                                                                                                               
-               type       =&gt; &quot;drive&quot;,
+               type       =&gt; "drive",
                controller =&gt; 0,
                bus        =&gt; 1,
                unit       =&gt; 0,
@@ -176,112 +176,112 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
          },
       ],
       network =&gt; [
-         {  type    =&gt; &quot;bridge&quot;,
-            bridge  =&gt; &quot;virbr0&quot;,
-            model   =&gt; &quot;virtio&quot;,
+         {  type    =&gt; "bridge",
+            bridge  =&gt; "virbr0",
+            model   =&gt; "virtio",
             address =&gt; {
-               type     =&gt; &quot;pci&quot;,
-               domain   =&gt; &quot;0x0000&quot;,
-               bus      =&gt; &quot;0x00&quot;,
-               slot     =&gt; &quot;0x03&quot;,
-               function =&gt; &quot;0x0&quot;,
+               type     =&gt; "pci",
+               domain   =&gt; "0x0000",
+               bus      =&gt; "0x00",
+               slot     =&gt; "0x03",
+               function =&gt; "0x0",
             },
          },
       ];</code></pre>
-<p>Create a (Xen/HVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one.</p>
+<p>Create a (Xen/HVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one.</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
-      type   =&gt; &quot;hvm&quot;,
+ vm create =&gt; "vm01",
+      type   =&gt; "hvm",
       storage     =&gt; [
          {
-            file     =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
-            template =&gt; &quot;/mnt/data/libvirt/images/svn01.img&quot;,                                                                           
+            file     =&gt; "/mnt/data/libvirt/images/vm01.img",
+            template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
          },
       ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
+ vm create =&gt; "vm01",
       memory =&gt; 512*1024,
       cpus   =&gt; 1,
-      boot   =&gt; &quot;hd&quot;,
-      clock  =&gt; &quot;utc&quot;,
-      on_poweroff =&gt; &quot;destroy&quot;,
-      on_reboot   =&gt; &quot;restart&quot;,
-      on_crash    =&gt; &quot;restart&quot;,
+      boot   =&gt; "hd",
+      clock  =&gt; "utc",
+      on_poweroff =&gt; "destroy",
+      on_reboot   =&gt; "restart",
+      on_crash    =&gt; "restart",
       storage     =&gt; [
-         {  type   =&gt; &quot;file&quot;,
-            size   =&gt; &quot;10G&quot;,
-            device =&gt; &quot;disk&quot;,
-            file   =&gt; &quot;/mnt/data/libvirt/images/vm01.img&quot;,
-            dev    =&gt; &quot;hda&quot;,
-            bus    =&gt; &quot;ide&quot;,
-            template =&gt; &quot;/mnt/data/libvirt/images/svn01.img&quot;,                                                                           
+         {  type   =&gt; "file",
+            size   =&gt; "10G",
+            device =&gt; "disk",
+            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
+            dev    =&gt; "hda",
+            bus    =&gt; "ide",
+            template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
          },
-         {  type     =&gt; &quot;file&quot;,
-            device   =&gt; &quot;cdrom&quot;,
-            dev      =&gt; &quot;hdc&quot;,
-            bus      =&gt; &quot;ide&quot;,
+         {  type     =&gt; "file",
+            device   =&gt; "cdrom",
+            dev      =&gt; "hdc",
+            bus      =&gt; "ide",
             readonly =&gt; 1,
          },
       ],
       network =&gt; [
-         {  type    =&gt; &quot;bridge&quot;,
-            bridge  =&gt; &quot;virbr0&quot;,
+         {  type    =&gt; "bridge",
+            bridge  =&gt; "virbr0",
          },
       ],
-      type =&gt; &quot;hvm&quot;;</code></pre>
-<p>Create a (Xen/PVM) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size).</p>
+      type =&gt; "hvm";</code></pre>
+<p>Create a (Xen/PVM) VM named "vm01" with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size).</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
-      type   =&gt; &quot;pvm&quot;,
+ vm create =&gt; "vm01",
+      type   =&gt; "pvm",
       storage     =&gt; [
          {
-            file    =&gt; &quot;/mnt/data/libvirt/images/domains/vm01/disk.img&quot;,
-            dev     =&gt; &quot;xvda2&quot;,
+            file    =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
+            dev     =&gt; "xvda2",
             is_root =&gt; 1,                                                                                                               
          },
          {  
-            file   =&gt; &quot;/mnt/data/libvirt/images/domains/vm01/swap.img&quot;,
-            dev    =&gt; &quot;xvda1&quot;,
+            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
+            dev    =&gt; "xvda1",
          },
       ];</code></pre>
 <p>This is the same as above, but with all options in use.</p>
 <pre><code class="perl">
- vm create =&gt; &quot;vm01&quot;,
-      type   =&gt; &quot;pvm&quot;,
+ vm create =&gt; "vm01",
+      type   =&gt; "pvm",
       memory =&gt; 512*1024,
       cpus   =&gt; 1,
-      clock  =&gt; &quot;utc&quot;,
-      on_poweroff =&gt; &quot;destroy&quot;,
-      on_reboot   =&gt; &quot;restart&quot;,
-      on_crash    =&gt; &quot;restart&quot;,
+      clock  =&gt; "utc",
+      on_poweroff =&gt; "destroy",
+      on_reboot   =&gt; "restart",
+      on_crash    =&gt; "restart",
       os          =&gt; {
-         type  =&gt; &quot;linux&quot;,
-         kernel =&gt; &quot;/boot/vmlinuz-2.6.32-5-xen-amd64&quot;,
-         initrd =&gt; &quot;/boot/initrd.img-2.6.32-5-xen-amd64&quot;,
-         cmdline =&gt; &quot;root=/dev/xvda2 ro&quot;,
+         type  =&gt; "linux",
+         kernel =&gt; "/boot/vmlinuz-2.6.32-5-xen-amd64",
+         initrd =&gt; "/boot/initrd.img-2.6.32-5-xen-amd64",
+         cmdline =&gt; "root=/dev/xvda2 ro",
       },
       storage     =&gt; [
-         {  type   =&gt; &quot;file&quot;,
-            size   =&gt; &quot;10G&quot;,
-            device =&gt; &quot;disk&quot;,
-            file   =&gt; &quot;/mnt/data/libvirt/images/domains/vm01/disk.img&quot;,
-            dev    =&gt; &quot;xvda2&quot;,
-            bus    =&gt; &quot;xen&quot;,
+         {  type   =&gt; "file",
+            size   =&gt; "10G",
+            device =&gt; "disk",
+            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
+            dev    =&gt; "xvda2",
+            bus    =&gt; "xen",
             aio    =&gt; 1, # if you want to use aio
          },
-         {  type   =&gt; &quot;file&quot;,
-            size   =&gt; &quot;4G&quot;,
-            device =&gt; &quot;disk&quot;,
-            file   =&gt; &quot;/mnt/data/libvirt/images/domains/vm01/swap.img&quot;,
-            dev    =&gt; &quot;xvda1&quot;,
-            bus    =&gt; &quot;xen&quot;,
+         {  type   =&gt; "file",
+            size   =&gt; "4G",
+            device =&gt; "disk",
+            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
+            dev    =&gt; "xvda1",
+            bus    =&gt; "xen",
             aio    =&gt; 1, # if you want to use aio
          },
       ],
       network =&gt; [
-         {  type    =&gt; &quot;bridge&quot;,
-            bridge  =&gt; &quot;virbr0&quot;,
+         {  type    =&gt; "bridge",
+            bridge  =&gt; "virbr0",
          },
       ];</code></pre>
 <p>
@@ -289,36 +289,36 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
 <h2><a name="start_stop_destroy">Start/Stop/Destroy</a></h2>
 <p>Start a stopped vm</p>
 <pre><code class="perl">
- vm start =&gt; &quot;name&quot;;</code></pre>
+ vm start =&gt; "name";</code></pre>
 <p>Stop a running vm (send shutdown signal)</p>
 <pre><code class="perl">
- vm shutdown =&gt; &quot;name&quot;;</code></pre>
+ vm shutdown =&gt; "name";</code></pre>
 <p>Hard Stop a running vm</p>
 <pre><code class="perl">
- vm destroy =&gt; &quot;name&quot;;</code></pre>
+ vm destroy =&gt; "name";</code></pre>
 <p>
 </p>
 <h2><a name="delete">Delete</a></h2>
 <pre><code class="perl">
- vm delete =&gt; &quot;name&quot;;</code></pre>
+ vm delete =&gt; "name";</code></pre>
 <p>
 </p>
 <h2><a name="modifying_a_vm">Modifying a VM</a></h2>
 <p>Currently you can only modify the memory.</p>
 <pre><code class="perl">
- vm option =&gt; &quot;name&quot;,
+ vm option =&gt; "name",
          max_memory =&gt; 1024*1024, # in bytes
          memory     =&gt; 512*1024;</code></pre>
 <p>
 </p>
 <h2><a name="request_information_of_a_vm">Request information of a vm</a></h2>
 <pre><code class="perl">
- vm info =&gt; &quot;name&quot;;</code></pre>
+ vm info =&gt; "name";</code></pre>
 <p>
 </p>
 <h2><a name="request_info_from_the_underlying_hypervisor">Request info from the underlying hypervisor</a></h2>
 <pre><code class="perl">
- vm hypervisor =&gt; &quot;capabilities&quot;;</code></pre>
+ vm hypervisor =&gt; "capabilities";</code></pre>
 
 
 

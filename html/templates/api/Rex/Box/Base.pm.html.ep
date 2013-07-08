@@ -76,7 +76,7 @@
 
 
 <p>Returns the status of a VM.</p>
-<p>Valid return values are &quot;running&quot; and &quot;stopped&quot;.</p>
+<p>Valid return values are "running" and "stopped".</p>
 
 <li><strong>provision_vm([@tasks])</strong></li>
 
@@ -101,14 +101,14 @@
 <pre><code class="perl">
  $box-&gt;network(
     1 =&gt; {
-       type =&gt; &quot;nat&quot;,
+       type =&gt; "nat",
     },
  }
     
  $box-&gt;network(
     1 =&gt; {
-       type =&gt; &quot;bridged&quot;,
-       bridge =&gt; &quot;eth0&quot;,
+       type =&gt; "bridged",
+       bridge =&gt; "eth0",
     },
  );</code></pre>
 

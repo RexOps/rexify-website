@@ -37,10 +37,10 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- task &quot;create-host&quot;, &quot;remoteserver&quot;, sub {
-    create_host &quot;rexify.org&quot; =&gt; {
-      ip      =&gt; &quot;88.198.93.110&quot;,
-      aliases =&gt; [&quot;www.rexify.org&quot;],
+ task "create-host", "remoteserver", sub {
+    create_host "rexify.org" =&gt; {
+      ip      =&gt; "88.198.93.110",
+      aliases =&gt; ["www.rexify.org"],
     };
  };</code></pre>
 <p>
@@ -53,9 +53,9 @@
 
 <p>Update or create a /etc/hosts entry.</p>
 <pre><code class="perl">
- create_host &quot;rexify.org&quot;, {
-    ip      =&gt; &quot;88.198.93.110&quot;,
-    aliases =&gt; [&quot;www.rexify.org&quot;, ...]
+ create_host "rexify.org", {
+    ip      =&gt; "88.198.93.110",
+    aliases =&gt; ["www.rexify.org", ...]
  };</code></pre>
 
 <li><strong>delete_host($host)</strong></li>
@@ -63,15 +63,15 @@
 
 <p>Delete a host from /etc/hosts.</p>
 <pre><code class="perl">
- delete_host &quot;www.rexify.org&quot;;</code></pre>
+ delete_host "www.rexify.org";</code></pre>
 
 <li><strong>get_host($host)</strong></li>
 
 
 <p>Returns the information of $host in /etc/resolv.conf.</p>
 <pre><code class="perl">
- my @host_info = get_host &quot;localhost&quot;;
- say &quot;Host-IP: &quot; . $host_info[0]-&gt;{&quot;ip&quot;};</code></pre>
+ my @host_info = get_host "localhost";
+ say "Host-IP: " . $host_info[0]-&gt;{"ip"};</code></pre>
 
 </ul>
 

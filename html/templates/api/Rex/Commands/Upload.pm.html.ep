@@ -37,8 +37,8 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
-    upload &quot;localfile&quot;, &quot;/remote/file&quot;;
+ task "upload", "remoteserver", sub {
+    upload "localfile", "/remote/file";
  };</code></pre>
 <p>
 </p>
@@ -50,8 +50,8 @@
 
 <p>Perform an upload. If $remote is a directory the file will be uploaded to that directory.</p>
 <pre><code class="perl">
- task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
-    upload &quot;localfile&quot;, &quot;/path&quot;;
+ task "upload", "remoteserver", sub {
+    upload "localfile", "/path";
  };</code></pre>
 
 </ul>

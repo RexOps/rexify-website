@@ -38,13 +38,13 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  # sftp
- task &quot;download&quot;, &quot;remoteserver&quot;, sub {
-    download &quot;/remote/file&quot;, &quot;localfile&quot;;
+ task "download", "remoteserver", sub {
+    download "/remote/file", "localfile";
  };
  
  # http
- task &quot;download2&quot;, sub {
-    download &quot;<a href="http://server/remote/file&quot">http://server/remote/file&quot</a>;;
+ task "download2", sub {
+    download "http://server/remote/file";
  };</code></pre>
 <p>
 </p>
@@ -56,12 +56,12 @@
 
 <p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
 <pre><code class="perl">
- task &quot;download&quot;, &quot;remoteserver&quot;, sub {
-    download &quot;/remote/file&quot;, &quot;localfile&quot;;
+ task "download", "remoteserver", sub {
+    download "/remote/file", "localfile";
  };</code></pre>
 <pre><code class="perl">
- task &quot;download&quot;, sub {
-    download &quot;<a href="http://www.rexify.org/index.html&quot">http://www.rexify.org/index.html&quot</a>;, &quot;localfile.html&quot;;
+ task "download", sub {
+    download "http://www.rexify.org/index.html", "localfile.html";
  };</code></pre>
 
 </ul>

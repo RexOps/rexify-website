@@ -38,7 +38,7 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  kill $pid;
- killall &quot;apache2&quot;;
+ killall "apache2";
  nice($pid, $level);</code></pre>
 <p>
 </p>
@@ -50,7 +50,7 @@
 
 <p>Will kill the given process id. If $sig is specified it will kill with this.</p>
 <pre><code class="perl">
- task &quot;kill&quot;, &quot;server01&quot;, sub {
+ task "kill", "server01", sub {
     kill 9931;
     kill 9931, -9;
  };</code></pre>
@@ -60,9 +60,9 @@
 
 <p>Will kill the given process. If $sig is specified it will kill with this.</p>
 <pre><code class="perl">
- task &quot;kill-apaches&quot;, &quot;server01&quot;, sub {
-    killall &quot;apache2&quot;;
-    killall &quot;apache2&quot;, -9;
+ task "kill-apaches", "server01", sub {
+    killall "apache2";
+    killall "apache2", -9;
  };</code></pre>
 
 <li><strong>ps</strong></li>
@@ -70,11 +70,11 @@
 
 <p>List all processes on a system. Will return all fields of a <em>ps aux</em>.</p>
 <pre><code class="perl">
- task &quot;ps&quot;, &quot;server01&quot;, sub {
+ task "ps", "server01", sub {
     for my $process (ps()) {
-      say &quot;command  &gt; &quot; . $process-&gt;{&quot;command&quot;};
-      say &quot;pid      &gt; &quot; . $process-&gt;{&quot;pid&quot;};
-      say &quot;cpu-usage&gt; &quot; . $process-&gt;{&quot;cpu&quot;};
+      say "command  &gt; " . $process-&gt;{"command"};
+      say "pid      &gt; " . $process-&gt;{"pid"};
+      say "cpu-usage&gt; " . $process-&gt;{"cpu"};
     }
  };</code></pre>
 
@@ -83,7 +83,7 @@
 
 <p>Renice a process identified by $pid with the priority $level.</p>
 <pre><code class="perl">
- task &quot;renice&quot;, &quot;server01&quot;, sub {
+ task "renice", "server01", sub {
     renice (153, -5);
  };</code></pre>
 

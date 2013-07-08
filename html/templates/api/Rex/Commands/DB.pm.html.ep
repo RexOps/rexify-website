@@ -38,34 +38,34 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Commands::DB {
-                           dsn      =&gt; &quot;DBI:mysql:database=test;host=dbhost&quot;,
-                           user     =&gt; &quot;username&quot;,
-                           password =&gt; &quot;password&quot;,
+                           dsn      =&gt; "DBI:mysql:database=test;host=dbhost",
+                           user     =&gt; "username",
+                           password =&gt; "password",
                        };
  
- task &quot;list&quot;, sub {
+ task "list", sub {
     my @data = db select =&gt; {
-                  fields =&gt; &quot;*&quot;,
-                  from   =&gt; &quot;table&quot;,
-                  where  =&gt; &quot;enabled=1&quot;,
+                  fields =&gt; "*",
+                  from   =&gt; "table",
+                  where  =&gt; "enabled=1",
                };
            
-   db insert =&gt; &quot;table&quot;, {
-                field1 =&gt; &quot;value1&quot;,
-                 field2 =&gt; &quot;value2&quot;,
+   db insert =&gt; "table", {
+                field1 =&gt; "value1",
+                 field2 =&gt; "value2",
                  field3 =&gt; 5,
                };
                 
-   db update =&gt; &quot;table&quot;, {
+   db update =&gt; "table", {
                     set =&gt; {
-                       field1 =&gt; &quot;newvalue&quot;,
-                       field2 =&gt; &quot;newvalue2&quot;,
+                       field1 =&gt; "newvalue",
+                       field2 =&gt; "newvalue2",
                     },
-                    where =&gt; &quot;id=5&quot;,
+                    where =&gt; "id=5",
                 };
                 
-   db delete =&gt; &quot;table&quot;, {
-                 where =&gt; &quot;id &lt; 5&quot;,
+   db delete =&gt; "table", {
+                 where =&gt; "id &lt; 5",
               };
            
  };</code></pre>
@@ -80,27 +80,27 @@
 <p>Do a database action.</p>
 <pre><code class="perl">
  my @data = db select =&gt; {
-               fields =&gt; &quot;*&quot;,
-               from   =&gt; &quot;table&quot;,
-               where  =&gt; &quot;host='myhost'&quot;,
+               fields =&gt; "*",
+               from   =&gt; "table",
+               where  =&gt; "host='myhost'",
             };
             
- db insert =&gt; &quot;table&quot;, {
-               field1 =&gt; &quot;value1&quot;,
-               field2 =&gt; &quot;value2&quot;,
+ db insert =&gt; "table", {
+               field1 =&gt; "value1",
+               field2 =&gt; "value2",
                field3 =&gt; 5,
             };
              
- db update =&gt; &quot;table&quot;, {
+ db update =&gt; "table", {
                   set =&gt; {
-                     field1 =&gt; &quot;newvalue&quot;,
-                     field2 =&gt; &quot;newvalue2&quot;,
+                     field1 =&gt; "newvalue",
+                     field2 =&gt; "newvalue2",
                   },
-                  where =&gt; &quot;id=5&quot;,
+                  where =&gt; "id=5",
              };
              
- db delete =&gt; &quot;table&quot;, {
-               where =&gt; &quot;id &lt; 5&quot;,
+ db delete =&gt; "table", {
+               where =&gt; "id &lt; 5",
             };</code></pre>
 
 </ul>

@@ -48,8 +48,8 @@
 
 <p>This function will return the md5 sum (hexadecimal) for the given file.</p>
 <pre><code class="perl">
- task &quot;md5&quot;, &quot;server01&quot;, sub {
-    my $md5 = md5(&quot;/etc/passwd&quot;);
+ task "md5", "server01", sub {
+    my $md5 = md5("/etc/passwd");
  };</code></pre>
 
 </ul>

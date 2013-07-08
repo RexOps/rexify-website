@@ -34,34 +34,34 @@
 <p>To use this module inside your Rexfile you can use the following commands.</p>
 <pre><code class="perl">
  use Rex::Commands::Boxes;
- set box =&gt; &quot;VBox&quot;;
+ set box =&gt; "VBox";
    
- task &quot;prepare_box&quot;, sub {
+ task "prepare_box", sub {
     box {
        my ($box) = @_;
           
-       $box-&gt;name(&quot;mybox&quot;);
-       $box-&gt;url(&quot;<a href="http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&quot">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&quot</a>;);
+       $box-&gt;name("mybox");
+       $box-&gt;url("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
           
        $box-&gt;network(1 =&gt; {
-          type =&gt; &quot;nat&quot;,
+          type =&gt; "nat",
        });
           
        $box-&gt;network(1 =&gt; {
-          type =&gt; &quot;bridged&quot;,
-          bridge =&gt; &quot;eth0&quot;,
+          type =&gt; "bridged",
+          bridge =&gt; "eth0",
        });
            
        $box-&gt;forward_port(ssh =&gt; [2222, 22]);
           
-       $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
+       $box-&gt;share_folder(myhome =&gt; "/home/myuser");
            
        $box-&gt;auth(
-          user =&gt; &quot;root&quot;,
-          password =&gt; &quot;box&quot;,
+          user =&gt; "root",
+          password =&gt; "box",
        );
            
-       $box-&gt;setup(&quot;setup_task&quot;);
+       $box-&gt;setup("setup_task");
     };
  };</code></pre>
 <p>If you want to use a YAML file you can use the following template.</p>
@@ -79,10 +79,10 @@
        setup: setup_task</code></pre>
 <p>And then you can use it the following way in your Rexfile.</p>
 <pre><code class="perl">
- use Rex::Commands::Box init_file =&gt; &quot;file.yml&quot;;
+ use Rex::Commands::Box init_file =&gt; "file.yml";
     
- task &quot;prepare_vms&quot;, sub {
-    boxes &quot;init&quot;;
+ task "prepare_vms", sub {
+    boxes "init";
  };</code></pre>
 <p>
 </p>
@@ -102,7 +102,7 @@
 
 <p>Constructor if used in OO mode.</p>
 <pre><code class="perl">
- my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);</code></pre>
+ my $box = Rex::Box::VBox-&gt;new(name =&gt; "vmname");</code></pre>
 
 <li><strong>forward_port(%option)</strong></li>
 
@@ -121,8 +121,8 @@
 <p>Creates a shared folder inside the VM with the content from a folder from the Host machine. This only works with VirtualBox.</p>
 <pre><code class="perl">
  $box-&gt;share_folder(
-    name =&gt; &quot;/path/on/host&quot;,
-    name2 =&gt; &quot;/path_2/on/host&quot;,
+    name =&gt; "/path/on/host",
+    name2 =&gt; "/path_2/on/host",
  );</code></pre>
 
 <li><strong>info</strong></li>

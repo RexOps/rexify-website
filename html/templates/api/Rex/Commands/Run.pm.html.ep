@@ -37,8 +37,8 @@
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- my $output = run &quot;ls -l&quot;;
- sudo &quot;id&quot;;</code></pre>
+ my $output = run "ls -l";
+ sudo "id";</code></pre>
 <p>
 </p>
 
@@ -49,12 +49,12 @@
 
 <p>This function will execute the given command and returns the output.</p>
 <pre><code class="perl">
- task &quot;uptime&quot;, &quot;server01&quot;, sub {
-    say run &quot;uptime&quot;;
-    run &quot;uptime&quot;, sub {
+ task "uptime", "server01", sub {
+    say run "uptime";
+    run "uptime", sub {
        my ($stdout, $stderr) = @_;
        my $server = Rex::get_current_connection()-&gt;{server};
-       say &quot;[$server] $stdout\n&quot;;
+       say "[$server] $stdout\n";
     };
  };</code></pre>
 
@@ -63,9 +63,9 @@
 
 <p>This function checks if a command is in the path or is available.</p>
 <pre><code class="perl">
- task &quot;uptime&quot;, sub {
-    if(can_run &quot;uptime&quot;) {
-       say run &quot;uptime&quot;;
+ task "uptime", sub {
+    if(can_run "uptime") {
+       say run "uptime";
     }
  };</code></pre>
 
@@ -75,34 +75,34 @@
 <p>Run a command with <em>sudo</em>. Define the password for sudo with <em>sudo_password</em>.</p>
 <p>You can use this function to run one command with sudo privileges or to turn on sudo globaly.</p>
 <pre><code class="perl">
- user &quot;unprivuser&quot;;
- sudo_password &quot;f00b4r&quot;;
+ user "unprivuser";
+ sudo_password "f00b4r";
  sudo -on;   # turn sudo globaly on
      
  task prepare =&gt; sub {
-    install &quot;apache2&quot;;
-    file &quot;/etc/ntp.conf&quot;,
-       source =&gt; &quot;files/etc/ntp.conf&quot;,
-       owner  =&gt; &quot;root&quot;,
+    install "apache2";
+    file "/etc/ntp.conf",
+       source =&gt; "files/etc/ntp.conf",
+       owner  =&gt; "root",
        mode   =&gt; 640;
  };</code></pre>
 <p>Or, if you don't turning sudo globaly on.</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
-    file &quot;/tmp/foo.txt&quot;,
-       content =&gt; &quot;this file was written without sudo privileges\n&quot;;
+    file "/tmp/foo.txt",
+       content =&gt; "this file was written without sudo privileges\n";
         
     # everything in this section will be executed with sudo privileges
     sudo sub {
-       install &quot;apache2&quot;;
-       file &quot;/tmp/foo2.txt&quot;,
-          content =&gt; &quot;this file was written with sudo privileges\n&quot;;
+       install "apache2";
+       file "/tmp/foo2.txt",
+          content =&gt; "this file was written with sudo privileges\n";
     };
  };</code></pre>
 <p>Run only one command within sudo.</p>
 <pre><code class="perl">
- task &quot;eth1-down&quot;, sub {
-   sudo &quot;ifconfig eth1 down&quot;;
+ task "eth1-down", sub {
+   sudo "ifconfig eth1 down";
  };</code></pre>
 
 </ul>

@@ -55,7 +55,7 @@
  use Data::Dumper;
  use Rex::Commands::LVM;
    
- task &quot;lvm&quot;, sub {
+ task "lvm", sub {
     my @physical_volumes = pvs;
       
     for my $physical_volume (@physical_volumes) {
@@ -71,7 +71,7 @@
  use Data::Dumper;
  use Rex::Commands::LVM;
     
- task &quot;lvm&quot;, sub {
+ task "lvm", sub {
     my @volume_groups = vgs;
       
     for my $volume_group (@volume_groups) {
@@ -87,7 +87,7 @@
  use Data::Dumper;
  use Rex::Commands::LVM;
     
- task &quot;lvm&quot;, sub {
+ task "lvm", sub {
     my @logical_volumes = lvs;
       
     for my $logical_volume (@logical_volumes) {

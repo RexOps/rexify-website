@@ -50,7 +50,7 @@
 <p>This function will check if $variable is defined. If it is defined it will return the value of $variable. If not, it will return $default_value.</p>
 <p>You can use this function inside your templates.</p>
 <pre><code class="perl">
- ServerTokens &lt;%= is_defined($::server_tokens, &quot;Prod&quot;) %&gt;</code></pre>
+ ServerTokens &lt;%= is_defined($::server_tokens, "Prod") %&gt;</code></pre>
 
 </ul>
 
