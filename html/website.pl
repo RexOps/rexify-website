@@ -334,7 +334,7 @@ __DATA__
                <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
 
                <img src="/img/linuxtag.jpg" style="float: left; width: 100px" />
-               <p>We are proud to anounce that Rex will have a booth on the <a href="http://linuxtag.de/">LinuxTag</a>. The LinuxTag will take place in Berlin from 22. - 25. May. LinuxTag is the most popuplar and important conference in the Linux and Open Source scene in Europe.</p>
+               <p>We are proud to announce that Rex will have a booth on the <a href="http://linuxtag.de/">LinuxTag</a>. The LinuxTag will take place in Berlin from 22. - 25. May. LinuxTag is the most popular and important conference in the Linux and Open Source scene in Europe.</p>
                <p>Come and join us, we will do live demostrations with a custom build portable mini datacenter.</p><p>If you want to help us for a day or two don't hesitate to contact <a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
 
                <h2>Need Help?</h2>
