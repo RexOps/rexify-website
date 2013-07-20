@@ -20,6 +20,12 @@
          </ul>
 
          <div class="vspace"></div>
+         <h1>Extended Documentation</h1>
+         <ul class="simple-list">
+            <li><a href="/api/">API Documentation</a></li>
+         </ul>
+ 
+         <div class="vspace"></div>
          <h1>Howtos</h1>
          <ul class="simple-list">
             <li><a href="usermgmt.html">Manage user rollouts</a></li>
