@@ -6,18 +6,52 @@
       <meta name="keywords" content="Guide, Howto, First, Steps">
 % end
 
-         <h1>Howto start using (R)?ex</h1>
-         <p>This is a small howto showing the first steps with (R)?ex.</p>
+<h1>Howto start using (R)?ex</h1>
+<p>This is a small howto showing the first steps with (R)?ex.</p>
 
-         <h2>Preparation</h2>
-         <ul>
-            <li>Download and install rex (See the <a href="/get">get</a> page)</li>
-         </ul>
+<h2>Basic Architecture</h2>
 
-         
+<p style="float: right;"><img src="/img/archi.png" /></p>
 
-         <h2>Creating a Rexfile</h2>
-         <p>At first create a file named <i>Rexfile</i> in your $HOME directory (or anywhere else).</p>
+<p>(R)?ex is a server orchestration tool that doesn't need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.</p>
+<p>To use (R)?ex you don't need Perl knowledge at first. (R)?ex uses a simple DSL to describe your servers. Indeed, it is also possible to use (R)?ex from within your shell scripts without using perl at all.</p>
+<p>In fact, if you know a <a href="/howtos/perl.html">little bit perl</a> it won't hurt you.</p>
+<p>The starting point of every (R)?ex project is the so called <i>Rexfile</i>. You can think of this file like a Makefile. You can define tasks in this file.</p>
+<p>A <i>task</i> is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create <a href="/api/Rex/Transaction.pm.html">rollback szenarios</a> if something went wrong during the execution.</p>
+
+
+<h2>Requirements</h2>
+<p>To run (R)?ex you don't need much.</p>
+<h3>Central Master Host</h3>
+<p>For your central (R)?ex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.</p>
+<p>On this host you also need some Perl modules installed. You can install those modules via your distributions repository or via our (R)?ex repository.</p>
+<ul>
+   <li><a href="https://metacpan.org/module/Net::SSH2">Net::SSH2</a></li>
+   <li><a href="https://metacpan.org/module/YAML">YAML</a></li>
+   <li><a href="https://metacpan.org/module/LWP">LWP</a></li>
+   <li><a href="https://metacpan.org/module/DBI">DBI</a> (if you want to use Database Access)</li>
+   <li><a href="https://metacpan.org/module/JSON::XS">JSON::XS</a> (if you want to use Jiffybox Cloud Provider)</li>
+   <li><a href="https://metacpan.org/module/XML::Simple">XML::Simple</a> (if you want to use FusionInventory for system inventory, for Amazon Cloud Provider and for the Virtualization Commands)</li>
+   <li><a href="https://metacpan.org/module/String::Escape">String::Escape</a> (if you want to define your groups with ini files)</li>
+</ul>
+
+<h3>Managed Hosts</h3>
+
+<p>On the systems you want to manage you just need a Perl 5 interpreter installed and a valid SSH account. If you want to do administrative tasks you need root or sudo access.</p>
+
+<h2>Preparation</h2>
+<p>You can install (R)?ex on a Linux host via a simple one-liner. For other systems please read the instructions on the <a href="/get/">Get Rex</a> page.</p>
+
+<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+
+<p>This command will install Rex onto you system. You need libssh2 development libraries installed for this to work.</p>
+<p>We recommend to use our packages from our <a href="/get/">repository</a>.</p>
+
+
+<h2>Creating a Rexfile</h2>
+<p>First we need to create a new folder to store your Rexfile in it.</p>
+<pre><code class="bash">$ mkdir projects/my-first-rex-project</code></pre>
+<p>Now change into this directory and create a Rexfile.</p>
 
             <pre><code class="perl">user "my-user";
 password "my-password";
@@ -27,16 +61,16 @@ group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
 
 desc "Get the uptime of all server";
 task "uptime", group =&gt; "myserver", sub {
-   say run "uptime";
+   my $output = run "uptime";
+   say $output;
 };</code></pre>
 
          
-
          <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myserver</i> and run the command "uptime".</p>
 
          <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
 
-            <pre><code class="bash">$ cd /home/jan
+            <pre><code class="bash">$ cd projects/my-first-rex-project
 $ rex uptime</code></pre>
 
          
@@ -45,7 +79,7 @@ $ rex uptime</code></pre>
          <p>To add a second task, just add the next lines to your <i>Rexfile</i>.</p>
 
             <pre><code class="perl">desc "Start Apache Service";
-task "free", group =&gt; "myserver", sub {
+task "start_apache", group =&gt; "myserver", sub {
     service "apache2" =&gt; "start";
 } </code></pre>
 
@@ -57,8 +91,60 @@ task "free", group =&gt; "myserver", sub {
          <p>If you want to display all tasks in your Rexfile use the following command.</p>
             <pre><code class="bash">$ rex -T
 Tasks
-  free                           Start Apache Service
+  start_apache                   Start Apache Service
   uptime                         Get the uptime of all server
-Batches </code></pre>
+</code></pre>
 
+<h2>Authentication</h2>
+<p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.</p>
+<p>To use key authentication just define your private and public key inside the Rexfile.</p>
+<pre><code class="perl">user "my-user";
+private_key "/home/user/.ssh/id_rsa";
+public_key "/home/user/.ssh/id_rsa.pub";
+key_auth;</code></pre>
+
+<p>It is also possible to define use your keys with a passphrase. Just add it to your Rexfile.</p>
+<pre><code class="perl">user "my-user";
+private_key "/home/user/.ssh/id_rsa";
+public_key "/home/user/.ssh/id_rsa.pub";
+password "key-passphrase";
+key_auth;</code></pre>
+
+
+<p>If you don't want to add your passphrase to the Rexfile you can also use ssh-agent. (R)?ex will automatically use it when it is running. Just remove the line <i>key_auth;</i>.</p>
+
+<h2>Managing Services</h2>
+
+<p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.</p>
+<p>In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
+
+<pre><code class="perl"># Rexfile
+user "root";
+private_key "/root/.ssh/id_rsa";
+public_key "/root/.ssh/id_rsa.pub";
+
+group all_servers =&gt; "srv[001..150]";
+
+task "setup_ntp", group =&gt; "all_servers", sub {
+
+   # first we will install the package
+   install "ntpd";
+
+   # then we will upload a configuration file.
+   # the configuration file is located in a subdirectory files/etc.
+   file "/etc/ntp.conf",
+      source    =&gt; "files/etc/ntp.conf",
+      on_change =&gt; sub {
+         # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
+         service ntpd =&gt; "restart";
+      };
+
+   # now we register the service to start at boot time.
+   service ntpd =&gt; ensure =&gt; "started";
+};</code></pre>
+
+<p>That's all.</p>
+<p>This task will now install ntpd on your servers, upload a configuration file and start the service.</p>
+<p>You don't need to worry about the order of your commands. (R)?ex will always executes your commands from top to bottom.</p>
+<p>To read more about using modules and templates please read <a href="/howtos/using_templates.html">this howto</a>.</p>
 
