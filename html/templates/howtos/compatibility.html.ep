@@ -25,6 +25,14 @@
          <h2>Manageable Platforms</h2>
 
 
+         <ul>
+            <li><a href="#linux">Linux</a></li>
+            <li><a href="#solaris">Solaris</a></li>
+            <li><a href="#bsd">BSD</a></li>
+            <li><a href="#virtualization">Virtualization</a></li>
+            <li><a href="#embedded">Embedded Systems</a></li>
+         </ul>
+
          
          <table border="0" class="tb-support">
             <tr>
@@ -34,7 +42,7 @@
             </tr>
          </table>
          
-         <h2>Linux</h2>
+         <h2><a name="linux"></a>Linux</h2>
          
 
          <table border="0" class="tb-support">
@@ -49,11 +57,13 @@
                <td>RHEL 5/6</td>
                <td>ScientificLinux</td>
                <td>Ubuntu 10.04 LTS</td>
-               <td>Ubuntu 11.04 LTS</td>
+               <td>Ubuntu 11.04</td>
                <td>Ubuntu 12.04 LTS</td>
+               <td>Ubuntu 13.04</td>
             </tr>
             <tr>
                <td>Cron</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -79,9 +89,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>File Manipulation / Configuration Management</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -107,23 +119,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Hardware Gathering</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-            </tr>
-            <tr>
-               <td>Manage /etc/hosts</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -149,9 +149,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Network Management</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -177,9 +179,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Kernel Operations</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -205,9 +209,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Package Management</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -233,9 +239,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Rsync</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -261,9 +269,11 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage Services</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -289,6 +299,7 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage User- and Groupaccounts</td>
@@ -303,66 +314,13 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
 
          </table>
 
          
-         <a name="virt"></a>
-         <h2>Virtualization</h2>
-         <p>Virtualization was tested under following setups. To use the Virtualization Module libvirt must be installed and configured right.</p>
-         <p>The virtualization module should also work on untested Linux Distributions if you setup libvirt correctly. If you run this module on a distribution not listed please feel free to post your setup on our <a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a>.</p>
-         
-
-         <table border="0" class="tb-support">
-            <tr>
-               <td>&nbsp;</td>
-               <td>XEN 4.0</td>
-               <td>KVM</td>
-            </tr>
-            <tr>
-               <td>CentOS 5</td>
-               <td class="supported">&nbsp;</td>
-               <td class="">&nbsp;</td>
-            </tr>
-            <tr>
-               <td>CentOS 6</td>
-               <td class="">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-            </tr>
-
-
-            <tr>
-               <td>Debian Squeeze</td>
-               <td class="supported">&nbsp;</td>
-               <td class="">&nbsp;</td>
-            </tr>
-
-            <tr>
-               <td>Fedora 15</td>
-               <td class="">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-            </tr>
-
-            <tr>
-               <td>Ubuntu 10.04</td>
-               <td class="">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-            </tr>
-            <tr>
-               <td>Ubuntu 11.04</td>
-               <td class="">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-            </tr>
-
-
-         </table>
-
-
-         
-
-         
-         <h2>Solaris</h2>
+         <h2><a name="solaris"></a>Solaris</h2>
          
 
          <table border="0" class="tb-support">
@@ -449,9 +407,8 @@
 
          </table>
 
-            
-         
-         <h2>BSD</h2>
+
+         <h2><a name="bsd"></a>BSD</h2>
          
 
          <table border="0" class="tb-support">
@@ -560,4 +517,145 @@
 
          </table>
 
+
+
+
+         <h2><a name="virtualization"></a>Virtualization</h2>
+         <p>Virtualization was tested under following setups. To use the Virtualization Module libvirt must be installed and configured right.</p>
+         <p>The virtualization module should also work on untested Linux Distributions if you setup libvirt correctly. If you run this module on a distribution not listed please feel free to post your setup on our <a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a>.</p>
+         
+
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>XEN 4.0</td>
+               <td>KVM</td>
+            </tr>
+            <tr>
+               <td>CentOS 5</td>
+               <td class="supported">&nbsp;</td>
+               <td class="">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>CentOS 6</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+
+            <tr>
+               <td>Debian Squeeze</td>
+               <td class="supported">&nbsp;</td>
+               <td class="">&nbsp;</td>
+            </tr>
+
+            <tr>
+               <td>Fedora 15</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+            <tr>
+               <td>Ubuntu 10.04</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Ubuntu 11.04</td>
+               <td class="">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+
+
+         </table>
+
+
+         
+
+         
             
+         
+            
+         <h2><a name="embedded"></a>Embedded Systems</h2>
+         <table border="0" class="tb-support">
+            <tr>
+               <td>&nbsp;</td>
+               <td>OpenWrt 12.09</td>
+            </tr>
+            <tr>
+               <td>Cron</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Transfer</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>File Manipulation / Configuration Management</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Filesystem Operations</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Hardware Gathering</td>
+               <td class="supported"><b>*</b></td>
+            </tr>
+            <tr>
+               <td>Inventory</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Network Management</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>IPTables</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Kernel Operations</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>LVM</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Package Management</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Process Management</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Rsync</td>
+               <td class="not-supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Execute Commands</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage Services</td>
+               <td class="part-supported"><b>*</b></td>
+            </tr>
+            <tr>
+               <td>Manage Sysctl Entries</td>
+               <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage User- and Groupaccounts</td>
+               <td class="supported"><b>*</b></td>
+            </tr>
+
+         </table>
+
+         <p>&nbsp;</p>
+
+         <p>For OpenWrt support you need to install <i>perl</i>, <i>shadow-groupadd</i>, <i>shadow-useradd</i> and <i>dmidecode</i>.
+         There is also one limitation for service management. OpenWrt init scripts doesn't support the <i>status</i> argument. So you can't get the status of a service via the service() function.</p>
+
+
