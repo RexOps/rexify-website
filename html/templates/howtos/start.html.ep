@@ -23,6 +23,7 @@
 <h2>Requirements</h2>
 <p>To run (R)?ex you don't need much.</p>
 <h3>Central Master Host</h3>
+<p>You can run (R)?ex from your workstation or on a central master host.</p>
 <p>For your central (R)?ex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.</p>
 <p>On this host you also need some Perl modules installed. You can install those modules via your distributions repository or via our (R)?ex repository.</p>
 <ul>
@@ -45,7 +46,7 @@
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>This command will install Rex onto you system. You need libssh2 development libraries installed for this to work.</p>
-<p>We recommend to use our packages from our <a href="/get/">repository</a>.</p>
+<p><b>We recommend</b> to use our packages from the <a href="/get/">repository</a>.</p>
 
 
 <h2>Creating a Rexfile</h2>
@@ -103,7 +104,7 @@ private_key "/home/user/.ssh/id_rsa";
 public_key "/home/user/.ssh/id_rsa.pub";
 key_auth;</code></pre>
 
-<p>It is also possible to define use your keys with a passphrase. Just add it to your Rexfile.</p>
+<p>It is also possible to use your keys with a passphrase. Just add it to your Rexfile.</p>
 <pre><code class="perl">user "my-user";
 private_key "/home/user/.ssh/id_rsa";
 public_key "/home/user/.ssh/id_rsa.pub";
