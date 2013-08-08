@@ -28,7 +28,7 @@
          <div class="vspace"></div>
          <h1>Howtos</h1>
          <ul class="simple-list">
-            <li><a href="shell-scripting.html">Use Rex from within your shell scripts</a></li>
+            <!--            <li><a href="shell-scripting.html">Use Rex from within your shell scripts</a></li> -->
             <li><a href="usermgmt.html">Manage user rollouts</a></li>
             <li><a href="amazon.html">Manage your Amazon EC2 instances</a></li>
             <li><a href="apache-vhosts.html">Manage Apache VirtualHosts in a MySQL database</a></li>
