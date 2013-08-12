@@ -15,6 +15,7 @@ plugin 'RenderFile';
 
 get '/' => sub {
    my ($self) = @_;
+   $self->stash("no_network", 1);
    $self->stash("no_side_bar", 0);
    $self->render("index", root => 1, cat => "", no_disqus => 1);
 };
@@ -99,6 +100,8 @@ get '/*file' => sub {
    $cat ||= "";
    $self->stash("cat", $cat);
 
+   $self->stash("no_network", 1);
+
    if($template eq "howtos/compatibility.html") {
       $self->stash("no_side_bar", 1);
    }
@@ -107,19 +110,19 @@ get '/*file' => sub {
    }
 
    if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template", no_disqus => 0, root => 0);
+      return $self->render_file(filepath => "public/$template", no_disqus => 1, root => 0);
    }
 
    if(-d "templates/$template") {
-      return $self->redirect_to("$template/index.html", root => 0);
+      return $self->redirect_to("$template/index.html", root => 0, no_disqus => 1);
    }
 
    if(-f "templates/$template.ep") {
       $template =~ s/\.html$//;
-      $self->render($template, no_disqus => 0, root => 0);
+      $self->render($template, no_disqus => 1, root => 0);
    }
    else {
-      $self->render('404', status => 404, no_disqus => 1, root => 0);
+      $self->render('404', status => 404, no_disqus => 1, root => 0); # hier war 1
    }
 
 };
@@ -241,7 +244,7 @@ __DATA__
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
 
-      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link href="/css/magula.min.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
       <link rel="stylesheet" href="/css/default.css?20130325" type="text/css" media="screen" charset="utf-8" />
 
@@ -377,13 +380,16 @@ __DATA__
       </div> <!-- page -->
       
 
+      % if(! $no_network) {
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+     % }
 
 
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
 
+   % if(! $no_network) {
 <!-- Piwik --> 
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://rexify.org/stats/" : "http://rexify.org/stats/");
@@ -396,9 +402,9 @@ piwikTracker.enableLinkTracking();
 } catch( err ) {}
 </script><noscript><p><img src="http://rexify.org/stats/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
 <!-- End Piwik Tracking Code -->
+   % }
 
-
-<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+<script src="/js/highlight.min.js"></script>
 <script>
   hljs.tabReplace = '    ';
   hljs.initHighlightingOnLoad();

@@ -1,0 +1,71 @@
+% layout 'default';
+% title 'The Rex Book / Using templates';
+
+% content_for header => begin
+      <meta name="description" content="Using templates">
+      <meta name="keywords" content="Rex, templates">
+% end
+
+<h1>Using templates</h1>
+
+<p>A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.</p>
+
+<p>The default template engine is a special Rex template engine. The syntax is a bit like php or erb. But you can use any template engine you want. Just browse <a href="#">cpan</a> and find one you like.</p>
+
+<p>For example:</p>
+
+<pre><code class="perl">Hello &lt;%= $name %&gt;!</code></pre>
+
+<p>If $name contains "World" this template would result in the string <i>Hello World!</i>. This is very usefull if you have to maintain a large set of nearly identical configuration files.</p>
+
+<h2>Working with a template</h2>
+
+<p>First you have to create it</p>
+
+<pre><code class="bash">$ mkdir files
+$ vim files/my.cnf.tpl</code></pre>
+
+<pre><code class="bash">[mysqld]
+datadir                 = /var/lib/mysql
+socket                  = /var/run/mysqld/mysqld.sock
+user                    = mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links          = 0
+datadir                 = /var/lib/mysql
+tmpdir                  = /tmp
+skip-external-locking
+max_allowed_packet      = 64M
+thread_stack            = 192K
+max_connections         = &lt;%= exists $conf{"max_connections"} ? $conf{"max_connections"} : "1000" %&gt;
+
+max_connect_errors      = 1000
+table_cache             = &lt;%= exists $conf{"table_cache"} ? $conf{"table_cache"} : "5000" %&gt;
+table_open_cache        = &lt;%= exists $conf{"table_open_cache"} ? $conf{"table_open_cache"} : "5000" %&gt;
+thread_concurrency      = 10
+
+#
+# ... and more ...
+#</code></pre>
+
+
+<p>Than you can reference on it from within your Rexfile.</p>
+
+<pre><code class="perl">use Rex -base;
+
+user "root";
+key_auth;
+
+group databases=&gt; "mydb01", "mydb02";
+
+task "prepare_databases", group =&gt; "databases", sub {
+   file "/etc/my.cnf",
+      owner   =&gt; "root",
+      group   =&gt; "root",
+      mode    =&gt; "644",
+      content =&gt; template("files/my.cnf.tpl", conf =&gt; {
+                             max_connections =&gt; "500",
+                             table_cache     =&gt; "2500",
+                          });
+};</code></pre>
+
+<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>

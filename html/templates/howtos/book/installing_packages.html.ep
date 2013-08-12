@@ -1,0 +1,48 @@
+% layout 'default';
+% title 'The Rex Book / Installing Packages';
+
+% content_for header => begin
+      <meta name="description" content="Installing packages">
+      <meta name="keywords" content="Rex, packages, installation">
+% end
+
+<h1>Installing Packages</h1>
+
+<p>Installing packages is easy. You can use the <i>install</i> function for this.</p>
+
+<pre><code class="perl">use Rex -base;
+
+user "root";
+password "f00b4r";
+
+task "prepare_system", group =&gt; "frontends", sub {
+   install "apache2";
+};</code></pre>
+
+<p>If you have to install multiple packages you can use an array so that you don't have to write that much.</p>
+<pre><code class="perl">use Rex -base;
+
+user "root";
+password "f00b4r";
+
+task "prepare_system", group =&gt; "frontends", sub {
+   install ["apache2", "libphp5-apache2", "mysql-server"];
+};</code></pre>
+
+<p>If you need to write a distribution independent module you can also use the <a href="#">case</a> statement.</p>
+
+<pre><code class="perl">user Rex -base;
+
+user "root";
+password "f00b4r";
+
+task "prepare_system", group =&gt; "frontends", sub {
+   my $packages = case operating_system,
+      Debian =&gt; ["apache2", "libphp5-apache2"],
+      CentOS =&gt; ["httpd", "php5"],
+
+   install $packages;
+};
+</code></pre>
+
+

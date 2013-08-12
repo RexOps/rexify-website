@@ -1,0 +1,12 @@
+% layout 'default';
+% title 'The Rex Book / Using Environments';
+
+% content_for header => begin
+      <meta name="description" content="Using environments">
+      <meta name="keywords" content="Rex, Environments, Stage, Live, Prelive, integration">
+% end
+
+<h1>Using Environments</h1>
+
+
+
