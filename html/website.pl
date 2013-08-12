@@ -298,7 +298,7 @@ __DATA__
 
                <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
-                  <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slidshare</a>.</div>
+                  <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
                </div>
 
 
