@@ -297,6 +297,12 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2013-08-12</div>
+                  <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slidshare</a>.</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-06-16</div>
                   <div class="news_content">(R)?ex 0.42.0 released. This release brings support to use Net::OpenSSH as transport layer. The default is still Net::SSH2. But now it is possible to use all features from your $HOME/.ssh/config file and to use Kerberos Authentication. See a list of all changes with example in the <a href="https://github.com/krimdomu/Rex/wiki/New0.42">Changelog</a>.</div>
                </div>
