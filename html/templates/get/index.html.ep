@@ -7,14 +7,13 @@
 % end
 
 
-<h1>Get Rex</h1>
+<h1>安装 Rex</h1>
 
-<p>You can install Rex with a simple one-liner</p>
+<p>你可以在命令行使用单行安装</p>
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>Linux</h2>
-<p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown.</p>
-
+<p>Rex 已经有了许多版本的包. wget -O - 只需要你选着你的安装版本 然后一步一步的安装它.</p>
 
 <div style="foat: left"> <!-- needed for bootstrap ... -->
  <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
@@ -130,21 +129,12 @@ yum install rex</code></pre>
 
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.3/x86_64/ rex
-zypper install rex</code></pre>
-
-         <h3>For 12.1</h3>
-
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/12.1/x86_64/ rex
-zypper install rex</code></pre>
 
          <h3>For 11.4</h3>
 
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/11.4/x86_64/ rex
 zypper install rex</code></pre>
-
- 
        </div>
        <div class="tab-pane" id="tab6">
          <h3>Mageia 1</h3>
@@ -174,30 +164,31 @@ yum install rex</code></pre>
  </div>
 </div>
 
- <h2>Apple Mac OS X</h2>
+<h2>Apple Mac OS X</h2>
 
-<p>To install Rex on Mac OSX you have to install <a href="http://libssh2.org/">libssh2</a> first. You can do this with <a href="http://www.macports.org/">MacPorts</a> or with <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
-<p>We recommend using MacPorts. First you need to install XCode. After you've installed it you'll find a package for your system <a href="http://www.macports.org/install.php">here</a>.</p>
-<p>If you're using homebrew we recommend to install a custom perl with <a href="http://perlbrew.pl/">Perlbrew</a>.</p>
+<p>在mac os 首先安装 <a href="http://libssh2.org/">libssh2</a> . 你可以通过  <a href="http://www.macports.org/">MacPorts</a> 或者 <a href="http://mxcl.github.com/homebrew/">Homebrew</a>进行安装.</p>
+<p>我们推荐使用 Macports，不过首先你应该先安装好 XCode，然后你可以从
+<a href="http://www.macports.org/install.php">这里</a>找到对应你系统的包了。</p>
 
-<p>Installation instructions for MacPorts:</p>
+<p>如果你用homebrew 安装 我记得应该安装好 <a href="http://perlbrew.pl/">Perlbrew</a>.</p>
+
+<p>MacPort 的安装方式:</p>
 <pre><code class="bash">sudo port install libssh2 perl5
 curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
  
 
 <h2>Microsoft Windows</h2>
-
-<p>Tested with Windows Vista and Windows 7 (64bit) and Strawberry Perl 5.x</p>
-<p>Start a CMD window and type:</p>
+<p>只在 Windows Vista 和 Windows 7 (64bit) 上用 Strawberry Perl 5.x 测试通过。</p>
+<p>打开 CMD 窗口然后输入:</p>
 
 <pre><code class="bash">cpanm Rex</code></pre>
 
-<p>If you want to use <a href="http://box.rexify.org/">Rex/Boxes</a> you need to add the installation path of VirtualBox to your <i>PATH</i> environment variable. The default installation path is <i>C:\Program Files\Oracle\VirtualBox</i>. If you need instructions how to do that you can read this article on <a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
+<p>如果你想用 <a href="http://box.rexify.org/">Rex/Boxes</a> 你需要把你的 VirtualBox 安装路径添加到你的 <i>PATH</i> 环境变量中。默认路径应该是 <i>C:\Program Files\Oracle\VirtualBox</i>。更详细的介绍可以读这篇文章：<a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
 
 
-<h2>Other / From Source</h2>
+<h2>其他 / 基于源码安装</h2>
 
-<p>If you want to download the latest sources from Github you can do it this way. The master branch is the current latest stable version. Every development is done in its own version branch.</p>
+<p>如果你想安装最新的版本你可以在github 上下载，主分支是当前最稳定的版本，每一个开发者都在自己的分支上开发</p>
 
 <pre><code class="bash">git clone https://github.com/krimdomu/Rex.git
 cd Rex
@@ -206,9 +197,9 @@ make
 make test
 make install</code></pre>
 
-<p>You can also use the CPAN shell to install Rex. This will download the latest release form CPAN.</p>
+<p>你可以用Perl 的CPAN 安装Rex .也是安装最新版本</p>
 <pre><code class="bash">perl -MCPAN -eshell
 cpan[1]&gt; install Rex</code></pre>
 
-<p><small><i>All logos are registered trademarks of their respective companies and are not affiliated with and do not necessarily indicate that they either sponsor or endorse the services of rexify.org (and Rex).</i></small></p>
+<p><small><i>所有的商标都是其各自公司注册，不隶属且不一定代表他们赞助和支持了 rexify.org (和 Rex).</i></small></p>
 

@@ -6,13 +6,13 @@
       <meta name="keywords" content="FAQ, run, authentication">
 % end
 
-<h1>FAQ</h1>
-<p>Here we will maintain a list of frequently asked questions with their answers.</p>
+<h1>常见问题</h1>
+<p>这里我们将维护一个常见问题列表和答案.</p>
 
 <div class="vspace"></div>
-<h2>Why does the run command doesn't format the output?</h2>
-<p>The <i>run</i> command - called in array context - will return an array.</p>
-<p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
+<h2>为什么 run 命令不格式化输出</h2>
+<p>这个<i>run</i>命令是一个数组上下文 -- 它将返回一个数组.</p>
+<p>如果你想打印输出到终端， 你可以强制标量上下文.</p>
    <pre><code class="perl">my $output = run "df -h";
 say $output;</code></pre>
 

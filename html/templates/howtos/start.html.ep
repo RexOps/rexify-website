@@ -6,10 +6,10 @@
       <meta name="keywords" content="Guide, Howto, First, Steps">
 % end
 
-<h1>Howto start using (R)?ex</h1>
-<p>This is a small howto showing the first steps with (R)?ex.</p>
+<h1>如何开始使用 (R)?ex</h1>
+<p>(R)?ex 开始第一步 参考</p>
 
-<h2>Basic Architecture</h2>
+<h2>基础架构</h2>
 
 <p style="float: right;"><img src="/img/archi.png" /></p>
 
@@ -40,17 +40,17 @@
 
 <p>On the systems you want to manage you just need a Perl 5 interpreter installed and a valid SSH account. If you want to do administrative tasks you need root or sudo access.</p>
 
-<h2>Preparation</h2>
+<h2>准备</h2>
 <p>You can install (R)?ex on a Linux host via a simple one-liner. For other systems please read the instructions on the <a href="/get/">Get Rex</a> page.</p>
 
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>This command will install Rex onto you system. You need libssh2 development libraries installed for this to work.</p>
-<p><b>We recommend</b> to use our packages from the <a href="/get/">repository</a>.</p>
+<p><b>我们建议</b>使用 <a href="/get">源</a> 里已有的包。</p>
 
 
-<h2>Creating a Rexfile</h2>
-<p>First we need to create a new folder to store your Rexfile in it.</p>
+<h2>创建一个Rexfile</h2>
+<p>第一步我们需要创建一个新目录来存储你的 Rexfile 文件。</p>
 <pre><code class="bash">$ mkdir projects/my-first-rex-project</code></pre>
 <p>Now change into this directory and create a Rexfile.</p>
 
@@ -67,29 +67,29 @@ task "uptime", group =&gt; "myserver", sub {
 };</code></pre>
 
          
-         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myserver</i> and run the command "uptime".</p>
+         <p>这个例子将会用<i>my-user</i>和<i>my-password</i> 登陆 <i>myserver</i> 服务器组里的所有机器，然后执行<i>uptime</i> 命令.</p>
 
-         <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
+         <p>进入到你创建的 <i>Rexfile</i>目录下 (在终端中).</p>
 
             <pre><code class="bash">$ cd projects/my-first-rex-project
+
 $ rex uptime</code></pre>
 
          
-
-         <h2>Adding a second task</h2>
-         <p>To add a second task, just add the next lines to your <i>Rexfile</i>.</p>
+         <h2>添加第二task </h2>
+         <p>添加第二个task,只需要在<i>Rexfile</i>下一行添加如下.</p>
 
             <pre><code class="perl">desc "Start Apache Service";
 task "start_apache", group =&gt; "myserver", sub {
     service "apache2" =&gt; "start";
 } </code></pre>
 
-         <p>This task will start the service <i>apache2</i> on all the servers in the <i>myserver</i> group.</p>
+         <p>这个task 将开启在 <i>myserver</i>组里的所有服务器的 <i>apache2</i> .</p>
 
          
-         <h2>Display all tasks in a Rexfile</h2>
+         <h2>显示所有的Rexfile 文件中的task</h2>
 
-         <p>If you want to display all tasks in your Rexfile use the following command.</p>
+         <p>显示所有的Rexfile 文件中的task 可以这样做.</p>
             <pre><code class="bash">$ rex -T
 Tasks
   start_apache                   Start Apache Service
@@ -148,4 +148,3 @@ task "setup_ntp", group =&gt; "all_servers", sub {
 <p>This task will now install ntpd on your servers, upload a configuration file and start the service.</p>
 <p>You don't need to worry about the order of your commands. (R)?ex will always executes your commands from top to bottom.</p>
 <p>To read more about using modules and templates please read <a href="/howtos/using_templates.html">this howto</a>.</p>
-

@@ -6,22 +6,22 @@
       <meta name="keywords" content="Amazon, EC2, Manage, Deploy, Automation">
 % end
       
-         <h1>Starting Point</h1>
-         <p>In this howto i will show you how to create and manage your Amazon EC2 instances.</p>
+         <h1>开始</h1>
+         <p>怎么管理和创建的你的Amazon EC2 实例.</p>
 
          
-         <h1>Preparation</h1>
+         <h1>准备</h1>
          <ul class="simple-list">
-            <li>Register at http://aws.amazon.com/de/</li>
-            <li>Get your AccessKey and your Secret AccessKey</li>
-            <li>Create a key-pair and save it to your disk</li>
-            <li>Create a public key out of your just downloaded private key. You can do this with <i>ssh-keygen -y -f your-aws-private-key.pem</i></li>
+            <li>注册你的 amazone 账号</li>
+            <li>得到你的Accesskey 和 Secret AccessKey</li>
+            <li>创建一个 key 保存到本地</li>
+            <li>从刚刚下载的私钥创建出公钥。 你可以这样<i>ssh-keygen -y -f your-aws-private-key.pem</i></li>
          </ul>
 
          
-         <h1>Creating a Rexfile</h1>
+         <h1>创建一个 Rexfile</h1>
 
-         <p>At first you need to create a <i>Rexfile</i> in a directory of your choice.</p>
+         <p>首先在你的目录下建立一个 <i>Rexfile</i> .</p>
 
 
             <pre><code class="bash">$ mkdir amazon
@@ -29,10 +29,9 @@ $ cd amazon
 $ touch Rexfile</code></pre>
 
          
-         <p>Open the Rexfile in your preferred editor.</p>
+         <p>编辑你的Rexfile 文件.</p>
 
-         
-         <p>Insert the following code in your new Rexfile.</p>
+         <p>在 Rexfile 中插入下面的代码.</p>
 
             <pre><code class="perl">use Rex::Commands::Cloud;
 
@@ -55,12 +54,12 @@ task "create", sub {
          };
 };</code></pre>
 
-         <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
+         <p>这个task 创建一个新的 不带 EBS 块设备的 Amazon EC2 实例。</p>
 
          
-         <h2>Create an instance with an EBS block volume</h2>
+         <h2>创建一个实例在EBS block 卷上</h2>
 
-         <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
+         <p>有时你需要一个实例运行在稳定的存储上. 这个列子可以完成你使用EBS block 卷.</p>
 
             <pre><code class="perl">task "create", sub {
    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
@@ -76,9 +75,9 @@ task "create", sub {
 };</code></pre>
 
          
-         <h2>Listing Regions and zones</h2>
+         <h2>列出地域和地区</h2>
 
-         <p>To get a list of all regions and zone you can use the following functions.</p>
+         <p>你可以使用下面这个函数.</p>
 
             <pre><code class="perl">task "list", sub {
    print Dumper get_cloud_regions;
@@ -86,9 +85,9 @@ task "create", sub {
 };</code></pre>
 
          
-         <h2>List your instances</h2>
+         <h2>列出你的实例</h2>
 
-         <p>To get a list of all your instances and volumes you can use these functions.</p>
+         <p>你可以使用下面的函数列出你的实例和存储卷.</p>
 
             <pre><code class="perl">task "list", sub {
    print Dumper cloud_instance_list;
@@ -96,9 +95,9 @@ task "create", sub {
 };</code></pre>
  
          
-         <h2>Destroy your instances / volumes</h2>
+         <h2>删除实例 或者  存储卷</h2>
 
-         <p>If you don't need your instances or volumes anymore, you can just destroy them.</p>
+         <p>你不需要这些实例或者存储卷的时候 可以是用下面的函数删除.</p>
 
             <pre><code class="perl">task "destroy", sub {
    cloud_volume delete =&gt; "$volume_id";
@@ -107,17 +106,16 @@ task "create", sub {
  
 
          
-         <h2>Put all your EC2 instances in a host group</h2>
+         <h2>添加 实例到你的主机组中</h2>
 
-         <p>If you have many instances you can easily add them all into a hostgroup.</p>
+         <p>你可以使用下面的函数轻松添加主机组中.</p>
 
             <pre><code class="perl">group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
 
 
 
-         
-         <h2>Installing some Software and run Rex</h2>
-         <p>Now we need to add some software to our fresh EC2 instance.</p>
+         <h2>安装一些软件然后运行 Rex</h2>
+         <p>现在我们需要给我们全新的 EC2 实例添加一些软件。</p>
 
             <pre><code class="perl">task "prepare", group =&gt; "ec2", sub {
    run "apt-get update";
@@ -138,7 +136,7 @@ task "create", sub {
 };</code></pre>
 
          
-         <p>Now you can run Rex to create the instance and prepare the system for use.</p>
+         <p>现在可以运行 rex 创建实例并准备好直接可用的系统了。</p>
 
             <pre><code class="bash">$ rex create prepare
 [2011-08-06 10:25:58] (5783) - INFO - Running task: create

@@ -6,51 +6,47 @@
       <meta name="keywords" content="Rex, Apache, Virtualhosts, Virtual, Hosts, Linux, MySQL, Database">
 % end
       
-         <h1>Starting Point</h1>
-         <p>This is a small example that will show you how to deploy the configuration for virtual hosts for the <a href="http://httpd.apache.org/">Apache</a> Webserver managed in a MySQL Database.</p>
-
+         
+         <h1>开始</h1>
+         <p>这是一个小示例，展示怎么管理部署一个配置都存在 MySQL 数据库里的 Apache 虚拟主机服务。</p>
          
 
-         <h2>Preparation</h2>
+         <h2>准备</h2>
          <ul>
-            <li>Download and install rex &gt;= 0.4 (<a href="https://github.com/krimdomu/Rex">github</a> Branch: master)</li>
-            <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
+            <li>下载和安装 rex &gt;= 0.4 (<a href="https://github.com/krimdomu/Rex">github</a> Branch: master)</li>
+            <li>安装一个干净的 <a href="http://www.debian.org/">Debian Squeeze</a> 虚拟机.
                <ul>
-                  <li>This server will be our webserver.</li>
-                  <li>Create an SSH-Key and upload the public-key to your server to the root user (/root/.ssh/authorized_keys).</li>
-                  <li>Install openssh server</li>
-                  <li>Name: www01</li>
+                  <li>这个服务器将会是我们的 webserver.</li>
+                  <li>创建和上传你的 key 到根用户(/root/.ssh/authorized_keys).</li>
+                  <li>安装 openssh-server 服务</li>
+                  <li>主机名: www01</li>
                </ul>
             </li>
-            <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
+            <li>安装一个干净的 <a href="http://www.debian.org/">Debian Squeeze</a> .
                <ul>
-                  <li>This Server will be our database server where we host the configuration database for the virtual hosts.</li>
-                  <li>Install mysql-server</li>
-                  <li>Edit /etc/mysql/my.cnf so that remote clients can connect to that server</li>
-                  <li>Name: db01</li>
+                  <li>这个服务器将会是 mysql 服务器，存储了虚拟主机的配置。</li>
+                  <li>安装 mysql 服务</li>
+                  <li>编辑 /etc/mysql/my.cnf 让远程能够访问这个服务</li>
+                  <li>主机名: db01</li>
                </ul>
             </li>
          </ul>
 
          
-
-         <h2>Creating a (R)?ex Project</h2>
-         <p>At first we create a new (R)?ex Project.</p>
+         <h2>创建 (R)?ex 项目</h2>
+         <p>首先创建一个新的 (R)?ex 项目。</p>
             <pre><code class="bash">$ rexify mysite</code></pre>
 
-         
-         <p>This command will create a directory called <i>mysite</i>. Change into that directory.</p>
-
+         <p>这个命令会创建一个叫做 <i>mysite</i> 的目录，进入这个目录。</p>
             <pre><code class="bash">$ cd mysite
 $ ls -l
 -rw-r--r--  1 jan  staff  359 16 Apr 14:08 Rexfile
 drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
 
-         <p>You'll see one file and one directory. In the file <i>Rexfile</i> you can configure your servers and the authentication. You can also include Modules there. We will do this later.</p>
+         <p>你会看到一个文件盒一个目录，在文件 <i>Rexfile</i> 里你可以配置你的服务器和认证信息。也可以加载模块，这一步稍后再说。</p>
 
          
-
-         <p>Open the file <i>Rexfile</i> and change it to suite your needs.</p>
+         <p>编辑 <i>Rexfile</i> .</p>
 
             <pre><code class="perl">use lib 'lib';
 
@@ -76,8 +72,8 @@ group "servers" =&gt; "www01";
 # now load every module via ,,require''
 require Rex::mysite;</code></pre>
 
-         <p>The <i>Rexfile</i> is a normal Perl Code Snippet.</p>
-         <p>After you have changed the <i>Rexfile</i> you can just test it.</p>
+         <p>这个 <i>Rexfile</i> 就是标准的 Perl 代码。</p>
+         <p>完成 <i>Rexfile</i> 后你就可以测试他的效果了。</p>
 
             <pre><code class="bash">$ rex -T
 Rexfile syntax OK
@@ -87,7 +83,7 @@ Batches</code></pre>
 
          
 
-         <p><i>rexify</i> created a small test task (mysite:uptime). If you run this command you will get the uptime of the systems you have defined in the <i>servers</i> group.</p>
+         <p><i>rexify</i> 创建一个小任务 (mysite:uptime)。如果你运行这个命令，你会看到在 <i>servers</i> 组里定义的系统的 uptime 输出。 </p>
 
 
             <pre><code class="bash">$ rex mysite:uptime
@@ -98,10 +94,10 @@ Rexfile syntax OK
 
          
 
-         <h2>Creating the Management Database</h2>
+         <h2>创建数据库</h2>
          
 
-         <p>First, we need to create a simple database layout and a database user.</p>
+         <p>首先，创建数据库和用户.</p>
 
             <pre><code class="sql">[root@db01] $ mysql -uroot
 CREATE DATABASE apache;
@@ -127,12 +123,13 @@ INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory)
                   VALUES(1, 'domain4.tld', 'www.domain4.tld', '/var/www/hosts/domain4.tld'); </code></pre>
          
 
-         <h2>Creating the Configuration Task</h2>
+
+         <h2>创建一个数据库配置文件</h2>
          
-         <p>Now it's time to create the Task that will create the configuration files out of a template.</p>
+         <p>这时需要一个配置文件模板.</p>
 
          
-         <p>Create the file <i>lib/Rex/Apache/VHost.pm</i></p>
+         <p>创建 <i>lib/Rex/Apache/VHost.pm</i></p>
 
             <pre><code class="perl">package Rex::Apache::VHost;
 
@@ -165,11 +162,11 @@ task "create", sub {
 1; </code></pre>
 
          
-         <p>Here we create one task <i>create</i>. In that task we select from the table <i>virtual_hosts</i> every row that is enabled (<i>enabled=1</i>) and save all the returned rows in the array <i>@data</i>.</p>
-         <p>After this we deploy the file <i>/etc/apache2/sites-enabled/vhosts.conf</i> through the template file <i>files/vhost.tpl</i>.</p>
+         <p>我们创建了 <i>create</i> 任务. 任务中我们将选中 <i>virtual_hosts</i>表里开启 (<i>enabled=1</i>) 了的每一行，保存所有的返回给数组 <i>@data</i>.</p>
+         <p>然后我们通过模板 <i>files/vhost.tpl</i> 创建 <i>/etc/apache2/sites-enabled/vhosts.conf</i>.</p>
 
          
-         <p>Now we need to create the file <i>files/vhost.tpl</i></p>
+         <p>现在需要创建 <i>files/vhost.tpl</i></p>
             <pre><code class="bash">$ mkdir files
 cat &gt;files/vhost.tpl&lt;&lt;EOF
 
@@ -206,12 +203,12 @@ NameVirtualHost &lt;%= $::eth0_ip %&gt;:80
 EOF</code></pre>
 
          
-         <h2>The last step</h2>
+         <h2>最后一步</h2>
          
-         <p>Now we have defined all tasks, but we haven't defined on which servers they should run on.</p>
+         <p>我们已经定义好了所有的人物，但是还没定义他们应该在哪运行。</p>
 
          
-         <p>Open the file <i>lib/Rex/mysite.pm</i></p>
+         <p>编辑 <i>lib/Rex/mysite.pm</i></p>
 
             <pre><code class="perl">package Rex::mysite;
 
@@ -230,20 +227,20 @@ task "vhosts", group =&gt; 'servers', sub {
 
 1; </code></pre>
 
-          <p>Here we define a task to deploy our Apache Virtual Host configuration onb all servers in the <i>servers</i> group.</p>
+          <p>这里定义了apache 在 <i>servers</i> 组中.</p>
 
           
 
-          <p>Open the <i>Rexfile</i> and include all our modules at the bottom.</p>
+          <p>编辑 <i>Rexfile</i> 导入我们写的apache 模块.</p>
 
 
             <pre><code class="perl">require Rex::Apache::VHost;</code></pre>
 
          
-         <h2>Running the task</h2>
+         <h2>运行任务</h2>
          
-         <p>Now we are ready to run our task on our servers.</p>
-         <p>Lets list all our tasks first.</p>
+         <p>现在我们已经可以运行任务到server 上了。.</p>
+         <p>让我们列出所有的task 吧.</p>
 
             <pre><code class="bash">$ rex -T
 Rexfile syntax OK
@@ -254,7 +251,7 @@ Tasks
 Batches </code></pre>
          
 
-         <p>And now we will deploy our servers.</p>
+         <p>发布到我们server 上.</p>
 
             <pre><code class="bash">$ rex mysite:vhosts
 Rexfile syntax OK
@@ -264,7 +261,7 @@ Rexfile syntax OK
 
          
 
-         <p>If you want, you can run tasks on other machines as defined. Perhaps when you need to install a new server.</p>
+         <p>如果你想运行这个任务到其他的服务器上，你可以这样.</p>
 
             <pre><code class="bash">$ rex -H "mynewserver" mysite:vhosts</code></pre>
 

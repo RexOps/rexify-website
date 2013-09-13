@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Contribute to Rex';
+% title '贡献 Rex';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - Contribute to Rex">
@@ -7,31 +7,29 @@
 % end
 
 
-
-      <h1>Contribute to (R)?ex</h1>
-      <p>There is no company behind (R)?ex. Everything is developed by volunteers arround the globe during their free time. (R)?ex is a free, open source project. Every contribution is welcome.</p>
-
-      <div class="vspace"></div>
-      <h1>Documentation</h1>
-      <p>The success of every project is its documentation. If there is no documentation a project won't be successfull. So one part where you can help is writing userfriendly documentation.</p>
-      <div class="small-vspace"></div>
-      <p>It is often hard to find a good balance between documenting new features (or remove deprecated documentation) and writing new code. So if you find outdated documentation, want to add guides, tweak the design or rewrite the complete webpage, don't hesitate contacting us.</p>
-      <div class="small-vspace"></div>
-      <p>You can clone the website code from <a href="https://github.com/krimdomu/rexify-website">Github</a>. Please read the README file on how to get the website up and running on your local machine.</p>
+      <h1>贡献 (R)?ex</h1>
+      <p>(R)?ex 是没有一个背景的组织. 一切都是由志愿者在他们生活和工作的的空闲时间开发. (R)?ex 它是免费的开源项目.我们欢迎每一个贡献者.</p>
 
       <div class="vspace"></div>
-      <h1>Code</h1>
-      <p>If you want to contribute new functionality or fix things, you can just <a href="https://github.com/krimdomu">clone the repository</a> on Github and send Pull Requests.</p>
+      <h1>文档</h1>
+      <p>每一个成功的项目都离不开他的文档,如果没有文档他将不会成功.所以希望你也能写出友好的文档</p>
       <div class="small-vspace"></div>
-
-      <p>You don't need to follow special style guidelines and if you have questions on how to implement something join us on irc.freenode.net / #rex.</p>
+      <p>通常很难找到一个好的平衡记录新特性(或移除过时的文档)和编写新的代码.所以如果你发现过时的文档,想添加指导,调整设计或修改完整的网页,不要犹豫联系我们.</p>
+      <div class="small-vspace"></div>
+      <p>你可以检出rex的网站代码 <a href="https://github.com/krimdomu/rexify-website">Github</a>.请阅读README 文件 ，它会告诉你怎么运行网站在你的本地环境.</p>
 
       <div class="vspace"></div>
-      <h1>Sponsoring</h1>
-      <p>As mentioned above (R)?ex is completely developed by volunteers. So there is no guarantee that a special feature will be released at a defined date. If you need a special feature you can sponsor it. So we will focus on that feature for the next release. You can contact us at <a href="mailto:feature@rexify.org">feature@rexify.org</a>.</p>
+      <h1>代码</h1>
+      <p>如果你想为新功能或者修改bug <a href="https://github.com/krimdomu">clone the repository</a> 请在github上提交.</p>
       <div class="small-vspace"></div>
-      <p>Those sponsored features will also be released under open source. So it is guaranteed that it is compatible to following releases and you will have the benefit of a community finding potential bugs or contributing enhancements.</p>
-      <div class="vspace"></div>
-      <h2>Hardware</h2>
-      <p>One special case is hardware. There can't be enough hardware / environments where we can test (R)?ex. Especially when it comes to the soon release of Rex.IO - a bare metal deployer and webfrontend for (R)?ex. If you want to sponsor any kind of hardware please contact us at <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>
 
+      <p>你不需要遵循特殊的风格，如果关于怎么实现的有问题，请联系我们  irc.freenode.net/#rex.</p>
+
+      <div class="vspace"></div>
+      <h1>发起人</h1>
+      <p>上面提到的全部是志愿者开发的.所以不能保证一个特殊的bug或者功能在一个指定的日期发布. 如果你需要一个特殊的功能,你可以赞助他. 这样我们才能关注下一个版本的功能. 你可以联系我们  <a href="mailto:feature@rexify.org">feature@rexify.org</a>.</p>
+      <div class="small-vspace"></div>
+      <p>这些特殊的功能也被包含到开源代码离. 所以它是保证它是兼容版本后,你将有一个社区的利益寻找潜在的bug或贡献的增强.</p>
+      <div class="vspace"></div>
+      <h2>硬件</h2>
+      <p>特殊情况的环境或者硬件, 希望你能先测试 (R)?ex是否工作.  如有疑问请联系 <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>

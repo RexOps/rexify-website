@@ -134,6 +134,19 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
+            </tr>
+            <tr>
+               <td>Manage /etc/hosts</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
             </tr>
             <tr>

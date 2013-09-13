@@ -185,21 +185,19 @@ __DATA__
 % layout 'default';
 % title '404 - File not found';
 
-<h1>404 - I'm really sorry :(</h1>
-<p>Hello. I'm a Webserver. And i'm there to serve files for you. But i'm really sorry :( I can't find the file you want to see.</p>
-
+<div><a href="http://yibo.iyiyun.com/export/link/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/img/uid/509226" style="max-width: 690px;" /></a></div><div style="margin-top:1px;"><a href="http://yibo.iyiyun.com/export/sharelink/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/shareimg" alt="分享" border="0" title="分享" /></a><a href="http://yibo.iyiyun.com/export/spreadlink/uid/509226" target="_blank"><img src="http://yibo.iyiyun.com/export/spreadimg" alt="推广公益" border="0" title="推广公益" /></a></div>
 @@ index_head.html.ep
 
          <div id="head-div">
             <div class="head_container">
                <div class="slogan">
-                  <h1>Automate Everything, Relax Anytime</h1>
+                  <h1>一切自动化  随时轻松</h1>
                   <div class="slogan_list">
                      <ul>
-                        <li>&gt; Integrates seamless in your running environment</li>
-                        <li>&gt; Easy to use and extend</li>
-                        <li>&gt; Easy to learn, it's just plain Perl</li>
-                        <li>&gt; Apache 2.0 licensed</li>
+                        <li>&gt; 在你的运行环境无缝集成</li>
+                        <li>&gt; 简单的使用和方便的扩展</li>
+                        <li>&gt; 会点Perl 就能玩Rex</li>
+                        <li>&gt; Apache 2.0 开源协议</li>
                      </ul>
                   </div> <!-- slogan_list -->
 
@@ -209,7 +207,7 @@ __DATA__
    service apache2 => ensure => "started";
 };</code></pre>
                   </div> <!-- source -->
-                  <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>
+                  <a class="headlink" href="/howtos/start.html">阅读我们的入门手册吧</a>
                </div> <!-- slogan -->
 
             </div> <!-- head_container -->
@@ -221,11 +219,11 @@ __DATA__
 
              <div class="nav_links">
                <ul>
-                  <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
-                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
-                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
-                  <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">Support</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">Docs</a></li>
+                  <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">首页</a></li>
+                  <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">安装</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">贡献</a></li>
+                  <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">支持</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">文档</a></li>
                   <li id="li_api" <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
                </ul>
             </div>
@@ -246,7 +244,7 @@ __DATA__
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
       <link rel="stylesheet" href="/css/default.css?20130619" type="text/css" media="screen" charset="utf-8" />
 
-      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
+      <meta name="description" content="(R)?ex - 管理你的所有分类的数据点  数据中心自动化和配置管理" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
 
       <style>
@@ -268,7 +266,7 @@ __DATA__
 
       % if($root) {
          <div id="index-top-div" class="top_div">
-            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <h1>(R)?ex <small>部署 &amp; 配置管理框架</small></h1>
          </div>
 
          %= include 'index_head';
@@ -281,7 +279,7 @@ __DATA__
          </div>
       % } else {
          <div id="top-div" class="top_div">
-            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <h1>(R)?ex <small>部署 &amp; 配置管理框架</small></h1>
             <div id="nav-div">
                %= include 'navigation';
             </div>
@@ -290,67 +288,72 @@ __DATA__
 
          <div id="widgets_container">
             <div id="widgets">
-               <h2>Search</h2>
+
+               <h2>搜索</h2>
                <form action="/search" method="GET">
-                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
+                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">搜索</button>
                </form>
-               <h2>News</h2>
+               <h2>新闻</h2>
 
                <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
-                  <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
+                  <div class="news_content"><a href="http://yapceurope.org/">yapc.eu</a> 上的闪电演讲内容已上传到 <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
                </div>
 
 
                <div class="news_widget">
                   <div class="news_date">2013-06-16</div>
-                  <div class="news_content">(R)?ex 0.42.0 released. This release brings support to use Net::OpenSSH as transport layer. The default is still Net::SSH2. But now it is possible to use all features from your $HOME/.ssh/config file and to use Kerberos Authentication. See a list of all changes with example in the <a href="https://github.com/krimdomu/Rex/wiki/New0.42">Changelog</a>.</div>
+                  <div class="news_content">(R)?ex 0.42.0 版本发布。该版本开始支持使用 Net::OpenSSH 作为传输层。虽然默认依然使用 Net::SSH2，但现在可以使用你的 $HOME/.ssh/config 文件里的全部特性，并且采用 Kerberos 认证登录了。更多变化及示例见 <a href="https://github.com/krimdomu/Rex/wiki/New0.42">Changelog</a>.</div>
                </div>
 
 
                <div class="news_widget">
                   <div class="news_date">2013-05-23</div>
-                  <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">just announced</a> that they offer professional support for Rex.</div>
+                  <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">刚刚公告</a>他们提供专业级的 Rex 支持。</div>
                </div>
 
 
                <div class="news_widget">
                   <div class="news_date">2013-04-01</div>
-                  <div class="news_content">(R)?ex 0.41.0 released. This release brings a handfull of new functions that ease the use and bug fixes. See <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a> for more information.</div>
-                  <div class="news_content">There is also a new guide on <a href="/howtos/using_templates.html">howto use modules and templates</a> online.</div>
+                  <div class="news_content">(R)?ex 0.41.0 版本发布。该版本带有一系列新函数来简化使用和修正 bug 。更多信息见 <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a>.</div>
+                  <div class="news_content">同时还有一个新的在线指南，关于<a href="/howtos/using_templates.html">如何使用模块和模板</a>。</div>
                </div>
 
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
                   <div class="news_content">
                      <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
-                     <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
+                     <p>我们很自豪的宣布 Rex 被 <a href="http://www.imittelstand.de/">initiative mittelstand</a> 评选为 2013 年度最佳开源解决方案。感谢 <a href="http://inovex.de">inovex</a> 对此作出的贡献和支持。</p>
                   </div>
                </div>
 
                <div class="news_widget">
                   <div class="news_date">2013-03-16</div>
-                  <div class="news_content">Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</div>
+                  <div class="news_content">德国 Perl 大会上的演讲已经上传到 slideshare 上(<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">德文</a>) 和 (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">英文</a>).</div>
                </div>
 
-               <h2>Conferences</h2>
+               <h2>会议</h2>
                <img src="/img/osdc.png" style="float: left; width: 100px;" />
-               <p><a href="http://www.osdc.de/">Open Source Data Center Conference</a></p>
+               <p><a href="http://www.osdc.de/">开源数据中心大会</a></p>
                <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
-               <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
+               <p>OSDC 是关于如何利用开源简化复杂的 IT 架构的大会。这是一个难得的和开源专家、业内人士交流的好机会。在 2 天的时间里，可以通过社交网络、演讲、小组讨论等来收听和共享信息。</p>
 
                <img src="/img/linuxtag.jpg" style="float: left; width: 100px" />
-               <p>We are proud to announce that Rex will have a booth on the <a href="http://linuxtag.de/">LinuxTag</a>. The LinuxTag will take place in Berlin from 22. - 25. May. LinuxTag is the most popular and important conference in the Linux and Open Source scene in Europe.</p>
+               <p>我们自豪的宣布 Rex 将会出现在 5 月 22 至 25 日召开的柏林 <a href="http://linuxtag.de/">LinuxTag</a> 上。LinuxTag 是欧洲在 Linux 和开源社区最流行和重要的大会。</p>
                <p>Come and join us, we will do live demostrations with a custom build portable mini datacenter.</p><p>If you want to help us for a day or two don't hesitate to contact <a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
 
-               <h2>Need Help?</h2>
-               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
+               <p>欢迎参会围观，我们会做一个定制小型数据中心的现场演示。</p><p>如果你有时间想帮助我们请联系<br /><a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
+
+=======
+               <h2>需要帮助吗?</h2>
+               <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下.</p>
                <ul>
                   <li>IRC: #rex on freenode</li>
-                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
-                  <li>Issues: <a href="https://github.com/Krimdomu/Rex/issues">on Github</a></li>
-                  <li>Feature: You miss a <a href="/feature.html">feature</a>?</li>
-                  <li>Professional Support: <a href="http://www.inovex.de/news-events/news/">by inovex</a></li>
+                  <li>邮件组: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
+                  <li>问题列表: <a href="https://github.com/Krimdomu/Rex/issues">Github</a></li>
+                  <li>特性需求: 你需要什么 <a href="/feature.html">特性</a>?</li>
+                  <li>商务支持: <a href="http://www.inovex.de/news-events/news/">inovex</a></li>
+                  <li>QQ群: 252744726</li>
                </ul>
             </div>
          </div> <!-- widgets -->
@@ -364,7 +367,7 @@ __DATA__
     <div id="disqus_thread" style="margin-top: 45px;"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
+        var disqus_shortname = 'chenryn'; // required: replace example with your forum shortname
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {

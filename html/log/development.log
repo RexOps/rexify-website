@@ -1,0 +1,664 @@
+[Wed Apr 10 06:24:41 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 06:24:41 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:24:41 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:24:41 2013] [debug] Rendering template "index.html.ep".
+[Wed Apr 10 06:24:41 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:24:42 2013] [debug] Rendering template "index_head.html.ep" from DATA section.
+[Wed Apr 10 06:24:42 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:24:42 2013] [debug] 200 OK (0.093651s, 10.678/s).
+[Wed Apr 10 06:24:42 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 06:24:42 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 06:24:42 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 06:24:42 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 06:24:50 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:24:50 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:24:50 2013] [debug] 302 Found (0.004888s, 204.583/s).
+[Wed Apr 10 06:24:50 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:24:50 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:24:50 2013] [debug] Rendering template "api/index.html.ep".
+[Wed Apr 10 06:24:51 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:24:51 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:24:51 2013] [debug] 200 OK (0.090284s, 11.076/s).
+[Wed Apr 10 06:24:54 2013] [debug] GET /api/Rex.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:24:54 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:24:54 2013] [debug] Rendering template "api/Rex.pm.html.ep".
+[Wed Apr 10 06:24:54 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:24:54 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:24:54 2013] [debug] 200 OK (0.080806s, 12.375/s).
+[Wed Apr 10 06:25:37 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:25:37 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:25:37 2013] [debug] Rendering template "index.html.ep".
+[Wed Apr 10 06:25:37 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:25:38 2013] [debug] Rendering template "index_head.html.ep" from DATA section.
+[Wed Apr 10 06:25:38 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:25:38 2013] [debug] 200 OK (0.082768s, 12.082/s).
+[Wed Apr 10 06:28:48 2013] [debug] GET / (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:28:48 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:28:48 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 06:28:48 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 06:28:48 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 06:28:48 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 06:28:48 2013] [debug] 200 OK (0.004913s, 203.542/s).
+[Wed Apr 10 06:41:33 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:33 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:33 2013] [debug] 302 Found (0.003107s, 321.854/s).
+[Wed Apr 10 06:41:34 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:34 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:34 2013] [debug] Rendering template "api/index.html.ep".
+[Wed Apr 10 06:41:34 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:41:34 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:41:34 2013] [debug] 200 OK (0.085822s, 11.652/s).
+[Wed Apr 10 06:41:36 2013] [debug] GET /api/Rex/FS/File.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:36 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:36 2013] [debug] Rendering template "api/Rex/FS/File.pm.html.ep".
+[Wed Apr 10 06:41:36 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:41:36 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:41:36 2013] [debug] 200 OK (0.044130s, 22.660/s).
+[Wed Apr 10 06:41:39 2013] [debug] GET /api/Rex/FS/File.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:39 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:39 2013] [debug] Rendering template "api/Rex/FS/File.pm.html.ep".
+[Wed Apr 10 06:41:39 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 06:41:39 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 06:41:39 2013] [debug] 200 OK (0.013910s, 71.891/s).
+[Wed Apr 10 06:41:40 2013] [debug] GET /api/Rex/FS/File.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:40 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:40 2013] [debug] Rendering template "api/Rex/FS/File.pm.html.ep".
+[Wed Apr 10 06:41:40 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 06:41:40 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 06:41:40 2013] [debug] 200 OK (0.011884s, 84.147/s).
+[Wed Apr 10 06:41:42 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:42 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:42 2013] [debug] 302 Found (0.002983s, 335.233/s).
+[Wed Apr 10 06:41:46 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 06:41:46 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:41:46 2013] [debug] Rendering cached template api/index.html.ep.
+[Wed Apr 10 06:41:46 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 06:41:46 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 06:41:46 2013] [debug] 200 OK (0.003812s, 262.329/s).
+[Wed Apr 10 06:52:18 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 06:52:18 2013] [debug] Routing to a callback.
+[Wed Apr 10 06:52:18 2013] [debug] Rendering template "index.html.ep".
+[Wed Apr 10 06:52:18 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 06:52:18 2013] [debug] Rendering template "index_head.html.ep" from DATA section.
+[Wed Apr 10 06:52:18 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 06:52:18 2013] [debug] 200 OK (0.056042s, 17.844/s).
+[Wed Apr 10 07:01:55 2013] [debug] GET /howtos (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 07:01:55 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:01:55 2013] [debug] 302 Found (0.002553s, 391.696/s).
+[Wed Apr 10 07:01:55 2013] [debug] GET /howtos/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 07:01:55 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:01:55 2013] [debug] Rendering template "howtos/index.html.ep".
+[Wed Apr 10 07:01:55 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 07:01:55 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 07:01:55 2013] [debug] 200 OK (0.021755s, 45.966/s).
+[Wed Apr 10 07:42:15 2013] [debug] GET /api/Rex/Commands/Network.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 07:42:15 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:42:15 2013] [debug] Rendering template "api/Rex/Commands/Network.pm.html.ep".
+[Wed Apr 10 07:42:15 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 07:42:15 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 07:42:15 2013] [debug] 200 OK (0.039411s, 25.374/s).
+[Wed Apr 10 07:51:51 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 07:51:51 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:51:51 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 07:51:51 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 07:51:51 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 07:51:51 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 07:51:51 2013] [debug] 200 OK (0.004897s, 204.207/s).
+[Wed Apr 10 07:52:42 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 07:52:42 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:52:42 2013] [debug] 302 Found (0.002336s, 428.082/s).
+[Wed Apr 10 07:52:42 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 07:52:42 2013] [debug] Routing to a callback.
+[Wed Apr 10 07:52:42 2013] [debug] Rendering template "contribute/index.html.ep".
+[Wed Apr 10 07:52:42 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 07:52:42 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 07:52:43 2013] [debug] 200 OK (0.015435s, 64.788/s).
+[Wed Apr 10 08:03:31 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:03:31 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:03:31 2013] [debug] 302 Found (0.001840s, 543.478/s).
+[Wed Apr 10 08:03:32 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:03:32 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:03:32 2013] [debug] Rendering cached template api/index.html.ep.
+[Wed Apr 10 08:03:32 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:03:32 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:03:32 2013] [debug] 200 OK (0.002498s, 400.320/s).
+[Wed Apr 10 08:04:09 2013] [debug] GET /get (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:04:09 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:04:09 2013] [debug] 302 Found (0.002610s, 383.142/s).
+[Wed Apr 10 08:04:09 2013] [debug] GET /get/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:04:09 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:04:09 2013] [debug] Rendering template "get/index.html.ep".
+[Wed Apr 10 08:04:09 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:04:09 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:04:09 2013] [debug] 200 OK (0.028561s, 35.013/s).
+[Wed Apr 10 08:04:50 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:04:50 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:04:51 2013] [debug] 302 Found (0.001658s, 603.136/s).
+[Wed Apr 10 08:04:51 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:04:51 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:04:51 2013] [debug] Rendering template "api/index.html.ep".
+[Wed Apr 10 08:04:51 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:04:51 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:04:51 2013] [debug] 200 OK (0.021181s, 47.212/s).
+[Wed Apr 10 08:04:52 2013] [debug] GET /api/Rex.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:04:52 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:04:52 2013] [debug] Rendering template "api/Rex.pm.html.ep".
+[Wed Apr 10 08:04:52 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:04:52 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:04:52 2013] [debug] 200 OK (0.022756s, 43.944/s).
+[Wed Apr 10 08:05:22 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:05:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:05:22 2013] [debug] 302 Found (0.002164s, 462.107/s).
+[Wed Apr 10 08:05:22 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:05:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:05:22 2013] [debug] Rendering template "contribute/index.html.ep".
+[Wed Apr 10 08:05:22 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:05:22 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:05:23 2013] [debug] 200 OK (0.015396s, 64.952/s).
+[Wed Apr 10 08:08:22 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:08:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:08:22 2013] [debug] 302 Found (0.001669s, 599.161/s).
+[Wed Apr 10 08:08:22 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 08:08:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:08:22 2013] [debug] Rendering cached template api/index.html.ep.
+[Wed Apr 10 08:08:22 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:08:22 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:08:22 2013] [debug] 200 OK (0.003915s, 255.428/s).
+[Wed Apr 10 08:41:23 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 08:41:23 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:41:23 2013] [debug] Rendering template "index.html.ep".
+[Wed Apr 10 08:41:23 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 08:41:24 2013] [debug] Rendering template "index_head.html.ep" from DATA section.
+[Wed Apr 10 08:41:24 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 08:41:24 2013] [debug] 200 OK (0.060468s, 16.538/s).
+[Wed Apr 10 08:42:16 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 08:42:16 2013] [debug] Routing to a callback.
+[Wed Apr 10 08:42:16 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 08:42:16 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 08:42:16 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 08:42:16 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 08:42:16 2013] [debug] 200 OK (0.004298s, 232.666/s).
+[Wed Apr 10 09:34:26 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:34:26 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:34:26 2013] [debug] 302 Found (0.002404s, 415.973/s).
+[Wed Apr 10 09:34:27 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:34:27 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:34:27 2013] [debug] Rendering template "contribute/index.html.ep".
+[Wed Apr 10 09:34:27 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:34:27 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:34:27 2013] [debug] 200 OK (0.016329s, 61.241/s).
+[Wed Apr 10 09:35:21 2013] [debug] GET /get (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:35:21 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:35:21 2013] [debug] 302 Found (0.002675s, 373.832/s).
+[Wed Apr 10 09:35:21 2013] [debug] GET /get/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:35:21 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:35:21 2013] [debug] Rendering template "get/index.html.ep".
+[Wed Apr 10 09:35:21 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:35:21 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:35:21 2013] [debug] 200 OK (0.029948s, 33.391/s).
+[Wed Apr 10 09:35:26 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:35:26 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:35:26 2013] [debug] 302 Found (0.001793s, 557.724/s).
+[Wed Apr 10 09:35:26 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:35:26 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:35:26 2013] [debug] Rendering template "contribute/index.html.ep".
+[Wed Apr 10 09:35:26 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:35:26 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:35:26 2013] [debug] 200 OK (0.015508s, 64.483/s).
+[Wed Apr 10 09:36:03 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:03 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:03 2013] [debug] 302 Found (0.001484s, 673.854/s).
+[Wed Apr 10 09:36:04 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:04 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:04 2013] [debug] Rendering cached template contribute/index.html.ep.
+[Wed Apr 10 09:36:04 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:36:04 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:36:04 2013] [debug] 200 OK (0.004410s, 226.757/s).
+[Wed Apr 10 09:36:06 2013] [debug] GET /get (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:06 2013] [debug] 302 Found (0.002542s, 393.391/s).
+[Wed Apr 10 09:36:06 2013] [debug] GET /get/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:06 2013] [debug] Rendering cached template get/index.html.ep.
+[Wed Apr 10 09:36:06 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:36:06 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:36:06 2013] [debug] 200 OK (0.004514s, 221.533/s).
+[Wed Apr 10 09:36:07 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:07 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:07 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 09:36:07 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:36:07 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 09:36:07 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:36:07 2013] [debug] 200 OK (0.004754s, 210.349/s).
+[Wed Apr 10 09:36:49 2013] [debug] GET /contribute (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:49 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:49 2013] [debug] 302 Found (0.001820s, 549.451/s).
+[Wed Apr 10 09:36:49 2013] [debug] GET /contribute/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:36:49 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:36:49 2013] [debug] Rendering cached template contribute/index.html.ep.
+[Wed Apr 10 09:36:49 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:36:49 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:36:49 2013] [debug] 200 OK (0.004292s, 232.992/s).
+[Wed Apr 10 09:40:11 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:40:11 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:40:11 2013] [debug] 302 Found (0.002137s, 467.946/s).
+[Wed Apr 10 09:40:11 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:40:11 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:40:11 2013] [debug] Rendering template "api/index.html.ep".
+[Wed Apr 10 09:40:11 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:40:11 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:40:11 2013] [debug] 200 OK (0.021640s, 46.211/s).
+[Wed Apr 10 09:45:08 2013] [debug] GET /api/Rex.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:45:08 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:45:08 2013] [debug] Rendering cached template api/Rex.pm.html.ep.
+[Wed Apr 10 09:45:08 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:45:08 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:45:08 2013] [debug] 200 OK (0.004287s, 233.263/s).
+[Wed Apr 10 09:53:09 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:53:09 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:53:09 2013] [debug] 302 Found (0.001685s, 593.472/s).
+[Wed Apr 10 09:53:09 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:53:09 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:53:09 2013] [debug] Rendering template "api/index.html.ep".
+[Wed Apr 10 09:53:09 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:53:09 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:53:09 2013] [debug] 200 OK (0.021890s, 45.683/s).
+[Wed Apr 10 09:53:11 2013] [debug] GET /api/Rex/Hardware.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 09:53:11 2013] [debug] Routing to a callback.
+[Wed Apr 10 09:53:11 2013] [debug] Rendering template "api/Rex/Hardware.pm.html.ep".
+[Wed Apr 10 09:53:11 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 09:53:11 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 09:53:11 2013] [debug] 200 OK (0.013132s, 76.150/s).
+[Wed Apr 10 10:39:52 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 10:39:52 2013] [debug] Routing to a callback.
+[Wed Apr 10 10:39:52 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 10:39:52 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 10:39:52 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 10:39:52 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 10:39:52 2013] [debug] 200 OK (0.004502s, 222.124/s).
+[Wed Apr 10 10:40:46 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 10:40:46 2013] [debug] Routing to a callback.
+[Wed Apr 10 10:40:46 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 10:40:46 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 10:40:46 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 10:40:46 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 10:40:46 2013] [debug] 200 OK (0.005102s, 196.002/s).
+[Wed Apr 10 11:39:43 2013] [debug] GET /api/Rex/Commands/Service.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 11:39:43 2013] [debug] Routing to a callback.
+[Wed Apr 10 11:39:43 2013] [debug] Rendering template "api/Rex/Commands/Service.pm.html.ep".
+[Wed Apr 10 11:39:43 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 11:39:43 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 11:39:43 2013] [debug] 200 OK (0.020671s, 48.377/s).
+[Wed Apr 10 11:39:52 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 11:39:52 2013] [debug] Routing to a callback.
+[Wed Apr 10 11:39:52 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 11:39:52 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 11:39:52 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 11:39:52 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 11:39:52 2013] [debug] 200 OK (0.004785s, 208.986/s).
+[Wed Apr 10 11:40:43 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 11:40:43 2013] [debug] Routing to a callback.
+[Wed Apr 10 11:40:43 2013] [debug] Rendering template "index.html.ep".
+[Wed Apr 10 11:40:43 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 11:40:43 2013] [debug] Rendering template "index_head.html.ep" from DATA section.
+[Wed Apr 10 11:40:43 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 11:40:43 2013] [debug] 200 OK (0.055052s, 18.165/s).
+[Wed Apr 10 12:56:32 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 12:56:32 2013] [debug] Routing to a callback.
+[Wed Apr 10 12:56:32 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 12:56:32 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 12:56:32 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 12:56:32 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 12:56:32 2013] [debug] 200 OK (0.004466s, 223.914/s).
+[Wed Apr 10 12:57:42 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 12:57:42 2013] [debug] Routing to a callback.
+[Wed Apr 10 12:57:42 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 12:57:42 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 12:57:42 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 12:57:42 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 12:57:42 2013] [debug] 200 OK (0.004802s, 208.247/s).
+[Wed Apr 10 13:18:14 2013] [debug] GET /api/Rex/Virtualization/VBox.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 13:18:14 2013] [debug] Routing to a callback.
+[Wed Apr 10 13:18:14 2013] [debug] Rendering template "api/Rex/Virtualization/VBox.pm.html.ep".
+[Wed Apr 10 13:18:14 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 13:18:14 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 13:18:14 2013] [debug] 200 OK (0.016306s, 61.327/s).
+[Wed Apr 10 14:40:36 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 14:40:36 2013] [debug] Routing to a callback.
+[Wed Apr 10 14:40:36 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 14:40:36 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 14:40:36 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 14:40:36 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 14:40:36 2013] [debug] 200 OK (0.004939s, 202.470/s).
+[Wed Apr 10 14:41:25 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 14:41:25 2013] [debug] Routing to a callback.
+[Wed Apr 10 14:41:25 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 14:41:25 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 14:41:25 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 14:41:25 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 14:41:25 2013] [debug] 200 OK (0.004683s, 213.538/s).
+[Wed Apr 10 14:59:17 2013] [debug] GET /api/Rex/Transaction.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 14:59:17 2013] [debug] Routing to a callback.
+[Wed Apr 10 14:59:17 2013] [debug] Rendering template "api/Rex/Transaction.pm.html.ep".
+[Wed Apr 10 14:59:17 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 14:59:17 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 14:59:17 2013] [debug] 200 OK (0.015008s, 66.631/s).
+[Wed Apr 10 15:39:21 2013] [debug] GET /robots.txt (Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)).
+[Wed Apr 10 15:39:21 2013] [debug] Routing to a callback.
+[Wed Apr 10 15:39:21 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 15:39:21 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 15:39:21 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 15:39:21 2013] [debug] 404 Not Found (0.047393s, 21.100/s).
+[Wed Apr 10 16:41:16 2013] [debug] GET /api/Rex/Commands/Virtualization.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 16:41:16 2013] [debug] Routing to a callback.
+[Wed Apr 10 16:41:16 2013] [debug] Rendering template "api/Rex/Commands/Virtualization.pm.html.ep".
+[Wed Apr 10 16:41:16 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 16:41:16 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 16:41:16 2013] [debug] 200 OK (0.049762s, 20.096/s).
+[Wed Apr 10 16:54:30 2013] [debug] GET /api/Rex/Hardware.pm.html (Disqus/1.0).
+[Wed Apr 10 16:54:30 2013] [debug] Routing to a callback.
+[Wed Apr 10 16:54:30 2013] [debug] Rendering cached template api/Rex/Hardware.pm.html.ep.
+[Wed Apr 10 16:54:30 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 16:54:30 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 16:54:30 2013] [debug] 200 OK (0.004549s, 219.829/s).
+[Wed Apr 10 17:27:11 2013] [debug] GET / (SAMSUNG-SGH-E250/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)).
+[Wed Apr 10 17:27:11 2013] [debug] Routing to a callback.
+[Wed Apr 10 17:27:11 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 17:27:11 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 17:27:11 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 17:27:11 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 17:27:11 2013] [debug] 200 OK (0.004929s, 202.881/s).
+[Wed Apr 10 18:22:10 2013] [debug] GET /api/Rex/Apache/Build/rpm.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 18:22:10 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:22:10 2013] [debug] Rendering template "api/Rex/Apache/Build/rpm.pm.html.ep".
+[Wed Apr 10 18:22:10 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:22:10 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:22:10 2013] [debug] 200 OK (0.015285s, 65.424/s).
+[Wed Apr 10 18:51:48 2013] [debug] GET / (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:51:48 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:51:48 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 18:51:48 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:51:48 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 18:51:48 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:51:48 2013] [debug] 200 OK (0.004579s, 218.388/s).
+[Wed Apr 10 18:52:01 2013] [debug] GET /howtos/start.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:52:01 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:52:01 2013] [debug] Rendering template "howtos/start.html.ep".
+[Wed Apr 10 18:52:01 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:52:01 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:52:01 2013] [debug] 200 OK (0.014667s, 68.180/s).
+[Wed Apr 10 18:52:54 2013] [debug] GET /howtos (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:52:54 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:52:54 2013] [debug] 302 Found (0.002386s, 419.111/s).
+[Wed Apr 10 18:52:54 2013] [debug] GET /howtos/index.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:52:54 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:52:54 2013] [debug] Rendering template "howtos/index.html.ep".
+[Wed Apr 10 18:52:54 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:52:54 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:52:54 2013] [debug] 200 OK (0.050233s, 19.907/s).
+[Wed Apr 10 18:53:04 2013] [debug] GET /howtos/http-transport.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:53:04 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:53:04 2013] [debug] Rendering template "howtos/http-transport.html.ep".
+[Wed Apr 10 18:53:04 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:53:04 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:53:04 2013] [debug] 200 OK (0.034276s, 29.175/s).
+[Wed Apr 10 18:53:10 2013] [debug] GET /howtos/start.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:53:10 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:53:10 2013] [debug] Rendering template "howtos/start.html.ep".
+[Wed Apr 10 18:53:10 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:53:10 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:53:10 2013] [debug] 200 OK (0.014971s, 66.796/s).
+[Wed Apr 10 18:53:15 2013] [debug] GET /howtos/faq.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:53:15 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:53:15 2013] [debug] Rendering template "howtos/faq.html.ep".
+[Wed Apr 10 18:53:15 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:53:15 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:53:15 2013] [debug] 200 OK (0.011601s, 86.199/s).
+[Wed Apr 10 18:53:21 2013] [debug] GET /howtos/working_with_packages.html (Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:20.0) Gecko/20100101 Firefox/20.0).
+[Wed Apr 10 18:53:21 2013] [debug] Routing to a callback.
+[Wed Apr 10 18:53:21 2013] [debug] Rendering template "howtos/working_with_packages.html.ep".
+[Wed Apr 10 18:53:21 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 18:53:21 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 18:53:21 2013] [debug] 200 OK (0.076548s, 13.064/s).
+[Wed Apr 10 19:39:03 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 19:39:03 2013] [debug] Routing to a callback.
+[Wed Apr 10 19:39:03 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 19:39:03 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 19:39:03 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 19:39:03 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 19:39:03 2013] [debug] 200 OK (0.004063s, 246.124/s).
+[Wed Apr 10 19:39:54 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 19:39:54 2013] [debug] Routing to a callback.
+[Wed Apr 10 19:39:54 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 19:39:54 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 19:39:54 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 19:39:54 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 19:39:54 2013] [debug] 200 OK (0.003804s, 262.881/s).
+[Wed Apr 10 20:36:45 2013] [debug] GET / (Mozilla/4.0).
+[Wed Apr 10 20:36:45 2013] [debug] Routing to a callback.
+[Wed Apr 10 20:36:45 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 20:36:45 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 20:36:45 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 20:36:45 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 20:36:45 2013] [debug] 200 OK (0.005247s, 190.585/s).
+[Wed Apr 10 20:56:11 2013] [debug] GET / (Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Tablet PC 2.0)).
+[Wed Apr 10 20:56:11 2013] [debug] Routing to a callback.
+[Wed Apr 10 20:56:11 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 20:56:11 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 20:56:11 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 20:56:11 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 20:56:11 2013] [debug] 200 OK (0.005190s, 192.678/s).
+[Wed Apr 10 21:48:22 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 21:48:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 21:48:22 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 21:48:22 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 21:48:22 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 21:48:22 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 21:48:22 2013] [debug] 200 OK (0.005360s, 186.567/s).
+[Wed Apr 10 21:49:15 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 21:49:15 2013] [debug] Routing to a callback.
+[Wed Apr 10 21:49:15 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 21:49:15 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 21:49:15 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 21:49:15 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 21:49:15 2013] [debug] 200 OK (0.005317s, 188.076/s).
+[Wed Apr 10 21:49:32 2013] [debug] GET /api/Rex/Box/Base.pm.html (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 21:49:32 2013] [debug] Routing to a callback.
+[Wed Apr 10 21:49:32 2013] [debug] Rendering template "api/Rex/Box/Base.pm.html.ep".
+[Wed Apr 10 21:49:32 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 21:49:32 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 21:49:32 2013] [debug] 200 OK (0.017968s, 55.654/s).
+[Wed Apr 10 21:54:50 2013] [debug] GET / (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 21:54:50 2013] [debug] Routing to a callback.
+[Wed Apr 10 21:54:50 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 21:54:50 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 21:54:50 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 21:54:50 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 21:54:50 2013] [debug] 200 OK (0.005427s, 184.264/s).
+[Wed Apr 10 21:56:09 2013] [debug] GET / (Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; MAXTHON 2.0)).
+[Wed Apr 10 21:56:09 2013] [debug] Routing to a callback.
+[Wed Apr 10 21:56:09 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 21:56:09 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 21:56:09 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 21:56:09 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 21:56:09 2013] [debug] 200 OK (0.004533s, 220.604/s).
+[Wed Apr 10 22:10:41 2013] [debug] GET /robots.txt (Mozilla/5.0 (compatible; AcoonBot/4.11.1; +http://www.acoon.de/robot.asp)).
+[Wed Apr 10 22:10:41 2013] [debug] Routing to a callback.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] 404 Not Found (0.046591s, 21.463/s).
+[Wed Apr 10 22:10:41 2013] [debug] GET / (Mozilla/5.0 (compatible; AcoonBot/4.11.1; +http://www.acoon.de/robot.asp)).
+[Wed Apr 10 22:10:41 2013] [debug] Routing to a callback.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 22:10:41 2013] [debug] 200 OK (0.005709s, 175.162/s).
+[Wed Apr 10 22:39:17 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 22:39:17 2013] [debug] Routing to a callback.
+[Wed Apr 10 22:39:17 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 22:39:17 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 22:39:17 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 22:39:17 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 22:39:17 2013] [debug] 200 OK (0.004944s, 202.265/s).
+[Wed Apr 10 22:40:06 2013] [debug] GET / (Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)).
+[Wed Apr 10 22:40:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 22:40:06 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 22:40:06 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 22:40:06 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 22:40:06 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 22:40:06 2013] [debug] 200 OK (0.005419s, 184.536/s).
+[Wed Apr 10 23:04:39 2013] [debug] GET / (Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Tablet PC 2.0)).
+[Wed Apr 10 23:04:39 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:04:39 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 23:04:39 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:04:39 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 23:04:39 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:04:39 2013] [debug] 200 OK (0.004623s, 216.310/s).
+[Wed Apr 10 23:12:30 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 23:12:30 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:12:30 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 23:12:30 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:12:30 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 23:12:30 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:12:30 2013] [debug] 200 OK (0.004640s, 215.517/s).
+[Wed Apr 10 23:12:45 2013] [debug] GET /howtos/start.html (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 23:12:45 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:12:45 2013] [debug] Rendering template "howtos/start.html.ep".
+[Wed Apr 10 23:12:45 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:12:45 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:12:45 2013] [debug] 200 OK (0.013999s, 71.434/s).
+[Wed Apr 10 23:13:05 2013] [debug] GET / (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 23:13:05 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:13:05 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 23:13:05 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:13:05 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 23:13:05 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:13:05 2013] [debug] 200 OK (0.004377s, 228.467/s).
+[Wed Apr 10 23:15:42 2013] [info] Listening at "http://*:3000".
+[Wed Apr 10 23:15:49 2013] [debug] GET / (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:15:49 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:15:49 2013] [debug] Rendering cached template index.html.ep.
+[Wed Apr 10 23:15:49 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:15:49 2013] [debug] Rendering cached template index_head.html.ep from DATA section.
+[Wed Apr 10 23:15:49 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:15:49 2013] [debug] 200 OK (0.004020s, 248.756/s).
+[Wed Apr 10 23:15:55 2013] [debug] GET /search (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:15:55 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:15:55 2013] [debug] Rendering template "search.html.ep" from DATA section.
+[Wed Apr 10 23:15:55 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:15:55 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:15:55 2013] [debug] 200 OK (0.043838s, 22.811/s).
+[Wed Apr 10 23:16:06 2013] [debug] GET /api (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:16:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:06 2013] [debug] 302 Found (0.002131s, 469.263/s).
+[Wed Apr 10 23:16:06 2013] [debug] GET /api/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:16:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:06 2013] [debug] Rendering cached template api/index.html.ep.
+[Wed Apr 10 23:16:06 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:16:06 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:16:06 2013] [debug] 200 OK (0.004048s, 247.036/s).
+[Wed Apr 10 23:16:07 2013] [debug] GET /api/Rex/Commands.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:16:07 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:07 2013] [debug] Rendering template "api/Rex/Commands.pm.html.ep".
+[Wed Apr 10 23:16:08 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:16:08 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:16:08 2013] [debug] 200 OK (0.051504s, 19.416/s).
+[Wed Apr 10 23:16:22 2013] [debug] GET /api/Rex/Commands.pm.html (Disqus/1.0).
+[Wed Apr 10 23:16:22 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:22 2013] [debug] Rendering template "api/Rex/Commands.pm.html.ep".
+[Wed Apr 10 23:16:22 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:16:22 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:16:22 2013] [debug] 200 OK (0.055613s, 17.981/s).
+[Wed Apr 10 23:16:26 2013] [debug] GET /api/Rex/Commands.pm.html (Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:16:26 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:26 2013] [debug] Rendering template "api/Rex/Commands.pm.html.ep".
+[Wed Apr 10 23:16:26 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:16:26 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:16:26 2013] [debug] 200 OK (0.050749s, 19.705/s).
+[Wed Apr 10 23:16:27 2013] [debug] GET /search (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:16:27 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:16:27 2013] [debug] Rendering template "search.html.ep" from DATA section.
+[Wed Apr 10 23:16:27 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:16:27 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:16:27 2013] [debug] 200 OK (0.034311s, 29.145/s).
+[Wed Apr 10 23:17:05 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:17:05 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:17:05 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 23:17:05 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:17:05 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:17:05 2013] [debug] 404 Not Found (0.028573s, 34.998/s).
+[Wed Apr 10 23:17:26 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 23:17:26 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:17:26 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:17:26 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 23:17:26 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:17:26 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:17:26 2013] [debug] 404 Not Found (0.050891s, 19.650/s).
+[Wed Apr 10 23:18:51 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 23:18:51 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:18:51 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:18:51 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 23:18:51 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:18:51 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:18:51 2013] [debug] 404 Not Found (0.112361s, 8.900/s).
+[Wed Apr 10 23:18:55 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:18:55 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:18:55 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:18:55 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:18:55 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:18:55 2013] [debug] 404 Not Found (0.003595s, 278.164/s).
+[Wed Apr 10 23:19:06 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:19:06 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:19:06 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:19:06 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:19:06 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:19:06 2013] [debug] 404 Not Found (0.003718s, 268.962/s).
+[Wed Apr 10 23:19:15 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:19:15 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:19:15 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:19:15 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:19:15 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:19:15 2013] [debug] 404 Not Found (0.003765s, 265.604/s).
+[Wed Apr 10 23:19:49 2013] [debug] GET /get (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 23:19:49 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:19:49 2013] [debug] 302 Found (0.001744s, 573.394/s).
+[Wed Apr 10 23:19:49 2013] [debug] GET /get/index.html (Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0).
+[Wed Apr 10 23:19:49 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:19:49 2013] [debug] Rendering template "get/index.html.ep".
+[Wed Apr 10 23:19:49 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:19:49 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:19:49 2013] [debug] 200 OK (0.053274s, 18.771/s).
+[Wed Apr 10 23:20:02 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 23:20:02 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:20:02 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:20:02 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 23:20:02 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:20:03 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:20:03 2013] [debug] 404 Not Found (0.349507s, 2.861/s).
+[Wed Apr 10 23:20:37 2013] [debug] Your secret passphrase needs to be changed!!!
+[Wed Apr 10 23:20:37 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:20:37 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:20:37 2013] [debug] Rendering template "404.html.ep" from DATA section.
+[Wed Apr 10 23:20:37 2013] [debug] Rendering template "layouts/default.html.ep" from DATA section.
+[Wed Apr 10 23:20:37 2013] [debug] Rendering template "navigation.html.ep" from DATA section.
+[Wed Apr 10 23:20:37 2013] [debug] 404 Not Found (0.120593s, 8.292/s).
+[Wed Apr 10 23:20:42 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:20:42 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:20:42 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:20:42 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:20:42 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:20:42 2013] [debug] 404 Not Found (0.003893s, 256.871/s).
+[Wed Apr 10 23:20:46 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:20:46 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:20:46 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:20:46 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:20:46 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:20:46 2013] [debug] 404 Not Found (0.003726s, 268.384/s).
+[Wed Apr 10 23:20:50 2013] [debug] GET /searchs (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31).
+[Wed Apr 10 23:20:50 2013] [debug] Routing to a callback.
+[Wed Apr 10 23:20:50 2013] [debug] Rendering cached template 404.html.ep from DATA section.
+[Wed Apr 10 23:20:50 2013] [debug] Rendering cached template layouts/default.html.ep from DATA section.
+[Wed Apr 10 23:20:50 2013] [debug] Rendering cached template navigation.html.ep from DATA section.
+[Wed Apr 10 23:20:50 2013] [debug] 404 Not Found (0.004154s, 240.732/s).

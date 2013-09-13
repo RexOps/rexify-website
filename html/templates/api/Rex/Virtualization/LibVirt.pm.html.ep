@@ -69,7 +69,3 @@
       ];  
        
  print Dumper vm hypervisor =&gt; "capabilities";</code></pre>
-
-
-
-

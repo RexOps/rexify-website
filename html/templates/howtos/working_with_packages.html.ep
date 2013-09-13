@@ -6,18 +6,18 @@
       <meta name="keywords" content="Howto, Packages, Packagemanagement, Install, Deploy">
 % end
 
-<h1>Working with Packages</h1>
+<h1>软件包安装</h1>
 
-<p>If you want to install or remove packages on your server Rex gives you a few functions to do this. Rex tries to guess the right package provider based on the platform Rex connects to.</p>
-
-
-
-<p>If you want to use a special package provider (for example, if you're using SunOS and want to use OpenCSW) you can define the package provider with <i>package_provider_for $os =&gt; $provider_name</i>.</p>
+<p>如果你想用Rex 管理你的软件包，Rex会有几个函数帮助你. Rex 可以正确的分辨出正确的服务平台而安装软件包.</p>
 
 
-<h2>Installing a Package</h2>
 
-<p>To install a package you can use the <i>install</i> function.</p>
+<p>如果你想安装一个特殊的软件包(例如, 你在SunOS上安装OpenCSW)  你可以这样定义 <i>package_provider_for $os =&gt; $provider_name</i>.</p>
+
+
+<h2>安装软件包</h2>
+
+<p>想要安装一个软件包你可以使用 <i>install</i> 函数.</p>
 
    <pre><code class="perl">task "prepare", "server1", sub {
    install "apache2";
@@ -25,30 +25,31 @@
 
 
 
-<p>If you want to install multiple packages you can do it by providing an array reference.</p>
+<p>如果你安装多个包，你可以使用一个数组引用.</p>
    <pre><code class="perl">task "prepare", "server1", sub {
    install [ qw/apache2 vim php5/ ];
 };</code></pre>
 
 
-<p>If you want to install a special version of a package you just need to specify the <i>version</i> option.</p>
+<p>如果你想安装特殊版本的包 你只需要指定<i>version</i> 参数.</p>
 
    <pre><code class="perl">task "prepare", "server1", sub {
    install "apache2", version =&gt; "2.2.4";
 };</code></pre>
 
 
-<h2>Removing a Package</h2>
-<p>If you don't need a package anymore you can remove it with the <i>remove</i> function.</p>
+<h2>删除一个包</h2>
+<p>如果你要删除任何的包，你可以使用 <i>remove</i> 函数.</p>
 
    <pre><code class="perl">task "prepare", "server1", sub {
    remove "apache2";
 };</code></pre>
 
 
-<h2>Adding a Package Repository</h2>
 
-<p>Sometimes you have to add custom repositories to your Server. This can be done with the <i>repository</i> function. In the following code block you'll see an example for Debian and CentOS.</p>
+<h2>添加一个软件包仓库</h2>
+
+<p>有时需要添加一下软件库到你的服务器.你可以用<i>repository</i>函数，这里写了debian体系和centos 体系的安装方式</p>
 
    <pre><code class="perl">task "prepare", "server2", sub {
    # add a repository for debian/ubuntu
@@ -66,7 +67,7 @@
 
 
 
-<p>After you've added a new repository you need to run <i>update_package_db</i> to update the package database so that you can install packages from these repositories.</p>
+<p>添加好仓库后你需要update 包库,你可以使用 <i>update_package_db</i> 函数。</p>
 
    <pre><code class="perl">task "prepare", "server2", sub {
    # add a repository for redhat/centos
@@ -80,29 +81,29 @@
 
 
 
-<h2>Supported Package Providers</h2>
+<h2>支持的包管理工具</h2>
 
-<p>Rex supports the following package providers:</p>
+<p>Rex 支持一下包管理工具:</p>
 
 <ul>
-   <li>For ALT Linux: rpm</li>
-   <li>For Debian Linux: apt</li>
-   <li>For FreeBSD: pkg</li>
-   <li>For Gentoo: emerge</li>
-   <li>For Mageia: urpmi</li>
-   <li>For NetBSD: pkg</li>
-   <li>For OpenBSD: pkg</li>
-   <li>For Redhat/CentOS/ScientificLinux: yum</li>
-   <li>For SunOS: pkgadd, pkg, OpenCSW, Blastwave</li>
-   <li>For SuSE: zypper</li>
-   <li>For Ubuntu: apt</li>
+   <li>ALT Linux: rpm</li>
+   <li>Debian Linux: apt</li>
+   <li>FreeBSD: pkg</li>
+   <li>Gentoo: emerge</li>
+   <li>Mageia: urpmi</li>
+   <li>NetBSD: pkg</li>
+   <li>OpenBSD: pkg</li>
+   <li>Redhat/CentOS/ScientificLinux: yum</li>
+   <li>SunOS: pkgadd, pkg, OpenCSW, Blastwave</li>
+   <li>SuSE: zypper</li>
+   <li>Ubuntu: apt</li>
 </ul>
 
 
-<h2>More Documentation</h2>
+<h2>更多的文档</h2>
 
 <ul>
-   <li><a href="/api/Rex/Commands/Pkg.pm.html">API Documentation</a></li>
+   <li><a href="/api/Rex/Commands/Pkg.pm.html">API 文档</a></li>
 </ul>
 
 

@@ -6,39 +6,39 @@
       <meta name="keywords" content="User, Group, Management, Linux, BSD, Rollout, SSH, Key, Auth, Authentication">
 % end
 
-         <h1>Manage user accounts with Rex</h1>
-         <p>In this howto i will show you how to rollout user accounts on your systems.</p>
+         <h1> Rex 管理你的用户访问</h1>
+         <p>在这个指南,我将向您展示如何在你的系统推出用户帐户.</p>
 
          
-         <h2>Preparation</h2>
+         <h2>准备</h2>
          <ul>
-            <li>Create a project directory. For example <i>usermgmt</i>.</li>
-            <li>Create a subdirectory <i>files</i>. Put the users ssh <u>public</u> key in this directory. Named after the username and append a ".key" to the filename. (Example: Username is "jay", then the filename should be "jay.key").</li>
+            <li>创建一个项目目录. 例如 <i>usermgmt</i>.</li>
+            <li>创建一个子目录 <i>files</i>. 在这个目录中加入public key 用户名后加.a ".key" . (例如 "jay",文件名 "jay.key").</li>
          </ul>
 
          
-         <h2>Download the User Rollout module</h2>
-         <p>At first you need to download the user rollout module used in this howto. You can download it from <a href="http://rex.linux-files.org/modules/user_rollout.tgz">here</a>.</p>
-         <p>Extract the file into your just created directory.</p>
+         <h2>下载 用户Rollout 模块 </h2>
+         <p>首先下载模块 <a href="http://rex.linux-files.org/modules/user_rollout.tgz">这里</a>.</p>
+         <p>在你的目录下，提取出文件.</p>
 
             <pre><code class="bash">$ wget http://rex.linux-files.org/modules/user_rollout.tgz
 $ tar xvzf user_rollout.tgz</code></pre>
 
          
-         <p>This command should create a directory <i>lib</i> containing one file <i>user.pm</i>.</p>
+         <p>这个命令将会得到<i>lib</i>这个目录下会得到 <i>user.pm</i>.</p>
 
          
-         <h2>Creating a Rexfile</h2>
+         <h2>创建一个Rexfile</h2>
 
-         <p>Now you need to create a <i>Rexfile</i>.</p>
+         <p>开始创建<i>Rexfile</i>.</p>
 
             <pre><code class="bash">$ touch Rexfile</code></pre>
 
          
-         <p>Open the Rexfile in your preferred editor.</p>
+         <p>编辑你的Rexfile.</p>
 
          
-         <p>Insert the following code in your new Rexfile.</p>
+         <p>在你的Rexfile中添加.</p>
 
             <pre><code class="perl">user "root";
 
@@ -79,9 +79,10 @@ task "db-rollout-accounts", group =&gt; "db", sub {
 
          
 
-         <p>This created 2 tasks. One task to rollout the developer and admin accounts on your frontend and middleware systems. And one task to rollout only the admin users to your database systems.</p>
 
-         <p>You can call the tasks multiple times. At the first time it will create the users, the groups and upload the keys. At subsequent runs it will just upload the keys. So it's easy to add new keys or change keys.</p>
+         <p>这两个task. 一个任务的开发人员和管理员账户的创建在你的前端和中间件系统. 另一个是只添加admin 到你的数据库系统中.</p>
+
+         <p>你可以在同一时间中调用多个. 在第一个时间它会创建用户、组和上传key.后续运行它将只是上传key,如此简单的添加新的keys是和改变keys</p>
 
             <pre><code class="bash">$ rex fe-mw-rollout-accounts db-rollout-accounts</code></pre>
           

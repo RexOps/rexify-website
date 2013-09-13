@@ -6,16 +6,17 @@
       <meta name="keywords" content="Perl, Howto, Rex">
 % end 
 
-         <h1>Just enough Perl for Rex</h1>
+         
+         <h1>Rex 需要的 Perl 基础</h1>
 
-         <p>This is a work-in-progress guide. If you have suggestions or whishes, just post a comment or join our irc channel on freenode -&gt; #rex.</p>
+         <p>这个一个半成品的指南. 如果你有疑问, 只需要加入我们在 freenode 的 irc 频道中 -&gt; #rex.</p>
          
 
-         <p>Perl is a scripting language designed to keep easy things easy and hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.</p>
+         <p>Perl是一种脚本语言设计让困难的事情更加的简单易行。本指南中你就可以学会足够书写自己的 Rex 任务的 Perl 知识。</p>
 
          
-         <h2>Variables</h2>
-         <p>Scalar variables. Scalars can contain Strings, Numbers, Objects, References.</p>
+         <h2>变量</h2>
+         <p>标量变量。标量可以包含字符串、数字、对象引用.</p>
             <pre><code class="perl">my $name = "John";    # this is a string
 my $age = 28;   # this is a number (integer)
 my $float = 28.5;   # also a number, but a float
@@ -23,25 +24,25 @@ my $car = Car-&gt;new();   # this is an object from the class Car</code></pre>
 
          
 
-         <p>Array variables. Arrays are lists. Like a grocery list. They contains lot of scalars.</p>
+         <p>数组变量。数组列表。像一个购物清单。他们包含了很多的标量.</p>
             <pre><code class="perl">my @names = ("John", "Fred", "Charley");
 my @to_buy = qw(Cheese Butter Salt Lemons Oranges Apples);</code></pre>
 
          
-         <p>To access an array element you had to use the index. It starts a zero.</p>
+         <p>访问数组元素必须使用索引。索引是从零开始的.</p>
 
             <pre><code class="perl">say "First name: " . $names[0];
 say "Last name: " . $name[2];
 say "Also last name: " . $name[-1];</code></pre>
 
          
-         <p>Split a string to an array</p>
+         <p>分割字符串数组</p>
 
             <pre><code class="perl">my $string = "John,Fred,Carl,Lewis";
 my @names = split(/,/, $string);</code></pre>
 
          
-         <p>Join an array to a String</p>
+         <p>添加一个字符，到数组中</p>
 
             <pre><code class="perl">my @names = ("John", "Fred", "Carl", "Lewis");
 my $string = join(",", @names);     # -&gt; John,Fred,Carl,Lewis</code></pre>
@@ -49,13 +50,13 @@ my $string = join(",", @names);     # -&gt; John,Fred,Carl,Lewis</code></pre>
 
 
          
-         <p>If you want to iterate over an array do it like this</p>
+         <p>如果你想遍历一个数组像这样做</p>
             <pre><code class="perl">for my $name (@names) {
    say "Current name: $name";
 }</code></pre>
 
          
-         <p>Hash variables. Hashs are like arrays, but with named indexes.</p>
+         <p>hash 变量，hashs 比较像数组，但是它是命名索引.</p>
             <pre><code class="perl">my %person = (
    name =&gt; "John",
    age =&gt; 28,
@@ -64,14 +65,14 @@ my $string = join(",", @names);     # -&gt; John,Fred,Carl,Lewis</code></pre>
 </code></pre>
 
          
-         <p>To access an hash element you had to use the key.</p>
+         <p>访问一个hash 必须用key.</p>
 
             <pre><code class="perl">say "Name: " . $person{"name"};
 say "Age: " . $person{"age"};
 say "City: " . $person{"city"};</code></pre>
 
          
-         <p>If you want to iterate over a hash do it like this. But always remember. Hashs are always unsorted.</p>
+         <p>如果你遍历hash 可以这样做. 但是没有排序.</p>
             <pre><code class="perl">for my $key (keys %person) {
    say "key: $key -&gt; value: " . $person{$key};
 }</code></pre>
@@ -79,7 +80,7 @@ say "City: " . $person{"city"};</code></pre>
 
 
          
-         <h2>Conditional statements</h2>
+         <h2>条件语句</h2>
             <pre><code class="perl">if($name eq "John") {
    say "Hello, my name is John!";
 }
@@ -107,7 +108,7 @@ else {
 
 
          
-         <h2>Loops</h2>
+         <h2>循环</h2>
             <pre><code class="perl">for my $num (1..5) {
    say "&gt; $num";
 }
@@ -118,7 +119,7 @@ for my $item (@array) {
 } </code></pre>
 
          
-         <h2>Regular Expressions</h2>
+         <h2>正则表达式</h2>
             <pre><code class="perl">my $name = "John";
 if($name =~ m/john/) {    # will not match, because the J in $name is uppercase.
 }
@@ -131,7 +132,7 @@ $name =~ s/john/Fred/ig;   # this will replace all matchs of john (regardless of
 
 
          
-         <h2>Functions</h2>
+         <h2>函数</h2>
             <pre><code class="perl">sub my_function {      # define the function "my_function"
 }
 
@@ -152,9 +153,9 @@ my_function("john", 28);    # call the function "my_function" with 2 parameters.
 my_function "john", 28;     # also calls "my_function" with 2 parameters. the brackets are not needed.  </code></pre>
 
          
-         <h2>Useful Helpers</h2>
+         <h2>调试模式</h2>
 
-         <p>Dump the content of a scalar, array or hash</p>
+         <p>打印一个列表上下文，数组，hash</p>
             <pre><code class="perl">use Data::Dumper;
 
 say Dumper($scalar);
