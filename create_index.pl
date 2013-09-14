@@ -165,7 +165,7 @@ sub _get {
 
 sub _post {
    my ($url, $post) = @_;
-   _ua->post_json("http://$index_server:$index_port$url", $post);
+   _ua->post("http://$index_server:$index_port$url", json => $post);
 }
 
 sub _put {
