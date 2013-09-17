@@ -297,6 +297,12 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2013-09-16</div>
+                  <div class="news_content">(R)?ex 0.43.0 released. This release adds the option to cache the machine inventory so that the execution will be faster, and the ability to create a report of the changes Rex did during the run. It also adds limited support for OpenWrt. For a complete list of changes see the <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> on Github.</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
                   <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
                </div>
@@ -334,14 +340,7 @@ __DATA__
                </div>
 
                <h2>Conferences</h2>
-               <img src="/img/osdc.png" style="float: left; width: 100px;" />
-               <p><a href="http://www.osdc.de/">Open Source Data Center Conference</a></p>
-               <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
-               <p>OSDC is about simplifying complex IT infrastructures with Open Source. A rare opportunity to meet with Open Source professionals and insiders, gather and share information over 2 days of presentations, hands-on workshops and social networking.</p>
-
-               <img src="/img/linuxtag.jpg" style="float: left; width: 100px" />
-               <p>We are proud to announce that Rex will have a booth on the <a href="http://linuxtag.de/">LinuxTag</a>. The LinuxTag will take place in Berlin from 22. - 25. May. LinuxTag is the most popular and important conference in the Linux and Open Source scene in Europe.</p>
-               <p>Come and join us, we will do live demostrations with a custom build portable mini datacenter.</p><p>If you want to help us for a day or two don't hesitate to contact <a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
+               <p>20 - 21 September 2013 auf den <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a>.</p>
 
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
