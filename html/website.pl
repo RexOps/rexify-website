@@ -340,7 +340,7 @@ __DATA__
                </div>
 
                <h2>Conferences</h2>
-               <p>20 - 21 September 2013 auf den <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a>.</p>
+               <p>20. September 2013 talk on the <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a>.</p>
 
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
