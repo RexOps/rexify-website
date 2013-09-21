@@ -297,6 +297,11 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2013-09-21</div>
+                  <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> (language: german).</div>
+               </div>
+
+               <div class="news_widget">
                   <div class="news_date">2013-09-16</div>
                   <div class="news_content">(R)?ex 0.43.0 released. This release adds the option to cache the machine inventory so that the execution will be faster, and the ability to create a report of the changes Rex did during the run. It also adds limited support for OpenWrt. For a complete list of changes see the <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> on Github.</div>
                </div>
