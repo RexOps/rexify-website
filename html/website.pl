@@ -296,6 +296,17 @@ __DATA__
                <h2>新闻</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2013-09-21</div>
+                  <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> (language: german).</div>
+               </div>
+
+               <div class="news_widget">
+                  <div class="news_date">2013-09-16</div>
+                  <div class="news_content">(R)?ex 0.43.0 released. This release adds the option to cache the machine inventory so that the execution will be faster, and the ability to create a report of the changes Rex did during the run. It also adds limited support for OpenWrt. For a complete list of changes see the <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> on Github.</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
                   <div class="news_content"><a href="http://yapceurope.org/">yapc.eu</a> 上的闪电演讲内容已上传到 <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
                </div>
@@ -333,6 +344,7 @@ __DATA__
                </div>
 
                <h2>会议</h2>
+               <p>2013 年 9 月 20 日，在 <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a> 上演讲。</p>
                <img src="/img/osdc.png" style="float: left; width: 100px;" />
                <p><a href="http://www.osdc.de/">开源数据中心大会</a></p>
                <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
@@ -340,11 +352,8 @@ __DATA__
 
                <img src="/img/linuxtag.jpg" style="float: left; width: 100px" />
                <p>我们自豪的宣布 Rex 将会出现在 5 月 22 至 25 日召开的柏林 <a href="http://linuxtag.de/">LinuxTag</a> 上。LinuxTag 是欧洲在 Linux 和开源社区最流行和重要的大会。</p>
-               <p>Come and join us, we will do live demostrations with a custom build portable mini datacenter.</p><p>If you want to help us for a day or two don't hesitate to contact <a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
-
                <p>欢迎参会围观，我们会做一个定制小型数据中心的现场演示。</p><p>如果你有时间想帮助我们请联系<br /><a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
 
-=======
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下.</p>
                <ul>
