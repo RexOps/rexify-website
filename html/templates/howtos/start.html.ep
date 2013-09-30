@@ -51,7 +51,7 @@
 
 <h2>Creating a Rexfile</h2>
 <p>First we need to create a new folder to store your Rexfile in it.</p>
-<pre><code class="bash">$ mkdir projects/my-first-rex-project</code></pre>
+<pre><code class="bash">$ mkdir -p projects/my-first-rex-project</code></pre>
 <p>Now change into this directory and create a Rexfile.</p>
 
             <pre><code class="perl">user "my-user";
@@ -82,7 +82,7 @@ $ rex uptime</code></pre>
             <pre><code class="perl">desc "Start Apache Service";
 task "start_apache", group =&gt; "myserver", sub {
     service "apache2" =&gt; "start";
-} </code></pre>
+};</code></pre>
 
          <p>This task will start the service <i>apache2</i> on all the servers in the <i>myserver</i> group.</p>
 
