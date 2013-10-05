@@ -61,7 +61,7 @@ get '/search' => sub {
    $term =~ s/(\w+)/$1*/g;
 
    my $ua = Mojo::UserAgent->new;
-   my $tx = $ua->post_json("http://localhost:9200/_search?pretty=true", {
+   my $tx = $ua->post("http://localhost:9200/_search?pretty=true", json => {
       query => {
          query_string => {
             query => $term,
