@@ -119,8 +119,9 @@ sub index_document {
    $fs =~ s/\.ep$//;
 
    my $ref = {
-      file  => $base64_content,
+      #file  => $base64_content,
       #content  => join("\n", @content),
+      file  => join("\n", @content),
       fs    => $fs,
       title => $title,
    };
@@ -165,7 +166,7 @@ sub _get {
 
 sub _post {
    my ($url, $post) = @_;
-   _ua->post_json("http://$index_server:$index_port$url", $post);
+   _ua->post("http://$index_server:$index_port$url", json => $post);
 }
 
 sub _put {
