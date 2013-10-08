@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,33 +25,33 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Tail - Tail a file</p>
+<h2>名称</h2>
+<p>Rex::Commands::Tail - Tail 文件</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can tail a file</p>
+<h2>摘要</h2>
+<p>此模块用于tail文件</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  tail "/var/log/syslog";</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>tail($file)</strong></li>
 
 
-<p>This function will tail the given file.</p>
+<p>此函数用于tail给定的文件。</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
     tail "/var/log/syslog";
  };</code></pre>
-<p>Or, if you want to format the output by yourself, you can define a callback function.</p>
+<p>如果你想自定义输出格式, 你可以定义一个回调函数。</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
     tail "/var/log/syslog", sub {

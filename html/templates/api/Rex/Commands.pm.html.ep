@@ -2,22 +2,22 @@
 % title 'Rex::Commands - All the basic commands';
 
 % content_for header => begin
-      <meta name="description" content="This module is the core commands module.">
+      <meta name="description" content="这是一个核心命令模块。">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#commandlist">COMMANDLIST</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#commandlist">命令列表</a></li>
+        <li><a href="#exported_functions">输出函数</a></li>
 </ul>
 
 
@@ -26,17 +26,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands - All the basic commands</p>
+<h2>名称</h2>
+<p>Rex::Commands - 基本命令</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This module is the core commands module.</p>
+<h2>摘要</h2>
+<p>这个模块是核心命令模块。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  desc "Task description";
  
@@ -58,7 +58,7 @@
 <p>
 </p>
 
-<h2>COMMANDLIST</h2>
+<h2>命令列表</h2>
 <ul>
 <li><strong>Cloud Management <a href="/api/Rex/Commands/Cloud.pm.html">Rex::Commands::Cloud</a></strong>
 
@@ -127,16 +127,16 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>输出函数</h2>
 <ul>
 <li><strong>no_ssh([$task])</strong></li>
 
 
-<p>Disable ssh for all tasks or a specified task.</p>
-<p>If you want to disable ssh connection for your complete tasks (for example if you only want to use libVirt) put this in the main section of your Rexfile.</p>
+<p>在所有或者某个特定任务中禁用 ssh。</p>
+<p>如果你想禁用ssh(可能你只想用libVirt)，你可以在 Rexfile 的主函数段中启用 no_ssh 。</p>
 <pre><code class="perl">
  no_ssh;</code></pre>
-<p>If you want to disable ssh connection for a given task, put <em>no_ssh</em> in front of the task definition.</p>
+<p>如果只想在某个任务中禁用ssh，你只需把 <em>no_ssh</em> 放在任务定义首行，如下：</p>
 <pre><code class="perl">
  no_ssh task "mytask", "myserver", sub {
     say "Do something without a ssh connection";
@@ -145,40 +145,41 @@
 <li><strong>task($name [, @servers], $funcref)</strong></li>
 
 
-<p>This function will create a new task.</p>
+<p>这个函数用于创建一个新任务.</p>
 <ul>
-<li><strong>Create a local task (a server independent task)</strong></li>
+<li><strong>创建一个本地任务(独立于服务器外的任务)</strong></li>
 
 
 <pre><code class="perl">
  task "mytask", sub {
     say "Do something";
  };</code></pre>
-<p>If you call this task with (R)?ex it will run on your local machine. You can explicit run this task on other machines if you specify the <em>-H</em> command line parameter.</p>
+<p>如果你直接调用 (R)?ex，任务会在本机上执行，而通过指定 <em>-H</em> 命令行参数，就可以在远程机器上执行任务.</p>
 
-<li><strong>Create a server bound task.</strong></li>
+<li><strong>创建指定机器的任务。</strong></li>
 
 
 <pre><code class="perl">
  task "mytask", "server1", sub {
     say "Do something";
  };</code></pre>
-<p>You can also specify more than one server.</p>
+<p>你也可以绑定多个机器，只需要用“,”分割机器名。</p>
 <pre><code class="perl">
  task "mytask", "server1", "server2", "server3", sub {
     say "Do something";
  };</code></pre>
-<p>Or you can use some expressions to define more than one server.</p>
+<p>你也可以用表达式指定一批机器。</p>
 <pre><code class="perl">
  task "mytask", "server[1..3]", sub {
     say "Do something";
  };</code></pre>
 <p>If you want, you can overwrite the servers with the <em>-H</em> command line parameter.</p>
+<p>如果你想，你可以用 <em>-H</em> 参数覆盖掉 task 里定义好的服务器。</p>
 
-<li><strong>Create a group bound task.</strong></li>
+<li><strong>创建指定机器组的任务。</strong></li>
 
 
-<p>You can define server groups with the <em>group</em> function.</p>
+<p>可以用<em>group</em>函数定义一个机器组。</p>
 <pre><code class="perl">
  group "allserver" =&gt; "server[1..3]", "workstation[1..10]";
  
@@ -191,7 +192,7 @@
 <li><strong>desc($description)</strong></li>
 
 
-<p>Set the description of a task.</p>
++<p>设置任务描述。</p>
 <pre><code class="perl">
  desc "This is a task description of the following task";
  task "mytask", sub {
@@ -201,36 +202,36 @@
 <li><strong>group($name, @servers)</strong></li>
 
 
-<p>With this function you can group servers, so that you don't need to write too much ;-)</p>
+<p>如果你想一次在一组机器执行任务，可以用group函数定义一个机器组。非常方便 ;-)</p>
 <pre><code class="perl">
  group "servergroup", "www1", "www2", "www3", "memcache01", "memcache02", "memcache03";</code></pre>
-<p>Or with the expression syntax.</p>
+<p>你也可以直接使用表达式。</p>
 <pre><code class="perl">
  group "servergroup", "www[1..3]", "memcache[01..03]";</code></pre>
 
 <li><strong>batch($name, @tasks)</strong></li>
 
 
-<p>With the batch function you can call tasks in a batch.</p>
+<p>用 batch 函数可以在批处理中调用任务。</p>
 <pre><code class="perl">
  batch "name", "task1", "task2", "task3";</code></pre>
-<p>And call it with the <em>-b</em> console parameter. <em>rex -b name</em></p>
+<p>你也可以在终端中用<em>-b</em>参数. <em>rex -b 批处理名称</em></p>
 
 <li><strong>user($user)</strong></li>
 
 
-<p>Set the user for the ssh connection.</p>
++<p>设置ssh连接的用户。</p>
 
 <li><strong>password($password)</strong></li>
 
 
-<p>Set the password for the ssh connection (or for the private key file).</p>
-
+<p>设置ssh连接密码(也可以是一个私钥文件路径)。</p>
+ 
 <li><strong>auth(for =&gt; $entity, %data)</strong></li>
 
 
-<p>With this function you can modify/set special authentication parameters for tasks and groups. If you want to modify a task's or group's authentication you first have to create it.</p>
-<p>If you want to set special login information for a group you have to activate that feature first.</p>
+<p>这个函数可以对任务或服务器组设置或修改认证方式。当然修改的前提是需要先创建一个。</p>
+<p>如果你想给某个服务器组设置特殊的登录信息，你需要先开启这个特性。</p>
 <pre><code class="perl">
  use Rex -feature =&gt; 0.31; # activate setting auth for a group
   
@@ -257,34 +258,34 @@
 <li><strong>port($port)</strong></li>
 
 
-<p>Set the port where the ssh server is listening.</p>
+<p>设置ssh服务监听地址。</p>
 
 <li><strong>sudo_password($password)</strong></li>
 
 
-<p>Set the password for the sudo command.</p>
+<p>设置sudo使用的密码。</p>
 
 <li><strong>timeout($seconds)</strong></li>
 
 
-<p>Set the timeout for the ssh connection and other network related stuff.</p>
+<p>设置网络链接或者ssh服务的超时时间。</p>
 
 <li><strong>max_connect_retries($count)</strong></li>
 
 
-<p>Set the maximum number of connection retries.</p>
+<p>设置连接失败重试次数。</p>
 
 <li><strong>get_random($count, @chars)</strong></li>
 
 
-<p>Returns a random string of $count characters on the basis of @chars.</p>
+<p>返回一个随机字符串。</p>
 <pre><code class="perl">
  my $rnd = get_random(8, 'a' .. 'z');</code></pre>
 
 <li><strong>do_task($task)</strong></li>
 
 
-<p>Call $task from an other task. Will execute the given $task with the servers defined in $task.</p>
+<p>在其他任务调用这个 $task。具体被执行的服务器就是在这个$task 中定义好的那些。</p>
 <pre><code class="perl">
  task "task1", "server1", sub {
     say "Running on server1";
@@ -294,17 +295,17 @@
  task "task2", "server2", sub {
     say "Running on server2";
  };</code></pre>
-<p>You may also use an arrayRef for $task if you want to call multiple tasks.</p>
+<p>你也可以一次调用多个任务，用数组引用即可。</p>
 <pre><code class="perl">
  do_task [ qw/task1 task2 task3/ ];</code></pre>
 
 <li><strong>run_task($task_name, %option)</strong></li>
 
 
-<p>Run a task on a given host.</p>
+<p>指定机器上执行任务。</p>
 <pre><code class="perl">
  my $return = run_task "taskname", on =&gt; "192.168.3.56";</code></pre>
-<p>Do something on server5 if memory is less than 100 MB free on server3.</p>
+<p>如果 server3 内存小于 100M 则在 server5 上执行某些命令。</p>
 <pre><code class="perl">
  task "prepare", "server5", sub {
     my $free_mem = run_task "get_free_mem", on =&gt; "server3";
@@ -317,7 +318,7 @@
  task "get_free_mem", sub {
      return memory-&gt;{free};
  };</code></pre>
-<p>If called without a hostname the task is run localy.</p>
+<p>不指定具体机器则任务在本机执行。</p>
 <pre><code class="perl">
  # this task will run on server5
  task "prepare", "server5", sub {
@@ -328,7 +329,7 @@
  task "check_something", "server4", sub {
     return "foo";
  };</code></pre>
-<p>If you want to add custom parameters for the task you can do it this way.</p>
+<p>你可以添加自定义参数。</p>
 <pre><code class="perl">
  task "prepare", "server5", sub {
    run_task "check_something", on =&gt; "foo", params =&gt; { param1 =&gt; "value1", param2 =&gt; "value2" };
@@ -337,17 +338,17 @@
 <li><strong>public_key($key)</strong></li>
 
 
-<p>Set the public key.</p>
+<p>设置公钥。</p>
 
 <li><strong>private_key($key)</strong></li>
 
 
-<p>Set the private key.</p>
+<p>设置私钥。</p>
 
 <li><strong>pass_auth</strong></li>
 
 
-<p>If you want to use password authentication, then you need to call <em>pass_auth</em>.</p>
+<p>如果需要用密码验证则需要使用<em>pass_auth</em>函数。</p>
 <pre><code class="perl">
  user "root";
  password "root";
@@ -357,7 +358,7 @@
 <li><strong>key_auth</strong></li>
 
 
-<p>If you want to use pubkey authentication, then you need to call <em>key_auth</em>.</p>
+<p>如果需要用公钥验证则需要使用 <em>key_auth</em>函数。</p>
 <pre><code class="perl">
  user "bob";
  private_key "/home/bob/.ssh/id_rsa"; # passphrase-less key
@@ -368,8 +369,8 @@
 <li><strong>krb5_auth</strong></li>
 
 
-<p>If you want to use kerberos authentication, then you need to call <em>krb5_auth</em>.
-This authentication mechanism is only available if you use Net::OpenSSH.</p>
+<p>如果需要使用 kerberos 认证，需要使用 <em>krb5_auth</em> 函数。
+这个认证机制仅在你使用 Net::OpenSSH 的时候才有效。</p>
 <pre><code class="perl">
  set connection =&gt; "OpenSSH";
  user "root";
@@ -378,31 +379,31 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <li><strong>parallelism($count)</strong></li>
 
 
-<p>Will execute the tasks in parallel on the given servers. $count is the thread count to be used.</p>
+<p>在指定机器上并行执行任务。 $count 指定线程数。</p>
 
 <li><strong>set_distributor($distributor)</strong></li>
 
 
-<p>This sets the task distribution module. Default is "Base".</p>
-<p>Possible values are: Base, Gearman</p>
+<p>设置任务代理模块。默认为 "Base"。</p>
+<p>可能的值为: Base, Gearman</p>
 
 <li><strong>template_function(sub { ... })</strong></li>
 
 
-<p>This function sets the template processing function. So it is possible to change the template engine. For example to Template::Toolkit.</p>
+<p>这个函数主要用于设置模版处理。所以我们可以随意更改模版引擎。例如设置为 Template::Toolkit。</p>
 
 <li><strong>logging</strong></li>
 
 
-<p>With this function you can define the logging behaviour of (R)?ex.</p>
+<p>这个函数可以设置 (R)?ex的日志记录方式。</p>
 <ul>
-<li><strong>Logging to a file</strong></li>
+<li><strong>记录到某个文件</strong></li>
 
 
 <pre><code class="perl">
  logging to_file =&gt; "rex.log";</code></pre>
 
-<li><strong>Logging to syslog</strong></li>
+<li><strong>记录到 syslog</strong></li>
 
 
 <pre><code class="perl">
@@ -414,7 +415,8 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 
 
 <p>With <em>needs</em> you can define dependencies between tasks. The "needed" tasks will be called with the same server configuration as the calling task.</p>
-<p><em>needs</em> will not execute before, around and after hooks.</p>
+<p><em>needs</em> 用来定义任务间的依赖。被依赖的任务将在和调用自己的任务完全相同的服务器上执行。</>
+<p>用了 <em>needs</em> 就不会执行 before, around 和 after 三个 hook 了。</p>
 <ul>
 <li><strong>Depend on all tasks in a given package.</strong></li>
 
@@ -439,7 +441,7 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <li><strong>include Module::Name</strong></li>
 
 
-<p>Include a module without registering its tasks.</p>
+<p>不注册新任务情况下引入模块。</p>
 <pre><code class="perl">
    include qw/
       Module::One
@@ -449,7 +451,7 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <li><strong>environment($name =&gt; $code)</strong></li>
 
 
-<p>Define an environment. With environments one can use the same task for different hosts. For example if you want to use the same task on your integration-, test- and production servers.</p>
+<p>定义环境变量。这样就可以在不同机器运行同一个任务，例如你可以在集成环境，测试环境和生产环境的服务器无差别执行一个任务。</p>
 <pre><code class="perl">
  # define default user/password
  user "root";
@@ -478,10 +480,10 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
  task "prepare", group =&gt; "frontend", sub {
      say run "hostname";
  };</code></pre>
-<p>Calling this task <em>rex prepare</em> will execute on testwww01. 
-Calling this task with <em>rex -E live prepare</em> will execute on www01, www02, www03.
-Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
-<p>You can call the function within a task to get the current environment.</p>
+<p>执行 <em>rex prepare</em> 将会在testwww01上执行任务。
+执行<em>rex -E live prepare</em>将会在www01, www02, www03执行任务。
+执行<em>rex -E stage prepare</em>将会在stagewww01执行任务。</p>
+<p>你也可以在执行任务中得到当前environment。</p>
 <pre><code class="perl">
  task "prepare", group =&gt; "frontend", sub {
     if(environment() eq "dev") {
@@ -492,7 +494,7 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>LOCAL(&amp;)</strong></li>
 
 
-<p>With the LOCAL function you can do local commands within a task that is defined to work on remote servers.</p>
+<p>通过 LOCAL 函数可以在本地执行本已定义为远程机器的任务。</p>
 <pre><code class="perl">
  task "mytask", "server1", "server2", sub {
      # this will call 'uptime' on the servers 'server1' and 'server2'
@@ -507,44 +509,44 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>path(@path)</strong></li>
 
 
-<p>Set the execution path for all commands.</p>
+<p>设置命令执行路径。</p>
 <pre><code class="perl">
  path "/bin", "/sbin", "/usr/bin", "/usr/sbin", "/usr/pkg/bin", "/usr/pkg/sbin";</code></pre>
 
 <li><strong>set($key, $value)</strong></li>
 
 
-<p>Set a configuration parameter. These Variables can be used in templates as well.</p>
+<p>设置配置参数。这些值也可以直接在模版中使用。</p>
 <pre><code class="perl">
  set database =&gt; "db01";
       
  task "prepare", sub {
     my $db = get "database";
  };</code></pre>
-<p>Or in a template</p>
+<p>然后在模版里可以</p>
 <pre><code class="perl">
  DB: &lt;%= $::database %&gt;</code></pre>
 
 <li><strong>get($key, $value)</strong></li>
 
 
-<p>Get a configuration parameter.</p>
+<p>获取配置参数。</p>
 <pre><code class="perl">
  set database =&gt; "db01";
       
  task "prepare", sub {
     my $db = get "database";
  };</code></pre>
-<p>Or in a template</p>
+<p>然后在模版里可以</p>
 <pre><code class="perl">
  DB: &lt;%= $::database %&gt;</code></pre>
 
 <li><strong>before($task =&gt; sub {})</strong></li>
 
 
-<p>Run code before executing the specified task. 
-(if called repeatedly, each sub will be appended to a list of 'before' functions)</p>
-<p>Note: must come after the definition of the specified task</p>
+<p>在任务执行前运行befor代码块。
+(重复调用befor, 则每个sub都将加入到一个befor函数的list中)</p>
+<p>注意: 必须定义代码运行后需要执行的任务</p>
 <pre><code class="perl">
  before mytask =&gt; sub {
    my ($server) = @_;
@@ -554,9 +556,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>after($task =&gt; sub {})</strong></li>
 
 
-<p>Run code after the task is finished.
-(if called repeatedly, each sub will be appended to a list of 'after' functions)</p>
-<p>Note: must come after the definition of the specified task</p>
+<p>执行代码在人物完成后。
+(重复调用则每个sub将会寄到到一个'after' 函数执行列表)</p>
+<p>注意：必须定义需要执行的任务</p>
 <pre><code class="perl">
  after mytask =&gt; sub {
    my ($server, $failed) = @_;
@@ -568,9 +570,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>around($task =&gt; sub {})</strong></li>
 
 
-<p>Run code before and after the task is finished.
-(if called repeatedly, each sub will be appended to a list of 'around' functions)</p>
-<p>Note: must come after the definition of the specified task</p>
+<p>都运行代码在任务执行前后。
+(重复调用，将把每个sub都加入到一个'around' 函数执行列表)</p>
+<p>注意：必须定义好需要执行的任务</p>
 <pre><code class="perl">
  around mytask =&gt; sub {
    my ($server, $position) = @_;
@@ -586,18 +588,18 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>logformat($format)</strong></li>
 
 
-<p>You can define the logging format with the following parameters.</p>
-<p>%D - Appends the current date yyyy-mm-dd HH:mm:ss</p>
-<p>%h - The target host</p>
-<p>%p - The pid of the running process</p>
-<p>%l - Loglevel (INFO or DEBUG)</p>
-<p>%s - The Logstring</p>
-<p>Default is: [%D] %l - %s</p>
+<p>可以使用下列参数来格式化日志记录。</p>
+<p>%D - 以 yyyy-mm-dd HH:mm:ss 的格式添加当前时间</p>
+<p>%h - 目标主机</p>
+<p>%p - 进程pid</p>
+<p>%l - 日志记录等级(INFO or DEBUG)</p>
+<p>%s - 日志内容</p>
+<p>默认为: [%D] %l - %s</p>
 
 <li><strong>connection</strong></li>
 
 
-<p>This function returns the current connection object.</p>
+<p>函数返回当前连接对象。</p>
 <pre><code class="perl">
  task "foo", group =&gt; "baz", sub {
     say "Current Server: " . connection-&gt;server;
@@ -606,20 +608,20 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>profiler</strong></li>
 
 
-<p>Returns the profiler object for the current connection.</p>
+<p>返回当前连接的分析器对象。</p>
 
 <li><strong>report($string)</strong></li>
 
 <li><strong>source_global_profile(0|1)</strong></li>
 
 
-<p>If this option is set, every run() command will first source /etc/profile before getting executed.</p>
+<p>如果设置了此项，每个run()命令在执行前必先执行<em>source /etc/profile</em>。</p>
 
 <li><strong>last_command_output</strong></li>
 
 
-<p>This function returns the output of the last "run" command.</p>
-<p>On a debian system this example will return the output of <em>apt-get install foobar</em>.</p>
+<p>这个函数返回最后一次执行"run"命令的输出。</p>
+<p>在debian系统举例返回<em>apt-get install foobar</em>命令输出。</p>
 <pre><code class="perl">
  task "mytask", "myserver", sub {
     install "foobar";
@@ -629,7 +631,7 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <li><strong>case($compare, $option)</strong></li>
 
 
-<p>This is a function to compare a string with some given options.</p>
+<p>此函数用于比较多个给出的条件。</p>
 <pre><code class="perl">
  task "mytask", "myserver", sub {
     my $ntp_service = case operating_sytem, {

@@ -9,15 +9,15 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
 	<li><a href="#dependencies">DEPENDENCIES</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -26,13 +26,13 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Commands::Rsync - Simple Rsync Frontend</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can sync 2 directories via the <em>rsync</em> command.</p>
+<h2>摘要</h2>
+<p>With this module you can sync 2 directories via the <em>rsync</em> command。</p>
 <p>
 </p>
 
@@ -44,7 +44,7 @@
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Rsync;
  
@@ -52,12 +52,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>sync($source, $dest, $opts)</strong></li>
 
 
-<p>This function executes rsync to sync $source and $dest.</p>
+<p>This function executes rsync to sync $source and $dest。</p>
 <ul>
 <li><strong>UPLOAD - Will upload all from the local directory <em>html</em> to the remote directory <em>/var/www/html</em>.</strong></li>
 

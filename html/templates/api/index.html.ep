@@ -1,12 +1,12 @@
 % layout 'default';
-% title 'API Documentation for (R)?ex Version 0.42';
+% title '(R)?ex 0.42 API文档';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
-         <h1>This is the <%= title %></h1>
+         <h1>这是 <%= title %></h1>
 
          <div class="vspace"></div>
 
@@ -81,7 +81,7 @@
          <div class="vspace"></div>
          <div class="vspace"></div>
 
-         <h1><a name="apache-deploy"></a>This is the API documentation for (R)?ex Apache-Deploy Version 0.11</h1>
+         <h1><a name="apache-deploy"></a>这是(R)?ex Apache-Deploy Version 0.11 API文档</h1>
 
          <div class="vspace"></div>
          <ul class="simple-list">
@@ -118,7 +118,7 @@
 
          <div class="vspace"></div>
 
-         <h1>This is the API documentation for (R)?ex Augeas Version 0.2</h1>
+         <h1>这是(R)?ex Augeas Version 0.2 API文档</h1>
 
          <div class="vspace"></div>
          <ul class="simple-list">

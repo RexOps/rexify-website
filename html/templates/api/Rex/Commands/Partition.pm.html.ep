@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -24,23 +24,23 @@
 
 <p>
 </p>
-<h2>DESCRIPTION</h2>
-<p>With this Module you can partition your harddrive.</p>
+<h2>摘要</h2>
+<p>利用这个模块可以划分磁盘。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Partition;</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>clearpart($drive)</strong></li>
 
 
-<p>Clear partitions on $drive.</p>
+<p>清除 $drive 上所有分区。</p>
 <pre><code class="perl">
  clearpart "sda";
    
@@ -50,7 +50,7 @@
 <li><strong>partition($mountpoint, %option)</strong></li>
 
 
-<p>Create a partition with mountpoint $mountpoint.</p>
+<p>分区挂载到 $mountpoint 挂载点上。</p>
 <pre><code class="perl">
  partition "/",
     fstype  =&gt; "ext3",

@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Commands::File - Transparent File Manipulation</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can manipulate files.</p>
+<h2>摘要</h2>
+<p>With this module you can manipulate files。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  task "read-passwd", "server01", sub {
     my $fh = file_read "/etc/passwd";
@@ -76,12 +76,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>template($file, @params)</strong></li>
 
 
-<p>Parse a template and return the content.</p>
+<p>Parse a template and return the content。</p>
 <pre><code class="perl">
  my $content = template("/files/templates/vhosts.tpl", 
                      name =&gt; "test.lan",
@@ -90,7 +90,7 @@
 <li><strong>file($file_name, %options)</strong></li>
 
 
-<p>This function is the successor of <em>install file</em>. Please use this function to upload files to you server.</p>
+<p>This function is the successor of <em>install file</em>. Please use this function to upload files to you server。</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
     file "/file/on/remote/machine",
@@ -110,13 +110,13 @@
        source =&gt; "/files/etc/httpd/conf/httpd.conf",
        on_change =&gt; sub { service httpd =&gt; "restart"; };
  };</code></pre>
-<p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages.</p>
+<p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages。</p>
 
 <li><strong>file_write($file_name)</strong></li>
 
 
-<p>This function opens a file for writing (it will truncate the file if it already exists). It returns a Rex::FS::File object on success.</p>
-<p>On failure it will die.</p>
+<p>This function opens a file for writing (it will truncate the file if it already exists). It returns a Rex::FS::File object on success。</p>
+<p>On failure it will die。</p>
 <pre><code class="perl">
  my $fh;
  eval {
@@ -137,8 +137,8 @@
 <li><strong>file_read($file_name)</strong></li>
 
 
-<p>This function opens a file for reading. It returns a Rex::FS::File object on success.</p>
-<p>On failure it will die.</p>
+<p>This function opens a file for reading. It returns a Rex::FS::File object on success。</p>
+<p>On failure it will die。</p>
 <pre><code class="perl">
  my $fh;
  eval {
@@ -157,14 +157,14 @@
 <li><strong>cat($file_name)</strong></li>
 
 
-<p>This function returns the complete content of $file_name as a string.</p>
+<p>This function returns the complete content of $file_name as a string。</p>
 <pre><code class="perl">
  print cat "/etc/passwd";</code></pre>
 
 <li><strong>delete_lines_matching($file, $regexp)</strong></li>
 
 
-<p>Delete lines that match $regexp in $file.</p>
+<p>Delete lines that match $regexp in $file。</p>
 <pre><code class="perl">
  task "clean-logs", sub {
      delete_lines_matching "/var/log/auth.log" =&gt; "root";
@@ -173,8 +173,8 @@
 <li><strong>delete_lines_according_to($search, $file, @options)</strong></li>
 
 
-<p>This is the successor of the <a href="#delete_lines_matching">delete_lines_matching()</a> function. This function also allows the usage of an on_change hook.</p>
-<p>It will search for $search in $file and remove the found lines. If on_change hook is present it will execute this if the file was changed.</p>
+<p>This is the successor of the <a href="#delete_lines_matching">delete_lines_matching()</a> function. This function also allows the usage of an on_change hook。</p>
+<p>It will search for $search in $file and remove the found lines. If on_change hook is present it will execute this if the file was changed。</p>
 <pre><code class="perl">
  task "cleanup", "server1", sub {
     delete_lines_according_to qr{^foo:}, "/etc/passwd",
@@ -188,7 +188,7 @@
 
 <p>Append $new_line to $file if none in @regexp is found. If no regexp is
 supplied, the line is appended unless there is already an identical line
-in $file.</p>
+in $file。</p>
 <pre><code class="perl">
  task "add-group", sub {
     append_if_no_such_line "/etc/groups", "mygroup:*:100:myuser1,myuser2", on_change =&gt; sub { service sshd =&gt; "restart"; };
@@ -211,7 +211,7 @@ in $file.</p>
 <li><strong>extract($file [, %options])</strong></li>
 
 
-<p>This function extracts a file. Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
+<p>This function extracts a file. Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar。</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
     extract "/tmp/myfile.tar.gz",
@@ -229,7 +229,7 @@ Can use the type=&gt; option if the file suffix has been changed. (types are tar
 <li><strong>sed($search, $replace, $file)</strong></li>
 
 
-<p>Search some string in a file and replace it.</p>
+<p>Search some string in a file and replace it。</p>
 <pre><code class="perl">
  task sar =&gt; sub {
     sed qr{search}, "replace", "/var/log/auth.log";

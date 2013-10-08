@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 	<li><a href="#examples">EXAMPLES</a></li>
 	<ul>
 
@@ -36,17 +36,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Commands::Virtualization - Virtualization module</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can manage your virtualization.</p>
+<h2>摘要</h2>
+<p>With this module you can manage your virtualization。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
     
@@ -87,12 +87,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>vm($action =&gt; $name, %option)</strong></li>
 
 
-<p>This module exports only the <em>vm</em> function. You can manage everything with this function.</p>
+<p>This module exports only the <em>vm</em> function. You can manage everything with this function。</p>
 
 </ul>
 <p>
@@ -103,7 +103,7 @@
 </p>
 <h2><a name="creating_a_virtual_machine">Creating a Virtual Machine</a></h2>
 <p>Create a (VirtualBox) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a natted network. The bootorder is set to "dvd".</p>
+With a cdrom as an iso image and a natted network. The bootorder is set to "dvd"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       storage     =&gt; [
@@ -120,7 +120,7 @@ With a cdrom as an iso image and a natted network. The bootorder is set to "dvd"
       cpus =&gt; 1,
       boot =&gt; "dvd";</code></pre>
 <p>Create a (KVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to "cdrom".</p>
+With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to "cdrom"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       boot =&gt; "cdrom",
@@ -134,7 +134,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use.</p>
+<p>This is the same as above, but with all options in use。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       memory   =&gt; 512*1024,
@@ -188,7 +188,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             },
          },
       ];</code></pre>
-<p>Create a (Xen/HVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one.</p>
+<p>Create a (Xen/HVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "hvm",
@@ -198,7 +198,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use.</p>
+<p>This is the same as above, but with all options in use。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       memory =&gt; 512*1024,
@@ -230,7 +230,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
          },
       ],
       type =&gt; "hvm";</code></pre>
-<p>Create a (Xen/PVM) VM named "vm01" with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size).</p>
+<p>Create a (Xen/PVM) VM named "vm01" with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size)。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "pvm",
@@ -245,7 +245,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             dev    =&gt; "xvda1",
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use.</p>
+<p>This is the same as above, but with all options in use。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "pvm",
@@ -304,7 +304,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
 <p>
 </p>
 <h2><a name="modifying_a_vm">Modifying a VM</a></h2>
-<p>Currently you can only modify the memory.</p>
+<p>Currently you can only modify the memory。</p>
 <pre><code class="perl">
  vm option =&gt; "name",
          max_memory =&gt; 1024*1024, # in bytes

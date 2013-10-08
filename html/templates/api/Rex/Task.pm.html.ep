@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#methods">METHODS</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#methods">方法</a></li>
 </ul>
 
 
@@ -24,12 +24,12 @@
 
 <p>
 </p>
-<h2>DESCRIPTION</h2>
-<p>The Task Object. Typically you only need this class if you want to manipulate tasks after their initial creation.</p>
+<h2>摘要</h2>
+<p>任务对象。通常只会在已经创建完后又要管理任务时才需要这个类。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Task
      
@@ -40,12 +40,12 @@
 <p>
 </p>
 
-<h2>METHODS</h2>
+<h2>方法</h2>
 <ul>
 <li><strong>new</strong></li>
 
 
-<p>This is the constructor.</p>
+<p>这是构造器。</p>
 <pre><code class="perl">
    $task = Rex::Task-&gt;new(
       func =&gt; sub { some_code_here },
@@ -69,126 +69,126 @@
 <li><strong>connection</strong></li>
 
 
-<p>Returns the current connection object.</p>
+<p>返回当前连接对象。</p>
 
 <li><strong>executor</strong></li>
 
 
-<p>Returns the current executor object.</p>
+<p>返回当前执行对象。</p>
 
 <li><strong>hidden</strong></li>
 
 
-<p>Returns true if the task is hidden. (Should not be displayed on ,,rex -T''.)</p>
+<p>如果任务是隐藏状态(在 <em>rex -T</em> 时不显示)，返回真。</p>
 
 <li><strong>server</strong></li>
 
 
-<p>Returns the servers on which the task should be executed as an ArrayRef.</p>
+<p>返回即将执行该任务的服务器的数组引用。</p>
 
 <li><strong>set_server(@server)</strong></li>
 
 
-<p>With this method you can set new servers on which the task should be executed on.</p>
+<p>设置任务在新服务器上执行。</p>
 
 <li><strong>delete_server</strong></li>
 
 
-<p>Delete every server registered to the task.</p>
+<p>删除已经注册在该任务上的所有服务器。.</p>
 
 <li><strong>current_server</strong></li>
 
 
-<p>Returns the current server on which the tasks gets executed right now.</p>
+<p>返回当前正在执行任务的这台服务器。</p>
 
 <li><strong>desc</strong></li>
 
 
-<p>Returns the description of a task.</p>
+<p>返回任务描述。</p>
 
 <li><strong>set_desc($description)</strong></li>
 
 
-<p>Set the description of a task.</p>
+<p>设置任务描述。</p>
 
 <li><strong>is_remote</strong></li>
 
 
-<p>Returns true (1) if the task will be executed remotely.</p>
+<p>如果任务是远程执行，返回真。</p>
 
 <li><strong>is_local</strong></li>
 
 
-<p>Returns true (1) if the task gets executed on the local host.</p>
+<p>如果任务是本地执行，返回真。</p>
 
 <li><strong>is_http</strong></li>
 
 
-<p>Returns true (1) if the task gets executed over http protocol.</p>
+<p>如果任务是通过http协议执行，返回真。</p>
 
 <li><strong>want_connect</strong></li>
 
 
-<p>Returns true (1) if the task will establish a connection to a remote system.</p>
+<p>如果任务将保持和远端的连接，返回真。</p>
 
 <li><strong>get_connection_type</strong></li>
 
 
-<p>This method tries to guess the right connection type for the task and returns it.</p>
-<p>Current return values are SSH, Fake and Local.</p>
-<p>SSH - will create a ssh connection to the remote server</p>
-<p>Local - will not create any connections</p>
-<p>Fake - will not create any connections. But it populates the connection properties so you can use this type to iterate over a list of remote hosts but don't let rex build a connection. For example if you want to use Sys::Virt or other modules.</p>
+<p>猜测任务的连接类型，并返回。</p>
+<p>可能值为SSH, Fake 和 Local。</p>
+<p>SSH - 创建ssh连接到远程机器</p>
+<p>Local -不创建任何连接，旨在本地执行</p>
+<p>Fake - 不创建任何连接. 但通常你可以迭代远程主机列表但不建立连接.例如使用Sys::Virt或其他模块.</p>
 
 <li><strong>modify($key, $value)</strong></li>
 
 
-<p>With this method you can modify values of the task.</p>
+<p>此方法可以修改任务的属性。</p>
 
 <li><strong>user</strong></li>
 
 
-<p>Returns the current user the task will use.</p>
+<p>返回任务执行使用的用户。</p>
 
 <li><strong>set_user($user)</strong></li>
 
 
-<p>Set the user of a task.</p>
+<p>设置任务执行使用的用户。</p>
 
 <li><strong>password</strong></li>
 
 
-<p>Returns the password that will be used.</p>
+<p>返回任务执行使用的密码。</p>
 
 <li><strong>set_password($password)</strong></li>
 
 
-<p>Set the password of the task.</p>
+<p>设置任务执行使用的密码。</p>
 
 <li><strong>name</strong></li>
 
 
-<p>Returns the name of the task.</p>
+<p>返回任务名称。</p>
 
 <li><strong>code</strong></li>
 
 
-<p>Returns the code of the task.</p>
+<p>返回任务代码。</p>
 
 <li><strong>set_code(\&amp;code_ref)</strong></li>
 
 
-<p>Set the code of the task.</p>
+<p>设置任务代码。</p>
 
 <li><strong>run_hook($server, $hook)</strong></li>
 
 
-<p>This method is used internally to execute the specified hooks.</p>
+<p>运行内部指定的hook。</p>
 
 <li><strong>set_auth($key, $value)</strong></li>
 
 
-<p>Set the authentication of the task.</p>
+<p>设置任务认证。</p>
 <pre><code class="perl">
  $task-&gt;set_auth("user", "foo");
  $task-&gt;set_auth("password", "bar");</code></pre>
@@ -196,38 +196,38 @@
 <li><strong>merge_auth($server)</strong></li>
 
 
-<p>Merges the authentication information from $server into the task.
-Tasks authentication information have precedence.</p>
+<p>合并 $server 的认证信息到任务中。
+人物本身的认证信息优先级更高。</p>
 
 <li><strong>parallelism</strong></li>
 
 
-<p>Get the parallelism count of a task.</p>
+<p>获取任务并发数。</p>
 
 <li><strong>set_parallelism($count)</strong></li>
 
 
-<p>Set the parallelism of the task.</p>
+<p>设置任务并发数。</p>
 
 <li><strong>connect($server)</strong></li>
 
 
-<p>Initiate the connection to $server.</p>
+<p>初始化到 $server 的连接。</p>
 
 <li><strong>disconnect</strong></li>
 
 
-<p>Disconnect from the current connection.</p>
+<p>断开当前连接。</p>
 
 <li><strong>run($server, %options)</strong></li>
 
 
-<p>Run the task on $server.</p>
+<p>在 $server 上运行任务。</p>
 
 <li><strong>exit_on_connect_fail()</strong></li>
 
 
-<p>Returns true if rex should exit on connect failure.</p>
+<p>如果连接失败，返回真。</p>
 
 </ul>
 

@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,30 +25,30 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Template - Simple Template Engine.</p>
+<h2>名称</h2>
+<p>Rex::Template - 简单的模版引擎。</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This is a simple template engine for configuration files.</p>
+<h2>摘要</h2>
+<p>这是一个简单的配置文件模版引擎。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  my $template = Rex::Template-&gt;new;
  print $template-&gt;parse($content, \%template_vars);</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>is_defined($variable, $default_value)</strong></li>
 
 
-<p>This function will check if $variable is defined. If it is defined it will return the value of $variable. If not, it will return $default_value.</p>
-<p>You can use this function inside your templates.</p>
+<p>此函数用来检查 $variable 是否被定义。定义则返回，没定义则用$default_value定义。</p>
+<p>可以在templates中使用此函数。</p>
 <pre><code class="perl">
  ServerTokens &lt;%= is_defined($::server_tokens, "Prod") %&gt;</code></pre>
 

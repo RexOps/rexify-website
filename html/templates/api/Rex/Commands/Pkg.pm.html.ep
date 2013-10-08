@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Commands::Pkg - Install/Remove Software packages</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can install packages and files.</p>
+<h2>摘要</h2>
+<p>With this module you can install packages and files。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  install file =&gt; "/etc/passwd", {
                      source =&gt; "/export/files/etc/passwd"
@@ -45,12 +45,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>install($type, $data, $options)</strong></li>
 
 
-<p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files.</p>
+<p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files。</p>
 <ul>
 <li><strong>installing a package (This is only supported on CentOS, OpenSuSE and Debian systems.)</strong></li>
 
@@ -123,7 +123,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>remove($type, $package, $options)</strong></li>
 
 
-<p>This function will remove the given package from a system.</p>
+<p>This function will remove the given package from a system。</p>
 <pre><code class="perl">
  task "cleanup", "server01", sub {
     remove package =&gt; "vim";
@@ -132,8 +132,8 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>update_system</strong></li>
 
 
-<p>This function do a complete system update.</p>
-<p>For example <em>apt-get upgrade</em> or <em>yum update</em>.</p>
+<p>This function do a complete system update。</p>
+<p>For example <em>apt-get upgrade</em> or <em>yum update</em>。</p>
 <pre><code class="perl">
  task "update-system", "server1", sub {
     update_system;
@@ -142,7 +142,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>installed_packages</strong></li>
 
 
-<p>This function returns all installed packages and their version.</p>
+<p>This function returns all installed packages and their version。</p>
 <pre><code class="perl">
  task "get-installed", "server1", sub {
     
@@ -156,7 +156,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>is_installed</strong></li>
 
 
-<p>This function tests if $package is installed. Returns 1 if true. 0 if false.</p>
+<p>This function tests if $package is installed. Returns 1 if true. 0 if false。</p>
 <pre><code class="perl">
  task "isinstalled", "server01", sub {
     if( is_installed("rex") ) {
@@ -170,7 +170,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>update_package_db</strong></li>
 
 
-<p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>.</p>
+<p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>。</p>
 <pre><code class="perl">
  task "update-pkg-db", "server1", "server2", sub {
     update_package_db;
@@ -180,8 +180,8 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>repository($action, %data)</strong></li>
 
 
-<p>Add or remove a repository from the package manager.</p>
-<p>For Debian: If you have no source repository, or if you don't want to add it, just remove the <em>source</em> parameter.</p>
+<p>Add or remove a repository from the package manager。</p>
+<p>For Debian: If you have no source repository, or if you don't want to add it, just remove the <em>source</em> parameter。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository "add" =&gt; "repository-name",
@@ -190,7 +190,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
          repository =&gt; "rex",
          source     =&gt; 1;
  };</code></pre>
-<p>For ALT Linux: If repository is unsigned, just remove the <em>sign_key</em> parameter.</p>
+<p>For ALT Linux: If repository is unsigned, just remove the <em>sign_key</em> parameter。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository "add" =&gt; "altlinux-sisyphus",
@@ -199,14 +199,14 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
          arch       =&gt; "noarch, x86_64",
          repository =&gt; "classic";
  };</code></pre>
-<p>For CentOS, Mageia and SuSE only the name and the url are needed.</p>
+<p>For CentOS, Mageia and SuSE only the name and the url are needed。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository add =&gt; "repository-name",
          url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
      
  };</code></pre>
-<p>To remove a repository just delete it with its name.</p>
+<p>To remove a repository just delete it with its name。</p>
 <pre><code class="perl">
  task "rm-repo", "server1", sub {
     repository remove =&gt; "repository-name";
@@ -234,7 +234,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>package_provider_for $os =&gt; $type;</strong></li>
 
 
-<p>To set an other package provider as the default, use this function.</p>
+<p>To set an other package provider as the default, use this function。</p>
 <pre><code class="perl">
  user "root";
      
@@ -244,7 +244,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
  task "prepare", group =&gt; "db", sub {
      install package =&gt; "vim";
  };</code></pre>
-<p>This example will install <em>vim</em> on every db server. If the server is a Solaris (SunOS) it will use the <em>blastwave</em> Repositories.</p>
+<p>This example will install <em>vim</em> on every db server. If the server is a Solaris (SunOS) it will use the <em>blastwave</em> Repositories。</p>
 
 </ul>
 

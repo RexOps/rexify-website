@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,28 +25,28 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Gather - Hardware and Information gathering</p>
+<h2>名称</h2>
+<p>Rex::Commands::Gather - 硬件及系统信息收集</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can gather hardware and software information.</p>
+<h2>摘要</h2>
+<p>此模块可以收集硬件及系统软件信息。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  operating_system_is("SuSE");</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>get_operating_system</strong></li>
 
 
-<p>Will return the current operating system name.</p>
+<p>返回当前系统名称。</p>
 <pre><code class="perl">
 
  task "get-os", "server01", sub {
@@ -56,17 +56,17 @@
 <li><strong>get_system_information</strong></li>
 
 
-<p>Will return a hash of all system information. These Information will be also used by the template function.</p>
+<p>返回系统信息的 hash。这些信息也可以用于模板函数中。</p>
 
 <li><strong>dump_system_information</strong></li>
 
 
-<p>This function dumps all known system information on stdout.</p>
+<p>This function dumps all known system information on stdout。</p>
 
 <li><strong>operating_system_is($string)</strong></li>
 
 
-<p>Will return 1 if the operating system is $string.</p>
+<p>如果操作系统类型是 $string ，返回 1 。</p>
 <pre><code class="perl">
 
  task "is_it_suse", "server01", sub {
@@ -78,7 +78,7 @@
 <li><strong>operating_system_version()</strong></li>
 
 
-<p>Will return the os release number as an integer. For example, it will convert 5.10 to 510, 10.04 to 1004 or 6.0.3 to 603.</p>
+<p>返回操作系统版本号为整形。如：会转换 5.10 为 510, 10.04 为 1004 或 6.0.3 为 603。</p>
 <pre><code class="perl">
 
  task "prepare", "server01", sub {
@@ -90,7 +90,7 @@
 <li><strong>network_interfaces</strong></li>
 
 
-<p>Return an HashRef of all the networkinterfaces and their configuration.</p>
+<p>返回所有网络接口及配置的hash引用。</p>
 <pre><code class="perl">
  task "get_network_information", "server01", sub {
     my $net_info = network_interfaces();
@@ -105,7 +105,7 @@
 <li><strong>memory</strong></li>
 
 
-<p>Return an HashRef of all memory information.</p>
+<p>返回内存信息的hash引用。</p>
 <pre><code class="perl">
  task "get_memory_information", "server01", sub {
     my $memory = memory();
@@ -120,7 +120,7 @@
 <li><strong>is_freebsd</strong></li>
 
 
-<p>Returns true if the target system is a FreeBSD.</p>
+<p>如果系统是 FreeBSD，返回真。</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
     if(is_freebsd) {
@@ -184,7 +184,7 @@
 <li><strong>is_netbsd</strong></li>
 
 
-<p>Returns true if the target system is a NetBSD.</p>
+<p>如果系统是NetBSD，返回真。</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
     if(is_netbsd) {
@@ -198,7 +198,7 @@
 <li><strong>is_openbsd</strong></li>
 
 
-<p>Returns true if the target system is an OpenBSD.</p>
+<p>如果系统是OpenBSD，返回真。</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
     if(is_openbsd) {
@@ -212,7 +212,7 @@
 <li><strong>is_linux</strong></li>
 
 
-<p>Returns true if the target system is a Linux System.</p>
+<p>如果系统是Linux，返回真。</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
     if(is_linux) {
@@ -226,7 +226,7 @@
 <li><strong>is_bsd</strong></li>
 
 
-<p>Returns true if the target system is a BSD System.</p>
+<p>如果系统是BSD，返回真。</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
     if(is_bsd) {
@@ -240,7 +240,7 @@
 <li><strong>is_solaris</strong></li>
 
 
-<p>Returns true if the target system is a Solaris System.</p>
+<p>如果系统是Solaris，返回真。</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
     if(is_solaris) {
@@ -254,12 +254,12 @@
 <li><strong>is_windows</strong></li>
 
 
-<p>Returns true if the target system is a Windows System.</p>
+<p>如果系统是Windows，返回真。</p>
 
 <li><strong>is_openwrt</strong></li>
 
 
-<p>Returns true if the target system is an OpenWrt System.</p>
+<p>如果系统是OpenWrt，返回真。</p>
 
 </ul>
 

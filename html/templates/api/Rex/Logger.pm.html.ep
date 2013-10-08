@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#variables">VARIABLES</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#variables">变量</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Logger - Logging Module</p>
+<h2>名称</h2>
+<p>Rex::Logger - 日志记录模块</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This module if the logging module. You can define custom logformats.</p>
+<h2>摘要</h2>
+<p>此模块是日志模块，可以自定义日志记录方式。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  $Rex::Logger::format = '[%D] %s';
  # will output something like
@@ -47,32 +47,32 @@
 <p>
 </p>
 
-<h2>VARIABLES</h2>
+<h2>变量</h2>
 <ul>
 <li><strong>$debug</strong></li>
 
 
-<p>Setting this variable to 1 will enable debug logging.</p>
+<p>设置为 1 将开启 debug 日志。</p>
 <pre><code class="perl">
  $Rex::Logger::debug = 1;</code></pre>
 
 <li><strong>$silent</strong></li>
 
 
-<p>If you set this variable to 1 nothing will be logged.</p>
+<p>设置为 1，将不会进行任何日志记录。</p>
 <pre><code class="perl">
  $Rex::Logger::silent = 1;</code></pre>
 
 <li><strong>$format</strong></li>
 
 
-<p>You can define the logging format with the following parameters.</p>
-<p>%D - Appends the current date yyyy-mm-dd HH:mm:ss</p>
-<p>%h - The target host</p>
-<p>%p - The pid of the running process</p>
-<p>%l - Loglevel (INFO or DEBUG)</p>
-<p>%s - The Logstring</p>
-<p>Default is: [%D] %l - %s</p>
+<p>可以定义日志的输出格式.</p>
+<p>%D - 以 yyyy-mm-dd HH:mm:ss 格式添加当前时间</p>
+<p>%h - 目标主机</p>
+<p>%p - 进程id</p>
+<p>%l - 日志记录等级(INFO or DEBUG)</p>
+<p>%s - 日志内容</p>
+<p>默认为: [%D] %l - %s</p>
 
 </ul>
 

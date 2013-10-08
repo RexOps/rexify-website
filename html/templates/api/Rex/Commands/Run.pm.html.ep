@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,29 +25,29 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Run - Execute a remote command</p>
+<h2>名称</h2>
+<p>Rex::Commands::Run - 执行远程命令</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can run a command.</p>
+<h2>摘要</h2>
+<p>此模块用于执行命令。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  my $output = run "ls -l";
  sudo "id";</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>run($command [, $callback])</strong></li>
 
 
-<p>This function will execute the given command and returns the output.</p>
+<p>此函数将执行远程命令并显示返回值。</p>
 <pre><code class="perl">
  task "uptime", "server01", sub {
     say run "uptime";
@@ -61,7 +61,7 @@
 <li><strong>can_run($command)</strong></li>
 
 
-<p>This function checks if a command is in the path or is available.</p>
+<p>这个函数用于检测命令是否可用。</p>
 <pre><code class="perl">
  task "uptime", sub {
     if(can_run "uptime") {
@@ -72,8 +72,8 @@
 <li><strong>sudo</strong></li>
 
 
-<p>Run a command with <em>sudo</em>. Define the password for sudo with <em>sudo_password</em>.</p>
-<p>You can use this function to run one command with sudo privileges or to turn on sudo globaly.</p>
+<p> <em>sudo</em>模式运行命令。可以用 <em>sudo_password</em定义sudo运行密码。</p>
+<p>即使用sudo运行命令。可设置全局属性。</p>
 <pre><code class="perl">
  user "unprivuser";
  sudo_password "f00b4r";
@@ -86,7 +86,7 @@
        owner  =&gt; "root",
        mode   =&gt; 640;
  };</code></pre>
-<p>Or, if you don't turning sudo globaly on.</p>
+<p>或者使用sudo代码块执行非全局模式。</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
     file "/tmp/foo.txt",
@@ -99,7 +99,7 @@
           content =&gt; "this file was written with sudo privileges\n";
     };
  };</code></pre>
-<p>Run only one command within sudo.</p>
+<p>仅sudo执行一条命令。</p>
 <pre><code class="perl">
  task "eth1-down", sub {
    sudo "ifconfig eth1 down";

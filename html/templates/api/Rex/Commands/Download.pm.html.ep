@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Download - Download remote files</p>
+<h2>名称</h2>
+<p>Rex::Commands::Download - 下载文件</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can download a remotefile via sftp, http and ftp from a host to your local computer.</p>
+<h2>摘要</h2>
+<p>通过此模块你可以用sftp, http 或 ftp 下载文件。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  # sftp
  task "download", "remoteserver", sub {
@@ -49,12 +49,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>download($remote, [$local])</strong></li>
 
 
-<p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
+<p>如果没有定义本地路径，则下载到当前执行路径。</p>
 <pre><code class="perl">
  task "download", "remoteserver", sub {
     download "/remote/file", "localfile";

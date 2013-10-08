@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,28 +25,28 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::MD5 - Calculate MD5 sum of files</p>
+<h2>名称</h2>
+<p>Rex::Commands::MD5 - 计算文件 MD5 值</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you calculate the md5 sum of a file.</p>
+<h2>摘要</h2>
+<p>此模块用于计算文件md5值。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  my $md5 = md5($file);</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>md5($file)</strong></li>
 
 
-<p>This function will return the md5 sum (hexadecimal) for the given file.</p>
+<p>此函数用于返回文件 md5(hexadecimal) 值。</p>
 <pre><code class="perl">
  task "md5", "server01", sub {
     my $md5 = md5("/etc/passwd");

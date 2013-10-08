@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#class_methods">CLASS METHODS</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#class_methods">类方法</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::FS::File - File Class</p>
+<h2>名称</h2>
+<p>Rex::FS::File - 文件类</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This is the File Class used by <em>write_file</em> and <em>read_file</em>.</p>
+<h2>摘要</h2>
+<p>此类用来<em>write_file</em> 和<em>read_file</em>。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);
  $file-&gt;read($len);
@@ -45,48 +45,48 @@
 <p>
 </p>
 
-<h2>CLASS METHODS</h2>
+<h2>类方法</h2>
 <ul>
 <li><strong>new</strong></li>
 
 
-<p>This is the constructor. You need to set the filehandle which the object should work on.</p>
+<p>构造函数。必须正确设置文件句柄。</p>
 <pre><code class="perl">
  my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);</code></pre>
 
 <li><strong>write($buf)</strong></li>
 
 
-<p>Write $buf into the filehandle.</p>
+<p>把 $buf 写入文件句柄。</p>
 <pre><code class="perl">
  $file-&gt;write("Hello World");</code></pre>
 
 <li><strong>seek($offset)</strong></li>
 
 
-<p>Seek to the file position $offset.</p>
-<p>Set the file pointer to the 5th byte.</p>
+<p>移动文件指针到 $offset 偏移量处。</p>
+<p>设置到第5字节。</p>
 <pre><code class="perl">
  $file-&gt;seek(5);</code></pre>
 
 <li><strong>read($len)</strong></li>
 
 
-<p>Read $len bytes out of the filehandle.</p>
+<p>从文件句柄中读出 $len 字节。</p>
 <pre><code class="perl">
  my $content = $file-&gt;read(1024);</code></pre>
 
 <li><strong>read_all</strong></li>
 
 
-<p>Read everything out of the filehandle.</p>
+<p>从文件句柄中读出所有内容。</p>
 <pre><code class="perl">
  my $content = $file-&gt;read_all;</code></pre>
 
 <li><strong>close</strong></li>
 
 
-<p>Close the file.</p>
+<p>关闭文件。</p>
 <pre><code class="perl">
  $file-&gt;close;</code></pre>
 

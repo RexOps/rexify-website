@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Kernel - Load/Unload Kernel Modules</p>
+<h2>名称</h2>
+<p>Rex::Commands::Kernel - 装载/卸载内核模块</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can load and unload kernel modules.</p>
+<h2>摘要</h2>
+<p>此模块用来装载/卸载核模块。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  kmod load =&gt; "ipmi_si";
  
@@ -43,12 +43,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>kmod($action =&gt; $module)</strong></li>
 
 
-<p>This function load or unload a kernel module.</p>
+<p>此方法用来加载卸载模块。</p>
 <pre><code class="perl">
  task "load", sub {
     kmod load =&gt; "ipmi_si";
@@ -57,7 +57,7 @@
  task "unload", sub {
     kmod unload =&gt; "ipmi_si";
  };</code></pre>
-<p>If you're using NetBSD or OpenBSD you have to specify the complete path and, if needed the entry function.</p>
+<p>NetBSD 或 OpenBSD系统则需要完整的路径，甚至可能是入口函数。</p>
 <pre><code class="perl">
  task "load", sub {
     kmod load =&gt; "/usr/lkm/ntfs.o";

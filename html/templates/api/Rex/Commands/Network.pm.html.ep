@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::Network - Network Module</p>
+<h2>名称</h2>
+<p>Rex::Commands::Network - 网络模块</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can get information of the routing table, current network connections, open ports, ...</p>
+<h2>摘要</h2>
+<p>通过此模块你可以获取路由表，网络连接信息，端口信息等....</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Network;
     
@@ -50,22 +50,22 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>route</strong></li>
 
 
-<p>Get routing information</p>
+<p>获取路由信息</p>
 
 <li><strong>default_gateway([$default_gw])</strong></li>
 
 
-<p>Get or set the default gateway.</p>
+<p>获取默认网关。</p>
 
 <li><strong>netstat</strong></li>
 
 
-<p>Get network connection information</p>
+<p>获取网络连接信息</p>
 
 </ul>
 

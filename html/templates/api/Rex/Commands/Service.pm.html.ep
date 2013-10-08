@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Commands::Service - Manage System Services</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can manage Linux services.</p>
+<h2>摘要</h2>
+<p>With this module you can manage Linux services。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Service
      
@@ -55,12 +55,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>service($service, $action, [$option])</strong></li>
 
 
-<p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform.</p>
+<p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform。</p>
 <ul>
 <li><strong>starting a service</strong></li>
 
@@ -128,7 +128,7 @@
 <li><strong>service_provider_for $os =&gt; $type;</strong></li>
 
 
-<p>To set an other service provider as the default, use this function.</p>
+<p>To set an other service provider as the default, use this function。</p>
 <pre><code class="perl">
  user "root";
      
@@ -138,7 +138,7 @@
  task "start", group =&gt; "db", sub {
      service ssh =&gt; "restart";
  };</code></pre>
-<p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
+<p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default)。</p>
 
 </ul>
 

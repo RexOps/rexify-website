@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -24,12 +24,12 @@
 
 <p>
 </p>
-<h2>DESCRIPTION</h2>
-<p>With this Module you can manage basic Iptables rules.</p>
+<h2>摘要</h2>
+<p>With this Module you can manage basic Iptables rules。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Iptables;
      
@@ -66,12 +66,12 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>open_port($port, $option)</strong></li>
 
 
-<p>Open a port for inbound connections.</p>
+<p>Open a port for inbound connections。</p>
 <pre><code class="perl">
  task "firewall", sub {
     open_port 22;
@@ -82,7 +82,7 @@
 <li><strong>close_port($port, $option)</strong></li>
 
 
-<p>Close a port for inbound connections.</p>
+<p>Close a port for inbound connections。</p>
 <pre><code class="perl">
  task "firewall", sub {
     close_port 22;
@@ -93,7 +93,7 @@
 <li><strong>redirect_port($in_port, $option)</strong></li>
 
 
-<p>Redirect $in_port to an other local port.</p>
+<p>Redirect $in_port to an other local port。</p>
 <pre><code class="perl">
  task "redirects", sub {
     redirect_port 80 =&gt; 10080;
@@ -106,7 +106,7 @@
 <li><strong>iptables(@params)</strong></li>
 
 
-<p>Write standard iptable comands.</p>
+<p>Write standard iptable comands。</p>
 <pre><code class="perl">
  task "firewall", sub {
     iptables t =&gt; "nat", A =&gt; "POSTROUTING", o =&gt; "eth0", j =&gt; "MASQUERADE";
@@ -121,7 +121,7 @@
 <li><strong>is_nat_gateway</strong></li>
 
 
-<p>This function create a nat gateway for the device the default route points to.</p>
+<p>This function create a nat gateway for the device the default route points to。</p>
 <pre><code class="perl">
  task "make-gateway", sub {
     is_nat_gateway;
@@ -130,7 +130,7 @@
 <li><strong>default_state_rule(%option)</strong></li>
 
 
-<p>Set the default state rules for the given device.</p>
+<p>Set the default state rules for the given device。</p>
 <pre><code class="perl">
  task "firewall", sub {
     default_state_rule(dev =&gt; "eth0");
@@ -139,7 +139,7 @@
 <li><strong>iptables_list</strong></li>
 
 
-<p>List all iptables rules.</p>
+<p>List all iptables rules。</p>
 <pre><code class="perl">
  task "list-iptables", sub {
     print Dumper iptables_list;
@@ -148,7 +148,7 @@
 <li><strong>iptables_clear</strong></li>
 
 
-<p>Remove all iptables rules.</p>
+<p>Remove all iptables rules。</p>
 <pre><code class="perl">
  task "no-firewall", sub {
     iptables_clear;

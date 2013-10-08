@@ -13,10 +13,10 @@
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#class_methods">CLASS METHODS</a></li>
+	<li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#class_methods">类方法</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Hardware - Base Class for hardware / information gathering</p>
+<h2>名称</h2>
+<p>Rex::Hardware - 硬件信息收集类的基类</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This module is the base class for hardware/information gathering.</p>
+<h2>摘要</h2>
+<p>这个模块是硬件信息收集类的基类。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Hardware;
  
@@ -44,22 +44,22 @@
 <p>
 </p>
 
-<h2>CLASS METHODS</h2>
+<h2>类方法</h2>
 <ul>
 <li><strong>get(@modules)</strong></li>
 
 
-<p>Returns a hash with the wanted information.</p>
+<p>返回你想要的信息的 hash 。</p>
 <pre><code class="perl">
  task "get-info", "server1", sub {
     %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
  };</code></pre>
-<p>Or if you want to get all information</p>
+<p>或者想要的是全部信息</p>
 <pre><code class="perl">
  task "get-all-info", "server1", sub {
     %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
  };</code></pre>
-<p>Available modules:</p>
+<p>可用模块：</p>
 <ul>
 <li><strong>Host</strong></li>
 

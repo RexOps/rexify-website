@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Commands::User - Manipulate users and groups</p>
+<h2>名称</h2>
+<p>Rex::Commands::User - 用户/组管理</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can manage user and groups.</p>
+<h2>摘要</h2>
+<p>此模块用于管理用户及用户组。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::User;
     
@@ -54,32 +54,32 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>create_user($user =&gt; {})</strong></li>
 
 
-<p>Create or update a user.</p>
-
+<p>创建或更新用户。</p>
+ 
 <li><strong>get_uid($user)</strong></li>
-
-
-<p>Returns the uid of $user.</p>
-
+ 
+ 
+<p>返回$user的uid。</p>
+ 
 <li><strong>get_user($user)</strong></li>
-
-
-<p>Returns all information about $user.</p>
-
+ 
+ 
+<p>返回$user的所有信息。</p>
+ 
 <li><strong>user_group($user)</strong></li>
-
-
-<p>Returns group membership about $user.</p>
+ 
+ 
+<p>返回$user群组信息。</p>
 
 <li><strong>user_list()</strong></li>
 
 
-<p>Returns user list via getent passwd.</p>
+<p>通过 getent passwdi 返回用户列表。</p>
 <pre><code class="perl">
  task "list_user", "server01", sub {
     for my $user (user_list) {
@@ -90,7 +90,7 @@
 <li><strong>delete_user($user)</strong></li>
 
 
-<p>Delete a user from the system.</p>
+<p>删除用户。</p>
 <pre><code class="perl">
  delete_user "trak", {
     delete_home =&gt; 1,
@@ -100,7 +100,7 @@
 <li><strong>create_group($group, {})</strong></li>
 
 
-<p>Create or update a group.</p>
+<p>创建或更新用户组。</p>
 <pre><code class="perl">
  create_group $group, {
     gid =&gt; 1500,
@@ -110,19 +110,19 @@
 <li><strong>get_gid($group)</strong></li>
 
 
-<p>Return the group id of $group.</p>
+<p>返回 $group 组 ID。</p>
 
 <li><strong>get_group($group)</strong></li>
 
 
-<p>Return information of $group.</p>
+<p>返回 $group 组信息。</p>
 <pre><code class="perl">
  $info = get_group("wheel");</code></pre>
 
 <li><strong>delete_group($group)</strong></li>
 
 
-<p>Delete a group.</p>
+<p>删除用户组。</p>
 
 </ul>
 

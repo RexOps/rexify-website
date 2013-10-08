@@ -9,17 +9,17 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#getting_help">GETTING HELP</a></li>
-	<li><a href="#dependencies">Dependencies</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#class_methods">CLASS METHODS</a></li>
-	<li><a href="#contributors">CONTRIBUTORS</a></li>
+        <li><a href="#name">名称</a></li>
+        <li><a href="#description">摘要</a></li>
+        <li><a href="#getting_help">更多内容</a></li>
+        <li><a href="#dependencies">依赖</a></li>
+        <li><a href="#synopsis">例子</a></li>
+        <li><a href="#class_methods">类方法</a></li>
+        <li><a href="#contributors">致谢</a></li>
 </ul>
 
 
@@ -28,18 +28,18 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex - Remote Execution</p>
+<h2>名称</h2>
+<p>Rex - 远程执行</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>(R)?ex is a small script to ease the execution of remote commands. You can write small tasks in a file named <em>Rexfile</em>.</p>
-<p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
+<h2>摘要</h2>
+<p>(R)?ex 是一个用于简化远程执行命令操作的小脚本。你只要在 <em>Rexfile</em> 文件中创建任务即可。</p>
+<p>你可以在<a href="http://rexify.perl-china.com/">http://rexify.org/</a>中找到例子和如何使用rex的介绍。</p>
 <p>
 </p>
 
-<h2>GETTING HELP</h2>
+<h2>获取帮助</h2>
 <ul>
 <li><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
 
@@ -57,24 +57,24 @@
 <p>
 </p>
 
-<h2>Dependencies</h2>
+<h2>依赖</h2>
 <ul>
 <li>
 <p><em>Net::SSH2</em></p>
 </li>
 <li>
 <p><em>Expect</em></p>
-<p>Only if you want to use the Rsync module.</p>
+<p>如果需要使用 Rsync 模块。</p>
 </li>
 <li>
 <p><em>DBI</em></p>
-<p>Only if you want to use the DB module.</p>
+<p>如果需要使用DB模块。</p>
 </li>
 </ul>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  desc "Show Unix version";
  task "uname", sub {
@@ -82,54 +82,53 @@
  };</code></pre>
 <pre><code class="perl">
  bash# rex -H "server[01..10]" uname</code></pre>
-<p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for a list of all commands you can use.</p>
+<p>查看 <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> 学习完整可用命令列表。</p>
 <p>
 </p>
 
-<h2>CLASS METHODS</h2>
+<h2>类方法</h2>
 <ul>
 <li><strong>get_current_connection</strong></li>
 
 
-<p>This function is deprecated since 0.28! See Rex::Commands::connection.</p>
-<p>Returns the current connection as a hashRef.</p>
+<p>此函数在V0.28!后停用,可参考Rex::Commands::connection。</p>
+<p>返回当前连接的hashref。</p>
 <ul>
 <li><strong>server</strong></li>
 
 
-<p>The server name</p>
+<p>服务器名</p>
 
 <li><strong>ssh</strong></li>
 
-
-<p>1 if it is a ssh connection, 0 if not.</p>
+<p>1 代表是ssh连接, 0则不是。</p>
 
 </ul>
 
 <li><strong>is_ssh</strong></li>
 
 
-<p>Returns 1 if the current connection is a ssh connection. 0 if not.</p>
+<p>返回1 代表是ssh连接, 0则不是。</p>
 
 <li><strong>is_local</strong></li>
 
 
-<p>Returns 1 if the current connection is local. Otherwise 0.</p>
+<p>返回1 代表是本地, 0则不是。</p>
 
 <li><strong>is_sudo</strong></li>
 
 
-<p>Returns 1 if the current operation is executed within sudo.</p>
+<p>返回1代表通过sudo执行。</p>
 
 <li><strong>get_sftp</strong></li>
 
 
-<p>Returns the sftp object for the current ssh connection.</p>
+<p>为当前 ssh 连接返回 sftp 对象。</p>
 
 <li><strong>connect</strong></li>
 
 
-<p>Use this function to create a connection if you use Rex as a library.</p>
+<p>如果采用库方式使用Rex，那用这个函数创建一个连接。</p>
 <pre><code class="perl">
  use Rex;
  use Rex::Commands::Run;
@@ -153,8 +152,8 @@
 <p>
 </p>
 
-<h2>CONTRIBUTORS</h2>
-<p>Many thanks to the contributors for their work (alphabetical order).</p>
+<h2>致谢</h2>
+<p>感谢以下无私的人士(按字幕排序)。</p>
 <ul>
 <li><strong>Alexandr Ciornii</strong></li>
 
