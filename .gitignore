@@ -14,5 +14,6 @@ debian/*.log
 *.bak
 README
 config.pl
+*.zip
 elasticsearch
 html/log

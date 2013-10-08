@@ -119,8 +119,9 @@ sub index_document {
    $fs =~ s/\.ep$//;
 
    my $ref = {
-      file  => $base64_content,
+      #file  => $base64_content,
       #content  => join("\n", @content),
+      file  => join("\n", @content),
       fs    => $fs,
       title => $title,
    };
