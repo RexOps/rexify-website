@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#methods">METHODS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#methods">方法</a></li>
 </ul>
 
 
@@ -24,81 +24,80 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Box::Base - Rex/Boxes Base Module</p>
+<h2>名称</h2>
+<p>Rex::Box::Base - Rex/Boxes 基类</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This is a Rex/Boxes base module.</p>
+<h2>摘要</h2>
+<p>这是 Rex/Boxes 基类。</p>
 <p>
 </p>
 
-<h2>METHODS</h2>
-<p>These methods are shared across all other Rex::Box modules.</p>
+<h2>方法</h2>
+<p>这些方法在其他 Rex::Box 模块之间共享。</p>
 <ul>
 <li><strong>info</strong></li>
 
 
-<p>Returns a hashRef of vm information.</p>
+<p>返回虚拟机信息的哈希引用。</p>
 
 <li><strong>name($vmname)</strong></li>
 
 
-<p>Sets the name of the virtual machine.</p>
+<p>设置虚拟机名称。</p>
 
 <li><strong>setup(@tasks)</strong></li>
 
 
-<p>Sets the tasks that should be executed as soon as the VM is available throu SSH.</p>
+<p>设置虚拟机可用后需要通过 SSH 执行的任务。</p>
 
 <li><strong>import_vm()</strong></li>
 
 
-<p>This method must be overwriten by the implementing class.</p>
+<p>这个方法必须由具体实现类覆写。</p>
 
 <li><strong>stop()</strong></li>
 
 
-<p>Stops the VM.</p>
+<p>停止虚拟机。</p>
 
 <li><strong>start()</strong></li>
 
 
-<p>Starts the VM.</p>
+<p>启动虚拟机。</p>
 
 <li><strong>ip()</strong></li>
 
 
-<p>Return the ip:port to which rex will connect to.</p>
+<p>返回 rex 将要连接的 ip 地址和端口。</p>
 
 <li><strong>status()</strong></li>
 
 
-<p>Returns the status of a VM.</p>
-<p>Valid return values are "running" and "stopped".</p>
->>>>>>> laird/master
+<p>返回虚拟机状态。</p>
+<p>具体值可能是 "running" 或者 "stopped"。</p>
 
 <li><strong>provision_vm([@tasks])</strong></li>
 
 
-<p>Execute's the given tasks on the VM.</p>
+<p>在虚拟机上执行这些任务。</p>
 
 <li><strong>cpus($count)</strong></li>
 
 
-<p>Set the amount of CPUs for the VM.</p>
+<p>设置虚拟机的 CPU 数。</p>
 
 <li><strong>memory($memory_size)</strong></li>
 
 
-<p>Sets the memory of a VM in megabyte.</p>
+<p>设置虚拟机的内存大小，单位 MB。</p>
 
 <li><strong>network(%option)</strong></li>
 
 
-<p>Configure the network for a VM.</p>
-<p>Currently it supports 2 modes. <em>nat</em> and <em>bridged</em>. Currently it supports only one network card.</p>
+<p>配置虚拟机网络。</p>
+<p>目前支持两个模式。 <em>nat</em> 和 <em>bridged</em>。目前只支持单网卡。</p>
 <pre><code class="perl">
  $box-&gt;network(
     1 =&gt; {
@@ -116,12 +115,12 @@
 <li><strong>url($url)</strong></li>
 
 
-<p>The URL where to download the Base VM Image. You can use self-made images or prebuild images from <a href="http://box.rexify.org/.">http://box.rexify.org/.</a></p>
+<p>下载虚拟机基础镜像的 URL 地址。你可以自制镜像，也可以从 <a href="http://box.rexify.org/.">http://box.rexify.org/</a> 下载已经打包好的镜像。</p>
 
 <li><strong>auth(%option)</strong></li>
 
 
-<p>Configure the authentication to the VM.</p>
+<p>配置虚拟机的认证方式。</p>
 <pre><code class="perl">
  $box-&gt;auth(
     user =&gt; $user,

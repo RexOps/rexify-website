@@ -9,15 +9,15 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
 	<li><a href="#getting_help">GETTING HELP</a></li>
 	<li><a href="#dependencies">DEPENDENCIES</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#synopsis">例子</a></li>
 	<li><a href="#inject_methods">INJECT METHODS</a></li>
 </ul>
 
@@ -27,12 +27,12 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Apache::Inject - Configuration Injection module for Rex::Apache::Deploy</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
+<h2>摘要</h2>
 <p>This is a (R)?ex module to inject configuration parameters into packages (*.tar.gz, *.tar.bz2, *.zip or *.war).</p>
 <p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
 <p>
@@ -59,7 +59,7 @@
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Apache::Inject Properties;
      

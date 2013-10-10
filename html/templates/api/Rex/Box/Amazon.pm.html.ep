@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#examples">EXAMPLES</a></li>
-	<li><a href="#methods">METHODS</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#examples">例子</a></li>
+	<li><a href="#methods">方法</a></li>
 </ul>
 
 
@@ -24,13 +24,13 @@
 
 <p>
 </p>
-<h2>DESCRIPTION</h2>
-<p>This is a Rex/Boxes module to use Amazon EC2.</p>
+<h2>摘要</h2>
+<p>这是一个使用亚马逊 EC2 云主机的 Rex/Boxes 模块。</p>
 <p>
 </p>
 
-<h2>EXAMPLES</h2>
-<p>To use this module inside your Rexfile you can use the following commands.</p>
+<h2>例子</h2>
+<p>要在 Rexfile 里使用这个模块，可以使用如下命令：</p>
 <pre><code class="perl">
  use Rex::Commands::Boxes;
  set box =&gt; "Amazon", {
@@ -59,7 +59,7 @@
        $box-&gt;setup("setup_task");
     };
  };</code></pre>
-<p>If you want to use a YAML file you can use the following template.</p>
+<p>而如果想用 YAML 格式文件，可以这样；</p>
 <pre><code class="perl">
  type: Amazon
  amazon:
@@ -74,7 +74,7 @@
        type: m1.large
        security_group: default
        setup: setup_task</code></pre>
-<p>And then you can use it the following way in your Rexfile.</p>
+<p>然后在你的 Rexfile 里这样使用它：</p>
 <pre><code class="perl">
  use Rex::Commands::Box init_file =&gt; "file.yml";
     
@@ -84,45 +84,36 @@
 <p>
 </p>
 
-<h2>METHODS</h2>
-<p>See also the Methods of Rex::Box::Base. This module inherits all methods of it.</p>
+<h2>方法</h2>
+<p>请先阅读 Rex::Box::Base 模块的方法说明。这个模块继承了基类的所有方法。</p>
 <ul>
 <li><strong>new(name =&gt; $vmname)</strong></li>
 
 
-<p>Constructor if used in OO mode.</p>
+<p>面向对象模式下使用的构造器。</p>
 <pre><code class="perl">
  my $box = Rex::Box::VBox-&gt;new(name =&gt; "vmname");</code></pre>
 
 <li><strong>ami($ami_id)</strong></li>
 
 
-<p>Set the AMI ID for the box.</p>
+<p>设置虚拟机的 AMI ID 。</p>
 
 <li><strong>type($type)</strong></li>
 
 
-<p>Set the type of the Instance. For example "m1.large".</p>
+<p>设置实例的类型。比如 "m1.large" 。</p>
 
 <li><strong>security_group($sec_group)</strong></li>
 
 
-<p>Set the Amazon security group for this Instance.</p>
+<p>设置实例的亚马逊安全组。</p>
 
-<li><strong>forward_port(%option)</strong></li>
-
-
-<p>Not available for Amazon Boxes.</p>
-
-<li><strong>share_folder(%option)</strong></li>
-
-
-<p>Not available for Amazon Boxes.</p>
 
 <li><strong>info</strong></li>
 
 
-<p>Returns a hashRef of vm information.</p>
+<p>返回虚拟机信息的哈希引用。</p>
 
 </ul>
 

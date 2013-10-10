@@ -9,12 +9,12 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#functions">FUNCTIONS</a></li>
 </ul>
@@ -25,12 +25,12 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Apache::Deploy::Symlink - Deploy application and symlink to live</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
+<h2>摘要</h2>
 <p>With this module you can deploy an application to a special folder and after that you can symlink it to the document root.</p>
 <p>
 </p>

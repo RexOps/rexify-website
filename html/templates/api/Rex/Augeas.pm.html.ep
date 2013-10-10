@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Augeas - An augeas module for (R)?ex</p>
+<h2>名称</h2>
+<p>Rex::Augeas -  (R)?ex 的 augeas 模块</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This is a simple module to manipulate configuration files with the help of augeas.</p>
+<h2>摘要</h2>
+<p>这是一个利用 augeas 管理配置文件的简易模块。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  my $k = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot;, &quot;127.0.0.1&quot;;
     
@@ -49,18 +49,18 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>augeas($action, @options)</strong></li>
 
 
-<p>It returns 1 on success and 0 on failure.</p>
-<p>Actions:</p>
+<p>成功返回 1，失败返回 0。</p>
+<p>动作：</p>
 
 <li><strong>modify</strong></li>
 
 
-<p>This modifies the keys given in @options in $file.</p>
+<p>修改 $file 里 @options 中给出的关键字。</p>
 <pre><code class="perl">
  augeas modify =&gt;
            &quot;/files/etc/hosts/7/ipaddr&quot;    =&gt; &quot;127.0.0.2&quot;,
@@ -69,14 +69,14 @@
 <li><strong>remove</strong></li>
 
 
-<p>Remove an entry.</p>
+<p>删除一行。</p>
 <pre><code class="perl">
  augeas remove =&gt; &quot;/files/etc/hosts/2&quot;;</code></pre>
 
 <li><strong>insert</strong></li>
 
 
-<p>Insert an item into the file. Here, the order of the options is important. If the order is wrong it won't save your changes.</p>
+<p>往文件里插入内容。选项的顺序很重要，如果顺序不对，你的更改不会保存。</p>
 <pre><code class="perl">
  augeas insert =&gt; &quot;/files/etc/hosts&quot;,
            label  =&gt; &quot;01&quot;,
@@ -87,14 +87,14 @@
 <li><strong>dump</strong></li>
 
 
-<p>Dump the contents of a file to STDOUT.</p>
+<p>文件内容输出到标准输出。</p>
 <pre><code class="perl">
  augeas dump =&gt; &quot;/files/etc/hosts&quot;;</code></pre>
 
 <li><strong>exists</strong></li>
 
 
-<p>Check if an item exists.</p>
+<p>检查某内容是否存在。</p>
 <pre><code class="perl">
  my $exists = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot; =&gt; &quot;127.0.0.1&quot;;
  if($exists) {
@@ -104,7 +104,7 @@
 <li><strong>get</strong></li>
 
 
-<p>Returns the value of the given item.</p>
+<p>返回指定内容的值。</p>
 <pre><code class="perl">
  my $val = augeas get =&gt; &quot;/files/etc/hosts/1/ipaddr&quot;;</code></pre>
 

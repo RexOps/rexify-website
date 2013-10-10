@@ -9,12 +9,12 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 </ul>
 
@@ -24,12 +24,12 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Apache::Deploy::deb - Deploy deb package</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
+<h2>摘要</h2>
 <p>With this module you can deploy a Debian package.</p>
 <p>If the package is not build yet, it will pass all the arguments to the build() function and executes the build on the local machine.</p>
 <p>

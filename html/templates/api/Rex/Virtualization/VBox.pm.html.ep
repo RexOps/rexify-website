@@ -9,13 +9,13 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
 </ul>
 
 
@@ -24,17 +24,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
-<p>Rex::Virtualization::VBox - VirtualBox Virtualization Module</p>
+<h2>名称</h2>
+<p>Rex::Virtualization::VBox - VirtualBox 虚拟化模块</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>With this module you can manage VirtualBox.</p>
+<h2>摘要</h2>
+<p>用该模块管理 VirtualBox。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
     
@@ -85,7 +85,7 @@
  vm share_folder =&gt; "vm01", add =&gt; { sharename =&gt; "/path/to/share" };
     
  vm share_folder =&gt; "vm01", remove =&gt; "sharename";</code></pre>
-<p>For VirtualBox memory declaration is always in megabyte.</p>
+<p>VirtualBox 的内存声明永远是 MB 单位。</p>
 
 
 

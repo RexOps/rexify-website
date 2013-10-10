@@ -9,14 +9,14 @@
 
 <!-- INDEX BEGIN -->
 <div name="index">
-<h1>TABLE OF CONTENTS</h1>
+<h1>目录</h1>
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -25,17 +25,17 @@
 
 <p>
 </p>
-<h2>NAME</h2>
+<h2>名称</h2>
 <p>Rex::Apache::Build - Build your WebApp Package</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
+<h2>摘要</h2>
 <p>With this module you can prepare your WebApp for deployment.</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  yui_path &quot;./yuicompressor-2.4.6.jar&quot;;
      
@@ -69,7 +69,7 @@
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>yui_path($path_to_yui_compressor)</strong></li>
 
