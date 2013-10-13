@@ -228,7 +228,7 @@ __DATA__
                   <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>>
                      <b class="arrow_box"></b>
                      <a href="#" title="Examples, Howtos and Documentation" class="dropdown_link">Docs</a>
-                     <ul class="dropdown_menu">
+                     <ul class="dropdown_menu dropdown_docs">
                         <li><a href="/howtos/index.html#guides">Guides</a></li>
                         <li><a href="/howtos/index.html#howtos">Howtos</a></li>
                         <li><a href="/howtos/index.html#snippets">Snippets</a></li>
