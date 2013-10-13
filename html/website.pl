@@ -325,22 +325,11 @@ __DATA__
 
 
                <div class="news_widget">
-                  <div class="news_date">2013-06-16</div>
-                  <div class="news_content">(R)?ex 0.42.0 released. This release brings support to use Net::OpenSSH as transport layer. The default is still Net::SSH2. But now it is possible to use all features from your $HOME/.ssh/config file and to use Kerberos Authentication. See a list of all changes with example in the <a href="https://github.com/krimdomu/Rex/wiki/New0.42">Changelog</a>.</div>
-               </div>
-
-
-               <div class="news_widget">
                   <div class="news_date">2013-05-23</div>
                   <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">just announced</a> that they offer professional support for Rex.</div>
                </div>
 
 
-               <div class="news_widget">
-                  <div class="news_date">2013-04-01</div>
-                  <div class="news_content">(R)?ex 0.41.0 released. This release brings a handfull of new functions that ease the use and bug fixes. See <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a> for more information.</div>
-                  <div class="news_content">There is also a new guide on <a href="/howtos/using_templates.html">howto use modules and templates</a> online.</div>
-               </div>
 
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
@@ -350,13 +339,8 @@ __DATA__
                   </div>
                </div>
 
-               <div class="news_widget">
-                  <div class="news_date">2013-03-16</div>
-                  <div class="news_content">Talk from the German Perl Workshop just got uploaded to slideshare (<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">german</a>) and (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">english</a>).</div>
-               </div>
-
                <h2>Conferences</h2>
-               <p>20. September 2013 talk on the <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a>.</p>
+               <p>10. November 2013 talk at <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a>.</p>
 
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
