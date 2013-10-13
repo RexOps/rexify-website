@@ -6,7 +6,7 @@
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
 % end
 
-
+         <a name="guides"></a>
          <h1>Beginner Guides</h1>
          <ul class="simple-list">
             <li><a href="start.html">Start using (R)?ex</a></li>
@@ -25,6 +25,7 @@
             <li><a href="/api/">API Documentation</a></li>
          </ul>
  
+         <a name="howtos"></a>
          <div class="vspace"></div>
          <h1>Howtos</h1>
          <ul class="simple-list">
@@ -51,6 +52,7 @@
 
          <div class="vspace"></div>
 
+         <a name="snippets"></a>
          <h1>Snippets</h1>
          <ul class="simple-list">
             <li><a href="/howtos/groups_file.html">Howto use INI files for your server groups</a></li>

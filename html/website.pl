@@ -225,8 +225,19 @@ __DATA__
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">Support</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">Docs</a></li>
-                  <li id="li_api" <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>>
+                     <b class="arrow_box"></b>
+                     <a href="#" title="Examples, Howtos and Documentation" class="dropdown_link">Docs</a>
+                     <ul class="dropdown_menu">
+                        <li><a href="/howtos/index.html#guides">Guides</a></li>
+                        <li><a href="/howtos/index.html#howtos">Howtos</a></li>
+                        <li><a href="/howtos/index.html#snippets">Snippets</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/api/index.html">API</a></li>
+                        <li class="divider"></li>
+                        <li><a href="http://rex.perl-china.com/">Chinese Rex Community Website</a></li>
+                     </ul>
+                  </li>
                </ul>
             </div>
 
@@ -298,7 +309,7 @@ __DATA__
 
                <div class="news_widget">
                   <div class="news_date">2013-09-21</div>
-                  <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> (language: german).</div>
+                  <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> and on <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (language: german).</div>
                </div>
 
                <div class="news_widget">
@@ -397,6 +408,7 @@ __DATA__
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
 
    <script>
       if($(window).width() <= 1100) {
