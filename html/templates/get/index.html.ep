@@ -29,23 +29,9 @@
     </ul>
     <div class="tab-content">
        <div class="tab-pane active" id="tab1">
-         <h3>For Lucid (10.04)</h3>
+         <h3>For Quantal (12.10)</h3>
 
-         <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
-
-         <h3>For Natty (11.04)</h3>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ natty rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
-
-         <h3>For Oneiric (11.10)</h3>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ oneiric rex' &gt;&gt; /etc/apt/sources.list
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
@@ -57,26 +43,39 @@ wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
-         <h3>For Quantal (12.10)</h3>
+         <h3>For Oneiric (11.10)</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ oneiric rex' &gt;&gt; /etc/apt/sources.list
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
+         <h3>For Natty (11.04)</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ natty rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
+         <h3>For Lucid (10.04)</h3>
+
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab2">
-         <h3>For Squeeze</h3>
+         <h3>For Wheezy</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
-         <h3>For Wheezy</h3>
+         <h3>For Squeeze</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
+            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
