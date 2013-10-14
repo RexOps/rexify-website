@@ -232,6 +232,9 @@ __DATA__
                         <li><a href="/howtos/index.html#guides">Guides</a></li>
                         <li><a href="/howtos/index.html#howtos">Howtos</a></li>
                         <li><a href="/howtos/index.html#snippets">Snippets</a></li>
+                        <li>
+                           <a href="/howtos/book.html">Rex Book (work in progress)</a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="/api/index.html">API</a></li>
                         <li class="divider"></li>
