@@ -36,11 +36,11 @@ tmpdir                  = /tmp
 skip-external-locking
 max_allowed_packet      = 64M
 thread_stack            = 192K
-max_connections         = &lt;%= exists $conf{"max_connections"} ? $conf{"max_connections"} : "1000" %&gt;
+max_connections         = &lt;%= exists $conf-&gt;{"max_connections"} ? $conf-&gt;{"max_connections"} : "1000" %&gt;
 
 max_connect_errors      = 1000
-table_cache             = &lt;%= exists $conf{"table_cache"} ? $conf{"table_cache"} : "5000" %&gt;
-table_open_cache        = &lt;%= exists $conf{"table_open_cache"} ? $conf{"table_open_cache"} : "5000" %&gt;
+table_cache             = &lt;%= exists $conf-&gt;{"table_cache"} ? $conf-&gt;{"table_cache"} : "5000" %&gt;
+table_open_cache        = &lt;%= exists $conf-&gt;{"table_open_cache"} ? $conf-&gt;{"table_open_cache"} : "5000" %&gt;
 thread_concurrency      = 10
 
 #

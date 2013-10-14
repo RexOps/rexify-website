@@ -25,7 +25,7 @@
    <li>YAML</li>
 </ul>
 
-<p>On the server side you only need a working perl installation. The version doesn't matter. (This hasn't been tested yet, but if you're lucky it will also work with Perl 4). And of course a working ssh server and a valid user.</p>
+<p>On the server side you only need a working perl installation. The version doesn't matter. And of course a working ssh server and a valid user.</p>
 
 <p>Rex will connect to your servers via SSH and execute the commands you've defined in the tasks. The logic is all done by your workstation (or administration server). This means, if you query a database, dns or a CMDB inside a task your workstation will do this and not your server. This is essential for security.</p>
 

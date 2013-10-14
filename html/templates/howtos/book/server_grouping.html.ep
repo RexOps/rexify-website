@@ -83,7 +83,6 @@ backend02
 <p>If you want to get your server groups right out of an existing database you can use <a href="#">DBI</a> to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
 
 <pre><code class="perl">use Rex -base;
-use Rex::Group::Lookup::DB;
 use DBI;
 
 my $username = "dbuser";
@@ -96,29 +95,23 @@ my $dbh      = DBI-&gt;connect($username, $password);
 
 my $sth      = $dbh-&gt;prepare("SELECT * FROM hostlist WHERE enabled=1");
 
-create_groups_from_sth($sth);</code></pre>
+my %server_group = ();
+while(my $row = $sth-&gt;fetchrow_hashref) {
+   my $group_name  = $row-&gt;{server_group};
+   my $server_name = $row-&gt;{server_name};
+   push @{ $server_group{ $group_name } }, $server_name;
+}
 
-<p>The <i>create_groups_from_sth</i> function expects the following column names:</p>
+map {
+   group $_ =&gt; @{ $server_group{$_} };
+} keys %server_group;
+</code></pre>
+
+<p>This example expects the following column names:</p>
 <ul>
    <li>server_group</li>
    <li>server_name</li>
 </ul>
-
-<p>If you want to specify custom authentication algorithms for each server you have to add the following columns.</p>
-<ul>
-   <li>username</li>
-   <li>password</li>
-   <li>auth_type (one of <i>pass, key, krb5</i>)</li>
-   <li>private_key</li>
-   <li>public_key</li>
-   <li>sudo</li>
-</ul>
-
-<p>Every other column will be available as a option through the connection object.</p>
-
-<pre><code class="perl">task "yourtask", group =&gt; "group1", sub {
-   say connection-&gt;server-&gt;option("some_other_field");
-};</code></pre>
 
 <h2>Creating custom groups</h2>
 
