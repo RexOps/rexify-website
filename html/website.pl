@@ -223,8 +223,22 @@ __DATA__
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">安装</a></li>
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">贡献</a></li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">支持</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>><a href="/howtos" title="Examples, Howtos and Documentation">文档</a></li>
-                  <li id="li_api" <% if($cat eq "api") { %>class="active" <% } %>><a href="/api" title="The complete API documentation">API</a></li>
+                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>>
+                     <b class="arrow_box"></b>
+                     <a href="#" title="Examples, Howtos and Documentation" class="dropdown_link">文档</a>
+                     <ul class="dropdown_menu dropdown_docs">
+                        <li><a href="/howtos/index.html#guides">指南</a></li>
+                        <li><a href="/howtos/index.html#howtos">基础</a></li>
+                        <li><a href="/howtos/index.html#snippets">片段</a></li>
+                        <li>
+                           <a href="/howtos/book.html">Rex 书(写作中)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/api/index.html">API</a></li>
+                        <li class="divider"></li>
+                        <li><a href="http://rex.perl-china.com/">中国 Rex 社区站点</a></li>
+                     </ul>
+                  </li>
                </ul>
             </div>
 
@@ -242,7 +256,7 @@ __DATA__
 
       <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20130619" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20131013" type="text/css" media="screen" charset="utf-8" />
 
       <meta name="description" content="(R)?ex - 管理你的所有分类的数据点  数据中心自动化和配置管理" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
@@ -297,14 +311,13 @@ __DATA__
 
                <div class="news_widget">
                   <div class="news_date">2013-09-21</div>
-                  <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> (language: german).</div>
+                  <div class="news_content"><a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> 上的演讲已经上传到 <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> 和 <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (德语)上。</div>
                </div>
 
                <div class="news_widget">
                   <div class="news_date">2013-09-16</div>
-                  <div class="news_content">(R)?ex 0.43.0 released. This release adds the option to cache the machine inventory so that the execution will be faster, and the ability to create a report of the changes Rex did during the run. It also adds limited support for OpenWrt. For a complete list of changes see the <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> on Github.</div>
+                  <div class="news_content">(R)?ex 0.43.0 版本发布。该版本添加了主机清单缓存功能，执行速度更快；支持生成运行 Rex 造成的变更报告；添加了有限度的 OpenWrt 支持。更详细的变更见 <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> 。</div>
                </div>
-
 
                <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
@@ -325,12 +338,6 @@ __DATA__
 
 
                <div class="news_widget">
-                  <div class="news_date">2013-04-01</div>
-                  <div class="news_content">(R)?ex 0.41.0 版本发布。该版本带有一系列新函数来简化使用和修正 bug 。更多信息见 <a href="https://github.com/krimdomu/Rex/wiki/New0.41">ChangeLog</a>.</div>
-                  <div class="news_content">同时还有一个新的在线指南，关于<a href="/howtos/using_templates.html">如何使用模块和模板</a>。</div>
-               </div>
-
-               <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
                   <div class="news_content">
                      <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
@@ -338,24 +345,11 @@ __DATA__
                   </div>
                </div>
 
-               <div class="news_widget">
-                  <div class="news_date">2013-03-16</div>
-                  <div class="news_content">德国 Perl 大会上的演讲已经上传到 slideshare 上(<a href="http://de.slideshare.net/jfried/von-test-nach-live-mit-rex">德文</a>) 和 (<a href="http://de.slideshare.net/jfried/from-test-to-live-with-rex">英文</a>).</div>
-               </div>
-
                <h2>会议</h2>
-               <p>2013 年 9 月 20 日，在 <a href="http://www.kieler-linuxtage.de/">Kieler Linux Tagen</a> 上演讲。</p>
-               <img src="/img/osdc.png" style="float: left; width: 100px;" />
-               <p><a href="http://www.osdc.de/">开源数据中心大会</a></p>
-               <p style="padding-top: 6px;">17 - 18 April 2013 in Nuremberg</p>
-               <p>OSDC 是关于如何利用开源简化复杂的 IT 架构的大会。这是一个难得的和开源专家、业内人士交流的好机会。在 2 天的时间里，可以通过社交网络、演讲、小组讨论等来收听和共享信息。</p>
-
-               <img src="/img/linuxtag.jpg" style="float: left; width: 100px" />
-               <p>我们自豪的宣布 Rex 将会出现在 5 月 22 至 25 日召开的柏林 <a href="http://linuxtag.de/">LinuxTag</a> 上。LinuxTag 是欧洲在 Linux 和开源社区最流行和重要的大会。</p>
-               <p>欢迎参会围观，我们会做一个定制小型数据中心的现场演示。</p><p>如果你有时间想帮助我们请联系<br /><a href="mailto:jfried@rexify.org">@jfried83</a>.</p>
+               <p>2013 年 11 月 10 日 在 <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a> 上演讲。</p>
 
                <h2>需要帮助吗?</h2>
-               <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下.</p>
+               <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
                <ul>
                   <li>IRC: #rex on freenode</li>
                   <li>邮件组: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
@@ -405,6 +399,7 @@ __DATA__
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
 
    <script>
       if($(window).width() <= 1100) {

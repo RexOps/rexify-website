@@ -6,6 +6,7 @@
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
 % end
 
+         <a name="guides"></a>
          <h1>入门文档</h1>
          <ul class="simple-list">
             <li><a href="start.html">开始使用 (R)?ex</a></li>
@@ -24,6 +25,7 @@
             <li><a href="/api/">API 文档</a></li>
          </ul>
  
+         <a name="howtos"></a>
          <div class="vspace"></div>
          <h1>Howtos</h1>
          <ul class="simple-list">
@@ -50,7 +52,8 @@
 
          <div class="vspace"></div>
 
-         <h1>小示例</h1>
+         <a name="snippets"></a>
+         <h1>示例片段</h1>
          <ul class="simple-list">
             <li><a href="/howtos/groups_file.html">用 .ini 文件记录服务器组</a></li>
             <li><a href="ps.html">查看工作中的进程</a></li>

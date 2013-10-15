@@ -1,0 +1,38 @@
+% layout 'default';
+% title 'The Rex Book / Quick and simple configuration file changes';
+
+% content_for header => begin
+      <meta name="description" content="Quick and simple configuration file changes">
+      <meta name="keywords" content="Rex, config, file, change, modify">
+% end
+
+<h1>Quick and simple configuration file changes</h1>
+
+<p>If you only want to add or remove some lines from a configuration file and to maintain a template is too much there are 2 functions you can use do achive this. For example if you just want to add some modules to /etc/modules so that they gets loaded on server boot you can use the <i>append_if_no_such_line</i> function.</p>
+
+<pre><code class="perl">task "load_modules", group =&gt; "backends", sub {
+   append_if_no_such_line "/etc/modules",
+      line =&gt; "ipmi",
+      regexp =&gt; qr{^ipmi};
+};</code></pre>
+
+<p>You can also add an <i>on_change</i> hook to reload services or do other things when the file gets changed.</p>
+
+<pre><code class="perl">task "disable_ipforward", group =&gt; "frontends", sub {
+   append_if_no_such_line "/etc/sysctl.conf",
+      line =&gt; "net.ipv4.ip_forward = 0",
+      regexp =&gt; qr{^net\.ipv4\.ip_forward},
+      on_change =&gt; sub {
+         # reload sysctl settings
+         run "sysctl -a";
+      };
+};</code></pre>
+
+
+<p>To remove lines from a file you can use the <i>delete_lines_according_to</i> function. This function also accepts the <i>on_change</i> parameter.</p>
+
+<pre><code class="perl">task "clean_hosts", group =&gt; "backends", sub {
+   delete_lines_according_to qr{^127.0.1.1}, "/etc/hosts";
+};</code></pre>
+
+<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>

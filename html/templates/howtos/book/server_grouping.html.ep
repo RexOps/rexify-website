@@ -1,0 +1,123 @@
+% layout 'default';
+% title 'The Rex Book / Server grouping';
+
+% content_for header => begin
+      <meta name="description" content="Group your servers">
+      <meta name="keywords" content="Rex, server, group, grouping, groups">
+% end
+
+<h1>Grouping servers</h1>
+
+<p>Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
+
+<pre><code class="perl">group frontends =&gt; "frontend01", "frontend02", "frontend03";
+group backends =&gt; "backend01", "backend02";</code></pre>
+
+<p>Rex offers also a simple notation to define server ranges, so that you don't need to type so much.</p>
+
+<pre><code class="perl">group frontends =&gt; "frontend[01..03]";
+group backends =&gt; "backend[01..02]";</code></pre>
+
+<p>This notation will just expand to <i>frontend01, frontend02 and frontend03</i> for the frontends group and to <i>backend01 and backend02</i> for the backends group.</p>
+
+<p>Though the Rexfile is a perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
+
+<p>To add your groups to the tasks you have to use the <i>group</i> option within the task generation.</p>
+
+<pre><code class="perl">task "mytask", group =&gt; "mygroup", sub {
+   # do something
+};</code></pre>
+
+<p>If you need to define multiple groups for a task, you can just use an array.</p>
+<pre><code class="perl">task "mytask", group =&gt; ["mygroup", "mygroup2"], sub {
+   # do something
+};</code></pre>
+
+
+<h2>Using an INI file to define server groups</h2>
+
+<p>Rex offers a simple way to query ini files for group creation. To use ini files you have to use the <i>Rex::Group::Lookup::INI</i> module.</p>
+
+<pre><code class="perl">use Rex -base;
+use Rex::Group::Lookup::INI;
+
+groups_file "/path/to/your/file.ini";</code></pre>
+
+<p>Rex expects the following format inside your INI file.</p>
+
+<pre><code class="ini">[frontends]
+frontend01
+frontend02
+frontend03
+
+[backends]
+backend01
+backend02</code></pre>
+
+<p>Rex also offers a little bit advanced functions for the ini file. You can define custom parameters for each server or include groups inside groups.</p>
+
+<pre><code class="ini">[frontends]
+frontend01
+frontend02 user=root password=f00bar auth_type=pass maintenance=1
+frontend03
+
+[backends]
+backend01
+backend02
+
+[all]
+@frontends
+@backends</code></pre>
+
+<p>These additional options (in this example <i>maintenance</i> can be queried with the <i>option</i> method from the connection object.</p>
+
+<pre><code class="perl">task "prepare", group =&gt; "frontends", sub {
+   if(connection-&gt;server-&gt;option("maintenance")) {
+      say "This server is in maintenance mode, so i'm going to stop all services";
+      service ["apache2", "postfix"] =&gt; "stop";
+   }
+};</code></pre>
+
+<h2>Quering a database to define server groups</h2>
+
+<p>If you want to get your server groups right out of an existing database you can use <a href="#">DBI</a> to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
+
+<pre><code class="perl">use Rex -base;
+use DBI;
+
+my $username = "dbuser";
+my $password = "dbpassword";
+my $database = "hostdb";
+my $hostname = "mysql.intern.lan";
+my $port     = 3306;
+my $dsn      = "DBI:mysql:database=$database;host=$hostname;port=$port";
+my $dbh      = DBI-&gt;connect($username, $password);
+
+my $sth      = $dbh-&gt;prepare("SELECT * FROM hostlist WHERE enabled=1");
+
+my %server_group = ();
+while(my $row = $sth-&gt;fetchrow_hashref) {
+   my $group_name  = $row-&gt;{server_group};
+   my $server_name = $row-&gt;{server_name};
+   push @{ $server_group{ $group_name } }, $server_name;
+}
+
+map {
+   group $_ =&gt; @{ $server_group{$_} };
+} keys %server_group;
+</code></pre>
+
+<p>This example expects the following column names:</p>
+<ul>
+   <li>server_group</li>
+   <li>server_name</li>
+</ul>
+
+<h2>Creating custom groups</h2>
+
+<p>If there is no buildin function that fitts your needs for group creation you can do it all by your self. Because the Rexfile is just a plain perl script and the <i>group</i> command is just a perl function that expects for the first parameter the group name and uses all other parameters for the servers you can create your own function.</p>
+
+<pre><code class="perl">my @list = ("some", "list", "entries");
+group mygroup =&gt; grep { /list/ } @list;</code></pre>
+
+<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>
