@@ -15,7 +15,7 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#dependencies">DEPENDENCIES</a></li>
+	<li><a href="#dependencies">依赖</a></li>
 	<li><a href="#synopsis">例子</a></li>
 	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
@@ -32,11 +32,11 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can sync 2 directories via the <em>rsync</em> command。</p>
+<p>用该模块可以通过 <em>rsync</em> 命令同步两个目录。</p>
 <p>
 </p>
 
-<h2>DEPENDENCIES</h2>
+<h2>依赖</h2>
 <ul>
 <li><strong>Expect</strong></li>
 
@@ -57,9 +57,9 @@
 <li><strong>sync($source, $dest, $opts)</strong></li>
 
 
-<p>This function executes rsync to sync $source and $dest。</p>
+<p>这个函数执行 rsync 以同步 $source 和 $dest。</p>
 <ul>
-<li><strong>UPLOAD - Will upload all from the local directory <em>html</em> to the remote directory <em>/var/www/html</em>.</strong></li>
+<li><strong>上传 - 上传本地目录 <em>html</em> 到远程目录 <em>/var/www/html</em>。</strong></li>
 
 
 <pre><code class="perl">
@@ -77,7 +77,7 @@
     };
  };</code></pre>
 
-<li><strong>DOWNLOAD - Will download all from the remote directory <em>/var/www/html</em> to the local directory <em>html</em>.</strong></li>
+<li><strong>下载 - 下载远程目录 <em>/var/www/html</em> 到本地目录 <em>html</em>。</strong></li>
 
 
 <pre><code class="perl">

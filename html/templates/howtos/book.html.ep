@@ -12,26 +12,26 @@
 <h1>Topics</h1>
 
 <ol>
-   <li>Rex Infrastructure
+   <li>Rex 基础架构
       <ol>
-         <li><a href="/howtos/book/ssh_as_agent.html">SSH as an agent</a></li>
-         <li><a href="/howtos/book/version_control_with_git.html">Version Control with Git</a></li>
+         <li><a href="/howtos/book/ssh_as_agent.html">SSH 作为客户端</a></li>
+         <li><a href="/howtos/book/version_control_with_git.html">Git 做版本控制</a></li>
          <li>Using commit hooks</li>
       </ol>
    </li>
-   <li>Monitoring and Reporting
+   <li>监控和报告
       <ol>
          <li>Generating reports</li>
       </ol>
    </li>
-   <li>The Rex DSL
+   <li>Rex 的 DSL(领域专属语言)
       <ol>
          <li>Writing Rexfiles</li>
-         <li><a href="/howtos/book/authentication.html">Authentication</a></li>
-         <li><a href="/howtos/book/server_grouping.html">Grouping servers</a></li>
+         <li><a href="/howtos/book/authentication.html">认证</a></li>
+         <li><a href="/howtos/book/server_grouping.html">服务器分组</a></li>
          <li>Using environments</li>
          <li>Using Modules</li>
-         <li><a href="/howtos/book/using_templates.html">Using templates</a></li>
+         <li><a href="/howtos/book/using_templates.html">使用模板</a></li>
          <li>Iterating over Arrays</li>
          <li>Iterating over Hashs</li>
          <li>Conditional Statements</li>
@@ -39,23 +39,23 @@
          <li>Using case Statement</li>
       </ol>
    </li>
-   <li>Writing Modules
+   <li>模块编写
       <ol>
          <li>Use Arrays for Resources</li>
          <li>Inheritance</li>
          <li>Passing parameters to module tasks</li>
          <li>Writing reusable, cross-platform modules</li>
-         <li><a href="/howtos/book/getting_info_of_the_environment.html">Getting information of the environment</a></li>
+         <li><a href="/howtos/book/getting_info_of_the_environment.html">获取环境信息</a></li>
          <li>Using external data sources</li>
       </ol>
    </li>
-   <li>Working with Files and Packages
+   <li>文件和软件包
       <ol>
-         <li><a href="/howtos/book/quick_and_simple_config_file_changes.html">Quick and simple changes to config files</a></li>
+         <li><a href="/howtos/book/quick_and_simple_config_file_changes.html">简捷更改配置文件</a></li>
          <li>Using augeas to modify files</li>
-         <li><a href="/howtos/book/using_templates.html">Using templates</a></li>
+         <li><a href="/howtos/book/using_templates.html">使用模板</a></li>
          <li>Arrays and hashes in templates</li>
-         <li><a href="/howtos/book/installing_packages.html">Installing packages</a></li>
+         <li><a href="/howtos/book/installing_packages.html">软件包安装</a></li>
          <li>Using 3rd party repositories</li>
          <li>Create your own apt repository</li>
          <li>Create your own yum repository</li>
@@ -63,7 +63,7 @@
          <li>Creating rpm packages</li>
       </ol>
    </li>
-   <li>Working with the filesystem
+   <li>文件系统
       <ol>
          <li>Managing directories</li>
          <li>Managing files</li>
@@ -76,7 +76,7 @@
          <li>Mounting filesystems</li>
       </ol>
    </li>
-   <li>Working with users and groups
+   <li>用户和组
       <ol>
          <li>Managing users</li>
          <li>Managing ssh authorized_keys</li>
@@ -85,14 +85,14 @@
          <li>Managing cronjobs</li>
       </ol>
    </li>
-   <li>Applications
+   <li>应用
       <ol>
          <li>Working with Apache</li>
          <li>Working with nginx</li>
          <li>Working with MySQL</li>
       </ol>
    </li>
-   <li>Managing Datacenters and the Cloud
+   <li>管理数据中心和云
       <ol>
          <li>Deploying Nagios</li>
          <li>Building High Availbility services with heartbeat</li>
@@ -104,7 +104,7 @@
          <li>Managing virtual machines with Rex::Box</li>
       </ol>
    </li>
-   <li>The Rex Ecosystem
+   <li>Rex 生态圈
       <ol>
          <li>Community modules</li>
          <li>Rex.IO

@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can checkout subversion and git repositories。</p>
+<p>用该模块检出 svn 和 git 仓库。</p>
 <p>
 </p>
 
@@ -68,7 +68,7 @@
 <li><strong>checkout($name, %data);</strong></li>
 
 
-<p>With this function you can checkout a repository defined with <em>set repository</em>. See Synopsis。</p>
+<p>用该函数检出 <em>set repository</em> 定义的仓库，详见示例。</p>
 
 </ul>
 

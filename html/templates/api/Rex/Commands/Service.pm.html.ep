@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can manage Linux services。</p>
+<p>用该模块管理 Linux 服务。</p>
 <p>
 </p>
 
@@ -60,9 +60,9 @@
 <li><strong>service($service, $action, [$option])</strong></li>
 
 
-<p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform。</p>
+<p>service 函数接收两个参数。第一个是服务的名称，第二个是准备做的动作。</p>
 <ul>
-<li><strong>starting a service</strong></li>
+<li><strong>启动服务</strong></li>
 
 
 <pre><code class="perl">
@@ -70,7 +70,7 @@
     service apache2 =&gt; "start";
  };</code></pre>
 
-<li><strong>stopping a service</strong></li>
+<li><strong>停止服务</strong></li>
 
 
 <pre><code class="perl">
@@ -78,7 +78,7 @@
     service apache2 =&gt; "stop";
  };</code></pre>
 
-<li><strong>restarting a service</strong></li>
+<li><strong>重启服务</strong></li>
 
 
 <pre><code class="perl">
@@ -86,7 +86,7 @@
     service apache2 =&gt; "restart";
  };</code></pre>
 
-<li><strong>checking status of a service</strong></li>
+<li><strong>检查服务状态</strong></li>
 
 
 <pre><code class="perl">
@@ -99,7 +99,7 @@
     }
  };</code></pre>
 
-<li><strong>reloading a service</strong></li>
+<li><strong>重载服务</strong></li>
 
 
 <pre><code class="perl">
@@ -107,7 +107,7 @@
     service apache2 =&gt; "reload";
  };</code></pre>
 
-<li><strong>ensure that a service will started at boot time</strong></li>
+<li><strong>确认服务在主机启动时会被启动</strong></li>
 
 
 <pre><code class="perl">
@@ -115,7 +115,7 @@
     service apache2 =&gt; "ensure", "started";
  };</code></pre>
 
-<li><strong>ensure that a service will NOT be started.</strong></li>
+<li><strong>确认服务在主机启动时不会被启动</strong></li>
 
 
 <pre><code class="perl">
@@ -128,7 +128,7 @@
 <li><strong>service_provider_for $os =&gt; $type;</strong></li>
 
 
-<p>To set an other service provider as the default, use this function。</p>
+<p>这个函数设置另一个服务提供器作为默认值。</p>
 <pre><code class="perl">
  user "root";
      
@@ -138,7 +138,7 @@
  task "start", group =&gt; "db", sub {
      service ssh =&gt; "restart";
  };</code></pre>
-<p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default)。</p>
+<p>这是示例会用 svcadm 重启 <em>ssh</em> 服务(但只是在 SunOS上，其他系统上还是默认值)。</p>
 
 </ul>
 

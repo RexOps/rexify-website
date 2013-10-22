@@ -6,7 +6,6 @@ use warnings;
 use MIME::Base64;
 use Mojo::UserAgent;
 use Mojo::JSON;
-use Data::Dumper;
 
 my $index_server = $ARGV[0];
 my $index_port   = $ARGV[1];
@@ -95,7 +94,7 @@ sub index_document {
    my ($idx, $doc) = @_;
 
    print "   [-] $doc ($idx)   ";
-   my @content = eval { local(@ARGV) = ($doc); <>; };   
+   my @content = eval { local(@ARGV) = ($doc); <> };
 
    my $title = "";
 

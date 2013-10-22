@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can install packages and files。</p>
+<p>用该模块安装软件包和文件。</p>
 <p>
 </p>
 
@@ -50,9 +50,9 @@
 <li><strong>install($type, $data, $options)</strong></li>
 
 
-<p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files。</p>
+<p>这个函数可以安装软件包(包括 CentOS，OpenSuSE 和 Debian)和文件。</p>
 <ul>
-<li><strong>installing a package (This is only supported on CentOS, OpenSuSE and Debian systems.)</strong></li>
+<li><strong>安装软件包(只支持 CentOS, OpenSuSE 和 Debian 系统)</strong></li>
 
 
 <pre><code class="perl">
@@ -70,12 +70,12 @@
                        ];
  };</code></pre>
 
-<li><strong>installing a file</strong></li>
+<li><strong>安装文件</strong></li>
 
 
 <pre><code class="perl">
 
-This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</code></pre>
+从0.9开始废弃，请使用 L&lt;File&gt; I&lt;file&gt; 作为替代。</code></pre>
 <pre><code class="perl">
  task "prepare", "server01", sub {
     install file =&gt; "/etc/passwd", {
@@ -86,7 +86,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
                     };
  };</code></pre>
 
-<li><strong>installing a file and do somthing if the file was changed.</strong></li>
+<li><strong>安装一个文件，并且在文件内容发生变化时触发些操作。</strong></li>
 
 
 <pre><code class="perl">
@@ -100,7 +100,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
                     };
  };</code></pre>
 
-<li><strong>installing a file from a template.</strong></li>
+<li><strong>从模板安装文件。</strong></li>
 
 
 <pre><code class="perl">
@@ -123,7 +123,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>remove($type, $package, $options)</strong></li>
 
 
-<p>This function will remove the given package from a system。</p>
+<p>这个函数会删除系统中的指定软件包。</p>
 <pre><code class="perl">
  task "cleanup", "server01", sub {
     remove package =&gt; "vim";
@@ -132,8 +132,8 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>update_system</strong></li>
 
 
-<p>This function do a complete system update。</p>
-<p>For example <em>apt-get upgrade</em> or <em>yum update</em>。</p>
+<p>这个函数做一次完整的系统更新。</p>
+<p>比如 <em>apt-get upgrade</em> 或者 <em>yum update</em>。</p>
 <pre><code class="perl">
  task "update-system", "server1", sub {
     update_system;
@@ -142,7 +142,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>installed_packages</strong></li>
 
 
-<p>This function returns all installed packages and their version。</p>
+<p>这个函数返回所有已安装的软件包和他们的版本。</p>
 <pre><code class="perl">
  task "get-installed", "server1", sub {
     
@@ -156,7 +156,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>is_installed</strong></li>
 
 
-<p>This function tests if $package is installed. Returns 1 if true. 0 if false。</p>
+<p>这个函数测试 $package 是否已安装，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isinstalled", "server01", sub {
     if( is_installed("rex") ) {
@@ -170,7 +170,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>update_package_db</strong></li>
 
 
-<p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>。</p>
+<p>这个函数更新本地的软件包数据库。比如在 CentOS 上会执行 <em>yum makecache</em>。</p>
 <pre><code class="perl">
  task "update-pkg-db", "server1", "server2", sub {
     update_package_db;
@@ -180,8 +180,8 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>repository($action, %data)</strong></li>
 
 
-<p>Add or remove a repository from the package manager。</p>
-<p>For Debian: If you have no source repository, or if you don't want to add it, just remove the <em>source</em> parameter。</p>
+<p>给软件包管理器添加或删除一个仓库。</p>
+<p>对于 Debian：如果你没有源代码仓库，或者你只是不想添加源代码仓库，删除 <em>source</em> 参数即可。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository "add" =&gt; "repository-name",
@@ -190,7 +190,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
          repository =&gt; "rex",
          source     =&gt; 1;
  };</code></pre>
-<p>For ALT Linux: If repository is unsigned, just remove the <em>sign_key</em> parameter。</p>
+<p>对于 ALT Linux：如果仓库未签名，删除 <em>sign_key</em> 参数即可。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository "add" =&gt; "altlinux-sisyphus",
@@ -199,19 +199,19 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
          arch       =&gt; "noarch, x86_64",
          repository =&gt; "classic";
  };</code></pre>
-<p>For CentOS, Mageia and SuSE only the name and the url are needed。</p>
+<p>对于 CentOS, Mageia 和 SuSE 只有名字(name) 和 url 是必须的。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
     repository add =&gt; "repository-name",
          url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
      
  };</code></pre>
-<p>To remove a repository just delete it with its name。</p>
+<p>删除仓库只需要用名字即可。</p>
 <pre><code class="perl">
  task "rm-repo", "server1", sub {
     repository remove =&gt; "repository-name";
  };</code></pre>
-<p>You can also use one call to repository to add repositories on multiple platforms:</p>
+<p>你也可以调用一次  repository 命令给不同平台添加仓库：</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
    repository add =&gt; myrepo =&gt; {
@@ -234,7 +234,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <li><strong>package_provider_for $os =&gt; $type;</strong></li>
 
 
-<p>To set an other package provider as the default, use this function。</p>
+<p>这个函数设置另一个包提供器作为默认值。</p>
 <pre><code class="perl">
  user "root";
      
@@ -244,7 +244,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
  task "prepare", group =&gt; "db", sub {
      install package =&gt; "vim";
  };</code></pre>
-<p>This example will install <em>vim</em> on every db server. If the server is a Solaris (SunOS) it will use the <em>blastwave</em> Repositories。</p>
+<p>这个示例会在每个数据库服务器上安装 <em>vim</em> 。如果服务区是一个 Solaris(SunOS)，那就使用 <em>blastwave</em> 仓库。</p>
 
 </ul>
 

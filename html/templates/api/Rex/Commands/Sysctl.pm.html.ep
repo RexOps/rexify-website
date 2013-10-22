@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can set and get sysctl parameters。</p>
+<p>用该模块设置和获取 sysctl 参数。</p>
 <p>
 </p>
 
@@ -49,8 +49,8 @@
 <li><strong>sysctl($key [, $val])</strong></li>
 
 
-<p>This function will read the sysctl key $key。</p>
-<p>If $val is given, then this function will set the sysctl key $key。</p>
+<p>这个函数读取 sysctl $key 的值。</p>
+<p>如果设置了 $val，那么这个函数会设置 sysctl 的 $key 为 $val。</p>
 <pre><code class="perl">
  task "tune", "server01", sub {
     if( sysctl("net.ipv4.ip_forward") == 0 ) {

@@ -25,7 +25,7 @@
 <p>
 </p>
 <h2>摘要</h2>
-<p>With this Module you can manage basic Iptables rules。</p>
+<p>用该模块管理基础的 Iptables 规则。</p>
 <p>
 </p>
 
@@ -71,7 +71,7 @@
 <li><strong>open_port($port, $option)</strong></li>
 
 
-<p>Open a port for inbound connections。</p>
+<p>为入连接打开一个端口。</p>
 <pre><code class="perl">
  task "firewall", sub {
     open_port 22;
@@ -82,7 +82,7 @@
 <li><strong>close_port($port, $option)</strong></li>
 
 
-<p>Close a port for inbound connections。</p>
+<p>为入连接关闭一个端口。</p>
 <pre><code class="perl">
  task "firewall", sub {
     close_port 22;
@@ -93,7 +93,7 @@
 <li><strong>redirect_port($in_port, $option)</strong></li>
 
 
-<p>Redirect $in_port to an other local port。</p>
+<p>转发 $in_port 到另一个本地端口。</p>
 <pre><code class="perl">
  task "redirects", sub {
     redirect_port 80 =&gt; 10080;
@@ -106,7 +106,7 @@
 <li><strong>iptables(@params)</strong></li>
 
 
-<p>Write standard iptable comands。</p>
+<p>直接书写标准的 iptables 命令。</p>
 <pre><code class="perl">
  task "firewall", sub {
     iptables t =&gt; "nat", A =&gt; "POSTROUTING", o =&gt; "eth0", j =&gt; "MASQUERADE";
@@ -121,7 +121,7 @@
 <li><strong>is_nat_gateway</strong></li>
 
 
-<p>This function create a nat gateway for the device the default route points to。</p>
+<p>这个函数为默认路由指向的设备创建一个 NAT 网关。</p>
 <pre><code class="perl">
  task "make-gateway", sub {
     is_nat_gateway;
@@ -130,7 +130,7 @@
 <li><strong>default_state_rule(%option)</strong></li>
 
 
-<p>Set the default state rules for the given device。</p>
+<p>为指定设备设置默认状态规则。</p>
 <pre><code class="perl">
  task "firewall", sub {
     default_state_rule(dev =&gt; "eth0");
@@ -139,7 +139,7 @@
 <li><strong>iptables_list</strong></li>
 
 
-<p>List all iptables rules。</p>
+<p>列出所有 iptables 规则。</p>
 <pre><code class="perl">
  task "list-iptables", sub {
     print Dumper iptables_list;
@@ -148,7 +148,7 @@
 <li><strong>iptables_clear</strong></li>
 
 
-<p>Remove all iptables rules。</p>
+<p>删除所有 iptables 规则。</p>
 <pre><code class="perl">
  task "no-firewall", sub {
     iptables_clear;

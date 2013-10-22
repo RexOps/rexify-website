@@ -15,17 +15,17 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#synopsis">示例</a></li>
 	<li><a href="#exported_functions">导出函数</a></li>
-	<li><a href="#examples">EXAMPLES</a></li>
+	<li><a href="#examples">例子</a></li>
 	<ul>
 
-		<li><a href="#creating_a_virtual_machine">Creating a Virtual Machine</a></li>
-		<li><a href="#start_stop_destroy">Start/Stop/Destroy</a></li>
-		<li><a href="#delete">Delete</a></li>
-		<li><a href="#modifying_a_vm">Modifying a VM</a></li>
-		<li><a href="#request_information_of_a_vm">Request information of a vm</a></li>
-		<li><a href="#request_info_from_the_underlying_hypervisor">Request info from the underlying hypervisor</a></li>
+		<li><a href="#creating_a_virtual_machine">创建虚拟机</a></li>
+		<li><a href="#start_stop_destroy">启动、停止、销毁</a></li>
+		<li><a href="#delete">删除</a></li>
+		<li><a href="#modifying_a_vm">修改虚拟机</a></li>
+		<li><a href="#request_information_of_a_vm">请求虚拟机信息</a></li>
+		<li><a href="#request_info_from_the_underlying_hypervisor">请求虚拟化底层信息</a></li>
 	</ul>
 
 </ul>
@@ -42,11 +42,11 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can manage your virtualization。</p>
+<p>用该模块管理虚拟化。</p>
 <p>
 </p>
 
-<h2>例子</h2>
+<h2>示例</h2>
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
     
@@ -92,18 +92,17 @@
 <li><strong>vm($action =&gt; $name, %option)</strong></li>
 
 
-<p>This module exports only the <em>vm</em> function. You can manage everything with this function。</p>
+<p>该模块只导出了一个 <em>vm</em> 函数。你通过这个函数管理一切。</p>
 
 </ul>
 <p>
 </p>
 
-<h2>EXAMPLES</h2>
+<h2>例子</h2>
 <p>
 </p>
-<h2><a name="creating_a_virtual_machine">Creating a Virtual Machine</a></h2>
-<p>Create a (VirtualBox) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a natted network. The bootorder is set to "dvd"。</p>
+<h2><a name="creating_a_virtual_machine">创建虚拟机</a></h2>
+<p>创建一个(VirtualBox)虚拟机，名叫 "vm01"，有 512 MB 内存和 1 个 cpu，还有一个文件映射的 10GB 硬盘，一个挂载 iso 镜像的 cdrom ，一个 NAT 网络。启动顺序设为 "dvd"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       storage     =&gt; [
@@ -119,8 +118,7 @@ With a cdrom as an iso image and a natted network. The bootorder is set to "dvd"
       type =&gt; "Linux26", 
       cpus =&gt; 1,
       boot =&gt; "dvd";</code></pre>
-<p>Create a (KVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk.
-With a cdrom as an iso image and a bridged network on the bridge virbr0. The Bootorder is set to "cdrom"。</p>
+<p>创建一个(KVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，还有一个文件映射的 10GB 硬盘，一个挂载 iso 镜像的 cdrom ，一个桥接网络，桥接网卡为 virbr0。启动顺序设为 "cdrom"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       boot =&gt; "cdrom",
@@ -134,7 +132,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use。</p>
+<p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       memory   =&gt; 512*1024,
@@ -188,7 +186,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             },
          },
       ];</code></pre>
-<p>Create a (Xen/HVM) VM named "vm01" with 512 MB ram and 1 cpu. One harddrive, cloned from an existing one。</p>
+<p>创建一个(Xen/HVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，一个从已有镜像克隆出来的硬盘。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "hvm",
@@ -198,7 +196,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use。</p>
+<p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       memory =&gt; 512*1024,
@@ -230,7 +228,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
          },
       ],
       type =&gt; "hvm";</code></pre>
-<p>Create a (Xen/PVM) VM named "vm01" with 512 MB ram and 1 cpu. With one root partition (10GB in size) and one swap parition (1GB in size)。</p>
+<p>创建一个(Xen/PVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，一个根分区(10GB)和一个 swap 分区(1GB)。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "pvm",
@@ -245,7 +243,7 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
             dev    =&gt; "xvda1",
          },
       ];</code></pre>
-<p>This is the same as above, but with all options in use。</p>
+<p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
       type   =&gt; "pvm",
@@ -286,37 +284,37 @@ With a cdrom as an iso image and a bridged network on the bridge virbr0. The Boo
       ];</code></pre>
 <p>
 </p>
-<h2><a name="start_stop_destroy">Start/Stop/Destroy</a></h2>
-<p>Start a stopped vm</p>
+<h2><a name="start_stop_destroy">启动，停止，销毁</a></h2>
+<p>启动一个已停止的虚拟机</p>
 <pre><code class="perl">
  vm start =&gt; "name";</code></pre>
-<p>Stop a running vm (send shutdown signal)</p>
+<p>停止一个运行中的虚拟机(发送关机信号)</p>
 <pre><code class="perl">
  vm shutdown =&gt; "name";</code></pre>
-<p>Hard Stop a running vm</p>
+<p>硬停止一个运行中的虚拟机</p>
 <pre><code class="perl">
  vm destroy =&gt; "name";</code></pre>
 <p>
 </p>
-<h2><a name="delete">Delete</a></h2>
+<h2><a name="delete">删除</a></h2>
 <pre><code class="perl">
  vm delete =&gt; "name";</code></pre>
 <p>
 </p>
-<h2><a name="modifying_a_vm">Modifying a VM</a></h2>
-<p>Currently you can only modify the memory。</p>
+<h2><a name="modifying_a_vm">修改虚拟机</a></h2>
+<p>目前你只能修改内存。</p>
 <pre><code class="perl">
  vm option =&gt; "name",
          max_memory =&gt; 1024*1024, # in bytes
          memory     =&gt; 512*1024;</code></pre>
 <p>
 </p>
-<h2><a name="request_information_of_a_vm">Request information of a vm</a></h2>
+<h2><a name="request_information_of_a_vm">请求虚拟机信息</a></h2>
 <pre><code class="perl">
  vm info =&gt; "name";</code></pre>
 <p>
 </p>
-<h2><a name="request_info_from_the_underlying_hypervisor">Request info from the underlying hypervisor</a></h2>
+<h2><a name="request_info_from_the_underlying_hypervisor">请求虚拟化底层信息</a></h2>
 <pre><code class="perl">
  vm hypervisor =&gt; "capabilities";</code></pre>
 

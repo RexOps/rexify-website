@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can get information of your lvm setup。</p>
+<p>用该模块获取 lvm 设置信息。</p>
 <p>
 </p>
 
@@ -50,7 +50,7 @@
 <li><strong>pvs</strong></li>
 
 
-<p>Get Information of all your physical volumes。</p>
+<p>获取所有物理卷信息。</p>
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
@@ -66,7 +66,7 @@
 <li><strong>vgs</strong></li>
 
 
-<p>Get Information of all your volume groups。</p>
+<p>获取所有卷组信息。</p>
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
@@ -82,7 +82,7 @@
 <li><strong>lvs</strong></li>
 
 
-<p>Get Information of all your logical volumes。</p>
+<p>获取所有逻辑卷信息。</p>
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
