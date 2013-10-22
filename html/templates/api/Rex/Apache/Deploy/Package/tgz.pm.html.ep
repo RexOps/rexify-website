@@ -15,7 +15,7 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#synopsis">示例</a></li>
 </ul>
 
 
@@ -30,12 +30,12 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can deploy a TGZ packages.</p>
-<p>If the package is not build yet, it will pass all the arguments to the build() function and executes the build on the local machine.</p>
+<p>用该模块部署 TGZ 软件包。</p>
+<p>如果软件包尚未构建，它会传递所有参数给 build() 函数然后在本机完成构建。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>示例</h2>
 <pre><code class="perl">
  deploy &quot;my-software.tgz&quot;;
   

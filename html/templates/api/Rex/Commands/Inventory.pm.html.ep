@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can get an inventory of your system。</p>
+<p>用该模块获取系统清单。</p>
 <p>
 </p>
 
@@ -50,7 +50,7 @@
 <li><strong>inventory</strong></li>
 
 
-<p>This function returns an hashRef of all gathered hardware. Use the Data::Dumper module to see its structure。</p>
+<p>这个函数返回所有收集到的硬件信息的哈希引用。你可以用 Data::Dumper 模块来查看内部结构。</p>
 <pre><code class="perl">
  task "get-inventory", sub {
     my $inventory = inventory();

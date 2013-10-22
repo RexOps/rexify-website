@@ -15,8 +15,8 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#synopsis">示例</a></li>
+	<li><a href="#functions">函数</a></li>
 </ul>
 
 
@@ -31,11 +31,11 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can deploy an application to a special folder and after that you can symlink it to the document root.</p>
+<p>用该模块部署应用到指定目录然后软连接到文档发布路径。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>示例</h2>
 <pre><code class="perl">
  generate_deploy_directory {
     my ($file) = @_;
@@ -57,12 +57,12 @@
 <p>
 </p>
 
-<h2>FUNCTIONS</h2>
+<h2>函数</h2>
 <ul>
 <li><strong>deploy($file, %option)</strong></li>
 
 
-<p>This function will do the deployment. It uploads the file to the target server and extract it to the directory given by <em>deploy_to</em> concatenated with the return value of <em>generate_deploy_directory</em>.</p>
+<p>这个函数做部署操作。它上传文件到目的主机，然后解压到 <em>deploy_to</em> 目录下的 <em>generate_deploy_directory</em> 子目录下。</p>
 <pre><code class="perl">
  task &quot;dodeploy&quot;, &quot;server1&quot;, sub {
     deploy &quot;myapp-1.2.tar.gz&quot;;
@@ -76,12 +76,12 @@
 <li><strong>list_versions</strong></li>
 
 
-<p>This function returns all available versions from the directory defined by <em>deploy_to</em> as an array.</p>
+<p>这个函数返回 <em>deploy_to</em> 目录下所有可用的版本构成的数组。</p>
 
 <li><strong>switch_to_version($new_version)</strong></li>
 
 
-<p>This function switches to the given version.</p>
+<p>这个函数切换到指定版本。</p>
 <pre><code class="perl">
  task &quot;switch&quot;, &quot;server1&quot;, sub {
     my $param = shift;
@@ -92,25 +92,25 @@
 <li><strong>get_live_version</strong></li>
 
 
-<p>This function returns the current live version.</p>
+<p>这个函数返回当前在使用的版本。</p>
 
 <li><strong>deploy_to($directory)</strong></li>
 
 
-<p>This function sets the directory where the uploaded archives should be extracted. This is not the document root of your webserver.</p>
+<p>这个函数设置上传的文件的解压目录。注意这个不应该是你的网站服务器的文档根目录。</p>
 <pre><code class="perl">
  deploy_to &quot;/data/myapp&quot;;</code></pre>
 
 <li><strong>document_root($doc_root)</strong></li>
 
 
-<p>This function sets the document root of your webserver. This will be a symlink to the deployed application.</p>
+<p>这个函数设置网站服务器的文档根目录。实际就是一个指向部署的应用的软连接。</p>
 
 <li><strong>generate_deploy_directory(sub{})</strong></li>
 
 
-<p>If you need a special directory naming of your uploaded version you can define it with this function.</p>
-<p>The default function is:</p>
+<p>如果你想单独给自己上传的版本指定一个特殊名称，你可以用这个函数来定义。</p>
+<p>默认情况下这个函数是这样的：</p>
 <pre><code class="perl">
  sub {
     my ($file) = @_;

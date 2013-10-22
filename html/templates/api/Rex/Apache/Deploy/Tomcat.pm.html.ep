@@ -15,8 +15,8 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#synopsis">示例</a></li>
+	<li><a href="#functions">函数</a></li>
 </ul>
 
 
@@ -31,11 +31,11 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can deploy WAR archives to Tomcat. Currently it works with Tomcat 6.</p>
+<p>用该模块部署 WAR 归档到 Tomcat。目前在 Tomcat 6 上正常运行。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>示例</h2>
 <pre><code class="perl">
  use Rex::Apache::Deploy qw/Tomcat/;
    
@@ -50,12 +50,12 @@
 <p>
 </p>
 
-<h2>FUNCTIONS</h2>
+<h2>函数</h2>
 <ul>
 <li><strong>deploy($file, %option)</strong></li>
 
 
-<p>This function deploys the given WAR archive. For that it will connect to the Tomcat manager. You have to define username and password for the Tomcat manager in the %option hash. If the Tomcat manager isn't available under its default location /manager you can also define the location with the <em>manager_url</em> option.</p>
+<p>这个函数部署指定的 WAR 归档。它会连接到 Tomcat 管理器。你需要在 %options 哈希里定义 Tomcat 管理器的用户名和密码。如果 Tomcat 管理器不是通过默认路径 /manager 访问，你也可以通过 <em>manager_url</em> 参数定义。</p>
 <pre><code class="perl">
  task &quot;dodeploy&quot;, &quot;tc01&quot;, &quot;tc02&quot;, sub {
     deploy &quot;myapp.war&quot;,
@@ -69,7 +69,7 @@
 <li><strong>context_path($path)</strong></li>
 
 
-<p>This function sets the context path for the application that gets deployed. This is a global setting. If you want to specify a custom context path for your application you can also do this as an option for the <em>deploy</em> function.</p>
+<p>这个函数设置应用部署的内容目录。这是一个全局设定。如果你需要为应用单独定制，你也可以把这个作为 <em>deploy</em> 函数的一个参数使用。</p>
 <pre><code class="perl">
  context_path &quot;/myapp&quot;;</code></pre>
 

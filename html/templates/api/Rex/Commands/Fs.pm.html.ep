@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can do file system tasks like creating a directory, removing files, move files, and more。</p>
+<p>用该模块可以做一些文件系统任务，比如创建目录，删除文件，重命名等。</p>
 <p>
 </p>
 
@@ -69,7 +69,7 @@
 <li><strong>list_files("/path");</strong></li>
 
 
-<p>This function list all entries (files, directories, ...) in a given directory and returns a array。</p>
+<p>这个函数列出指定目录里的所有内容(文件，目录等)，并返回一个数组。</p>
 <pre><code class="perl">
  task "ls-etc", "server01", sub {
     my @tmp_files = grep { /\.tmp$/ } list_files("/etc");
@@ -78,12 +78,12 @@
 <li><strong>ls($path)</strong></li>
 
 
-<p>Just an alias for <em>list_files</em></p>
+<p><em>list_files</em>的别名。</p>
 
 <li><strong>symlink($from, $to)</strong></li>
 
 
-<p>This function will create a symlink from $from to $to。</p>
+<p>这个函数创建一个从 $from 到 $to 的软连接。</p>
 <pre><code class="perl">
  task "symlink", "server01", sub {
     symlink("/var/www/versions/1.0.0", "/var/www/html");
@@ -92,12 +92,12 @@
 <li><strong>ln($from, $to)</strong></li>
 
 
-<p>ln is an alias for <em>symlink</em></p>
+<p><em>symlink</em> 的别名。</p>
 
 <li><strong>unlink($file)</strong></li>
 
 
-<p>This function will remove the given file。</p>
+<p>这个函数删除指定文件。</p>
 <pre><code class="perl">
  task "unlink", "server01", sub {
     unlink("/tmp/testfile");
@@ -106,12 +106,12 @@
 <li><strong>rm($file)</strong></li>
 
 
-<p>This is an alias for unlink。</p>
+<p>unlink 的别名。</p>
 
 <li><strong>rmdir($dir)</strong></li>
 
 
-<p>This function will remove the given directory。</p>
+<p>这个函数删除指定目录。</p>
 <pre><code class="perl">
  task "rmdir", "server01", sub {
     rmdir("/tmp");
@@ -120,7 +120,7 @@
 <li><strong>mkdir($newdir)</strong></li>
 
 
-<p>This function will create a new directory。</p>
+<p>这个函数创建新目录。</p>
 <pre><code class="perl">
  task "mkdir", "server01", sub {
     mkdir "/tmp";
@@ -134,7 +134,7 @@
 <li><strong>chown($owner, $file)</strong></li>
 
 
-<p>Change the owner of a file or a directory。</p>
+<p>更改文件或者目录的属主。</p>
 <pre><code class="perl">
  chown "www-data", "/var/www/html";
      
@@ -144,7 +144,7 @@
 <li><strong>chgrp($group, $file)</strong></li>
 
 
-<p>Change the group of a file or a directory。</p>
+<p>更改文件或者目录的属组。</p>
 <pre><code class="perl">
  chgrp "nogroup", "/var/www/html";
     
@@ -154,7 +154,7 @@
 <li><strong>chmod($mode, $file)</strong></li>
 
 
-<p>Change the permissions of a file or a directory。</p>
+<p>更改文件或者目录的权限。</p>
 <pre><code class="perl">
  chmod 755, "/var/www/html";
     
@@ -164,7 +164,7 @@
 <li><strong>stat($file)</strong></li>
 
 
-<p>This function will return a hash with the following information about a file or directory。</p>
+<p>这个函数返回文件或者目录的下列信息构成的哈希。</p>
 <ul>
 <li><strong>mode</strong></li>
 
@@ -187,7 +187,7 @@
 <li><strong>is_file($file)</strong></li>
 
 
-<p>This function tests if $file is a file. Returns 1 if true. 0 if false。</p>
+<p>这个函数测试 $file 是否是文件，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isfile", "server01", sub {
     if( is_file("/etc/passwd") ) {
@@ -201,7 +201,7 @@
 <li><strong>is_dir($dir)</strong></li>
 
 
-<p>This function tests if $dir is a directory. Returns 1 if true. 0 if false。</p>
+<p>这个函数测试 $dir 是否是目录，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isdir", "server01", sub {
     if( is_dir("/etc") ) {
@@ -215,7 +215,7 @@
 <li><strong>is_readable($file)</strong></li>
 
 
-<p>This function tests if $file is readable. It returns 1 if true. 0 if false。</p>
+<p>这个函数测试 $file 是否可读，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "readable", "server01", sub {
     if( is_readable("/etc/passwd") ) {
@@ -229,7 +229,7 @@
 <li><strong>is_writable($file)</strong></li>
 
 
-<p>This function tests if $file is writable. It returns 1 if true. 0 if false。</p>
+<p>这个函数测试 $file 是否可写，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "writable", "server01", sub {
     if( is_writable("/etc/passwd") ) {
@@ -243,12 +243,12 @@
 <li><strong>is_writeable($file)</strong></li>
 
 
-<p>This is only an alias for <em>is_writable</em>。</p>
+<p><em>is_writable</em>的别名。</p>
 
 <li><strong>readlink($link)</strong></li>
 
 
-<p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die。</p>
+<p>这个函数返回 $link 软连接的目的地址。如果 $link 不是软连接，那函数失败(die)。</p>
 <pre><code class="perl">
  task "islink", "server01", sub {
     my $link;
@@ -262,7 +262,7 @@
 <li><strong>rename($old, $new)</strong></li>
 
 
-<p>This function will rename $old to $new. Will return 1 on success and 0 on failure。</p>
+<p>这个函数重命名 $old 成 $new，成功返回 1，失败返回 0。</p>
 <pre><code class="perl">
  task "rename", "server01", sub {
     rename("/tmp/old", "/tmp/new");
@@ -271,12 +271,12 @@
 <li><strong>mv($old, $new)</strong></li>
 
 
-<p>mv is an alias for <em>rename</em>。</p>
+<p>mv 是 <em>rename</em> 的别名。</p>
 
 <li><strong>chdir($newdir)</strong></li>
 
 
-<p>This function will change the current workdirectory to $newdir. This function currently only works local。</p>
+<p>这个函数会切换当前工作目录到 $newdir 。这个函数目前只能在本机工作。</p>
 <pre><code class="perl">
  task "chdir", "server01", sub {
     chdir("/tmp");
@@ -285,12 +285,12 @@
 <li><strong>cd($newdir)</strong></li>
 
 
-<p>This is an alias of <em>chdir</em>。</p>
+<p><em>chdir</em> 的别名。</p>
 
 <li><strong>df([$device])</strong></li>
 
 
-<p>This function returns a hashRef reflecting the output of <em>df</em></p>
+<p>这个函数返回 <em>df</em> 输出映射的哈希引用。</p>
 <pre><code class="perl">
  task "df", "server01", sub {
      my $df = df();
@@ -300,7 +300,7 @@
 <li><strong>du($path)</strong></li>
 
 
-<p>Returns the disk usage of $path。</p>
+<p>返回 $path 的磁盘使用情况。</p>
 <pre><code class="perl">
  task "du", "server01", sub {
     say "size of /var/www: " . du("/var/www");
@@ -309,7 +309,7 @@
 <li><strong>cp($source, $destination)</strong></li>
 
 
-<p>cp will copy $source to $destination (it is recursive)</p>
+<p>cp 会复制 $source 到 $destination (如果是可递归的 recursive)</p>
 <pre><code class="perl">
  task "cp", "server01", sub {
      cp("/var/www", "/var/www.old");
@@ -318,7 +318,7 @@
 <li><strong>mount($device, $mount_point, @options)</strong></li>
 
 
-<p>Mount devices。</p>
+<p>挂载设备。</p>
 <pre><code class="perl">
  task "mount", "server01", sub {
     mount "/dev/sda5", "/tmp";
@@ -338,7 +338,7 @@
 <li><strong>umount($mount_point)</strong></li>
 
 
-<p>Unmount device。</p>
+<p>卸载设备。</p>
 <pre><code class="perl">
  task "umount", "server01", sub {
     umount "/tmp";

@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this Module you can manage your cronjobs。</p>
+<p>用该模块管理 crontab 任务。</p>
 <p>
 </p>
 
@@ -59,8 +59,8 @@
 <li><strong>cron($action =&gt; $user, ...)</strong></li>
 
 
-<p>With this function you can manage cronjobs。</p>
-<p>List cronjobs。</p>
+<p>用该函数管理 crontab 任务。</p>
+<p>列出任务。</p>
 <pre><code class="perl">
  use Rex::Commands::Cron;
  use Data::Dumper;
@@ -69,8 +69,8 @@
     my @crons = cron list =&gt; "root";
     print Dumper(\@crons);
  };</code></pre>
-<p>Add a cronjob。</p>
-<p>This example will add a cronjob running on minute 1, 5, 19 and 40. Every hour and every day。</p>
+<p>添加任务。</p>
+<p>这个示例会添加一个在每天每小时的第 1,5,19,和40分钟运行的任务。</p>
 <pre><code class="perl">
  use Rex::Commands::Cron;
  use Data::Dumper;
@@ -81,7 +81,7 @@
         command =&gt; '/path/to/your/cronjob',
      };
  };</code></pre>
-<p>This example will add a cronjob only running on the 1st, 3rd and 5th day of a month. But only when these days are monday or wednesday. And only in January and May. To the 11th and 23th hour. And to the 1st and 5th minute。</p>
+<p>这个示例会添加一个只在每个月的第1,3和5日运行的任务，同时又要求这几天必须是在一月或者五月的周一或周三。具体时间是11点和23点的第1和5分钟。</p>
 <pre><code class="perl">
  task "addcron", "server1", sub {
      cron add =&gt; "root", {
@@ -93,13 +93,13 @@
         command =&gt; '/path/to/your/cronjob',
      };
  };</code></pre>
-<p>Delete a cronjob。</p>
-<p>This example will delete the 4th cronjob. It starts counting by zero (0)。</p>
+<p>删除任务。</p>
+<p>这个示例会删除第四个任务。任务计数从 0 开始。</p>
 <pre><code class="perl">
  task "delcron", "server1", sub {
      cron delete =&gt; "root", 3;
  };</code></pre>
-<p>Managing Environment Variables inside cron。</p>
+<p>管理 crontab 中的环境变量。</p>
 <pre><code class="perl">
  task "mycron", "server1", sub {
      cron env =&gt; user =&gt; add =&gt; {

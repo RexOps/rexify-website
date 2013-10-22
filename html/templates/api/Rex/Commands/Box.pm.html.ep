@@ -25,7 +25,7 @@
 <p>
 </p>
 <h2>摘要</h2>
-<p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports only VirtualBox。</p>
+<p>这是一个管理虚拟机或者云主机的简易模块。当前只支持 VirtualBox。</p>
 <p>
 </p>
 
@@ -75,14 +75,14 @@
 <li><strong>new(name =&gt; $box_name)</strong></li>
 
 
-<p>Constructor if used in OO mode。</p>
+<p>OO 模式下的构造器。</p>
 <pre><code class="perl">
  my $box = Rex::Commands::Box-&gt;new(name =&gt; "box_name");</code></pre>
 
 <li><strong>box(sub {})</strong></li>
 
 
-<p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box。</p>
+<p>用这个函数创建新的 Rex/Box。第一个参数是一个 Box 对象。通过这个对象定义你的 box。</p>
 <pre><code class="perl">
  box {
     my ($box) = @_;
@@ -113,7 +113,7 @@
 <li><strong>list_boxes</strong></li>
 
 
-<p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn't start a Rex/Box。</p>
+<p>这个函数返回一个哈希数组，包括了 Rex/Box 能收集到的所有信息。这个函数本身不会启动任何 Rex/Box。</p>
 <pre><code class="perl">
  use Data::Dumper;
  task "get_infos", sub {
@@ -124,7 +124,7 @@
 <li><strong>get_box($box_name)</strong></li>
 
 
-<p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system。</p>
+<p>这个函数尝试收集一个 Rex/Box 的全部信息。同时这个函数还会启动这个 Rex/Box 来收集运行中的系统的所有信息。</p>
 <pre><code class="perl">
  use Data::Dumper;
  task "get_box_info", sub {
@@ -135,12 +135,12 @@
 <li><strong>boxes($action, @data)</strong></li>
 
 
-<p>With this function you can control your boxes. Currently there are 3 actions。</p>
+<p>这个函数控制 box 本身。目前有 3 个动作可用。</p>
 <ul>
 <li><strong>init</strong></li>
 
 
-<p>This action can only  be used if you're using a YAML file to describe your Rex/Boxes。</p>
+<p>这个动作只用于你用 YAML 文件描述自己的 Rex/Box 时。</p>
 <pre><code class="perl">
  task "prepare_boxes", sub {
     boxes "init";
@@ -149,7 +149,7 @@
 <li><strong>start</strong></li>
 
 
-<p>This action start one or more Rex/Boxes。</p>
+<p>这个动作启动一个或多个 Rex/Box。</p>
 <pre><code class="perl">
  task "start_boxes", sub {
     boxes "start", "box1", "box2";
@@ -158,7 +158,7 @@
 <li><strong>stop</strong></li>
 
 
-<p>This action stop one or more Rex/Boxes。</p>
+<p>这个动作停止一个或多个 Rex/Box。</p>
 <pre><code class="perl">
  task "stop_boxes", sub {
     boxes "stop", "box1", "box2";
