@@ -653,19 +653,19 @@
 <li><strong>set_executor_for($type, $executor)</strong></li>
 
 
-<p>Set the executor for a special type. This is primary used for the upload_and_run helper function.</p>
+<p>设置执行器为特殊类型。通常用于 upload_and_run 等辅助函数的场合。</p>
 <pre><code class="perl">
  set_executor_for perl =&gt; "/opt/local/bin/perl";</code></pre>
 
 <li><strong>tmp_dir($tmp_dir)</strong></li>
 
 
-<p>Set the tmp directory on the remote host to store temporary files.</p>
+<p>设置远程主机上存储零时文件的零时目录。</p>
 
 <li><strong>inspect($varRef)</strong></li>
 
 
-<p>This function dumps the contents of a variable to STDOUT.</p>
+<p>这个函数打印变量内容到标准输出。</p>
 <p>task "mytask", "myserver", sub {
    my $myvar = {
       name =&gt; "foo",

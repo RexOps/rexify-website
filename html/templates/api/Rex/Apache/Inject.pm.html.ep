@@ -15,10 +15,10 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#getting_help">GETTING HELP</a></li>
-	<li><a href="#dependencies">DEPENDENCIES</a></li>
+	<li><a href="#getting_help">获取帮助</a></li>
+	<li><a href="#dependencies">依赖</a></li>
 	<li><a href="#synopsis">例子</a></li>
-	<li><a href="#inject_methods">INJECT METHODS</a></li>
+	<li><a href="#inject_methods">注入方法</a></li>
 </ul>
 
 
@@ -33,14 +33,14 @@
 </p>
 
 <h2>摘要</h2>
-<p>This is a (R)?ex module to inject configuration parameters into packages (*.tar.gz, *.tar.bz2, *.zip or *.war).</p>
-<p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
+<p>这是一个向软件包 (*.tar.gz, *.tar.bz2, *.zip or *.war) 注入配置参数的 (R)?ex 模块。</p>
+<p>你可以在 <a href="http://rexify.org/">http://rexify.org/</a>找到示例和具体做法。</p>
 <p>
 </p>
 
-<h2>GETTING HELP</h2>
+<h2>获取帮助</h2>
 <ul>
-<li><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
+<li><strong>网站: <a href="http://rexify.org/">http://rexify.org/</a></strong>
 
 </li>
 <li><strong>IRC: irc.freenode.net #rex</strong>
@@ -50,7 +50,7 @@
 <p>
 </p>
 
-<h2>DEPENDENCIES</h2>
+<h2>依赖</h2>
 <ul>
 <li>
 <p><em>Rex</em></p>
@@ -84,12 +84,12 @@
 <p>
 </p>
 
-<h2>INJECT METHODS</h2>
+<h2>注入方法</h2>
 <ul>
 <li><strong>Properties</strong></li>
 
 
-<p>This method is for Java-Like Property files.</p>
+<p>这个方法是为类 Java 属性文件准备的。</p>
 <pre><code class="perl">
  use Rex::Apache::Inject Properties;
     
@@ -108,7 +108,7 @@
 <li><strong>Template</strong></li>
 
 
-<p>This is a special method. It will search for template files within the archive and will generate new ones with the parameters defined in <em>template_file</em>.</p>
+<p>这是一个特殊方法。它会在归档中搜索模板文件，然后用 <em>template_file</em> 定义的参数生成新的文件。</p>
 <pre><code class="perl">
  use Rex::Apache::Inject Template;
      
@@ -124,8 +124,8 @@
  task &quot;inject&quot;, sub {
      inject &quot;myapp.tar.gz&quot;;
  };</code></pre>
-<p>This will search for files named <em>*.template.*</em> inside of myapp.tar.gz. And will generate new files on the basis of <em>generate_real_name</em>.</p>
-<p>Example:</p>
+<p>这个会搜索 myapp.tar.gz 中名叫 <em>*.template.*</em> 的文件。然后根据 <em>generate_real_name</em> 生成新的文件。</p>
+<p>示例：</p>
 <pre><code class="perl">
  # Template Configuration file (inside myapp.tar.gz): config.template.php
  &lt;?php
@@ -140,7 +140,7 @@
  db.port = 3306
  db.user = &quot;myuser&quot;
  db.pass = &quot;mypass&quot;</code></pre>
-<p>The <em>inject</em> action will generate a file called <em>config.php</em> with the following content:</p>
+<p> <em>inject</em> 操作会生成一个叫 <em>config.php</em> 的文件，内容如下：</p>
 <pre><code class="perl">
  &lt;?php
     $db['host'] = &quot;db01&quot;;
@@ -152,7 +152,7 @@
 <li><strong>YAML</strong></li>
 
 
-<p>This method will parse YAML files inside the archive. For this method you need to have the <em>YAML</em> Module installed.</p>
+<p>这个方法会解析归档中的 YAML 文件。当然前提是你安装了 <em>YAML</em> 模块。</p>
 <pre><code class="perl">
  template_file &quot;live_config.yml&quot;;
  template_search_for &quot;application.yml&quot;;
@@ -163,7 +163,7 @@
              run &quot;BUNDLE_PATH=vendor/bundle bundle install&quot;;
          };
  };</code></pre>
-<p>This will search the file <em>application.yml</em> inside of myapp.tar.gz and replace the configuration values inside of it with these defined in <em>live_config.yml</em>. Also it do a pre pack hook that will run <em>bundle install</em>.</p>
+<p>这个会搜索 myapp.tar.gz 内的 <em>application.yml</em> 然后根据 <em>live_config.yml</em> 内定义的配置值做替换。 注意这里还运行了一个前置钩子跑 <em>bundle install</em> 。</p>
 
 </ul>
 

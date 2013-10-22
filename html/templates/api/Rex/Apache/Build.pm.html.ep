@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>With this module you can prepare your WebApp for deployment.</p>
+<p>通过该模块来准备好你的网页应用以便部署。</p>
 <p>
 </p>
 
@@ -74,27 +74,27 @@
 <li><strong>yui_path($path_to_yui_compressor)</strong></li>
 
 
-<p>This function sets the path to the yui_compressor. If a relative path is given it will search from the path where the Rexfile is in.</p>
+<p>这个函数设置 yui_compressor 的路径。如果给出的是一个相对路径，会自动从这个路径开始搜索 Rexfile。</p>
 
 <li><strong>coffee_path($path_to_coffee)</strong></li>
 
 
-<p>This function sets the path to the coffee compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
+<p>这个函数设置 coffee 编译器的路径。如果给出的是一个相对路径，会自动从这个路径开始搜索 Rexfile。</p>
 
 <li><strong>sprocketize_path($path_to_sprocketize)</strong></li>
 
 
-<p>This function sets the path to the sprocketize compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
+<p>这个函数设置 sprocketize 编译器的路径。如果给出的是一个相对路径，会自动从这个路径开始搜索 Rexfile。</p>
 
 <li><strong>sass_path($path_to_sass)</strong></li>
 
 
-<p>This function sets the path to the sass compiler. If a relative path is given it will search from the path where the Rexfile is in.</p>
+<p>这个函数设置 sass 编译器的路径。如果给出的是一个相对路径，会自动从这个路径开始搜索 Rexfile。</p>
 
 <li><strong>yui($action, @files)</strong></li>
 
 
-<p>Run a yui command.</p>
+<p>运行 yui 命令。</p>
 <pre><code class="perl">
  task &quot;build&quot;, sub {
     # this will compress the given files
@@ -107,7 +107,7 @@
 <li><strong>build([$name, %options])</strong></li>
 
 
-<p>This function builds your package. Currently only tar.gz packages are supported.</p>
+<p>这个函数构建软件包。目前只支持 tar.gz 格式。</p>
 <pre><code class="perl">
  # this will a package of the current directory named after the 
  # directory of the Rexfile and append the version provided by 
@@ -136,12 +136,12 @@
 <li><strong>get_version_from($file, $regexp)</strong></li>
 
 
-<p>Get the version out of a file.</p>
+<p>获取文件版本。</p>
 
 <li><strong>sprocketize($path_to_js_files, %option)</strong></li>
 
 
-<p>This function calls the sprocketize command with the given options.</p>
+<p>以指定参数调用 sprocketize 命令。</p>
 <pre><code class="perl">
  task &quot;build&quot;, sub {
     sprocketize &quot;app/javascript/*.js&quot;,
@@ -169,7 +169,7 @@
 <li><strong>coffee($path, %options)</strong></li>
 
 
-<p>Compile coffee files to javascript.</p>
+<p>编译 coffee 文件成 javascript 。</p>
 <pre><code class="perl">
  task &quot;build&quot;, sub {
     # this command will build all files in &quot;coffeesrc&quot; and
@@ -185,7 +185,7 @@
 <li><strong>sass($input_dir, %option)</strong></li>
 
 
-<p>This command will compile all sass files in $input_dir.</p>
+<p>编译 $input_dir 里的所有 sass 文件。</p>
 <pre><code class="perl">
  task &quot;build&quot;, sub {
     # this command will compile all sass files from app/assets/stylesheets

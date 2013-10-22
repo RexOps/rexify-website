@@ -15,13 +15,13 @@
 
 	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
-	<li><a href="#getting_help">GETTING HELP</a></li>
-	<li><a href="#dependencies">DEPENDENCIES</a></li>
+	<li><a href="#getting_help">获取帮助</a></li>
+	<li><a href="#dependencies">依赖</a></li>
 	<li><a href="#synopsis">例子</a></li>
-	<li><a href="#deploy_methods">DEPLOY METHODS</a></li>
+	<li><a href="#deploy_methods">部署方法</a></li>
 	<ul>
 
-		<li><a href="#switching_instances">SWITCHING INSTANCES</a></li>
+		<li><a href="#switching_instances">切换实例</a></li>
 	</ul>
 
 </ul>
@@ -38,14 +38,14 @@
 </p>
 
 <h2>摘要</h2>
-<p>This is a (R)?ex module to ease the deployments of Tomcat, Perl, Rails, PHP or other languages.</p>
-<p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
+<p>这是一个简化 Tomcat，Perl，Rails，PHP 或者其他语言的部署的 (R)?ex 模块。</p>
+<p>你可以在 <a href="http://rexify.org/">http://rexify.org/</a> 上找到例子和具体做法。</p>
 <p>
 </p>
 
-<h2>GETTING HELP</h2>
+<h2>获取帮助</h2>
 <ul>
-<li><strong>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></strong>
+<li><strong>网站: <a href="http://rexify.org/">http://rexify.org/</a></strong>
 
 </li>
 <li><strong>IRC: irc.freenode.net #rex</strong>
@@ -55,7 +55,7 @@
 <p>
 </p>
 
-<h2>DEPENDENCIES</h2>
+<h2>依赖</h2>
 <ul>
 <li>
 <p><em>Rex</em></p>
@@ -64,7 +64,7 @@
 <p><em>YAML</em></p>
 </li>
 <li>
-<p><a href="/LWP/Simple.html">the LWP::Simple manpage</a></p>
+<p><a href="/LWP/Simple.html">LWP::Simple 文档</a></p>
 </li>
 <li>
 <p>zip</p>
@@ -82,8 +82,8 @@
 <p>wget</p>
 </li>
 </ul>
-<p>If you're using windows, you can install them from here: <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a>
-Don't forget to add the bin directory of the installation to your %PATH% environment variable.</p>
+<p>如果你使用的是windows，你可以在 <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a> 上找到他们的安装包。
+不要忘记安装完成后把可执行目录添加到你的 %PATH% 环境变量。</p>
 <p>
 </p>
 
@@ -108,22 +108,22 @@ Don't forget to add the bin directory of the installation to your %PATH% environ
 <p>
 </p>
 
-<h2>DEPLOY METHODS</h2>
+<h2>部署方法</h2>
 <ul>
-<li><strong>Symlink</strong></li>
+<li><strong>软连接</strong></li>
 
 
-<p>This method will upload your package (*.tar.gz, *.tar.bz2 or *.zip) all you servers and extract it in the directory you specified with <em>deploy_to</em> concatenated with the result of <em>generate_deploy_directory</em>. After that it will create a symlink from <em>document_root</em> to this new directory.</p>
+<p>这个方法会上传你的包 (*.tar.gz, *.tar.bz2 or *.zip) 到所有的服务器，然后解压到你指定的 <em>deploy_to</em> 目录下的 <em>generate_deploy_directory</em> 子目录里。然后从 <em>document_root</em> 创建软连接到这个新目录。</p>
 <pre><code class="perl">
  deploy_to &quot;/var/deploy&quot;;
  document_root &quot;/var/www&quot;;
  generate_deploy_directory sub { return &quot;1.0&quot;; };</code></pre>
-<p>This will upload the file to <em>/var/deploy/1.0</em> and create a symlink from <em>/var/www</em> to <em>/var/deploy/1.0</em>.</p>
+<p>这样就会上传文件到 <em>/var/deploy/1.0</em> 然后创建软连接 <em>/var/www</em> 到 <em>/var/deploy/1.0</em>。</p>
 
 <li><strong>Tomcat</strong></li>
 
 
-<p>This method is for Tomcat deployments. You need to have the Tomcat Manage application running on your Tomcat servers. It will upload your package to <em>/tmp/some-random-chars.war</em>, call the Tomcat Manager to undeploy the current context and deploy the new war archive. After that it will delete the uploaded temporary war file.</p>
+<p>这个方法用来做 Tomcat 部署。你需要在自己的 Tomcat 服务器上运行 Tomcat 管理应用。这个方法会上传你的包到 <em>/tmp/some-random-chars.war</em>，然后调用 Tomcat 管理器卸载当前环境然后部署新的 war 包。完成后再删除上传的临时文件。</p>
 <pre><code class="perl">
  context_path &quot;/myapp&quot;;
      
@@ -134,13 +134,13 @@ Don't forget to add the bin directory of the installation to your %PATH% environ
          port        =&gt; 8080,
          manager_url =&gt;  &quot;/manager&quot;;
  };</code></pre>
-<p>This will deploy <em>myapp.war</em> to the tomcat listening on port <em>8080</em> with the manager application found under <em><a href="http://the-server:8080/manager">http://the-server:8080/manager</a></em>.</p>
+<p>这个会部署 <em>myapp.war</em> 到一个监听了 <em>8080</em> 端口的tomcat，具体的监听器应用则是 <em><a href="http://the-server:8080/manager">http://the-server:8080/manager</a></em>。</p>
 
 </ul>
 <p>
 </p>
-<h2><a name="switching_instances">SWITCHING INSTANCES</a></h2>
-<p>If you have multiple Tomcat Instances you can manage them with the <em>jk</em> command.</p>
+<h2><a name="switching_instances">切换实例</a></h2>
+<p>如果你有多个 Tomcat 实例，你可以用 <em>jk</em> 命令管理它。</p>
 <pre><code class="perl">
  jk disable =&gt; 'name';
  jk enable  =&gt; 'name';</code></pre>
