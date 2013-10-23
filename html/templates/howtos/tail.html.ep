@@ -6,19 +6,19 @@
       <meta name="keywords" content="Tail, Logfiles, Rex, Apache">
 % end
 
-         <h1>Starting Point</h1>
-         <p>This is a small example that will show you how to watch logfiles live.</p>
+         <h1>出发点</h1>
+         <p>这个小例子用来展示如何实时查看日志</p>
          
 
-         <h2>Preparation</h2>
+         <h2>准备</h2>
          <ul>
-            <li>Download and install rex (See the <a href="/get">get</a> page)</li>
+            <li>下载安装 rex (参加 <a href="/get">获取</a> 页)</li>
          </ul>
 
          
 
-         <h2>Creating a simple Rexfile</h2>
-         <p>At first create a simple Rexfile in your $HOME directory.</p>
+         <h2>创建一个简单的 Rexfile</h2>
+         <p>首先在 $HOME 目录创建一个简单的 Rexfile。</p>
 
             <pre><code class="perl">use Rex::Commands::Tail;
 
@@ -38,18 +38,18 @@ task "tail-fe", group =&gt; "fe", sub {
 
          
 
-         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers, from fe01 to fe20 and tail the logfile continuously.</p>
+         <p>这个例子会以用户名 <i>my-user</i> 密码 <i>my-password</i> 登录所有服务器，从 fe01 到 fe20，然后持续的 tail 日志文件。</p>
 
          
 
-         <p>If you want to tail the logs on many servers, you need to add parallelism to (R)?ex. So that you can see the logs of all servers at the same time.</p>
+         <p>如果你要同时 tail 多台服务器的日志，你必须添加 parallelism 参数，这样才能同时查看所有的服务器日志。</p>
 
             <pre><code class="bash">$ rex tail-fe</code></pre>
 
          
 
-         <h2>Customizing the tail output</h2>
-         <p>If you want to customize the tail output, you can add a callback function as 2nd parameter.</p>
+         <h2>定制 tail 输出</h2>
+         <p>如果你想定制 tail 的输出，你可以添加一个回调函数作为第二个参数。</p>
 
             <pre><code class="perl">use Rex::Commands::Tail;
 
@@ -73,5 +73,5 @@ task "tail-fe", group =&gt; "fe", sub {
 
          
 
-         <p>This example will prepend the servername to every line.</p>
+         <p>这个例子会在每行起始添加服务器名称。</p>
 

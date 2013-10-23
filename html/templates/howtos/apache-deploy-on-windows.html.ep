@@ -7,9 +7,9 @@
 % end
       
          <h1>Installing Apache::Deploy on Windows</h1>
-         <p>To install Apache::Deploy on Windows you need to install a few dependencies.
+         <p>要在 Windows 上安装 Apache::Deploy 你需要先安装一些依赖软件。
 
-         Go to <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a> and install the following packages.</p>
+         到 <a href="http://sourceforge.net/projects/gnuwin32/files/">http://sourceforge.net/projects/gnuwin32/files/</a> 上下载并安装下列软件：</p>
 
          
 
@@ -27,13 +27,13 @@
 
          
 
-         <p>Now, add the <i>bin</i> folder of the installations to your %PATH% environment variable. Example: "C:\Program Files (x86)\GnuWin32\bin". And rename the <i>find.exe</i> to <i>find2.exe</i>.</p>
-         <p>If you want to use yuicompress you need to install Java and add the path to java.exe to your %PATH% environment variable, too.</p>
-         <p>If you want to use sprocketize, sass and coffeescript, you have to install these tools and add the path to the executables to your %PATH% variable, too.</p>
+         <p>安装完成后，把 <i>bin</i> 目录添加到你的 %PATH% 环境变量。比如："C:\Program Files (x86)\GnuWin32\bin"，然后重命名 <i>find.exe</i> 成 <i>find2.exe</i>。</p>
+         <p>如果你想使用 yuicompress，你需要安装 Java 然后把 java.exe 的路径添加到 %PATH% 环境变量。</p>
+         <p>如果你想使用 sprocketize，sass 和 coffeescript，你也要自己安装对应的工具并把可执行文件的路径添加到 %PATH %变量。</p>
 
          
 
-         <p>Now you can install Apache::Deploy with ppd.</p>
+         <p>现在你可以用 ppm 安装 Apache::Deploy 了。</p>
             <pre><code class="bash">$ ppm install http://rex.linux-files.org/Windows/12xx/Rex.ppd
 ppm install http://rex.linux-files.org/Windows/12xx/Rex-Apache-Deploy.ppd</code></pre>
 

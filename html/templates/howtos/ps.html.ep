@@ -6,8 +6,8 @@
       <meta name="keywords" content="Process, Management, ps, kill, killall">
 % end
 
-         <h1>Listing all running processes</h1>
-         <p>To list all running process you can use the <i>ps</i> function. It will return an array of hashs with all information about the processes.</p>
+         <h1>列出所有正在运行的进程</h1>
+         <p>要列出所有正在运行的进程，你可以使用 <i>ps</i> 函数。它会返回一个由包含进程全部信息的哈希组成的数组。</p>
 
             <pre><code class="perl">use Rex::Commands::Process;
 
@@ -30,7 +30,7 @@ task "ps", group =&gt; "myserver", sub {
 
          
 
-         <p>If you want to see all the available options just use the <i>Data::Dumper</i> module.</p>
+         <p>想看到全部可用选项，使用 <i>Data::Dumper</i> 模块即可：</p>
 
             <pre><code class="perl">use Rex::Commands::Process;
 use Data::Dumper;
@@ -49,8 +49,8 @@ task "ps", group =&gt; "myserver", sub {
 };</code></pre>
 
 
-         <h2>Getting the PID of a programm</h2>
-         <p>If you want to get the pid of a running programm you can use the perl function <i>grep</i>.</p>
+         <h2>获取进程的 PID</h2>
+         <p>如果你要获取某个进程的 pid，你可以使用 Perl 函数 <i>grep</i>。</p>
 
             <pre><code class="perl">use Rex::Commands::Process;
             

@@ -6,15 +6,15 @@
       <meta name="keywords" content="INI, groups">
 % end
 
-         <h1>Use a INI-style groups file</h1>
-         <p>To use a INI-style groups file you can use the <i>groups_file</i> function. It will read in the ini file you provide as a parameter, after which you can use it as if you defined groups as usual in your rex file.</p>
+         <h1>使用一个 INI-格式的服务器组定义文件</h1>
+         <p>要使用一个 INI-格式的服务器组定义文件，你可以用 <i>groups_file</i> 函数。它会读取参数中提供的 ini 文件，然后你就可以在 Rexfile 中和平常一样使用服务器组了。</p>
 
             <pre><code class="perl">use Rex::Group::Lookup::INI;
 groups_file "file.ini";</code></pre>
 
          
 
-         <p>And this is an example of a INI-style groups file:</p>
+         <p>下面是 INI 格式文件的示例：</p>
 
             <pre><code class="perl">; my group file
 [frontends]

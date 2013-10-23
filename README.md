@@ -7,6 +7,12 @@ Rex 中文翻译
 *   如果你想加入我们请联系 <rao.chenlin@gmail.com>
 *   QQ群 252744726
 
+### 当前进度
+
+目前主要欠缺 html/templates/howtos/ 下的文章没有翻译。
+ES 的搜索对中文有问题，存成 attachments 后乱码。
+
+
 部署说明
 ==============
 
