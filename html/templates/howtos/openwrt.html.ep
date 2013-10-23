@@ -13,7 +13,7 @@
 
 <h3>What's working?</h3>
 
-<p>Please see the <a href="compatibility.html/#embedded">official compatibility page</a>. You may also want to check the current project weather on <a href="https://build.rexify.org">build.rexify.org</a>.</p>
+<p>Please see the <a href="compatibility.html#embedded">official compatibility page</a>. You may also want to check the current project weather on <a href="https://build.rexify.org">build.rexify.org</a>.</p>
 
 <h3>Known limitations</h3>
 
@@ -32,7 +32,7 @@
 <h2>Requirements</h2>
 
 <ul>
-<li>>=rex-0.43: initial support has been added in this release</li>
+<li>&gt;=rex-0.43: initial support has been added in this release</li>
 <li>Attitude Adjustment (12.09 final): latest stable OpenWrt release as of 2013-10-18, and the only tested with Rex, but things might work with other releases as well - let us know! :)</li>
 </ul>
 
@@ -47,7 +47,8 @@
 <p>Optional packages (only for specific Rex functions):</p>
 
 <ul>
-<li>sync_up and upload: rsync</li>
+<li>sync_up: rsync</li>
+<li>upload: scp (part of dropbear package, so normally installed by default)</li>
 <li>user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
 <li>inventory gathering: dmidecode</li>
 </ul>
@@ -115,7 +116,7 @@ ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server
 
 <h3>rsync</h3>
 
-<p>Needed by upload and sync_up functionality. Not much to see here, move along.</p>
+<p>Needed by sync_up functionality. Not much to see here, move along.</p>
 
 <h3>shadow-*</h3>
 
