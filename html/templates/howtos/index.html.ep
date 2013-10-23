@@ -40,6 +40,7 @@
             <li><a href="use_boxes_with_any_box_provider.html">Use Rex/Boxes with any Box Provider</a> (without changing your Rexfile)</li>
             <li><a href="http://modules.rexify.org/contribute">Writing Modules</a></li>
             <li><a href="http://box.rexify.org/guide">Using Rex/Boxes to ease development and testing</a></li>
+            <li><a href="openwrt.html">Using Rex to manage OpenWrt systems</a></li>
          </ul>
 
          <div class="vspace"></div>
