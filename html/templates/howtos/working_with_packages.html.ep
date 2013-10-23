@@ -92,6 +92,7 @@
    <li>For Mageia: urpmi</li>
    <li>For NetBSD: pkg</li>
    <li>For OpenBSD: pkg</li>
+   <li>For OpenWrt: opkg</li>
    <li>For Redhat/CentOS/ScientificLinux: yum</li>
    <li>For SunOS: pkgadd, pkg, OpenCSW, Blastwave</li>
    <li>For SuSE: zypper</li>
