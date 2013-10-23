@@ -655,7 +655,6 @@
 
          <p>&nbsp;</p>
 
-         <p>For OpenWrt support you need to install <i>perl</i>, <i>shadow-groupadd</i>, <i>shadow-useradd</i> and <i>dmidecode</i>.
-         There is also one limitation for service management. OpenWrt init scripts doesn't support the <i>status</i> argument. So you can't get the status of a service via the service() function.</p>
+         <p>For details on OpenWrt support you may want to read our <a href="openwrt.html">OpenWrt howto</a>.</p>
 
 
