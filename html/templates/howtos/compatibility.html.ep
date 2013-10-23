@@ -616,7 +616,7 @@
             </tr>
             <tr>
                <td>Kernel Operations</td>
-               <td class="not-supported">&nbsp;</td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>LVM</td>
@@ -628,11 +628,11 @@
             </tr>
             <tr>
                <td>Process Management</td>
-               <td class="supported">&nbsp;</td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Rsync</td>
-               <td class="not-supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Execute Commands</td>
@@ -640,7 +640,7 @@
             </tr>
             <tr>
                <td>Manage Services</td>
-               <td class="part-supported"><b>*</b></td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage Sysctl Entries</td>
@@ -648,7 +648,7 @@
             </tr>
             <tr>
                <td>Manage User- and Groupaccounts</td>
-               <td class="supported"><b>*</b></td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
 
          </table>
