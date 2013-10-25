@@ -9,8 +9,8 @@ Rex 中文翻译
 
 ### 当前进度
 
-目前主要欠缺 html/templates/howtos/ 下的文章没有翻译。
-ES 的搜索对中文有问题，存成 attachments 后乱码。
+* 目前主要欠缺 html/templates/howtos/ 下的文章没有翻译。
+* 搜索对中文有问题，title 目前显示是乱码。
 
 
 部署说明
@@ -27,6 +27,6 @@ ES 的搜索对中文有问题，存成 attachments 后乱码。
     rpm -ivh https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.3.noarch.rpm
     /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-mapper-attachments/1.9.0
 
-然后运行 `create_index.pl` 脚本重建索引即可。
+然后运行 `create_index.pl localhost 9200 html/templates` 脚本重建索引即可。
 
 如果没有插件，搜索也会正常返回结果，但只有 title 和 fs 两列，因为 file 列变成了 base64 编码解析不出来，也就没法搜索和返回高亮词条了。

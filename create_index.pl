@@ -1,7 +1,8 @@
-#!/usr/bin/env perl -w
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
+use utf8;
 
 use MIME::Base64;
 use Mojo::UserAgent;
@@ -118,9 +119,8 @@ sub index_document {
    $fs =~ s/\.ep$//;
 
    my $ref = {
-      #file  => $base64_content,
+      file  => $base64_content,
       #content  => join("\n", @content),
-      file  => join("\n", @content),
       fs    => $fs,
       title => $title,
    };
