@@ -30,16 +30,17 @@
          <h1>Howtos</h1>
          <ul class="simple-list">
             <!--            <li><a href="shell-scripting.html">通过 shell 脚本使用 Rex</a></li> -->
-            <li><a href="apache-deploy-on-windows.html">在 Windows上使用 Apache::Deploy</a></li>
             <li><a href="usermgmt.html">管理你的系统用户</a></li>
             <li><a href="amazon.html">管理你的 Amazon EC2 实例</a></li>
-            <li><a href="apache-vhosts.html">基于你的 MySQL 服务器管理 apache 虚拟主机 </a></li>
+            <li><a href="apache-vhosts.html">基于你的 MySQL 服务器管理 apache 虚拟主机</a></li>
             <li><a href="tomcat1.html">用 Rex 管理 Tomcat 的开发环境</a></li>
-            <li><a href="http-transport.html">使用 Rex 的 HTTP 传输层</a>(类似 Puppet)</li>
-            <li><a href="gearman.html">用 Gearman 扩展 Rex 性能</a></li>
-            <li><a href="use_boxes_with_any_box_provider.html">用 Rex/Boxes 管理多个虚拟机实例</a></li>
+            <li><a href="apache-deploy-on-windows.html">在 Windows上使用 Apache::Deploy</a></li>
+            <li><a href="http-transport.html">使用 Rex 的 HTTP 传输层(Rex::Endpoint::HTTP)</a>(类似 Puppet)</li>
+            <li><a href="gearman.html">用 Gearman 扩展 Rex</a></li>
+            <li><a href="use_boxes_with_any_box_provider.html">用 Rex/Boxes 管理多个虚拟机实例</a>(不需要改变你的 Rexfile 文件)</li>
             <li><a href="http://modules.rexify.org/contribute">编写自己的模块</a></li>
-            <li><a href="http://box.rexify.org/guide">用 Rex/Boxes 切换你的开发环境和测试环境</a></li>
+            <li><a href="http://box.rexify.org/guide">用 Rex/Boxes 简化你在开发环境和测试环境间来回切换</a></li>
+            <li><a href="openwrt.html">用 Rex 管理 OpenWrt 路由器系统</a></li>
          </ul>
 
          <div class="vspace"></div>

@@ -629,7 +629,7 @@
             </tr>
             <tr>
                <td>Kernel Operations</td>
-               <td class="not-supported">&nbsp;</td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>LVM</td>
@@ -641,11 +641,11 @@
             </tr>
             <tr>
                <td>Process Management</td>
-               <td class="supported">&nbsp;</td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Rsync</td>
-               <td class="not-supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Execute Commands</td>
@@ -653,7 +653,7 @@
             </tr>
             <tr>
                <td>Manage Services</td>
-               <td class="part-supported"><b>*</b></td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage Sysctl Entries</td>
@@ -661,14 +661,13 @@
             </tr>
             <tr>
                <td>Manage User- and Groupaccounts</td>
-               <td class="supported"><b>*</b></td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
 
          </table>
 
          <p>&nbsp;</p>
 
-         <p>For OpenWrt support you need to install <i>perl</i>, <i>shadow-groupadd</i>, <i>shadow-useradd</i> and <i>dmidecode</i>.
-         There is also one limitation for service management. OpenWrt init scripts doesn't support the <i>status</i> argument. So you can't get the status of a service via the service() function.</p>
+         <p>For details on OpenWrt support you may want to read our <a href="openwrt.html">OpenWrt howto</a>.</p>
 
 
