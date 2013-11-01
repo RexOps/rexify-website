@@ -343,7 +343,7 @@ __DATA__
                </div>
 
                <h2>Conferences</h2>
-               <p>10. November 2013 talk at <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a>.</p>
+               <p>09. November - 10. November 2013 talk and booth at <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a>.</p>
 
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
