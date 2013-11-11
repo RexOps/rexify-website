@@ -346,7 +346,8 @@ __DATA__
                </div>
 
                <h2>会议</h2>
-               <p>2013 年 11 月 10 日 在 <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a> 上演讲。</p>
+               <p>11 月 29 日，在 <a href="http://sfd.org.hu">赛格德(匈牙利)开源软件大会</a>上有关于 (R)?ex 特性的演讲，题为《<a href="http://sfd.org.hu/instant-devops">Instant DevOps(瞬间完成的运维)》</a>。</p>
+               <p>2013 年 11 月 10 日在 <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a> 上演讲。</p>
 
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
