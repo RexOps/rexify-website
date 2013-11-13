@@ -343,6 +343,7 @@ __DATA__
                </div>
 
                <h2>Conferences</h2>
+               <p>29. November: <a href="http://sfd.org.hu/instant-devops">Instant DevOps</a> talk at <a href="http://sfd.org.hu">Free Software Conference of Szeged</a> featuring (R)?ex</p>
                <p>09. November - 10. November 2013 talk and booth at <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a>.</p>
 
                <h2>Need Help?</h2>
