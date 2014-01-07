@@ -12,7 +12,7 @@
 <p>You can install Rex with a simple one-liner</p>
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
-<h2>Linux</h2>
+<h2>BSD and Linux</h2>
 <p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown.</p>
 
 
@@ -26,6 +26,7 @@
        <li><a href="#tab5" data-toggle="tab"><img src="/img/suse.png" /></a></li>
        <li><a href="#tab6" data-toggle="tab"><img src="/img/mageia.png" /></a></li>
        <li><a href="#tab7" data-toggle="tab"><img src="/img/fedora.png" /></a></li>
+       <li><a href="#tab8" data-toggle="tab"><img src="/img/freebsd.png" /></a></li>
     </ul>
     <div class="tab-content">
        <div class="tab-pane active" id="tab1">
@@ -167,6 +168,15 @@ yum install rex</code></pre>
 
 
        </div>
+       <div class="tab-pane" id="tab8">
+
+         <h3>Installation with ports</h3>
+         <p>Thanks to Sam Cassiba Rex is now available in the official FreeBSD Ports collection.</p>
+         <pre><code class="bash">cd /usr/ports/sysutils/p5-Rex
+make install clean</code></pre>
+ 
+       </div>
+
 
 
     </div>
