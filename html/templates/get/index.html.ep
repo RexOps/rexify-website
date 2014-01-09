@@ -12,8 +12,8 @@
 <p>你可以在命令行使用单行安装</p>
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
-<h2>Linux</h2>
-<p>Rex 已经有了许多版本的包. wget -O - 只需要你选着你的安装版本 然后一步一步的安装它.</p>
+<h2>BSD 和 Linux</h2>
+<p>大多数主要发行版上都已经有了打包好的 Rex。选择你的发行版然后按照下面的步骤进行：</p>
 
 <div style="foat: left"> <!-- needed for bootstrap ... -->
  <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
@@ -25,6 +25,7 @@
        <li><a href="#tab5" data-toggle="tab"><img src="/img/suse.png" /></a></li>
        <li><a href="#tab6" data-toggle="tab"><img src="/img/mageia.png" /></a></li>
        <li><a href="#tab7" data-toggle="tab"><img src="/img/fedora.png" /></a></li>
+       <li><a href="#tab8" data-toggle="tab"><img src="/img/freebsd.png" /></a></li>
     </ul>
     <div class="tab-content">
        <div class="tab-pane active" id="tab1">
@@ -157,6 +158,15 @@ yum install rex</code></pre>
 
 
        </div>
+       <div class="tab-pane" id="tab8">
+
+         <h3>Installation with ports</h3>
+         <p>Thanks to Sam Cassiba Rex is now available in the official FreeBSD Ports collection.</p>
+         <pre><code class="bash">cd /usr/ports/sysutils/p5-Rex
+make install clean</code></pre>
+ 
+       </div>
+
 
 
     </div>
