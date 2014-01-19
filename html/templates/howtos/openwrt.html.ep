@@ -7,7 +7,7 @@
 
 <h1>Using (R)?ex to manage OpenWrt systems</h1>
 
-<p><a href="https://openwrt.org">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for/used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
+<p><a href="https://openwrt.org">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
 
 <h2>Overview</h2>
 
@@ -20,7 +20,7 @@
 <ul>
 <li><p><strong>Service status</strong></p>
 
-<p>Despite OpenWrt provides a <code>service_check()</code> function in <code>/lib/functions/service.sh</code>, it seems that initscripts are rarely using it. So Rex currently implements the same way of service status checking but it's more of a workaround than a solution. It's worth noting that sometimes the initscript's name and its executable's name are not the same (e.g cron vs. crond). You should use the executable's name in your OpenWrt status checks.</p></li>
+<p>Despite OpenWrt provides a <code>service_check()</code> function in <code>/lib/functions/service.sh</code>, it seems that it's only sporadically used in initscripts. Nevertheless Rex currently implements its service status check via this function but it's more of a workaround than a solution. It's also worth noting that sometimes the initscript's name and its executable's name are not the same (e.g cron vs. crond). You should use the executable's name in your OpenWrt status checks.</p></li>
 <li><p><strong>Missing renice</strong></p>
 
 <p>AFAIK renice isn't available for OpenWrt.</p></li>
@@ -33,10 +33,10 @@
 
 <ul>
 <li>&gt;=rex-0.43: initial support has been added in this release</li>
-<li>Attitude Adjustment (12.09 final): latest stable OpenWrt release as of 2013-10-18, and the only tested with Rex, but things might work with other releases as well - let us know! :)</li>
+<li>Attitude Adjustment (12.09 final): latest stable OpenWrt release as of 2014-01-12 and the only one which is tested to work with Rex, but Rex might work with other releases as well - let us know! :)</li>
 </ul>
 
-<p>Generally you'll need the following packages on your OpenWrt box:</p>
+<p>Generally you'll need the following packages on your OpenWrt box on top of a vanilla install:</p>
 
 <ul>
 <li>SFTP server: openssh-sftp-server or gesftpserver</li>
@@ -48,7 +48,6 @@
 
 <ul>
 <li>sync_up: rsync</li>
-<li>upload: scp (part of dropbear package, so normally installed by default)</li>
 <li>user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
 <li>inventory gathering: dmidecode</li>
 </ul>
@@ -57,9 +56,9 @@
 
 <h3>SFTP server</h3>
 
-<p>By default OpenWrt doesn't provide an SFTP server. As Rex does lots of basic stuff via the SFTP protocol (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you need to install on your box is either openssh-sftp-server or gesftpserver.</p>
+<p>By default OpenWrt doesn't provide an SFTP server. As Rex does lots of lower level operations via SFTP (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you should install on your box is either openssh-sftp-server or gesftpserver.</p>
 
-<p>A massively subjective comparison of these two may help your decision:</p>
+<p>A massively subjective comparison of these two may help to make your decision:</p>
 
 <h4>openssh-sftp-server</h4>
 
@@ -97,7 +96,7 @@ mkdir /usr/libexec
 ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server
 </code></pre>
 
-<p>If you want to automate the set up the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. In other words, don't try to use the built-in <code>mkdir</code> and <code>symlink</code> functions as they are broken before having an SFTP server in place).</p>
+<p>If you want to automate the set up of the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. The bottom line is to don't try to use the built-in <code>mkdir</code> and <code>symlink</code> functions at this point as they are broken before you have an SFTP server in place.</p>
 
 <p>You can find out more about gesftpserver and a comparison of different SFTP implementations/versions on <a href="http://www.greenend.org.uk/rjk/sftpserver/">their website</a>.</p>
 
@@ -109,14 +108,14 @@ ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server
 <li>perl: obviously</li>
 <li>perlbase-bytes, perlbase-essential: very basic set of perl modules</li>
 <li>perlbase-data: for Data::Dumper</li>
-<li>perlbase-digest, perlbase-xsloader: perlbase-data uses them</li>
-<li>perlbase-scalar, perlbase-list: you can use these two instead of the previous duo for a truly minimal setup, but perlbase-digest is recommended as that can come in handy for more operations</li>
-<li>perlbase-files: for glob operations</li>
+<li>perlbase-file: for glob operations</li>
+<li>perlbase-digest: perlbase-data dependency and it is nice to have in order to speed up file operations in general (via MD5 hashing)</li>
+<li>perlbase-xsloader: perlbase-data and perlbase-file dependency</li>
 </ul>
 
 <h3>rsync</h3>
 
-<p>Needed by sync_up functionality. Not much to see here, move along.</p>
+<p>Merely needed by sync_up functionality.</p>
 
 <h3>shadow-*</h3>
 
