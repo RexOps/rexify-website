@@ -15,10 +15,10 @@
 
 <pre><code class="perl">user "root";
 password "f00b4r";
-auth_pass;
+pass_auth;
 </code></pre>
 
-<p>Though you don't need to specify <i>auth_pass</i> we recommend to use it. If it is not specified Rex tries multiple authentication algorithms and some servers may be configured to drop the connection after 1 or 2 failed authentication attemps.</p>
+<p>Though you don't need to specify <i>pass_auth</i> we recommend to use it. If it is not specified Rex tries multiple authentication algorithms and some servers may be configured to drop the connection after 1 or 2 failed authentication attemps.</p>
 
 <h2>Key authentication</h2>
 <p>An other simple way is to use private and public key to authenticate against your servers. To do this you have to define the full path to your private key file and to your public key file.</p>
