@@ -23,6 +23,8 @@
          <h1>Extended Documentation</h1>
          <ul class="simple-list">
             <li><a href="/api/">API Documentation</a></li>
+            <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
+            <li><a href="/howtos/compatibility.html">Rex Compatibility List</a></li>
          </ul>
  
          <a name="howtos"></a>
@@ -68,14 +70,6 @@
          <ul class="simple-list">
             <li><a href="/howtos/writing_cloud_provider.html">Howto write an own Cloud Provider</a></li>
          </ul>
-
-         <div class="vspace"></div>
-         <h1>Additional Documentation</h1>
-         <ul class="simple-list">
-            <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
-            <li><a href="/howtos/compatibility.html">Rex Compatibility List</a></li>
-         </ul>
-
 
          <div class="vspace"></div>
          <h1>External Howtos</h1>

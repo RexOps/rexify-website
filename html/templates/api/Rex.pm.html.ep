@@ -16,7 +16,6 @@
 	<li><a href="#name">NAME</a></li>
 	<li><a href="#description">DESCRIPTION</a></li>
 	<li><a href="#getting_help">GETTING HELP</a></li>
-	<li><a href="#dependencies">Dependencies</a></li>
 	<li><a href="#synopsis">SYNOPSIS</a></li>
 	<li><a href="#class_methods">CLASS METHODS</a></li>
 	<li><a href="#contributors">CONTRIBUTORS</a></li>
@@ -28,6 +27,7 @@
 
 <p>
 </p>
+
 <h2>NAME</h2>
 <p>Rex - Remote Execution</p>
 <p>
@@ -57,30 +57,16 @@
 <p>
 </p>
 
-<h2>Dependencies</h2>
-<ul>
-<li>
-<p><em>Net::SSH2</em></p>
-</li>
-<li>
-<p><em>Expect</em></p>
-<p>Only if you want to use the Rsync module.</p>
-</li>
-<li>
-<p><em>DBI</em></p>
-<p>Only if you want to use the DB module.</p>
-</li>
-</ul>
-<p>
-</p>
-
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
+ user "root";
+ password "ch4ngem3";
+   
  desc "Show Unix version";
  task "uname", sub {
      say run "uname -a";
- };</code></pre>
-<pre><code class="perl">
+ };
+  
  bash# rex -H "server[01..10]" uname</code></pre>
 <p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for a list of all commands you can use.</p>
 <p>
@@ -147,7 +133,7 @@
     print "Do something...\n";
  }
      
- my $output = run("upime");</code></pre>
+ my $output = run("uptime");</code></pre>
 
 </ul>
 <p>
@@ -160,60 +146,11 @@
 
 <li><strong>Anders Ossowicki</strong></li>
 
-<li><strong>Chenryn</strong></li>
+<li><strong>Andrej Zverev</strong></li>
 
-<li><strong>Daniel Baeurer</strong></li>
+<li><strong>Boris Däppen</strong></li>
 
-<li><strong>Dominik Danter</strong></li>
-
-<li><strong>Dominik Schulz</strong></li>
-
-<li><strong>Fran Rodriguez</strong></li>
-
-<li><strong>Ferenc Erki</strong></li>
-
-<li><strong>Franky Van Liedekerke</strong></li>
-
-<li><strong>Gilles Gaudin, for writing a french howto</strong></li>
-
-<li><strong>Hiroaki Nakamura</strong></li>
-
-<li><strong>Jean Charles Passard</strong></li>
-
-<li><strong>Jeen Lee</strong></li>
-
-<li><strong>Jonathan Delgado</strong></li>
-
-<li><strong>Joris</strong></li>
-
-<li><strong>Jose Luis Martinez</strong></li>
-
-<li><strong>Laird Liu</strong></li>
-
-<li><strong>Naveed Massjouni</strong></li>
-
-<li><strong>Mario Domgoergen</strong></li>
-
-<li><strong>Nikolay Fetisov</strong></li>
-
-<li><strong>Peter H. Ezetta</strong></li>
-
-<li><strong>RenatoCRON</strong></li>
-
-<li><strong>Samuele Tognini</strong></li>
-
-<li><strong>Sascha Guenther</strong></li>
-
-<li><strong>Sven Dowideit</strong></li>
-
-<li><strong>Tianon Gravi</strong></li>
-
-<li><strong>Tokuhiro Matsuno</strong></li>
-
-<li><strong>Tomohiro Hosaka</strong></li>
-
-</ul>
-
+<li><strong>Chris Steigmeier</strong></li>
 
 
 

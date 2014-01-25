@@ -111,6 +111,29 @@
        on_change =&gt; sub { service httpd =&gt; "restart"; };
  };</code></pre>
 <p>If <em>source</em> is relative it will search from the location of your <em>Rexfile</em> or the <em>.pm</em> file if you use Perl packages.</p>
+<p>This function supports the following hooks:</p>
+<ul>
+<li><strong>before</strong></li>
+
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+<li><strong>before_change</strong></li>
+
+
+<p>This gets executed right before the new file is written. Only with <em>content</em> parameter. For the <em>source</em> parameter the hook of the upload function is used.</p>
+
+<li><strong>after_change</strong></li>
+
+
+<p>This gets executed right after the file was written. Only with <em>content</em> parameter. For the <em>source</em> parameter the hook of the upload function is used.</p>
+
+<li><strong>after</strong></li>
+
+
+<p>This gets executed right before the <a href="#file">file()</a> function returns.</p>
+
+</ul>
 
 <li><strong>file_write($file_name)</strong></li>
 
@@ -232,7 +255,12 @@ Can use the type=&gt; option if the file suffix has been changed. (types are tar
 <p>Search some string in a file and replace it.</p>
 <pre><code class="perl">
  task sar =&gt; sub {
+    # this will work line by line
     sed qr{search}, "replace", "/var/log/auth.log";
+        
+    # to use it in a multiline way
+    sed qr{search}, "replace", "/var/log/auth.log",
+      multiline =&gt; TRUE;
  };</code></pre>
 
 </ul>

@@ -53,6 +53,29 @@
  task "upload", "remoteserver", sub {
     upload "localfile", "/path";
  };</code></pre>
+<p>This function supports the following hooks:</p>
+<ul>
+<li><strong>before</strong></li>
+
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+<li><strong>before_change</strong></li>
+
+
+<p>This gets executed right before the new file is written.</p>
+
+<li><strong>after_change</strong></li>
+
+
+<p>This gets executed right after the file was written.</p>
+
+<li><strong>after</strong></li>
+
+
+<p>This gets executed right before the <a href="#upload">upload()</a> function returns.</p>
+
+</ul>
 
 </ul>
 

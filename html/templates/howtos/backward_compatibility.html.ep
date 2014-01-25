@@ -31,6 +31,89 @@
             </tr>
 
             <tr>
+               <td>source_profile</td>
+               <td>0.44</td>
+               <td>Source $HOME/.profile before running a command.</td>
+            </tr>
+
+            <tr>
+               <td>source_global_profile</td>
+               <td>0.44</td>
+               <td>Source /etc/profile before running a command.</td>
+            </tr>
+
+            <tr>
+               <td>no_path_cleanup</td>
+               <td>0.44</td>
+               <td>Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
+            </tr>
+
+            <tr>
+               <td>exec_autodie</td>
+               <td>0.44</td>
+               <td>If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
+            </tr>
+
+
+            <tr>
+               <td>exec_and_sleep</td>
+               <td>0.43</td>
+               <td>Sometimes some commands that fork away didn't keep running. With this flag rex will wait a few ms before exiting the shell.</td>
+            </tr>
+
+            <tr>
+               <td>disable_strict_host_key_checking</td>
+               <td>0.43</td>
+               <td>Disabling strict host key checking for openssh connection mode.</td>
+            </tr>
+
+            <tr>
+               <td>reporting</td>
+               <td>0.43</td>
+               <td>Enable reporting</td>
+            </tr>
+
+            <tr>
+               <td>empty_groups</td>
+               <td>0.42</td>
+               <td>Enable usage of empty groups.</td>
+            </tr>
+
+
+            <tr>
+               <td>use_server_auth</td>
+               <td>0.42</td>
+               <td>Enable the usage of special authentication options for servers.</td>
+            </tr>
+
+            <tr>
+               <td>no_tty</td>
+               <td>0.41</td>
+               <td>Disable pty usage for ssh connections</td>
+            </tr>
+
+
+            <tr>
+               <td>no_local_template_vars</td>
+               <td>0.40</td>
+               <td>Use global variables in templates</td>
+            </tr>
+
+            <tr>
+               <td>sudo_without_sh</td>
+               <td>0.40</td>
+               <td>Run sudo commands directly without the use of 'sh'. This might break things.</td>
+            </tr>
+
+            <tr>
+               <td>sudo_without_locales</td>
+               <td>0.40</td>
+               <td>Run sudo commands without locales. this will break things if you don't use english locales.</td>
+            </tr>
+
+
+
+            <tr>
                <td>exit_status</td>
                <td>0.39</td>
                <td>This option tells Rex to return a non zero value on exit if a task fails.</td>

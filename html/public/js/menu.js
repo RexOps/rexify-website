@@ -1,4 +1,5 @@
 $(".dropdown_link").click(function(event) {
+   $(".dropdown_menu").hide();
    $(this).parent().find(".dropdown_menu").show();
    event.stopPropagation();
    event.preventDefault();

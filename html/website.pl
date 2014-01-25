@@ -223,9 +223,18 @@ __DATA__
                <ul>
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
-                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">Contribute</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>>
+                  
+                     <b class="arrow_box"></b>
+                     <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">Care</a>
+                     <ul class="dropdown_menu dropdown_care">
+                        <li><a href="/contribute">Help (R)?ex</a></li>
+                        <li><a href="/contribute/donate.html">Help people in need</a></li>
+                     </ul>
+                  
+                  </li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">Support</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>>
+                  <li <% if($cat eq "howtos" || $cat eq "modules" || $cat eq "api") { %>class="active" <% } %>>
                      <b class="arrow_box"></b>
                      <a href="#" title="Examples, Howtos and Documentation" class="dropdown_link">Docs</a>
                      <ul class="dropdown_menu dropdown_docs">
@@ -311,15 +320,15 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2014-01-25</div>
+                  <div class="news_content">(R)?ex 0.40.0 released. This release enhance Rex with cool new features and fixes a lot of bugs. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a> on Github.</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-09-21</div>
                   <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> and on <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (language: german).</div>
                </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2013-09-16</div>
-                  <div class="news_content">(R)?ex 0.43.0 released. This release adds the option to cache the machine inventory so that the execution will be faster, and the ability to create a report of the changes Rex did during the run. It also adds limited support for OpenWrt. For a complete list of changes see the <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> on Github.</div>
-               </div>
-
 
                <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
@@ -342,10 +351,9 @@ __DATA__
                   </div>
                </div>
 
+<!--
                <h2>Conferences</h2>
-               <p>29. November: <a href="http://sfd.org.hu/instant-devops">Instant DevOps</a> talk at <a href="http://sfd.org.hu">Free Software Conference of Szeged</a> featuring (R)?ex</p>
-               <p>09. November - 10. November 2013 talk and booth at <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a>.</p>
-
+-->
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
                <ul>

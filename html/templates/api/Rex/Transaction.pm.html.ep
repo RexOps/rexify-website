@@ -72,7 +72,7 @@
    
  task "all", group =&gt; "frontend", sub {
      transaction {
-         do_task qw/deploy restart_server/;
+         do_task [qw/deploy restart_server/];
      };
  };</code></pre>
 

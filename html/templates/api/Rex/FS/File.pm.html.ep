@@ -31,7 +31,7 @@
 </p>
 
 <h2>DESCRIPTION</h2>
-<p>This is the File Class used by <em>write_file</em> and <em>read_file</em>.</p>
+<p>This is the File Class used by <em>file_write</em> and <em>file_read</em>.</p>
 <p>
 </p>
 

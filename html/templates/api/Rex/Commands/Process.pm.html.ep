@@ -77,6 +77,12 @@
       say "cpu-usage&gt; " . $process-&gt;{"cpu"};
     }
  };</code></pre>
+<p>On most operating systems it is also possible to define custom parameters for <a href="#ps">ps()</a> function.</p>
+<pre><code class="perl">
+ task "ps", "server01", sub {
+    my @list = grep { $_-&gt;{"ni"} == -5 } ps("command","ni");
+ };</code></pre>
+<p>This example would contain all processes with a nice of -5.</p>
 
 <li><strong>nice($pid, $level)</strong></li>
 
@@ -84,7 +90,7 @@
 <p>Renice a process identified by $pid with the priority $level.</p>
 <pre><code class="perl">
  task "renice", "server01", sub {
-    renice (153, -5);
+    nice (153, -5);
  };</code></pre>
 
 </ul>

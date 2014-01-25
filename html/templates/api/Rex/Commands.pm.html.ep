@@ -334,6 +334,14 @@
    run_task "check_something", on =&gt; "foo", params =&gt; { param1 =&gt; "value1", param2 =&gt; "value2" };
  };</code></pre>
 
+<li><strong>run_batch($batch_name, %option)</strong></li>
+
+
+<p>Run a batch on a given host.</p>
+<pre><code class="perl">
+ my @return = run_batch "batchname", on =&gt; "192.168.3.56";</code></pre>
+<p>It calls internally run_task, and passes it any option given.</p>
+
 <li><strong>public_key($key)</strong></li>
 
 
@@ -432,6 +440,14 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <pre><code class="perl">
  task "mytask", "server1", sub {
     needs MyPkg "uname";
+ };</code></pre>
+
+<li><strong>To call tasks defined in the Rexfile from within a module</strong></li>
+
+
+<pre><code class="perl">
+ task "mytask", "server1", sub {
+    needs main "uname";
  };</code></pre>
 
 </ul>
@@ -603,12 +619,22 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
     say "Current Server: " . connection-&gt;server;
  };</code></pre>
 
+<li><strong>cache</strong></li>
+
+
+<p>This function returns the current cache object.</p>
+
 <li><strong>profiler</strong></li>
 
 
 <p>Returns the profiler object for the current connection.</p>
 
-<li><strong>report($string)</strong></li>
+<li><strong>report($switch, $type)</strong></li>
+
+
+<p>This function will initialize the reporting.</p>
+<pre><code class="perl">
+ report -on =&gt; "YAML";</code></pre>
 
 <li><strong>source_global_profile(0|1)</strong></li>
 
@@ -673,6 +699,18 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 
    inspect $myvar;
 };</code></pre>
+
+<li><strong>sayformat($format)</strong></li>
+
+
+<p>You can define the format of the say() function.</p>
+<p>%D - The current date yyyy-mm-dd HH:mm:ss</p>
+<p>%h - The target host</p>
+<p>%p - The pid of the running process</p>
+<p>%s - The Logstring</p>
+<p>You can also define the following values:</p>
+<p>default - the default behaviour.</p>
+<p>asis - will print every single parameter in its own line. This is usefull if you want to print the output of a command.</p>
 
 </ul>
 

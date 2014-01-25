@@ -56,16 +56,10 @@
                <td>OpenSuSE</td>
                <td>RHEL 5/6</td>
                <td>ScientificLinux</td>
-               <td>Ubuntu 10.04 LTS</td>
-               <td>Ubuntu 11.04</td>
-               <td>Ubuntu 12.04 LTS</td>
-               <td>Ubuntu 13.04</td>
+               <td>Ubuntu 10+</td>
             </tr>
             <tr>
                <td>Cron</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -87,15 +81,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>File Manipulation / Configuration Management</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -117,15 +105,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Hardware Gathering</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -147,15 +129,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Network Management</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -177,15 +153,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Kernel Operations</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -207,15 +177,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Package Management</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -237,15 +201,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Rsync</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -267,15 +225,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage Services</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
@@ -297,15 +249,9 @@
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage User- and Groupaccounts</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
-               <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>
                <td class="supported">&nbsp;</td>

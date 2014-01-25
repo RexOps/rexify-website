@@ -87,6 +87,18 @@
     }
  };</code></pre>
 
+<li><strong>operating_system_release()</strong></li>
+
+
+<p>Will return the os release number as is.</p>
+<pre><code class="perl">
+
+=cut</code></pre>
+<p>sub operating_system_release {
+   my ($os) = @_;
+   return Rex::Hardware::Host-&gt;get_operating_system_version();
+}</p>
+
 <li><strong>network_interfaces</strong></li>
 
 
@@ -260,6 +272,11 @@
 
 
 <p>Returns true if the target system is an OpenWrt System.</p>
+
+<li><strong>is_gentoo</strong></li>
+
+
+<p>Returns true if the target system is a Gentoo System.</p>
 
 </ul>
 
