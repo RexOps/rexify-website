@@ -267,7 +267,7 @@ __DATA__
 
       <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20131013" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20141026" type="text/css" media="screen" charset="utf-8" />
 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
@@ -320,7 +320,7 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
-                  <div class="news_date">2014-01-25</div>
+                  <div class="news_date">2014-01-26</div>
                   <div class="news_content">(R)?ex 0.40.0 released. This release enhance Rex with cool new features and fixes a lot of bugs. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a> on Github.</div>
                </div>
 
