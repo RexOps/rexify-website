@@ -30,7 +30,7 @@
     </ul>
     <div class="tab-content">
        <div class="tab-pane active" id="tab1">
-         <h3>For Saucy (13.04)</h3>
+         <h3>For Saucy (13.10)</h3>
 
             <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ saucy rex' &gt;&gt; /etc/apt/sources.list
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
