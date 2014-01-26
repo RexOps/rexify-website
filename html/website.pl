@@ -221,9 +221,18 @@ __DATA__
                <ul>
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">首页</a></li>
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">安装</a></li>
-                  <li <% if($cat eq "contribute") { %>class="active" <% } %>><a href="/contribute" title="Help Rex to get even better">贡献</a></li>
+                  <li <% if($cat eq "contribute") { %>class="active" <% } %>>
+                  
+                     <b class="arrow_box"></b>
+                     <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">Care</a>
+                     <ul class="dropdown_menu dropdown_care">
+                        <li><a href="/contribute">Help (R)?ex</a></li>
+                        <li><a href="/contribute/donate.html">Help people in need</a></li>
+                     </ul>
+                  
+                  </li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">支持</a></li>
-                  <li <% if($cat eq "howtos" || $cat eq "modules") { %>class="active" <% } %>>
+                  <li <% if($cat eq "howtos" || $cat eq "modules" || $cat eq "api") { %>class="active" <% } %>>
                      <b class="arrow_box"></b>
                      <a href="#" title="Examples, Howtos and Documentation" class="dropdown_link">文档</a>
                      <ul class="dropdown_menu dropdown_docs">
@@ -310,9 +319,16 @@ __DATA__
                <h2>新闻</h2>
 
                <div class="news_widget">
+                  <div class="news_date">2014-01-25</div>
+                  <div class="news_content">(R)?ex 0.44.0 版本发布。该版本带来诸多炫酷特性，同时也修正了很多 bug。详见 github 上的 <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a>。</div>
+               </div>
+
+
+               <div class="news_widget">
                   <div class="news_date">2013-09-21</div>
                   <div class="news_content"><a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> 上的演讲已经上传到 <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> 和 <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (德语)上。</div>
                </div>
+
 
                <div class="news_widget">
                   <div class="news_date">2013-09-16</div>
@@ -345,12 +361,20 @@ __DATA__
                   </div>
                </div>
 
+<<<<<<< HEAD
                <h2>会议</h2>
                <p>11 月 29 日，在 <a href="http://sfd.org.hu">赛格德(匈牙利)开源软件大会</a>上有关于 (R)?ex 特性的演讲，题为《<a href="http://sfd.org.hu/instant-devops">Instant DevOps(瞬间完成的运维)》</a>。</p>
                <p>2013 年 11 月 10 日在 <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a> 上演讲。</p>
 
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
+=======
+<!--
+               <h2>Conferences</h2>
+-->
+               <h2>Need Help?</h2>
+               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
+>>>>>>> upstream/master
                <ul>
                   <li>IRC: #rex on freenode</li>
                   <li>邮件组: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>

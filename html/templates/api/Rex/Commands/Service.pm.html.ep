@@ -122,6 +122,21 @@
  task "prepare", sub {
     service apache2 =&gt; "ensure", "stopped";
  };</code></pre>
+<p>This function supports the following hooks:</p>
+<ul>
+<li><strong>before_<em>action</em></strong></li>
+
+
+<p>For example: before_start, before_stop, before_restart</p>
+<p>This gets executed right before the service action.</p>
+
+<li><strong>after_<em>action</em></strong></li>
+
+
+<p>For example: after_start, after_stop, after_restart</p>
+<p>This gets executed right after the service action.</p>
+
+</ul>
 
 </ul>
 

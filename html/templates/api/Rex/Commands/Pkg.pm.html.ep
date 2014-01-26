@@ -119,6 +119,29 @@
  };</code></pre>
 
 </ul>
+<p>This function supports the following hooks:</p>
+<ul>
+<li><strong>before</strong></li>
+
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+<li><strong>before_change</strong></li>
+
+
+<p>This gets executed right before the new package is installed. This hook is only available for package installations. If you need file hooks, you have to use the file() function.</p>
+
+<li><strong>after_change</strong></li>
+
+
+<p>This gets executed right after the new package was installed. This hook is only available for package installations. If you need file hooks, you have to use the file() function.</p>
+
+<li><strong>after</strong></li>
+
+
+<p>This gets executed right before the <a href="#install">install()</a> function returns.</p>
+
+</ul>
 
 <li><strong>remove($type, $package, $options)</strong></li>
 

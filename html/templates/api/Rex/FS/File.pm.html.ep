@@ -31,7 +31,7 @@
 </p>
 
 <h2>摘要</h2>
-<p>此类用来<em>write_file</em> 和<em>read_file</em>。</p>
+<p>这是 <em>write_file</em> 和<em>read_file</em> 函数使用的 File 类。</p>
 <p>
 </p>
 

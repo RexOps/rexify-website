@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex 0.42 API文档';
+% title '(R)?ex 0.44 API文档';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
@@ -54,6 +54,7 @@
             <li><a href="Rex/Commands/SCM.pm.html">SCM.pm</a></li>
             <li><a href="Rex/Commands/Service.pm.html">Service.pm</a></li>
             <li><a href="Rex/Commands/SimpleCheck.pm.html">SimpleCheck.pm</a></li>
+            <li><a href="Rex/Commands/Sync.pm.html">Sync.pm</a></li>
             <li><a href="Rex/Commands/Sysctl.pm.html">Sysctl.pm</a></li>
             <li><a href="Rex/Commands/Tail.pm.html">Tail.pm</a></li>
             <li><a href="Rex/Commands/Upload.pm.html">Upload.pm</a></li>

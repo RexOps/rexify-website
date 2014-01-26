@@ -23,6 +23,8 @@
          <h1>补充文档</h1>
          <ul class="simple-list">
             <li><a href="/api/">API 文档</a></li>
+            <li><a href="/howtos/backward_compatibility.html">关于向后兼容性的概述</a></li>
+            <li><a href="/howtos/compatibility.html">Rex 兼容性清单</a></li>
          </ul>
  
          <a name="howtos"></a>
@@ -70,6 +72,7 @@
          </ul>
 
          <div class="vspace"></div>
+<<<<<<< HEAD
          <h1>附加文档</h1>
          <ul class="simple-list">
             <li><a href="/howtos/backward_compatibility.html">向后兼容方面</a></li>
@@ -79,6 +82,9 @@
 
          <div class="vspace"></div>
          <h1>扩展 参照</h1>
+=======
+         <h1>External Howtos</h1>
+>>>>>>> upstream/master
          <ul class="simple-list">
             <li><a href="http://www.howtoforge.com/how-to-manage-your-servers-with-rex-best-practice">Rex怎么管理你的服务器 - 最佳实践</a></li>
             <li><a href="http://www.howtoforge.com/continuous-deployment-with-jenkins-and-rex">使用Jenkins 和Rex 做持续部署</a></li>

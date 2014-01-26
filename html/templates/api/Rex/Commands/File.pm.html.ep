@@ -110,7 +110,30 @@
        source =&gt; "/files/etc/httpd/conf/httpd.conf",
        on_change =&gt; sub { service httpd =&gt; "restart"; };
  };</code></pre>
-<p>如果 <em>source</em> 是相对路径，它会自动搜索你的 <em>Rexfile</em> ，如果你还用了 Perl 包，搜索内容也就包括 <em>.pm</em> 。</p>
+<p>如果 <em>source</em> 是相对路径，它会自动从你的 <em>Rexfile</em> 位置开始搜索。如果你还用了 Perl 包，搜索路径也就包括 这些 <em>.pm</em> 文件的路径。</p>
+<p>这个函数支持一下 hooks：</p>
+<ul>
+<li><strong>before</strong></li>
+
+
+<p>在全部事情之前被触发执行。执行的返回值会覆盖 file 函数调用的原始参数。</p>
+
+<li><strong>before_change</strong></li>
+
+
+<p>在新文件写入之前被触发执行。仅在 <em>content</em> 参数下有效。对于 <em>source</em> 参数，触发的是 upload 函数的 hook。</p>
+
+<li><strong>after_change</strong></li>
+
+
+<p>在新文件写入之后被触发执行。仅在 <em>content</em> 参数下有效。对于 <em>source</em> 参数，触发的是 upload 函数的 hook。</p>
+
+<li><strong>after</strong></li>
+
+
+<p>在 <a href="#file">file()</a> 函数执行到最后返回之前被触发执行。</p>
+
+</ul>
 
 <li><strong>file_write($file_name)</strong></li>
 
@@ -230,7 +253,12 @@
 <p>搜索文件中的字符串并替换掉。</p>
 <pre><code class="perl">
  task sar =&gt; sub {
+    # this will work line by line
     sed qr{search}, "replace", "/var/log/auth.log";
+        
+    # to use it in a multiline way
+    sed qr{search}, "replace", "/var/log/auth.log",
+      multiline =&gt; TRUE;
  };</code></pre>
 
 </ul>

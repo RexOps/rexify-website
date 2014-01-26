@@ -385,6 +385,10 @@ ul.dropdown_docs {
    margin-left: -166px; 
 }
 
+ul.dropdown_care {
+   margin-left: -70px; 
+}
+
 ul.dropdown_menu > li {
    background: none;
    display: block;

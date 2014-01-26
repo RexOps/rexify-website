@@ -13,13 +13,13 @@
 
 <ul>
 
-        <li><a href="#name">名称</a></li>
-        <li><a href="#description">摘要</a></li>
-        <li><a href="#getting_help">更多内容</a></li>
-        <li><a href="#dependencies">依赖</a></li>
-        <li><a href="#synopsis">例子</a></li>
-        <li><a href="#class_methods">类方法</a></li>
-        <li><a href="#contributors">致谢</a></li>
+    <li><a href="#name">名称</a></li>
+    <li><a href="#description">摘要</a></li>
+    <li><a href="#getting_help">更多内容</a></li>
+    <li><a href="#synopsis">例子</a></li>
+    <li><a href="#class_methods">类方法</a></li>
+    <li><a href="#contributors">贡献者</a></li>
+	<li><a href="#contributors">CONTRIBUTORS</a></li>
 </ul>
 
 
@@ -28,8 +28,10 @@
 
 <p>
 </p>
+
 <h2>名称</h2>
 <p>Rex - 远程执行</p>
+
 <p>
 </p>
 
@@ -57,30 +59,16 @@
 <p>
 </p>
 
-<h2>依赖</h2>
-<ul>
-<li>
-<p><em>Net::SSH2</em></p>
-</li>
-<li>
-<p><em>Expect</em></p>
-<p>如果需要使用 Rsync 模块。</p>
-</li>
-<li>
-<p><em>DBI</em></p>
-<p>如果需要使用DB模块。</p>
-</li>
-</ul>
-<p>
-</p>
-
 <h2>例子</h2>
 <pre><code class="perl">
+ user "root";
+ password "ch4ngem3";
+   
  desc "Show Unix version";
  task "uname", sub {
      say run "uname -a";
- };</code></pre>
-<pre><code class="perl">
+ };
+  
  bash# rex -H "server[01..10]" uname</code></pre>
 <p>查看 <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> 学习完整可用命令列表。</p>
 <p>
@@ -146,7 +134,7 @@
     print "Do something...\n";
  }
      
- my $output = run("upime");</code></pre>
+ my $output = run("uptime");</code></pre>
 
 </ul>
 <p>
@@ -158,6 +146,12 @@
 <li><strong>Alexandr Ciornii</strong></li>
 
 <li><strong>Anders Ossowicki</strong></li>
+
+<li><strong>Andrej Zverev</strong></li>
+
+<li><strong>Boris Däppen</strong></li>
+
+<li><strong>Chris Steigmeier</strong></li>
 
 <li><strong>饶琛琳</strong></li>
 
@@ -212,7 +206,3 @@
 <li><strong>Tomohiro Hosaka</strong></li>
 
 </ul>
-
-
-
-
