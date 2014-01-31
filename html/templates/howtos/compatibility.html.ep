@@ -546,11 +546,11 @@
             </tr>
             <tr>
                <td>Hardware Gathering</td>
-               <td class="supported"><b>*</b></td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Inventory</td>
-               <td class="not-supported">&nbsp;</td>
+               <td class="part-supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Network Management</td>
@@ -562,7 +562,7 @@
             </tr>
             <tr>
                <td>Kernel Operations</td>
-               <td class="part-supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>LVM</td>
@@ -586,7 +586,7 @@
             </tr>
             <tr>
                <td>Manage Services</td>
-               <td class="part-supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
             <tr>
                <td>Manage Sysctl Entries</td>
@@ -594,7 +594,7 @@
             </tr>
             <tr>
                <td>Manage User- and Groupaccounts</td>
-               <td class="part-supported">&nbsp;</td>
+               <td class="supported">&nbsp;</td>
             </tr>
 
          </table>
