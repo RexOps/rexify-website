@@ -320,8 +320,8 @@ __DATA__
                <h2>News</h2>
 
                <div class="news_widget">
-                  <div class="news_date">2014-01-26</div>
-                  <div class="news_content">(R)?ex 0.44.0 released. This release enhance Rex with cool new features and fixes a lot of bugs. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a> on Github.</div>
+                  <div class="news_date">2014-02-02</div>
+                  <div class="news_content">(R)?ex 0.44.1 released. This release enhance Rex with cool new features and fixes a lot of bugs. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a> on Github.</div>
                </div>
 
 
