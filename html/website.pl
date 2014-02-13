@@ -265,7 +265,7 @@ __DATA__
 
       <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20131013" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20141026" type="text/css" media="screen" charset="utf-8" />
 
       <meta name="description" content="(R)?ex - 管理你的所有分类的数据点  数据中心自动化和配置管理" />
       <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
@@ -319,8 +319,8 @@ __DATA__
                <h2>新闻</h2>
 
                <div class="news_widget">
-                  <div class="news_date">2014-01-25</div>
-                  <div class="news_content">(R)?ex 0.44.0 版本发布。该版本带来诸多炫酷特性，同时也修正了很多 bug。详见 github 上的 <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a>。</div>
+                  <div class="news_date">2014-02-02</div>
+                  <div class="news_content">(R)?ex 0.44.1 版本发布。该版本带来诸多炫酷特性，同时也修正了很多 bug。详见 github 上的 <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a>。</div>
                </div>
 
 
@@ -361,20 +361,8 @@ __DATA__
                   </div>
                </div>
 
-<<<<<<< HEAD
-               <h2>会议</h2>
-               <p>11 月 29 日，在 <a href="http://sfd.org.hu">赛格德(匈牙利)开源软件大会</a>上有关于 (R)?ex 特性的演讲，题为《<a href="http://sfd.org.hu/instant-devops">Instant DevOps(瞬间完成的运维)》</a>。</p>
-               <p>2013 年 11 月 10 日在 <a href="http://www.openrheinruhr.de/">Open Rhein Ruhr</a> 上演讲。</p>
-
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
-=======
-<!--
-               <h2>Conferences</h2>
--->
-               <h2>Need Help?</h2>
-               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
->>>>>>> upstream/master
                <ul>
                   <li>IRC: #rex on freenode</li>
                   <li>邮件组: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
