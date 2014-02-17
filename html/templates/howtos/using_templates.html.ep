@@ -105,7 +105,7 @@ task prepare =&gt; sub {
    install "ntp";
 
    file "/etc/ntp.conf",
-      content   =&gt; template("files/etc/ntp.conf", ntp_servers =&gt; $ntp_servers),
+      content   =&gt; template("files/etc/ntp.conf", ntp_servers =&gt; $ntp_server),
       on_change =&gt; sub {
          service $service_name =&gt; "restart";
       };
