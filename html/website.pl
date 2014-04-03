@@ -41,7 +41,7 @@ get '/get/mod/*mod' => sub {
 
    chdir("/tmp/scratch");
 
-   my $u = get_random(32, 'a' .. 'z');  
+   my $u = get_random(32, 'a' .. 'z');
    system("git clone git://github.com/krimdomu/rex-recipes.git $u >/dev/null 2>&1");
    chdir("$u");
    system("git checkout master");
@@ -224,14 +224,14 @@ __DATA__
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">Home</a></li>
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">Get Rex</a></li>
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>>
-                  
+
                      <b class="arrow_box"></b>
                      <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">Care</a>
                      <ul class="dropdown_menu dropdown_care">
                         <li><a href="/contribute">Help (R)?ex</a></li>
                         <li><a href="/contribute/donate.html">Help people in need</a></li>
                      </ul>
-                  
+
                   </li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">Support</a></li>
                   <li <% if($cat eq "howtos" || $cat eq "modules" || $cat eq "api") { %>class="active" <% } %>>
@@ -254,13 +254,13 @@ __DATA__
             </div>
 
 @@ layouts/default.html.ep
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   
+
       <title><%= title %></title>
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
@@ -319,6 +319,11 @@ __DATA__
                </form>
                <h2>News</h2>
 
+              <div class="news_widget">
+                 <div class="news_date">2014-04-03</div>
+                 <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
+              </div>
+
                <div class="news_widget">
                   <div class="news_date">2014-02-02</div>
                   <div class="news_content">(R)?ex 0.44.1 released. This release enhance Rex with cool new features and fixes a lot of bugs. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a> on Github.</div>
@@ -333,12 +338,6 @@ __DATA__
                <div class="news_widget">
                   <div class="news_date">2013-08-12</div>
                   <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
-               </div>
-
-
-               <div class="news_widget">
-                  <div class="news_date">2013-05-23</div>
-                  <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">just announced</a> that they offer professional support for Rex.</div>
                </div>
 
 
@@ -386,14 +385,14 @@ __DATA__
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+
     % }
 
             </div>
          </div> <!-- content -->
 
       </div> <!-- page -->
-      
+
 
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
@@ -419,13 +418,13 @@ __DATA__
        else {
          $("#li_api").show();
        }
-     
+
       });
    </script>
 
 
 <!-- Piwik -->
-<script type="text/javascript"> 
+<script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
@@ -468,4 +467,3 @@ __DATA__
    </body>
 
 </html>
-
