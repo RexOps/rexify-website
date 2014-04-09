@@ -80,29 +80,30 @@ task "prepare_databases", group =&gt; "databases", sub {
 
 <strong>Using a single inline template</strong>
 <pre><code>
-use Rex -feature => 0.40;
+use Rex -feature =&gt; 0.40;
 
-task tempfiles => sub {
-    file '/tmp/test.txt' =>
-        content => template(
+task tempfiles =&gt; sub {
+    file '/tmp/test.txt' =&gt;
+        content =&gt; template(
             '@test',
-            test => {
-                author => 'reneeb',
-                target => 'rex',
+            test =&gt; {
+                author =&gt; 'reneeb',
+                target =&gt; 'rex',
             },
         ),
-        chmod => 644,
+        chmod =&gt; 644,
     ;
 };
 
 __DATA__
 @test
-This is a test written by <%= $test->{author} %>
-for a project called <%= $test->{target} %>
+This is a test written by &lt;%= $test->{author} %&gt;
+for a project called &lt;%= $test->{target} %&gt;
+@end
 </code></pre>
 
 <p>
-  The <code>__DATA__</code> section is the last section of the Rexfile. The first parameter of the 
+  The <code>__DATA__</code> section is the last section of the Rexfile. The first parameter of the
   <code>template</code> method call gets the name of the inline template. Note that names of inline
   templates begin with <code>@</code>.
 </p>
@@ -115,41 +116,42 @@ for a project called <%= $test->{target} %>
 
 <strong>Using multiple inline templates</strong>
 <pre><code>
-use Rex -feature => 0.40;
+use Rex -feature =&gt; 0.40;
 
-task tempfiles => sub {
-    file '/tmp/test.txt' =>
+task tempfiles =&gt; sub {
+    file '/tmp/test.txt' =&gt;
         content => template(
             '@test',
-            test => {
-                author => 'reneeb',
-                target => 'rex',
+            test =&gt; {
+                author =&gt; 'reneeb',
+                target =&gt; 'rex',
             },
         ),
-        chmod => 644,
+        chmod =&gt; 644,
     ;
 
-    file '/tmp/rex.txt' =>
-        content => template(
+    file '/tmp/rex.txt' =&gt;
+        content =&gt; template(&gt;
             '@rex',
-            test => {
-                author => 'krimdomu',
-                target => 'rex',
+            test =&gt; {
+                author =&gt; 'krimdomu',
+                target =&gt; 'rex',
             },
         ),
-        chmod => 644,
+        chmod =&gt; 644,
     ;
 };
 
 __DATA__
 @test
-This is a test written by <%= $test->{author} %>
-for a project called <%= $test->{target} %>
+This is a test written by &lt;%= $test->{author} %&gt;
+for a project called &lt;%= $test->{target} %&gt;
 @end
 
 @rex
-Contribution by <%= $test->{author} %>
-for a project called <%= $test->{target} %>
+Contribution by &lt;%= $test->{author} %&gt;
+for a project called &lt;%= $test->{target} %&gt;
+@end
 </code></pre>
 
 <p>
