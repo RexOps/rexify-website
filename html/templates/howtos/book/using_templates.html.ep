@@ -68,4 +68,95 @@ task "prepare_databases", group =&gt; "databases", sub {
                           });
 };</code></pre>
 
-<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>
+<p>
+
+<h2>Inline Templates</h2>
+
+<p>
+  When you want to deliver a rexfile that includes the templates, you can use inline templates.
+  To use this feature, you have to use the <code>__DATA__</code> section of your rexfile. You
+  can also define several templates in that section:
+</p>
+
+<strong>Using a single inline template</strong>
+<pre><code>
+use Rex -feature => 0.40;
+
+task tempfiles => sub {
+    file '/tmp/test.txt' =>
+        content => template(
+            '@test',
+            test => {
+                author => 'reneeb',
+                target => 'rex',
+            },
+        ),
+        chmod => 644,
+    ;
+};
+
+__DATA__
+@test
+This is a test written by <%= $test->{author} %>
+for a project called <%= $test->{target} %>
+</code></pre>
+
+<p>
+  The <code>__DATA__</code> section is the last section of the Rexfile. The first parameter of the 
+  <code>template</code> method call gets the name of the inline template. Note that names of inline
+  templates begin with <code>@</code>.
+</p>
+
+<p>
+  Rex knows that it has to look up the template in the <code>__DATA__</code> section of the file
+  where <code>template</code> was called. Within the section the template starts with its name (here:
+  <code>@test</code>) and then follows the template text.
+</p>
+
+<strong>Using multiple inline templates</strong>
+<pre><code>
+use Rex -feature => 0.40;
+
+task tempfiles => sub {
+    file '/tmp/test.txt' =>
+        content => template(
+            '@test',
+            test => {
+                author => 'reneeb',
+                target => 'rex',
+            },
+        ),
+        chmod => 644,
+    ;
+
+    file '/tmp/rex.txt' =>
+        content => template(
+            '@rex',
+            test => {
+                author => 'krimdomu',
+                target => 'rex',
+            },
+        ),
+        chmod => 644,
+    ;
+};
+
+__DATA__
+@test
+This is a test written by <%= $test->{author} %>
+for a project called <%= $test->{target} %>
+@end
+
+@rex
+Contribution by <%= $test->{author} %>
+for a project called <%= $test->{target} %>
+</code></pre>
+
+<p>
+  Now we just look at the <code>__DATA__</code> section: You notice the token <code>@end</code>.
+  This is used to separate the templates. At the end of each template (except for the last one)
+  this token is needed. Otherwise Rex will use everything up to the first <code>@end</code> as
+  the template which is most likely too much.
+</p>
+
+<hr><a href="/howtos/book.html">Table of Contents</a> </p>
