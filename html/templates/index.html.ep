@@ -62,42 +62,48 @@ task "disk_free", sub {
 <p>If this task gets executed against a virgin host (where no apache is installed) it will first install it.</p>
 
 <pre><code class="perl">user "root";
-group "frontend" =&gt; "frontend[01..05]";
+group frontend =&gt; "frontend[01..05]";
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-   install "apache2";
+  pkg "apache2",
+    ensure => "latest";
+
+  service "apache2",
+    ensure => "started";
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-   prepare();
+  prepare();
 
-   file "/etc/apache2/apache2.conf",
-        source    =&gt; "files/etc/apache2/apache2.conf",
-        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file "/etc/apache2/apache2.conf",
+    source    =&gt; "files/etc/apache2/apache2.conf",
+    on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
 
 <h2>Running under sudo?</h2>
 <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
 <pre><code class="perl">user "ubuntu";
-group "frontend" =&gt; "frontend[01..05]";
+group frontend =&gt; "frontend[01..05]";
 sudo TRUE;
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-   install "apache2";
+  pkg "apache2",
+    ensure => "latest";
+
+  service "apache2",
+    ensure => "started";
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-   prepare();
+  prepare();
 
-   file "/etc/apache2/apache2.conf",
-        source    =&gt; "files/etc/apache2/apache2.conf",
-        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file "/etc/apache2/apache2.conf",
+    source    =&gt; "files/etc/apache2/apache2.conf",
+    on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
-
-

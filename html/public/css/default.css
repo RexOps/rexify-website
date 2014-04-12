@@ -382,11 +382,11 @@ ul.dropdown_menu {
 }
 
 ul.dropdown_docs {
-   margin-left: -166px; 
+   margin-left: -166px;
 }
 
 ul.dropdown_care {
-   margin-left: -70px; 
+   margin-left: -70px;
 }
 
 ul.dropdown_menu > li {
@@ -465,4 +465,6 @@ li.divider {
 
 }
 
-
+.hljs {
+  background: #f5f5f5 !important;
+}

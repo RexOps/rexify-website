@@ -265,12 +265,13 @@ __DATA__
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
 
-      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link href="/css/hs/tomorrow.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20141026" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
+      <script src="/js/highlight.pack.js"></script>
 
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Datacenter Automation and Configuration Management" />
-      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
+      <meta name="keywords" content="Systemadministration, configuration-management, deployment, devops, datacenter, automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
 
       <style>
       % if($no_side_bar) {
@@ -321,7 +322,7 @@ __DATA__
 
               <div class="news_widget">
                  <div class="news_date">2014-04-12</div>
-                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.45">release notes</a> on Github.</div>
+                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="/howtos/releases/0.45.html">release notes</a> including examples for the new features.</div>
               </div>
 
               <div class="news_widget">
@@ -440,26 +441,11 @@ __DATA__
 <!-- End Piwik Code -->
 
 
-<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 <script src="/js/browser.js"></script>
 <script>
-  if(BrowserDetect.browser == "Firefox" && BrowserDetect.OS == "Linux") {
-     window.setTimeout(function() {
-        $("#syntax_high").show();
-        $("#link_syntax_high").click(function(event) {
-           event.preventDefault();
-           hljs.tabReplace = '    ';
-           hljs.initHighlighting();
-        });
-     }, 1500);
-  }
-  else {
-     window.setTimeout(function() {
-        hljs.tabReplace = '    ';
-        hljs.initHighlighting();
-        //$("#q").focus();
-     }, 1000);
-  }
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
 </script>
 
 
