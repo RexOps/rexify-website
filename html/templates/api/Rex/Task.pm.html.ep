@@ -32,7 +32,7 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Task
-     
+ 
   my $task = Rex::Task-&gt;new(name =&gt; "testtask");
   $task-&gt;set_server("remoteserver");
   $task-&gt;set_code(sub { say "Hello"; });
@@ -47,24 +47,24 @@
 
 <p>This is the constructor.</p>
 <pre><code class="perl">
-   $task = Rex::Task-&gt;new(
-      func =&gt; sub { some_code_here },
-      server =&gt; [ @server ],
-      desc =&gt; $description,
-      no_ssh =&gt; $no_ssh,
-      hidden =&gt; $hidden,
-      auth =&gt; {
-         user        =&gt; $user,
-         password    =&gt; $password,
-         private_key =&gt; $private_key,
-         public_key  =&gt; $public_key,
-      },
-      before =&gt; [sub {}, sub {}, ...],
-      after  =&gt; [sub {}, sub {}, ...],
-      around =&gt; [sub {}, sub {}, ...],
-      name =&gt; $task_name,
-      executor =&gt; Rex::Interface::Executor-&gt;create,
-   );</code></pre>
+  $task = Rex::Task-&gt;new(
+    func =&gt; sub { some_code_here },
+    server =&gt; [ @server ],
+    desc =&gt; $description,
+    no_ssh =&gt; $no_ssh,
+    hidden =&gt; $hidden,
+    auth =&gt; {
+      user      =&gt; $user,
+      password   =&gt; $password,
+      private_key =&gt; $private_key,
+      public_key  =&gt; $public_key,
+    },
+    before =&gt; [sub {}, sub {}, ...],
+    after  =&gt; [sub {}, sub {}, ...],
+    around =&gt; [sub {}, sub {}, ...],
+    name =&gt; $task_name,
+    executor =&gt; Rex::Interface::Executor-&gt;create,
+  );</code></pre>
 
 <li><strong>connection</strong></li>
 

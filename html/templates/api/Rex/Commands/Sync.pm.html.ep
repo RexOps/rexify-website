@@ -37,31 +37,31 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Commands::Sync;
-    
+   
  task "prepare", "mysystem01", sub {
-    # upload directory recursively to remote system. 
-    sync_up "/local/directory", "/remote/directory";
+   # upload directory recursively to remote system. 
+   sync_up "/local/directory", "/remote/directory";
+   
+   sync_up "/local/directory", "/remote/directory", {
+     # setting custom file permissions for every file
+     files =&gt; {
+       owner =&gt; "foo",
+       group =&gt; "bar",
+       mode  =&gt; 600,
+     },
+     # setting custom directory permissions for every directory
+     directories =&gt; {
+       owner =&gt; "foo",
+       group =&gt; "bar",
+       mode  =&gt; 700,
+     },
+     on_change =&gt; sub {
+      my (@files_changed) = @_;
+     },
+   };
     
-    sync_up "/local/directory", "/remote/directory", {
-       # setting custom file permissions for every file
-       files =&gt; {
-          owner =&gt; "foo",
-          group =&gt; "bar",
-          mode  =&gt; 600,
-       },
-       # setting custom directory permissions for every directory
-       directories =&gt; {
-          owner =&gt; "foo",
-          group =&gt; "bar",
-          mode  =&gt; 700,
-       },
-       on_change =&gt; sub {
-         my (@files_changed) = @_;
-       },
-    };
-     
-    # download a directory recursively from the remote system to the local machine
-    sync_down "/remote/directory", "/local/directory";
+   # download a directory recursively from the remote system to the local machine
+   sync_down "/remote/directory", "/local/directory";
  };</code></pre>
 
 

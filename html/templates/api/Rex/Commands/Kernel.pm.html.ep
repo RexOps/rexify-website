@@ -51,17 +51,17 @@
 <p>This function load or unload a kernel module.</p>
 <pre><code class="perl">
  task "load", sub {
-    kmod load =&gt; "ipmi_si";
- };</code></pre>
-<pre><code class="perl">
+   kmod load =&gt; "ipmi_si";
+ };
+ 
  task "unload", sub {
-    kmod unload =&gt; "ipmi_si";
+   kmod unload =&gt; "ipmi_si";
  };</code></pre>
 <p>If you're using NetBSD or OpenBSD you have to specify the complete path and, if needed the entry function.</p>
 <pre><code class="perl">
  task "load", sub {
-    kmod load =&gt; "/usr/lkm/ntfs.o";
-    kmod load =&gt; "/path/to/module.o", entry =&gt; "entry_function";
+   kmod load =&gt; "/usr/lkm/ntfs.o";
+   kmod load =&gt; "/path/to/module.o", entry =&gt; "entry_function";
  };</code></pre>
 
 </ul>

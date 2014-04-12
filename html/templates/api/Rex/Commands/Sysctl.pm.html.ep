@@ -53,9 +53,9 @@
 <p>If $val is given, then this function will set the sysctl key $key.</p>
 <pre><code class="perl">
  task "tune", "server01", sub {
-    if( sysctl("net.ipv4.ip_forward") == 0 ) {
-       sysctl "net.ipv4.ip_forward" =&gt; 1;
-    }
+   if( sysctl("net.ipv4.ip_forward") == 0 ) {
+     sysctl "net.ipv4.ip_forward" =&gt; 1;
+   }
  };</code></pre>
 
 </ul>

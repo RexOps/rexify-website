@@ -48,12 +48,12 @@
  user "user";
  
  password "password";
-     
+    
  environment live =&gt; sub {
-    user "root";
-    password "foobar";
-    pass_auth;
-    group frontend =&gt; "www01", "www02";
+   user "root";
+   password "foobar";
+   pass_auth;
+   group frontend =&gt; "www01", "www02";
  };</code></pre>
 <p>
 </p>
@@ -139,7 +139,7 @@
 <p>If you want to disable ssh connection for a given task, put <em>no_ssh</em> in front of the task definition.</p>
 <pre><code class="perl">
  no_ssh task "mytask", "myserver", sub {
-    say "Do something without a ssh connection";
+   say "Do something without a ssh connection";
  };</code></pre>
 
 <li><strong>task($name [, @servers], $funcref)</strong></li>
@@ -152,7 +152,7 @@
 
 <pre><code class="perl">
  task "mytask", sub {
-    say "Do something";
+   say "Do something";
  };</code></pre>
 <p>If you call this task with (R)?ex it will run on your local machine. You can explicit run this task on other machines if you specify the <em>-H</em> command line parameter.</p>
 
@@ -161,17 +161,17 @@
 
 <pre><code class="perl">
  task "mytask", "server1", sub {
-    say "Do something";
+   say "Do something";
  };</code></pre>
 <p>You can also specify more than one server.</p>
 <pre><code class="perl">
  task "mytask", "server1", "server2", "server3", sub {
-    say "Do something";
+   say "Do something";
  };</code></pre>
 <p>Or you can use some expressions to define more than one server.</p>
 <pre><code class="perl">
  task "mytask", "server[1..3]", sub {
-    say "Do something";
+   say "Do something";
  };</code></pre>
 <p>If you want, you can overwrite the servers with the <em>-H</em> command line parameter.</p>
 
@@ -183,7 +183,7 @@
  group "allserver" =&gt; "server[1..3]", "workstation[1..10]";
  
  task "mytask", group =&gt; "allserver", sub {
-    say "Do something";
+   say "Do something";
  };</code></pre>
 
 </ul>
@@ -195,7 +195,7 @@
 <pre><code class="perl">
  desc "This is a task description of the following task";
  task "mytask", sub {
-    say "Do something";
+   say "Do something";
  }</code></pre>
 
 <li><strong>group($name, @servers)</strong></li>
@@ -236,23 +236,23 @@
   
  group frontends =&gt; "web[01..10]";
  group backends =&gt; "be[01..05]";
-      
+    
  auth for =&gt; "frontends" =&gt; 
-                  user =&gt; "root",
-                  password =&gt; "foobar";
-    
+            user =&gt; "root",
+            password =&gt; "foobar";
+   
  auth for =&gt; "backends" =&gt;
-                  user =&gt; "admin",
-                  private_key =&gt; "/path/to/id_rsa",
-                  public_key =&gt; "/path/to/id_rsa.pub",
-                  sudo =&gt; TRUE;
-    
+            user =&gt; "admin",
+            private_key =&gt; "/path/to/id_rsa",
+            public_key =&gt; "/path/to/id_rsa.pub",
+            sudo =&gt; TRUE;
+   
  task "prepare", group =&gt; ["frontends", "backends"], sub {
-    # do something
+   # do something
  };
-    
+   
  auth for =&gt; "prepare" =&gt;
-                  user =&gt; "root";</code></pre>
+            user =&gt; "root";</code></pre>
 
 <li><strong>port($port)</strong></li>
 
@@ -287,12 +287,12 @@
 <p>Call $task from an other task. Will execute the given $task with the servers defined in $task.</p>
 <pre><code class="perl">
  task "task1", "server1", sub {
-    say "Running on server1";
-    do_task "task2";
+   say "Running on server1";
+   do_task "task2";
  };
  
  task "task2", "server2", sub {
-    say "Running on server2";
+   say "Running on server2";
  };</code></pre>
 <p>You may also use an arrayRef for $task if you want to call multiple tasks.</p>
 <pre><code class="perl">
@@ -307,31 +307,31 @@
 <p>Do something on server5 if memory is less than 100 MB free on server3.</p>
 <pre><code class="perl">
  task "prepare", "server5", sub {
-    my $free_mem = run_task "get_free_mem", on =&gt; "server3";
-    if($free_mem &lt; 100) {
-       say "Less than 100 MB free mem on server3";
-       # create a new server instance on server5 to unload server3
-    }
+   my $free_mem = run_task "get_free_mem", on =&gt; "server3";
+   if($free_mem &lt; 100) {
+     say "Less than 100 MB free mem on server3";
+     # create a new server instance on server5 to unload server3
+   }
  };
-    
+   
  task "get_free_mem", sub {
-     return memory-&gt;{free};
+    return memory-&gt;{free};
  };</code></pre>
 <p>If called without a hostname the task is run localy.</p>
 <pre><code class="perl">
  # this task will run on server5
  task "prepare", "server5", sub {
-    # this will call task check_something. but this task will run on localhost.
-    my $check = run_task "check_something";
+   # this will call task check_something. but this task will run on localhost.
+   my $check = run_task "check_something";
  }
-   
+  
  task "check_something", "server4", sub {
-    return "foo";
+   return "foo";
  };</code></pre>
 <p>If you want to add custom parameters for the task you can do it this way.</p>
 <pre><code class="perl">
  task "prepare", "server5", sub {
-   run_task "check_something", on =&gt; "foo", params =&gt; { param1 =&gt; "value1", param2 =&gt; "value2" };
+  run_task "check_something", on =&gt; "foo", params =&gt; { param1 =&gt; "value1", param2 =&gt; "value2" };
  };</code></pre>
 
 <li><strong>run_batch($batch_name, %option)</strong></li>
@@ -430,7 +430,7 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <p>Depend on all tasks in the package MyPkg. All tasks will be called with the server <em>server1</em>.</p>
 <pre><code class="perl">
  task "mytask", "server1", sub {
-    needs MyPkg;
+   needs MyPkg;
  };</code></pre>
 
 <li><strong>Depend on a single task in a given package.</strong></li>
@@ -439,7 +439,7 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 <p>Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task will be called with the server <em>server1</em>.</p>
 <pre><code class="perl">
  task "mytask", "server1", sub {
-    needs MyPkg "uname";
+   needs MyPkg "uname";
  };</code></pre>
 
 <li><strong>To call tasks defined in the Rexfile from within a module</strong></li>
@@ -447,7 +447,7 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 
 <pre><code class="perl">
  task "mytask", "server1", sub {
-    needs main "uname";
+   needs main "uname";
  };</code></pre>
 
 </ul>
@@ -457,10 +457,10 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
 
 <p>Include a module without registering its tasks.</p>
 <pre><code class="perl">
-   include qw/
-      Module::One
-      Module::Two
-   /;</code></pre>
+  include qw/
+    Module::One
+    Module::Two
+  /;</code></pre>
 
 <li><strong>environment($name =&gt; $code)</strong></li>
 
@@ -471,28 +471,28 @@ This authentication mechanism is only available if you use Net::OpenSSH.</p>
  user "root";
  password "foobar";
  pass_auth;
-     
+    
  # define default frontend group containing only testwww01.
  group frontend =&gt; "testwww01";
-     
+    
  # define live environment, with different user/password 
  # and a frontend server group containing www01, www02 and www03.
  environment live =&gt; sub {
-    user "root";
-    password "livefoo";
-    pass_auth;
-       
-    group frontend =&gt; "www01", "www02", "www03";
- };
+   user "root";
+   password "livefoo";
+   pass_auth;
      
+   group frontend =&gt; "www01", "www02", "www03";
+ };
+    
  # define stage environment with default user and password. but with 
  # a own frontend group containing only stagewww01.
  environment stage =&gt; sub {
-    group frontend =&gt; "stagewww01";
+   group frontend =&gt; "stagewww01";
  };
-    
+   
  task "prepare", group =&gt; "frontend", sub {
-     say run "hostname";
+    say run "hostname";
  };</code></pre>
 <p>Calling this task <em>rex prepare</em> will execute on testwww01. 
 Calling this task with <em>rex -E live prepare</em> will execute on www01, www02, www03.
@@ -500,9 +500,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>You can call the function within a task to get the current environment.</p>
 <pre><code class="perl">
  task "prepare", group =&gt; "frontend", sub {
-    if(environment() eq "dev") {
-       say "i'm in the dev environment";
-    }
+   if(environment() eq "dev") {
+     say "i'm in the dev environment";
+   }
  };</code></pre>
 
 <li><strong>LOCAL(&amp;)</strong></li>
@@ -511,13 +511,13 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>With the LOCAL function you can do local commands within a task that is defined to work on remote servers.</p>
 <pre><code class="perl">
  task "mytask", "server1", "server2", sub {
-     # this will call 'uptime' on the servers 'server1' and 'server2'
-     say run "uptime";
-     
-     # this will call 'uptime' on the local machine.
-     LOCAL {
-        say run "uptime";
-     };
+    # this will call 'uptime' on the servers 'server1' and 'server2'
+    say run "uptime";
+    
+    # this will call 'uptime' on the local machine.
+    LOCAL {
+      say run "uptime";
+    };
  };</code></pre>
 
 <li><strong>path(@path)</strong></li>
@@ -533,9 +533,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>Set a configuration parameter. These Variables can be used in templates as well.</p>
 <pre><code class="perl">
  set database =&gt; "db01";
-      
+    
  task "prepare", sub {
-    my $db = get "database";
+   my $db = get "database";
  };</code></pre>
 <p>Or in a template</p>
 <pre><code class="perl">
@@ -547,9 +547,9 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>Get a configuration parameter.</p>
 <pre><code class="perl">
  set database =&gt; "db01";
-      
+    
  task "prepare", sub {
-    my $db = get "database";
+   my $db = get "database";
  };</code></pre>
 <p>Or in a template</p>
 <pre><code class="perl">
@@ -563,8 +563,8 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>Note: must come after the definition of the specified task</p>
 <pre><code class="perl">
  before mytask =&gt; sub {
-   my ($server) = @_;
-   run "vzctl start vm$server";
+  my ($server) = @_;
+  run "vzctl start vm$server";
  };</code></pre>
 
 <li><strong>after($task =&gt; sub {})</strong></li>
@@ -575,10 +575,10 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>Note: must come after the definition of the specified task</p>
 <pre><code class="perl">
  after mytask =&gt; sub {
-   my ($server, $failed) = @_;
-   if($failed) { say "Connection to $server failed."; }
-    
-   run "vzctl stop vm$server";
+  my ($server, $failed) = @_;
+  if($failed) { say "Connection to $server failed."; }
+   
+  run "vzctl stop vm$server";
  };</code></pre>
 
 <li><strong>around($task =&gt; sub {})</strong></li>
@@ -589,14 +589,14 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>Note: must come after the definition of the specified task</p>
 <pre><code class="perl">
  around mytask =&gt; sub {
-   my ($server, $position) = @_;
-   
-   unless($position) {
-      say "Before Task\n";
-   }
-   else {
-      say "After Task\n";
-   }
+  my ($server, $position) = @_;
+  
+  unless($position) {
+    say "Before Task\n";
+  }
+  else {
+    say "After Task\n";
+  }
  };</code></pre>
 
 <li><strong>logformat($format)</strong></li>
@@ -616,7 +616,7 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>This function returns the current connection object.</p>
 <pre><code class="perl">
  task "foo", group =&gt; "baz", sub {
-    say "Current Server: " . connection-&gt;server;
+   say "Current Server: " . connection-&gt;server;
  };</code></pre>
 
 <li><strong>cache</strong></li>
@@ -648,8 +648,8 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>On a debian system this example will return the output of <em>apt-get install foobar</em>.</p>
 <pre><code class="perl">
  task "mytask", "myserver", sub {
-    install "foobar";
-    say last_command_output();
+   install "foobar";
+   say last_command_output();
  };</code></pre>
 
 <li><strong>case($compare, $option)</strong></li>
@@ -658,20 +658,20 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 <p>This is a function to compare a string with some given options.</p>
 <pre><code class="perl">
  task "mytask", "myserver", sub {
-    my $ntp_service = case operating_sytem, {
-                         Debian  =&gt; "ntp",
-                         default =&gt; "ntpd",
-                      };
-      
-    my $ntp_service = case operating_sytem, {
-                         qr{debian}i =&gt; "ntp",
-                         default     =&gt; "ntpd",
-                      };
-     
-    my $ntp_service = case operating_sytem, {
-                         qr{debian}i =&gt; "ntp",
-                         default     =&gt; sub { return "foo"; },
-                      };
+   my $ntp_service = case operating_sytem, {
+                 Debian  =&gt; "ntp",
+                 default =&gt; "ntpd",
+               };
+    
+   my $ntp_service = case operating_sytem, {
+                 qr{debian}i =&gt; "ntp",
+                 default    =&gt; "ntpd",
+               };
+    
+   my $ntp_service = case operating_sytem, {
+                 qr{debian}i =&gt; "ntp",
+                 default    =&gt; sub { return "foo"; },
+               };
  };</code></pre>
 
 <li><strong>set_executor_for($type, $executor)</strong></li>
@@ -691,13 +691,13 @@ Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 
 <p>This function dumps the contents of a variable to STDOUT.</p>
 <p>task "mytask", "myserver", sub {
-   my $myvar = {
-      name =&gt; "foo",
-      sys  =&gt; "bar",
-   };</p>
+  my $myvar = {
+    name =&gt; "foo",
+    sys  =&gt; "bar",
+  };</p>
 <pre><code class="perl">
 
-   inspect $myvar;
+  inspect $myvar;
 };</code></pre>
 
 <li><strong>sayformat($format)</strong></li>

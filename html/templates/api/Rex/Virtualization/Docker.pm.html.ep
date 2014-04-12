@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Virtualization::LibVirt - LibVirt Virtualization Module';
+% title 'Rex::Virtualization::Docker - Docker Virtualization Module';
 
 % content_for header => begin
-      <meta name="description" content="With this module you can manage LibVirt.">
+      <meta name="description" content="With this module you can manage Docker.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -25,12 +25,12 @@
 <p>
 </p>
 <h2>NAME</h2>
-<p>Rex::Virtualization::LibVirt - LibVirt Virtualization Module</p>
+<p>Rex::Virtualization::Docker - Docker Virtualization Module</p>
 <p>
 </p>
 
 <h2>DESCRIPTION</h2>
-<p>With this module you can manage LibVirt.</p>
+<p>With this module you can manage Docker.</p>
 <p>
 </p>
 
@@ -38,10 +38,14 @@
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
    
- set virtualization =&gt; "LibVirt";
+ set virtualization =&gt; "Docker";
    
+ use Data::Dumper;  
+  
  print Dumper vm list =&gt; "all";
  print Dumper vm list =&gt; "running";
+ 
+ print Dumper vm info =&gt; "vm01";
    
  vm destroy =&gt; "vm01";
    
@@ -53,22 +57,15 @@
    
  vm reboot =&gt; "vm01";
    
- vm option =&gt; "vm01",
-       max_memory =&gt; 1024*1024,
-       memory    =&gt; 512*1024;
-          
- print Dumper vm info =&gt; "vm01";
-   
- # creating a vm on a kvm host
- vm create =&gt; "vm01",
-    storage    =&gt; [
-      {  
-        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
-        dev   =&gt; "vda",
-      }  
-    ];  
-     
- print Dumper vm hypervisor =&gt; "capabilities";</code></pre>
+ # creating a vm 
+ my $id = vm create =&gt; "vm01",
+    image =&gt; "ubuntu",
+    command =&gt; 'echo hello world',
+    memory =&gt; 512,
+    cpus =&gt; 1,
+    links =&gt; ['mysql:db'],
+    forward_port =&gt; [8080 =&gt; 80],
+    share_folder =&gt; ["hostdir" =&gt; "vmdir"],</code></pre>
 
 
 

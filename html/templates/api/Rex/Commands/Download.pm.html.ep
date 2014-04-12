@@ -39,12 +39,12 @@
 <pre><code class="perl">
  # sftp
  task "download", "remoteserver", sub {
-    download "/remote/file", "localfile";
+   download "/remote/file", "localfile";
  };
  
  # http
  task "download2", sub {
-    download "http://server/remote/file";
+   download "http://server/remote/file";
  };</code></pre>
 <p>
 </p>
@@ -57,11 +57,11 @@
 <p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
 <pre><code class="perl">
  task "download", "remoteserver", sub {
-    download "/remote/file", "localfile";
- };</code></pre>
-<pre><code class="perl">
+   download "/remote/file", "localfile";
+ };
+ 
  task "download", sub {
-    download "http://www.rexify.org/index.html", "localfile.html";
+   download "http://www.rexify.org/index.html", "localfile.html";
  };</code></pre>
 
 </ul>

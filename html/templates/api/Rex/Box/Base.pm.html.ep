@@ -100,16 +100,16 @@
 <p>Currently it supports 2 modes. <em>nat</em> and <em>bridged</em>. Currently it supports only one network card.</p>
 <pre><code class="perl">
  $box-&gt;network(
-    1 =&gt; {
-       type =&gt; "nat",
-    },
+   1 =&gt; {
+     type =&gt; "nat",
+   },
  }
-    
+   
  $box-&gt;network(
-    1 =&gt; {
-       type =&gt; "bridged",
-       bridge =&gt; "eth0",
-    },
+   1 =&gt; {
+     type =&gt; "bridged",
+     bridge =&gt; "eth0",
+   },
  );</code></pre>
 
 <li><strong>url($url)</strong></li>
@@ -123,10 +123,10 @@
 <p>Configure the authentication to the VM.</p>
 <pre><code class="perl">
  $box-&gt;auth(
-    user =&gt; $user,
-    password =&gt; $password,
-    private_key =&gt; $private_key,
-    public_key =&gt; $public_key,
+   user =&gt; $user,
+   password =&gt; $password,
+   private_key =&gt; $private_key,
+   public_key =&gt; $public_key,
  );</code></pre>
 
 </ul>

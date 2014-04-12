@@ -38,7 +38,7 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  task "upload", "remoteserver", sub {
-    upload "localfile", "/remote/file";
+   upload "localfile", "/remote/file";
  };</code></pre>
 <p>
 </p>
@@ -51,7 +51,7 @@
 <p>Perform an upload. If $remote is a directory the file will be uploaded to that directory.</p>
 <pre><code class="perl">
  task "upload", "remoteserver", sub {
-    upload "localfile", "/path";
+   upload "localfile", "/path";
  };</code></pre>
 <p>This function supports the following hooks:</p>
 <ul>

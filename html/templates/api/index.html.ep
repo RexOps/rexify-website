@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'API Documentation for (R)?ex Version 0.44';
+% title 'API Documentation for (R)?ex Version 0.45';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
@@ -46,6 +46,7 @@
             <li><a href="Rex/Commands/LVM.pm.html">LVM.pm</a></li>
             <li><a href="Rex/Commands/MD5.pm.html">MD5.pm</a></li>
             <li><a href="Rex/Commands/Network.pm.html">Network.pm</a></li>
+            <li><a href="Rex/Commands/Notify.pm.html">Notify.pm</a></li>
             <li><a href="Rex/Commands/Partition.pm.html">Partition.pm</a></li>
             <li><a href="Rex/Commands/Pkg.pm.html">Pkg.pm</a></li>
             <li><a href="Rex/Commands/Process.pm.html">Process.pm</a></li>
@@ -68,6 +69,7 @@
          <ul class="simple-list">
             <li><a href="Rex/Virtualization/VBox.pm.html">VBox.pm</a></li>
             <li><a href="Rex/Virtualization/LibVirt.pm.html">LibVirt.pm</a></li>
+            <li><a href="Rex/Virtualization/Docker.pm.html">Docker.pm</a></li>
          </ul>
 
          <div class="vspace"></div>

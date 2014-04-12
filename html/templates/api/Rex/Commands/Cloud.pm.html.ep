@@ -2,7 +2,7 @@
 % title 'Rex::Commands::Cloud - Cloud Management Commands';
 
 % content_for header => begin
-      <meta name="description" content="With this Module you can manage different Cloud services. Currently it supports Amazon EC2 and Jiffybox.">
+      <meta name="description" content="With this Module you can manage different Cloud services. Currently it supports Amazon EC2, Jiffybox and OpenStack.">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -31,40 +31,40 @@
 </p>
 
 <h2>DESCRIPTION</h2>
-<p>With this Module you can manage different Cloud services. Currently it supports Amazon EC2 and Jiffybox.</p>
+<p>With this Module you can manage different Cloud services. Currently it supports Amazon EC2, Jiffybox and OpenStack.</p>
 <p>
 </p>
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Commands::Cloud;
-     
+ 
  cloud_service "Amazon";
  cloud_auth "your-access-key", "your-private-access-key";
  cloud_region "ec2.eu-west-1.amazonaws.com";
-    
+ 
  task "list", sub {
-    print Dumper cloud_instance_list;
-    print Dumper cloud_volume_list;
+   print Dumper cloud_instance_list;
+   print Dumper cloud_volume_list;
  };
-      
+ 
  task "create", sub {
-    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
-       
-    cloud_instance create =&gt; {
-          image_id =&gt; "ami-xxxxxxx",
-          name     =&gt; "test01",
-          key      =&gt; "my-key",
-          volume   =&gt; $vol_id,
-          zone     =&gt; "eu-west-1a",
-       };
+   my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
+ 
+   cloud_instance create =&gt; {
+       image_id =&gt; "ami-xxxxxxx",
+       name    =&gt; "test01",
+       key    =&gt; "my-key",
+       volume  =&gt; $vol_id,
+       zone    =&gt; "eu-west-1a",
+     };
  };
-     
+ 
  task "destroy", sub {
-    cloud_volume detach =&gt; "vol-xxxxxxx";
-    cloud_volume delete =&gt; "vol-xxxxxxx";
-       
-    cloud_instance terminate =&gt; "i-xxxxxxx";
+   cloud_volume detach =&gt; "vol-xxxxxxx";
+   cloud_volume delete =&gt; "vol-xxxxxxx";
+ 
+   cloud_instance terminate =&gt; "i-xxxxxxx";
  };</code></pre>
 <p>
 </p>
@@ -83,6 +83,8 @@
 
 <li><strong>Jiffybox</strong></li>
 
+<li><strong>OpenStack</strong></li>
+
 </ul>
 
 </ul>
@@ -97,6 +99,13 @@
 <p>For JiffyBox:</p>
 <pre><code class="perl">
  cloud_auth($auth_key);</code></pre>
+<p>For OpenStack:</p>
+<pre><code class="perl">
+ cloud_auth(
+  tenantName =&gt; 'tenant',
+  username   =&gt; 'user',
+  password   =&gt; 'password',
+ );</code></pre>
 
 <li><strong>cloud_region($region)</strong></li>
 
@@ -109,12 +118,12 @@
 <p>Get all instances of a cloud service.</p>
 <pre><code class="perl">
  task "list", sub {
-    for my $instance (cloud_instance_list()) {
-       say "Arch  : " . $instance-&gt;{"architecture"};
-       say "IP    : " . $instance-&gt;{"ip"};
-       say "ID    : " . $instance-&gt;{"id"};
-       say "State : " . $instance-&gt;{"state"};
-    }
+   for my $instance (cloud_instance_list()) {
+     say "Arch  : " . $instance-&gt;{"architecture"};
+     say "IP   : " . $instance-&gt;{"ip"};
+     say "ID   : " . $instance-&gt;{"id"};
+     say "State : " . $instance-&gt;{"state"};
+   }
  };</code></pre>
 
 <li><strong>cloud_volume_list</strong></li>
@@ -123,13 +132,31 @@
 <p>Get all volumes of a cloud service.</p>
 <pre><code class="perl">
  task "list-volumes", sub {
-    for my $volume (cloud_volume_list()) {
-       say "ID       : " . $volume-&gt;{"id"};
-       say "Zone     : " . $volume-&gt;{"zone"};
-       say "State    : " . $volume-&gt;{"state"};
-       say "Attached : " . $volume-&gt;{"attached_to"};
-    }
+   for my $volume (cloud_volume_list()) {
+     say "ID     : " . $volume-&gt;{"id"};
+     say "Zone    : " . $volume-&gt;{"zone"};
+     say "State   : " . $volume-&gt;{"state"};
+     say "Attached : " . $volume-&gt;{"attached_to"};
+   }
  };</code></pre>
+
+<li><strong>cloud_network_list</strong></li>
+
+
+<p>Get all networks of a cloud service.</p>
+<pre><code class="perl">
+ task "network-list", sub {
+   for my $network (cloud_network_list()) {
+     say "network  : " . $network-&gt;{network};
+     say "name    : " . $network-&gt;{name};
+     say "id     : " . $network-&gt;{id};
+   }
+ };</code></pre>
+
+<li><strong>cloud_image_list</strong></li>
+
+
+<p>Get a list of all available cloud images.</p>
 
 <li><strong>get_cloud_instances_as_group</strong></li>
 
@@ -150,12 +177,12 @@
 <p>Create a new instance.</p>
 <pre><code class="perl">
  cloud_instance create =&gt; {
-       image_id =&gt; "ami-xxxxxx",
-       key      =&gt; "ssh-key",
-       name     =&gt; "fe-ec2-01",   # name is not necessary
-       volume   =&gt; "vol-yyyyy",   # volume is not necessary
-       zone     =&gt; "eu-west-1a",  # zone is not necessary
-    };</code></pre>
+     image_id =&gt; "ami-xxxxxx",
+     key    =&gt; "ssh-key",
+     name    =&gt; "fe-ec2-01",  # name is not necessary
+     volume  =&gt; "vol-yyyyy",  # volume is not necessary
+     zone    =&gt; "eu-west-1a",  # zone is not necessary
+   };</code></pre>
 
 <li><strong>start</strong></li>
 
@@ -194,7 +221,7 @@
 <p>Create a new volume. Size is in Gigabytes.</p>
 <pre><code class="perl">
  task "create-vol", sub {
-    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
+   my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };
  };</code></pre>
 
 <li><strong>detach</strong></li>
@@ -203,7 +230,7 @@
 <p>Detach a volume from an instance.</p>
 <pre><code class="perl">
  task "detach-vol", sub {
-    cloud_volume detach =&gt; "vol-xxxxxx";
+   cloud_volume detach =&gt; "vol-xxxxxx";
  };</code></pre>
 
 <li><strong>delete</strong></li>
@@ -212,7 +239,27 @@
 <p>Delete a volume. This will destroy all data.</p>
 <pre><code class="perl">
  task "delete-vol", sub {
-    cloud_volume delete =&gt; "vol-xxxxxx";
+   cloud_volume delete =&gt; "vol-xxxxxx";
+ };</code></pre>
+
+<li><strong>cloud_network</strong></li>
+
+<li><strong>create</strong></li>
+
+
+<p>Create a new network.</p>
+<pre><code class="perl">
+ task "create-net", sub {
+   my $net_id = cloud_network create =&gt; { cidr =&gt; '192.168.0.0/24', name =&gt; "mynetwork", };
+ };</code></pre>
+
+<li><strong>delete</strong></li>
+
+
+<p>Delete a network.</p>
+<pre><code class="perl">
+ task "delete-net", sub {
+   cloud_network delete =&gt; '18a4ccf8-f14a-a10d-1af4-4ac7fee08a81';
  };</code></pre>
 
 <li><strong>get_cloud_availability_zones</strong></li>
@@ -221,7 +268,7 @@
 <p>Returns all availability zones of a cloud services. If available.</p>
 <pre><code class="perl">
  task "get-zones", sub {
-    print Dumper get_cloud_availability_zones;
+   print Dumper get_cloud_availability_zones;
  };</code></pre>
 
 <li><strong>get_cloud_plans</strong></li>

@@ -38,19 +38,19 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Commands::Service
-     
+ 
  service apache2 =&gt; "start";
-     
+ 
  service apache2 =&gt; "stop";
-     
+ 
  service apache2 =&gt; "restart";
-     
+ 
  service apache2 =&gt; "status";
-    
+ 
  service apache2 =&gt; "reload";
-    
+ 
  service apache2 =&gt; "ensure", "started";
-   
+ 
  service apache2 =&gt; "ensure", "stopped";</code></pre>
 <p>
 </p>
@@ -67,7 +67,7 @@
 
 <pre><code class="perl">
  task "start-service", "server01", sub {
-    service apache2 =&gt; "start";
+   service apache2 =&gt; "start";
  };</code></pre>
 
 <li><strong>stopping a service</strong></li>
@@ -75,7 +75,7 @@
 
 <pre><code class="perl">
  task "stop-service", "server01", sub {
-    service apache2 =&gt; "stop";
+   service apache2 =&gt; "stop";
  };</code></pre>
 
 <li><strong>restarting a service</strong></li>
@@ -83,7 +83,7 @@
 
 <pre><code class="perl">
  task "restart-service", "server01", sub {
-    service apache2 =&gt; "restart";
+   service apache2 =&gt; "restart";
  };</code></pre>
 
 <li><strong>checking status of a service</strong></li>
@@ -91,12 +91,12 @@
 
 <pre><code class="perl">
  task "status-service", "server01", sub {
-    if( service apache2 =&gt; "status" ) {
-       say "Apache2 is running";
-    }
-    else {
-       say "Apache2 is not running";
-    }
+   if( service apache2 =&gt; "status" ) {
+     say "Apache2 is running";
+   }
+   else {
+     say "Apache2 is not running";
+   }
  };</code></pre>
 
 <li><strong>reloading a service</strong></li>
@@ -104,7 +104,7 @@
 
 <pre><code class="perl">
  task "reload-service", "server01", sub {
-    service apache2 =&gt; "reload";
+   service apache2 =&gt; "reload";
  };</code></pre>
 
 <li><strong>ensure that a service will started at boot time</strong></li>
@@ -112,7 +112,7 @@
 
 <pre><code class="perl">
  task "prepare", sub {
-    service apache2 =&gt; "ensure", "started";
+   service apache2 =&gt; "ensure", "started";
  };</code></pre>
 
 <li><strong>ensure that a service will NOT be started.</strong></li>
@@ -120,7 +120,7 @@
 
 <pre><code class="perl">
  task "prepare", sub {
-    service apache2 =&gt; "ensure", "stopped";
+   service apache2 =&gt; "ensure", "stopped";
  };</code></pre>
 <p>This function supports the following hooks:</p>
 <ul>
@@ -146,12 +146,12 @@
 <p>To set an other service provider as the default, use this function.</p>
 <pre><code class="perl">
  user "root";
-     
+ 
  group "db" =&gt; "db[01..10]";
  service_provider_for SunOS =&gt; "svcadm";
-    
+ 
  task "start", group =&gt; "db", sub {
-     service ssh =&gt; "restart";
+    service ssh =&gt; "restart";
  };</code></pre>
 <p>This example will restart the <em>ssh</em> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
 

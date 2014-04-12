@@ -50,7 +50,7 @@
 <pre><code class="perl">
 
  task "get-os", "server01", sub {
-    say get_operating_system();
+   say get_operating_system();
  };</code></pre>
 
 <li><strong>get_system_information</strong></li>
@@ -70,9 +70,9 @@
 <pre><code class="perl">
 
  task "is_it_suse", "server01", sub {
-    if( operating_system_is("SuSE") ) {
-       say "This is a SuSE system.";
-    }
+   if( operating_system_is("SuSE") ) {
+     say "This is a SuSE system.";
+   }
  };</code></pre>
 
 <li><strong>operating_system_version()</strong></li>
@@ -82,9 +82,9 @@
 <pre><code class="perl">
 
  task "prepare", "server01", sub {
-    if( operating_system_version() &gt;= 510 ) {
-       say "OS Release is higher or equal to 510";
-    }
+   if( operating_system_version() &gt;= 510 ) {
+     say "OS Release is higher or equal to 510";
+   }
  };</code></pre>
 
 <li><strong>operating_system_release()</strong></li>
@@ -95,8 +95,8 @@
 
 =cut</code></pre>
 <p>sub operating_system_release {
-   my ($os) = @_;
-   return Rex::Hardware::Host-&gt;get_operating_system_version();
+  my ($os) = @_;
+  return Rex::Hardware::Host-&gt;get_operating_system_version();
 }</p>
 
 <li><strong>network_interfaces</strong></li>
@@ -105,13 +105,13 @@
 <p>Return an HashRef of all the networkinterfaces and their configuration.</p>
 <pre><code class="perl">
  task "get_network_information", "server01", sub {
-    my $net_info = network_interfaces();
+   my $net_info = network_interfaces();
  };</code></pre>
 <p>You can iterate over the devices as follow</p>
 <pre><code class="perl">
  my $net_info = network_interfaces();
  for my $dev ( keys %{ $net_info } ) {
-    say "$dev has the ip: " . $net_info-&gt;{$dev}-&gt;{"ip"} . " and the netmask: " . $net_info-&gt;{$dev}-&gt;{"netmask"};
+   say "$dev has the ip: " . $net_info-&gt;{$dev}-&gt;{"ip"} . " and the netmask: " . $net_info-&gt;{$dev}-&gt;{"netmask"};
  }</code></pre>
 
 <li><strong>memory</strong></li>
@@ -120,13 +120,13 @@
 <p>Return an HashRef of all memory information.</p>
 <pre><code class="perl">
  task "get_memory_information", "server01", sub {
-    my $memory = memory();
-     
-    say "Total:   " . $memory-&gt;{"total"};
-    say "Free:    " . $memory-&gt;{"free"};
-    say "Used:    " . $memory-&gt;{"used"};
-    say "Cached:  " . $memory-&gt;{"cached"};
-    say "Buffers: " . $memory-&gt;{"buffers"};
+   my $memory = memory();
+    
+   say "Total:  " . $memory-&gt;{"total"};
+   say "Free:   " . $memory-&gt;{"free"};
+   say "Used:   " . $memory-&gt;{"used"};
+   say "Cached:  " . $memory-&gt;{"cached"};
+   say "Buffers: " . $memory-&gt;{"buffers"};
  };</code></pre>
 
 <li><strong>is_freebsd</strong></li>
@@ -135,12 +135,12 @@
 <p>Returns true if the target system is a FreeBSD.</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
-    if(is_freebsd) {
-       say "This is a freebsd system...";
-    }
-    else {
-       say "This is not a freebsd system...";
-    }
+   if(is_freebsd) {
+     say "This is a freebsd system...";
+   }
+   else {
+     say "This is not a freebsd system...";
+   }
  };</code></pre>
 
 <li><strong>is_redhat</strong></li>
@@ -148,9 +148,19 @@
 
 <pre><code class="perl">
  task "foo", "server1", sub {
-    if(is_redhat) {
-       # do something on a redhat system (like RHEL, Fedora, CentOS, Scientific Linux
-    }
+   if(is_redhat) {
+     # do something on a redhat system (like RHEL, Fedora, CentOS, Scientific Linux
+   }
+ };</code></pre>
+
+<li><strong>is_fedora</strong></li>
+
+
+<pre><code class="perl">
+ task "foo", "server1", sub {
+   if(is_fedora) {
+     # do something on a fedora system
+   }
  };</code></pre>
 
 <li><strong>is_suse</strong></li>
@@ -158,9 +168,9 @@
 
 <pre><code class="perl">
  task "foo", "server1", sub {
-    if(is_suse) {
-       # do something on a suse system
-    }
+   if(is_suse) {
+     # do something on a suse system
+   }
  };</code></pre>
 
 <li><strong>is_mageia</strong></li>
@@ -168,9 +178,9 @@
 
 <pre><code class="perl">
  task "foo", "server1", sub {
-    if(is_mageia) {
-       # do something on a mageia system
-    }
+   if(is_mageia) {
+     # do something on a mageia system
+   }
  };</code></pre>
 
 <li><strong>is_debian</strong></li>
@@ -178,9 +188,9 @@
 
 <pre><code class="perl">
  task "foo", "server1", sub {
-    if(is_debian) {
-       # do something on a debian system
-    }
+   if(is_debian) {
+     # do something on a debian system
+   }
  };</code></pre>
 
 <li><strong>is_alt</strong></li>
@@ -188,9 +198,9 @@
 
 <pre><code class="perl">
  task "foo", "server1", sub {
-    if(is_alt) {
-       # do something on a ALT Linux system
-    }
+   if(is_alt) {
+     # do something on a ALT Linux system
+   }
  };</code></pre>
 
 <li><strong>is_netbsd</strong></li>
@@ -199,12 +209,12 @@
 <p>Returns true if the target system is a NetBSD.</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
-    if(is_netbsd) {
-       say "This is a netbsd system...";
-    }
-    else {
-       say "This is not a netbsd system...";
-    }
+   if(is_netbsd) {
+     say "This is a netbsd system...";
+   }
+   else {
+     say "This is not a netbsd system...";
+   }
  };</code></pre>
 
 <li><strong>is_openbsd</strong></li>
@@ -213,12 +223,12 @@
 <p>Returns true if the target system is an OpenBSD.</p>
 <pre><code class="perl">
  task "foo", "server1", "server2", sub {
-    if(is_openbsd) {
-       say "This is an openbsd system...";
-    }
-    else {
-       say "This is not an openbsd system...";
-    }
+   if(is_openbsd) {
+     say "This is an openbsd system...";
+   }
+   else {
+     say "This is not an openbsd system...";
+   }
  };</code></pre>
 
 <li><strong>is_linux</strong></li>
@@ -227,12 +237,12 @@
 <p>Returns true if the target system is a Linux System.</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
-    if(is_linux) {
-      say "This is a linux system...";
-    }
-    else {
-      say "This is not a linux system...";
-    }
+   if(is_linux) {
+    say "This is a linux system...";
+   }
+   else {
+    say "This is not a linux system...";
+   }
  };</code></pre>
 
 <li><strong>is_bsd</strong></li>
@@ -241,12 +251,12 @@
 <p>Returns true if the target system is a BSD System.</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
-    if(is_bsd) {
-      say "This is a BSD system...";
-    }
-    else {
-      say "This is not a BSD system...";
-    }
+   if(is_bsd) {
+    say "This is a BSD system...";
+   }
+   else {
+    say "This is not a BSD system...";
+   }
  };</code></pre>
 
 <li><strong>is_solaris</strong></li>
@@ -255,12 +265,12 @@
 <p>Returns true if the target system is a Solaris System.</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
-    if(is_solaris) {
-      say "This is a Solaris system...";
-    }
-    else {
-      say "This is not a Solaris system...";
-    }
+   if(is_solaris) {
+    say "This is a Solaris system...";
+   }
+   else {
+    say "This is not a Solaris system...";
+   }
  };</code></pre>
 
 <li><strong>is_windows</strong></li>

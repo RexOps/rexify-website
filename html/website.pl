@@ -320,6 +320,11 @@ __DATA__
                <h2>News</h2>
 
               <div class="news_widget">
+                 <div class="news_date">2014-04-12</div>
+                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="https://github.com/krimdomu/Rex/wiki/New0.45">release notes</a> on Github.</div>
+              </div>
+
+              <div class="news_widget">
                  <div class="news_date">2014-04-03</div>
                  <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
               </div>
@@ -334,12 +339,6 @@ __DATA__
                   <div class="news_date">2013-09-21</div>
                   <div class="news_content">The talk of <a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> and on <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (language: german).</div>
                </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2013-08-12</div>
-                  <div class="news_content">The lightning talk of <a href="http://yapceurope.org/">yapc.eu</a> is uploaded to <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
-               </div>
-
 
 
                <div class="news_widget">

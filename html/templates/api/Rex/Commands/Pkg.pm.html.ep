@@ -38,8 +38,8 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  install file =&gt; "/etc/passwd", {
-                     source =&gt; "/export/files/etc/passwd"
-                 };
+              source =&gt; "/export/files/etc/passwd"
+            };
  
  install package =&gt; "perl";</code></pre>
 <p>
@@ -47,6 +47,21 @@
 
 <h2>EXPORTED FUNCTIONS</h2>
 <ul>
+<li><strong>pkg($package, %options)</strong></li>
+
+
+<p>Since: 0.45</p>
+<p>Use this function to install or update a package.</p>
+<pre><code class="perl">
+ pkg "httpd",
+   ensure =&gt; "latest";    # ensure that the newest version is installed (auto-update)
+ pkg "httpd",
+   ensure =&gt; "absent";    # remove the package
+ pkg "httpd",
+   ensure =&gt; "present";   # ensure that some version is installed (no auto-update)
+ pkg "httpd",
+   ensure =&gt; "2.4.6";    # ensure that version 2.4.6 is installed</code></pre>
+
 <li><strong>install($type, $data, $options)</strong></li>
 
 
@@ -57,33 +72,31 @@
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install package =&gt; "perl";
-    
-    # or if you have to install more packages.
-    install package =&gt; [ 
-                           "perl",
-                           "ntp",
-                           "dbus",
-                           "hal",
-                           "sudo",
-                           "vim",
-                       ];
+   install package =&gt; "perl";
+ 
+   # or if you have to install more packages.
+   install package =&gt; [
+                  "perl",
+                  "ntp",
+                  "dbus",
+                  "hal",
+                  "sudo",
+                  "vim",
+                ];
  };</code></pre>
 
 <li><strong>installing a file</strong></li>
 
 
-<pre><code class="perl">
-
-This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</code></pre>
+<p>This is deprecated since 0.9. Please use <em>File</em> <em>file</em> instead.</p>
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/passwd", {
-                        source =&gt; "/export/files/etc/passwd",
-                        owner  =&gt; "root",
-                        group  =&gt; "root",
-                        mode   =&gt; 644,
-                    };
+   install file =&gt; "/etc/passwd", {
+                source =&gt; "/export/files/etc/passwd",
+                owner  =&gt; "root",
+                group  =&gt; "root",
+                mode  =&gt; 644,
+              };
  };</code></pre>
 
 <li><strong>installing a file and do somthing if the file was changed.</strong></li>
@@ -91,13 +104,13 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/httpd/apache2.conf", {
-                        source    =&gt; "/export/files/etc/httpd/apache2.conf",
-                        owner     =&gt; "root",
-                        group     =&gt; "root",
-                        mode      =&gt; 644,
-                        on_change =&gt; sub { say "File was modified!"; }
-                    };
+   install file =&gt; "/etc/httpd/apache2.conf", {
+                source   =&gt; "/export/files/etc/httpd/apache2.conf",
+                owner    =&gt; "root",
+                group    =&gt; "root",
+                mode    =&gt; 644,
+                on_change =&gt; sub { say "File was modified!"; }
+              };
  };</code></pre>
 
 <li><strong>installing a file from a template.</strong></li>
@@ -105,17 +118,17 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/httpd/apache2.tpl", {
-                        source    =&gt; "/export/files/etc/httpd/apache2.conf",
-                        owner     =&gt; "root",
-                        group     =&gt; "root",
-                        mode      =&gt; 644,
-                        on_change =&gt; sub { say "File was modified!"; },
-                        template  =&gt; {
-                                        greeting =&gt; "hello",
-                                        name     =&gt; "Ben",
-                                     },
-                    };
+   install file =&gt; "/etc/httpd/apache2.tpl", {
+                source   =&gt; "/export/files/etc/httpd/apache2.conf",
+                owner    =&gt; "root",
+                group    =&gt; "root",
+                mode    =&gt; 644,
+                on_change =&gt; sub { say "File was modified!"; },
+                template  =&gt; {
+                           greeting =&gt; "hello",
+                           name    =&gt; "Ben",
+                         },
+              };
  };</code></pre>
 
 </ul>
@@ -149,7 +162,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>This function will remove the given package from a system.</p>
 <pre><code class="perl">
  task "cleanup", "server01", sub {
-    remove package =&gt; "vim";
+   remove package =&gt; "vim";
  };</code></pre>
 
 <li><strong>update_system</strong></li>
@@ -159,7 +172,7 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>For example <em>apt-get upgrade</em> or <em>yum update</em>.</p>
 <pre><code class="perl">
  task "update-system", "server1", sub {
-    update_system;
+   update_system;
  };</code></pre>
 
 <li><strong>installed_packages</strong></li>
@@ -168,12 +181,12 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>This function returns all installed packages and their version.</p>
 <pre><code class="perl">
  task "get-installed", "server1", sub {
-    
-     for my $pkg (installed_packages()) {
-        say "name     : " . $pkg-&gt;{"name"};
-        say "  version: " . $pkg-&gt;{"version"};
-     }
-     
+ 
+    for my $pkg (installed_packages()) {
+      say "name    : " . $pkg-&gt;{"name"};
+      say "  version: " . $pkg-&gt;{"version"};
+    }
+ 
  };</code></pre>
 
 <li><strong>is_installed</strong></li>
@@ -182,12 +195,12 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>This function tests if $package is installed. Returns 1 if true. 0 if false.</p>
 <pre><code class="perl">
  task "isinstalled", "server01", sub {
-    if( is_installed("rex") ) {
-       say "Rex is installed";
-    }
-    else {
-       say "Rex is not installed";
-    }
+   if( is_installed("rex") ) {
+     say "Rex is installed";
+   }
+   else {
+     say "Rex is not installed";
+   }
  };</code></pre>
 
 <li><strong>update_package_db</strong></li>
@@ -196,8 +209,8 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>.</p>
 <pre><code class="perl">
  task "update-pkg-db", "server1", "server2", sub {
-    update_package_db;
-    install package =&gt; "apache2";
+   update_package_db;
+   install package =&gt; "apache2";
  };</code></pre>
 
 <li><strong>repository($action, %data)</strong></li>
@@ -207,51 +220,51 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>For Debian: If you have no source repository, or if you don't want to add it, just remove the <em>source</em> parameter.</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository "add" =&gt; "repository-name",
-         url        =&gt; "http://rex.linux-files.org/debian/squeeze",
-         distro     =&gt; "squeeze",
-         repository =&gt; "rex",
-         source     =&gt; 1;
+   repository "add" =&gt; "repository-name",
+      url      =&gt; "http://rex.linux-files.org/debian/squeeze",
+      distro    =&gt; "squeeze",
+      repository =&gt; "rex",
+      source    =&gt; 1;
  };</code></pre>
 <p>For ALT Linux: If repository is unsigned, just remove the <em>sign_key</em> parameter.</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository "add" =&gt; "altlinux-sisyphus",
-         url        =&gt; "ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus",
-         sign_key   =&gt; "alt",
-         arch       =&gt; "noarch, x86_64",
-         repository =&gt; "classic";
+   repository "add" =&gt; "altlinux-sisyphus",
+      url      =&gt; "ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus",
+      sign_key  =&gt; "alt",
+      arch     =&gt; "noarch, x86_64",
+      repository =&gt; "classic";
  };</code></pre>
 <p>For CentOS, Mageia and SuSE only the name and the url are needed.</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository add =&gt; "repository-name",
-         url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
-     
+   repository add =&gt; "repository-name",
+      url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
+ 
  };</code></pre>
 <p>To remove a repository just delete it with its name.</p>
 <pre><code class="perl">
  task "rm-repo", "server1", sub {
-    repository remove =&gt; "repository-name";
+   repository remove =&gt; "repository-name";
  };</code></pre>
 <p>You can also use one call to repository to add repositories on multiple platforms:</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-   repository add =&gt; myrepo =&gt; {
-      Ubuntu =&gt; {
-         url =&gt; "http://foo.bar/repo",
-         distro =&gt; "precise",
-         repository =&gt; "foo",
-      },
-      Debian =&gt; {
-         url =&gt; "http://foo.bar/repo",
-         distro =&gt; "squeeze",
-         repository =&gt; "foo",
-      },
-      CentOS =&gt; {
-         url =&gt; "http://foo.bar/repo",
-      },
-   };
+  repository add =&gt; myrepo =&gt; {
+    Ubuntu =&gt; {
+      url =&gt; "http://foo.bar/repo",
+      distro =&gt; "precise",
+      repository =&gt; "foo",
+    },
+    Debian =&gt; {
+      url =&gt; "http://foo.bar/repo",
+      distro =&gt; "squeeze",
+      repository =&gt; "foo",
+    },
+    CentOS =&gt; {
+      url =&gt; "http://foo.bar/repo",
+    },
+  };
  };</code></pre>
 
 <li><strong>package_provider_for $os =&gt; $type;</strong></li>
@@ -260,12 +273,12 @@ This is deprecated since 0.9. Please use L&lt;File&gt; I&lt;file&gt; instead.</c
 <p>To set an other package provider as the default, use this function.</p>
 <pre><code class="perl">
  user "root";
-     
+ 
  group "db" =&gt; "db[01..10]";
  package_provider_for SunOS =&gt; "blastwave";
-    
+ 
  task "prepare", group =&gt; "db", sub {
-     install package =&gt; "vim";
+    install package =&gt; "vim";
  };</code></pre>
 <p>This example will install <em>vim</em> on every db server. If the server is a Solaris (SunOS) it will use the <em>blastwave</em> Repositories.</p>
 

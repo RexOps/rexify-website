@@ -49,18 +49,18 @@
 <p>This function will tail the given file.</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
-    tail "/var/log/syslog";
+   tail "/var/log/syslog";
  };</code></pre>
 <p>Or, if you want to format the output by yourself, you can define a callback function.</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
-    tail "/var/log/syslog", sub {
-      my ($data) = @_;
-      
-      my $server = Rex-&gt;get_current_connection()-&gt;{'server'};
-      
-      print "$server&gt;&gt; $data\n";
-    };
+   tail "/var/log/syslog", sub {
+    my ($data) = @_;
+    
+    my $server = Rex-&gt;get_current_connection()-&gt;{'server'};
+    
+    print "$server&gt;&gt; $data\n";
+   };
  };</code></pre>
 
 </ul>

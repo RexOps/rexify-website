@@ -1,8 +1,8 @@
 % layout 'default';
-% title 'Rex::Commands::MD5 - Calculate MD5 sum of files';
+% title 'Rex::Commands::Notify - Notify a resource to execute.';
 
 % content_for header => begin
-      <meta name="description" content="With this module you calculate the md5 sum of a file.">
+      <meta name="description" content="">
       <meta name="keywords" content="Rex, API, Documentation">
 % end 
 
@@ -26,31 +26,28 @@
 <p>
 </p>
 <h2>NAME</h2>
-<p>Rex::Commands::MD5 - Calculate MD5 sum of files</p>
+<p>Rex::Commands::Notify - Notify a resource to execute.</p>
 <p>
 </p>
 
 <h2>DESCRIPTION</h2>
-<p>With this module you calculate the md5 sum of a file.</p>
+<p>This module exports the <a href="#notify">notify()</a> function.</p>
 <p>
 </p>
 
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
- my $md5 = md5($file);</code></pre>
+ notify "run", "extract-archive";
+ notify $type, $resource_name;</code></pre>
 <p>
 </p>
 
 <h2>EXPORTED FUNCTIONS</h2>
 <ul>
-<li><strong>md5($file)</strong></li>
+<li><strong>notify($resource_type, $resource_name)</strong></li>
 
 
-<p>This function will return the md5 sum (hexadecimal) for the given file.</p>
-<pre><code class="perl">
- task "md5", "server01", sub {
-   my $md5 = md5("/etc/passwd");
- };</code></pre>
+<p>This function will notify the given $resource_name of the given $resource_type to execute.</p>
 
 </ul>
 

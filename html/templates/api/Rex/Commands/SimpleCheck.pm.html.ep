@@ -32,7 +32,7 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  if(is_port_open($remote_host, $port)) {
-    print "Port $port is open\n";
+   print "Port $port is open\n";
  }</code></pre>
 <p>
 </p>

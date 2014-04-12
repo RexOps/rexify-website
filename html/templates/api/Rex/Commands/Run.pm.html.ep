@@ -50,23 +50,51 @@
 <p>This function will execute the given command and returns the output.</p>
 <pre><code class="perl">
  task "uptime", "server01", sub {
-    say run "uptime";
-    run "uptime", sub {
-       my ($stdout, $stderr) = @_;
-       my $server = Rex::get_current_connection()-&gt;{server};
-       say "[$server] $stdout\n";
-    };
+   say run "uptime";
+   run "uptime", sub {
+     my ($stdout, $stderr) = @_;
+     my $server = Rex::get_current_connection()-&gt;{server};
+     say "[$server] $stdout\n";
+   };
  };</code></pre>
+<p>If you only want to run a command in special cases, you can queue the command
+and notify it when you want to run it.</p>
+<pre><code class="perl">
+ task "prepare", sub {
+   run "extract-something",
+     command     =&gt; "tar -C /foo -xzf /tmp/foo.tgz",
+     only_notified =&gt; TRUE;
+ 
+   # some code ...
+ 
+   notify "run", "extract-something";  # now the command gets executed
+ };</code></pre>
+<p>If you only want to run a command if an other command succeed or fail, you can use
+<em>only_if</em> or <em>unless</em> option.</p>
+<pre><code class="perl">
+ run "some-command",
+   only_if =&gt; "ps -ef | grep -q httpd";   # only run if httpd is running
+ 
+ run "some-other-command",
+   unless =&gt; "ps -ef | grep -q httpd";    # only run if httpd is not running</code></pre>
+<p>If you want to set custom environment variables you can do this like this:</p>
+<pre><code class="perl">
+ run "my_command",
+   env =&gt; {
+     env_var_1 =&gt; "the value for 1",
+     env_var_2 =&gt; "the value for 2",
+   };</code></pre>
 
 <li><strong>can_run($command)</strong></li>
 
 
-<p>This function checks if a command is in the path or is available.</p>
+<p>This function checks if a command is in the path or is available. You can
+specify multiple commands, the first command found will be returned.</p>
 <pre><code class="perl">
  task "uptime", sub {
-    if(can_run "uptime") {
-       say run "uptime";
-    }
+   if( my $cmd = can_run("uptime", "downtime") ) {
+     say run $cmd;
+   }
  };</code></pre>
 
 <li><strong>sudo</strong></li>
@@ -77,32 +105,32 @@
 <pre><code class="perl">
  user "unprivuser";
  sudo_password "f00b4r";
- sudo -on;   # turn sudo globaly on
-     
+ sudo -on;  # turn sudo globaly on
+ 
  task prepare =&gt; sub {
-    install "apache2";
-    file "/etc/ntp.conf",
-       source =&gt; "files/etc/ntp.conf",
-       owner  =&gt; "root",
-       mode   =&gt; 640;
+   install "apache2";
+   file "/etc/ntp.conf",
+     source =&gt; "files/etc/ntp.conf",
+     owner  =&gt; "root",
+     mode  =&gt; 640;
  };</code></pre>
 <p>Or, if you don't turning sudo globaly on.</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
-    file "/tmp/foo.txt",
-       content =&gt; "this file was written without sudo privileges\n";
-        
-    # everything in this section will be executed with sudo privileges
-    sudo sub {
-       install "apache2";
-       file "/tmp/foo2.txt",
-          content =&gt; "this file was written with sudo privileges\n";
-    };
+   file "/tmp/foo.txt",
+     content =&gt; "this file was written without sudo privileges\n";
+ 
+   # everything in this section will be executed with sudo privileges
+   sudo sub {
+     install "apache2";
+     file "/tmp/foo2.txt",
+       content =&gt; "this file was written with sudo privileges\n";
+   };
  };</code></pre>
 <p>Run only one command within sudo.</p>
 <pre><code class="perl">
  task "eth1-down", sub {
-   sudo "ifconfig eth1 down";
+  sudo "ifconfig eth1 down";
  };</code></pre>
 
 </ul>

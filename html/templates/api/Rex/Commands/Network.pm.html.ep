@@ -38,13 +38,13 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  use Rex::Commands::Network;
-    
+   
  my @routes = route;
  print Dumper(\@routes);
-    
+   
  my $default_gw = default_gateway;
  default_gateway "192.168.2.1";
-     
+    
  my @netstat = netstat;
  my @tcp_connections = grep { $_-&gt;{"proto"} eq "tcp" } netstat;</code></pre>
 <p>

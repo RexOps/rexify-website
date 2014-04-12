@@ -38,10 +38,10 @@
 <h2>SYNOPSIS</h2>
 <pre><code class="perl">
  task "create-host", "remoteserver", sub {
-    create_host "rexify.org" =&gt; {
-      ip      =&gt; "88.198.93.110",
-      aliases =&gt; ["www.rexify.org"],
-    };
+   create_host "rexify.org" =&gt; {
+    ip    =&gt; "88.198.93.110",
+    aliases =&gt; ["www.rexify.org"],
+   };
  };</code></pre>
 <p>
 </p>
@@ -54,8 +54,8 @@
 <p>Update or create a /etc/hosts entry.</p>
 <pre><code class="perl">
  create_host "rexify.org", {
-    ip      =&gt; "88.198.93.110",
-    aliases =&gt; ["www.rexify.org", ...]
+   ip    =&gt; "88.198.93.110",
+   aliases =&gt; ["www.rexify.org", ...]
  };</code></pre>
 
 <li><strong>delete_host($host)</strong></li>
@@ -68,7 +68,7 @@
 <li><strong>get_host($host)</strong></li>
 
 
-<p>Returns the information of $host in /etc/resolv.conf.</p>
+<p>Returns the information of $host in /etc/hosts.</p>
 <pre><code class="perl">
  my @host_info = get_host "localhost";
  say "Host-IP: " . $host_info[0]-&gt;{"ip"};</code></pre>

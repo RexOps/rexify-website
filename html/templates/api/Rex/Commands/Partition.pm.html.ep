@@ -43,9 +43,9 @@
 <p>Clear partitions on $drive.</p>
 <pre><code class="perl">
  clearpart "sda";
-   
+  
  clearpart "sda",
-   initialize =&gt; "gpt";</code></pre>
+  initialize =&gt; "gpt";</code></pre>
 
 <li><strong>partition($mountpoint, %option)</strong></li>
 
@@ -53,33 +53,33 @@
 <p>Create a partition with mountpoint $mountpoint.</p>
 <pre><code class="perl">
  partition "/",
-    fstype  =&gt; "ext3",
-    size    =&gt; 15000,
-    ondisk  =&gt; "sda",
-    type    =&gt; "primary";
-    
+   fstype  =&gt; "ext3",
+   size   =&gt; 15000,
+   ondisk  =&gt; "sda",
+   type   =&gt; "primary";
+   
  partition "none",
-    type   =&gt; "extended",
-    ondisk =&gt; "sda",
-    grow   =&gt; 1,
-    mount  =&gt; TRUE,
-    
+   type  =&gt; "extended",
+   ondisk =&gt; "sda",
+   grow  =&gt; 1,
+   mount  =&gt; TRUE,
+   
  partition "swap",
-    fstype =&gt; "swap",
-    type   =&gt; "logical",
-    ondisk =&gt; "sda",
-    size   =&gt; 8000;
-    
+   fstype =&gt; "swap",
+   type  =&gt; "logical",
+   ondisk =&gt; "sda",
+   size  =&gt; 8000;
+   
  partition "none",
-    lvm    =&gt; 1,
-    type   =&gt; "primary",
-    size   =&gt; 15000,
-    ondisk =&gt; "vda";
-    
+   lvm   =&gt; 1,
+   type  =&gt; "primary",
+   size  =&gt; 15000,
+   ondisk =&gt; "vda";
+   
  partition "/",
-    fstype =&gt; "ext3",
-    size   =&gt; 10000,
-    onvg   =&gt; "vg0";</code></pre>
+   fstype =&gt; "ext3",
+   size  =&gt; 10000,
+   onvg  =&gt; "vg0";</code></pre>
 
 </ul>
 

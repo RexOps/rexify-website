@@ -39,8 +39,8 @@
 <pre><code class="perl">
  use Data::Dumper;
  task "inventory", "remoteserver", sub {
-    my $inventory = inventor();
-    print Dumper($inventory);
+   my $inventory = inventor();
+   print Dumper($inventory);
  };</code></pre>
 <p>
 </p>
@@ -53,8 +53,8 @@
 <p>This function returns an hashRef of all gathered hardware. Use the Data::Dumper module to see its structure.</p>
 <pre><code class="perl">
  task "get-inventory", sub {
-    my $inventory = inventory();
-    print Dumper($inventory);
+   my $inventory = inventory();
+   print Dumper($inventory);
  };</code></pre>
 
 </ul>
