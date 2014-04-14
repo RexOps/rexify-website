@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Rex::Commands::Notify - Notify a resource to execute.';
+% title 'Rex::Commands::Notify - 通知某资源去执行';
 
 % content_for header => begin
       <meta name="description" content="">
@@ -13,10 +13,10 @@
 
 <ul>
 
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#description">DESCRIPTION</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#exported_functions">EXPORTED FUNCTIONS</a></li>
+	<li><a href="#name">名称</a></li>
+	<li><a href="#description">摘要</a></li>
+	<li><a href="#synopsis">例子</a></li>
+	<li><a href="#exported_functions">导出函数</a></li>
 </ul>
 
 
@@ -26,28 +26,28 @@
 <p>
 </p>
 <h2>NAME</h2>
-<p>Rex::Commands::Notify - Notify a resource to execute.</p>
+<p>Rex::Commands::Notify - 通知某资源去执行</p>
 <p>
 </p>
 
-<h2>DESCRIPTION</h2>
-<p>This module exports the <a href="#notify">notify()</a> function.</p>
+<h2>摘要</h2>
+<p>该模块导出 <a href="#notify">notify()</a> 函数。</p>
 <p>
 </p>
 
-<h2>SYNOPSIS</h2>
+<h2>例子</h2>
 <pre><code class="perl">
  notify "run", "extract-archive";
  notify $type, $resource_name;</code></pre>
 <p>
 </p>
 
-<h2>EXPORTED FUNCTIONS</h2>
+<h2>导出函数</h2>
 <ul>
 <li><strong>notify($resource_type, $resource_name)</strong></li>
 
 
-<p>This function will notify the given $resource_name of the given $resource_type to execute.</p>
+<p>该函数会通知名为 $resource_name 的 $resource_type 去执行。</p>
 
 </ul>
 

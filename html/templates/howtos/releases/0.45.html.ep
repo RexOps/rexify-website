@@ -7,18 +7,18 @@
 % end
 
          <h1>Release notes for 0.45</h1>
-         <p>These are the changes in 0.45 release.</p>
-        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+         <p>下面是 0.45 版的主要变更：</p>
+        <p>感谢所有贡献代码和修复 bug 报告的人，是你们让 Rex 越来越好 :)</p>
 
-         <h2>Cloud</h2>
-         <p>Changes in the Cloud API</p>
+         <h2>云</h2>
+         <p>在云 API 里的变化</p>
 
          <ul class="simple-list">
             <li>
-              <p>OpenStack Support - Ferenc Erki</p>
+              <p>OpenStack 支持 - Ferenc Erki</p>
               <ul>
                 <li>
-                  <p>Authentication and endpoint.</p>
+                  <p>认证和终端。</p>
 <pre><code class="perl">cloud_service "OpenStack";
 cloud_auth tenant_name =&gt; "tenant",
            username    =&gt; "user",
@@ -26,7 +26,7 @@ cloud_auth tenant_name =&gt; "tenant",
 cloud_region "http://openstack.domain.tld:5000/v2.0";</code></pre>
 
                 </li>
-                <li><p>Creating volumes and vms.</p>
+                <li><p>创建卷和虚拟机。</p>
 
 <pre><code class="perl">my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "nova", };
 
@@ -38,7 +38,7 @@ my $instance = cloud_instance create =&gt; {
 };</code></pre>
 
                 </li>
-                <li><p>Terminating an instance and removing the volume.</p>
+                <li><p>终止实例并移除卷。</p>
 <pre><code class="perl">cloud_instance terminate =&gt; $instance->{id};
 cloud_volume delete =&gt; $vol_id;</code></pre>
 
@@ -46,30 +46,30 @@ cloud_volume delete =&gt; $vol_id;</code></pre>
               </li>
               </ul>
             </li>
-            <li>added cloud_image_list() function</li>
-            <li>added cloud_network() function to manage cloud networks if the provider supports it</li>
+            <li>添加 cloud_image_list() 函数</li>
+            <li>添加 cloud_network() 函数来管理云的网络，前提是 provider 支持。</li>
          </ul>
 
-          <h2>Common</h2>
-          <p>Changes in the core. These include new resources and new options for existing one.</p>
+          <h2>通用</h2>
+          <p>核心代码内的其他变更。包括新的资源以及原有资源的新参数。</p>
 
           <ul>
-            <li><p>new options for the file() resource</p>
+            <li><p>file() 资源的新参数</p>
               <ul>
-                <li><p>no_overwrite option for file() resource.</p><p>If this option is set, the file will never be overwritten.</p>
+                <li><p>file() 资源的 no_overwrite 参数。</p><p>设置该参数后，文件将再也不能被覆盖。</p>
 <pre><code class="perl">file "/var/named/$zone->{name}.zone",
   content      =&gt; template( '@zone-file.tpl', conf =&gt; $conf, %{$zone} ),
   owner        =&gt; "named",
   group        =&gt; "named",
   no_overwrite =&gt; TRUE;</code></pre>
                 </li>
-                <li><p>ensure directory option for file().</p><p>If the ensure option is set to directory the file() resource will create a directory instead of a file</p>
+                <li><p>file() 资源的 ensure 参数支持 directory 选项。</p><p>如果 ensure 参数设置为 directory 后，file() 资源会创建一个目录而不是文件</p>
 <pre><code class="perl">file "/var/named",
   ensure =&gt; "directory",
   owner  =&gt; "named",
   group  =&gt; "named";</code></pre>
                 </li>
-                <li><p>allow array for file() resource.</p><p>This allow operations on multiple files without duplicating the code.</p>
+                <li><p>file() 资源支持数组定义。</p><p>这样可以统一操作多个文件而不用重复粘贴代码。</p>
 <pre><code class="perl">file [
     "/etc/rex/io/inventory/bootdevice", "/etc/rex/io/inventory/bridge",
     "/etc/rex/io/inventory/sysinfo", "/etc/rex/io/inventory/os"
@@ -79,9 +79,9 @@ cloud_volume delete =&gt; $vol_id;</code></pre>
   mode  =&gt; 755;</code></pre>
                 </li>
               </ul>
-              <li><p>New options for run() resource.</p>
+              <li><p>run() 资源的新参数。</p>
                 <ul>
-                  <li><p>run() resource can now have a name.</p><p>This is needed for notifications, if a command should only be executed if notified.</p>
+                  <li><p>run() 资源现在也可以有名字。</p><p>在做通知的时候名字就有用了。某个命令只有在被通知的时候才会被执行。</p>
 <pre><code class="perl">run "kill-process-httpd",
   command       =&gt; "killall -KILL httpd",
   only_notified =&gt; TRUE;
@@ -89,17 +89,17 @@ cloud_volume delete =&gt; $vol_id;</code></pre>
 # somewhere else in the code
 notify run =&gt; "kill-process-httpd";</code></pre>
                   </li>
-                  <li><p><i>creates</i> option for run() resource.</p><p>This tell Rex that this command creates a special file. If this file is found, the command won't get executed anymore.</p>
+                  <li><p>run() 资源的 <i>creates</i> 参数。</p><p>用来告诉 Rex 这个命令会创建一个文件，如果这个文件已经存在，这个命令就不要再执行了。</p>
 <pre><code class="perl">run "download-ipxe",
   command =&gt; "wget -O /var/lib/tftpboot/undionly.ipxe http://boot.ipxe.org/undionly.kpxe",
   creates =&gt; "/var/lib/tftpboot/undionly.ipxe";</code></pre>
                   </li>
-                  <li><p><i>only_if</i> and <i>unless</i> option for run() resource.</p><p>This will execute the command only if the command given will execute successfully (or terminate unsuccessfull).</p>
+                  <li><p>run() 资源的 <i>only_if</i> 和 <i>unless</i> 参数。</p><p>仅在指定命令可以成功执行(或者不成功)的情况下才执行资源。</p>
 <pre><code class="perl">run "add-service-os",
     command =&gt; "mysql -uroot &lt; /tmp/data.sql",
     unless  =&gt; "mysql -uroot dbschema -e 'SELECT id FROM os_template WHERE id=2' | grep -q 2";</code></pre>
                   </li>
-                  <li><p>support for customized environments. - #316 - andrejzverev</p><p>It is now possible to add custom environment variables to the run() resource.</p>
+                  <li><p>支持定制的环境设置。 - #316 - andrejzverev</p><p>可以给 run() 资源添加指定的环境变量。</p>
 <pre><code class="perl">run "my_command",
   env =&gt; {
     env_var_1 =&gt; "the value for 1",
@@ -108,9 +108,9 @@ notify run =&gt; "kill-process-httpd";</code></pre>
                   </li>
                 </ul>
               </li>
-              <li><p>Added notifications for <i>run</i> and <i>service</i>.</p>
+              <li><p><i>run</i> 和 <i>service</i> 资源添加通知功能。</p>
                 <ul>
-                  <li><p>services will notified at the end of the task.</p>
+                  <li><p>service 会在任务的最后发出通知。</p>
 <pre><code class="perl">service "httpd", ensure =&gt; "running";
 
 # somewhere else in the code
@@ -120,13 +120,13 @@ file "/etc/httpd/httpd.conf",
                   </li>
                 </ul>
               </li>
-              <li><p><i>pkg</i> resource (replacement for install function).</p>
+              <li><p><i>pkg</i> 资源(替代 install 函数)。</p>
 <pre><code class="perl">pkg "vim", ensure =&gt; "present";
 pkg "httpd", ensure =&gt; "2.4.6";
 pkg "vim-tiny", ensure =&gt; "absent";
 pkg ["tftp-server", "wget"], ensure =&gt; "latest";</code></pre>
             </li>
-            <li><p>Added account() resource (as replacement for create_user).</p>
+            <li><p>新增 account() 资源(替代 create_user 函数)。</p>
 <pre><code class="perl">account "krimdomu",
   ensure   =&gt; "present",
   uid      =&gt; 509,
@@ -139,21 +139,21 @@ pkg ["tftp-server", "wget"], ensure =&gt; "latest";</code></pre>
   no_create_home =&gt; TRUE,
   ssh_key        =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";</code></pre>
             </li>
-<li><p>Support -g to supply group name - #330 - fanyeren</p></li>
-<li><p><i>can_run()</i> now returns the first command found as string - #193</p></li>
-<li><p>read cpu information out of /proc/cpuinfo if dmidecode is not available - #306</p></li>
+<li><p>支持 -g 指定用户组名称 - #330 - fanyeren</p></li>
+<li><p><i>can_run()</i> 现在返回能找到的第一个命令，返回值为字符串 - #193</p></li>
+<li><p>如果 dmidecode 不可用，通过 /proc/cpuinfo 读取 CPU 信息 - #306</p></li>
 
           </ul>
 
           <h2>Bugfixes</h2>
-          <p>Known bugs that has been fixed.</p>
+          <p>已知且被修复了的 bugs：</p>
 
           <ul>
-<li><p>Check if iptables rule already exists.</p></li>
-<li><p>Fixed SCM::Git to work with sudo.</p></li>
-<li><p>Update _parse_ip subroutine. be possible to parse ppp0. #328 - Tomohiro Hosaka.</p></li>
-<li><p>Handles the case where rsync is missing, and that makes Rex wait forever - #331 - Joris DE POOTER.</p></li>
-<li><p>Fixed $Rex::Logger::format does not apply. - #335.</p></li>
-<li><p>Fixed download() command on windows.</p></li>
-<li><p>Fixed debian system_update - #339 - Niklas Larsson.</p></li>
+<li><p>检查 iptables 规则是否已经存在。</p></li>
+<li><p>修复 SCM::Git 在 sudo 下正常运行。</p></li>
+<li><p>更新 _parse_ip 函数，支持解析 ppp0。 #328 - Tomohiro Hosaka。</p></li>
+<li><p>解决如果 rsync 命令不存在导致的 Rex 永远等待的情况 - #331 - Joris DE POOTER。</p></li>
+<li><p>修复 $Rex::Logger::format 没有被应用 - #335。</p></li>
+<li><p>修复 windows 上 download() 命令。</p></li>
+<li><p>修复 debian 上的 system_update - #339 - Niklas Larsson。</p></li>
           </ul>
