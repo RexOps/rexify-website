@@ -49,40 +49,40 @@
 <h2>示例</h2>
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
-    
+   
  set virtualization =&gt; "LibVirt";
  set virtualization =&gt; "VBox";
-    
- use Data::Dumper;</code></pre>
-<pre><code class="perl">
+   
+ use Data::Dumper;  
+ 
  print Dumper vm list =&gt; "all";
  print Dumper vm list =&gt; "running";
-    
+   
  vm destroy =&gt; "vm01";
-    
+   
  vm delete =&gt; "vm01"; 
-     
+    
  vm start =&gt; "vm01";
-    
+   
  vm shutdown =&gt; "vm01";
-    
+   
  vm reboot =&gt; "vm01";
-    
+   
  vm option =&gt; "vm01",
-          max_memory =&gt; 1024*1024,
-          memory     =&gt; 512*1024;
-              
+       max_memory =&gt; 1024*1024,
+       memory    =&gt; 512*1024;
+          
  print Dumper vm info =&gt; "vm01";
-    
+   
  # creating a vm on a kvm host
  vm create =&gt; "vm01",
-      storage     =&gt; [
-         {   
-            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
-            dev    =&gt; "vda",
-         }   
-      ];  
-       
+    storage    =&gt; [
+      {  
+        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
+        dev   =&gt; "vda",
+      }  
+    ];  
+     
  print Dumper vm hypervisor =&gt; "capabilities";</code></pre>
 <p>
 </p>
@@ -105,183 +105,183 @@
 <p>创建一个(VirtualBox)虚拟机，名叫 "vm01"，有 512 MB 内存和 1 个 cpu，还有一个文件映射的 10GB 硬盘，一个挂载 iso 镜像的 cdrom ，一个 NAT 网络。启动顺序设为 "dvd"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      storage     =&gt; [
-         {   
-            file   =&gt; "/mnt/data/vbox/vm01.img",
-            size   =&gt; "10G",
-         },
-         {
-            file =&gt; "/mnt/iso/debian6.iso",
-         }
-      ],
-      memory =&gt; 512,
-      type =&gt; "Linux26", 
-      cpus =&gt; 1,
-      boot =&gt; "dvd";</code></pre>
+    storage    =&gt; [
+      {  
+        file  =&gt; "/mnt/data/vbox/vm01.img",
+        size  =&gt; "10G",
+      },
+      {
+        file =&gt; "/mnt/iso/debian6.iso",
+      }
+    ],
+    memory =&gt; 512,
+    type =&gt; "Linux26", 
+    cpus =&gt; 1,
+    boot =&gt; "dvd";</code></pre>
 <p>创建一个(KVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，还有一个文件映射的 10GB 硬盘，一个挂载 iso 镜像的 cdrom ，一个桥接网络，桥接网卡为 virbr0。启动顺序设为 "cdrom"。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      boot =&gt; "cdrom",
-      storage     =&gt; [
-         {
-            size   =&gt; "10G",
-            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
-         },
-                                                                                                                                        
-         {
-            file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
-         },
-      ];</code></pre>
+    boot =&gt; "cdrom",
+    storage    =&gt; [
+      {
+        size  =&gt; "10G",
+        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
+      },
+                                                                                           
+      {
+        file    =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
+      },
+    ];</code></pre>
 <p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      memory   =&gt; 512*1024,
-      cpus     =&gt; 1,      
-      arch     =&gt; "x86_64",
-      boot     =&gt; "cdrom",
-      clock    =&gt; "utc", 
-      emulator =&gt; "/usr/bin/qemu-system-x86_64",
-      on_poweroff =&gt; "destroy",
-      on_reboot   =&gt; "restart",
-      on_crash    =&gt; "restart",
-      storage     =&gt; [
-         {  type   =&gt; "file",
-            size   =&gt; "10G",
-            device =&gt; "disk",
-            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
-            dev    =&gt; "vda",
-            bus    =&gt; "virtio",
-            address =&gt; {
-               type     =&gt; "pci",
-               domain   =&gt; "0x0000",
-               bus      =&gt; "0x00",
-               slot     =&gt; "0x05",
-               function =&gt; "0x0",
-            },
-         },
-         {  type     =&gt; "file",
-            device   =&gt; "cdrom",
-            file     =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
-            dev      =&gt; "hdc",
-            bus      =&gt; "ide",
-            readonly =&gt; 1,
-            address  =&gt; {                                                                                                               
-               type       =&gt; "drive",
-               controller =&gt; 0,
-               bus        =&gt; 1,
-               unit       =&gt; 0,
-            },
-         },
-      ],
-      network =&gt; [
-         {  type    =&gt; "bridge",
-            bridge  =&gt; "virbr0",
-            model   =&gt; "virtio",
-            address =&gt; {
-               type     =&gt; "pci",
-               domain   =&gt; "0x0000",
-               bus      =&gt; "0x00",
-               slot     =&gt; "0x03",
-               function =&gt; "0x0",
-            },
-         },
-      ];</code></pre>
+    memory  =&gt; 512*1024,
+    cpus    =&gt; 1,    
+    arch    =&gt; "x86_64",
+    boot    =&gt; "cdrom",
+    clock   =&gt; "utc", 
+    emulator =&gt; "/usr/bin/qemu-system-x86_64",
+    on_poweroff =&gt; "destroy",
+    on_reboot  =&gt; "restart",
+    on_crash   =&gt; "restart",
+    storage    =&gt; [
+      {  type  =&gt; "file",
+        size  =&gt; "10G",
+        device =&gt; "disk",
+        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
+        dev   =&gt; "vda",
+        bus   =&gt; "virtio",
+        address =&gt; {
+          type    =&gt; "pci",
+          domain  =&gt; "0x0000",
+          bus    =&gt; "0x00",
+          slot    =&gt; "0x05",
+          function =&gt; "0x0",
+        },
+      },
+      {  type    =&gt; "file",
+        device  =&gt; "cdrom",
+        file    =&gt; "/mnt/data/iso/debian-6.0.2.1-amd64-netinst.iso",
+        dev    =&gt; "hdc",
+        bus    =&gt; "ide",
+        readonly =&gt; 1,
+        address  =&gt; {                                                                          
+          type     =&gt; "drive",
+          controller =&gt; 0,
+          bus      =&gt; 1,
+          unit     =&gt; 0,
+        },
+      },
+    ],
+    network =&gt; [
+      {  type   =&gt; "bridge",
+        bridge  =&gt; "virbr0",
+        model  =&gt; "virtio",
+        address =&gt; {
+          type    =&gt; "pci",
+          domain  =&gt; "0x0000",
+          bus    =&gt; "0x00",
+          slot    =&gt; "0x03",
+          function =&gt; "0x0",
+        },
+      },
+    ];</code></pre>
 <p>创建一个(Xen/HVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，一个从已有镜像克隆出来的硬盘。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      type   =&gt; "hvm",
-      storage     =&gt; [
-         {
-            file     =&gt; "/mnt/data/libvirt/images/vm01.img",
-            template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
-         },
-      ];</code></pre>
+    type  =&gt; "hvm",
+    storage    =&gt; [
+      {
+        file    =&gt; "/mnt/data/libvirt/images/vm01.img",
+        template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                  
+      },
+    ];</code></pre>
 <p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      memory =&gt; 512*1024,
-      cpus   =&gt; 1,
-      boot   =&gt; "hd",
-      clock  =&gt; "utc",
-      on_poweroff =&gt; "destroy",
-      on_reboot   =&gt; "restart",
-      on_crash    =&gt; "restart",
-      storage     =&gt; [
-         {  type   =&gt; "file",
-            size   =&gt; "10G",
-            device =&gt; "disk",
-            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
-            dev    =&gt; "hda",
-            bus    =&gt; "ide",
-            template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                                           
-         },
-         {  type     =&gt; "file",
-            device   =&gt; "cdrom",
-            dev      =&gt; "hdc",
-            bus      =&gt; "ide",
-            readonly =&gt; 1,
-         },
-      ],
-      network =&gt; [
-         {  type    =&gt; "bridge",
-            bridge  =&gt; "virbr0",
-         },
-      ],
-      type =&gt; "hvm";</code></pre>
+    memory =&gt; 512*1024,
+    cpus  =&gt; 1,
+    boot  =&gt; "hd",
+    clock  =&gt; "utc",
+    on_poweroff =&gt; "destroy",
+    on_reboot  =&gt; "restart",
+    on_crash   =&gt; "restart",
+    storage    =&gt; [
+      {  type  =&gt; "file",
+        size  =&gt; "10G",
+        device =&gt; "disk",
+        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
+        dev   =&gt; "hda",
+        bus   =&gt; "ide",
+        template =&gt; "/mnt/data/libvirt/images/svn01.img",                                                  
+      },
+      {  type    =&gt; "file",
+        device  =&gt; "cdrom",
+        dev    =&gt; "hdc",
+        bus    =&gt; "ide",
+        readonly =&gt; 1,
+      },
+    ],
+    network =&gt; [
+      {  type   =&gt; "bridge",
+        bridge  =&gt; "virbr0",
+      },
+    ],
+    type =&gt; "hvm";</code></pre>
 <p>创建一个(Xen/PVM)虚拟机，名叫 "vm01" 有 512 MB 内存和 1 个 cpu，一个根分区(10GB)和一个 swap 分区(1GB)。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      type   =&gt; "pvm",
-      storage     =&gt; [
-         {
-            file    =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
-            dev     =&gt; "xvda2",
-            is_root =&gt; 1,                                                                                                               
-         },
-         {  
-            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
-            dev    =&gt; "xvda1",
-         },
-      ];</code></pre>
+    type  =&gt; "pvm",
+    storage    =&gt; [
+      {
+        file   =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
+        dev    =&gt; "xvda2",
+        is_root =&gt; 1,                                                                          
+      },
+      {  
+        file  =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
+        dev   =&gt; "xvda1",
+      },
+    ];</code></pre>
 <p>这个和上面的效果是一样的，不过写全了所有参数。</p>
 <pre><code class="perl">
  vm create =&gt; "vm01",
-      type   =&gt; "pvm",
-      memory =&gt; 512*1024,
-      cpus   =&gt; 1,
-      clock  =&gt; "utc",
-      on_poweroff =&gt; "destroy",
-      on_reboot   =&gt; "restart",
-      on_crash    =&gt; "restart",
-      os          =&gt; {
-         type  =&gt; "linux",
-         kernel =&gt; "/boot/vmlinuz-2.6.32-5-xen-amd64",
-         initrd =&gt; "/boot/initrd.img-2.6.32-5-xen-amd64",
-         cmdline =&gt; "root=/dev/xvda2 ro",
+    type  =&gt; "pvm",
+    memory =&gt; 512*1024,
+    cpus  =&gt; 1,
+    clock  =&gt; "utc",
+    on_poweroff =&gt; "destroy",
+    on_reboot  =&gt; "restart",
+    on_crash   =&gt; "restart",
+    os       =&gt; {
+      type  =&gt; "linux",
+      kernel =&gt; "/boot/vmlinuz-2.6.32-5-xen-amd64",
+      initrd =&gt; "/boot/initrd.img-2.6.32-5-xen-amd64",
+      cmdline =&gt; "root=/dev/xvda2 ro",
+    },
+    storage    =&gt; [
+      {  type  =&gt; "file",
+        size  =&gt; "10G",
+        device =&gt; "disk",
+        file  =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
+        dev   =&gt; "xvda2",
+        bus   =&gt; "xen",
+        aio   =&gt; 1, # if you want to use aio
       },
-      storage     =&gt; [
-         {  type   =&gt; "file",
-            size   =&gt; "10G",
-            device =&gt; "disk",
-            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/disk.img",
-            dev    =&gt; "xvda2",
-            bus    =&gt; "xen",
-            aio    =&gt; 1, # if you want to use aio
-         },
-         {  type   =&gt; "file",
-            size   =&gt; "4G",
-            device =&gt; "disk",
-            file   =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
-            dev    =&gt; "xvda1",
-            bus    =&gt; "xen",
-            aio    =&gt; 1, # if you want to use aio
-         },
-      ],
-      network =&gt; [
-         {  type    =&gt; "bridge",
-            bridge  =&gt; "virbr0",
-         },
-      ];</code></pre>
+      {  type  =&gt; "file",
+        size  =&gt; "4G",
+        device =&gt; "disk",
+        file  =&gt; "/mnt/data/libvirt/images/domains/vm01/swap.img",
+        dev   =&gt; "xvda1",
+        bus   =&gt; "xen",
+        aio   =&gt; 1, # if you want to use aio
+      },
+    ],
+    network =&gt; [
+      {  type   =&gt; "bridge",
+        bridge  =&gt; "virbr0",
+      },
+    ];</code></pre>
 <p>
 </p>
 <h2><a name="start_stop_destroy">启动，停止，销毁</a></h2>
@@ -305,8 +305,8 @@
 <p>目前你只能修改内存。</p>
 <pre><code class="perl">
  vm option =&gt; "name",
-         max_memory =&gt; 1024*1024, # in bytes
-         memory     =&gt; 512*1024;</code></pre>
+      max_memory =&gt; 1024*1024, # in bytes
+      memory    =&gt; 512*1024;</code></pre>
 <p>
 </p>
 <h2><a name="request_information_of_a_vm">请求虚拟机信息</a></h2>

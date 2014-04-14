@@ -51,8 +51,8 @@
 <p>杀死指定 pid 的进程。也可指定$sig。</p>
 <pre><code class="perl">
  task "kill", "server01", sub {
-    kill 9931;
-    kill 9931, -9;
+   kill 9931;
+   kill 9931, -9;
  };</code></pre>
 
 <li><strong>killall($name, $sig)</strong></li>
@@ -61,8 +61,8 @@
 <p>杀死所有 $name 进程。也可指定$sig。</p>
 <pre><code class="perl">
  task "kill-apaches", "server01", sub {
-    killall "apache2";
-    killall "apache2", -9;
+   killall "apache2";
+   killall "apache2", -9;
  };</code></pre>
 
 <li><strong>ps</strong></li>
@@ -71,16 +71,16 @@
 <p>列出系统所有进程。会返回执行<em>ps aux</em>的全部结果。</p>
 <pre><code class="perl">
  task "ps", "server01", sub {
-    for my $process (ps()) {
-      say "command  &gt; " . $process-&gt;{"command"};
-      say "pid      &gt; " . $process-&gt;{"pid"};
-      say "cpu-usage&gt; " . $process-&gt;{"cpu"};
-    }
+   for my $process (ps()) {
+    say "command  &gt; " . $process-&gt;{"command"};
+    say "pid    &gt; " . $process-&gt;{"pid"};
+    say "cpu-usage&gt; " . $process-&gt;{"cpu"};
+   }
  };</code></pre>
 <p>On most operating systems it is also possible to define custom parameters for <a href="#ps">ps()</a> function.</p>
 <pre><code class="perl">
  task "ps", "server01", sub {
-    my @list = grep { $_-&gt;{"ni"} == -5 } ps("command","ni");
+   my @list = grep { $_-&gt;{"ni"} == -5 } ps("command","ni");
  };</code></pre>
 <p>This example would contain all processes with a nice of -5.</p>
 
@@ -90,7 +90,7 @@
 <p>更改 $pid 进程优先级到 $level。</p>
 <pre><code class="perl">
  task "renice", "server01", sub {
-    nice (153, -5);
+   nice (153, -5);
  };</code></pre>
 
 </ul>

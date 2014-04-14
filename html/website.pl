@@ -41,7 +41,7 @@ get '/get/mod/*mod' => sub {
 
    chdir("/tmp/scratch");
 
-   my $u = get_random(32, 'a' .. 'z');  
+   my $u = get_random(32, 'a' .. 'z');
    system("git clone git://github.com/krimdomu/rex-recipes.git $u >/dev/null 2>&1");
    chdir("$u");
    system("git checkout master");
@@ -222,14 +222,14 @@ __DATA__
                   <li <% if($cat eq "") { %>class="active" <% } %>><a href="/">首页</a></li>
                   <li <% if($cat eq "get") { %>class="active" <% } %>><a href="/get" title="Install Rex on your systems">安装</a></li>
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>>
-                  
+
                      <b class="arrow_box"></b>
                      <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">Care</a>
                      <ul class="dropdown_menu dropdown_care">
                         <li><a href="/contribute">Help (R)?ex</a></li>
                         <li><a href="/contribute/donate.html">Help people in need</a></li>
                      </ul>
-                  
+
                   </li>
                   <li <% if($cat eq "support") { %>class="active" <% } %>><a href="/support" title="Commercial Support">支持</a></li>
                   <li <% if($cat eq "howtos" || $cat eq "modules" || $cat eq "api") { %>class="active" <% } %>>
@@ -252,23 +252,24 @@ __DATA__
             </div>
 
 @@ layouts/default.html.ep
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
    <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   
+
       <title><%= title %></title>
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
 
-      <link href="http://yandex.st/highlightjs/7.3/styles/magula.min.css" rel="stylesheet"/>
+      <link href="/css/hs/tomorrow.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/default.css?20141026" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
+      <script src="/js/highlight.pack.js"></script>
 
       <meta name="description" content="(R)?ex - 管理你的所有分类的数据点  数据中心自动化和配置管理" />
-      <meta name="keywords" content="Systemadministration, Datacenter, Automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
+      <meta name="keywords" content="Systemadministration, configuration-management, deployment, devops, datacenter, automation, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux" />
 
       <style>
       % if($no_side_bar) {
@@ -318,6 +319,16 @@ __DATA__
                </form>
                <h2>新闻</h2>
 
+              <div class="news_widget">
+                 <div class="news_date">2014-04-12</div>
+                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="/howtos/releases/0.45.html">release notes</a> including examples for the new features.</div>
+              </div>
+
+              <div class="news_widget">
+                 <div class="news_date">2014-04-03</div>
+                 <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
+              </div>
+
                <div class="news_widget">
                   <div class="news_date">2014-02-02</div>
                   <div class="news_content">(R)?ex 0.44.1 版本发布。该版本带来诸多炫酷特性，同时也修正了很多 bug。详见 github 上的 <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a>。</div>
@@ -351,7 +362,6 @@ __DATA__
                   <div class="news_date">2013-05-23</div>
                   <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">刚刚公告</a>他们提供专业级的 Rex 支持。</div>
                </div>
-
 
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
@@ -394,20 +404,20 @@ __DATA__
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+
     % }
 
             </div>
          </div> <!-- content -->
 
       </div> <!-- page -->
-      
+
 
      <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/jfried83">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
    </div>
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
@@ -427,13 +437,13 @@ __DATA__
        else {
          $("#li_api").show();
        }
-     
+
       });
    </script>
 
 
 <!-- Piwik -->
-<script type="text/javascript"> 
+<script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
@@ -450,30 +460,14 @@ __DATA__
 <!-- End Piwik Code -->
 
 
-<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 <script src="/js/browser.js"></script>
 <script>
-  if(BrowserDetect.browser == "Firefox" && BrowserDetect.OS == "Linux") {
-     window.setTimeout(function() {
-        $("#syntax_high").show();
-        $("#link_syntax_high").click(function(event) {
-           event.preventDefault();
-           hljs.tabReplace = '    ';
-           hljs.initHighlighting();
-        });
-     }, 1500);
-  }
-  else {
-     window.setTimeout(function() {
-        hljs.tabReplace = '    ';
-        hljs.initHighlighting();
-        //$("#q").focus();
-     }, 1000);
-  }
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
 </script>
 
 
    </body>
 
 </html>
-

@@ -38,16 +38,16 @@
 <h2>例子</h2>
 <pre><code class="perl">
  task "do-something", "server01", sub {
-   on_rollback {
-      rmdir "/tmp/mydata";
-   };</code></pre>
-<pre><code class="perl">
-   transaction {
-      mkdir "/tmp/mydata";
-      upload "files/myapp.tar.gz", "/tmp/mydata";
-      run "cd /tmp/mydata; tar xzf myapp.tar.gz";
-      if($? != 0) { die("Error extracting myapp.tar.gz"); }
-   };
+  on_rollback {
+    rmdir "/tmp/mydata";
+  };
+ 
+  transaction {
+    mkdir "/tmp/mydata";
+    upload "files/myapp.tar.gz", "/tmp/mydata";
+    run "cd /tmp/mydata; tar xzf myapp.tar.gz";
+    if($? != 0) { die("Error extracting myapp.tar.gz"); }
+  };
  };</code></pre>
 <p>
 </p>
@@ -60,20 +60,20 @@
 <p>开始进行事务代码 $codeRef。如果执行 $codeRef 出错则进行回滚操作。</p>
 <pre><code class="perl">
  task "deploy", group =&gt; "frontend", sub {
-     on_rollback {
-         rmdir "...";
-     };
-     deploy "myapp.tar.gz";
+    on_rollback {
+      rmdir "...";
+    };
+    deploy "myapp.tar.gz";
  };
-   
+  
  task "restart_server", group =&gt; "frontend", sub {
-     run "/etc/init.d/apache2 restart";
+    run "/etc/init.d/apache2 restart";
  };
-   
+  
  task "all", group =&gt; "frontend", sub {
-     transaction {
-         do_task [qw/deploy restart_server/];
-     };
+    transaction {
+      do_task [qw/deploy restart_server/];
+    };
  };</code></pre>
 
 <li><strong>on_rollback($codeRef)</strong></li>

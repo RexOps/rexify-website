@@ -52,12 +52,12 @@
 <p>返回你想要的信息的 hash 。</p>
 <pre><code class="perl">
  task "get-info", "server1", sub {
-    %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
+   %%hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
  };</code></pre>
 <p>或者想要的是全部信息</p>
 <pre><code class="perl">
  task "get-all-info", "server1", sub {
-    %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
+   %%hw_info = Rex::Hardware-&gt;get(qw/ All /);
  };</code></pre>
 <p>可用模块：</p>
 <ul>

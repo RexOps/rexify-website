@@ -38,7 +38,7 @@ group backends =&gt; "backend[01..02]";</code></pre>
 
 <p>Rex offers a simple way to query ini files for group creation. To use ini files you have to use the <i>Rex::Group::Lookup::INI</i> module.</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature => ['0.44'];
 use Rex::Group::Lookup::INI;
 
 groups_file "/path/to/your/file.ini";</code></pre>
@@ -82,7 +82,7 @@ backend02
 
 <p>If you want to get your server groups right out of an existing database you can use <a href="#">DBI</a> to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature => ['0.44'];
 use DBI;
 
 my $username = "dbuser";

@@ -61,20 +61,24 @@ task "disk_free", sub {
 <p>如果这个任务将执行首先安装好apahce服务在做再做配置文件同步.</p>
 
 <pre><code class="perl">user "root";
-group "frontend" =&gt; "frontend[01..05]";
+group frontend =&gt; "frontend[01..05]";
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-   install "apache2";
+  pkg "apache2",
+    ensure => "latest";
+
+  service "apache2",
+    ensure => "started";
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-   prepare();
+  prepare();
 
-   file "/etc/apache2/apache2.conf",
-        source    =&gt; "files/etc/apache2/apache2.conf",
-        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file "/etc/apache2/apache2.conf",
+    source    =&gt; "files/etc/apache2/apache2.conf",
+    on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
 
@@ -87,17 +91,19 @@ sudo_password 'sudopass';
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
-   install "apache2";
+  pkg "apache2",
+    ensure => "latest";
+
+  service "apache2",
+    ensure => "started";
 };
 
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
-   prepare();
+  prepare();
 
-   file "/etc/apache2/apache2.conf",
-        source    =&gt; "files/etc/apache2/apache2.conf",
-        on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file "/etc/apache2/apache2.conf",
+    source    =&gt; "files/etc/apache2/apache2.conf",
+    on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };
 </code></pre>
-
-

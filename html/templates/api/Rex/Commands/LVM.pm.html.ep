@@ -38,7 +38,7 @@
 <h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::LVM;
-    
+   
  my @physical_devices = pvs;
  my @volume_groups = vgs;
  my @logical_volumes = lvs;</code></pre>
@@ -54,13 +54,13 @@
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
-   
+  
  task "lvm", sub {
-    my @physical_volumes = pvs;
-      
-    for my $physical_volume (@physical_volumes) {
-       say Dumper($physical_volume);
-    }
+   my @physical_volumes = pvs;
+    
+   for my $physical_volume (@physical_volumes) {
+     say Dumper($physical_volume);
+   }
  };</code></pre>
 
 <li><strong>vgs</strong></li>
@@ -70,13 +70,13 @@
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
-    
+   
  task "lvm", sub {
-    my @volume_groups = vgs;
-      
-    for my $volume_group (@volume_groups) {
-       say Dumper($volume_group);
-    }
+   my @volume_groups = vgs;
+    
+   for my $volume_group (@volume_groups) {
+     say Dumper($volume_group);
+   }
  };</code></pre>
 
 <li><strong>lvs</strong></li>
@@ -86,13 +86,13 @@
 <pre><code class="perl">
  use Data::Dumper;
  use Rex::Commands::LVM;
-    
+   
  task "lvm", sub {
-    my @logical_volumes = lvs;
-      
-    for my $logical_volume (@logical_volumes) {
-       say Dumper($logical_volume);
-    }
+   my @logical_volumes = lvs;
+    
+   for my $logical_volume (@logical_volumes) {
+     say Dumper($logical_volume);
+   }
  };</code></pre>
 
 </ul>

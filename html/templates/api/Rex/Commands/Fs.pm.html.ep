@@ -57,7 +57,7 @@
  is_dir("/etc");
  is_writeable("/tmp");
  is_writable("/tmp");
-    
+   
  chmod 755, "/tmp";
  chown "user", "/tmp";
  chgrp "group", "/tmp";</code></pre>
@@ -72,7 +72,7 @@
 <p>这个函数列出指定目录里的所有内容(文件，目录等)，并返回一个数组。</p>
 <pre><code class="perl">
  task "ls-etc", "server01", sub {
-    my @tmp_files = grep { /\.tmp$/ } list_files("/etc");
+   my @tmp_files = grep { /\.tmp$/ } list_files("/etc");
  };</code></pre>
 
 <li><strong>ls($path)</strong></li>
@@ -86,7 +86,7 @@
 <p>这个函数创建一个从 $from 到 $to 的软连接。</p>
 <pre><code class="perl">
  task "symlink", "server01", sub {
-    symlink("/var/www/versions/1.0.0", "/var/www/html");
+   symlink("/var/www/versions/1.0.0", "/var/www/html");
  };</code></pre>
 
 <li><strong>ln($from, $to)</strong></li>
@@ -100,7 +100,7 @@
 <p>这个函数删除指定文件。</p>
 <pre><code class="perl">
  task "unlink", "server01", sub {
-    unlink("/tmp/testfile");
+   unlink("/tmp/testfile");
  };</code></pre>
 
 <li><strong>rm($file)</strong></li>
@@ -114,7 +114,7 @@
 <p>这个函数删除指定目录。</p>
 <pre><code class="perl">
  task "rmdir", "server01", sub {
-    rmdir("/tmp");
+   rmdir("/tmp");
  };</code></pre>
 
 <li><strong>mkdir($newdir)</strong></li>
@@ -123,12 +123,12 @@
 <p>这个函数创建新目录。</p>
 <pre><code class="perl">
  task "mkdir", "server01", sub {
-    mkdir "/tmp";
-         
-    mkdir "/tmp",
-      owner =&gt; "root",
-      group =&gt; "root",
-      mode =&gt; 1777;
+   mkdir "/tmp";
+      
+   mkdir "/tmp",
+    owner =&gt; "root",
+    group =&gt; "root",
+    mode =&gt; 1777;
  };</code></pre>
 
 <li><strong>chown($owner, $file)</strong></li>
@@ -137,9 +137,9 @@
 <p>更改文件或者目录的属主。</p>
 <pre><code class="perl">
  chown "www-data", "/var/www/html";
-     
+    
  chown "www-data", "/var/www/html",
-                        recursive =&gt; 1;</code></pre>
+                recursive =&gt; 1;</code></pre>
 
 <li><strong>chgrp($group, $file)</strong></li>
 
@@ -147,9 +147,9 @@
 <p>更改文件或者目录的属组。</p>
 <pre><code class="perl">
  chgrp "nogroup", "/var/www/html";
-    
+   
  chgrp "nogroup", "/var/www/html",
-                     recursive =&gt; 1;</code></pre>
+              recursive =&gt; 1;</code></pre>
 
 <li><strong>chmod($mode, $file)</strong></li>
 
@@ -157,9 +157,9 @@
 <p>更改文件或者目录的权限。</p>
 <pre><code class="perl">
  chmod 755, "/var/www/html";
-    
+   
  chmod 755, "/var/www/html",
-               recursive =&gt; 1;</code></pre>
+          recursive =&gt; 1;</code></pre>
 
 <li><strong>stat($file)</strong></li>
 
@@ -181,7 +181,7 @@
 </ul>
 <pre><code class="perl">
  task "stat", "server01", sub {
-    my %file_stat = stat("/etc/passwd");
+   my %file_stat = stat("/etc/passwd");
  };</code></pre>
 
 <li><strong>is_file($file)</strong></li>
@@ -190,12 +190,12 @@
 <p>这个函数测试 $file 是否是文件，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isfile", "server01", sub {
-    if( is_file("/etc/passwd") ) {
-       say "it is a file.";
-    }
-    else {
-       say "hm, this is not a file.";
-    }
+   if( is_file("/etc/passwd") ) {
+     say "it is a file.";
+   }
+   else {
+     say "hm, this is not a file.";
+   }
  };</code></pre>
 
 <li><strong>is_dir($dir)</strong></li>
@@ -204,12 +204,12 @@
 <p>这个函数测试 $dir 是否是目录，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isdir", "server01", sub {
-    if( is_dir("/etc") ) {
-       say "it is a directory.";
-    }
-    else {
-       say "hm, this is not a directory.";
-    }
+   if( is_dir("/etc") ) {
+     say "it is a directory.";
+   }
+   else {
+     say "hm, this is not a directory.";
+   }
  };</code></pre>
 
 <li><strong>is_readable($file)</strong></li>
@@ -218,12 +218,12 @@
 <p>这个函数测试 $file 是否可读，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "readable", "server01", sub {
-    if( is_readable("/etc/passwd") ) {
-       say "passwd is readable";
-    }
-    else {
-       say "not readable.";
-    }
+   if( is_readable("/etc/passwd") ) {
+     say "passwd is readable";
+   }
+   else {
+     say "not readable.";
+   }
  };</code></pre>
 
 <li><strong>is_writable($file)</strong></li>
@@ -232,12 +232,12 @@
 <p>这个函数测试 $file 是否可写，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "writable", "server01", sub {
-    if( is_writable("/etc/passwd") ) {
-       say "passwd is writable";
-    }
-    else {
-       say "not writable.";
-    }
+   if( is_writable("/etc/passwd") ) {
+     say "passwd is writable";
+   }
+   else {
+     say "not writable.";
+   }
  };</code></pre>
 
 <li><strong>is_writeable($file)</strong></li>
@@ -251,12 +251,12 @@
 <p>这个函数返回 $link 软连接的目的地址。如果 $link 不是软连接，那函数失败(die)。</p>
 <pre><code class="perl">
  task "islink", "server01", sub {
-    my $link;
-    eval {
-       $link = readlink("/tmp/testlink");
-    };
-    
-    say "this is a link" if($link);
+   my $link;
+   eval {
+     $link = readlink("/tmp/testlink");
+   };
+   
+   say "this is a link" if($link);
  };</code></pre>
 
 <li><strong>rename($old, $new)</strong></li>
@@ -265,7 +265,7 @@
 <p>这个函数重命名 $old 成 $new，成功返回 1，失败返回 0。</p>
 <pre><code class="perl">
  task "rename", "server01", sub {
-    rename("/tmp/old", "/tmp/new");
+   rename("/tmp/old", "/tmp/new");
  };</code></pre>
 
 <li><strong>mv($old, $new)</strong></li>
@@ -279,7 +279,7 @@
 <p>这个函数会切换当前工作目录到 $newdir 。这个函数目前只能在本机工作。</p>
 <pre><code class="perl">
  task "chdir", "server01", sub {
-    chdir("/tmp");
+   chdir("/tmp");
  };</code></pre>
 
 <li><strong>cd($newdir)</strong></li>
@@ -293,8 +293,8 @@
 <p>这个函数返回 <em>df</em> 输出映射的哈希引用。</p>
 <pre><code class="perl">
  task "df", "server01", sub {
-     my $df = df();
-     my $df_on_sda1 = df("/dev/sda1");
+    my $df = df();
+    my $df_on_sda1 = df("/dev/sda1");
  };</code></pre>
 
 <li><strong>du($path)</strong></li>
@@ -303,7 +303,7 @@
 <p>返回 $path 的磁盘使用情况。</p>
 <pre><code class="perl">
  task "du", "server01", sub {
-    say "size of /var/www: " . du("/var/www");
+   say "size of /var/www: " . du("/var/www");
  };</code></pre>
 
 <li><strong>cp($source, $destination)</strong></li>
@@ -312,7 +312,7 @@
 <p>cp 会复制 $source 到 $destination (如果是可递归的 recursive)</p>
 <pre><code class="perl">
  task "cp", "server01", sub {
-     cp("/var/www", "/var/www.old");
+    cp("/var/www", "/var/www.old");
  };</code></pre>
 
 <li><strong>mount($device, $mount_point, @options)</strong></li>
@@ -321,18 +321,17 @@
 <p>挂载设备。</p>
 <pre><code class="perl">
  task "mount", "server01", sub {
-    mount "/dev/sda5", "/tmp";
-    mount "/dev/sda6", "/mnt/sda6",
-               fs =&gt; "ext3",
-               options =&gt; [qw/noatime async/];
-    #
-    # mount persistent with entry in /etc/fstab
-      
-    mount "/dev/sda6", "/mnt/sda6",
-               fs =&gt; "ext3",
-               options =&gt; [qw/noatime async/],
-               persistent =&gt; TRUE;</code></pre>
-<pre><code class="perl">
+   mount "/dev/sda5", "/tmp";
+   mount "/dev/sda6", "/mnt/sda6",
+          fs =&gt; "ext3",
+          options =&gt; [qw/noatime async/];
+   #
+   # mount persistent with entry in /etc/fstab
+    
+   mount "/dev/sda6", "/mnt/sda6",
+          fs =&gt; "ext3",
+          options =&gt; [qw/noatime async/],
+          persistent =&gt; TRUE;
  };</code></pre>
 
 <li><strong>umount($mount_point)</strong></li>
@@ -341,7 +340,7 @@
 <p>卸载设备。</p>
 <pre><code class="perl">
  task "umount", "server01", sub {
-    umount "/tmp";
+   umount "/tmp";
  };</code></pre>
 
 <li><strong>glob($glob)</strong></li>
@@ -349,7 +348,7 @@
 
 <pre><code class="perl">
  task "glob", "server1", sub {
-    my @files_with_p = grep { is_file($_) } glob("/etc/p*");
+   my @files_with_p = grep { is_file($_) } glob("/etc/p*");
  };</code></pre>
 
 </ul>

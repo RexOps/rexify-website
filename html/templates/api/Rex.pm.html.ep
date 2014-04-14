@@ -63,12 +63,12 @@
 <pre><code class="perl">
  user "root";
  password "ch4ngem3";
-   
+ 
  desc "Show Unix version";
  task "uname", sub {
-     say run "uname -a";
+    say run "uname -a";
  };
-  
+ 
  bash# rex -H "server[01..10]" uname</code></pre>
 <p>查看 <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> 学习完整可用命令列表。</p>
 <p>
@@ -121,19 +121,19 @@
  use Rex;
  use Rex::Commands::Run;
  use Rex::Commands::Fs;
-   
+ 
  Rex::connect(
-    server      =&gt; "remotehost",
-    user        =&gt; "root",
-    password    =&gt; "f00b4r",
-    private_key =&gt; "/path/to/private/key/file",
-    public_key  =&gt; "/path/to/public/key/file",
+   server    =&gt; "remotehost",
+   user      =&gt; "root",
+   password   =&gt; "f00b4r",
+   private_key =&gt; "/path/to/private/key/file",
+   public_key  =&gt; "/path/to/public/key/file",
  );
-    
+ 
  if(is_file("/foo/bar")) {
-    print "Do something...\n";
+   print "Do something...\n";
  }
-     
+ 
  my $output = run("uptime");</code></pre>
 
 </ul>
@@ -153,7 +153,9 @@
 
 <li><strong>Chris Steigmeier</strong></li>
 
-<li><strong>饶琛琳</strong></li>
+<li><strong>complefor</strong></li>
+
+<li><strong>Cuong Manh Le</strong></li>
 
 <li><strong>Daniel Baeurer</strong></li>
 
@@ -161,9 +163,11 @@
 
 <li><strong>Dominik Schulz</strong></li>
 
-<li><strong>Fran Rodriguez</strong></li>
+<li><strong>fanyeren</strong></li>
 
 <li><strong>Ferenc Erki</strong></li>
+
+<li><strong>Fran Rodriguez</strong></li>
 
 <li><strong>Franky Van Liedekerke</strong></li>
 
@@ -177,25 +181,43 @@
 
 <li><strong>Jonathan Delgado</strong></li>
 
+<li><strong>Jon Gentle</strong></li>
+
 <li><strong>Joris</strong></li>
 
 <li><strong>Jose Luis Martinez</strong></li>
 
-<li><strong>刘侨</strong></li>
+<li><strong>Kasim Tuman</strong></li>
 
-<li><strong>Naveed Massjouni</strong></li>
+<li><strong>Keedi Kim</strong></li>
+
+<li><strong>Laird Liu</strong></li>
 
 <li><strong>Mario Domgoergen</strong></li>
 
+<li><strong>Naveed Massjouni</strong></li>
+
+<li><strong>Niklas Larsson</strong></li>
+
 <li><strong>Nikolay Fetisov</strong></li>
 
+<li><strong>Nils Domrose</strong></li>
+
 <li><strong>Peter H. Ezetta</strong></li>
+
+<li><strong>Piotr Karbowski</strong></li>
+
+<li><strong>Rao Chenlin (Chenryn)</strong></li>
 
 <li><strong>RenatoCRON</strong></li>
 
 <li><strong>Samuele Tognini</strong></li>
 
 <li><strong>Sascha Guenther</strong></li>
+
+<li><strong>Simon Bertrang</strong></li>
+
+<li><strong>Stephane Benoit</strong></li>
 
 <li><strong>Sven Dowideit</strong></li>
 

@@ -64,17 +64,17 @@
 
 <pre><code class="perl">
  task "sync", "server01", sub {
-    sync "html/*", "/var/www/html", {
-      exclude =&gt; "*.sw*",
-      parameters =&gt; '--backup --delete',
-    };
- };</code></pre>
-<pre><code class="perl">
+   sync "html/*", "/var/www/html", {
+    exclude =&gt; "*.sw*",
+    parameters =&gt; '--backup --delete',
+   };
+ };
+ 
  task "sync", "server01", sub {
-    sync "html/*", "/var/www/html", {
-      exclude =&gt; ["*.sw*", "*.tmp"],
-      parameters =&gt; '--backup --delete',
-    };
+   sync "html/*", "/var/www/html", {
+    exclude =&gt; ["*.sw*", "*.tmp"],
+    parameters =&gt; '--backup --delete',
+   };
  };</code></pre>
 
 <li><strong>下载 - 下载远程目录 <em>/var/www/html</em> 到本地目录 <em>html</em>。</strong></li>
@@ -82,10 +82,10 @@
 
 <pre><code class="perl">
  task "sync", "server01", sub {
-    sync "/var/www/html/*", "html/", {
-      download =&gt; 1,
-      parameters =&gt; '--backup',
-    };
+   sync "/var/www/html/*", "html/", {
+    download =&gt; 1,
+    parameters =&gt; '--backup',
+   };
  };</code></pre>
 
 </ul>

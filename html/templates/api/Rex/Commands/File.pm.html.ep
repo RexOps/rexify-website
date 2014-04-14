@@ -38,41 +38,40 @@
 <h2>例子</h2>
 <pre><code class="perl">
  task "read-passwd", "server01", sub {
-    my $fh = file_read "/etc/passwd";
-    for my $line = ($fh-&gt;read_all) {
-       print $line;
-    }
-    $fh-&gt;close;
+   my $fh = file_read "/etc/passwd";
+   for my $line = ($fh-&gt;read_all) {
+     print $line;
+   }
+   $fh-&gt;close;
+ };
+ 
+ task "read-passwd2", "server01", sub {
+   say cat "/etc/passwd";
  };</code></pre>
 <pre><code class="perl">
- task "read-passwd2", "server01", sub {
-    say cat "/etc/passwd";
- };
- 
- 
  task "write-passwd", "server01", sub {
-    my $fh = file_write "/etc/passwd";
-    $fh-&gt;write("root:*:0:0:root user:/root:/bin/sh\n");
-    $fh-&gt;close;
+   my $fh = file_write "/etc/passwd";
+   $fh-&gt;write("root:*:0:0:root user:/root:/bin/sh\n");
+   $fh-&gt;close;
  };
-    
+ 
  delete_lines_matching "/var/log/auth.log", matching =&gt; "root";
  delete_lines_matching "/var/log/auth.log", matching =&gt; qr{Failed};
- delete_lines_matching "/var/log/auth.log", 
-                        matching =&gt; "root", qr{Failed}, "nobody";
-    
+ delete_lines_matching "/var/log/auth.log",
+                matching =&gt; "root", qr{Failed}, "nobody";
+ 
  file "/path/on/the/remote/machine",
-    source =&gt; "/path/on/local/machine";
-    
+   source =&gt; "/path/on/local/machine";
+ 
  file "/path/on/the/remote/machine",
-    content =&gt; "foo bar";
-    
+   content =&gt; "foo bar";
+ 
  file "/path/on/the/remote/machine",
-    source =&gt; "/path/on/local/machine",
-    owner  =&gt; "root",
-    group  =&gt; "root",
-    mode   =&gt; 400,
-    on_change =&gt; sub { say "File was changed."; };</code></pre>
+   source =&gt; "/path/on/local/machine",
+   owner  =&gt; "root",
+   group  =&gt; "root",
+   mode  =&gt; 400,
+   on_change =&gt; sub { say "File was changed."; };</code></pre>
 <p>
 </p>
 
@@ -83,9 +82,9 @@
 
 <p>解析模板然后返回内容。</p>
 <pre><code class="perl">
- my $content = template("/files/templates/vhosts.tpl", 
-                     name =&gt; "test.lan",
-                     webmaster =&gt; 'webmaster@test.lan');</code></pre>
+ my $content = template("/files/templates/vhosts.tpl",
+              name =&gt; "test.lan",
+              webmaster =&gt; 'webmaster@test.lan');</code></pre>
 
 <li><strong>file($file_name, %options)</strong></li>
 
@@ -93,22 +92,35 @@
 <p>这个函数是 <em>install file</em> 命令的缩写。请使用这个函数来上传文件。</p>
 <pre><code class="perl">
  task "prepare", "server1", "server2", sub {
-    file "/file/on/remote/machine",
-       source =&gt; "/file/on/local/machine";
-       
-    file "/etc/hosts",
-       content =&gt; template("templates/etc/hosts.tpl"),
-       owner   =&gt; "user",
-       group   =&gt; "group",
-       mode    =&gt; 700,
-       on_change =&gt; sub { say "Something was changed." };
-        
-    file "/etc/motd",
-       content =&gt; `fortune`;
-      
-    file "/etc/httpd/conf/httpd.conf",
-       source =&gt; "/files/etc/httpd/conf/httpd.conf",
-       on_change =&gt; sub { service httpd =&gt; "restart"; };
+   file "/file/on/remote/machine",
+     source =&gt; "/file/on/local/machine";
+ 
+   file "/etc/hosts",
+     content =&gt; template("templates/etc/hosts.tpl"),
+     owner  =&gt; "user",
+     group  =&gt; "group",
+     mode   =&gt; 700,
+     on_change =&gt; sub { say "Something was changed." };
+ 
+   file "/etc/motd",
+     content =&gt; `fortune`;
+ 
+   file "/etc/named.conf",
+     content    =&gt; template("templates/etc/named.conf.tpl"),
+     no_overwrite =&gt; TRUE;  # this file will not be overwritten if already exists.
+ 
+   file "/etc/httpd/conf/httpd.conf",
+     source =&gt; "/files/etc/httpd/conf/httpd.conf",
+     on_change =&gt; sub { service httpd =&gt; "restart"; };
+ 
+   file "/etc/named.d",
+     ensure =&gt; "directory",  # this will create a directory
+     owner  =&gt; "root",
+     group  =&gt; "root";
+ 
+   file "/etc/motd",
+     ensure =&gt; "absent";   # this will remove the file or directory
+ 
  };</code></pre>
 <p>如果 <em>source</em> 是相对路径，它会自动从你的 <em>Rexfile</em> 位置开始搜索。如果你还用了 Perl 包，搜索路径也就包括 这些 <em>.pm</em> 文件的路径。</p>
 <p>这个函数支持一下 hooks：</p>
@@ -143,12 +155,12 @@
 <pre><code class="perl">
  my $fh;
  eval {
-    $fh = file_write("/etc/groups");
+   $fh = file_write("/etc/groups");
  };
  
  # catch an error
  if($@) {
-    print "An error occured. $@.\n";
+   print "An error occured. $@.\n";
  }
  
  # work with the filehandle
@@ -165,12 +177,12 @@
 <pre><code class="perl">
  my $fh;
  eval {
-    $fh = read("/etc/groups");
+   $fh = read("/etc/groups");
  };
  
  # catch an error
  if($@) {
-    print "An error occured. $@.\n";
+   print "An error occured. $@.\n";
  }
  
  # work with the filehandle
@@ -190,7 +202,7 @@
 <p>删除 $file 中匹配到了 $regexp 的行。</p>
 <pre><code class="perl">
  task "clean-logs", sub {
-     delete_lines_matching "/var/log/auth.log" =&gt; "root";
+    delete_lines_matching "/var/log/auth.log" =&gt; "root";
  };</code></pre>
 
 <li><strong>delete_lines_according_to($search, $file, @options)</strong></li>
@@ -200,10 +212,10 @@
 <p>它会搜索 $file 里的 $search 内容然后删除找到的行。如果有 on_change 钩子，那么在文件变动的时候就会执行这个钩子。</p>
 <pre><code class="perl">
  task "cleanup", "server1", sub {
-    delete_lines_according_to qr{^foo:}, "/etc/passwd",
-      on_change =&gt; sub {
-         say "removed user foo.";
-      };
+   delete_lines_according_to qr{^foo:}, "/etc/passwd",
+    on_change =&gt; sub {
+      say "removed user foo.";
+    };
  };</code></pre>
 
 <li><strong>append_if_no_such_line($file, $new_line, @regexp)</strong></li>
@@ -212,21 +224,21 @@
 <p>如果 @regexp 中的正则都没匹配上，$new_line 的内容就追加进 $file 。如果不提供正则，那么对比整行内容，没有完全一致的话，这个行内容也会追加进 $file。</p>
 <pre><code class="perl">
  task "add-group", sub {
-    append_if_no_such_line "/etc/groups", "mygroup:*:100:myuser1,myuser2", on_change =&gt; sub { service sshd =&gt; "restart"; };
+   append_if_no_such_line "/etc/groups", "mygroup:*:100:myuser1,myuser2", on_change =&gt; sub { service sshd =&gt; "restart"; };
  };</code></pre>
 <p>Since 0.42 you can use named parameters as well</p>
 <pre><code class="perl">
  task "add-group", sub {
-    append_if_no_such_line "/etc/groups",
-       line   =&gt; "mygroup:*:100:myuser1,myuser2",
-       regexp =&gt; qr{^mygroup},
-       on_change =&gt; sub {
-                       say "file was changed, do something.";
-                    };
-          
-    append_if_no_such_line "/etc/groups",
-       line   =&gt; "mygroup:*:100:myuser1,myuser2",
-       regexp =&gt; [qr{^mygroup:}, qr{^ourgroup:}]; # this is an OR
+   append_if_no_such_line "/etc/groups",
+     line  =&gt; "mygroup:*:100:myuser1,myuser2",
+     regexp =&gt; qr{^mygroup},
+     on_change =&gt; sub {
+                say "file was changed, do something.";
+              };
+ 
+   append_if_no_such_line "/etc/groups",
+     line  =&gt; "mygroup:*:100:myuser1,myuser2",
+     regexp =&gt; [qr{^mygroup:}, qr{^ourgroup:}]; # this is an OR
  };</code></pre>
 
 <li><strong>extract($file [, %options])</strong></li>
@@ -235,17 +247,16 @@
 <p>这个函数解压文件，支持的格式包括： .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar。</p>
 <pre><code class="perl">
  task prepare =&gt; sub {
-    extract "/tmp/myfile.tar.gz",
-      owner =&gt; "root",
-      group =&gt; "root",
-      to    =&gt; "/etc";</code></pre>
-<pre><code class="perl">
-    extract "/tmp/foo.tgz",
-      type =&gt; "tgz",
-      mode =&gt; "g+rwX";
- };
+   extract "/tmp/myfile.tar.gz",
+    owner =&gt; "root",
+    group =&gt; "root",
+    to   =&gt; "/etc";
  
-# 如果文件后缀被改了，你可以用 type=&gt; 参数做强制指定。(types 包括 tar, tgz, tbz, zip, gz, bz2)</code></pre>
+   extract "/tmp/foo.tgz",
+    type =&gt; "tgz",
+    mode =&gt; "g+rwX";
+ };</code></pre>
+<p>如果文件后缀被改了，你可以用 type=&gt; 参数做强制指定。(types 包括 tar, tgz, tbz, zip, gz, bz2)</p>
 
 <li><strong>sed($search, $replace, $file)</strong></li>
 
@@ -253,12 +264,12 @@
 <p>搜索文件中的字符串并替换掉。</p>
 <pre><code class="perl">
  task sar =&gt; sub {
-    # this will work line by line
-    sed qr{search}, "replace", "/var/log/auth.log";
-        
-    # to use it in a multiline way
-    sed qr{search}, "replace", "/var/log/auth.log",
-      multiline =&gt; TRUE;
+   # this will work line by line
+   sed qr{search}, "replace", "/var/log/auth.log";
+ 
+   # to use it in a multiline way
+   sed qr{search}, "replace", "/var/log/auth.log",
+    multiline =&gt; TRUE;
  };</code></pre>
 
 </ul>

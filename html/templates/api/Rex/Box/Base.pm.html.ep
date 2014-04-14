@@ -100,16 +100,16 @@
 <p>目前支持两个模式。 <em>nat</em> 和 <em>bridged</em>。目前只支持单网卡。</p>
 <pre><code class="perl">
  $box-&gt;network(
-    1 =&gt; {
-       type =&gt; "nat",
-    },
+   1 =&gt; {
+     type =&gt; "nat",
+   },
  }
-    
+   
  $box-&gt;network(
-    1 =&gt; {
-       type =&gt; "bridged",
-       bridge =&gt; "eth0",
-    },
+   1 =&gt; {
+     type =&gt; "bridged",
+     bridge =&gt; "eth0",
+   },
  );</code></pre>
 
 <li><strong>url($url)</strong></li>
@@ -123,10 +123,10 @@
 <p>配置虚拟机的认证方式。</p>
 <pre><code class="perl">
  $box-&gt;auth(
-    user =&gt; $user,
-    password =&gt; $password,
-    private_key =&gt; $private_key,
-    public_key =&gt; $public_key,
+   user =&gt; $user,
+   password =&gt; $password,
+   private_key =&gt; $private_key,
+   public_key =&gt; $public_key,
  );</code></pre>
 
 </ul>

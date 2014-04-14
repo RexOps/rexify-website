@@ -49,7 +49,7 @@
 <p>此函数用于返回文件 md5(hexadecimal) 值。</p>
 <pre><code class="perl">
  task "md5", "server01", sub {
-    my $md5 = md5("/etc/passwd");
+   my $md5 = md5("/etc/passwd");
  };</code></pre>
 
 </ul>

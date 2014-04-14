@@ -38,24 +38,41 @@
 <h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::User;
-    
+ 
  task "create-user", "remoteserver", sub {
-    create_user "root",
-       uid =&gt; 0,
-       home =&gt; '/root',
-       comment =&gt; 'Root Account',
-       expire =&gt; '2011-05-30',
-       groups  =&gt; ['root', '...'],
-       password =&gt; 'blahblah',
-       system =&gt; 1,
-       no_create_home =&gt; TRUE,
-       ssh_key =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
+   create_user "root",
+     uid =&gt; 0,
+     home =&gt; '/root',
+     comment =&gt; 'Root Account',
+     expire =&gt; '2011-05-30',
+     groups  =&gt; ['root', '...'],
+     password =&gt; 'blahblah',
+     system =&gt; 1,
+     no_create_home =&gt; TRUE,
+     ssh_key =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
  };</code></pre>
 <p>
 </p>
 
 <h2>导出函数</h2>
 <ul>
+<li><strong>account($name, %option)</strong></li>
+
+
+<p>Manage user account.</p>
+<pre><code class="perl">
+ account "krimdomu",
+    ensure   =&gt; "present",
+    uid      =&gt; 509,
+    home     =&gt; '/root',
+    comment  =&gt; 'User Account',
+    expire   =&gt; '2011-05-30',
+    groups   =&gt; ['root', '...'],
+    password =&gt; 'blahblah',
+    system   =&gt; 1,
+    no_create_home =&gt; TRUE,
+    ssh_key        =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";</code></pre>
+
 <li><strong>create_user($user =&gt; {})</strong></li>
 
 
@@ -82,9 +99,9 @@
 <p>通过 getent passwdi 返回用户列表。</p>
 <pre><code class="perl">
  task "list_user", "server01", sub {
-    for my $user (user_list) {
-       print "name: $user / uid: " . get_uid($user) . "\n";
-    }
+   for my $user (user_list) {
+     print "name: $user / uid: " . get_uid($user) . "\n";
+   }
  };</code></pre>
 
 <li><strong>delete_user($user)</strong></li>
@@ -93,8 +110,8 @@
 <p>删除用户。</p>
 <pre><code class="perl">
  delete_user "trak", {
-    delete_home =&gt; 1,
-    force       =&gt; 1,
+   delete_home =&gt; 1,
+   force     =&gt; 1,
  };</code></pre>
 
 <li><strong>create_group($group, {})</strong></li>
@@ -103,8 +120,8 @@
 <p>创建或更新用户组。</p>
 <pre><code class="perl">
  create_group $group, {
-    gid =&gt; 1500,
-    system =&gt; 1,
+   gid =&gt; 1500,
+   system =&gt; 1,
  };</code></pre>
 
 <li><strong>get_gid($group)</strong></li>

@@ -35,54 +35,54 @@
 <pre><code class="perl">
  use Rex::Commands::Boxes;
  set box =&gt; "VBox";
-   
+  
  task "prepare_box", sub {
-    box {
-       my ($box) = @_;
-          
-       $box-&gt;name("mybox");
-       $box-&gt;url("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
-          
-       $box-&gt;network(1 =&gt; {
-          type =&gt; "nat",
-       });
-          
-       $box-&gt;network(1 =&gt; {
-          type =&gt; "bridged",
-          bridge =&gt; "eth0",
-       });
-           
-       $box-&gt;forward_port(ssh =&gt; [2222, 22]);
-          
-       $box-&gt;share_folder(myhome =&gt; "/home/myuser");
-           
-       $box-&gt;auth(
-          user =&gt; "root",
-          password =&gt; "box",
-       );
-           
-       $box-&gt;setup("setup_task");
-    };
+   box {
+     my ($box) = @_;
+       
+     $box-&gt;name("mybox");
+     $box-&gt;url("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
+       
+     $box-&gt;network(1 =&gt; {
+       type =&gt; "nat",
+     });
+       
+     $box-&gt;network(1 =&gt; {
+       type =&gt; "bridged",
+       bridge =&gt; "eth0",
+     });
+        
+     $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+       
+     $box-&gt;share_folder(myhome =&gt; "/home/myuser");
+        
+     $box-&gt;auth(
+       user =&gt; "root",
+       password =&gt; "box",
+     );
+        
+     $box-&gt;setup("setup_task");
+   };
  };</code></pre>
 <p>而如果想用 YAML 格式文件的话则定义成这样：</p>
 <pre><code class="perl">
  type: VBox
  vms:
-    vmone:
-       url: <a href="http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</a>
-       forward_port:
-          ssh:
-             - 2222
-             - 22
-       share_folder:
-          myhome: /home/myhome
-       setup: setup_task</code></pre>
-<p>然后 Rexfile 里只需要一行就可以了：</p>
+   vmone:
+     url: <a href="http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</a>
+     forward_port:
+       ssh:
+         - 2222
+         - 22
+     share_folder:
+       myhome: /home/myhome
+     setup: setup_task</code></pre>
+<p>然后 Rexfile 里只需要下面这样就可以了：</p>
 <pre><code class="perl">
  use Rex::Commands::Box init_file =&gt; "file.yml";
-    
+   
  task "prepare_vms", sub {
-    boxes "init";
+   boxes "init";
  };</code></pre>
 <p>
 </p>
@@ -110,9 +110,9 @@
 <p>设置虚拟机端口转发。仅在 NAT 模式下生效。</p>
 <pre><code class="perl">
  $box-&gt;forward_port(
-    name =&gt; [$from_host_port, $to_vm_port],
-    name2 =&gt; [$from_host_port_2, $to_vm_port_2],
-    ...
+   name =&gt; [$from_host_port, $to_vm_port],
+   name2 =&gt; [$from_host_port_2, $to_vm_port_2],
+   ...
  );</code></pre>
 
 <li><strong>share_folder(%option)</strong></li>
@@ -121,8 +121,8 @@
 <p>创建一个虚拟机和宿主机之间的共享文件夹。</p>
 <pre><code class="perl">
  $box-&gt;share_folder(
-    name =&gt; "/path/on/host",
-    name2 =&gt; "/path_2/on/host",
+   name =&gt; "/path/on/host",
+   name2 =&gt; "/path_2/on/host",
  );</code></pre>
 
 <li><strong>info</strong></li>

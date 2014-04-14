@@ -38,8 +38,8 @@
 <h2>例子</h2>
 <pre><code class="perl">
  install file =&gt; "/etc/passwd", {
-                     source =&gt; "/export/files/etc/passwd"
-                 };
+              source =&gt; "/export/files/etc/passwd"
+            };
  
  install package =&gt; "perl";</code></pre>
 <p>
@@ -47,6 +47,21 @@
 
 <h2>导出函数</h2>
 <ul>
+<li><strong>pkg($package, %options)</strong></li>
+
+
+<p>Since: 0.45</p>
+<p>Use this function to install or update a package.</p>
+<pre><code class="perl">
+ pkg "httpd",
+   ensure =&gt; "latest";    # ensure that the newest version is installed (auto-update)
+ pkg "httpd",
+   ensure =&gt; "absent";    # remove the package
+ pkg "httpd",
+   ensure =&gt; "present";   # ensure that some version is installed (no auto-update)
+ pkg "httpd",
+   ensure =&gt; "2.4.6";    # ensure that version 2.4.6 is installed</code></pre>
+
 <li><strong>install($type, $data, $options)</strong></li>
 
 
@@ -57,33 +72,31 @@
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install package =&gt; "perl";
-    
-    # or if you have to install more packages.
-    install package =&gt; [ 
-                           "perl",
-                           "ntp",
-                           "dbus",
-                           "hal",
-                           "sudo",
-                           "vim",
-                       ];
+   install package =&gt; "perl";
+ 
+   # or if you have to install more packages.
+   install package =&gt; [
+                  "perl",
+                  "ntp",
+                  "dbus",
+                  "hal",
+                  "sudo",
+                  "vim",
+                ];
  };</code></pre>
 
 <li><strong>安装文件</strong></li>
 
 
-<pre><code class="perl">
-
-从0.9开始废弃，请使用 L&lt;File&gt; I&lt;file&gt; 作为替代。</code></pre>
+<p>从 0.9版开始被废弃。请使用 <em>File</em> <em>file</em> 作为替代。</p>
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/passwd", {
-                        source =&gt; "/export/files/etc/passwd",
-                        owner  =&gt; "root",
-                        group  =&gt; "root",
-                        mode   =&gt; 644,
-                    };
+   install file =&gt; "/etc/passwd", {
+                source =&gt; "/export/files/etc/passwd",
+                owner  =&gt; "root",
+                group  =&gt; "root",
+                mode  =&gt; 644,
+              };
  };</code></pre>
 
 <li><strong>安装一个文件，并且在文件内容发生变化时触发些操作。</strong></li>
@@ -91,13 +104,13 @@
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/httpd/apache2.conf", {
-                        source    =&gt; "/export/files/etc/httpd/apache2.conf",
-                        owner     =&gt; "root",
-                        group     =&gt; "root",
-                        mode      =&gt; 644,
-                        on_change =&gt; sub { say "File was modified!"; }
-                    };
+   install file =&gt; "/etc/httpd/apache2.conf", {
+                source   =&gt; "/export/files/etc/httpd/apache2.conf",
+                owner    =&gt; "root",
+                group    =&gt; "root",
+                mode    =&gt; 644,
+                on_change =&gt; sub { say "File was modified!"; }
+              };
  };</code></pre>
 
 <li><strong>从模板安装文件。</strong></li>
@@ -105,17 +118,17 @@
 
 <pre><code class="perl">
  task "prepare", "server01", sub {
-    install file =&gt; "/etc/httpd/apache2.tpl", {
-                        source    =&gt; "/export/files/etc/httpd/apache2.conf",
-                        owner     =&gt; "root",
-                        group     =&gt; "root",
-                        mode      =&gt; 644,
-                        on_change =&gt; sub { say "File was modified!"; },
-                        template  =&gt; {
-                                        greeting =&gt; "hello",
-                                        name     =&gt; "Ben",
-                                     },
-                    };
+   install file =&gt; "/etc/httpd/apache2.tpl", {
+                source   =&gt; "/export/files/etc/httpd/apache2.conf",
+                owner    =&gt; "root",
+                group    =&gt; "root",
+                mode    =&gt; 644,
+                on_change =&gt; sub { say "File was modified!"; },
+                template  =&gt; {
+                           greeting =&gt; "hello",
+                           name    =&gt; "Ben",
+                         },
+              };
  };</code></pre>
 
 </ul>
@@ -149,7 +162,7 @@
 <p>这个函数会删除系统中的指定软件包。</p>
 <pre><code class="perl">
  task "cleanup", "server01", sub {
-    remove package =&gt; "vim";
+   remove package =&gt; "vim";
  };</code></pre>
 
 <li><strong>update_system</strong></li>
@@ -159,7 +172,7 @@
 <p>比如 <em>apt-get upgrade</em> 或者 <em>yum update</em>。</p>
 <pre><code class="perl">
  task "update-system", "server1", sub {
-    update_system;
+   update_system;
  };</code></pre>
 
 <li><strong>installed_packages</strong></li>
@@ -168,12 +181,12 @@
 <p>这个函数返回所有已安装的软件包和他们的版本。</p>
 <pre><code class="perl">
  task "get-installed", "server1", sub {
-    
-     for my $pkg (installed_packages()) {
-        say "name     : " . $pkg-&gt;{"name"};
-        say "  version: " . $pkg-&gt;{"version"};
-     }
-     
+ 
+    for my $pkg (installed_packages()) {
+      say "name    : " . $pkg-&gt;{"name"};
+      say "  version: " . $pkg-&gt;{"version"};
+    }
+ 
  };</code></pre>
 
 <li><strong>is_installed</strong></li>
@@ -182,12 +195,12 @@
 <p>这个函数测试 $package 是否已安装，是返回 1，否返回 0。</p>
 <pre><code class="perl">
  task "isinstalled", "server01", sub {
-    if( is_installed("rex") ) {
-       say "Rex is installed";
-    }
-    else {
-       say "Rex is not installed";
-    }
+   if( is_installed("rex") ) {
+     say "Rex is installed";
+   }
+   else {
+     say "Rex is not installed";
+   }
  };</code></pre>
 
 <li><strong>update_package_db</strong></li>
@@ -196,8 +209,8 @@
 <p>这个函数更新本地的软件包数据库。比如在 CentOS 上会执行 <em>yum makecache</em>。</p>
 <pre><code class="perl">
  task "update-pkg-db", "server1", "server2", sub {
-    update_package_db;
-    install package =&gt; "apache2";
+   update_package_db;
+   install package =&gt; "apache2";
  };</code></pre>
 
 <li><strong>repository($action, %data)</strong></li>
@@ -207,51 +220,51 @@
 <p>对于 Debian：如果你没有源代码仓库，或者你只是不想添加源代码仓库，删除 <em>source</em> 参数即可。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository "add" =&gt; "repository-name",
-         url        =&gt; "http://rex.linux-files.org/debian/squeeze",
-         distro     =&gt; "squeeze",
-         repository =&gt; "rex",
-         source     =&gt; 1;
+   repository "add" =&gt; "repository-name",
+      url      =&gt; "http://rex.linux-files.org/debian/squeeze",
+      distro    =&gt; "squeeze",
+      repository =&gt; "rex",
+      source    =&gt; 1;
  };</code></pre>
 <p>对于 ALT Linux：如果仓库未签名，删除 <em>sign_key</em> 参数即可。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository "add" =&gt; "altlinux-sisyphus",
-         url        =&gt; "ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus",
-         sign_key   =&gt; "alt",
-         arch       =&gt; "noarch, x86_64",
-         repository =&gt; "classic";
+   repository "add" =&gt; "altlinux-sisyphus",
+      url      =&gt; "ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus",
+      sign_key  =&gt; "alt",
+      arch     =&gt; "noarch, x86_64",
+      repository =&gt; "classic";
  };</code></pre>
 <p>对于 CentOS, Mageia 和 SuSE 只有名字(name) 和 url 是必须的。</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-    repository add =&gt; "repository-name",
-         url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
-     
+   repository add =&gt; "repository-name",
+      url =&gt; '<a href="http://rex.linux-files.org/CentOS/">http://rex.linux-files.org/CentOS/</a>$releasever/rex/$basearch/';
+ 
  };</code></pre>
 <p>删除仓库只需要用名字即可。</p>
 <pre><code class="perl">
  task "rm-repo", "server1", sub {
-    repository remove =&gt; "repository-name";
+   repository remove =&gt; "repository-name";
  };</code></pre>
 <p>你也可以调用一次  repository 命令给不同平台添加仓库：</p>
 <pre><code class="perl">
  task "add-repo", "server1", "server2", sub {
-   repository add =&gt; myrepo =&gt; {
-      Ubuntu =&gt; {
-         url =&gt; "http://foo.bar/repo",
-         distro =&gt; "precise",
-         repository =&gt; "foo",
-      },
-      Debian =&gt; {
-         url =&gt; "http://foo.bar/repo",
-         distro =&gt; "squeeze",
-         repository =&gt; "foo",
-      },
-      CentOS =&gt; {
-         url =&gt; "http://foo.bar/repo",
-      },
-   };
+  repository add =&gt; myrepo =&gt; {
+    Ubuntu =&gt; {
+      url =&gt; "http://foo.bar/repo",
+      distro =&gt; "precise",
+      repository =&gt; "foo",
+    },
+    Debian =&gt; {
+      url =&gt; "http://foo.bar/repo",
+      distro =&gt; "squeeze",
+      repository =&gt; "foo",
+    },
+    CentOS =&gt; {
+      url =&gt; "http://foo.bar/repo",
+    },
+  };
  };</code></pre>
 
 <li><strong>package_provider_for $os =&gt; $type;</strong></li>
@@ -260,12 +273,12 @@
 <p>这个函数设置另一个包提供器作为默认值。</p>
 <pre><code class="perl">
  user "root";
-     
+ 
  group "db" =&gt; "db[01..10]";
  package_provider_for SunOS =&gt; "blastwave";
-    
+ 
  task "prepare", group =&gt; "db", sub {
-     install package =&gt; "vim";
+    install package =&gt; "vim";
  };</code></pre>
 <p>这个示例会在每个数据库服务器上安装 <em>vim</em> 。如果服务区是一个 Solaris(SunOS)，那就使用 <em>blastwave</em> 仓库。</p>
 

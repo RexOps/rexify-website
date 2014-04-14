@@ -39,8 +39,8 @@
 <pre><code class="perl">
  use Data::Dumper;
  task "inventory", "remoteserver", sub {
-    my $inventory = inventor();
-    print Dumper($inventory);
+   my $inventory = inventor();
+   print Dumper($inventory);
  };</code></pre>
 <p>
 </p>
@@ -53,8 +53,8 @@
 <p>这个函数返回所有收集到的硬件信息的哈希引用。你可以用 Data::Dumper 模块来查看内部结构。</p>
 <pre><code class="perl">
  task "get-inventory", sub {
-    my $inventory = inventory();
-    print Dumper($inventory);
+   my $inventory = inventory();
+   print Dumper($inventory);
  };</code></pre>
 
 </ul>

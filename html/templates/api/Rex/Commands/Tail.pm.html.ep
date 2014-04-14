@@ -49,18 +49,18 @@
 <p>此函数用于tail给定的文件。</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
-    tail "/var/log/syslog";
+   tail "/var/log/syslog";
  };</code></pre>
 <p>如果你想自定义输出格式, 你可以定义一个回调函数。</p>
 <pre><code class="perl">
  task "syslog", "server01", sub {
-    tail "/var/log/syslog", sub {
-      my ($data) = @_;
-      
-      my $server = Rex-&gt;get_current_connection()-&gt;{'server'};
-      
-      print "$server&gt;&gt; $data\n";
-    };
+   tail "/var/log/syslog", sub {
+    my ($data) = @_;
+    
+    my $server = Rex-&gt;get_current_connection()-&gt;{'server'};
+    
+    print "$server&gt;&gt; $data\n";
+   };
  };</code></pre>
 
 </ul>

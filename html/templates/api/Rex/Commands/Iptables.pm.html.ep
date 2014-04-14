@@ -1,5 +1,5 @@
 % layout 'default';
-% title '';
+% title 'Rex::Commands::Iptables - Iptable Management Commands';
 
 % content_for header => begin
       <meta name="description" content="With this Module you can manage basic Iptables rules.">
@@ -13,6 +13,7 @@
 
 <ul>
 
+	<li><a href="#name">名称</a></li>
 	<li><a href="#description">摘要</a></li>
 	<li><a href="#synopsis">例子</a></li>
 	<li><a href="#exported_functions">导出函数</a></li>
@@ -22,6 +23,8 @@
 </div>
 <!-- INDEX END -->
 
+<h2>名称</h2>
+<p>Rex::Commands::Iptables - Iptable 管理命令</p>
 <p>
 </p>
 <h2>摘要</h2>
@@ -32,36 +35,36 @@
 <h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Iptables;
-     
+ 
  task "firewall", sub {
-    iptables_clear;
-     
-    open_port 22;
-    open_port [22, 80] =&gt; {
-       dev =&gt; "eth0",
-    };
-        
-    close_port 22 =&gt; {
-       dev =&gt; "eth0",
-    };
-    close_port "all";
-        
-    redirect_port 80 =&gt; 10080;
-    redirect_port 80 =&gt; {
-       dev =&gt; "eth0",
-       to  =&gt; 10080,
-    };
-      
-    default_state_rule;
-    default_state_rule dev =&gt; "eth0";
-        
-    is_nat_gateway;
-       
-    iptables t =&gt; "nat",
-             A =&gt; "POSTROUTING",
-             o =&gt; "eth0",
-             j =&gt; "MASQUERADE";
-    
+   iptables_clear;
+ 
+   open_port 22;
+   open_port [22, 80] =&gt; {
+     dev =&gt; "eth0",
+   };
+ 
+   close_port 22 =&gt; {
+     dev =&gt; "eth0",
+   };
+   close_port "all";
+ 
+   redirect_port 80 =&gt; 10080;
+   redirect_port 80 =&gt; {
+     dev =&gt; "eth0",
+     to  =&gt; 10080,
+   };
+ 
+   default_state_rule;
+   default_state_rule dev =&gt; "eth0";
+ 
+   is_nat_gateway;
+ 
+   iptables t =&gt; "nat",
+         A =&gt; "POSTROUTING",
+         o =&gt; "eth0",
+         j =&gt; "MASQUERADE";
+ 
  };</code></pre>
 <p>
 </p>
@@ -74,10 +77,17 @@
 <p>为入连接打开一个端口。</p>
 <pre><code class="perl">
  task "firewall", sub {
-    open_port 22;
-    open_port [22, 80];
-    open_port [22, 80] =&gt; { dev =&gt; "eth1", };
- };</code></pre>
+   open_port 22;
+   open_port [22, 80];
+   open_port [22, 80],
+     dev =&gt; "eth1";
+ };
+ 
+ task "firewall", sub {
+  open_port 22,
+    dev    =&gt; "eth1",
+    only_if =&gt; "test -f /etc/firewall.managed";
+} ;</code></pre>
 
 <li><strong>close_port($port, $option)</strong></li>
 
@@ -85,9 +95,11 @@
 <p>为入连接关闭一个端口。</p>
 <pre><code class="perl">
  task "firewall", sub {
-    close_port 22;
-    close_port [22, 80];
-    close_port [22, 80] =&gt; { dev =&gt; "eth0", };
+   close_port 22;
+   close_port [22, 80];
+   close_port [22, 80],
+     dev    =&gt; "eth0",
+     only_if =&gt; "test -f /etc/firewall.managed";
  };</code></pre>
 
 <li><strong>redirect_port($in_port, $option)</strong></li>
@@ -96,11 +108,11 @@
 <p>转发 $in_port 到另一个本地端口。</p>
 <pre><code class="perl">
  task "redirects", sub {
-    redirect_port 80 =&gt; 10080;
-    redirect_port 80 =&gt; {
-       to  =&gt; 10080,
-       dev =&gt; "eth0",
-    };
+   redirect_port 80 =&gt; 10080;
+   redirect_port 80 =&gt; {
+     to  =&gt; 10080,
+     dev =&gt; "eth0",
+   };
  };</code></pre>
 
 <li><strong>iptables(@params)</strong></li>
@@ -109,13 +121,13 @@
 <p>直接书写标准的 iptables 命令。</p>
 <pre><code class="perl">
  task "firewall", sub {
-    iptables t =&gt; "nat", A =&gt; "POSTROUTING", o =&gt; "eth0", j =&gt; "MASQUERADE";
-    iptables t =&gt; "filter", i =&gt; "eth0", m =&gt; "state", state =&gt; "RELATED,ESTABLISHED", j =&gt; "ACCEPT";
-        
-    iptables "flush";
-    iptables -F;
-    iptables flush =&gt; "filter";
-    iptables -F =&gt; "filter";
+   iptables t =&gt; "nat", A =&gt; "POSTROUTING", o =&gt; "eth0", j =&gt; "MASQUERADE";
+   iptables t =&gt; "filter", i =&gt; "eth0", m =&gt; "state", state =&gt; "RELATED,ESTABLISHED", j =&gt; "ACCEPT";
+ 
+   iptables "flush";
+   iptables -F;
+   iptables flush =&gt; "filter";
+   iptables -F =&gt; "filter";
  };</code></pre>
 
 <li><strong>is_nat_gateway</strong></li>
@@ -124,7 +136,7 @@
 <p>这个函数为默认路由指向的设备创建一个 NAT 网关。</p>
 <pre><code class="perl">
  task "make-gateway", sub {
-    is_nat_gateway;
+   is_nat_gateway;
  };</code></pre>
 
 <li><strong>default_state_rule(%option)</strong></li>
@@ -133,7 +145,7 @@
 <p>为指定设备设置默认状态规则。</p>
 <pre><code class="perl">
  task "firewall", sub {
-    default_state_rule(dev =&gt; "eth0");
+   default_state_rule(dev =&gt; "eth0");
  };</code></pre>
 
 <li><strong>iptables_list</strong></li>
@@ -142,7 +154,7 @@
 <p>列出所有 iptables 规则。</p>
 <pre><code class="perl">
  task "list-iptables", sub {
-    print Dumper iptables_list;
+   print Dumper iptables_list;
  };</code></pre>
 
 <li><strong>iptables_clear</strong></li>
@@ -151,7 +163,7 @@
 <p>删除所有 iptables 规则。</p>
 <pre><code class="perl">
  task "no-firewall", sub {
-    iptables_clear;
+   iptables_clear;
  };</code></pre>
 
 </ul>

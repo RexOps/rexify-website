@@ -37,35 +37,35 @@
 <h2>例子</h2>
 <pre><code class="perl">
  use Rex::Commands::Virtualization;
-    
+   
  set virtualization =&gt; "LibVirt";
-    
+   
  print Dumper vm list =&gt; "all";
  print Dumper vm list =&gt; "running";
-    
+   
  vm destroy =&gt; "vm01";
-    
+   
  vm delete =&gt; "vm01"; 
-     
+    
  vm start =&gt; "vm01";
-    
+   
  vm shutdown =&gt; "vm01";
-    
+   
  vm reboot =&gt; "vm01";
-    
+   
  vm option =&gt; "vm01",
-          max_memory =&gt; 1024*1024,
-          memory     =&gt; 512*1024;
-              
+       max_memory =&gt; 1024*1024,
+       memory    =&gt; 512*1024;
+          
  print Dumper vm info =&gt; "vm01";
-    
+   
  # creating a vm on a kvm host
  vm create =&gt; "vm01",
-      storage     =&gt; [
-         {   
-            file   =&gt; "/mnt/data/libvirt/images/vm01.img",
-            dev    =&gt; "vda",
-         }   
-      ];  
-       
+    storage    =&gt; [
+      {  
+        file  =&gt; "/mnt/data/libvirt/images/vm01.img",
+        dev   =&gt; "vda",
+      }  
+    ];  
+     
  print Dumper vm hypervisor =&gt; "capabilities";</code></pre>

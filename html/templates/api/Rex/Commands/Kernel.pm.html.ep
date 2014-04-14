@@ -51,17 +51,17 @@
 <p>此方法用来加载卸载模块。</p>
 <pre><code class="perl">
  task "load", sub {
-    kmod load =&gt; "ipmi_si";
- };</code></pre>
-<pre><code class="perl">
+   kmod load =&gt; "ipmi_si";
+ };
+ 
  task "unload", sub {
-    kmod unload =&gt; "ipmi_si";
+   kmod unload =&gt; "ipmi_si";
  };</code></pre>
 <p>NetBSD 或 OpenBSD系统则需要完整的路径，甚至可能是入口函数。</p>
 <pre><code class="perl">
  task "load", sub {
-    kmod load =&gt; "/usr/lkm/ntfs.o";
-    kmod load =&gt; "/path/to/module.o", entry =&gt; "entry_function";
+   kmod load =&gt; "/usr/lkm/ntfs.o";
+   kmod load =&gt; "/path/to/module.o", entry =&gt; "entry_function";
  };</code></pre>
 
 </ul>
