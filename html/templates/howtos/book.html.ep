@@ -29,7 +29,7 @@
          <li>Writing Rexfiles</li>
          <li><a href="/howtos/book/authentication.html">Authentication</a></li>
          <li><a href="/howtos/book/server_grouping.html">Grouping servers</a></li>
-         <li>Using environments</li>
+         <li><a href="/howtos/book/using_environments.html">Using environments</a></li>
          <li>Using Modules</li>
          <li><a href="/howtos/book/using_templates.html">Using templates</a></li>
          <li>Iterating over Arrays</li>
@@ -118,5 +118,3 @@
       </ol>
    </li>
 </ol>
-
-
