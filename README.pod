@@ -2,7 +2,7 @@
 
 =head2 This is the code for rexify.org
 
-Don't blame me for the code... i'm hating creating websites...
+Don't blame me for the code... i hate creating websites...
 
 =head2 Run it local
 
