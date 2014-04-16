@@ -124,6 +124,7 @@ task "setup", sub {
 
 
 <p>If you want to execute a command when the file was changed, you can use the <i>on_change</i> option.</p>
+<pre><code class="perl"># Rexfile
 task "setup", sub {
   file "/etc/my.conf",
     source =&gt; "files/etc/my.conf",
