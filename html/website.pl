@@ -350,9 +350,15 @@ __DATA__
                   </div>
                </div>
 
-<!--
                <h2>Conferences</h2>
--->
+
+               <div class="news_widget">
+                  <div class="news_date">2014-05-08 - 2014-05-10</div>
+                  <div class="news_content"><img src="/img/linuxtag.png" style="float: left; width: 78px;" /> <p>Visit us at the <a href="http://linuxtag.de/">LinuxTag</a> in Berlin.</p>
+                  <p>LinuxTag is Europe's leading exhibition and conference for Linux, Free Software and Open Source.</p>
+                  </div>
+               </div>
+
                <h2>Need Help?</h2>
                <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
                <ul>
