@@ -51,7 +51,7 @@
    </li>
    <li>Working with Files and Packages
       <ol>
-         <li><a href="/howtos/book/quick_and_simple_config_file_changes.html">Quick and simple changes to config files</a></li>
+         <li><a href="/howtos/book/working_with_files.html">Working with files</a></li>
          <li>Using augeas to modify files</li>
          <li><a href="/howtos/book/using_templates.html">Using templates</a></li>
          <li>Arrays and hashes in templates</li>

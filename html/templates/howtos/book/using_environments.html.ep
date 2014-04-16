@@ -143,3 +143,5 @@ task "prepare", group =&gt; "frontend", make {
 
 
 <p>Now you can run the task with <code>rex -E test prepare</code>.</p>
+
+<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>
