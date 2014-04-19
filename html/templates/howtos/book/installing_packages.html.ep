@@ -16,7 +16,8 @@ user "root";
 password "f00b4r";
 
 task "prepare_system", group =&gt; "frontends", sub {
-   install "apache2";
+   pkg "apache2",
+     ensure =&gt; "present";
 };</code></pre>
 
 <p>If you have to install multiple packages you can use an array so that you don't have to write that much.</p>
@@ -26,7 +27,8 @@ user "root";
 password "f00b4r";
 
 task "prepare_system", group =&gt; "frontends", sub {
-   install ["apache2", "libphp5-apache2", "mysql-server"];
+   pkg ["apache2", "libphp5-apache2", "mysql-server"],
+     ensure =&gt; "present";
 };</code></pre>
 
 <p>If you need to write a distribution independent module you can also use the <a href="#">case</a> statement.</p>
@@ -41,8 +43,7 @@ task "prepare_system", group =&gt; "frontends", sub {
       Debian =&gt; ["apache2", "libphp5-apache2"],
       CentOS =&gt; ["httpd", "php5"],
 
-   install $packages;
+   pkg $packages,
+     ensure =&gt; "present";
 };
 </code></pre>
-
-

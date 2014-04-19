@@ -29,7 +29,7 @@
          <li>Writing Rexfiles</li>
          <li><a href="/howtos/book/authentication.html">认证</a></li>
          <li><a href="/howtos/book/server_grouping.html">服务器分组</a></li>
-         <li>Using environments</li>
+         <li><a href="/howtos/book/using_environments.html">使用不同环境</a></li>
          <li>Using Modules</li>
          <li><a href="/howtos/book/using_templates.html">使用模板</a></li>
          <li>Iterating over Arrays</li>
@@ -51,7 +51,7 @@
    </li>
    <li>文件和软件包
       <ol>
-         <li><a href="/howtos/book/quick_and_simple_config_file_changes.html">简捷更改配置文件</a></li>
+         <li><a href="/howtos/book/working_with_files.html">文件操作</a></li>
          <li>Using augeas to modify files</li>
          <li><a href="/howtos/book/using_templates.html">使用模板</a></li>
          <li>Arrays and hashes in templates</li>
@@ -118,5 +118,3 @@
       </ol>
    </li>
 </ol>
-
-

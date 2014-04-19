@@ -1,0 +1,153 @@
+% layout 'default';
+% title 'The Rex Book / Managing Files';
+
+% content_for header => begin
+      <meta name="description" content="Managing files">
+      <meta name="keywords" content="Configuration-Management, Configuration, Management, Files, templates">
+% end
+
+<h1>Working with Files</h1>
+
+<p>One task in configuration management is managing files and keeping them in a consistant state.
+  Rex gives you some easy to use functions to work with files.</p>
+
+<h2>Simple changes</h2>
+
+<p>If you need to verify that a given line exists or gets removed from a file
+  you can use <i>append_if_no_such_line</i> and <i>delete_lines_according_to</i>.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  append_if_no_such_line "/etc/modules", "loop";
+};</code></pre>
+
+<p>This code will just append the line <i>loop</i> to <i>/etc/modules</i> if it doesn't exists.</p>
+
+<h3>Using regular expression to match the line</h3>
+
+<p>It is also possible to define more complex rules. For example if you want to use a regular expression.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  append_if_no_such_line "/etc/modprobe.d/thinkfan.conf",
+    line   =&gt; "options thinkpad_acpi fan_control=1",
+    regexp =&gt; qr{thinkpad_acpi};
+};</code></pre>
+
+<h3>Using a template and executing extra code if the file changed</h3>
+
+<p>If you need to add more than one line to a file or need to add dynamic content
+  to it, you can also use the template() function to do this.</p>
+<p>You can also execute code if the file was changed, for example to restart
+  services.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  append_if_no_such_line "/etc/nagios/hosts.d/frontends.cfg",
+    line      =&gt; template("templates/nagios/host.cfg.tpl", %tpl_variables),
+    regexp    =&gt; qr/\s*host_name\s*$host/,
+    on_change =&gt; sub { service nagios =&gt; "reload"; };
+};</code></pre>
+
+<h3>Deleting lines</h3>
+
+<p>If you need to remove a line you can use <i>delete_lines_according_to</i>.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  delete_lines_according_to qr{loop}, "/etc/modules",
+    on_change =&gt; sub { say "file was modified."; };
+};</code></pre>
+
+<h2>Managing files with snippets</h2>
+
+<p>Sometimes you need to create large configuration files because you don't have the
+  ability to use conf.d folders.</p>
+<p>You can do this by creating the snippets and concatenating them at the end.</p>
+<p>For this you can use the <i>Rex::Commands::Concat</i> module from
+  <a href="http://modules.rexify.org/module/Rex::Commands::Concat">http://modules.rexify.org/module/Rex::Commands::Concat</a>.</p>
+
+<pre><code class="perl"># Rexfile
+use Rex::Commands::Concat;
+
+task "prepare", sub {
+  concat_fragment "config-header",
+    target  =&gt; "/etc/some.conf",
+    content =&gt; "# managed by Rex\n",
+    order   =&gt; "01";
+
+  concat_fragment "listen-entry",
+    target  =&gt; "/etc/some.conf",
+    content =&gt; "Listen *:80\n",
+    order   =&gt; "20";
+};
+
+task "setup", sub {
+  concat "/etc/some.conf",
+    ensure    =&gt; "present",
+    owner     =&gt; "root",
+    group     =&gt; "root",
+    mode      =&gt; 644,
+    on_change =&gt; sub { say "changed..."; };
+};</code></pre>
+
+<p>You can create as many <i>concat_fragment()</i> as you need. And you can create them anywhere you want.
+  At the end of your code you have to call the <i>concat()</i> resource to generate the file out of
+  all the fragments that have been written so far.</p>
+
+
+<h2>The file() resource</h2>
+
+<p>If you want to manage complete files you can use the file() resource to do so.
+  The file() resource supports also setting the permissions and executing
+  actions for changes.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  file "/etc/my.conf",
+    source =&gt; "files/etc/my.conf";
+};</code></pre>
+
+<p>This example will just upload the file <i>files/etc/my.conf</i> to the server and
+  stores it at <i>/etc/my.conf</i>.</p>
+
+<p>You can also define the permissions for the file.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  file "/etc/my.conf",
+    source =&gt; "files/etc/my.conf",
+    owner  =&gt; "root",
+    group  =&gt; "root",
+    mode   =&gt; 600;
+};</code></pre>
+
+
+<p>If you want to execute a command when the file was changed, you can use the <i>on_change</i> option.</p>
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  file "/etc/my.conf",
+    source =&gt; "files/etc/my.conf",
+    owner  =&gt; "root",
+    group  =&gt; "root",
+    mode   =&gt; 600,
+    on_change =&gt; sub { service mysqld =&gt; "restart"; };
+};</code></pre>
+
+<p>This will restart the mysqld service if the file was modified.</p>
+
+<h3>Supervising files</h3>
+
+<p>It is also possible to just supervise files if they are present or have special permissions.
+  To do this, just create the file() resource without the <i>source</i> or <i>content</i> parameter.</p>
+
+<pre><code class="perl"># Rexfile
+task "setup", sub {
+  file "/etc/my.conf",
+    ensure =&gt; "present",
+    owner  =&gt; "root",
+    group  =&gt; "root",
+    mode   =&gt; 600;
+};</code></pre>
+
+<p><hr><a href="/howtos/book.html">Table of Contents</a> </p>

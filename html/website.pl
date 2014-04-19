@@ -371,6 +371,15 @@ __DATA__
                   </div>
                </div>
 
+               <h2>会议</h2>
+
+               <div class="news_widget">
+                  <div class="news_date">2014-05-08 - 2014-05-10</div>
+                  <div class="news_content"><img src="/img/linuxtag.png" style="float: left; width: 78px;" /> <p>我们在柏林 <a href="http://linuxtag.de/">LinuxTag</a> 等待您的光临</p>
+                  <p>LinuxTag 是欧洲领先的 Linux 、自由软件和开源展览会。</p>
+                  </div>
+               </div>
+
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
                <ul>
@@ -439,7 +448,8 @@ __DATA__
        }
 
       });
-   </script>
+   </script>D
+
 
 
 <!-- Piwik -->
