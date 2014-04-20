@@ -1,97 +1,97 @@
 % layout 'default';
-% title 'Using Rex to deploy your applications';
+% title '用 Rex 来部署你的应用';
 
 % content_for header => begin
       <meta name="description" content="Rex - Application Deployment">
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation, Rexfile, Example">
 % end
 
-         <h1>Application Deployment</h1>
+         <h1>应用部署</h1>
 
-         <p>If you have to deploy PHP, Rails, Tomcat or Perl Applications this module will help you automate the deployment task.</p>
-         <p>You can download this module at <a href="https://github.com/Krimdomu/rex-apache-deploy">github</a>.</p>
-         <p>There are also prebuilded packages. See <a href="/get/">get page</a> for more information.</p>
+         <p>如果你要部署 PHP, Rails, Tomcat 或者 Perl 应用，这个模块能帮助你自动化你的部署任务。</p>
+         <p>你可以从 <a href="https://github.com/Krimdomu/rex-apache-deploy">github</a> 上下载这个模块。</p>
+         <p>也有已经提前构建好的包。更多信息见 <a href="/get/">获取</a> 页。</p>
          
 
-         <h2>See all commands</h2>
+         <h2>查看所有命令</h2>
          
             <ul>
-               <li><a href="/api/Rex/Apache/Build.pm.html">Build Commands</a>
-               <li><a href="/api/Rex/Apache/Deploy.pm.html">Deploy Commands</a>
-               <li><a href="/api/Rex/Apache/Inject.pm.html">Configuration-Injection Commands</a>
+               <li><a href="/api/Rex/Apache/Build.pm.html">构建命令</a>
+               <li><a href="/api/Rex/Apache/Deploy.pm.html">部署命令</a>
+               <li><a href="/api/Rex/Apache/Inject.pm.html">配置注入命令</a>
             </ul>
 
          
 
-         <h2>Installation</h2>
+         <h2>安装</h2>
 
-         <p>You can install this module out of our Repositories. See <a href="/get/">Get Rex</a> for more information.</p>
-
-         
-         <h2>Examples</h2>
-
-
-         <h3>Simple PHP Deployment</h3>
+         <p>你可以脱离我们的仓库自己安装这个模块。更多信息见 <a href="/get/">获取 Rex</a> 页。</p>
 
          
+         <h2>示例</h2>
 
-         <p>If you want to deploy your PHP Project just create a file <i>Rexfile</i> in the top directory of your project. And follow these steps.</p>
+
+         <h3>简单的 PHP 部署</h3>
+
          
 
-         <h4>Creating a Package</h4>
+         <p>如果你想部署你的 PHP 项目，只要在你项目的顶层目录里创建一个文件叫 <i>Rexfile</i>。然后按照下面步骤开始：</p>
+         
 
-         <p>Create a build task. This task will build a tar.gz archive of your application for distribution. You can give this file for example to your system administrators.</p>
-         <p>If you want to compress your JavaScript and CSS files, just download yuicompressor and place it anywhere in your filessystem. You also need an up-to-date java installation.</p>
+         <h4>打包</h4>
+
+         <p>创建一个构建任务。这个任务将会构建一个 tar.gz 的归档，包含有你的应用代码用来分发。比如说你可以把这个文件交给你的系统管理员。</p>
+         <p>如果你想压缩你的 JavaScript 和 CSS 文件，只要下载 yuicompressor 然后放到你文件系统的某个地方，当然你还得安装好一个最新的 Java。</p>
 
             <pre><code class="perl">use Rex::Apache::Build;
 
-# set the path to yuicompressor.jar
+# 设置 yuicompressor.jar 文件路径
 yui_path "./yuicompressor.jar";
 
-# get the application version from the file index.php
-# search for a string $VERSION = "foobar"; and extract "foobar".
-# for example $VERSION = "1.0";
+# 从 index.php 里获取应用的版本号
+# 通过搜索字符串 $VERSION = "foobar"; 然后获取到具体的 "foobar"
+# 比如 $VERSION = "1.0";
 get_version_from "index.php", qr{\$VERSION = "([^"]+)";};
 
 desc "Build a new package";
 task "build", sub {
        
-   # compress all *.js files inside public/js
-   # and all *.css files inside public/css
+   # 压缩 public/js 里所有的 *.js 文件
+   # 压缩 public/css 里所有的 *.css 文件
    yui compress =&gt; glob("public/js/*.js"), glob("public/css/*.css");
        
-   # build the package
+   # 打包
    build;
 }; </code></pre>
 
          
-         <h4>Uploading to the Server</h4>
-         <p>Now, after building the package you need to upload it to your server.</p>
-         <p>Add the next line to the other <i>use</i> line.</p>
+         <h4>上传到服务器</h4>
+         <p>现在，你打包完了，就需要上传到你的服务器上。</p>
+         <p>把下面这行添加到之前那些 <i>use</i> 下面。</p>
 
             <pre><code class="perl">use Rex::Apache::Deploy Symlink;</code></pre>
 
          
-         <p>And specify the user and the key to connect via ssh to your server. Put this above the build task.</p>
+         <p>注意要指定连接你服务器的 ssh 用户和用户密钥。这段需要放到打包任务之前。</p>
 
             <pre><code class="perl">user "deploy";
 public_key "/home/deploy/.ssh/id_rsa.pub";
 private_key "/home/deploy/.ssh/id_rsa";</code></pre>
 
          
-         <p>Group all your servers so that you don't need to write so much. This will put the servers <i>php01, php02, php03 and php04</i> in the group named <i>php</i>.</p>
+         <p>把所有服务器定义成组，就不用每次都写一大串了。下面把服务器 <i>php01, php02, php03 and php04</i> 都放进一个叫 <i>php</i> 的组里。</p>
 
             <pre><code class="perl">group "php" =&gt; "php[01..04]";</code></pre>
          
 
-         <p>Now specify the directory for the deployment. (This is a directory outside your DocumentRoot. Because the DocumentRoot will be a symlink to the version of your application that you want to deploy. So it is easy and fast to rollback your deployment.) And specify the DocumentRoot. This will become a symlink.</p>
+         <p>现在指定部署的目录。(这个目录不能使你的 DocumentRoot。因为 DocumentRoot 将会是一个指向你要部署的某个版本的应用的软连接。这样你可以非常容易的快速回退你的部署。) 然后再指定 DocumentRoot。</p>
 
             <pre><code class="perl">deploy_to "/var/deploy";
 document_root "/var/www/html";</code></pre>
 
          
 
-         <p>Now create a deployment task. This task will upload packaged application to the servers defined in the <i>php</i> group and extract it into a subdirectory of the <i>deploy_to</i> directory (named after the version of your application) and will point your DocumentRoot to the new uploaded version.</p>
+         <p>现在创建部署任务。这个任务将会上传打包好的应用到 <i>php</i> 组的服务器上。然后解压到 <i>deploy_to</i> 目录下的子目录里。 (子目录命名为你应用的版本号) 然后把你的 DocumentRoot 指向到这个新上传的版本。</p>
 
             <pre><code class="perl">task "deploy", group =&gt; "php", sub {
    deploy;
@@ -99,21 +99,21 @@ document_root "/var/www/html";</code></pre>
 
          
 
-         <h4>Running the tasks</h4>
-         <p>You can now run the tasks with <i>rex taskname</i>. You can list the tasks with <i>rex -T</i>.</p>
+         <h4>运行任务</h4>
+         <p>现在你可以通过<i>rex taskname</i>命令运行任务。或者通过<i>rex -T</i> 列举所有任务。</p>
             <pre><code class="bash">$ rex build deploy</code></pre>
 
 
 
          
-         <h3>Simple Tomcat deployment</h3>
+         <h3>简单的 Tomcat 部署</h3>
          
 
-         <p>This example will deploy <i>myapp-1.0.war</i> to the servers <i>tomcat01, tomcat02, tomcat03</i> and <i>tomcat04</i>. It will deploy the application with the help of the <i>Tomcat Manager</i> Application to the context path <i>/myapp</i>.</p>
+         <p>这个示例将会部署 <i>myapp-1.0.war</i> 到 <i>tomcat01, tomcat02, tomcat03</i> 和 <i>tomcat04</i> 服务器上。它将通过 <i>Tomcat Manager</i> 来帮助部署应用到指定的 <i>/myapp</i> 路径。</p>
 
             <pre><code class="perl">use Rex::Apache::Deploy Tomcat;
 
-# Version of the application
+# 应用版本
 my $VERSION = "1.0";
 
 user "deploy";

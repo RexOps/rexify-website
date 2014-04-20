@@ -1,43 +1,43 @@
 % layout 'default';
-% title 'Using Rex from shell scripts';
+% title '在 shell 脚本中使用 Rex';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - Shell Scripts">
       <meta name="keywords" content="Shell, Bash, Script, scripting, perl, rex">
 % end
       
-<h1>Using Rex from Shell Scripts</h1>
-<p>As of version 0.43 there is a package called rex-shell-extension that install a lot of rex-* commands. These commands ease the use of Rex inside your shell scripts.</p>
-<p>With these commands at hand you can transparently run commands on remote hosts from within your shell scripts.</p>
+<h1>在 shell 脚本中使用 Rex</h1>
+<p>在 0.43 版里有一个包叫 rex-shell-extension 里面有很多 rex-* 命令。这些命令可以帮助你在 shell 脚本中使用 Rex。</p>
+<p>通过这些命令，你可以在 shell 脚本中手动传递 run 命令到远端主机上。</p>
 
-<h1>Installation</h1>
+<h1>安装</h1>
 
-<p>If you're using the Rex repository for your distribution you just can install the package <i>rex-shell-extension</i>. This will install the rex-* helper scripts to <i>/usr/lib/rex/shell</i>.</p>
-<p>If there is no package for your distribution available, you can clone the github repository,</p>
+<p>如果你在用 Rex 的仓库，你可以直接安装 <i>rex-shell-extension</i> 包，默认会在你的 <i>/usr/lib/rex/shell</i> 路径下安装哪些 rex-* 脚本。</p>
+<p>如果你用的发行版没有软件包可用，你得自己克隆 github 仓库：</p>
 
 <pre><code class="bash">git clone https://github.com/krimdomu/rex-shell-extension.git
 cd rex-shell-extension.git
 ./setup.sh</code></pre>
 
-<h1>Available Commands</h1>
+<h1>可用命令</h1>
 
-<p>You can use a lot of predefined commands, but you can also execute any other programm with <i>rex-run</i>.</p>
+<p>有很多已经准备好的命令可用，不过你也可以用 <i>rex-run</i> 命令在执行其他程序。</p>
 
 <p>rex-arp, rex-bunzip2, rex-bzip2, rex-cat, rex-chattr, rex-chgrp, rex-chmod, rex-chown, rex-cp, rex-df, rex-dmesg, rex-dnsdomainname, rex-domainname, rex-download, rex-dpkg, rex-file, rex-find, rex-getfacl, rex-grep, rex-gunzip, rex-gzip, rex-halt, rex-head, rex-hostname, rex-id, rex-ifconfig, rex-ifdown, rex-ifenslave, rex-ifup, rex-install, rex-ip, rex-iptables, rex-iptables-restore, rex-iptables-save, rex-kill, rex-ln, rex-ls, rex-lsattr, rex-lsmod, rex-mkdir, rex-modprobe, rex-mount, rex-mv, rex-netstat, rex-nice, rex-ping, rex-ps, rex-readlink, rex-reboot, rex-remove, rex-rm, rex-rmmod, rex-route, rex-rpm, rex-run, rex-sed, rex-service, rex-setfacl, rex-shutdown, rex-sync, rex-tail, rex-tar, rex-template, rex-test, rex-touch, rex-tracepath, rex-traceroute, rex-umount, rex-uname, rex-upload, rex-zcat</p>
 
-<h1>Managing NTP</h1>
+<h1>管理 NTP</h1>
 
-<p>This is a small example that will show you how to manage your NTP installation with a bash script.</p>
+<p>这是一个小示例，演示如何通过 bash 脚本管理你的 NTP 设置。</p>
 
 <pre><code class="bash">#!/bin/bash
 
 export PATH=/usr/lib/rex/shell:$PATH
 
 REX_REMOTE_USER=root
-# if you're using password authentication, or if you're ssh key requires a passphrase
+# 如果你在用密码认证，或者你的 ssh 密钥需要密码
 REX_REMOTE_PASSWORD=f00b4r
 
-# if you're using key authentication
+# 如果你在用密钥认证
 REX_REMOTE_PRIVATE_KEY=/path/to/the/private_key
 REX_REMOTE_PUBLIC_KEY=/path/to/the/public_key
 
@@ -46,13 +46,13 @@ export REX_REMOTE_USER REX_REMOTE_PASSWORD REX_REMOTE_PRIVATE_KEY REX_REMOTE_PUB
 SERVERS="fe01 fe02 mw01 mw02 db01 db02"
 
 function manage_ntp() {
-   # install ntpd package
+   # 安装 ntpd 软件包
    rex-install ntpd
    
-   # upload configuration file
+   # 上传配置文件
    cat files/etc/ntp.conf | rex-file /etc/ntp.conf owner=root group=root mode=644
 
-   # restart service and ensure that it gets started at boot-time
+   # 重启服务并确保在服务器重启后服务会自动启动
    rex-service ntpd restart
    rex-service ntpd ensure=started
 }

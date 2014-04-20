@@ -22,8 +22,8 @@
          <a name="screencast"></a>
          <h1>Screencasts</h1>
          <ul class="simple-list">
-            <li><a href="http://www.youtube.com/watch?v=hrRG4RoU9vU">Installing Rex on Windows</a> - Showing the installation of Rex and configuration of Eclipse to develop Rexfiles.</li>
-            <li><a href="http://www.youtube.com/watch?v=KDVOKXn1jDU">Installing Rex on Ubuntu</a> - Showing the installation of Rex and configuration of Eclipse to develop Rexfiles.</li>
+            <li><a href="http://www.youtube.com/watch?v=hrRG4RoU9vU">在 Windows 上安装 Rex</a> - 演示 Rex 的安装以及 如何配置 Eclipse 来开发 Rexfile。</li>
+            <li><a href="http://www.youtube.com/watch?v=KDVOKXn1jDU">在 Ubuntu 上安装 Rex</a> - 演示 Rex 的安装以及 如何配置 Eclipse 来开发 Rexfile。</li>
          </ul>
 
 

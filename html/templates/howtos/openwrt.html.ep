@@ -1,77 +1,77 @@
 % layout 'default';
-% title 'Using (R)?ex to manage OpenWrt systems';
+% title '用 (R)?ex 管理 OpenWrt 系统';
 % content_for header => begin
     <meta name="description" content="(R)?ex - manage all your boxes from a central point - OpenWrt howto">
     <meta name="keywords" content="Howto, Rex, OpenWrt">
 % end
 
-<h1>Using (R)?ex to manage OpenWrt systems</h1>
+<h1>用 (R)?ex 管理 OpenWrt 系统</h1>
 
-<p><a href="https://openwrt.org">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
+<p><a href="https://openwrt.org">OpenWrt</a> 是为嵌入式设备开发的 Linux 发行版，主要用于路由器设备。这意味着它的每个组件都在大小上做了优化和精简，以适应资源有限的设备。这导致它上面有些事情跟完整的桌面或服务器发行版不太一致。本指南试图帮助你使用 Rex 来管理 OpenWrt 设备。</p>
 
-<h2>Overview</h2>
+<h2>概要</h2>
 
-<h3>What's working?</h3>
+<h3>哪些能用？</h3>
 
-<p>Please see the <a href="compatibility.html#embedded">official compatibility page</a>. You may also want to check the current project weather on <a href="https://build.rexify.org">build.rexify.org</a>.</p>
+<p>请阅读 <a href="compatibility.html#embedded">官方的兼容性页面</a>。你也可以查看当前的项目状态，在<a href="https://build.rexify.org">build.rexify.org</a>。</p>
 
-<h3>Known limitations</h3>
+<h3>已知限制</h3>
 
 <ul>
-<li><p><strong>Service status</strong></p>
+<li><p><strong>服务状态</strong></p>
 
-<p>Despite OpenWrt provides a <code>service_check()</code> function in <code>/lib/functions/service.sh</code>, it seems that it's only sporadically used in initscripts. Nevertheless Rex currently implements its service status check via this function but it's more of a workaround than a solution. It's also worth noting that sometimes the initscript's name and its executable's name are not the same (e.g cron vs. crond). You should use the executable's name in your OpenWrt status checks.</p></li>
-<li><p><strong>Missing renice</strong></p>
+<p>尽管 OpenWrt 在 <code>/lib/functions/service.sh</code> 里提供了一个 <code>service_check()</code> 函数，这个函数能在 init 脚本里偶尔使用。目前 Rex 还是通过这个函数做服务器状态检查，不过这不算什么好的解决方案。还有一点值得注意，init 脚本的名字和可执行文件的名字不一定一样(比如cron和crond)。在 OpenWrt 状态检查里，你只能用可执行文件的名字。</p></li>
+<li><p><strong>缺少优先级调整</strong></p>
 
-<p>AFAIK renice isn't available for OpenWrt.</p></li>
-<li><p><strong>Inventory gathering</strong></p>
+<p>OpenWrt 上买有 AFAIK renice 命令。</p></li>
+<li><p><strong>硬件收集</strong></p>
 
-<p>OpenWrt doesn't provide dmidecode for all architectures so this might or might not work for you.</p></li>
+<p>OpenWrt 没有给全部架构都提供 dmidecode，所以这方面可能能有也可能没有……</p></li>
 </ul>
 
-<h2>Requirements</h2>
+<h2>需求</h2>
 
 <ul>
-<li>&gt;=rex-0.43: initial support has been added in this release</li>
-<li>Attitude Adjustment (12.09 final): latest stable OpenWrt release as of 2014-01-12 and the only one which is tested to work with Rex, but Rex might work with other releases as well - let us know! :)</li>
+<li>&gt;=rex-0.43: 初始化支持在该版本被加入</li>
+<li>调整 (12.09 最终版): OpenWrt 最新稳定版 2014-01-12 版是我们唯一测试过 Rex 的版本，但是其他版本应该也能运行 - 如果你测过，请告诉我我们! :)</li>
 </ul>
 
-<p>Generally you'll need the following packages on your OpenWrt box on top of a vanilla install:</p>
+<p>通常来说你需要下面这些软件安装在你的 OpenWrt 设备上：</p>
 
 <ul>
-<li>SFTP server: openssh-sftp-server or gesftpserver</li>
+<li>SFTP 服务器: openssh-sftp-server or gesftpserver</li>
 <li>perl</li>
-<li>perl modules: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
+<li>perl 模块: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
 </ul>
 
-<p>Optional packages (only for specific Rex functions):</p>
+<p>可能需要的软件(仅为部分特定 Rex 函数所需):</p>
 
 <ul>
-<li>sync_up: rsync</li>
-<li>user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
-<li>inventory gathering: dmidecode</li>
+<li>上传同步: rsync</li>
+<li>用户管理: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
+<li>硬件采集: dmidecode</li>
 </ul>
 
-<h2>Details</h2>
+<h2>细节</h2>
 
-<h3>SFTP server</h3>
+<h3>SFTP 服务器</h3>
 
-<p>By default OpenWrt doesn't provide an SFTP server. As Rex does lots of lower level operations via SFTP (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you should install on your box is either openssh-sftp-server or gesftpserver.</p>
+<p>OpenWrt 默认不提供 SFTP 服务。考虑到 Rex 很多底层操作都是通过 SFTP 完成 (<code>is_dir()</code>, <code>is_file()</code>, ...), 你在设备上安装的第一个软件包就应该是 openssh-sftp-server 或 gesftpserver。</p>
 
-<p>A massively subjective comparison of these two may help to make your decision:</p>
+<p>一点主观上的对比帮助你决定安装哪个包：</p>
 
 <h4>openssh-sftp-server</h4>
 
 <ul>
-<li>easier to set up</li>
-<li>a bit smaller size in itself</li>
-<li>depends on libopenssl and zlib (and they are "huge" and probably not needed by other packages)</li>
-<li>only supports SFTP v3 (that should be fine in general though)</li>
-<li>widespread use</li>
-<li>BSD licensed</li>
+<li>设置简单</li>
+<li>本身大小更小</li>
+<li>依赖 libopenssl 和 zlib (而这两个包的大小很大，而且可能别的包都用不上)</li>
+<li>只支持 SFTP v3 (不过通常没问题)</li>
+<li>广泛使用</li>
+<li>BSD 开源协议</li>
 </ul>
 
-<p>It can be set up with the following commands:</p>
+<p>通过下面命令就可以设置好：</p>
 
 <pre><code>opkg update
 opkg install openssh-sftp-server
@@ -80,15 +80,15 @@ opkg install openssh-sftp-server
 <h4>gesftpserver</h4>
 
 <ul>
-<li>needs some (minimal) tinkering after installation</li>
-<li>a bit bigger in size in itself</li>
-<li>no cumbersome dependencies, good for minimal systems</li>
-<li>supports SFTP v3-v6</li>
-<li>still under development</li>
-<li>GPL licensed</li>
+<li>安装完成后还需要一点小配置</li>
+<li>本身大小稍微有点大</li>
+<li>没有额外依赖，对微型系统来说太棒了</li>
+<li>支持 SFTP v3-v6 协议</li>
+<li>还在开发状态</li>
+<li>GPL 开源协议</li>
 </ul>
 
-<p>It can be set up with the following commands:</p>
+<p>通过下面命令就可以设置好：</p>
 
 <pre><code>opkg update
 opkg install gesftpserver
@@ -96,30 +96,30 @@ mkdir /usr/libexec
 ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server
 </code></pre>
 
-<p>If you want to automate the set up of the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. The bottom line is to don't try to use the built-in <code>mkdir</code> and <code>symlink</code> functions at this point as they are broken before you have an SFTP server in place.</p>
+<p>你如果想把在新 OpenWrt 上设置选定的 SFTP 服务器的过程自动化，直接把代码放进一个 Rex 任务用 <code>run</code> 调用即可。注意不要使用内置的 <code>mkdir</code> 和 <code>symlink</code> 函数，因为在你还没安装好 SFTP 服务器之前这些都还用不了。</p>
 
-<p>You can find out more about gesftpserver and a comparison of different SFTP implementations/versions on <a href="http://www.greenend.org.uk/rjk/sftpserver/">their website</a>.</p>
+<p>关于 gesftpserver 和更多不同的 SFTP 实现/版本的信息，你可以访问<a href="http://www.greenend.org.uk/rjk/sftpserver/">他们的网站</a>获取。</p>
 
 <h3>Perl</h3>
 
-<p>You'll need to install the following packages:</p>
+<p>你会需要安装下面这些包：</p>
 
 <ul>
-<li>perl: obviously</li>
-<li>perlbase-bytes, perlbase-essential: very basic set of perl modules</li>
+<li>perl: 很显然的</li>
+<li>perlbase-bytes, perlbase-essential: 很基础的 Perl 模块集合</li>
 <li>perlbase-data: for Data::Dumper</li>
-<li>perlbase-file: for glob operations</li>
-<li>perlbase-digest: perlbase-data dependency and it is nice to have in order to speed up file operations in general (via MD5 hashing)</li>
-<li>perlbase-xsloader: perlbase-data and perlbase-file dependency</li>
+<li>perlbase-file: for glob 操作</li>
+<li>perlbase-digest: perlbase-data 的依赖，而且它还可以加速一些文件操作(通过 MD5 哈希)</li>
+<li>perlbase-xsloader: perlbase-data 和 perlbase-file 依赖</li>
 </ul>
 
 <h3>rsync</h3>
 
-<p>Merely needed by sync_up functionality.</p>
+<p>sync_up 函数需要。</p>
 
 <h3>shadow-*</h3>
 
-<p>OpenWrt doesn't provide traditional user and group management commands by default as these procedures are rarely needed in the majority of the targeted use cases. However, if you really need to do these type of stuff on your router, you're in luck, as you can easily install these packages from the official repository:</p>
+<p>OpenWrt 默认没有提供复杂的用户组管理命令，因为一般情况下用不着。不过如果你真的需要在你的路由器上做这类工作的话，你也可以通过官方仓库很容易的安装上这些软件包：</p>
 
 <ul>
 <li>shadow-groupadd</li>

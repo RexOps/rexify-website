@@ -1,30 +1,30 @@
 % layout 'default';
-% title 'Use Rex::HTTP::Endpoint instead of SSH.';
+% title '用 Rex::HTTP::Endpoint 代替 SSH.';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - manage all your boxes from a central point - HTTP Transport Layer">
       <meta name="keywords" content="Rex, HTTP, HTTPS">
 % end 
 
-         <h1>HTTP Transport Layer / Why?</h1>
-         <p>The default transport layer for Rex is SSH. But there are always some cases where SSH isn't supported or isn't the best choice.</p>
-         <p>For those cases the transport layer of Rex is modular so that other transport layers can be created.</p>
+         <h1>HTTP 传输层 / 理由?</h1>
+         <p>Rex 默认的传输层是 SSH。但总有些情况下 SSH 没法支持或者说不是最佳选择。</p>
+         <p>在这些情况下，Rex 的模块化的传输层就可以让我们创建其他的传输办法。</p>
 
          
 
-         <h2>Limitations</h2>
-         <p>Rex::Endpoint::HTTP has (right now) some limitations</p>
+         <h2>限制</h2>
+         <p>Rex::Endpoint::HTTP (目前)有些限制</p>
 
          
 
          <ul>
-            <li>The <i>sync</i> command doesn't work. (yet)</li>
+            <li><i>sync</i> 命令(暂时)不可用。</li>
          </ul>
 
          
 
-         <h2>Supported Platforms</h2>
-         <p>For these platforms we have build packages. Rex::Endpoint::HTTP will also run on other platforms. You have to install it via CPAN.</p>
+         <h2>支持的平台</h2>
+         <p>以下平台我们已经打包。Rex::Endpoint::HTTP 也可以运行在其他平台上。你可以通过 CPAN 自行安装。</p>
 
          
          
@@ -38,46 +38,46 @@
 
          
 
-         <h2>Installation</h2>
-         <p>Currently Rex::Endpoint::HTTP is available for Debian, Ubuntu, CentOS 6, Fedora and SuSE. You can install it via the Rex repositories. Just search for rex-endpoint-http.</p>
-         <p>Rex::Endpoint::HTTP must be installed on the target machine (on your servers).</p>
-         <p>You can install it with the following command on other platforms.</p>
+         <h2>安装</h2>
+         <p>目前 Rex::Endpoint::HTTP 在 Debian, Ubuntu, CentOS 6, Fedora 和 SuSE 上都有打包好。你可以通过 Rex 的仓库直接安装。搜索 rex-endpoint-http 就行。</p>
+         <p>Rex::Endpoint::HTTP 必须安装在目的主机上。</p>
+         <p>其他平台上，你可以通过下面的命令安装。</p>
 
             <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</code></pre>
 
 
          
-         <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Endpoint::HTTP.</p>
+         <p>在 Debian/Ubuntu 服务器输入下面命令安装 Rex::Endpoint::HTTP。</p>
             <pre><code class="bash">$ apt-get install rex-endpoint-http</code></pre>
 
 
          
-         <p>If you installed Rex::Endpoint::HTTP <b>via the package repository, the password is the hostname</b>! (hostname -s)</p>
+         <p>当你通过软件仓库安装好了 Rex::Endpoint::HTTP, <b>默认密码是主机名</b>(hostname -s) !</p>
 
          
 
-         <h2>Configuration</h2>
-         <p>After the installation create a configuration file in the directory <i>/etc/rex</i> named <i>httpd.conf</i>. In this file you can configure on what ip/port the daemon should listen on and where to find the (optional) user database.</p>
+         <h2>配置</h2>
+         <p>安装完成后，在 <i>/etc/rex</i> 目录下创建一个叫 <i>httpd.conf</i> 的配置文件。在这个文件里，你可以配置守护进程将要监听的 ip 和端口，以及(可能要用的)用户数据库的路径。</p>
 
          
 
-         <p>There are 2 options on how to configure Rex::Endpoint::HTTP.</p>
+         <p>Rex::Endpoint::HTTP 的配置有两个选项</p>
 
          
 
          <h3>Standalone</h3>
-         <p>You can use the buildin webserver <i>Hypnotoad</i> from Mojolicious to directly serve the requests. It is a stable server and so you don't need to setup Apache or an other server.</p>
+         <p>你可以用 Mojolicious 内置的 web 服务器 <i>Hypnotoad</i> 直接响应请求。这是个很稳定的服务器，你不需要再部署 Apache 或者别的什么了。</p>
 
          
 
-         <p>We recommend to use SSL encryption and SSL authentication for your setup but it is also possible to run it without SSL. To learn how to setup your own CA in a few easy steps read the chapter <i>Setting Up Your Own CA</i>.</p>
+         <p>我们建议使用 SSL 加密和 SSL 认证，不过不用 SSL 也一样能运行起来。想了解如何快速设置你自己的 CA ，请阅读 <i>Setting Up Your Own CA</i> 章节。</p>
 
          
 
-         <p>It is also possible to use SSL with user/password authentication. This is the default setup if you install Rex::Endpoint::HTTP via the packages. Read the chapter <i>Managing The User Database</i> for more information on that.</p>
+         <p>也可以用使用带用户名密码认证的 SSL。如果你是通过软件包安装的 Rex::Endpoint::HTTP 这也是默认的设置。更多信息请阅读<i>Managing The User Database</i> 章节。</p>
 
          
-         <p>Open the file <i>/etc/rex/httpd.conf</i> and paste the following lines in it.</p>
+         <p>打开 <i>/etc/rex/httpd.conf</i> 文件，然后把下面几行代码粘贴进去：</p>
 
             <pre><code class="perl">{
    user_file =&gt; "/etc/rex/user.db", 
@@ -89,48 +89,48 @@
 
          
 
-         <p>Save the file but before you start the daemon you have to create the user database file (if you want to use user authentication).</p>
+         <p>保存好文件。不过在你启动守护进程前，还得创建用户数据库(如果你想使用用户认证的话)。</p>
 
          
 
-         <p>Open the file <i>/etc/rex/user.db</i> and add the following entry. The password is <i>test</i>. Please create your own sha1 string as shown below.</p>
+         <p>打开 <i>/etc/rex/user.db</i> 文件添加下面几行。密码是 <i>test</i>。请创建你自己的 SHA1 字符串，就跟下面一样。</p>
          
 
             <pre><code class="bash">root:a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</code></pre>
 
          
-         <p>If you installed Rex::Endpoint::HTTP <b>via the package repository, the password is the hostname</b>! (hostname -s)</p>
+         <p>如果你是通过软件仓库安装好的 Rex::Endpoint::HTTP, <b>默认密码是主机名</b>(hostname -s) !</p>
 
          
 
-         <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
-         <p>You can create these strings with the following command:</p>
+         <p>文件包括两列，第一列是用户名，第二列是密码的 SHA1 字符串。</p>
+         <p>你可以通过下面的命令生成这种字符串：</p>
 
             <pre><code class="bash">$ perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
 
 
          
 
-         <p>Now you can start the daemon. If you've installed it via the packages you can use the init script. (as root)</p>
+         <p>现在你可以启动守护进程了。如果是通过软件仓库安装的，那也可以直接(以 root 身份)启动 init 脚本。</p>
 
             <pre><code class="bash">$ /etc/init.d/rex-endpoint-http start</code></pre>
 
          
 
-         <p>You can download the initscript from the git repository at <a href="https://github.com/krimdomu/rex-endpoint-http/tree/master/doc">https://github.com/krimdomu/rex-endpoint-http/tree/master/doc</a>.</p>
+         <p>你可以从 git 仓库<a href="https://github.com/krimdomu/rex-endpoint-http/tree/master/doc">https://github.com/krimdomu/rex-endpoint-http/tree/master/doc</a>里下载 init 脚本。</p>
 
-         <p>To start the daemon by hand you can use the following command. (as root)</p>
+         <p>手动启动进程可以使用下面的命令：</p>
 
             <pre><code class="bash">$ hypnotoad /usr/local/bin/rex_endpoint_http</code></pre>
 
          
 
-         <p>This will start the endpoint on port 8433 with SSL encryption.</p>
+         <p>这将在 8433 端口启动 SSL 加密终端。</p>
          
          
          
          
-         <p>If you want to use SSL encryption with your own certificates modify the <i>listen</i> line.</p>
+         <p>如果你想用自己的证书完成 SSL 加密，修改 <i>listen</i> 一行：</p>
 
          
 
@@ -138,18 +138,18 @@
 
          
 
-         <p>This will start the endpoint on port 8443 with SSL encryption. But without client verification! If you want to use Client verification (and this is the recommended way) change the listen line to the following:</p>
+         <p>这样会在 8433 端口启动 SSL 加密，但不在客户端校验！如果你还想加上客户端校验(同样这也是我们建议的做法)，listen 行应该改成下面这样：</p>
 
             <pre><code class="perl">listen =&gt; ["https://*:8443?cert=/path/to/your/cert-file.pem&amp;key=/path/to/your/key-file.key&amp;ca=/path/to/your/ca-file.crt"],</code></pre>
 
-         <p>And to setup your own CA read the chapter <i>Setting Up Your Own CA</i>.</p>
+         <p>再说一次设置自己的 CA 请阅读 <i>Setting Up Your Own CA</i>。</p>
 
 
          
 
-         <h3>Use A Frontend Server Like Apache</h3>
-         <p>It is also possible to use Apache (or any other Webserver with a proxy feature) in front of Rex::Endpoint::HTTP. So it is possible to implement better ACLs or different authentication methods.</p>
-         <p>An example Apache configuration looks like this:</p>
+         <h3>使用前端代理服务器，比如 Apache</h3>
+         <p>在 Rex::Endpoint::HTTP 前面可以使用 Apache (或者其他有代理功能的服务器)。这样可以实现更好的 ACL 控制或不同的认证方式。</p>
+         <p>Apache 配置示例如下：</p>
 
             <pre><code class="bash">&lt;VirtualHost 10.68.20.3:8443&gt;
     ServerName your-server.your-domain.tld
@@ -178,9 +178,9 @@
 
          
 
-         <h2>Setting Up Your Own CA</h2>
+         <h2>设置你自己的 CA</h2>
 
-         <p>There is a simple way to setup your own CA. For this you can use a Rex Recipe <i>Rex::SSL::CA</i>.</p>
+         <p>有一个很简单的办法来设置你自己的 CA。你可以用一个 Rex Recipe <i>Rex::SSL::CA</i>。</p>
 
             <pre><code class="bash">$ rexify ca --use Rex::SSL::CA
 cd ca
@@ -189,7 +189,7 @@ require Rex::SSL::CA;
 require Rex::SSL::CA::Server;
 EOF</code></pre>
 
-         <p>Please don't use a servername for the <i>cn</i> parameter here!</p>
+         <p>这里不要给 <i>cn</i> 参数配置主机名！</p>
 
             <pre><code class="bash">$ rex SSL:CA:create --password=pass            \\
             [--country=cn                    \\
@@ -201,7 +201,7 @@ EOF</code></pre>
              --email=email]</code></pre>
          
 
-         <p>And to create a server/client certificate you can use the following task. Here you have to use the server name for the <i>cn</i> parameter.</p>
+         <p>创建服务器/客户端证书的话可以用下面这个任务。这里的 <i>cn</i> 参数则应该配置为服务器主机名。</p>
 
             <pre><code class="bash">$ rex SSL:CA:Server:create --cn=name-of-the-server --password=pass \\
             [--challenge-password=challenge-password  \\
@@ -214,37 +214,37 @@ EOF</code></pre>
 
          
 
-         <p>After that you can copy the cert file from ca/certs/$cn.crt and the keyfile from ca/private/$cn.key. The CA Cert file is located at ca/certs/ca.crt.</p>
+         <p>然后你可以复制证书文件 ca/certs/$cn.crt 和密钥文件 ca/private/$cn.key。CA 证书文件则在 ca/certs/ca.crt。</p>
 
 
          
 
-         <h2>Managing The User Database</h2>
+         <h2>管理用户数据库</h2>
 
-         <p>The default location for the user database is <i>/etc/rex/user.db</i>. If you installed Rex::Endpoint::HTTP with the packages from the repositories you will find it there.</p>
+         <p>用户数据库的默认位置是 <i>/etc/rex/user.db</i>。如果你是从 Rex 仓库直接安装的 Rex::Endpoint::HTTP 你就可以在这个位置找到它。</p>
 
          
 
-         <p>The file constist of two columns. The first is the user name and the second is the password as a sha1 string.</p>
-         <p>You can create these strings with the following command:</p>
+         <p>文件包括两列，第一列是用户名，第二列是密码的 SHA1 字符串。</p>
+         <p>你可以通过下面的命令生成这种字符串：</p>
 
             <pre><code class="bash">$ perl -MDigest::SHA -e 'print Digest::SHA::sha1_hex("your-password")'</code></pre>
          
 
-         <h2>Usage</h2>
+         <h2>使用</h2>
 
-         <p>If you want to use Rex::Endpoint::HTTP you just need to set the connection type.</p>
+         <p>想要用 Rex::Endpoint::HTTP 只需要设置连接类型：</p>
             <pre><code class="perl"># Rexfile
 set connection =&gt; "http";</code></pre>
          
-         <p>With this setting rex tries to connect to your servers via HTTP on port 8080. If you want to use SSL you have to set the connection type to <i>https</i>. This defaults to port 8433.</p>
+         <p>这个设置下 rex 会尝试通过 HTTP 协议连接服务器的 8080 端口。如果你想用 SSL，那么设置成 <i>https</i>。默认连接 8433 端口。</p>
 
             <pre><code class="perl"># Rexfile
 set connection =&gt; "https";</code></pre>
 
          
 
-         <p>To use SSL authentication you can define the Cert and Keyfiles. Remember, if you want to use SSL authentication you have to create your own CA and create a SSL certificate for every server and for your client.</p>
+         <p>要使用 SSL 认证，你需要定义证书和密钥文件。记住，如果你要使用 SSL 认证，你必须创建自己的 CA 然后给每个服务器和客户端创建一个 SSL 证书。</p>
           
             <pre><code class="perl"># Rexfile
 set connection =&gt; "https";

@@ -1,22 +1,22 @@
 % layout 'default';
-% title 'Using modules and templates within Rex';
+% title '在 Rex 里使用模块和模板';
 
 % content_for header => begin
       <meta name="description" content="Using modules and templates within Rex">
       <meta name="keywords" content="Rex, Template, Configuration">
 % end
 
-<h1>Using Modules and Templates</h1>
+<h1>使用模块和模板</h1>
 
-<p>Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.</p>
+<p>上传一些硬编码的配置文件到你的服务器上往往是不够的。有时候你需要在文件里添加一些动态的值。比如你希望把服务绑定在一个特定的网卡上、或者给不同环境的应用配置不同的数据库服务器。这时候模板技术非常有用。</p>
 
-<p>In this example i will show you how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.</p>
+<p>本例中会展示如何构建一个 ntp 模块，上传不同的 ntp.conf 文件到你的测试、预生产和生产环境里。</p>
 
-<p>First, we create a new module. For this guide you need at least Rex 0.41 (because of the <i>--create-module</i> command and the <i>case</i> keyword.) Execute the following command in the same directory where your <i>Rexfile</i> lives.</p>
+<p>首先，我们创建一个新的模块。本指南要求你至少使用的是 Rex 0.41 版(因为要用到 <i>--create-module</i> 命令和 <i>case</i> 关键字)。在你的 <i>Rexfile</i> 所在目录下执行下面命令：</p>
 
 <pre><code class="bash">rexify Service::NTP --create-module</code></pre>
 
-<p>This will create some new directories and files in your <i>lib</i> directory.</p>
+<p>这会在你的 <i>lib</i> 目录下创建一些新的目录和文件：</p>
 
 <pre><code class="bash">.
 ├── Rexfile
@@ -26,9 +26,9 @@
             ├── __module__.pm
             └── meta.yml</code></pre>
 
-<p>The meta.yml file can be ignored. This file is only important if you want to share your module on <a href="http://modules.rexify.org/">the Rex modules directory</a>. The important file is <i>__module__.pm</i>. Open this file in an editor.</p>
+<p>meta.yml 文件可以被忽略掉，这个文件只有在你打算共享你的模块到 <a href="http://modules.rexify.org/">Rex 模块目录</a>的时候才有用。最重要的文件是 <i>__module__.pm</i>。在编辑器里打开这个文件。</p>
 
-<p>This file is a normal Perl module. The only special thing is the filename, but don't think too much for it at first.</p>
+<p>这个文件也是一个普通的 Perl 模块。唯一不太一样的地方就是文件名，不过一开始你不用太在意这种事情。</p>
 
 <pre><code class="perl">package Service::NTP;
 use Rex -base;
@@ -52,9 +52,9 @@ task prepare =&gt; sub {
 
 1;</code></pre>
 
-<p>First the module checks if the OS is a debian (or ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the <i>on_change</i> hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.</p>
+<p>首先，这个模块检查操作系统是不是 debian (或者 ubuntu)，然后设置服务名称为 "ntp" 或者 "ntpd"。然后它安装 "ntp" 包并且上传一个配置文件。注意这里的 <i>on_change</i> 钩子。如果文件发生变化，这会重启 ntp 服务。最后，Rex 确认服务在系统启动的时候会自动运行。</p>
 
-<p>Now it is time to create a basic <i>ntp.conf</i> file. Create the directory <i>lib/Service/NTP/files/etc</i> and place the ntp.conf file in there.</p>
+<p>现在可以创建一个基础的 <i>ntp.conf</i> 文件了。创建 <i>lib/Service/NTP/files/etc</i> 目录，然后往目录里放 ntp.conf 文件。</p>
 
 <pre><code class="bash"># /etc/ntp.conf, managed by Rex
 
@@ -68,7 +68,7 @@ filegen clockstats file clockstats type day enable
 server ntp01.company.tld
 server ntp02.company.tld</code></pre>
 
-<p>If you now want to distribute different <i>ntp.conf</i> files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the <i>-E $env</i> cli parameter which file to use. Rex first try to find a file named <i>ntp.conf.$environment</i> and if that file does not exist it fallback to <i>ntp.conf</i>.</p>
+<p>现在你如果想分发不同的 <i>ntp.conf</i> 文件到不同的环境，你得往这个目录底下放好几个 ntp.conf 文件。Rex 会根据命令行参数 <i>-E $env</i> 来选择应该使用哪个文件。Rex 首先尝试找一个叫 <i>ntp.conf.$environment</i> 的文件，不存在的话再回退到找 <i>ntp.conf</i>。</p>
 
 <pre><code class="bash">.
 ├── Rexfile
@@ -84,7 +84,7 @@ server ntp02.company.tld</code></pre>
             │       └── ntp.conf.test
             └── meta.yml</code></pre>
 
-<p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
+<p>不过这意味着，每次修改 ntp.conf 文件里的配置，你需要一口气修改 4 个文件。所以你需要用模板技术。</p>
 
 <pre><code class="perl">package Service::NTP;
 use Rex -base;
@@ -115,7 +115,7 @@ task prepare =&gt; sub {
 
 1;</code></pre>
 
-<p>Now we can create our template. The default template of Rex looks similar to other templating engines. But you can also use other template engines like <a href="https://github.com/krimdomu/rex-template-tt">Template::Toolkit</a>.</p>
+<p>现在我们可以创建模板了。Rex 默认模板和其他模板引擎看起来很类似。不过你也可以直接使用其他现有的模板引擎，比如 <a href="https://github.com/krimdomu/rex-template-tt">Template::Toolkit</a>。</p>
 
 <pre><code class="bash"># /etc/ntp.conf, managed by Rex
 
@@ -130,15 +130,15 @@ filegen clockstats file clockstats type day enable
 server &lt;%= $server %&gt;
 &lt;% } %&gt;</code></pre>
 
-<h2>Predefined Variables</h2>
+<h2>预定义变量</h2>
 
-<p>There are also some predefined variables you can use in your templates. For example the ip address of a network device if you want to bind a service on a specific ip. You can dump all predefined variable of a system with the following code.</p>
+<p>我们有预定义一些变量让你在模板中使用。比如你想在特定 ip 上绑定一个服务的时候，就可以用到网卡的 ip 地址。你可以通过下面代码展示出系统的全部预定义变量。</p>
 
 <pre><code class="perl">task "get_infos", "server01", sub {
    dump_system_information;
 };</code></pre>
 
-<p>For example this is the output of a CentOS VM.</p>
+<p>下面就是一个 CentOS 虚拟机的输出示例：</p>
 
 <pre><code class="perl">$kernelversion = '#1 SMP Tue May 15 22:09:39 BST 2012'
 $memory_cached = '357'
@@ -208,13 +208,13 @@ $Host = {
       operatingsystem =&gt; 'CentOS'
    }</code></pre>
 
-<p>You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.</p>
+<p>你可以在模板里使用这些变量。假设你是要在 eth1 网卡上绑定 apache。</p>
 
 <pre><code class="bash">Listen &lt;%= $eth1_ip %&gt;:80</code></pre>
 
-<h2>Using the Module</h2>
+<h2>使用模块</h2>
 
-<p>To use your module you have to add it to your <i>Rexfile</i>. This can be simply achieved with one line.</p>
+<p>使用你的模块就必须要添加到你的 <i>Rexfile</i> 里。这个非常简单，一行就行：</p>
 
 <pre><code class="perl">use Rex -base;
 
@@ -225,7 +225,7 @@ require Service::NTP;
 
 1;</code></pre>
 
-<p>Than you can list your Tasks and execute them.</p>
+<p>然后你可以列出你的任务并执行他们了。</p>
 
 <pre><code class="bash">$ rex -T
 [2013-03-30 02:35:32] INFO - eval your Rexfile.

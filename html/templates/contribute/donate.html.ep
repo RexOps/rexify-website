@@ -1,30 +1,30 @@
 % layout 'default';
-% title 'Donate to people in need';
+% title '捐助有需要的人';
 
 % content_for header => begin
       <meta name="description" content="Donate to people in need">
       <meta name="keywords" content="donate, care, medical, aid, health care">
 % end
 
-<h1>Help people in need</h1>
+<h1>帮助有需要的人</h1>
 
-<p>(R)?ex is an open source project driven by volunteers to ease your daily work in configurating and deploying your infrastructure. If you also want to help others but don't have the time to contribute with code, documentation or other time consuming things we encourage you to help other people in need with a donation.</p>
+<p>(R)?ex 是一个由志愿者驱动的开源项目，旨在简化配置管理和基础设施部署等日志工作。如果你有意向帮助别人但又没有时间来贡献代码、文档或者其他耗时间的工作，或者你可以选择通过捐助的方式来帮助其他的人。</p>
 
-<p><i>Even small donations can change things.</i></p>
+<p><i>哪怕很小一笔捐助也可以改变不少。</i></p>
 
-<p>Below we have collect a few charity organizations. If you know more trustworthy organizations just <a href="https://github.com/krimdomu/rexify-website/issues?state=open">let us know</a>.</p>
+<p>我们收集了一些慈善机构在下面。如果你知道更多值得信赖的组织，直接 <a href="https://github.com/krimdomu/rexify-website/issues?state=open"> 告诉我们 </a>。</p>
 
 <ul>
-   <li><a href="http://amref.org/">AMREF</a> - Better health for Africa</li>
-   <li><a href="http://www.iccf.nl/">ICCF</a> - Helping children in Uganda (from the <a href="http://www.vim.org/">VIM</a> project)</li>
-   <li><a href="http://www.msf.org/">MSF</a> - Medecins sans frontieres (Doctors without borders)</li>
-   <li><a href="http://www.mercy.se/">Operation Mercy</a> - International development and relief</li>
-   <li><a href="http://www.unicef.org/">UNICEF</a> - United Nations International Children’s Emergency Fund</li>
+   <li><a href="http://amref.org/">AMREF</a> - 非洲医学和研究基金会</li>
+   <li><a href="http://www.iccf.nl/">ICCF</a> - 国际保育党团选举基金会 (来自 <a href="http://www.vim.org/">VIM</a> 项目，针对乌干达儿童)</li>
+   <li><a href="http://www.msf.org/">MSF</a> - 无国界医生组织</li>
+   <li><a href="http://www.mercy.se/">Operation Mercy</a> - 国际发展和救援组织</li>
+   <li><a href="http://www.unicef.org/">UNICEF</a> - 联合国儿童基金会</li>
 </ul>
 
 
 
-<h2>Disclaimer</h2>
+<h2>声明</h2>
 
-<p>We are not incorporated/engaged with any of these organizations.</p>
+<p>我们和以上组织无任何股份或合约关系。</p>
 

@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Request new features';
+% title '要求新特性';
 %# no_index
 
 % content_for header => begin
@@ -7,8 +7,8 @@
       <meta name="keywords" content="Systemadministration, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
 % end
       
-         <h1>Miss a Feature? Tell us about it!</h1>
-         <p>If you miss a feature  just tell us about it and we will put it on our task list.</p>
+         <h1>想要一个特性？告诉我们吧！</h1>
+         <p>如果你想要一个特性，直接告诉我们，我们会把它列入我们的任务单里的。</p>
 
          
 

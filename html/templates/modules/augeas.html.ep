@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Configuration Manipulation with Augeas';
+% title '用 Augeas 操作配置文件';
 
 % content_for header => begin
 
@@ -8,14 +8,14 @@
       
 % end
 
-         <h1>Modify Configuration Files</h1>
+         <h1>修改配置文件</h1>
 
-         <p>If you want to modify some configuration files on your servers you can do this by using this module.</p>
-         <p>This module is based on augeas found <a href="http://augeas.net/">here</a>.</p>
+         <p>如果你想修改你服务器上的一些配置文件，你可以用这个模块来做到。</p>
+         <p>这个模块基于 augeas 完成，augeas 的信息可以在 <a href="http://augeas.net/">这里</a> 看到更多。</p>
 
          
 
-         <h2>Installation</h2>
+         <h2>安装</h2>
 
          <h3>Debian (Squeeze)</h3>
 
@@ -29,7 +29,7 @@
 
          
 
-         <h3>Source</h3>
+         <h3>源代码安装</h3>
 
             <pre><code class="bash">$ git clone https://github.com/krimdomu/rex-augeas.git rex-augeas
 $ cd rex-augeas
@@ -40,13 +40,13 @@ $ make install</code></pre>
          
          <h2>API</h2>
 
-         <p>You'll find the API documentation <a href="/api/Rex/Augeas.pm.html">here</a>.</p>
+         <p>你可以查看 API 文档：<a href="/api/Rex/Augeas.pm.html">这里</a>。</p>
 
          
-         <h2>Examples</h2>
+         <h2>示例</h2>
 
 
-         <h3>Add a new entry to /etc/hosts</h3>
+         <h3>给 /etc/hosts 添加内容</h3>
 
          
 
@@ -73,7 +73,7 @@ task "hosts", group =&gt; "servers", sub {
 
          
 
-         <h3>Modify an entry in /etc/hosts</h3>
+         <h3>修改 /etc/hosts 里的内容</h3>
 
          
 

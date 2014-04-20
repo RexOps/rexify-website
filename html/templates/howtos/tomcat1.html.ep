@@ -1,50 +1,50 @@
 % layout 'default';
-% title 'Tomcat deployment with Rex';
+% title '用 Rex 部署 Tomcat';
 
 % content_for header => begin
       <meta name="description" content="Tomcat deployment with Rex">
       <meta name="keywords" content="Rex, Deploy, Tomcat, Server, Linux, Remote, Automation">
 % end
 
-         <h1>Tomcat deployment with Rex</h1>
-         <p>This is a small example that will show you how to deploy services, the configuration and the application to your servers. In this example we will install <a href="http://tomcat.apache.org/">tomcat</a>, change the <i>tomcat-users.xml</i> file and upload <a href="http://code.google.com/p/psi-probe/">psi-probe</a>.</p>
+         <h1>用 Rex 部署 Tomcat</h1>
+         <p>这是一个小示例，演示如何部署服务、配置文件和应用到你的服务器上。本例将安装 <a href="http://tomcat.apache.org/">tomcat</a>, 修改 <i>tomcat-users.xml</i> 文件然后上传 <a href="http://code.google.com/p/psi-probe/">psi-probe</a>。</p>
 
          
 
-         <h2>Preparation</h2>
+         <h2>准备工作</h2>
          <ul>
-            <li>Download and install rex (see <a href="/get">get</a> page)</li>
-            <li>Download and install rex-apache-deploy &gt;= 0.4 (<a href="https://github.com/krimdomu/rex-apache-deploy">github</a> Branch: master)
-               <p>rex-apache-deploy is a Rex-Module to ease the deployment of PHP, Perl, Ruby and Tomcat applications</p>
+            <li>下载并安装 rex (见 <a href="/get">get</a> 页)</li>
+            <li>下载并安装 rex-apache-deploy &gt;= 0.4 (<a href="https://github.com/krimdomu/rex-apache-deploy">github</a> Branch: master)
+               <p>rex-apache-deploy 是一个 Rex-Module 用来简化 PHP, Perl, Ruby 和 Tomcat 应用的部署工作。</p>
             </li>
-            <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
+            <li>安装一个干净的 <a href="http://www.debian.org/">Debian Squeeze</a> 虚拟机镜像。
                <ul>
-                  <li>Create an SSH-Key and upload the public-key to your server to the root user (/root/.ssh/authorized_keys).</li>
-                  <li>Install openssh server</li>
-                  <li>Add the contrib and non-free repository to your sources.list</li>
+                  <li>创建一对 SSH 密钥并上传公钥到服务器的 root 用户下 (/root/.ssh/authorized_keys)。</li>
+                  <li>安装 openssh 服务器。</li>
+                  <li>给你的 sources.list 添加 contrib 和 non-free 仓库。</li>
                </ul>
             </li>
          </ul>
 
          
 
-         <h2>Creating a (R)?ex Project</h2>
-         <p>At first we create a new (R)?ex Project.</p>
+         <h2>创建 (R)?ex 项目</h2>
+         <p>首先我们创建一个新的 (R)?ex 项目。</p>
             <pre><code class="bash">$ rexify mysite</code></pre>
 
          
-         <p>This command will create a directory called <i>mysite</i>. Change into that directory.</p>
+         <p>这个命令将创建一个叫 <i>mysite</i> 的目录。切换进这个目录。</p>
 
             <pre><code class="bash">$ cd mysite
 $ ls -l
 -rw-r--r--  1 jan  staff  359 16 Apr 14:08 Rexfile
 drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
 
-         <p>You'll see one file and one directory. In the file <i>Rexfile</i> you can configure your servers and the authentication. You can also include Modules there. We will do this later.</p>
+         <p>你会看到一个文件和一个目录。在这个 <i>Rexfile</i> 文件里你可以配置你的服务器和认证方式，你也可以在这里加载模块，我们稍后会提到这个。</p>
 
          
 
-         <p>Open the file <i>Rexfile</i> and change it to suite your needs.</p>
+         <p>打开 <i>Rexfile</i> 文件修改成你需要的配置。</p>
 
             <pre><code class="perl">use lib 'lib';
 
@@ -70,8 +70,8 @@ group "servers" =&gt; "tomcat01";
 # now load every module via ,,require''
 require Rex::mysite;</code></pre>
 
-         <p>The <i>Rexfile</i> is a normal Perl Code Snippet.</p>
-         <p>After you have changed the <i>Rexfile</i> you can just test it.</p>
+         <p><i>Rexfile</i> 就是普通的一段 Perl 代码。</p>
+         <p>你修改好 <i>Rexfile</i> 后就可以测试它。</p>
 
             <pre><code class="bash">$ rex -T
 Rexfile syntax OK
@@ -81,7 +81,7 @@ Batches</code></pre>
 
          
 
-         <p><i>rexify</i> created a small test task (mysite:uptime). If you run this command you will get the uptime of the systems you have defined in the <i>servers</i> group.</p>
+         <p><i>rexify</i> 创建了一个简单的测试任务 (mysite:uptime)。如果你运行这个命令，你可以看到你定义在 <i>servers</i> 组中服务器的 uptime 数据。</p>
 
 
             <pre><code class="bash">$ rex mysite:uptime
@@ -92,18 +92,18 @@ Rexfile syntax OK
 
          
 
-         <h2>Creating the Tasks</h2>
+         <h2>创建任务</h2>
          
 
-         <p>So, if we want to manage the complete deployment of our server, we need to create some tasks.</p>
-         <p>In this example i will split these tasks into Operating-System relevant tasks, Tomcat relevant tasks and deployment relevant tasks.</p>
+         <p>所以，如果我们想管理自己服务器的整个部署的话，也可以创建一些自己的任务。</p>
+         <p>在这个例子里，我会把这些任务分割成和操作系统相关的任务，Tomcat 相关的任务、部署相关的任务。</p>
          
-         <h3>Operating System</h3>
+         <h3>操作系统</h3>
          
-         <p>Lets create the Operating System tasks at first.</p>
+         <p>让我们先创建操作系统相关的任务：</p>
 
          
-         <p>Create the file <i>lib/Rex/OS.pm</i></p>
+         <p>创建 <i>lib/Rex/OS.pm</i> 文件</p>
 
             <pre><code class="perl">package Rex::OS;
 
@@ -144,23 +144,23 @@ task "tune", sub {
 1; </code></pre>
          
 
-         <p>Well, this is a lot of stuff. But simple to understand.</p>
-         <p>We create 3 tasks <i>prepare</i>, <i>start-services</i> and <i>tune</i>.</p>
+         <p>嗯，看起来蛮多的样子，其实还是很好懂的。</p>
+         <p>我们创建了 3 个任务 <i>prepare</i>, <i>start-services</i> 和 <i>tune</i>。</p>
 
          
 
          <ul>
             <li>
                <i>prepare</i>
-               <p>This task will install ntp, hal, dbus, sudo and vim (if these packages are not installed)</p>
+               <p>这个任务将会安装 ntp, hal, dbus, sudo 和 vim (如果这些软件没有安装的话)</p>
             </li>
             <li>
                <i>start-services</i>
-               <p>This will start hal, dbus and rsyslog (if they are not running already). Also it has a dependency to the <i>prepare</i> Task in the Module <i>Rex::OS</i>. So it will run the <i>prepare</i> task before it run its own commands.</p>
+               <p>这个任务会启动 hal, dbus 和 rsyslog (如果它们没有运行的话)。而且它还依赖于 <i>Rex::OS</i> 模块中的 <i>prepare</i> 任务。所以它会先运行 <i>prepare</i> 任务然后再运行自己的命令。</p>
             </li>
             <li>
                <i>tune</i>
-               <p>This will set some sysctl parameters (if the are not already set)</p>
+               <p>这个任务会设置一些 sysctl 参数(如果它们没有被设置的话)</p>
             </li>
          </ul>
 
@@ -169,10 +169,10 @@ task "tune", sub {
          
          <h3>Tomcat</h3>
          
-         <p>After we created the operating system relevant tasks we will create the tomcat tasks. Here we will install and configure the tomcat server.</p>
+         <p>创建好操作系统相关任务后我们会创建 tomcat 任务。这里我们要安装、配置 tomcat 服务器。</p>
 
          
-         <p>Create the file <i>lib/Rex/Tomcat.pm</i></p>
+         <p>创建 <i>lib/Rex/Tomcat.pm</i> 文件</p>
 
             <pre><code class="perl">package Rex::Tomcat;
 
@@ -218,22 +218,22 @@ task "tomcat-user", sub {
 1; </code></pre>
 
          
-         <p>Here we have 2 tasks.</p>
+         <p>这里有 2 个任务：</p>
          <ul>
             <li>
                <i>prepare</i>
-               <p>This task installs the tomcat server</p>
-               <p>And it has a dependency to <b>all</b> tasks defined in the module <i>Rex::OS</i></p>
+               <p>这个任务安装 tomcat 服务器This task installs the tomcat server</p>
+               <p>同时它依赖于 <i>Rex::OS</i> 模块里定义的 <b>全部</b> 任务。</p>
             </li>
             <li>
                <i>tomcat-user</i>
-               <p>This task will copy a modified tomcat-users.xml file to the server and, if the file was changed, restart the tomcat server.</p>
-               <p>It will also check if the permissions of the remote file are correct. And alter them if needed.</p>
+               <p>这个任务会复制一个修改过的 tomcat-users.xml 文件到服务器，如果这个文件内容发生过变更，那么就重启 tomcat 服务器。</p>
+               <p>它还会检查远端的文件属性是否正确，有必要的话会修改。</p>
             </li>
          </ul>
 
          
-         <p>Now you need to create the file <i>files/tomcat-users.xml</i></p>
+         <p>现在你需要创建这个 <i>files/tomcat-users.xml</i> 文件了：</p>
             <pre><code class="bash">$ mkdir files
 $ cat &gt;files/tomcat-users.xml&lt;&lt;EOF
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
@@ -246,12 +246,12 @@ $ cat &gt;files/tomcat-users.xml&lt;&lt;EOF
 EOF </code></pre>
 
          
-         <h3>Tomcat Software Deployment</h3>
+         <h3>Tomcat 软件部署</h3>
          
-         <p>So, for now we can install some default services and tune some sysctl parameters (Rex::OS) and install the tomcat application server (Rex::Tomcat). Now we will deploy our tomcat application (psi-probe)</p>
+         <p>现在我们可以安装一些默认服务，调整一些 sysctl 参数(Rex::OS)，安装 tomcat 应用服务器(Rex::Tomcat)。下一步就是部署我们的 tomcat 应用(psi-probe)。</p>
 
          
-         <p>So, lets create the file <i>lib/Rex/Deploy/Live/Tomcat.pm</i></p>
+         <p>所以，让我们创建 <i>lib/Rex/Deploy/Live/Tomcat.pm</i> 文件。</p>
 
             <pre><code class="perl">package Rex::Deploy::Live::Tomcat;
 
@@ -300,7 +300,7 @@ task "deploy", sub {
 1; </code></pre>
 
          
-         <p>Now we need to create the file <i>live-inject.conf</i></p>
+         <p>现在我们需要创建 <i>live-inject.conf</i> 文件：</p>
             <pre><code class="bash"># every 10 seconds
 com.googlecode.psiprobe.beans.stats.collectors.connector.period=10s
 com.googlecode.psiprobe.beans.stats.collectors.cluster.period=10s
@@ -309,18 +309,18 @@ com.googlecode.psiprobe.beans.stats.collectors.runtime.period=10s </code></pre>
 
 
          
-         <h4>Injecting? For what is it good for?</h4>
-         <p>In this example we just change some collectors periods from 30 seconds (default) to 10 seconds.</p>
-         <p>But if you have an application with database access you can inject different database parameters to the same war file. So you can deploy the exact same war file to a test environment, staging environment and live environment.</p>
+         <h4>注入？这用来干什么好？</h4>
+         <p>在这个例子里，我们只是把收集周期从默认的 30 秒修改成了 10 秒。</p>
+         <p>但如果你有一个访问数据库的应用，你就可以注入不同的数据库参数到同一个 war 文件。你可以给 test、staging 和 live 环境部署完全相同的 war 文件了。</p>
 
 
          
-         <h3>The last steps</h3>
+         <h3>最后一步</h3>
          
-         <p>Now we have defined all tasks, but we haven't defined on which servers they should run on.</p>
+         <p>现在我们已经定义好了所有的任务，但是还没有定义这些任务应该运行在哪些服务器上。</p>
 
          
-         <p>Open the file <i>lib/Rex/mysite.pm</i></p>
+         <p>打开 <i>lib/Rex/mysite.pm</i> 文件：</p>
 
             <pre><code class="perl">package Rex::mysite;
 
@@ -347,23 +347,23 @@ task "deploy", group =&gt; "servers", sub {
 
 1; </code></pre>
 
-          <p>Here we define 2 tasks. One to prepare a system and one to deploy our software (probe.war)</p>
+          <p>这里我们定义两个任务，一个准备系统另一个部署软件(probe.war)。</p>
 
           <ul>
             <li>
                <i>tomcat</i>
-               <p>This task will run on all servers in the <i>servers</i> group.</p>
-               <p>It will run all tasks that are defined in the <i>Rex::Tomcat</i> module.</p>
+               <p>这个任务会在 <i>servers</i> 组里的所有服务器上运行。</p>
+               <p>它会运行在 <i>Rex::Tomcat</i> 模块里定义的任务。</p>
             </li>
             <li>
                <i>deploy</i>
-               <p>This task will run on all servers in the <i>servers</i> group.</p>
-               <p>It will run only the <i>deploy</i> task in the <i>Rex::Deploy::Live::Tomcat</i> module (and all its dependencies).</p>
+               <p>这个任务会在 <i>servers</i> 组里的所有服务器上运行。</p>
+               <p>它只会运行在 <i>Rex::Deploy::Live::Tomcat</i> 模块里定义的 <i>deploy</i> 任务及其依赖。</p>
           </ul>
 
           
 
-          <p>Open the <i>Rexfile</i> and include all our modules at the bottom.</p>
+          <p>打开 <i>Rexfile</i> 然后在底部加载写好的所有模块。</p>
 
 
             <pre><code class="perl">require Rex::OS;
@@ -372,7 +372,7 @@ require Rex::Deploy::Live::Tomcat; </code></pre>
 
           
 
-          <p>At last we need to extract the psi-probe zip file and place the file probe.war into the <i>files</i> directory.</p>
+          <p>最后，我们需要解压 psi-probe.zip 然后把 probe.war 放进 <i>files</i> 目录。</p>
 
             <pre><code class="bash">$ unzip probe-2.1.2.zip
 $ cp probe.war files/</code></pre>
@@ -380,10 +380,10 @@ $ cp probe.war files/</code></pre>
 
 
          
-         <h3>Running the tasks</h3>
+         <h3>运行任务</h3>
          
-         <p>Now we are ready to run our tasks on our servers.</p>
-         <p>Lets list all our tasks first.</p>
+         <p>现在我们可以在服务器上运行我们的任务了。</p>
+         <p>先让我们列举一下所有任务。</p>
 
             <pre><code class="bash">$ rex -T
 Rexfile syntax OK
@@ -401,7 +401,7 @@ Tasks
 
          
 
-         <p>And now we will deploy our servers.</p>
+         <p>然后开始部署服务器。</p>
 
             <pre><code class="bash">$ rex mysite:deploy 
 Rexfile syntax OK
@@ -426,17 +426,17 @@ Rexfile syntax OK
 [2011-04-16 17:21:18] - INFO - OK - Deployed application at context path /probe </code></pre>
 
          
-         <p>The <i>FAIL</i> you see here is okay, because we deployed our application the first time.</p>
+         <p>你看到的这个 <i>FAIL</i> 其实是正常的，因为这是第一次部署应用。</p>
 
          
 
-         <p>If you want, you can run tasks on other machines as defined. Perhaps when you need to install a new server.</p>
+         <p>如果你想，你也可以在其他服务器上运行任务。比如你要部署新的服务器了。</p>
 
             <pre><code class="bash">$ rex -H "mynewserver" mysite:deploy</code></pre>
 
 
          
 
-         <p>Now you can connect to your tomcat server http://tomcat01:8080/probe.</p>
+         <p>现在你可以连接上你的 tomcat 服务器了： http://tomcat01:8080/probe.</p>
 
 

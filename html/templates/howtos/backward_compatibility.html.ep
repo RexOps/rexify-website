@@ -1,114 +1,114 @@
 % layout 'default';
-% title 'A word on backward compatibility';
+% title '向后兼容性概要';
 
 % content_for header => begin
       <meta name="description" content="Backward compatibility if important">
       <meta name="keywords" content="Rex, Systemadministration, System, Administration, Compatibility">
 % end
 
-         <h1>A word on backward compatibility</h1>
-         <p>Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+         <h1>向后兼容性概要</h1>
+         <p>每个人都知道如果某样特性被废弃然后你不得不移植自己的稳定代码到该库或者框架的新版本的时候的那种痛苦！所以这里有很多工作，让你不用为新版本而修改太多代码。</p>
          
-         <p>So there is one premise new versions of Rex has to fulfill. They must be backward compatible.</p>
+         <p>所以 Rex 发新版的时候有个前提，就是必须保证有向后兼容性。</p>
          
-         <p>I know this might be impossible in the one or other way, but to minimize this danger there is a thing called feature flags. If there is the need to break backward compatibility in favor of a new feature there will be a feature flag for this change. And only if this feature flag gets enabled in the <i>Rexfile</i> it will break compatibility.</p>
+         <p>我知道这在有的时候有点不太可能，但是为了尽量减少这个危险，这里引入了一个东西叫特性标记。如果某个新特性需要打破兼容性，那就会有一个特性标记来表明这个改变。只有在 <i>Rexfile</i> 里显式声明开启这个特性标记，它才会打破向后兼容性。</p>
          
-         <p>So the default is always to be compatible.</p>
+         <p>所以默认情况下就是永远向后兼容的。</p>
          
-         <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a>.</p>
+         <p>如果你在升级之后碰到什么问题，可以认为这是一个 bug。请通过 <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a> 向我们报告。</p>
 
          
-         <h2>Feature Flags</h2>
+         <h2>特性标记</h2>
 
-         <p>Currently there is one feature flag to enable special authentication options for a server group.</p>
+         <p>目前有一个特性标记来开启为服务器组设置单独的认证选项。</p>
 
          
          <table border="0" class="feature-table">
             <tr class="head">
-               <td>Flag</td>
-               <td>Since</td>
-               <td>Description</td>
+               <td>标记</td>
+               <td>起始版本</td>
+               <td>描述</td>
             </tr>
 
             <tr>
                <td>source_profile</td>
                <td>0.44</td>
-               <td>Source $HOME/.profile before running a command.</td>
+               <td>在运行命令前加载 $HOME/.profile。</td>
             </tr>
 
             <tr>
                <td>source_global_profile</td>
                <td>0.44</td>
-               <td>Source /etc/profile before running a command.</td>
+               <td>在运行命令前加载 /etc/profile。</td>
             </tr>
 
             <tr>
                <td>no_path_cleanup</td>
                <td>0.44</td>
-               <td>Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
+               <td>Rex 在执行命令前会清空路径。开启这个特性则不清空。</td>
             </tr>
 
             <tr>
                <td>exec_autodie</td>
                <td>0.44</td>
-               <td>If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
+               <td>用 run() 执行命令时，如果 RETVAL != 0，Rex会自动 die()。</td>
             </tr>
 
 
             <tr>
                <td>exec_and_sleep</td>
                <td>0.43</td>
-               <td>Sometimes some commands that fork away didn't keep running. With this flag rex will wait a few ms before exiting the shell.</td>
+               <td>有时候某些命令 fork 出去不会保持运行，开启这个标记 rex 会等待几毫秒后再退出 shell。</td>
             </tr>
 
             <tr>
                <td>disable_strict_host_key_checking</td>
                <td>0.43</td>
-               <td>Disabling strict host key checking for openssh connection mode.</td>
+               <td>在 openssh 连接模式下，关闭严格的主机密钥检查。</td>
             </tr>
 
             <tr>
                <td>reporting</td>
                <td>0.43</td>
-               <td>Enable reporting</td>
+               <td>开启报告。</td>
             </tr>
 
             <tr>
                <td>empty_groups</td>
                <td>0.42</td>
-               <td>Enable usage of empty groups.</td>
+               <td>支持使用空服务器组定义。</td>
             </tr>
 
 
             <tr>
                <td>use_server_auth</td>
                <td>0.42</td>
-               <td>Enable the usage of special authentication options for servers.</td>
+               <td>支持对服务器设置特定的认证选项。</td>
             </tr>
 
             <tr>
                <td>no_tty</td>
                <td>0.41</td>
-               <td>Disable pty usage for ssh connections</td>
+               <td>关闭 ssh 连接的 pty。</td>
             </tr>
 
 
             <tr>
                <td>no_local_template_vars</td>
                <td>0.40</td>
-               <td>Use global variables in templates</td>
+               <td>在模板中使用全局变量。</td>
             </tr>
 
             <tr>
                <td>sudo_without_sh</td>
                <td>0.40</td>
-               <td>Run sudo commands directly without the use of 'sh'. This might break things.</td>
+               <td>直接运行 sudo 命令而不用 'sh' 执行。这个可能会打破其他的正常运行。</td>
             </tr>
 
             <tr>
                <td>sudo_without_locales</td>
                <td>0.40</td>
-               <td>Run sudo commands without locales. this will break things if you don't use english locales.</td>
+               <td>不用 locales 直接运行 sudo 命令。如果你的 locales 不是 english，可能会打破其他的正常运行。</td>
             </tr>
 
 
@@ -116,24 +116,24 @@
             <tr>
                <td>exit_status</td>
                <td>0.39</td>
-               <td>This option tells Rex to return a non zero value on exit if a task fails.</td>
+               <td>这个选项告诉 Rex 在某个任务失败时返回一个非零的退出值。</td>
             </tr>
 
             <tr>
                <td>0.35</td>
                <td>0.35</td>
-               <td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
+               <td>这个选项开启 0.31 版特性以及调用任务时，不再必须传递哈希引用作为函数参数。</td>
             </tr>
 
             <tr>
                <td>0.31</td>
                <td>0.31</td>
-               <td>To enable special authentication options for a server group. This will overwrite the default authentication options for a task.</td>
+               <td>支持为每个服务器组设置特殊的认证选项。这可以在任务执行时覆盖掉默认的认证选项。</td>
             </tr>
          </table>
 
          
-         <h2>Howto enable Feature Flags</h2>
-         <p>You can enable feature flags in your <i>Rexfile</i> with the following code:</p>
+         <h2>如何开启特性标记</h2>
+         <p>你可以在你的 <i>Rexfile</i> 里用如下代码开启特性标记：</p>
          <pre><code class="perl"># Rexfile
 use Rex -feature =&gt; 0.31;</code></pre>

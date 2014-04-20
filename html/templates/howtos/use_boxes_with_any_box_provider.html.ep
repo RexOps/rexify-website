@@ -1,27 +1,27 @@
 % layout 'default';
-% title 'Use Boxes with any Box Provider';
+% title '使用任一虚拟机供应层管理主机';
 
 % content_for header => begin
       <meta name="description" content="Howto work with Rex/Boxes">
       <meta name="keywords" content="Rex, Boxes, Amazon, VirtualBox">
 % end
 
-<h1>Working with Rex/Boxes</h1>
+<h1>使用 Rex/Boxes</h1>
 
-<p>Since Rex 0.38 it is possible to descripe your Rex/Boxes with an external YAML file. So it is possible to use your Rexfile with all supported Box providers.</p>
+<p>从 Rex 0.38 版开始，可以使用一个额外的 YAML 文件来描述你的 Rex/Boxes。所以你可以用你的 Rexfile 管理任一种类的虚拟机。</p>
 
-<p>It means that you don't need to change your Rexfile if you want to switch for example from VirtualBox-Boxes to Amazon-Boxes.</p>
-
-
+<p>这意味着你不用修改你的 Rexfile，就能直接从 VirtualBox 虚拟机切换成亚马逊云主机。</p>
 
 
-<h2>The YAML file</h2>
-
-<p>The YAML file describes the boxes you want to create. Every Provider can have own options, so please check the API documentation for more information.</p>
 
 
-<h3>VirtualBox Example</h3>
-<p>In the following box you'll see an example Box file for VirtualBox.</p>
+<h2>YAML 文件</h2>
+
+<p>YAML 文件描述了你希望创建的虚拟机。每个类型的供应层都有自己的选项，所以请查看 API 文档了解更详细的信息。</p>
+
+
+<h3>VirtualBox 示例</h3>
+<p>下面你将看到一个为 VirtualBox 虚拟机准备的配置示例。</p>
 
    <pre><code class="yaml">type: VBox
 vms:
@@ -42,17 +42,17 @@ vms:
 
 
 
-<p>This YAML file will create 2 VirtualBox VMs. One named &raquo;fe01&laquo; and one named &raquo;db01&laquo;. Also it will download the VM Base-Box from &raquo;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&laquo;.</p>
+<p>这个 YAML 文件将创建 2 个 VirtualBox 虚拟机。一个名叫 &raquo;fe01&laquo; 另一个叫 &raquo;db01&laquo;。它会从 &raquo;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&laquo; 下载 VBox 的基础镜像。</p>
 
 
-<p>For the network setting it will create a bridged adapter and use &raquo;eth0&laquo; for the bridge device.</p>
+<p>网络设置方面，会创建一个桥接网络，并使用 &raquo;eth0&laquo; 作为桥接设备。</p>
 
-<p>After the VM is created and started it will run the setup tasks given by &raquo;setup&laquo;.</p>
-
-
+<p>虚拟机创建完成并成功运行起来后，就自动运行设置任务，任务名为 &raquo;setup&laquo;。</p>
 
 
-<h3>Amazon Example</h3>
+
+
+<h3>亚马逊云示例</h3>
 
 <p>In the following box you'll see an example Box file for Amazon.</p>
    <pre><code class="yaml">type: Amazon
@@ -75,23 +75,23 @@ vms:
       setup: setup_db</code></pre>
 
 
-<p>This YAML file will create 2 Amazon VMs with the given AMI-ID (ami-c1aaabb5).</p>
+<p>这个 YAML 文件将会按照指定的 AMI-ID(ami-claaabb5) 创建 2 个亚马逊云主机。</p>
 
 
-<p>Notice the extra section <i>amazon</i> in this file. For some Box Providers you need to define some extra settings. You'll find more information in the API documentation of the Box Provider.</p>
+<p>请注意文件中外加的 <i>amazon</i> 段。某些虚拟机供应层需要定义一些额外配置。详细信息可以在虚拟机供应层的 API 文档中找到。</p>
 
 
 
-<p>To use one of these files you have to add it to the <i>use Rex::Commands::Box</i> command in your Rexfile.</p>
+<p>要使用这些文件，你需要把它加入到你的 Rexfile 里的 <i>use Rex::Commands::Box</i> 命令里：</p>
 
    <pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";</code></pre>
 
 
 
 
-<h2>The Rexfile</h2>
+<h2>Rexfile 文件</h2>
 
-<p>To use the YAML file you need to create a Rexfile with the deployment logic.</p>
+<p>使用 YAML 文件你需要创建一个带有部署逻辑的 Rexfile。</p>
 
 
 
@@ -105,22 +105,22 @@ task "box", sub {
 
 
 
-<p>With the <i>list_boxes</i> command you can get an array of all your boxes. Every element in the array will be a hash reference containing information of the box that can be queried even if the Box is halted.</p>
+<p>利用 <i>list_boxes</i> 命令你可以获得所有虚拟机组成的一个数组。数组里的每个元素都是一个虚拟机(其实是虚拟机信息的哈希引用)，你可以控制这些虚拟机哪怕它当前是关机状态。</p>
 
 
 
-<p>To get the IP of a box you can do this with the <i>get_box($name)</i> command. This command will start the Box and return all information that can be gathered. See <a href="/api/Rex/Commands/Gather.pm.html">get_system_information()</a> for more information.</p>
+<p>获取虚拟机的 IP 可以用 <i>get_box($name)</i> 命令。这个命令会启动虚拟机然后返回采集到的所有信息。更多信息请阅读 <a href="/api/Rex/Commands/Gather.pm.html">get_system_information()</a>。</p>
 
 
-<p>The gathered information will be cached in the file <i>.box.cache</i> so it won't need to query it every time.</p>
-
-
-
-<p>The command <i>boxes "init";</i> will do the heavy lifting. It will iterate over every box described in the YAML file create and start it.</p>
+<p>采集到的信息会缓存在 <i>.box.cache</i> 文件里，这样就不用每次都请求一遍。</p>
 
 
 
-<p>To start or stop boxes you can use the following commands.</p>
+<p><i>boxes "init";</i>命令做的事情最多了。它会轮询 YAML 文件，创建并启动文件里描述的每一个虚拟机。</p>
+
+
+
+<p>启动或停止虚拟机，你可以用下面的命令。</p>
 
    <pre><code class="perl">task "stop_boxes", sub {
    boxes stop =&gt; qw/box1 box2/;

@@ -1,12 +1,12 @@
 % layout 'default';
-% title 'Manage user accounts with Rex';
+% title '用 Rex 管理你的用户账户';
 
 % content_for header => begin
       <meta name="description" content="Manage user accounts with Rex">
       <meta name="keywords" content="User, Group, Management, Linux, BSD, Rollout, SSH, Key, Auth, Authentication">
 % end
 
-         <h1> Rex 管理你的用户访问</h1>
+         <h1>用 Rex 管理你的用户访问</h1>
          <p>在这个指南,我将向您展示如何在你的系统推出用户帐户.</p>
 
          

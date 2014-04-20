@@ -1,18 +1,18 @@
 % layout 'default';
-% title 'Use Gearman to distribute the workload across multiple servers.';
+% title '用 Gearman 均衡负载到多台服务器上';
 
 % content_for header => begin
       <meta name="description" content="Use Gearman to distribute the workload across multiple servers.">
       <meta name="keywords" content="Rex, Gearman, Scale, Scaling, Systemadministration, System, Administration">
 % end
 
-         <h1>Rex::Gearman / Why?</h1>
-         <p>If you have a lot of servers to manage it may be slow to run all the tasks from a central server. To scale the execution of your Tasks Rex is able to use Gearman to distribute the work to many Worker Nodes.</p>
+         <h1>Rex::Gearman / 理由?</h1>
+         <p>如果你有很多很多的服务器需要管理，那从一台中心机器运行所有任务可能就会很慢了。要扩展你的任务执行能力，Rex 可以使用 Gearman 来分发任务到多个 Worker 节点上。</p>
 
          
 
-         <h2>Supported Platforms</h2>
-         <p>For these platforms we have build packages. Rex::Gearman will also run on other platforms. You have to install it via CPAN.</p>
+         <h2>支持平台</h2>
+         <p>下列平台我们提供构建好的安装包。Rex::Gearman 也可以在其他平台上运行，你需要自己通过 CPAN 安装。</p>
 
          
          
@@ -26,34 +26,34 @@
 
          
 
-         <h2>Installation</h2>
+         <h2>安装</h2>
  
-         <p>You have to install Rex::Gearman on your workstation (or the server where you run Rex) and on the machines you want to use to distribute the work.</p>
-         <p>If you don't want to use the packages you can install it with the following command:</p>
+         <p>你需要在你的工作节点(或者说你准备运行 Rex 的服务器)以及你准备用来分担工作的其他机器上都安装 Rex::Gearman。</p>
+         <p>如果你不打算直接用我们打的包，你可以通过下面命令来安装：</p>
 
             <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
 
 
          
-         <p>To install it on a Debian/Ubuntu box just type the following to install Rex::Gearman.</p>
+         <p>在 Debian/Ubuntu 上直接输入下面的命令就可以安装 Rex::Gearman.</p>
             <pre><code class="bash">$ apt-get install rex-gearman</code></pre>
 
          
-         <p>To install it on a CentOS or Fedora box you can use <i>yum</i>:</p>
+         <p>在 CentOS 或 Fedora 上则是用 <i>yum</i>：</p>
             <pre><code class="bash">$ yum install rex-gearman</code></pre>
 
          
 
-         <h2>Configuration</h2>
-         <p>If you're using Debian or Ubuntu you have to configure gearman on your worker nodes to listen on the network. It defaults to listen only on the loopback device.</p>
+         <h2>配置</h2>
+         <p>如果你用的是 Debian 或者 Ubuntu，你需要配置一下工作节点上的 gearman 监听到网络上。默认配置是只监听在 lo 设备上的。</p>
 
          
 
-         <h2>Usage</h2>
+         <h2>用法</h2>
 
-         <p>First you have to distribute your Rexfile (and all other files and directories you need) to your worker nodes. It is import to name the basedirectory the same way as on the controlling server.</p> 
+         <p>首先你需要分发你的 Rexfile (或者其他你需要的文件和目录) 到你的工作节点上。注意工作目录的命名也要保持和控制节点的一致。</p> 
 
-         <p>On the controll server (the server where you have rex installed)</p>
+         <p>在控制节点(你安装了 rex 的服务器)上：</p>
 
             <pre><code class="bash">/home/user/projects/frontend
                         |-- Rexfile
@@ -67,7 +67,7 @@
                         +-- worker.conf</code></pre>
          
          
-         <p>Example directory structure on the worker nodes:</p>
+         <p>在工作节点上的示例目录结构：</p>
 
             <pre><code class="bash">/opt/rex/frontend
              |-- Rexfile
@@ -83,9 +83,9 @@
          
          
 
-         <p>Now (on the worker nodes) change into the directory where your <i>Rexfile</i> is located and create a file <i>worker.conf</i>.</p>
+         <p>现在，(在 worker 节点上) 切换到 <i>Rexfile</i> 所在目录，创建文件 <i>worker.conf</i>。</p>
 
-         <p>Here you have to configure all your gearmand servers so that the Worker module can register its functions to them.</p>
+         <p>这里面你必须配置上你所有的 gearmand 服务器，这样 Worker 模块可以注册自己的函数到这些服务器上。</p>
             <pre><code class="perl">{
     job_servers =&gt; [
       "127.0.0.1:4730",
@@ -97,7 +97,7 @@
          
          
 
-         <p>Now you are able to start the workerprocess.</p>
+         <p>现在你可以启动 worker 的进程了。</p>
 
          <pre><code class="bash">$ rex-gearman-worker</code></pre>
 
@@ -105,9 +105,9 @@
          
          
 
-         <p>Now you can switch back to the controll server.</p>
+         <p>现在切换回控制服务器上。</p>
 
-         <p>Again, change to the directory where your <i>Rexfile</i> lives and create a file called <i>client.conf</i>. In this file you have to configure your gearmand servers.</p>
+         <p>还是切换到有 <i>Rexfile</i> 的目录，然后创建 <i>client.conf</i> 文件。文件里配置所有 gearmand 服务器。</p>
 
             <pre><code class="perl">{
     job_servers =&gt; [
@@ -120,9 +120,9 @@
          
          
 
-         <p>Now you're able to run your tasks as known. But you have to replace the <i>rex</i> command with <i>rex-gearman-client</i>. The CLI parameter are the same. So you can use <i>rex-gearman-client</i> the same way as you used <i>rex</i>.</p>
+         <p>现在你可以跟过去一样运行任务了。不过需要把原先的 <i>rex</i> 命令都替换成 <i>rex-gearman-client</i> 。命令行参数依然保持一致，所以 <i>rex-gearman-client</i> 的用法和 <i>rex</i> 是完全一样的。</p>
 
-         <p>For example:</i>
+         <p>比如：</i>
 
             <pre><code class="bash">$ rex-gearman-client -h
 $ rex-gearman-client -Tv

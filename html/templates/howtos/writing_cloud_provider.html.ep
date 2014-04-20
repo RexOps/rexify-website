@@ -1,19 +1,19 @@
 % layout 'default';
-% title 'Howto write an own cloud provider';
+% title '如何写自己的云供应层';
 
 % content_for header => begin
       <meta name="description" content="Write an own cloud provider for Rex">
       <meta name="keywords" content="Rex, Cloud, Provider, API">
 % end
 
-<h1>Write an own Cloud Provider</h1>
+<h1>写自己的云供应层</h1>
 
-<p>If you want to write an own cloud provider for Rex your module have to fullfill some interface requirements. For a working reference you can checkout the <a href="https://github.com/krimdomu/rex-recipes/blob/0.36/Rex/Cloud/OpenNebula/CloudLayer.pm">OpenNebula</a> module.</p>
+<p>如果你想为 Rex 写一个自己的云供应层，你的模块必须满足一些接口要求。作为一个示例，你可以检出 <a href="https://github.com/krimdomu/rex-recipes/blob/0.36/Rex/Cloud/OpenNebula/CloudLayer.pm">OpenNebula</a> 模块作为参考。</p>
 
 
 
-<h2>Creating the Class</h2>
-<p>First you have to create your class. Your class have to be derived from Rex::Cloud::Base.</p>
+<h2>创建类</h2>
+<p>首先你要创建你的类。而且你的类必须继承自 Rex::Cloud::Base 类。</p>
 
 <pre><code class="perl">package Your::Cloud::Provider;
    
@@ -36,15 +36,15 @@ sub new {
 }</code></pre>
 
 
-<h3>Choosing a Region</h3>
-<p>Some Cloud providers (like Amazon) let you choose a region where to manage your cloud instances. The Rex Cloud function for this is <i>cloud_region()</i>. This function will call the <i>set_endpoint()</i> method of the Cloud Provider's Class.</p>
+<h3>选择区域范围</h3>
+<p>有些云服务商(比如亚马逊)会让你选择你要管理的云实例的区域范围。Rex 里为这个准备的函数是 <i>cloud_region()</i>。这个函数会调用云供应商类的 <i>set_endpoint()</i> 方法。</p>
 
 
-<p>So, if you're Cloud Provider has the ability to choose different regions you have to define the <i>set_endpoint()</i> method.</p>
+<p>所以，如果你的云提供商有能力选择不同的区域，你就得定义好 <i>set_endpoint()</i> 方法。</p>
 
-<p>The default <i>set_enpoint()</i> method just stores the first parameter into <i>$self-&gt;{__endpoint}</i>.</p>
+<p>默认的 <i>set_enpoint()</i> 方法就是把第一个参数存进 <i>$self-&gt;{__endpoint}</i> 里。</p>
 
-<p>For example for the OpenNebula Module it sets the location of the OpenNebula RPC url.</p>
+<p>比如在 OpenNebula 模块里，它设置 OpenNebula 的 RPC url 地址：</p>
 
    <pre><code class="perl">sub set_endpoint {
    my ($self, $endpoint) = @_;
@@ -54,10 +54,10 @@ sub new {
 
 
 
-<h3>Authentication</h3>
-<p>Every Cloud Provider use different authentication methods. So you have to define a method <i>set_auth()</i> to store the authentication parameters that you want to use for every call against the Cloud API.</p>
+<h3>认证</h3>
+<p>每个云服务商都有不同的认证方式。所以你必须定义 <i>set_auth()</i> 方法来存储认证参数。你的每次云 API 调用都会用得到。</p>
 
-<p>For example the Amazon API needs an Access Key and a Secret Access Key. The OpenNebula RPC Interface needs an username and a password.</p>
+<p>比如亚马逊的 API 就需要一个 Access Key 和一个 Secret Access Key。而 OpenNebula RPC 接口则需要用户名和密码。</p>
 <pre><code class="perl">sub set_auth {
    my ($self, $user, $password) = @_;
    $self-&gt;{__user}     = $user;
@@ -66,15 +66,15 @@ sub new {
 
 
 
-<h3>Listing available Operating Systems</h3>
+<h3>列出可用的操作系统</h3>
 
-<p>If your Cloud Provider supports the listing of available Operating Systems you can define a method called <i>list_operating_systems()</i>. This method should return an array of hashes.</p>
-
-
-<p>The Hashes shoud contain at least a <i>name</i> and an <i>id</i>.</p>
+<p>如果你的云服务商支持列出可用的操作系统，你可以定义一个叫做 <i>list_operating_systems()</i> 的方法。这个防范应该返回一个由哈希组成的数组。</p>
 
 
-<p>For example, the following code block shows the <i>list_operating_systems()</i> method from the OpenNebula Cloud provider.</p>
+<p>这个哈希必须包含至少一个 <i>name</i> 和一个 <i>id</i>。</p>
+
+
+<p>比如，下马这段代码就是 OpenNebula 云供应层类里的 <i>list_operating_systems()</i> 方法。</p>
 
 <pre><code class="perl">sub list_operating_systems {
    my ($self) = @_;
@@ -89,15 +89,15 @@ sub new {
 }</code></pre>
 
 
-<h3>Listing Instances</h3>
+<h3>列出实例</h3>
 
-<p>To list your instances you have to define a method named <i>list_instances()</i>. This method should return all instances available to the user. If you only want to list running instances there is also a method called <i>list_running_instances()</i>.</p>
-
-
-<p>Both methods have to return an array of hashes. The hashes should contain at least an <i>id</i>, an <i>ip</i> to connect to via ssh and a <i>state</i>. The <i>state</i> key should contain <i>running</i> (if the instance is running) or <i>stopped</i> (if the instance is stopped). It can also contain other states if the Cloud Provider supports it.</p>
+<p>要列出你的实例，你必须定义一个叫 <i>list_instances()</i> 的方法。这个方法应该返回对用户可用的全部实例。如果你只想列出在运行状态的实例，有另一个方法叫 <i>list_running_instances()</i>。</p>
 
 
-<p>For example the next code block shows the 2 methods from the OpenNebula Cloud provider.</p>
+<p>这两个方法都必须返回由哈希组成的数组。哈希要求包含至少一个 <i>id</i>, 一个 <i>ip</i> 用以 ssh 连接，以及一个 <i>state</i>。这个 <i>state</i> 应该有 <i>running</i> (如果实例在运行)或者 <i>stopped</i> (如果实例停止了)。如果你的云服务商有提供其他状态，那也能包含其他状态。</p>
+
+
+<p>比如下面这段代码就是 OpenNebula 云供应层类的这 2 个方法：</p>
 
 <pre><code class="perl">sub list_instances {
    my ($self) = @_;
@@ -126,11 +126,11 @@ sub list_running_instances {
 }</code></pre>
 
 
-<h3>Creating a new Instance</h3>
+<h3>创建新实例</h3>
 
-<p>To create a new instance you have to add the method <i>run_instance(%data)</i>. This method should return a hashRef of the instance information after the instance has created and started.</p>
+<p>要创建新实例，你必须添加 <i>run_instance(%data)</i> 方法。这个方法应该在实例创建和启动后返回一个包含有实例信息的哈希引用。</p>
 
-<p>The next code block shows this method from the OpenNebula provider.</p>
+<p>下面这段代码是从 OpenNebula 供应层摘出的这个方法：</p>
 
 <pre><code class="perl">sub run_instance {
    my ($self, %data) = @_;
@@ -173,12 +173,12 @@ sub list_running_instances {
 
 
 
-<h3>Stopping an  Instance</h3>
+<h3>停止一个实例</h3>
 
-<p>There are 2 ways to stop an instance: <i>stop</i> and <i>terminate</i>. The first one should stop the instance but don't delete it. So it is possible to start the instance when it is needed again.</p>. The method name for this is <i>stop_instance()</i>.</p>
+<p>有 2 种办法停止一个实例：<i>stop</i> 和 <i>terminate</i>。前一个只是停止实例而不会删除它。有需要的时候就可以重新启动起来。这个办法的方法名叫 <i>stop_instance()</i>。</p>
 
 
-<p>The next code block shows the method from the OpenNebula Cloud provider.</p>
+<p>下面这段代码是从 OpenNebula 供应层摘出的这个方法：</p>
 
 <pre><code class="perl">sub stop_instance {
    my ($self, %data) = @_;
@@ -187,11 +187,11 @@ sub list_running_instances {
 
 
 
-<h3>Terminating an  Instance</h3>
+<h3>终止一个实例</h3>
 
-<p>This method should stop an instance and remove it. The method name for this is <i>terminate_instance()</i></p>
+<p>这个方法会停止一个实例并删除它。这个方法的名字叫 <i>terminate_instance()</i>。</p>
 
-<p>The next code block shows the method from the OpenNebula Cloud provider.</p>
+<p>下面这段代码是从 OpenNebula 供应层摘出的这个方法：</p>
 
 <pre><code class="perl">sub terminate_instance {
    my ($self, %data) = @_;
@@ -202,12 +202,12 @@ sub list_running_instances {
 
 
 
-<h3>Starting an  Instance</h3>
+<h3>运行一个实例</h3>
 
-<p>To start a stopped instance you have to define a method named <i>start_instance()</i>.</p>
+<p>要启动一个已停止的实例，你要定义一个叫 <i>start_instance()</i> 的方法。</p>
 
 
-<p>The next code block shows the method from the OpenNebula Cloud provider.</p>
+<p>下面这段代码是从 OpenNebula 供应层摘出的这个方法：</p>
 
 <pre><code class="perl">sub start_instance {
    my ($self, %data) = @_;
@@ -216,16 +216,16 @@ sub list_running_instances {
 
 
 
-<h3>Registering your Cloud Provider</h3>
-<p>At last you have to register your Cloud Provider to Rex. For this you have to call <i>Rex::Cloud-&gt;register_cloud_service($yourhandle =&gt; "Your::Cloud::Provider")</i></p>
+<h3>注册你的云供应层</h3>
+<p>最后你需要把你的云供应层注册到 Rex 里。这需要你调用 <i>Rex::Cloud-&gt;register_cloud_service($yourhandle =&gt; "Your::Cloud::Provider")</i>。</p>
 
-<p>You can just add this line to the end of your Class. (Just before the finishing "1;")</p>
+<p>你只需要把这行代码加到类的最后就行了。(也就是在结束的"1;"前面)</p>
 
    <pre><code class="perl">Rex::Cloud-&gt;register_cloud_service(yourhandle =&gt; __PACKAGE__);</code></pre>
 
 
-<h2>Using your Cloud Provider</h2>
-<p>To use your Cloud Provider within your Rexfiles just copy it into your <i>lib</i> directory and <i>use</i> it:</p>
+<h2>使用你的云供应层</h2>
+<p>要在 Rexfile 里使用你的云供应层，只需要复制它到你的 <i>lib</i> 目录然后 <i>use</i> 它：</p>
    <pre><code class="perl">use Your::Cloud::Provider;
 
 cloud_service "$yourhandle";

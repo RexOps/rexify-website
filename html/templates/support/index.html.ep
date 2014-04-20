@@ -1,34 +1,34 @@
 % layout 'default';
-% title 'Support for (R)?ex';
+% title '(R)?ex 的支持';
 
-<h1>Community Support</h1>
+<h1>社区支持</h1>
 
-<p>Rex is an opensource project driven and supported by its community. If you need help you're invited to join us on our <a href="https://groups.google.com/group/rex-users/">user group</a> or on <a href="irc://irc.freenode.net/rex">irc / freenode</a>.</p>
+<p>Rex 是一个由社区驱动和支持的开源项目。如果你需要帮助，你可以加入我们的<a href="https://groups.google.com/group/rex-users/">用户组</a> 或者 <a href="irc://irc.freenode.net/rex">irc / freenode</a>。</p>
 
 
-<h1>Commercial Support</h1>
+<h1>商业支持</h1>
 
-<p>If you're looking for commercial support feel free to contact one of the listed companies.</p>
-<p>You want to provide commercial support for Rex? Just drop us a <a href="mailto:jfried@rexify.org">few lines</a> with a description of your company and service and we will add you to this list.</p>
+<p>如果你找的是商业支持，可以尝试联系下列公司。</p>
+<p>如果你打算为 Rex 提供商业支持，邮件告诉<a href="mailto:jfried@rexify.org">我</a>你们公司的概况和服务内容，我们会把你们公司加入这个列表。</p>
 
 <h2>Inovex</h2>
 
-<p><a href="http://www.inovex.de" target="_blank"><img src="/img/inovex_logo.png" style="margin: 9px;" border="0" align="left" /></a>inovex, the IT project company specialising in data center engineering, is the first company which offers professionel support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centers.</p>
-<p>With Rex as their software deployment, configuration management and automation solution, inovex experts can automize infrastructures very quickly and operate them efficiently.</p>
+<p><a href="http://www.inovex.de" target="_blank"><img src="/img/inovex_logo.png" style="margin: 9px;" border="0" align="left" /></a>inovex, 是一个专门从事数据中心工程的 IT 项目公司。也是第一个为 Rex 提供专业支持的公司。他们非常强调开源技术在构建和运维一个现代化的、高性价比的数据中心时的关键作用。</p>
+<p>他们使用 Rex 作为软件部署、配置管理和自动化解决方案，inovex 期望可以非常快速的自动构建并且高效的运维自己的基础设施。</p>
 
-<p>So, if you're looking for professional Rex support, please contact us.</p>
+<p>所以，如果你在寻找专业的 Rex 支持，请联系他们。</p>
 
 <table border="0">
    <tr>
-      <td width="80">Mail</td>
+      <td width="80">邮件</td>
       <td><a href="mailto:sales@inovex.de">sales@inovex.de</a></td>
    </tr>
    <tr>
-      <td>Phone</td>
+      <td>电话</td>
       <td>+49 7231 31 91 0</td>
    </tr>
    <tr>
-      <td>Website</td>
+      <td>网站</td>
       <td><a href="http://www.inovex.de">http://www.inovex.de/</a></td>
    </tr>
 </table>
