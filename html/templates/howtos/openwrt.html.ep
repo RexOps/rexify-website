@@ -1,4 +1,4 @@
-% layout 'default';
+<p>% layout 'default';
 % title 'Using (R)?ex to manage OpenWrt systems';
 % content_for header => begin
     <meta name="description" content="(R)?ex - manage all your boxes from a central point - OpenWrt howto">
@@ -42,6 +42,7 @@
 <li>SFTP server: openssh-sftp-server or gesftpserver</li>
 <li>perl</li>
 <li>perl modules: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
+<li>if you use &gt;=rex-0.46: coreutils-nohup</li>
 </ul>
 
 <p>Optional packages (only for specific Rex functions):</p>
