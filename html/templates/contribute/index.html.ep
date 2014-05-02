@@ -10,6 +10,9 @@
 
       <h1>Contribute to (R)?ex</h1>
       <p>There is no company behind (R)?ex. Everything is developed by volunteers arround the globe during their free time. (R)?ex is a free, open source project. Every contribution is welcome.</p>
+<div class="vspace"></div>
+<h1>Get in contact</h1>
+<p>You'll find us on irc.freenode.net in the #rex channel. Just be a bit patient, it might take a few minutes until someone answers.</p>
 
       <div class="vspace"></div>
       <h1>Documentation</h1>
@@ -34,4 +37,3 @@
       <div class="vspace"></div>
       <h2>Hardware</h2>
       <p>One special case is hardware. There can't be enough hardware / environments where we can test (R)?ex. Especially when it comes to the soon release of Rex.IO - a bare metal deployer and webfrontend for (R)?ex. If you want to sponsor any kind of hardware please contact us at <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>
-
