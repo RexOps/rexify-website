@@ -30,6 +30,14 @@
     </ul>
     <div class="tab-content">
        <div class="tab-pane active" id="tab1">
+
+      <h3>For Trusty (14.04)</h3>
+
+   <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ trusty rex' &gt;&gt; /etc/apt/sources.list
+wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+apt-get update
+apt-get install rex</code></pre>
+
          <h3>For Saucy (13.10)</h3>
 
             <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ saucy rex' &gt;&gt; /etc/apt/sources.list
@@ -37,13 +45,6 @@ wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
-
-         <h3>For Raring (13.04)</h3>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ raring rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
 
 
          <h3>For Quantal (12.10)</h3>
@@ -124,7 +125,7 @@ enabled=1
 EOF
 
 yum install rex</code></pre>
- 
+
 
        </div>
        <div class="tab-pane" id="tab5">
@@ -163,7 +164,7 @@ yum install rex</code></pre>
          <p>Thanks to Sam Cassiba Rex is now available in the official FreeBSD Ports collection.</p>
          <pre><code class="bash">cd /usr/ports/sysutils/p5-Rex
 make install clean</code></pre>
- 
+
        </div>
 
 
@@ -181,7 +182,7 @@ make install clean</code></pre>
 <p>Installation instructions for MacPorts:</p>
 <pre><code class="bash">sudo port install libssh2 perl5
 curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
- 
+
 
 <h2>Microsoft Windows</h2>
 
@@ -209,4 +210,3 @@ make install</code></pre>
 cpan[1]&gt; install Rex</code></pre>
 
 <p><small><i>All logos are registered trademarks of their respective companies and are not affiliated with and do not necessarily indicate that they either sponsor or endorse the services of rexify.org (and Rex).</i></small></p>
-
