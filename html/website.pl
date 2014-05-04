@@ -320,6 +320,11 @@ __DATA__
                <h2>新闻</h2>
 
               <div class="news_widget">
+                 <div class="news_date">2014-05-02</div>
+                 <div class="news_content">(R)?ex 0.46.0 released. This releases comes with new cool features like Rex::Test (a testing framework), KVM support for Rex::Box and RackSpace cloud support. See the <a href="/howtos/releases/0.46.html">release notes</a> including examples for the new features.</div>
+              </div>
+
+              <div class="news_widget">
                  <div class="news_date">2014-04-12</div>
                  <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="/howtos/releases/0.45.html">release notes</a> including examples for the new features.</div>
               </div>
@@ -328,40 +333,6 @@ __DATA__
                  <div class="news_date">2014-04-03</div>
                  <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
               </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2014-02-02</div>
-                  <div class="news_content">(R)?ex 0.44.1 版本发布。该版本带来诸多炫酷特性，同时也修正了很多 bug。详见 github 上的 <a href="https://github.com/krimdomu/Rex/wiki/New0.44">release notes</a>。</div>
-               </div>
-
-
-               <div class="news_widget">
-                  <div class="news_date">2013-09-21</div>
-                  <div class="news_content"><a href="http://www.kieler-linuxtag.de/">Kieler Linux Tage</a> 上的演讲已经上传到 <a href="http://de.slideshare.net/jfried/rex-infrastruktur-als-code">slideshare</a> 和 <a href="http://www.youtube.com/watch?v=398v_AS7mMk">youtube</a> (德语)上。</div>
-               </div>
-
-
-               <div class="news_widget">
-                  <div class="news_date">2013-09-16</div>
-                  <div class="news_content">(R)?ex 0.43.0 版本发布。该版本添加了主机清单缓存功能，执行速度更快；支持生成运行 Rex 造成的变更报告；添加了有限度的 OpenWrt 支持。更详细的变更见 <a href="https://github.com/krimdomu/Rex/wiki/New0.43">Changelog</a> 。</div>
-               </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2013-08-12</div>
-                  <div class="news_content"><a href="http://yapceurope.org/">yapc.eu</a> 上的闪电演讲内容已上传到 <a href="http://de.slideshare.net/jfried/rex-25172864">slideshare</a>.</div>
-               </div>
-
-
-               <div class="news_widget">
-                  <div class="news_date">2013-06-16</div>
-                  <div class="news_content">(R)?ex 0.42.0 版本发布。该版本开始支持使用 Net::OpenSSH 作为传输层。虽然默认依然使用 Net::SSH2，但现在可以使用你的 $HOME/.ssh/config 文件里的全部特性，并且采用 Kerberos 认证登录了。更多变化及示例见 <a href="https://github.com/krimdomu/Rex/wiki/New0.42">Changelog</a>.</div>
-               </div>
-
-
-               <div class="news_widget">
-                  <div class="news_date">2013-05-23</div>
-                  <div class="news_content">Inovex <a href="http://www.inovex.de/news-events/news/">刚刚公告</a>他们提供专业级的 Rex 支持。</div>
-               </div>
 
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>

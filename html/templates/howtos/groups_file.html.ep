@@ -9,10 +9,9 @@
          <h1>使用一个 INI-格式的服务器组定义文件</h1>
          <p>要使用一个 INI-格式的服务器组定义文件，你可以用 <i>groups_file</i> 函数。它会读取参数中提供的 ini 文件，然后你就可以在 Rexfile 中和平常一样使用服务器组了。</p>
 
-            <pre><code class="perl">use Rex::Group::Lookup::INI;
+            <pre><code class="perl">use Rex -feature => [qw/use_server_auth/];
+use Rex::Group::Lookup::INI;
 groups_file "file.ini";</code></pre>
-
-         
 
          <p>下面是 INI 格式文件的示例：</p>
 
@@ -33,4 +32,29 @@ be02
 be04
 
 [db]
-db[01..02] </code></pre>
+db[01..02]
+
+[redis]
+@backends
+redis01
+redis02
+
+[memcache < redis]
+memcache01
+memcache02 user=root password=foob4r sudo=true services=apache,memcache</code></pre>
+
+<p>This will create the following groups:</p>
+
+<pre>frontends: fe01, fe02, fe03, fe04, fe05
+backends: be01, be02, be04
+db: db01, db02
+redis: be01, be02, be04, redis01, redis02
+memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
+</pre>
+
+<p>and memcache02 will use custom authentication and there will be a special option "services" for this server that can be queries like this:</p>
+
+<pre><code class="perl">task "mytask", group => "memcache", sub {
+  say connection->server->option("services");
+};
+</pre>

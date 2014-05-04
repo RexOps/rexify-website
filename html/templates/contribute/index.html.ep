@@ -9,6 +9,9 @@
 
       <h1>贡献 (R)?ex</h1>
       <p>(R)?ex 是没有一个背景的组织. 一切都是由志愿者在他们生活和工作的的空闲时间开发. (R)?ex 它是免费的开源项目.我们欢迎每一个贡献者.</p>
+<div class="vspace"></div>
+<h1>联系方式</h1>
+<p>你可以在 irc.freenode.net 的 #rex 频道找到我们。可能需要过几分钟才会有人回答，在此之前，请保持一点耐心，多谢！</p>
 
       <div class="vspace"></div>
       <h1>文档</h1>
@@ -32,4 +35,4 @@
       <p>这些特殊的功能也被包含到开源代码离. 所以它是保证它是兼容版本后,你将有一个社区的利益寻找潜在的bug或贡献的增强.</p>
       <div class="vspace"></div>
       <h2>硬件</h2>
-      <p>特殊情况的环境或者硬件, 希望你能先测试 (R)?ex是否工作.  如有疑问请联系 <a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>.</p>
+      <p>有个额外问题就是硬件。我们缺少足够的硬件/环境来测试 (R)?ex。尤其是即将发布 Rex.IO 版本 -- 一个 Rex 的裸部署和网页管理工具。如果你想赞助些硬件，请联系<a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>。</p>

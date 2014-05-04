@@ -42,6 +42,7 @@
 <li>SFTP 服务器: openssh-sftp-server or gesftpserver</li>
 <li>perl</li>
 <li>perl 模块: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
+<li>如果你用的版本 &gt;=rex-0.46: coreutils-nohup</li>
 </ul>
 
 <p>可能需要的软件(仅为部分特定 Rex 函数所需):</p>
