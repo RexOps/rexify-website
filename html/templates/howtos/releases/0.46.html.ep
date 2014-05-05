@@ -7,26 +7,23 @@
 % end
 
          <h1>Release notes for 0.46</h1>
-         <p>These are the changes in 0.46 release.</p>
-        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+         <p>下面是 0.46 版的主要变更：</p>
+        <p>感谢所有贡献代码和修复 bug 报告的人，是你们让 Rex 越来越好 :)</p>
 
-<h2>Incompatible Changes</h2>
-<p>We're sorry, but this release comes with some incompatible changes. The most
-  changes won't effect the majority of users, but we needed to change those things
-  to fix some nasty things and to be more flexible in the future.</p>
+<h2>不向后兼容的变更</h2>
+<p>本次版本更新带来一些不再向后兼容的改变，对此表示歉意。变化应该不会影响到大多数用户，不过为了解决一些问题，以及未来的灵活性考虑，这些动作都是值得去做的。</p>
 <ul>
-  <li>Reporting: The report format changed. The output and the internal API of the reporting
-     interface changed. With this change we are more flexible for future improvements.</li>
-  <li>User module: We changed the creation of home directories to follow the policy of the target system.</li>
-  <li>Core: Caching is now active by default. This might break things
-    if you're using chroot() inside a task, to change to another system. (For example to chroot from a debian system into a redhat system.)</li>
+  <li>报告: 改变了报告格式。输出和报告接口的内部 API 都有所变动。这样未来优化时可以更灵活了。</li>
+  <li>User 模块: 我们修改了家目录的创建行为，以遵从目的主机的做法。</li>
+  <li>核心: 默认开启缓存。如果你在一个任务中使用 chroot() 来切换操作系统的话，可能会出现问题。
+    (比如从一个 debian 系统切换到 redhat 系统)</li>
 </ul>
 
 <h2>Rex::Test</h2>
-<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.
-  Rex::Test uses Rex::Box to create the VM, but currently it only supports VirtualBox VMs.</p>
+<p>通过 Rex::Test ，我们可以在真正运行代码前先在本地测试自己的 Rexfile。
+  Rex::Test 用 Rex::Box 创建虚拟机，不过目前它只支持 VirtualBox 虚拟机。</p>
 
-<p>To create a test just create a new file inside a <i>t</i> directory: <i>t/base.t</i>.</p>
+<p>要创建测试，只需要在 <i>t</i> 目录里创建一个 <i>t/base.t</i> 文件。</p>
 
 <pre><code class="perl">use Rex::Test::Base;
 use Data::Dumper;
@@ -58,12 +55,12 @@ test {
 1;</code></pre>
 
 <h2>Rex::Box</h2>
-<p>Create clean development environments for your projects. Test your software in a production like environment.</p>
-<p>With Rex/Boxes you can easily create your test environment with VirtualBox.
-  You can use prebuild VM Images or roll your own. Read the <a href="http://box.rexify.org/guide">quickstart guide</a> to create your own environment in minutes.</p>
+<p>用来为你的项目创建一个干净的开发环境。可以模拟生产环境来做测试。</p>
+<p>通过 Rex/Boxes 你可以很容易的利用 VirtualBox 创建测试环境。
+  你可以利用已有的虚拟机镜像也可以自己做一个。快速创建自有环境请阅读 <a href="http://box.rexify.org/guide">快速入门</a> 文档。</p>
 <ul>
   <li>
-    <p>This release brings support for KVM boxes. The KVM Rex::Box provider also allows the creation of Boxes on remote systems.</p>
+    <p>本版本开始支持 KVM 虚拟机。Rex::Box 的 KVM 供应层还允许你在远程系统管理上创建虚拟机。</p>
 <pre><code class="perl"># Rexfile
 set box =&gt; "KVM";
 
@@ -109,21 +106,21 @@ task "init", make {
 </ul>
 
 
-         <h2>Cloud</h2>
-         <p>Changes in the Cloud API</p>
+         <h2>云</h2>
+         <p>云 API 方面的变更</p>
 <ul class="simple-list">
    <li>
-     <p>Support for RackSpace via <a href="#">modules</a>.</p>
+     <p>通过<a href="#">模块</a>支持 RackSpace。</p>
      <ul>
        <li>
-         <p>Authentication and endpoint.</p>
+         <p>认证和终端。</p>
 <pre><code class="perl">cloud_service "RackSpace";
 cloud_auth "user", "key";
 cloud_region "IAD";
 </code></pre>
 
        </li>
-       <li><p>Creating volumes and vms.</p>
+       <li><p>创建卷和虚拟机。</p>
 
 <pre><code class="perl">my $vol_id = cloud_volume create =&gt; { size =&gt; 1, };
 
@@ -139,7 +136,7 @@ cloud_volume attach =&gt; $vol_id,
 </code></pre>
 
        </li>
-       <li><p>Terminating an instance and removing the volume.</p>
+       <li><p>终止实例和删除卷。</p>
 <pre><code class="perl">cloud_instance terminate =&gt; $instance&gt;{id};
 cloud_volume delete =&gt; $vol_id;</code></pre>
 
@@ -147,45 +144,45 @@ cloud_volume delete =&gt; $vol_id;</code></pre>
      </ul>
 
    </li>
-   <li>fixed a case where amazon returns instance item in an array - Kasim Tuman</li>
-   <li>fixed multiple tags - David Golovan</li>
+   <li>修复amazon会在数组里返回实例元素的小问题 - Kasim Tuman</li>
+   <li>修复多标签问题 - David Golovan</li>
  </ul>
 
-<h2>Reporting</h2>
+<h2>报告</h2>
 <ul>
   <li>
-<p>Refactored report generation. This change break backward compatibility because the report format changed.</p>
+<p>重构报告生成器。因为报告格式变化，该变动破坏了向后兼容性。</p>
 </li>
 </ul>
 
 
-<h2>Core</h2>
+<h2>核心</h2>
 <ul>
   <li>
-    <p>Caching is now enabled by default. This might break backward compatibility if you're using chroot() inside a task to chroot to another OS.</p>
+    <p>缓存现在默认开启。如果你在使用 chroot() 来切换操作系统的话，该变动也打破了向后兼容性。</p>
   </li>
   <li>
     <p>
-      Allow passing template content to template command - #345 - reneeb
+      允许传递模板内容给 template 命令 - #345 - reneeb
     </p>
     <pre><code class="perl">file "/etc/file.cnf",
   content =&gt; template(\'&lt;%= $name %&gt; is cool!', name =&gt; 'Rex');</code></pre>
   </li>
   <li>
     <p>
-      Added 'no_cache' feature. If you need to disable the cache, use this.
+      添加 'no_cache' 特性。如果你要关闭缓存的话，使用这个。
     </p>
     <pre><code class="perl"># Rexfile
 use Rex -feature =&gt; ['no_cache'];</code></pre>
   </li>
   <li>
-    <p>Added a special load path for perl libraries, so that we don't mix up perl and rex modules. (lib/perl)</p>
+    <p>为 Perl 库添加一个特殊的加载路径( lib/perl )，这样不用把 Perl和 Rex 的模块混放在一起了。</p>
   </li>
   <li>
-    <p>Refactored handling of home directory creation. This might break compat. because we are following the system default now. (added create_home option) - #270 - FErki</p>
+    <p>重构了家目录的创建处理逻辑。这个变动也会打破向后兼容性。现在我们默认是遵从系统设置。(添加了 create_home 参数) - #270 - FErki</p>
   </li>
   <li>
-    <p>CMDB path can now have variables / can be extended.</p>
+    <p>CMDB 的 path 参数可以设置变量 / 可扩展。</p>
     <pre><code class="perl"># Rexfile
 use Rex::CMDB;
 set cmdb =&gt; {
@@ -201,34 +198,34 @@ set cmdb =&gt; {
 };</code></pre>
   </li>
   <li>
-    <p>Connect failure reports "Error running task/batch: Wrong username/password or wrong key"  - #359 - eduardoj</p>
+    <p>连接失败报告 "Error running task/batch: Wrong username/password or wrong key"  - #359 - eduardoj</p>
   </li>
   <li>
-    <p>Extended rexify command to work with git.</p>
+    <p>增强 rexify 命令配合 git 工作。</p>
   </li>
   <li>
-    <p>Added description to environments - #274</p>
+    <p>给 environments 添加 desc 描述功能 - #274</p>
     <pre><code class="perl"># Rexfile
 desc "The live environment";
 environment live => sub {};</code></pre>
   </li>
   <li>
-    <p>Added <code>groups_dbi()</code> function to generate server groups from sql - #346 - Jean-Marie RENOUARD</p>
+    <p>添加 <code>groups_dbi()</code> 函数从 sql 生成服务器组 - #346 - Jean-Marie RENOUARD</p>
   </li>
   <li>
-    <p>Added <code>groups_yaml()</code> function to generate server groups from yaml file - Jean-Marie RENOUARD</p>
+    <p>添加 <code>groups_yaml()</code> 函数从 yaml 生成服务器组 - Jean-Marie RENOUARD</p>
   </li>
   <li>
-    <p>Add support for df on a given mount point - Simon Bertrang</p>
+    <p>给指定的挂载点添加 df 支持 - Simon Bertrang</p>
   </li>
   <li>
-    <p>Added authentication to download() function. - #340</p>
+    <p>给 download() 函数添加认证功能。 - #340</p>
     <pre><code class="perl">download "http://secured.location.tld/foo.tgz", "foo.tgz",
   user =&gt; "httpuser",
   password =&gt; "password";</code></pre>
   </li>
   <li>
-    <p>Refactored tmp dir generation - FErki</p>
+    <p>重构临时目录生成功能 - FErki</p>
   </li>
 </ul>
 
