@@ -17,6 +17,7 @@
          <li><a href="/howtos/book/ssh_as_agent.html">SSH as an agent</a></li>
          <li><a href="/howtos/book/version_control_with_git.html">Version Control with Git</a></li>
          <li>Using commit hooks</li>
+         <li><a href="/howtos/book/complete_rex_infrastructure.html">Example of a complete Rex code infrastructure</a></li>
       </ol>
    </li>
    <li>Monitoring and Reporting
