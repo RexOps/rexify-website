@@ -52,7 +52,7 @@ redis: be01, be02, be04, redis01, redis02
 memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 </pre>
 
-<p>and memcache02 will use custom authentication and there will be a special option "services" for this server that can be queries like this:</p>
+<p>and memcache02 will use custom authentication and there will be a special option "services" for this server that can be queried like this:</p>
 
 <pre><code class="perl">task "mytask", group => "memcache", sub {
   say connection->server->option("services");
