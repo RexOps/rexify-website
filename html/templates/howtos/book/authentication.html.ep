@@ -6,34 +6,34 @@
       <meta name="keywords" content="Rex, Authentication">
 % end
 
-<h1>Authentication</h1>
+<h1>认证</h1>
 
-<p>There are 4 types of authentication Rex supports with Net::SSH2 and Net::OpenSSH.</p>
+<p>通过 Net::SSH2 和 Net::OpenSSH 模块，Rex 支持 4 种认证方式。</p>
 
-<h2>Password authentication</h2>
-<p>The simplest way to authenticate against your servers is to use password authentication. For this you need a valid user and a password on the remote host.</p>
+<h2>密码认证</h2>
+<p>最简单的认证方式就是用密码。你需要一个可用的目的主机用户名和密码。</p>
 
 <pre><code class="perl">user "root";
 password "f00b4r";
 pass_auth;
 </code></pre>
 
-<p>Though you don't need to specify <i>pass_auth</i> we recommend to use it. If it is not specified Rex tries multiple authentication algorithms and some servers may be configured to drop the connection after 1 or 2 failed authentication attemps.</p>
+<p>虽然其实并不用特意指明 <i>pass_auth</i> ，不过我们建议还是写清楚比较好。Rex 会尝试使用多种认证算法，而有些服务器可能配置成一两次失败后就断开你的连接了。</p>
 
-<h2>Key authentication</h2>
-<p>An other simple way is to use private and public key to authenticate against your servers. To do this you have to define the full path to your private key file and to your public key file.</p>
-<p>If you don't have a public key file you have to create it.</p>
+<h2>密钥认证</h2>
+<p>另一个比较简单的方式是使用私钥和公钥来做服务器认证。你需要定义自己的私钥文件和公钥文件的具体路径。</p>
+<p>如果你还没有公钥，需要先创建一对。</p>
 <pre><code class="bash">$ sshkey-gen -y -f /path/to/your/private.key &gt;public.key</code></pre>
 
-<p>To use this authentication algorithm you can use the following code snippet.</p>
+<p>使用这个认证方式需要使用如下代码片段：</p>
 <pre><code class="perl">user "root";
 private_key "/path/to/your/private.key";
 public_key "/path/to/your/public.key";
 key_auth;</code></pre>
 
-<p>Though you don't need to specify <i>key_auth</i> we recommend to use it. If it is not specified Rex tries multiple authentication algorithms and some servers may be configured to drop the connection after 1 or 2 failed authentication attemps.</p>
+<p>虽然其实并不用特意指明 <i>key_auth</i> ，不过我们建议还是写清楚比较好。Rex 会尝试使用多种认证算法，而有些服务器可能配置成一两次失败后就断开你的连接了。</p>
 
-<p>If you have a specified a password for your private key, you can set this via the <i>password</i> directive.</p>
+<p>如果你的私钥也有设定密码，你可以通过 <i>password</i> 指令来预先设置。</p>
 <pre><code class="perl">user "root";
 private_key "/path/to/your/private.key";
 public_key "/path/to/your/public.key";
@@ -41,25 +41,25 @@ password "your-key-passphrase";
 key_auth;</code></pre>
 
 
-<h2>Agent authentication</h2>
-<p>If you don't want to use any of the above methods, you can use agent authentication. If you need agent forwarding on your servers this will only work with <i>Net::OpenSSH</i>.</p>
+<h2>客户端认证</h2>
+<p>如果你不想使用上面哪些方式，你可以使用客户端认证。你需要在服务器上都开启客户端转发，而且这种方式仅在 <i>Net::OpenSSH</i> 下有效工作。</p>
 
-<p>To use agent authentication make sure the agent is running on your system.</p>
+<p>要使用客户端认证请确认系统上运行了客户端。</p>
 <pre><code class="perl">user "root";
 private_key "/path/to/your/private.key";
 public_key "/path/to/your/public.key";</code></pre>
 
-<p>As you see, this is the same as with key authentication. But you have to omit the <i>key_auth</i> line.</p>
+<p>如你所见，这个配置跟密钥认证方式一样，不过你不能再写 <i>key_auth</i> 这行了。</p>
 
-<h2>Kerberos authentication</h2>
+<h2>Kerberos 认证</h2>
 
-<p>As of version 0.42 Rex supports Kerberos authentication though <i>Net::OpenSSH</i> module. To use this you have to set the connection type to use Net::OpenSSH.</p>
-<p>Also make sure that your servers support Kerberos authentication.</p>
+<p>从 Rex 0.42 版本开始，支持通过 <i>Net::OpenSSH</i> 模块使用 Kerberos 认证。要使用这种方式你要指明连接类型来使用 Net::OpenSSH。</p>
+<p>同样还需要确认的是你的服务器本身支持 Kerberos 认证。</p>
 
 <pre><code class="perl">set connection =&gt; "OpenSSH";
 user "root";
 krb5_auth;</code></pre>
 
-<p>Here you have to use <i>krb5_auth</i> to tell Rex to use it.</p>
+<p>这里你必须用 <i>krb5_auth</i> 来告诉 Rex 使用这种方式。</p>
 
 <p><hr><a href="/howtos/book.html">Table of Contents</a> </p>

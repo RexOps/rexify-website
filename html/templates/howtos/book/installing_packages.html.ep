@@ -6,7 +6,7 @@
       <meta name="keywords" content="Rex, packages, installation">
 % end
 
-<h1>Installing Packages</h1>
+<h1>安装软件包</h1>
 
 <p>Installing packages is easy. You can use the <i>install</i> function for this.</p>
 

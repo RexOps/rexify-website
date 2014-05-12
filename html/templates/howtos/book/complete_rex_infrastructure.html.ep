@@ -19,27 +19,27 @@
   <li><a href="https://github.com/krimdomu/rex-ntp-base">NTP 模块示例</a></li>
 </ul>
 
-<h1>Building services out of blocks with Rex</h1>
+<h1>Rex 构建服务第一步</h1>
 
-<p>If you have a large environment with multiple services and a complex architecture it is important to design your code in a way that you can reuse most parts of it.
-To achieve this you need to follow some simple rules.</p>
+<p>如果你管理着一个有多种服务和复杂架构的大规模环境，那么尽量将你的代码设计成可重用的模式，这一点非常重要。
+要做到这点，你可能需要遵守下面几条简单的规则。</p>
 
 <ul>
-<li>Use a source control system like git.</li>
-<li>Build modules for every part of your architecture. A module should be <b>generic</b> and should <b>not contain</b> any project specific logic or configuration. For example a module to manage apache or ntp.</li>
-<li>Build services to tie the modules together. Services should hold <b>all the project specific information</b> need to build it.</li>
-<li>The code of every module and every service should be in a seperate code repository. With this it is easier to manage your infrastructure. You can create dependencies between services and modules on a branch level.</li>
-<li>Use a CMDB to seperate configuration from code.</li>
+<li>使用源码控制系统，比如 git 。</li>
+<li>给你架构中的每个部分都设计成模块。要有一个叫 <b>generic</b>，而且<b>不包含</b>任何和项目有关的逻辑与配置的模块。比如只管理 apache 或者 ntp。</li>
+<li>通过多个模块关联来构建服务。服务需要包含构建项目所需要的<b>所有特定信息</b>。</li>
+<li>每个模块和服务的代码都要放置在分离的代码库里。这样便于管理你的架构。你可以在分支层面创建服务和模块之间的依赖关系。</li>
+<li>使用 CMDB 来分离代码配置。</li>
 </ul>
 
-<h2>Source Control System</h2>
+<h2>源码控制系统</h2>
 
-<p>Currently Rex supports only *git* for module and service repositories. So in this example i will use git.</p>
-<p>To manage your git repositories i suggest some tool like <a href="https://github.com/yuki-kimoto/gitprep">Gitprep</a> or <a href="https://www.gitlab.com/">Gitlab</a></p>
+<p>目前 Rex 只支持 *git* 方式管理模块和服务的仓库。所以本例中我也会使用 git。</p>
+<p>管理 git 仓库本身，我建议使用像 <a href="https://github.com/yuki-kimoto/gitprep">Gitprep</a> 或者 <a href="https://www.gitlab.com/">Gitlab</a> 之类的工具。</p>
 
-<h2>Modules</h2>
+<h2>模块</h2>
 
-<p>As mentioned above, you should separate your code. For better readability, usability and maintainability of your code this is important.</p>
+<p>像之前提到的那样，你需要分离你的代码。不管从可读性、可用性还是可管理性来说这都是很重要的。</p>
 
 <p>Modules must be generic. The modules are a bit like lego blocks. You can use lego blocks to build houses, ships, airplanes and much more. But the blocks are always the same.</p>
 
