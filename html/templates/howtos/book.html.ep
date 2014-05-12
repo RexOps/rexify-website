@@ -17,7 +17,7 @@
          <li><a href="/howtos/book/ssh_as_agent.html">SSH 作为客户端</a></li>
          <li><a href="/howtos/book/version_control_with_git.html">Git 做版本控制</a></li>
          <li>Using commit hooks</li>
-         <li><a href="/howtos/book/complete_rex_infrastructure.html">Example of a complete Rex code infrastructure</a></li>
+         <li><a href="/howtos/book/complete_rex_infrastructure.html">完整的 Rex 代码架构示例</a></li>
       </ol>
    </li>
    <li>监控和报告

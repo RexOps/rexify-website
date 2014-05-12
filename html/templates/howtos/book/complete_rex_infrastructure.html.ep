@@ -6,17 +6,17 @@
       <meta name="keywords" content="Rex, code, infrastructure, module, management">
 % end
 
-<h1>Managing your Rex code</h1>
+<h1>管理你的 Rex 代码</h1>
 
-<p>For maintainable and reusable code it is important to start with the right infrastructure choices and tools.
-  In this chapter i will show you how you can setup and design your project to achieve this.</p>
+<p>代码的可管理性和重用性严重依赖于选择正确的架构和工具。
+  本节我将演示如何设置和设计你自己的项目来达成这个目标。</p>
 
-<p>You can find the code of this chapter on github.</p>
+<p>本节中的代码你都可以在 github 上获取。</p>
 
 <ul>
-  <li><a href="https://github.com/krimdomu/service-frontend">The service (example frontend service)</a></li>
-  <li><a href="https://github.com/krimdomu/rex-os-base">An example basic os module to configure the basics</a></li>
-  <li><a href="https://github.com/krimdomu/rex-ntp-base">An example ntp module</a></li>
+  <li><a href="https://github.com/krimdomu/service-frontend">服务 (前端服务示例)</a></li>
+  <li><a href="https://github.com/krimdomu/rex-os-base">用来配置操作系统的基础示例模块</a></li>
+  <li><a href="https://github.com/krimdomu/rex-ntp-base">NTP 模块示例</a></li>
 </ul>
 
 <h1>Building services out of blocks with Rex</h1>

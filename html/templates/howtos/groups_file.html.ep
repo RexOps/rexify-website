@@ -43,7 +43,7 @@ redis02
 memcache01
 memcache02 user=root password=foob4r sudo=true services=apache,memcache</code></pre>
 
-<p>This will create the following groups:</p>
+<p>这会创建如下服务器组：</p>
 
 <pre>frontends: fe01, fe02, fe03, fe04, fe05
 backends: be01, be02, be04
@@ -52,7 +52,7 @@ redis: be01, be02, be04, redis01, redis02
 memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 </pre>
 
-<p>and memcache02 will use custom authentication and there will be a special option "services" for this server that can be queries like this:</p>
+<p>而且 memcache02 这台服务器会使用自己专有的认证方式。同时还会有一个特殊选项 "services"，你可以像下面这样使用：</p>
 
 <pre><code class="perl">task "mytask", group => "memcache", sub {
   say connection->server->option("services");
