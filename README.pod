@@ -20,7 +20,7 @@ Install Perl modules: C<cpanm Mojolicious Mojolicious::Plugin::RenderFile>
 
 =item *
 
-Start a local webserver: C<cd rexify-website && hypnotoad html/website.pl>
+Start a local webserver: C<cd rexify-website/html && hypnotoad website.pl>
 
 =item *
 
