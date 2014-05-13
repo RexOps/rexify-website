@@ -33,7 +33,7 @@
 <h2>EXAMPLES</h2>
 <p>To use this module inside your Rexfile you can use the following commands.</p>
 <pre><code class="perl">
- use Rex::Commands::Boxes;
+ use Rex::Commands::Box;
  set box =&gt; "VBox";
   
  task "prepare_box", sub {
