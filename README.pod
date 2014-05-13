@@ -8,5 +8,22 @@ Don't blame me for the code... i hate creating websites...
 
 If you want to make changes and test these changes on your workstation follow these steps:
 
-... tbd ...
+=over
 
+=item *
+
+Clone the repo: C<git clone https://github.com/RexOps/rexify-website.git>
+
+=item *
+
+Install Perl modules: C<cpanm Mojolicious Mojolicious::Plugin::RenderFile>
+
+=item *
+
+Start a local webserver: C<cd rexify-website && hypnotoad html/website.pl>
+
+=item *
+
+Open L<http://localhost:8080> in your favorite browser
+
+=back
