@@ -2,11 +2,28 @@
 
 =head2 This is the code for rexify.org
 
-Don't blame me for the code... i hate creating websites...
+Don't blame me for the code... I hate creating websites...
 
-=head2 Run it local
+=head2 Run it locally
 
 If you want to make changes and test these changes on your workstation follow these steps:
 
-... tbd ...
+=over
 
+=item *
+
+Clone the repo: C<git clone https://github.com/RexOps/rexify-website.git>
+
+=item *
+
+Install Perl modules: C<cpanm Mojolicious Mojolicious::Plugin::RenderFile>
+
+=item *
+
+Start a local webserver: C<cd rexify-website/html && hypnotoad website.pl>
+
+=item *
+
+Open L<http://localhost:8080> in your favorite browser
+
+=back
