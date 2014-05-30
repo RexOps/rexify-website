@@ -31,7 +31,7 @@
    <li><a href="https://metacpan.org/module/YAML">YAML</a></li>
    <li><a href="https://metacpan.org/module/LWP">LWP</a></li>
    <li><a href="https://metacpan.org/module/DBI">DBI</a> (if you want to use Database Access)</li>
-   <li><a href="https://metacpan.org/module/JSON::XS">JSON::XS</a> (if you want to use Jiffybox Cloud Provider)</li>
+   <li><a href="https://metacpan.org/module/JSON::XS">JSON::XS</a> (if you want to use the Jiffybox or OpenStack Cloud Provider)</li>
    <li><a href="https://metacpan.org/module/XML::Simple">XML::Simple</a> (if you want to use FusionInventory for system inventory, for Amazon Cloud Provider and for the Virtualization Commands)</li>
    <li><a href="https://metacpan.org/module/String::Escape">String::Escape</a> (if you want to define your groups with ini files)</li>
 </ul>
