@@ -96,6 +96,7 @@
    <li>Managing Datacenters and the Cloud
       <ol>
          <li>Deploying Nagios</li>
+         <li><a href="/howtos/book/deploying_openldap_and_sssd.html">Deploying OpenLDAP and SSSD</a></li>
          <li>Building High Availbility services with heartbeat</li>
          <li>Building High Availbility storage with DRBD</li>
          <li>Managing NFS servers</li>

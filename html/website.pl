@@ -320,6 +320,13 @@ __DATA__
                </form>
                <h2>News</h2>
 
+
+<div class="news_widget">
+   <div class="news_date">2014-05-31</div>
+   <div class="news_content"><a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.</div>
+</div>
+
+
               <div class="news_widget">
                  <div class="news_date">2014-05-02</div>
                  <div class="news_content">(R)?ex 0.46.0 released. This releases comes with new cool features like Rex::Test (a testing framework), KVM support for Rex::Box and RackSpace cloud support. See the <a href="/howtos/releases/0.46.html">release notes</a> including examples for the new features.</div>
@@ -334,14 +341,6 @@ __DATA__
                  <div class="news_date">2014-04-03</div>
                  <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
               </div>
-
-               <div class="news_widget">
-                  <div class="news_date">2013-03-20</div>
-                  <div class="news_content">
-                     <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
-                     <p>We are proud to announce that Rex was voted under the Best Open Source solutions 2013 by <a href="http://www.imittelstand.de/">initiative mittelstand</a>. And we want to thank <a href="http://inovex.de">inovex</a> for the support to make this happen.</p>
-                  </div>
-               </div>
 
                <h2>Conferences</h2>
 
