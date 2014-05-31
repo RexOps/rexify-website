@@ -8,15 +8,28 @@
 
 <h1>Commercial Support</h1>
 
-<p>If you're looking for commercial support feel free to contact one of the listed companies.</p>
+<p>If you're looking for commercial support feel free to contact any of the companies and individuals listed below in alphabetical order.</p>
 <p>You want to provide commercial support for Rex? Just drop us a <a href="mailto:jfried@rexify.org">few lines</a> with a description of your company and service and we will add you to this list.</p>
+
+<h2>Ferenc Erki</h2>
+
+<div class="media">
+  <a href="http://linkedin.com/in/ferki/" target="_blank" class="pull-left"><img class="media-object" src="http://www.gravatar.com/avatar/4f102f07ec6b79caa1c5a3d08f08e01a.png" /></a>
+  <div class="media-body">
+    <p>Get consulting, training and custom implementation services directly from a core developer behind R(?)ex.</p>
+    <a href="http://linkedin.com/in/ferki/" target="_blank">LinkedIn profile</a>
+  </div>
+</div>
 
 <h2>Inovex</h2>
 
-<p><a href="http://www.inovex.de" target="_blank"><img src="/img/inovex_logo.png" style="margin: 9px;" border="0" align="left" /></a>inovex, the IT project company specialising in data center engineering, is the first company which offers professionel support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centers.</p>
-<p>With Rex as their software deployment, configuration management and automation solution, inovex experts can automize infrastructures very quickly and operate them efficiently.</p>
+<div class="media">
+  <a href="http://www.inovex.de" target="_blank" class="pull-left"><img class="media-object" src="/img/inovex_logo.png" /></a>
+  <div class="media-body">
+    <p>inovex, the IT project company specialising in data center engineering, is the first company which offers professionel support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centers.</p>
+    <p>With Rex as their software deployment, configuration management and automation solution, inovex experts can automize infrastructures very quickly and operate them efficiently.</p>
 
-<p>So, if you're looking for professional Rex support, please contact us.</p>
+    <p>So, if you're looking for professional Rex support, please contact us.</p>
 
 <table border="0">
    <tr>
@@ -33,3 +46,5 @@
    </tr>
 </table>
 
+  </div>
+</div>
