@@ -352,14 +352,14 @@ __DATA__
                </div>
 
                <h2>Need Help?</h2>
-               <p>Rex is a pure Open Source project. So you can find community support in the following places.</p>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
                <ul>
-                  <li>IRC: #rex on freenode</li>
-                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">rex-users</a></li>
-                  <li>Issues: <a href="https://github.com/Krimdomu/Rex/issues">on Github</a></li>
-                  <li>Feature: You miss a <a href="/feature.html">feature</a>?</li>
-                  <li>Professional Support: <a href="http://www.inovex.de/news-events/news/">by inovex</a></li>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/feature.html">feature</a>?</li>
                </ul>
+               <p><a href="/support/index.html">Professional support</a> is also available.</p>
             </div>
          </div> <!-- widgets -->
 
