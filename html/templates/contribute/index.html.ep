@@ -20,11 +20,11 @@
       <div class="small-vspace"></div>
       <p>It is often hard to find a good balance between documenting new features (or remove deprecated documentation) and writing new code. So if you find outdated documentation, want to add guides, tweak the design or rewrite the complete webpage, don't hesitate contacting us.</p>
       <div class="small-vspace"></div>
-      <p>You can clone the website code from <a href="https://github.com/krimdomu/rexify-website">Github</a>. Please read the README file on how to get the website up and running on your local machine.</p>
+      <p>You can clone the website code from <a href="https://github.com/RexOps/rexify-website">Github</a>. Please read the README file on how to get the website up and running on your local machine.</p>
 
       <div class="vspace"></div>
       <h1>Code</h1>
-      <p>If you want to contribute new functionality or fix things, you can just <a href="https://github.com/krimdomu">clone the repository</a> on Github and send Pull Requests.</p>
+      <p>If you want to contribute new functionality or fix things, you can just <a href="https://github.com/RexOps/Rex">clone the repository</a> on Github and send Pull Requests.</p>
       <div class="small-vspace"></div>
 
       <p>You don't need to follow special style guidelines and if you have questions on how to implement something join us on irc.freenode.net / #rex.</p>

@@ -198,7 +198,7 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>If you want to download the latest sources from Github you can do it this way. The master branch is the current latest stable version. Every development is done in its own version branch.</p>
 
-<pre><code class="bash">git clone https://github.com/krimdomu/Rex.git
+<pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
 perl Makefile.PL
 make

@@ -15,7 +15,7 @@
          
          <p>So the default is always to be compatible.</p>
          
-         <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a>.</p>
+         <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/RexOps/Rex/issues">issue tracker</a>.</p>
 
          
          <h2>Feature Flags</h2>

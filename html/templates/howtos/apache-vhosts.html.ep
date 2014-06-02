@@ -13,7 +13,7 @@
 
          <h2>Preparation</h2>
          <ul>
-            <li>Download and install rex &gt;= 0.4 (<a href="https://github.com/krimdomu/Rex">github</a> Branch: master)</li>
+            <li>Download and install rex &gt;= 0.4 (<a href="https://github.com/RexOps/Rex">github</a> Branch: master)</li>
             <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.
                <ul>
                   <li>This server will be our webserver.</li>

@@ -37,7 +37,7 @@ Installation</H1>
 <p> <BR> </p>
 <p> Installation de Rex&nbsp;:</p>
 <div class="black-box"><pre class="bash">[root]# cd /tmp
-[root]# git clone http://github.com/krimdomu/Rex.git rex
+[root]# git clone http://github.com/RexOps/Rex.git rex
 [root]# cd rex
 [root]# perl Makefile.PL
 [root]# make
@@ -178,7 +178,7 @@ just join #rex on freenode
 
 or post them here:
 
-https://github.com/krimdomu/Rex/issues
+https://github.com/RexOps/Rex/issues
 
 [root]# cd example
 [root]# ls
