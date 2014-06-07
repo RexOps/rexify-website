@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex - A simple framework to simplify systemadministration and datacenter automation';
+% title '(R)?ex - A simple framework to simplify system administration and datacenter automation';
 
 
 <div style="float: left"> <!-- needed for bootstrap ... -->
