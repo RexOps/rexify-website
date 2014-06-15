@@ -14,7 +14,7 @@
          <h2>Preparation</h2>
          <ul>
             <li>Download and install rex (see <a href="/get">get</a> page)</li>
-            <li>Download and install rex-apache-deploy &gt;= 0.4 (<a href="https://github.com/krimdomu/rex-apache-deploy">github</a> Branch: master)
+            <li>Download and install rex-apache-deploy &gt;= 0.4 (<a href="https://github.com/krimdomu/rex-apache-deploy">GitHub</a> Branch: master)
                <p>rex-apache-deploy is a Rex-Module to ease the deployment of PHP, Perl, Ruby and Tomcat applications</p>
             </li>
             <li>Install a clean <a href="http://www.debian.org/">Debian Squeeze</a> into a virtual machine.

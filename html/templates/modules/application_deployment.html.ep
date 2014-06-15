@@ -9,7 +9,7 @@
          <h1>Application Deployment</h1>
 
          <p>If you have to deploy PHP, Rails, Tomcat or Perl Applications this module will help you automate the deployment task.</p>
-         <p>You can download this module at <a href="https://github.com/Krimdomu/rex-apache-deploy">github</a>.</p>
+         <p>You can download this module at <a href="https://github.com/Krimdomu/rex-apache-deploy">GitHub</a>.</p>
          <p>There are also prebuilded packages. See <a href="/get/">get page</a> for more information.</p>
          
 

@@ -13,7 +13,7 @@
 <h1>Installation</h1>
 
 <p>If you're using the Rex repository for your distribution you just can install the package <i>rex-shell-extension</i>. This will install the rex-* helper scripts to <i>/usr/lib/rex/shell</i>.</p>
-<p>If there is no package for your distribution available, you can clone the github repository,</p>
+<p>If there is no package for your distribution available, you can clone the GitHub repository,</p>
 
 <pre><code class="bash">git clone https://github.com/krimdomu/rex-shell-extension.git
 cd rex-shell-extension.git

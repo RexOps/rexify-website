@@ -30,16 +30,16 @@ $ git add lib
 $ git commit -m "inital commit"
 </code></pre>
 
-<p>Now you also can connect this to your Github account and push your changes to it.</p>
+<p>Now you also can connect this to your GitHub account and push your changes to it.</p>
 
 <pre><code class="bash">$ git push origin master</code></pre>
 
 <h2>The workflow</h2>
 
-<p>Now as you setup your repository you can use the following workflow to update your local repository and to upload your changes to Github.</p>
+<p>Now as you setup your repository you can use the following workflow to update your local repository and to upload your changes to GitHub.</p>
 
 <ul>
-   <li>Get the latest things from Github
+   <li>Get the latest things from GitHub
       <pre><code class="bash">$ git pull</code></pre>
    </li>
    <li>If you have changed things and want to add them to the repository you have to follow these steps:
