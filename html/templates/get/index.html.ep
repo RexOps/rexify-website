@@ -196,9 +196,9 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>其他 / 基于源码安装</h2>
 
-<p>如果你想安装最新的版本你可以在github 上下载，主分支是当前最稳定的版本，每一个开发者都在自己的分支上开发</p>
+<p>如果你想从 Github 上下载最新的源代码，你可以通过这个方式来进行。主分支是目前最新的稳定版本。每个特性的开发都是在自己的版本分支中完成的。</p>
 
-<pre><code class="bash">git clone https://github.com/krimdomu/Rex.git
+<pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
 perl Makefile.PL
 make

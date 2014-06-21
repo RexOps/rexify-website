@@ -1,0 +1,44 @@
+use Rex -base;
+use Rex::CMDB;
+use Rex::Commands::SCM;
+use Rex::Commands::Rsync;
+
+set cmdb => {
+    type => 'YAML',
+    path => "$ENV{HOME}/.cmdb",
+};
+
+my $cmdb = get cmdb();
+
+user $cmdb->{user};
+private_key $cmdb->{private_key};
+public_key $cmdb->{public_key};
+
+set
+    repository => 'rexify.org',
+    url        => $cmdb->{repository};
+
+desc 'Deploy rexify.org website';
+task 'deploy', $cmdb->{host}, sub {
+
+    # update repo
+    checkout 'rexify.org', path => $cmdb->{repo_dir};
+
+    # sync generated API documentation
+    sync "$ENV{WORKSPACE}/rex/doc/html/*",
+        "$cmdb->{repo_dir}/html/templates/api",
+        {
+        exclude    => 'index.html.ep',
+        parameters => '--delete',
+        };
+
+    # reload hypnotoad
+    run 'hypnotoad website.pl', cwd => "$cmdb->{repo_dir}/html";
+
+    # populate elasticsearch index
+    run "perl create_index.pl $cmdb->{es_host} 9200 html/templates",
+        cwd => $cmdb->{repo_dir};
+
+    # empty nginx cache
+    run "curl -X POST $cmdb->{nginx_url}";
+};

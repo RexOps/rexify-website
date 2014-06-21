@@ -11,12 +11,25 @@
 <p>如果你找的是商业支持，可以尝试联系下列公司。</p>
 <p>如果你打算为 Rex 提供商业支持，邮件告诉<a href="mailto:jfried@rexify.org">我</a>你们公司的概况和服务内容，我们会把你们公司加入这个列表。</p>
 
+<h2>Ferenc Erki</h2>
+
+<div class="media">
+  <a href="http://linkedin.com/in/ferki/" target="_blank" class="pull-left"><img class="media-object" src="http://www.gravatar.com/avatar/4f102f07ec6b79caa1c5a3d08f08e01a.png" /></a>
+  <div class="media-body">
+    <p>Get consulting, training and custom implementation services directly from a core developer behind (R)?ex.</p>
+    <a href="http://linkedin.com/in/ferki/" target="_blank">LinkedIn profile</a>
+  </div>
+</div>
+
 <h2>Inovex</h2>
 
-<p><a href="http://www.inovex.de" target="_blank"><img src="/img/inovex_logo.png" style="margin: 9px;" border="0" align="left" /></a>inovex, 是一个专门从事数据中心工程的 IT 项目公司。也是第一个为 Rex 提供专业支持的公司。他们非常强调开源技术在构建和运维一个现代化的、高性价比的数据中心时的关键作用。</p>
-<p>他们使用 Rex 作为软件部署、配置管理和自动化解决方案，inovex 期望可以非常快速的自动构建并且高效的运维自己的基础设施。</p>
+<div class="media">
+  <a href="http://www.inovex.de" target="_blank" class="pull-left"><img class="media-object" src="/img/inovex_logo.png" /></a>
+  <div class="media-body">
+    <p>inovex, 是一个专门从事数据中心工程的 IT 项目公司。也是第一个为 Rex 提供专业支持的公司。他们非常强调开源技术在构建和运维一个现代化的、高性价比的数据中心时的关键作用。</p>
+    <p>他们使用 Rex 作为软件部署、配置管理和自动化解决方案，inovex 期望可以非常快速的自动构建并且高效的运维自己的基础设施。</p>
 
-<p>所以，如果你在寻找专业的 Rex 支持，请联系他们。</p>
+    <p>所以，如果你在寻找专业的 Rex 支持，请联系他们。</p>
 
 <table border="0">
    <tr>
@@ -33,3 +46,5 @@
    </tr>
 </table>
 
+  </div>
+</div>

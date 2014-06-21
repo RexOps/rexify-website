@@ -11,7 +11,7 @@
       <p>(R)?ex 是没有一个背景的组织. 一切都是由志愿者在他们生活和工作的的空闲时间开发. (R)?ex 它是免费的开源项目.我们欢迎每一个贡献者.</p>
 <div class="vspace"></div>
 <h1>联系方式</h1>
-<p>你可以在 irc.freenode.net 的 #rex 频道找到我们。可能需要过几分钟才会有人回答，在此之前，请保持一点耐心，多谢！</p>
+<p>你可以在 <a href="irc://irc.freenode.net/rex">irc.freenode.net 的 #rex 频道</a>找到我们。可能需要过几分钟才会有人回答，在此之前，请保持一点耐心，多谢！</p>
 
       <div class="vspace"></div>
       <h1>文档</h1>
@@ -19,14 +19,15 @@
       <div class="small-vspace"></div>
       <p>通常很难找到一个好的平衡记录新特性(或移除过时的文档)和编写新的代码.所以如果你发现过时的文档,想添加指导,调整设计或修改完整的网页,不要犹豫联系我们.</p>
       <div class="small-vspace"></div>
-      <p>你可以检出rex的网站代码 <a href="https://github.com/krimdomu/rexify-website">Github</a>.请阅读README 文件 ，它会告诉你怎么运行网站在你的本地环境.</p>
-
+      <p>你可以检出rex的网站代码 <a href="https://github.com/RexOps/rexify-website">Github</a>.请阅读 <a href="https://github.com/RexOps/rexify-website/blob/master/README.pod">README 文件</a>，它会告诉你怎么运行网站在你的本地环境.</p>
+      <p>请注意，API 文档时通过 <a href="https://github.com/RexOps/Rex">(R)?ex repo</a> 里文件的内嵌 POD 自动生成到网站的。</p>
       <div class="vspace"></div>
       <h1>代码</h1>
-      <p>如果你想为新功能或者修改bug <a href="https://github.com/krimdomu">clone the repository</a> 请在github上提交.</p>
+      <p>如果你想为新功能或者修改bug，<a href="https://github.com/RexOps/Rex">克隆这个仓库</a>，然后通过开发分支推送合并请求。</p>
       <div class="small-vspace"></div>
 
-      <p>你不需要遵循特殊的风格，如果关于怎么实现的有问题，请联系我们  irc.freenode.net/#rex.</p>
+      <p>我们用 <a href="https://metacpan.org/pod/Perl::Tidy">perltidy</a> 来帮助我们管理项目代码的统一风格(参阅我们的 .perltidyrc 以了解更多细节)。我们建议你通过自己喜欢的 IDE 或者其他文本编辑器来设置这个。这样你可以在自己提交代码前也很容易的、甚至自动的完成格式调整。<p>
+      <p>如果关于怎么实现的有问题，请联系我们<a href="irc://irc.freenode.net/rex">irc.freenode.net/#rex</a>.</p>
 
       <div class="vspace"></div>
       <h1>发起人</h1>

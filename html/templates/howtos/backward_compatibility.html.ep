@@ -15,7 +15,7 @@
          
          <p>所以默认情况下就是永远向后兼容的。</p>
          
-         <p>如果你在升级之后碰到什么问题，可以认为这是一个 bug。请通过 <a href="https://github.com/krimdomu/Rex/issues">issue tracker</a> 向我们报告。</p>
+         <p>如果你在升级之后碰到什么问题，可以认为这是一个 bug。请通过 <a href="https://github.com/RexOps/Rex/issues">issue tracker</a> 向我们报告。</p>
 
          
          <h2>特性标记</h2>

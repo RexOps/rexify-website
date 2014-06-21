@@ -23,7 +23,7 @@ get '/' => sub {
 get '/get/recipes' => sub {
    my ($self) = @_;
    my $ua = Mojo::UserAgent->new;
-   $self->render_text($ua->get("https://raw.github.com/krimdomu/rex-recipes/master/recipes.yml")->res->body);
+   $self->render_text($ua->get("https://raw.github.com/RexOps/rex-recipes/master/recipes.yml")->res->body);
 };
 
 # special code to handle ,,rexify --use'' requests
@@ -42,7 +42,7 @@ get '/get/mod/*mod' => sub {
    chdir("/tmp/scratch");
 
    my $u = get_random(32, 'a' .. 'z');
-   system("git clone git://github.com/krimdomu/rex-recipes.git $u >/dev/null 2>&1");
+   system("git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
    chdir("$u");
    system("git checkout master");
 
@@ -319,6 +319,13 @@ __DATA__
                </form>
                <h2>新闻</h2>
 
+
+<div class="news_widget">
+   <div class="news_date">2014-05-31</div>
+   <div class="news_content"><a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.</div>
+</div>
+
+
               <div class="news_widget">
                  <div class="news_date">2014-05-02</div>
                  <div class="news_content">(R)?ex 0.46.0 released. This releases comes with new cool features like Rex::Test (a testing framework), KVM support for Rex::Box and RackSpace cloud support. See the <a href="/howtos/releases/0.46.html">release notes</a> including examples for the new features.</div>
@@ -334,6 +341,7 @@ __DATA__
                  <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
               </div>
 
+<<<<<<< HEAD
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
                   <div class="news_content">
@@ -361,6 +369,7 @@ __DATA__
                   <li>商务支持: <a href="http://www.inovex.de/news-events/news/">inovex</a></li>
                   <li>QQ群: 252744726</li>
                </ul>
+               <p><a href="/support/index.html">Professional support</a> is also available.</p>
             </div>
          </div> <!-- widgets -->
 
@@ -393,16 +402,21 @@ __DATA__
       </div> <!-- page -->
 
 
-     <a href="http://github.com/Krimdomu/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+     <a href="http://github.com/RexOps/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/krimdomu/Rex">Github</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
    </div>
 
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/ZeroClipboard.min.js"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/ZeroClipboard.swf"});
+   </script>
 
    <script>
       if($(window).width() <= 1100) {

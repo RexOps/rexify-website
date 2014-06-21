@@ -13,7 +13,7 @@
 
          <h2>准备</h2>
          <ul>
-            <li>下载和安装 rex &gt;= 0.4 (<a href="https://github.com/krimdomu/Rex">github</a> Branch: master)</li>
+            <li>下载和安装 rex &gt;= 0.4 (<a href="https://github.com/RexOps/Rex">github</a> Branch: master)</li>
             <li>安装一个干净的 <a href="http://www.debian.org/">Debian Squeeze</a> 虚拟机.
                <ul>
                   <li>这个服务器将会是我们的 webserver.</li>
