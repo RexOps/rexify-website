@@ -26,8 +26,7 @@
 
       <div class="vspace"></div>
       <h1>Code</h1>
-      <p>If you want to contribute new functionality or fix things, you can just <a href="https://github.com/RexOps/Rex">clone the repository</a> on GitHub and send pull requests against the development branch.</p>
-      <div class="small-vspace"></div>
+      <p>If you want to contribute new functionality or fix things, you can just <a href="https://github.com/RexOps/Rex">clone the repository</a> on GitHub and send pull requests against the development branch. We encourage you to logically group your commits together in topic/feature branches and send a pull request for each of your topic branches.</p>
 
       <p>We use <a href="https://metacpan.org/pod/Perl::Tidy">perltidy</a> to help us to maintain a consequent code style throughout the project (check out our .perltidyrc for more details). We recommend setting it up with your favorite IDE or text editor, so you can apply formatting easily or even automatically to your changes before committing them.<p>
 
