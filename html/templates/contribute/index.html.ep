@@ -23,8 +23,8 @@
       <p>请注意，API 文档时通过 <a href="https://github.com/RexOps/Rex">(R)?ex repo</a> 里文件的内嵌 POD 自动生成到网站的。</p>
       <div class="vspace"></div>
       <h1>代码</h1>
-      <p>如果你想为新功能或者修改bug，<a href="https://github.com/RexOps/Rex">克隆这个仓库</a>，然后通过开发分支推送合并请求。</p>
       <div class="small-vspace"></div>
+      <p>如果你想为新功能或者修改bug，<a href="https://github.com/RexOps/Rex">克隆这个仓库</a>，然后通过开发分支推送合并请求。我们希望你最好把自己的提交组合成不同的 topic/feature 分支，然后为每个分支提交一次 pull request。</p>
 
       <p>我们用 <a href="https://metacpan.org/pod/Perl::Tidy">perltidy</a> 来帮助我们管理项目代码的统一风格(参阅我们的 .perltidyrc 以了解更多细节)。我们建议你通过自己喜欢的 IDE 或者其他文本编辑器来设置这个。这样你可以在自己提交代码前也很容易的、甚至自动的完成格式调整。<p>
       <p>如果关于怎么实现的有问题，请联系我们<a href="irc://irc.freenode.net/rex">irc.freenode.net/#rex</a>.</p>

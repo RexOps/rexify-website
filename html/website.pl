@@ -242,6 +242,7 @@ __DATA__
                         <li>
                            <a href="/howtos/book.html">Rex 书(写作中)</a>
                         </li>
+                        <li><a href="/howtos/faq.html">FAQ</a></li>
                         <li class="divider"></li>
                         <li><a href="/api/index.html">API</a></li>
                         <li class="divider"></li>
