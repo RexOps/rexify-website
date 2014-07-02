@@ -323,9 +323,16 @@ __DATA__
 
 
 <div class="news_widget">
+   <div class="news_date">2014-07-02</div>
+   <div class="news_content">For the website and <a href="https://build.rexify.org"></a> we are now using SSL certificates signed by <a href="https://www.cacert.org"></a>.</div>
+</div>
+
+
+<div class="news_widget">
    <div class="news_date">2014-05-31</div>
    <div class="news_content"><a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.</div>
 </div>
+
 
 
               <div class="news_widget">
