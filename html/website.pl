@@ -324,7 +324,7 @@ __DATA__
 
 <div class="news_widget">
    <div class="news_date">2014-07-02</div>
-   <div class="news_content">For the website and <a href="https://build.rexify.org"></a> we are now using SSL certificates signed by <a href="https://www.cacert.org"></a>.</div>
+   <div class="news_content">For the website and <a href="https://build.rexify.org">build.rexify.org</a> we are now using SSL certificates signed by <a href="https://www.cacert.org">CACert.org</a>.</div>
 </div>
 
 
