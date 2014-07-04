@@ -323,33 +323,32 @@ __DATA__
 
 <div class="news_widget">
    <div class="news_date">2014-07-02</div>
-   <div class="news_content">For the website and <a href="https://build.rexify.org">build.rexify.org</a> we are now using SSL certificates signed by <a href="https://www.cacert.org">CACert.org</a>.</div>
+   <div class="news_content">本站及 <a href="https://build.rexify.org">build.rexify.org</a> 开始使用 <a href="https://www.cacert.org">CACert.org</a> 颁发的 SSL 签名证书。</div>
 </div>
 
 
 <div class="news_widget">
    <div class="news_date">2014-05-31</div>
-   <div class="news_content"><a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.</div>
+   <div class="news_content">阅读新版 <a href="/howtos/book/deploying_openldap_and_sssd.html">howto</a> 学习如何使用 Rex 安装设置 OpenLDAP 和 SSSD。</div>
 </div>
 
 
 
               <div class="news_widget">
                  <div class="news_date">2014-05-02</div>
-                 <div class="news_content">(R)?ex 0.46.0 released. This releases comes with new cool features like Rex::Test (a testing framework), KVM support for Rex::Box and RackSpace cloud support. See the <a href="/howtos/releases/0.46.html">release notes</a> including examples for the new features.</div>
+                 <div class="news_content">(R)?ex 0.46.0 版发布。本次发布带有诸多新特性，比如 Rex::Test (一个测试框架), Rex::Box 的 KVM 支持和 RackSpace 云支持。查阅<a href="/howtos/releases/0.46.html">发版笔记</a>，内含新特性的示例。</div>
               </div>
 
               <div class="news_widget">
                  <div class="news_date">2014-04-12</div>
-                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="/howtos/releases/0.45.html">release notes</a> including examples for the new features.</div>
+                 <div class="news_content">(R)?ex 0.45.0 版发布。本次发布带来了 OpenStack 云支持，增强了很多通用资源/函数。查阅<a href="/howtos/releases/0.45.html">发版笔记</a>，内含新特性的示例。</div>
               </div>
 
               <div class="news_widget">
                  <div class="news_date">2014-04-03</div>
-                 <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
+                 <div class="news_content">Ferenc Erki 在 Free Software Conference of Szeged 上的演讲上传到了 <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
               </div>
 
-<<<<<<< HEAD
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
                   <div class="news_content">
