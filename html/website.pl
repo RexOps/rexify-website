@@ -15,133 +15,140 @@ use Data::Dumper;
 plugin 'RenderFile';
 
 sub get_news {
-  my @content = eval { local(@ARGV) = ("news.txt"); <>; };
+  my @content = eval { local (@ARGV) = ("news.txt"); <>; };
   chomp @content;
 
   my @ret;
   for my $line (@content) {
-    my ($date, $text) = split /,/, $line, 2;
-    push @ret, {date => $date, text => $text};
+    my ( $date, $text ) = split /,/, $line, 2;
+    push @ret, { date => $date, text => $text };
   }
 
   return @ret;
 }
 
 get '/' => sub {
-   my ($self) = @_;
-   $self->stash("no_side_bar", 0);
-   $self->stash("news", [get_news]);
-   $self->render("index", root => 1, cat => "", no_disqus => 1);
+  my ($self) = @_;
+  $self->stash( "no_side_bar", 0 );
+  $self->stash( "news", [get_news] );
+  $self->render( "index", root => 1, cat => "", no_disqus => 1 );
 };
 
 # special code to handle ,,rexify --search'' requests
 get '/get/recipes' => sub {
-   my ($self) = @_;
-   my $ua = Mojo::UserAgent->new;
-   $self->render_text($ua->get("https://raw.github.com/RexOps/rex-recipes/master/recipes.yml")->res->body);
+  my ($self) = @_;
+  my $ua = Mojo::UserAgent->new;
+  $self->render_text(
+    $ua->get("https://raw.github.com/RexOps/rex-recipes/master/recipes.yml")
+      ->res->body );
 };
 
 # special code to handle ,,rexify --use'' requests
 get '/get/mod/*mod' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $cur_dir = getcwd;
+  my $cur_dir = getcwd;
 
-   my $mod = $self->param("mod");
-   my $mod_name = $mod . ".pm";
+  my $mod      = $self->param("mod");
+  my $mod_name = $mod . ".pm";
 
-   if( ! -d "/tmp/scratch") {
-      mkdir "/tmp/scratch";
-   }
+  if ( !-d "/tmp/scratch" ) {
+    mkdir "/tmp/scratch";
+  }
 
-   chdir("/tmp/scratch");
+  chdir("/tmp/scratch");
 
-   my $u = get_random(32, 'a' .. 'z');
-   system("git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
-   chdir("$u");
-   system("git checkout master");
+  my $u = get_random( 32, 'a' .. 'z' );
+  system(
+    "git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
+  chdir("$u");
+  system("git checkout master");
 
-   system("tar czf ../$u.tar.gz $mod $mod_name >/dev/null 2>&1");
+  system("tar czf ../$u.tar.gz $mod $mod_name >/dev/null 2>&1");
 
-   chdir($cur_dir);
+  chdir($cur_dir);
 
-   $self->render_file(filepath => "/tmp/scratch/$u.tar.gz");
+  $self->render_file( filepath => "/tmp/scratch/$u.tar.gz" );
 };
 
 get '/search' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $term = $self->param("q");
+  my $term = $self->param("q");
 
-   $term =~ s/(\w+)/$1*/g;
+  $term =~ s/(\w+)/$1*/g;
 
-   my $ua = Mojo::UserAgent->new;
-   my $tx = $ua->post("http://localhost:9200/_search?pretty=true", json => {
+  my $ua = Mojo::UserAgent->new;
+  my $tx = $ua->post(
+    "http://localhost:9200/_search?pretty=true",
+    json => {
       query => {
-         query_string => {
-            query => $term,
-         },
+        query_string => {
+          query => $term,
+        },
       },
-      fields => [qw/fs title/],
+      fields    => [qw/fs title/],
       highlight => {
-         fields => {
-            file => {},
-         },
+        fields => {
+          file => {},
+        },
       },
-   });
+    }
+  );
 
-   $self->stash("no_side_bar", 0);
-   $self->stash("root", 0);
-   $self->stash("no_disqus", 1);
-   $self->stash("cat", "");
-   $self->stash("news", [get_news]);
+  $self->stash( "no_side_bar", 0 );
+  $self->stash( "root",        0 );
+  $self->stash( "no_disqus",   1 );
+  $self->stash( "cat",         "" );
+  $self->stash( "news", [get_news] );
 
-
-   if(my $json = $tx->res->json) {
-      return $self->render("search", hits => $json->{hits});
-   }
-   else {
-      return $self->render("search", hits => { total => 0, });
-   }
+  if ( my $json = $tx->res->json ) {
+    return $self->render( "search", hits => $json->{hits} );
+  }
+  else {
+    return $self->render( "search", hits => { total => 0, } );
+  }
 };
-
 
 get '/*file' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $template = $self->param("file");
+  my $template = $self->param("file");
 
-   $self->stash("news", [get_news]);
+  $self->stash( "news", [get_news] );
 
-   my ($cat) = ($template =~ m/^([^\/]+)\//);
-   $cat ||= "";
-   $self->stash("cat", $cat);
+  my ($cat) = ( $template =~ m/^([^\/]+)\// );
+  $cat ||= "";
+  $self->stash( "cat", $cat );
 
-   if($template eq "howtos/compatibility.html") {
-      $self->stash("no_side_bar", 1);
-   }
-   else {
-      $self->stash("no_side_bar", 0);
-   }
+  if ( $template eq "howtos/compatibility.html" ) {
+    $self->stash( "no_side_bar", 1 );
+  }
+  else {
+    $self->stash( "no_side_bar", 0 );
+  }
 
-   if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template", no_disqus => 0, root => 0);
-   }
+  if ( -f "public/$template" ) {
+    return $self->render_file(
+      filepath  => "public/$template",
+      no_disqus => 0,
+      root      => 0
+    );
+  }
 
-   if(-d "templates/$template") {
-      return $self->redirect_to("$template/index.html", root => 0);
-   }
+  if ( -d "templates/$template" ) {
+    return $self->redirect_to( "$template/index.html", root => 0 );
+  }
 
-   if(-f "templates/$template.ep") {
-      $template =~ s/\.html$//;
-      $self->render($template, no_disqus => 0, root => 0);
-   }
-   else {
-      $self->render('404', status => 404, no_disqus => 1, root => 0);
-   }
+  if ( -f "templates/$template.ep" ) {
+    $template =~ s/\.html$//;
+    $self->render( $template, no_disqus => 0, root => 0 );
+  }
+  else {
+    $self->render( '404', status => 404, no_disqus => 1, root => 0 );
+  }
 
 };
-
 
 app->start;
 
