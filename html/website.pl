@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 
 use DateTime;
+use IO::All;
 
 use Cwd qw(getcwd);
 use Mojolicious::Lite;
@@ -13,9 +14,23 @@ use Data::Dumper;
 
 plugin 'RenderFile';
 
+sub get_news {
+  my @content = eval { local(@ARGV) = ("news.txt"); <>; };
+  chomp @content;
+
+  my @ret;
+  for my $line (@content) {
+    my ($date, $text) = split /,/, $line, 2;
+    push @ret, {date => $date, text => $text};
+  }
+
+  return @ret;
+}
+
 get '/' => sub {
    my ($self) = @_;
    $self->stash("no_side_bar", 0);
+   $self->stash("news", [get_news]);
    $self->render("index", root => 1, cat => "", no_disqus => 1);
 };
 
@@ -79,6 +94,7 @@ get '/search' => sub {
    $self->stash("root", 0);
    $self->stash("no_disqus", 1);
    $self->stash("cat", "");
+   $self->stash("news", [get_news]);
 
 
    if(my $json = $tx->res->json) {
@@ -94,6 +110,8 @@ get '/*file' => sub {
    my ($self) = @_;
 
    my $template = $self->param("file");
+
+   $self->stash("news", [get_news]);
 
    my ($cat) = ($template =~ m/^([^\/]+)\//);
    $cat ||= "";
@@ -321,34 +339,15 @@ __DATA__
                </form>
                <h2>News</h2>
 
+               % for my $news_item (@{$news}) {
+                 <div class="news_widget">
+                    <div class="news_date"><%= $news_item->{date} %></div>
+                    <div class="news_content"><%== $news_item->{text} %></div>
+                 </div>
 
-<div class="news_widget">
-   <div class="news_date">2014-07-02</div>
-   <div class="news_content">For the website and <a href="https://build.rexify.org">build.rexify.org</a> we are now using SSL certificates signed by <a href="https://www.cacert.org">CACert.org</a>.</div>
-</div>
-
-
-<div class="news_widget">
-   <div class="news_date">2014-05-31</div>
-   <div class="news_content"><a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.</div>
-</div>
+               % }
 
 
-
-              <div class="news_widget">
-                 <div class="news_date">2014-05-02</div>
-                 <div class="news_content">(R)?ex 0.46.0 released. This releases comes with new cool features like Rex::Test (a testing framework), KVM support for Rex::Box and RackSpace cloud support. See the <a href="/howtos/releases/0.46.html">release notes</a> including examples for the new features.</div>
-              </div>
-
-              <div class="news_widget">
-                 <div class="news_date">2014-04-12</div>
-                 <div class="news_content">(R)?ex 0.45.0 released. This release comes with OpenStack cloud support and lot of enhancements for common resources/functions. See the <a href="/howtos/releases/0.45.html">release notes</a> including examples for the new features.</div>
-              </div>
-
-              <div class="news_widget">
-                 <div class="news_date">2014-04-03</div>
-                 <div class="news_content">Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
-              </div>
 
                <h2>Conferences</h2>
 
