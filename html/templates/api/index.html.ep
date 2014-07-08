@@ -78,6 +78,7 @@
             <li><a href="Rex/Box/Base.pm.html">Base.pm</a></li>
             <li><a href="Rex/Box/VBox.pm.html">VBox.pm</a></li>
             <li><a href="Rex/Box/Amazon.pm.html">Amazon.pm</a></li>
+            <li><a href="Rex/Box/KVM.pm.html">KVM.pm</a></li>
          </ul>
 
 
