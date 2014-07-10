@@ -416,7 +416,7 @@ __DATA__
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/ZeroClipboard.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="http://stats.rexify.org/js/ZeroClipboard.min.js"></script>
 
    <script>
       var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/ZeroClipboard.swf"});
