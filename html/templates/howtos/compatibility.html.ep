@@ -5,13 +5,13 @@
       <meta name="description" content="Rex compatibility list">
       <meta name="keywords" content="Systemadministration, Rex, Rexfiy, Rexfile, Example, Remote, Configuration, Management, Framework, SSH, Linux">
 % end
-      
+
          <h1>Compatibility List</h1>
-         
+
 
          <p>(R)?ex can be executed on many platforms.</p>
 
-         
+
 
          <ul>
             <li>Linux (Debian, CentOS, Fedora, SuSE, Ubuntu, Gentoo, Mageia, Slackware, ...)</li>
@@ -20,7 +20,7 @@
             <li>MacOS X (with MacPorts Perl)</li>
          </ul>
 
-         
+
 
          <h2>Manageable Platforms</h2>
 
@@ -33,7 +33,7 @@
             <li><a href="#embedded">Embedded Systems</a></li>
          </ul>
 
-         
+
          <table border="0" class="tb-support">
             <tr>
                <td class="supported">Fully supported</td>
@@ -41,20 +41,20 @@
                <td class="not-supported">Not supported</td>
             </tr>
          </table>
-         
+
          <h2><a name="linux"></a>Linux</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
                <td>&nbsp;</td>
-               <td>CentOS 5/6</td>
+               <td>CentOS 5/6/7</td>
                <td>Debian 5/6</td>
                <td>Fedora</td>
                <td>Gentoo</td>
                <td>Mageia</td>
                <td>OpenSuSE</td>
-               <td>RHEL 5/6</td>
+               <td>RHEL 5/6/7</td>
                <td>ScientificLinux</td>
                <td>Ubuntu 10+</td>
             </tr>
@@ -265,9 +265,9 @@
 
          </table>
 
-         
+
          <h2><a name="solaris"></a>Solaris</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
@@ -355,7 +355,7 @@
 
 
          <h2><a name="bsd"></a>BSD</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
@@ -469,7 +469,7 @@
          <h2><a name="virtualization"></a>Virtualization</h2>
          <p>Virtualization was tested under following setups. To use the Virtualization Module libvirt must be installed and configured right.</p>
          <p>The virtualization module should also work on untested Linux Distributions if you setup libvirt correctly. If you run this module on a distribution not listed please feel free to post your setup on our <a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a>.</p>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
@@ -516,12 +516,12 @@
          </table>
 
 
-         
 
-         
-            
-         
-            
+
+
+
+
+
          <h2><a name="embedded"></a>Embedded Systems</h2>
          <table border="0" class="tb-support">
             <tr>
@@ -602,5 +602,3 @@
          <p>&nbsp;</p>
 
          <p>For details on OpenWrt support you may want to read our <a href="openwrt.html">OpenWrt howto</a>.</p>
-
-

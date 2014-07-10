@@ -35,7 +35,7 @@
             <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
             <li><a href="/howtos/compatibility.html">Rex Compatibility List</a></li>
          </ul>
- 
+
          <a name="howtos"></a>
          <div class="vspace"></div>
          <h1>Howtos</h1>
@@ -106,5 +106,12 @@
             <li><a href="http://www.slideshare.net/FerencErki/rex-33051700">Instant DevOps</a> talk by Ferenc Erki at the Free Software Conference of Szeged</li>
          </ul>
 
+<div class="vspace"></div>
 
-
+<h1>Release Notes</h1>
+<ul class="simple-list">
+   <li><a href="releases/0.48.0.html">0.48.0</a></li>
+   <li><a href="releases/0.47.0.html">0.47.0</a></li>
+   <li><a href="releases/0.46.html">0.46.0</a></li>
+   <li><a href="releases/0.45.html">0.45.0</a></li>
+</ul>
