@@ -137,7 +137,7 @@ get '/*file' => sub {
   }
 
   if ( -d "templates/$template" ) {
-    return $self->redirect_to( "$template/index.html", root => 0 );
+    $template .= "/index.html";
   }
 
   if ( -f "templates/$template.ep" ) {
