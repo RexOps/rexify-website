@@ -21,9 +21,11 @@ set
 desc 'Deploy rexify.org website';
 task 'deploy', $cmdb->{host}, sub {
 
+    Rex::Logger::info("Checkout rexify.org repository.");
     # update repo
     checkout 'rexify.org', path => $cmdb->{repo_dir};
 
+    Rex::Logger::info("Syncing API documentation.");
     # sync generated API documentation
     sync "$ENV{WORKSPACE}/rex/doc/html/*",
         "$cmdb->{repo_dir}/html/templates/api",
@@ -32,13 +34,16 @@ task 'deploy', $cmdb->{host}, sub {
         parameters => '--delete',
         };
 
+    Rex::Logger::info("Restarting hypnotoad.");
     # reload hypnotoad
     run 'hypnotoad website.pl', cwd => "$cmdb->{repo_dir}/html";
 
+    Rex::Logger::info("Updating elasticsearch index.");
     # populate elasticsearch index
     run "perl create_index.pl $cmdb->{es_host} 9200 html/templates",
         cwd => $cmdb->{repo_dir};
 
+    Rex::Logger::info("Flush cache.");
     # empty nginx cache
     run "curl -X POST $cmdb->{nginx_url}";
 };

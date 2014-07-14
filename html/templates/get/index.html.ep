@@ -99,6 +99,19 @@ apt-get install rex</code></pre>
          <pre><code class="bash">emerge -av app-admin/rex</code></pre>
        </div>
        <div class="tab-pane" id="tab4">
+         <h3>CentOS 7</h3>
+
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
+
+cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
+[rex]
+name=Fedora \$releasever - \$basearch - Rex Repository
+baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+enabled=1
+EOF
+
+yum install rex</code></pre>
+
          <h3>CentOS 6</h3>
 
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6

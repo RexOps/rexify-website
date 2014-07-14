@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 
 use DateTime;
+use IO::All;
 
 use Cwd qw(getcwd);
 use Mojolicious::Lite;
@@ -13,117 +14,141 @@ use Data::Dumper;
 
 plugin 'RenderFile';
 
+sub get_news {
+  my @content = eval { local (@ARGV) = ("news.txt"); <>; };
+  chomp @content;
+
+  my @ret;
+  for my $line (@content) {
+    my ( $date, $text ) = split /,/, $line, 2;
+    push @ret, { date => $date, text => $text };
+  }
+
+  return @ret;
+}
+
 get '/' => sub {
-   my ($self) = @_;
-   $self->stash("no_side_bar", 0);
-   $self->render("index", root => 1, cat => "", no_disqus => 1);
+  my ($self) = @_;
+  $self->stash( "no_side_bar", 0 );
+  $self->stash( "news", [get_news] );
+  $self->render( "index", root => 1, cat => "", no_disqus => 1 );
 };
 
 # special code to handle ,,rexify --search'' requests
 get '/get/recipes' => sub {
-   my ($self) = @_;
-   my $ua = Mojo::UserAgent->new;
-   $self->render_text($ua->get("https://raw.github.com/RexOps/rex-recipes/master/recipes.yml")->res->body);
+  my ($self) = @_;
+  my $ua = Mojo::UserAgent->new;
+  $self->render_text(
+    $ua->get("https://raw.github.com/RexOps/rex-recipes/master/recipes.yml")
+      ->res->body );
 };
 
 # special code to handle ,,rexify --use'' requests
 get '/get/mod/*mod' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $cur_dir = getcwd;
+  my $cur_dir = getcwd;
 
-   my $mod = $self->param("mod");
-   my $mod_name = $mod . ".pm";
+  my $mod      = $self->param("mod");
+  my $mod_name = $mod . ".pm";
 
-   if( ! -d "/tmp/scratch") {
-      mkdir "/tmp/scratch";
-   }
+  if ( !-d "/tmp/scratch" ) {
+    mkdir "/tmp/scratch";
+  }
 
-   chdir("/tmp/scratch");
+  chdir("/tmp/scratch");
 
-   my $u = get_random(32, 'a' .. 'z');
-   system("git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
-   chdir("$u");
-   system("git checkout master");
+  my $u = get_random( 32, 'a' .. 'z' );
+  system(
+    "git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
+  chdir("$u");
+  system("git checkout master");
 
-   system("tar czf ../$u.tar.gz $mod $mod_name >/dev/null 2>&1");
+  system("tar czf ../$u.tar.gz $mod $mod_name >/dev/null 2>&1");
 
-   chdir($cur_dir);
+  chdir($cur_dir);
 
-   $self->render_file(filepath => "/tmp/scratch/$u.tar.gz");
+  $self->render_file( filepath => "/tmp/scratch/$u.tar.gz" );
 };
 
 get '/search' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $term = $self->param("q");
+  my $term = $self->param("q");
 
-   $term =~ s/(\w+)/$1*/g;
+  $term =~ s/(\w+)/$1*/g;
 
-   my $ua = Mojo::UserAgent->new;
-   my $tx = $ua->post("http://localhost:9200/_search?pretty=true", json => {
+  my $ua = Mojo::UserAgent->new;
+  my $tx = $ua->post(
+    "http://localhost:9200/_search?pretty=true",
+    json => {
       query => {
-         query_string => {
-            query => $term,
-         },
+        query_string => {
+          query => $term,
+        },
       },
-      fields => [qw/fs title/],
+      fields    => [qw/fs title/],
       highlight => {
-         fields => {
-            file => {},
-         },
+        fields => {
+          file => {},
+        },
       },
-   });
+    }
+  );
 
-   $self->stash("no_side_bar", 0);
-   $self->stash("root", 0);
-   $self->stash("no_disqus", 1);
-   $self->stash("cat", "");
+  $self->stash( "no_side_bar", 0 );
+  $self->stash( "root",        0 );
+  $self->stash( "no_disqus",   1 );
+  $self->stash( "cat",         "" );
+  $self->stash( "news", [get_news] );
 
-
-   if(my $json = $tx->res->json) {
-      return $self->render("search", hits => $json->{hits});
-   }
-   else {
-      return $self->render("search", hits => { total => 0, });
-   }
+  if ( my $json = $tx->res->json ) {
+    return $self->render( "search", hits => $json->{hits} );
+  }
+  else {
+    return $self->render( "search", hits => { total => 0, } );
+  }
 };
-
 
 get '/*file' => sub {
-   my ($self) = @_;
+  my ($self) = @_;
 
-   my $template = $self->param("file");
+  my $template = $self->param("file");
 
-   my ($cat) = ($template =~ m/^([^\/]+)\//);
-   $cat ||= "";
-   $self->stash("cat", $cat);
+  $self->stash( "news", [get_news] );
 
-   if($template eq "howtos/compatibility.html") {
-      $self->stash("no_side_bar", 1);
-   }
-   else {
-      $self->stash("no_side_bar", 0);
-   }
+  my ($cat) = ( $template =~ m/^([^\/]+)\// );
+  $cat ||= "";
+  $self->stash( "cat", $cat );
 
-   if(-f "public/$template") {
-      return $self->render_file(filepath => "public/$template", no_disqus => 0, root => 0);
-   }
+  if ( $template eq "howtos/compatibility.html" ) {
+    $self->stash( "no_side_bar", 1 );
+  }
+  else {
+    $self->stash( "no_side_bar", 0 );
+  }
 
-   if(-d "templates/$template") {
-      return $self->redirect_to("$template/index.html", root => 0);
-   }
+  if ( -f "public/$template" ) {
+    return $self->render_file(
+      filepath  => "public/$template",
+      no_disqus => 0,
+      root      => 0
+    );
+  }
 
-   if(-f "templates/$template.ep") {
-      $template =~ s/\.html$//;
-      $self->render($template, no_disqus => 0, root => 0);
-   }
-   else {
-      $self->render('404', status => 404, no_disqus => 1, root => 0);
-   }
+  if ( -d "templates/$template" ) {
+    $template .= "/index.html";
+  }
+
+  if ( -f "templates/$template.ep" ) {
+    $template =~ s/\.html$//;
+    $self->render( $template, no_disqus => 0, root => 0 );
+  }
+  else {
+    $self->render( '404', status => 404, no_disqus => 1, root => 0 );
+  }
 
 };
-
 
 app->start;
 
@@ -320,34 +345,12 @@ __DATA__
                </form>
                <h2>新闻</h2>
 
-
-<div class="news_widget">
-   <div class="news_date">2014-07-02</div>
-   <div class="news_content">本站及 <a href="https://build.rexify.org">build.rexify.org</a> 开始使用 <a href="https://www.cacert.org">CACert.org</a> 颁发的 SSL 签名证书。</div>
-</div>
-
-
-<div class="news_widget">
-   <div class="news_date">2014-05-31</div>
-   <div class="news_content">阅读新版 <a href="/howtos/book/deploying_openldap_and_sssd.html">howto</a> 学习如何使用 Rex 安装设置 OpenLDAP 和 SSSD。</div>
-</div>
-
-
-
-              <div class="news_widget">
-                 <div class="news_date">2014-05-02</div>
-                 <div class="news_content">(R)?ex 0.46.0 版发布。本次发布带有诸多新特性，比如 Rex::Test (一个测试框架), Rex::Box 的 KVM 支持和 RackSpace 云支持。查阅<a href="/howtos/releases/0.46.html">发版笔记</a>，内含新特性的示例。</div>
-              </div>
-
-              <div class="news_widget">
-                 <div class="news_date">2014-04-12</div>
-                 <div class="news_content">(R)?ex 0.45.0 版发布。本次发布带来了 OpenStack 云支持，增强了很多通用资源/函数。查阅<a href="/howtos/releases/0.45.html">发版笔记</a>，内含新特性的示例。</div>
-              </div>
-
-              <div class="news_widget">
-                 <div class="news_date">2014-04-03</div>
-                 <div class="news_content">Ferenc Erki 在 Free Software Conference of Szeged 上的演讲上传到了 <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a></div>
-              </div>
+               % for my $news_item (@{$news}) {
+                 <div class="news_widget">
+                    <div class="news_date"><%= $news_item->{date} %></div>
+                    <div class="news_content"><%== $news_item->{text} %></div>
+                 </div>
+               % }
 
                <div class="news_widget">
                   <div class="news_date">2013-03-20</div>
@@ -419,7 +422,7 @@ __DATA__
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/ZeroClipboard.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="http://stats.rexify.org/js/ZeroClipboard.min.js"></script>
 
    <script>
       var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/ZeroClipboard.swf"});
@@ -450,7 +453,7 @@ __DATA__
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.rexify.org/stats/";
+    var u="http://stats.rexify.org/stats/";
     _paq.push(['setTrackerUrl', u+'piwik.php']);
     _paq.push(['setSiteId', 1]);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
@@ -458,7 +461,7 @@ __DATA__
   })();
 
 </script>
-<noscript><p><img src="http://www.rexify.org/stats/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+<noscript><p><img src="http://stats.rexify.org/stats/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
 

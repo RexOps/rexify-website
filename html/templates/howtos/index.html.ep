@@ -35,7 +35,7 @@
             <li><a href="/howtos/backward_compatibility.html">关于向后兼容性的概述</a></li>
             <li><a href="/howtos/compatibility.html">Rex 兼容性清单</a></li>
          </ul>
- 
+
          <a name="howtos"></a>
          <div class="vspace"></div>
          <h1>Howtos</h1>
@@ -81,19 +81,7 @@
          </ul>
 
          <div class="vspace"></div>
-<<<<<<< HEAD
-         <h1>附加文档</h1>
-         <ul class="simple-list">
-            <li><a href="/howtos/backward_compatibility.html">向后兼容方面</a></li>
-            <li><a href="/howtos/compatibility.html">Rex 兼容列表</a></li>
-         </ul>
-
-
-         <div class="vspace"></div>
-         <h1>扩展 参照</h1>
-=======
-         <h1>External Howtos</h1>
->>>>>>> upstream/master
+         <h1>扩展参照</h1>
          <ul class="simple-list">
             <li><a href="http://www.howtoforge.com/how-to-manage-your-servers-with-rex-best-practice">Rex怎么管理你的服务器 - 最佳实践</a></li>
             <li><a href="http://www.howtoforge.com/continuous-deployment-with-jenkins-and-rex">使用Jenkins 和Rex 做持续部署</a></li>
@@ -104,7 +92,7 @@
 
          <h1>用户贡献的文档 - 德语的</h1>
          <ul class="simple-list">
-            <li style="background-image: url(/img/fr.gif); background-repeat: no-repeat; padding-left: 30px;"><a href="french.html">en français</a> (many thanks to Gilles Gaudin and Olivier Raginel)</li>
+            <li style="background-image: url(/img/fr.gif); background-repeat: no-repeat; padding-left: 30px;"><a href="french.html">en français</a> (非常感谢 Gilles Gaudin 和 Olivier Raginel)</li>
          </ul>
 
          <div class="vspace"></div>
@@ -118,5 +106,13 @@
             <li><a href="http://www.slideshare.net/FerencErki/rex-33051700">Instant DevOps</a> talk by Ferenc Erki at the Free Software Conference of Szeged</li>
          </ul>
 
+<div class="vspace"></div>
 
-
+<h1>发版笔记</h1>
+<ul class="simple-list">
+   <li><a href="releases/0.49.1.html">0.49.1</a></li>
+   <li><a href="releases/0.48.0.html">0.48.0</a></li>
+   <li><a href="releases/0.47.0.html">0.47.0</a></li>
+   <li><a href="releases/0.46.html">0.46.0</a></li>
+   <li><a href="releases/0.45.html">0.45.0</a></li>
+</ul>

@@ -7,11 +7,10 @@
 % end
       
          <h1>兼容列表</h1>
-         
 
          <p>(R)?ex 可以在很多平台上执行。</p>
 
-         
+
 
          <ul>
             <li>Linux (Debian, CentOS, Fedora, SuSE, Ubuntu, Gentoo, Mageia, Slackware, ...)</li>
@@ -20,7 +19,7 @@
             <li>MacOS X (with MacPorts Perl)</li>
          </ul>
 
-         
+
 
          <h2>可管理平台</h2>
 
@@ -33,7 +32,7 @@
             <li><a href="#embedded">嵌入式系统</a></li>
          </ul>
 
-         
+
          <table border="0" class="tb-support">
             <tr>
                <td class="supported">完全支持</td>
@@ -41,20 +40,20 @@
                <td class="not-supported">不支持</td>
             </tr>
          </table>
-         
+
          <h2><a name="linux"></a>Linux</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
                <td>&nbsp;</td>
-               <td>CentOS 5/6</td>
+               <td>CentOS 5/6/7</td>
                <td>Debian 5/6</td>
                <td>Fedora</td>
                <td>Gentoo</td>
                <td>Mageia</td>
                <td>OpenSuSE</td>
-               <td>RHEL 5/6</td>
+               <td>RHEL 5/6/7</td>
                <td>ScientificLinux</td>
                <td>Ubuntu 10+</td>
             </tr>
@@ -265,9 +264,9 @@
 
          </table>
 
-         
+
          <h2><a name="solaris"></a>Solaris</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
@@ -355,7 +354,7 @@
 
 
          <h2><a name="bsd"></a>BSD</h2>
-         
+
 
          <table border="0" class="tb-support">
             <tr>
@@ -465,7 +464,6 @@
 
 
 
-
          <h2><a name="virtualization"></a>虚拟化</h2>
          <p>虚拟化已经在下面的环境下测试通过。要使用虚拟化模块，要保证 libvirt 已经安装并配置好。</p>
          <p>虚拟化模块在未测试过的 Linux 发行版上，只要正确部署了 libvirt 的，应该也能运行。如果你已经成功在某个还没列出的发行版上运行了这个模块，请在我们的<a href="https://groups.google.com/forum/#!forum/rex-users">Google Group</a> 上发文公告。</p>
@@ -516,12 +514,7 @@
          </table>
 
 
-         
 
-         
-            
-         
-            
          <h2><a name="embedded"></a>嵌入式系统</h2>
          <table border="0" class="tb-support">
             <tr>
@@ -602,5 +595,4 @@
          <p>&nbsp;</p>
 
          <p>OpenWrt 支持细节，你可能更愿意读我们的 <a href="openwrt.html">OpenWrt howto</a> 页。</p>
-
 

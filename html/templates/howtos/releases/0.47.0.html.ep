@@ -1,0 +1,151 @@
+% layout 'default';
+% title 'Release notes for 0.47';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Configuration, Management, Configuration Management, Linux, Deployment, Devops">
+% end
+
+         <h1>Release notes for 0.47</h1>
+         <p>These are the changes in 0.47 release.</p>
+        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+
+
+<h2>Security</h2>
+<ul>
+  <li>
+    <p>Use https to communicate with Amazon (Cloud).</p>
+  </li>
+</ul>
+
+<h2>Rex::Test</h2>
+<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.
+  </p>
+
+<ul>
+  <li>
+    <p>Rex::Box now also works with KVM</p>
+
+    <pre><code class="perl">use Rex::Test::Base;
+    use Data::Dumper;
+    use Rex -base;
+
+    set box =&gt; "KVM";
+
+    test {
+      my $t = shift;
+
+      $t-&gt;name("ubuntu test");
+
+      $t-&gt;base_vm("http://box.rexify.org/box/ubuntu-server-12.10-amd64.img");
+      $t-&gt;vm_auth(user =&gt; "root", password =&gt; "box");
+
+      $t-&gt;run_task("setup");
+
+      $t-&gt;has_package("vim");
+      $t-&gt;has_package("ntp");
+      $t-&gt;has_package("unzip");
+      $t-&gt;has_file("/etc/ntp.conf");
+      $t-&gt;has_service_running("ntp");
+      $t-&gt;has_content("/etc/passwd", qr{root:x:0:}ms);
+
+      run "ls -l";
+      $t-&gt;ok($? == 0, "ls -l returns success.");
+
+      $t-&gt;finish;
+    };
+
+    1;</code></pre>
+
+
+  </li>
+</ul>
+
+<h2>Base</h2>
+
+<ul>
+  <li>
+    <p>
+      Read server groups from xml file - nathanIL
+    </p>
+    <pre><code class="perl">use Rex::Group::Lookup::XML;
+group_xml "file.xml";</code></pre>
+    <pre><code class="xml">&lt;configuration&gt;
+   &lt;group name="database"&gt;
+   		&lt;server name="machine01" user="root" password="foob4r" sudo="true" hdd="300" loc="/opt" /&gt;
+   &lt;/group&gt;
+   &lt;group name="application"&gt;
+   		&lt;server name="machine01" user="root" password="foob4r" sudo="true" hdd="50" loc="/export" /&gt;
+   		&lt;server name="machine02" user="root" password="foob5r" sudo="true"/&gt;
+   &lt;/group&gt;
+   &lt;group name="profiler"&gt;
+   		&lt;server name="machine03" user="root" password="blue123"/&gt;
+   &lt;/group&gt;
+&lt;/configuration&gt;</code></pre>
+  </li>
+  <li>
+    <p>It is now possible to define <b>before</b>, <b>around</b> and <b>after</b> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
+    <pre><code class="perl">before ALL => sub {}</code></pre>
+  </li>
+  <li>
+    <p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
+    <pre><code class="perl">task "prepare", sub {
+   service "apache2",
+     ensure  =&gt; "started",
+     start   =&gt; "/usr/local/bin/httpd -f /etc/my/httpd.conf",
+     stop    =&gt; "killall httpd",
+     status  =&gt; "ps -efww | grep httpd",
+     restart =&gt; "killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf",
+     reload  =&gt; "killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf";
+ };</code></pre>
+  </li>
+  <li>
+    <p>Syntax enhancement of <b>group</b> command #369 - Jens Berthold</p>
+    <pre><code class="perl">group "g1", "srv1" => { user => "other" }, "srv2";</code></pre>
+  <li>
+    <p>Package-Management with pkgng on FreeBSD 10</p>
+  </li>
+  <li>
+    <p>Amazon Linux is now detected properly.</p>
+  </li>
+  <li>
+    <p>Added MacOSX (Darwin) Network inventory module</p>
+  </li>
+  <li>
+    <p>Ident task description when running -T - Nathan Abu</p>
+  </li>
+  <li>
+    <p>added exclude option to sync commands - Cameron Daniel</p>
+  </li>
+</ul>
+
+<h2>Bugfixes</h2>
+<ul>
+  <li>
+    <p>
+      Update default VNC listen address for KVM machines - FErki
+    </p>
+  </li>
+  <li>
+    <p>Fixed two problems where rsync can't authenticate on the remote host</p>
+  </li>
+  <li>
+    <p>Fixed run() command when used with callback and environment - alex1line</p>
+  </li>
+  <li>
+    <p>shell_path variable is not checked for empty value before use #376 - Ilya Evseev</p>
+  </li>
+  <li>
+    <p>Avoid warning if there's nothing to upgrade (update_system) - FErki</p>
+  </li>
+  <li>
+    <p>Fixed compatibility with perl 5.20. - FErki</p>
+  </li>
+  <li>
+    <p>Fixed a problem in the user management module if no /etc/shadow file was present.</p>
+  </li>
+  <li>
+    <p>Fixed inline templates in modules</p>
+  </li>
+</ul>
+<!-- end -->
