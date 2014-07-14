@@ -1,0 +1,53 @@
+% layout 'default';
+% title 'Release notes for 0.34';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h1 id="General">General</h1>
+
+<ul>
+
+<li><p>Enhanced <i>lookup_file</i> function. Comments (#) and empty lines are now skipped. (chenryn)</p>
+
+</li>
+<li><p>get_network_devices now detects ppp devices (under linux). (bokutin)</p>
+
+</li>
+<li><p>Fixed pkg_info execution on FreeBSD (bokutin)</p>
+
+</li>
+<li><p>Set $? to match effective command return value (joris)</p>
+
+</li>
+<li><p>If a task is defined multiple times it will now print out a warning.</p>
+
+</li>
+<li><p>Fixed mount bug #75</p>
+
+</li>
+<li><p>Fixed Redhat Repo bug #73</p>
+
+</li>
+</ul>
+
+<h1 id="Fixed-in-0.34.1">Fixed in 0.34.1</h1>
+
+<ul>
+
+<li><p>fixed #77 (iptables rule parsing) - thanks to Dominik Danter</p>
+
+</li>
+<li><p>merged #76 (relax ssh config file parsing) - thanks to Dominik Schulz</p>
+
+</li>
+</ul>
+
+
+

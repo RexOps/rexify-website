@@ -1,0 +1,67 @@
+% layout 'default';
+% title 'Release notes for 0.19';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added output modules. First output module is a JUnit compatible output to use Rex together with Jenkins.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> rex -o JUnit $task</code></pre>
+
+<p>This will product a file junit_output.xml which can be used by Jenkins.</p>
+
+</li>
+<li><p>Added support for environments.</p>
+
+<p>With environments one can use the same task for different hosts. For example if you want to use the same task on your integration-, test- and production servers.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> # define default user/password
+ user "root";
+ password "foobar";
+ pass_auth;
+     
+ # define default frontend group containing only testwww01.
+ group frontend =&gt; "testwww01";
+     
+ # define live environment, with different user/password 
+ # and a frontend server group containing www01, www02 and www03.
+ environment live =&gt; sub {
+    user "root";
+    password "livefoo";
+    pass_auth;
+       
+    group frontend =&gt; "www01", "www02", "www03";
+ };
+     
+ # define stage environment with default user and password. but with 
+ # a own frontend group containing only stagewww01.
+ environment stage =&gt; sub {
+    group frontend =&gt; "stagewww01";
+ };
+    
+ task "prepare", group =&gt; "frontend", sub {
+     say run "hostname";
+ };</code></pre>
+
+<p>Calling this task <i>rex prepare</i> will execute on testwww01. Calling this task with <i>rex -E live prepare</i> will execute on www01, www02, www03. Calling this task <i>rex -E stage prepare</i> will execute on stagewww01.</p>
+
+</li>
+<li><p>Load Rex::Commands:Process as default now.</p>
+
+</li>
+</ul>
+
+
+

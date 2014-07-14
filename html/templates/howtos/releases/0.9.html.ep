@@ -1,0 +1,77 @@
+% layout 'default';
+% title 'Release notes for 0.9';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added Ubuntu support.</p>
+
+</li>
+<li><p>Register tasks as function if possible</p>
+
+</li>
+<li><p>New function <b>get_operating_system</b> to get the Operating System.</p>
+
+</li>
+<li><p><b>Transactions</b></p>
+
+<p>Added Transaction and the possibility to rollback on transaction failures.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex::Transaction;
+ task "do_something", sub {
+    on_rollback {
+        unlink "/tmp/test";
+    };
+    
+    touch "/tmp/test";
+    die;
+ };
+ 
+ task "make", sub {
+    transaction {
+       do_task "do_something";
+    };
+ };</code></pre>
+
+</li>
+<li><p><b>Inventory</b></p>
+
+<p>Now it&#39;s possible to make an inventory of your hardware.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> use Data::Dumper;
+ use Rex::Commands::Inventory;
+ task "inventory", "server1", "server2", sub {
+    my $inventory = inventor();
+    print Dumper($inventory);
+ };</code></pre>
+
+</li>
+<li><p>New function <b>file</b></p>
+
+<p>Use this function to upload a file to your servers.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> task "upload", "server1", sub {
+    file "$path/vhost.conf",
+       content   =&gt; template("../../templates/vhost.conf.tpl"),
+       # on change of the file, do something
+       on_change =&gt; sub { say "file was modified"; };
+ };</code></pre>
+
+</li>
+</ul>
+
+
+

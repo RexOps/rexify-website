@@ -1,0 +1,32 @@
+% layout 'default';
+% title 'Release notes for 0.14';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added Ubuntu Support for 10.04 LTS and 11.04 LTS</p>
+
+</li>
+<li><p>Added Ubuntu Packages for 10.04 and 11.04</p>
+
+</li>
+<li><p>Added FreeBSD Support</p>
+
+</li>
+<li><p>Extended the API of Rex::Task-&gt;run to pass arguments to tasks.</p>
+
+</li>
+</ul>
+
+
+

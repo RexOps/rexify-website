@@ -1,0 +1,26 @@
+% layout 'default';
+% title 'Release notes for 0.18';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added Support for Solaris 10/11, NetBSD, OpenBSD and FreeBSD to the Network module.</p>
+
+</li>
+<li><p>Refactored Rex::Hardware::Network</p>
+
+</li>
+</ul>
+
+
+

@@ -1,0 +1,73 @@
+% layout 'default';
+% title 'Release notes for 0.11';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added LVM Module and added lvm data to inventory.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex::Commands::LVM;
+   
+ task "lvm", sub {
+    my @physical_devices = pvs;
+    my @volume_groups = vgs;
+    my @logical_volumes = lvs;
+ };</code></pre>
+
+</li>
+<li><p>Added hpacucli support to inventory</p>
+
+</li>
+<li><p>Added CentOS 6 packages and support</p>
+
+</li>
+<li><p>added order option to <i>db select</i></p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> task "db", sub {
+    my @data = db select =&gt; {
+       fields =&gt; "*",
+       from =&gt; "table",
+       order =&gt; "updated DESC",
+    };
+ };</code></pre>
+
+</li>
+<li><p>Fixed some bugs</p>
+
+<ul>
+
+<dt id="Multiplicator-in-inventory-module-for-TB-and-GB">Multiplicator in inventory module for TB and GB</li>
+
+
+
+<dt id="removed-OUT-OF-SPEC-message-from-dmidecode">removed OUT OF SPEC message from dmidecode</li>
+
+
+
+<dt id="fixed-db-disconnects-on-fork-parallelism-">fixed db disconnects on fork (parallelism)</li>
+
+
+
+<dt id="fixed-some-typos">fixed some typos</li>
+
+
+
+</ul>
+
+</li>
+</ul>
+
+
+

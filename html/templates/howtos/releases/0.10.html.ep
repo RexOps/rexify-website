@@ -1,0 +1,88 @@
+% layout 'default';
+% title 'Release notes for 0.10';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added a network module</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex::Commands::Network;
+    
+ my @routes = route;
+ print Dumper(\@routes);
+    
+ my $default_gw = default_gateway;
+ default_gateway "192.168.2.1";
+     
+ my @netstat = netstat;
+ my @tcp_connections = grep { $_-&gt;{"proto"} eq "tcp" } netstat;</code></pre>
+
+</li>
+<li><p>Added mount and umount functions to the Fs module</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> task "mount", "server01", sub {
+    mount "/dev/sda5", "/tmp";
+    mount "/dev/sda6", "/mnt/sda6",
+               fs =&gt; "ext3",
+               options =&gt; [qw/noatime async/];
+ };
+
+ task "umount", "server01", sub {
+    umount "/tmp";
+ };</code></pre>
+
+</li>
+<li><p>Added a cron module</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> use Rex::Commands::Cron;
+     
+ cron add =&gt; "root", {
+            minute =&gt; &#39;5&#39;,
+            hour   =&gt; &#39;*&#39;,
+            day_of_month    =&gt; &#39;*&#39;,
+            month =&gt; &#39;*&#39;,
+            day_of_week =&gt; &#39;*&#39;,
+         };
+           
+ cron list =&gt; "root";
+      
+ cron delete =&gt; "root", 3;</code></pre>
+
+</li>
+<li><p>Inventory Module</p>
+
+<p>Added more information to the returned hash as proposed by Franky on the mailinglist.</p>
+
+</li>
+<li><p>Package Module</p>
+
+<p>Added a new function <i>installed_packages</i> to get information of all installed packages.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3"> task "get-installed", "server1", sub {
+    
+     for my $pkg (installed_packages()) {
+        say "name     : " . $pkg-&gt;{"name"};
+        say "  version: " . $pkg-&gt;{"version"};
+     }
+     
+ };</code></pre>
+
+</li>
+</ul>
+
+
+

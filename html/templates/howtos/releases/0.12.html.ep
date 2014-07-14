@@ -1,0 +1,155 @@
+% layout 'default';
+% title 'Release notes for 0.12';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added <i>sudo</i> command</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> sudo_password "mypassword";
+  
+ task "dosomething", sub {
+    say sudo "id";
+ };</code></pre>
+
+</li>
+<li><p>Allow to manage multiple services at once.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> task "start", sub {
+    service [qw/apache2 rsyslog ftp/] =&gt; "start";
+ };</code></pre>
+
+</li>
+<li><p>Added possibility to add and remove services from runlevels</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> use Rex::Commands::Iptables;
+ task "prepare", sub {
+    service apache2 =&gt; "ensure", "started";
+    service apache2 =&gt; "ensure", "stopped";
+ };</code></pre>
+
+</li>
+<li><p>Added an iptables module to manage basic iptables rules.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3"> task "firewall", sub {
+    # clear all rules
+    iptables_clear;
+    
+    # open port 22 on all devices
+    open_port 22;
+    
+    # open port 22 and 80 on eth0
+    open_port [22, 80] =&gt; {
+       dev =&gt; "eth0",
+    };
+    
+    # close all ports on all devices
+    close_port "all";
+    
+    # close port 22 on dev eth0
+    close_port 22 =&gt; {
+       dev =&gt; "eth0",
+    };
+    
+    # redirect port 80 to 10080
+    redirect_port 80 =&gt; 10080;
+    
+    # redirect port 80 to 10080 on eth0
+    redirect_port 80 =&gt; {
+       dev =&gt; "eth0",
+       to  =&gt; 10080,
+    };
+    
+    # set default state rules (RELATED,ESTABLISHED) to accept on all devices
+    default_state_rule;
+     
+    # set default state rules (RELATED,ESTABLISHED) to accept on eth0
+    default_state_rule dev =&gt; "eth0";
+    
+    # make the system a nat gateway for its default route
+    # this will set the sysctl entry net.ipv4.ip_forward to 1, too.
+    is_nat_gateway;
+    
+    # define a custom iptables rule
+    iptables t =&gt; "filter", A =&gt; "INPUT", i =&gt; "eth0", ...;
+ };</code></pre>
+
+</li>
+<li><p>Added Amazon EC2 Support</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4"> use Data::Dumper;
+ use Rex::Commands::Cloud;
+   
+ user "root";
+ public_key "/path/to/your/ec2-public.key";
+ private_key "/path/to/your/ec2-private.key.pem";
+    
+ # set the cloud service provider to "Amazon"
+ cloud_service "Amazon";
+   
+ # set cloud auth
+ cloud_auth "$access_key", "$secret_access_key";
+   
+ # set cloud region
+ cloud_region "ec2.eu-west-1.amazonaws.com";
+   
+ # define a group with all running ec2 instances
+ group ec2 =&gt; get_cloud_instances_as_group();
+   
+ task "list", sub {
+    print Dumper cloud_instances_list;
+    print Dumper cloud_volume_list;
+     
+    print Dumper get_cloud_regions;
+    print Dumper get_cloud_availability_zones;
+ };
+   
+ task "create", sub {
+    # if you want an ebs volume, create it. if not, you don&#39;t need this.
+    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a"; };
+    
+    # create the cloud instances and attach the just created ebs volume.
+    cloud_instance create =&gt; {
+       image_id =&gt; "ami-02103876",
+       name     =&gt; "test-ec2",
+       key      =&gt; "my-test-key",
+       volume   =&gt; $vol_id,        # if you don&#39;t have a volume, skip this
+       zone     =&gt; "eu-west-1a",   # the volume and the instance must be in the same zone. skip this if you don&#39;t have a volume.
+    };
+ };
+    
+ task "destroy", sub {
+    cloud_volume detach =&gt; "vol-xxaabb";
+    cloud_instance terminate =&gt; "i-ffgghhjj";
+    cloud_colume delete =&gt; "vol-xxaabb";
+ };
+   
+ task "prepare", group =&gt; "ec2", sub {
+    run "apt-get update";
+    install package =&gt; "apache2";
+    service apache2 =&gt; "start";
+ };</code></pre>
+
+</li>
+<li><p>Some improvements and bug fixes. See ChangeLog.txt for more details.</p>
+
+</li>
+</ul>
+
+
+
