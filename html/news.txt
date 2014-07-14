@@ -1,6 +1,6 @@
-2014-07-13,(R)?ex 0.49.1 released. This releases adds support for FreeBSD 10 and pkgng.
-2014-07-09,(R)?ex 0.48.0 released. This releases adds support for CentOS 7 and RHEL 7.
-2014-07-07,(R)?ex 0.47.0 released. This releases comes with KVM support for Rex::Test and lots of small enhancements and bugfixes. Read the <a href="/howtos/releases/0.47.0.html">release notes</a> for more information.
+2014-07-13,(R)?ex 0.49.1 released. This release adds support for FreeBSD 10 and pkgng.
+2014-07-09,(R)?ex 0.48.0 released. This release adds support for CentOS 7 and RHEL 7.
+2014-07-07,(R)?ex 0.47.0 released. This release comes with KVM support for Rex::Test and lots of small enhancements and bugfixes. Read the <a href="/howtos/releases/0.47.0.html">release notes</a> for more information.
 2014-07-02,For the website and <a href="https://build.rexify.org">build.rexify.org</a> we are now using SSL certificates signed by <a href="https://www.cacert.org">CACert.org</a>.
 2014-05-31,<a href="/howtos/book/deploying_openldap_and_sssd.html">Read the new howto</a> to setup OpenLDAP and SSSD with Rex.
 2014-04-03,Talk from Ferenc Erki at Free Software Conference of Szeged uploaded to <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a>
