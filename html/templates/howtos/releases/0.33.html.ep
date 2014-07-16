@@ -16,10 +16,10 @@
 
 <li><p>Speed improvement</p>
 
-<p>The <i>-c</i> (Cache) CLI option speeds up execution very much.</p>
+<p>The <i>-c</i> (cache) CLI option speeds up execution very much.</p>
 
 </li>
-<li><p>Profiler Class</p>
+<li><p>Profiler class</p>
 
 <p>This is mostly for developers. There is now a profiler class to profile execution of <i>things</i>.</p>
 
@@ -29,7 +29,7 @@
 <pre><code class="perl" id="clipboard0"> rex -dd $yourtask</code></pre>
 
 </li>
-<li><p>Mounting (Thanks to Laird Liu)</p>
+<li><p>Mounting (thanks to Laird Liu)</p>
 
 <p>It is now possible to write mount entries to /etc/fstab with the <i>persistent</i> option.</p>
 
@@ -63,7 +63,7 @@
 </li>
 <li><p>New keyword <i>make</i>.</p>
 
-<p>This is just a cosmetic one. It is now possible to write task this way:</p>
+<p>This is just a cosmetic one. It is now possible to write tasks this way:</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4"> # old
@@ -118,9 +118,9 @@
 
 <ul>
 
-<li><p>Template Class now exchangeable (Thanks to Laird Liu)</p>
+<li><p>Template class now exchangeable (thanks to Laird Liu)</p>
 
-<p>If you want to use another Template Class (for example Template::Toolkit) you can use it now.</p>
+<p>If you want to use another Template class (for example Template::Toolkit) you can use it now.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard6"> # Rexfile
@@ -150,9 +150,9 @@
 
 <h1 id="Modules">Modules</h1>
 
-<p>It is now easier to write independant modules. There is no break in compatibility. Both ways will work. But we suggest to rewrite/move your files.</p>
+<p>It is now easier to write independent modules. There is no break in compatibility. Both ways will work. But we suggest to rewrite/move your files.</p>
 
-<p>Old-Way Module structure:</p>
+<p>Old-way module structure:</p>
 
 <ul>
 
@@ -167,7 +167,7 @@
 </li>
 </ul>
 
-<p>New Module structure:</p>
+<p>New module structure:</p>
 
 <ul>
 
@@ -182,7 +182,7 @@
 </li>
 </ul>
 
-<h2 id="Converting-an-old-Module">Converting an old Module</h2>
+<h2 id="Converting-an-old-module">Converting an old module</h2>
 
 <p>It is easy to convert an old module. For the example from above, you just have to move the file "lib/Apache.pm" to "lib/Apache/Module.pm" (no code changes needed). And move the templates to "lib/Apache/templates".</p>
 

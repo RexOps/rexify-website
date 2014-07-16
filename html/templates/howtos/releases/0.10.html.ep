@@ -62,12 +62,12 @@
  cron delete =&gt; "root", 3;</code></pre>
 
 </li>
-<li><p>Inventory Module</p>
+<li><p>Inventory module</p>
 
 <p>Added more information to the returned hash as proposed by Franky on the mailinglist.</p>
 
 </li>
-<li><p>Package Module</p>
+<li><p>Package module</p>
 
 <p>Added a new function <i>installed_packages</i> to get information of all installed packages.</p>
 

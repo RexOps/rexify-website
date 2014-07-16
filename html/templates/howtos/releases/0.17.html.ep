@@ -22,12 +22,12 @@
 </li>
 <li><p>Added a caching layer</p>
 
-<p>There is a new command line switch <i>-c</i> to turn on caching. Right now only the Rex::Hardware::Host module use the layer but this should already speed up execution on *BSD and Solaris systems.</p>
+<p>There is a new command line switch <i>-c</i> to turn on caching. Right now only the Rex::Hardware::Host module uses this layer but this should already speed up execution on *BSD and Solaris systems.</p>
 
 </li>
 <li><p>Added possibility to define custom providers for package and service management.</p>
 
-<p>Example for Solaris you can use Blastwave, OpenCSW or the standard utilities for package management.</p>
+<p>For example with Solaris you can use Blastwave, OpenCSW or the standard utilities for package management.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0"> # in the base section of your Rexfile
@@ -49,21 +49,21 @@
     install package =&gt; "apache-22";
  }; </code></pre>
 
-<p>Or, for Solaris 11, use the build in "pkg" Package Management:</p>
+<p>Or, for Solaris 11, use the built-in "pkg" Package Management:</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard2"> # in the base section of your Rexfile
  package_provider_for SunOS =&gt; "pkg";
  
  task "prepare", "server1", "server2", sub {
-    # if solaris, install apache-22 from buildin pkg
+    # if solaris, install apache-22 from built-in pkg
     install package =&gt; "apache-22";
  }; </code></pre>
 
 </li>
 <li><p>Custom providers for service management</p>
 
-<p>Example for Solaris, if you want to use the old init-style service management you don&#39;t need to specify anything.</p>
+<p>For example with Solaris, if you want to use the old init-style service management you don&#39;t need to specify anything.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard3"> task "prepare-services", "server1", "server2", sub {
@@ -81,12 +81,12 @@
  };</code></pre>
 
 </li>
-<li><p>Added <i>operating_system_version()</i> to get the os version.</p>
+<li><p>Added <i>operating_system_version()</i> to get the OS version.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard5"> task "prepare", "server1", "server2", sub {
     if(operating_system_version() &lt; 10) {
-       say "to old...";
+       say "too old...";
     }
  };</code></pre>
 

@@ -16,13 +16,13 @@
 
 <li><p>Virtualization</p>
 
-<p>See <a href="http://rexify.org/api/Rex/Commands/Virtualization.pm.html">http://rexify.org/api/Rex/Commands/Virtualization.pm.html</a> for more information.</p>
+<p>See <a href="api/Rex/Commands/Virtualization.pm.html">Rex::Commands::Virtualization</a> for more information.</p>
 
 </li>
 <li><p>Added an extract function</p>
 
 </li>
-<li><p>Some Bugfixes</p>
+<li><p>Some bugfixes</p>
 
 </li>
 </ul>

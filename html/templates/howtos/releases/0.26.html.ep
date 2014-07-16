@@ -17,12 +17,12 @@
 <li><p>License was changed to Apache 2.0 License. See LICENSE file.</p>
 
 </li>
-<li><p>Added sudo compatibility. Now it is possible to use rex within an sudo environment.</p>
+<li><p>Added sudo compatibility. Now it is possible to use rex within a sudo environment.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0"> user "unprivuser";
  sudo_password "f00b4r";
- sudo -on;   # turn sudo globaly on
+ sudo -on;   # turn sudo globally on
  
  task prepare =&gt; sub {
     install "apache2";
@@ -33,7 +33,7 @@
  };
  </code></pre>
 
-<p>Or, if you don&#39;t turning sudo globaly on.</p>
+<p>Or, if you don&#39;t want to turn sudo globally on.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1"> task prepare =&gt; sub {
@@ -86,7 +86,7 @@
  };</code></pre>
 
 </li>
-<li><p><i>sync</i> exclude option now taks a string or an array of strings. Thanks to Hiroaki Nakamura.</p>
+<li><p><i>sync</i> exclude option now accepts a string or an array of strings. Thanks to Hiroaki Nakamura.</p>
 
 </li>
 <li><p>Added support for custom init commands.</p>

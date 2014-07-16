@@ -14,13 +14,13 @@
 
 <ul>
 
-<li><p>Added NetBSD Support</p>
+<li><p>Added NetBSD support</p>
 
 </li>
-<li><p>Added OpenBSD Support</p>
+<li><p>Added OpenBSD support</p>
 
 </li>
-<li><p>Fixed a bug in the Gentoo Package Management Module</p>
+<li><p>Fixed a bug in the Gentoo package management module</p>
 
 </li>
 </ul>

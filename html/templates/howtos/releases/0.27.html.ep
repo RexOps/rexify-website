@@ -33,13 +33,13 @@
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1"> logformat "[%D] - %h %p";</code></pre>
 
-<p>See <a href="http://rexify.org/api/Rex/Commands.pm.html">http://rexify.org/api/Rex/Commands.pm.html</a> for more information.</p>
+<p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for more information.</p>
 
 </li>
 <li><p>Added colorized output if Term::ANSIColor is available.</p>
 
 </li>
-<li><p>Added on_change option to sed command. Thanks to Samuele Togini.</p>
+<li><p>Added on_change option to sed command. Thanks to Samuele Tognini.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard2"> task "foo", sub {
@@ -50,7 +50,7 @@
  }; </code></pre>
 
 </li>
-<li><p>Fixed a bug with an older lvm version</p>
+<li><p>Fixed a bug with an older LVM version</p>
 
 </li>
 <li><p>Ongoing code refactoring, to support other transport protocols.</p>

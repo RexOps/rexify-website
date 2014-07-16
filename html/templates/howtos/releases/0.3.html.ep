@@ -14,9 +14,9 @@
 
 <ul>
 
-<li><p><b>rsync interface</b></p>
+<li><p><b>Rsync interface</b></p>
 
-<p>A simple rsync interface is now available. To use it, you need the Perl Module <a>Expect</a>.</p>
+<p>A simple rsync interface is now available. To use it, you need the Perl module <a>Expect</a>.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0"> use Rex::Commands::Rsync;
@@ -34,7 +34,7 @@
  };</code></pre>
 
 </li>
-<li><p><b>debug mode</b></p>
+<li><p><b>Debug mode</b></p>
 
 <p>There is a new command line switch "-d" for debugging.</p>
 
@@ -54,27 +54,9 @@
 <pre><code class="perl" id="clipboard3"> logging to_syslog =&gt; &#39;local0&#39;;</code></pre>
 
 </li>
-<li><p><b>Run Command from Command-Line</b></p>
+<li><p><b>Server ranges</b></p>
 
-<p>Example:</p>
-
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard4"> rex -e "run &#39;hostname&#39;" -H "www01 www02 www03" -u root -p password</code></pre>
-
-<p>or with serverranges</p>
-
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard5"> rex -e "run &#39;hostname&#39;" -H "www[01..10]" -u root -p password</code></pre>
-
-<p>or if you only want to get the hostname from every 3rd server</p>
-
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard6"> rex -e "run &#39;hostname&#39;" -H "www[01..10/3]" -u root -p password</code></pre>
-
-</li>
-<li><p><b>Server-Ranges</b></p>
-
-<p>Now you can define serverranges like "www[1..10]" or "www[01..10]".</p>
+<p>Now you can define server ranges like "www[1..10]" or "www[01..10]".</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard7"> task "uname", "www[1..10]", sub {
@@ -90,7 +72,25 @@
  };</code></pre>
 
 </li>
-<li><p><b>Call Tasks from other tasks</b></p>
+<li><p><b>Run command from commandline</b></p>
+
+<p>Example:</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4"> rex -e "run &#39;hostname&#39;" -H "www01 www02 www03" -u root -p password</code></pre>
+
+<p>or with server ranges</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard5"> rex -e "run &#39;hostname&#39;" -H "www[01..10]" -u root -p password</code></pre>
+
+<p>or if you only want to get the hostname from every 3rd server</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard6"> rex -e "run &#39;hostname&#39;" -H "www[01..10/3]" -u root -p password</code></pre>
+
+</li>
+<li><p><b>Call tasks from other tasks</b></p>
 
 <p>Now you can call tasks from other tasks.</p>
 
@@ -118,7 +118,7 @@
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard10">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard10"> rexify ProjectName</code></pre>
 
-<p>This will create a <i>Rexfile</i> and file <i>lib/Rex/ProjectName.pm</i> where you can define your Tasks.</p>
+<p>This will create a <i>Rexfile</i> and file <i>lib/Rex/ProjectName.pm</i> where you can define your tasks.</p>
 
 </li>
 </ul>

@@ -14,10 +14,10 @@
 
 <ul>
 
-<li><p>Added dumpxml command.</p>
+<li><p>Added dumpxml command</p>
 
 </li>
-<li><p>Default listening on all ip&#39;s for vnc</p>
+<li><p>Default listening on all IPs for VNC</p>
 
 </li>
 <li><p>Added iflist and blklist command</p>
@@ -32,7 +32,7 @@
 
 <ul>
 
-<li><p>Updates Documentation</p>
+<li><p>Documentation updates</p>
 
 </li>
 <li><p>Added more colorized output options</p>
@@ -41,7 +41,7 @@
 <li><p>Fixed a logging bug</p>
 
 </li>
-<li><p>Enhanced -Tv cli parameter to display more information</p>
+<li><p>Enhanced -Tv CLI parameter to display more information</p>
 
 </li>
 <li><p>Fixed error messages</p>
@@ -50,7 +50,7 @@
 <li><p>Fixed a bug with hooks and packages</p>
 
 </li>
-<li><p>Refactores Task module</p>
+<li><p>Refactored Task module</p>
 
 </li>
 <li><p>Added experimental feature: shared variables</p>
@@ -69,7 +69,7 @@
 
 <h2 id="THANKS">THANKS</h2>
 
-<p>For this version i will specially thank the following people for their great help! (alphabetical order)</p>
+<p>For this version I will specially thank the following people for their great help! (alphabetical order)</p>
 
 <ul>
 

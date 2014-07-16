@@ -14,19 +14,19 @@
 
 <ul>
 
-<li><p>Added Scientific Linux Support</p>
+<li><p>Added Scientific Linux support</p>
 
 </li>
-<li><p>Added Gentoo Support</p>
+<li><p>Added Gentoo support</p>
 
 </li>
-<li><p>Increased timeouts/check intervalls for Jiffybox</p>
+<li><p>Increased timeouts/check intervals for JiffyBox</p>
 
 </li>
 <li><p>fixed a template bug with $ signs</p>
 
 </li>
-<li><p>Added a function <i>is_redhat</i> to detect redhat systems (like Centos, Scientific Linux, RHEL, ...)</p>
+<li><p>Added a function <i>is_redhat</i> to detect RedHat systems (like Centos, Scientific Linux, RHEL, ...)</p>
 
 </li>
 </ul>

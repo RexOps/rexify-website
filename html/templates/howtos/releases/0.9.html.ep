@@ -20,7 +20,7 @@
 <li><p>Register tasks as function if possible</p>
 
 </li>
-<li><p>New function <b>get_operating_system</b> to get the Operating System.</p>
+<li><p>New function <b>get_operating_system</b> to get the operating system.</p>
 
 </li>
 <li><p><b>Transactions</b></p>

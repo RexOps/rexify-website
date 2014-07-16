@@ -37,29 +37,29 @@
 
 <li><p><b>stat($file)</b></p>
 
-<p>Returns an Hash with the following entries:</p>
+<p>Returns a hash with the following entries:</p>
 
 <ul>
 
-<li><p>uid - User-ID</p>
+<li><p>uid - user ID</p>
 
 </li>
-<li><p>gid - Group-ID</p>
+<li><p>gid - group ID</p>
 
 </li>
-<li><p>mode - Permissions</p>
+<li><p>mode - permissions</p>
 
 </li>
-<li><p>mtime - Last modified time</p>
+<li><p>mtime - last modified time</p>
 
 </li>
-<li><p>atime - Last access time</p>
+<li><p>atime - last access time</p>
 
 </li>
-<li><p>size - Filesize</p>
+<li><p>size - filesize</p>
 
 </li>
-<li><p>name - Filename</p>
+<li><p>name - filename</p>
 
 </li>
 </ul>

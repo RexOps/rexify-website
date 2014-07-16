@@ -14,14 +14,31 @@
 
 <ul>
 
-<li><p>Communication Protocol exchangeable</p>
+<li><p>Exchangeable communication protocol</p>
 
 <p>The communication protocol is now exchangeable. It supports now SSH and HTTP(s). A Rex HTTP Endpoint is available as an extra package.</p>
 
-<p>Read the documentation at <a href="http://rexify.org/howtos/http-transport.html">http://rexify.org/howtos/http-transport.html</a>.</p>
+<p>Read the documentation at <a href="/howtos/http-transport.html">HTTP Transport Layer</a>.</p>
 
 </li>
-<li><p>Set Authentication per Group or Task. (Only with 0.31 features enabled)</p>
+<li><p>Feature flags</p>
+
+<p>For new features that may be incompatible there is a new feature flag to explicit activate those features.</p>
+
+<p>You can active new features by version in your Rexfile.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> # Rexfile
+ use Rex -feature =&gt; 0.31;
+   
+ user "root";
+ password "foo";
+  
+ task prepare =&gt; sub {
+ };</code></pre>
+
+</li>
+<li><p>Set authentication per group or task (only with 0.31 features enabled)</p>
 
 <p>You have to define the groups and tasks first before you can modify the authentication for them.</p>
 
@@ -49,23 +66,6 @@
     
  auth for =&gt; "prepare" =&gt;
                   user =&gt; "root";</code></pre>
-
-</li>
-<li><p>Feature flags</p>
-
-<p>For new features that may be incompatible there is a new feature flag to explicit activate those features.</p>
-
-<p>You can active new features by version in your Rexfile.</p>
-
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard1"> # Rexfile
- use Rex -feature =&gt; 0.31;
-   
- user "root";
- password "foo";
-  
- task prepare =&gt; sub {
- };</code></pre>
 
 </li>
 </ul>

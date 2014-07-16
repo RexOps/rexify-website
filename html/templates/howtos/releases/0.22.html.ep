@@ -14,7 +14,7 @@
 
 <ul>
 
-<li><p>Before, and after hooks.</p>
+<li><p>Before and after hooks</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0">   task prepare =&gt; "server1", "server2", sub {
@@ -34,10 +34,10 @@
    };</code></pre>
 
 </li>
-<li><p>Systemd Service Provider for RedHat and SuSE.</p>
+<li><p>Systemd service provider for RedHat and SuSE.</p>
 
 </li>
-<li><p>Added Fusion Inventory support (http://fusioninventory.org/). If the agent is installed on the target maschine rex will use it during inventory.</p>
+<li><p>Added <a href="http://fusioninventory.org/">FusionInventory</a> support. If the agent is installed on the target maschine rex will use it for inventory.</p>
 
 </li>
 <li><p>It&#39;s now possible to set crypted passwords.</p>
@@ -55,7 +55,7 @@
    };</code></pre>
 
 </li>
-<li><p>Bugs where fixed.</p>
+<li><p>Bugs were fixed.</p>
 
 </li>
 </ul>

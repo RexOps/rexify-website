@@ -33,7 +33,7 @@
 </li>
 <li><p><b>File Manipulation Functions</b></p>
 
-<p>Added 2 functions to manipulate files.</p>
+<p>Added two functions to manipulate files: delete_lines_matching and append_if_no_such_line.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1"> task "manip", sub {
@@ -57,7 +57,7 @@
 </li>
 <li><p><b>Database Functions</b></p>
 
-<p>Extended the Database Module to support inserts, deletes and updates.</p>
+<p>Extended the Database module to support inserts, deletes and updates.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard3"> task "db", sub {

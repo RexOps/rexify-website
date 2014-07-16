@@ -17,10 +17,10 @@
 <li><p>License changed to GPL3</p>
 
 </li>
-<li><p>Rex is now running under Windows. Tested with ActiveState Perl 5.12 and Windows 7. See <a href="http://rexify.org/get">http://rexify.org/get</a> for installation instructions.</p>
+<li><p>Rex is now running under Windows. Tested with ActiveState Perl 5.12 and Windows 7. See the <a href="/get">Get Rex</a> page for installation instructions.</p>
 
 </li>
-<li><p>Added support for Jiffybox a german cloud service of domainfactory.</p>
+<li><p>Added support for JiffyBox, a German cloud service of <a href="http://www.df.eu">domainfactory</a>.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0"> use Rex::Commands::Cloud;

@@ -34,14 +34,15 @@
  }
  
  install package =&gt; "apache2";</code></pre>
-
-<p>* Extended Iptables Module with a flush command</p>
+</li>
+<li>Extended Iptables module with a flush command</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1"> use Rex::Commands::Iptables;
  iptables -F;</code></pre>
-
-<p>* Inline Templates</p>
+</li>
+<li>
+<p>Inline templates</p>
 
 <p>It is now possible to write templates inside your Rexfile.</p>
 
@@ -58,10 +59,12 @@
  &lt;?php
  $DB[&#39;user&#39;] = "&lt;%= $::user %&gt;";
  @end</code></pre>
-
-<p>* cloud_instance command now returns instance info after create</p>
-
-<p>* added cli parameters to before/around hooks</p>
+</li>
+<li>
+<p>cloud_instance command now returns instance info after create</p>
+</li>
+<li>
+<p>added CLI parameters to before/around hooks</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard3"> task "foo", sub {
@@ -73,8 +76,9 @@
     my ($server, $server_ref, $param) = @_;
     # do something before "foo"
  };</code></pre>
-
-<p>* added lvm create functions</p>
+</li>
+<li>
+<p>added LVM create functions</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4"> pvcreate "/dev/sda1";
@@ -83,8 +87,9 @@
     size =&gt; "20G",
     onvg =&gt; "vg0",
     fstype =&gt; "ext3";</code></pre>
-
-<p>* fixed bugs</p>
+</li>
+<li>
+<p>fixed bugs</p>
 
 </li>
 </ul>

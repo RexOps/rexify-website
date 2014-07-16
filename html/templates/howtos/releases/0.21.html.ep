@@ -14,7 +14,7 @@
 
 <ul>
 
-<li><p>Source Control</p>
+<li><p>Source control</p>
 
 <p>Now you can checkout subversion and git repositories with Rex.</p>
 
@@ -26,7 +26,7 @@
     checkout "myrepo";
  };</code></pre>
 
-<p>See <a href="http://rexify.org/api/Rex/Commands/SCM.pm.html">http://rexify.org/api/Rex/Commands/SCM.pm.html</a> for more information.</p>
+<p>See <a href="/api/Rex/Commands/SCM.pm.html">Rex::Commands::SCM</a> for more information.</p>
 
 </li>
 <li><p>allow multiple groups for a task</p>
@@ -83,7 +83,7 @@
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4"> group "frontend", "fe01:2222", "fe02";</code></pre>
 
-<p>Rex will now connect to fe01 on port 2222 and on fe02 to port 22.</p>
+<p>Rex will now connect to fe01 on port 2222 and to fe02 on port 22.</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard5"> port 2222;
@@ -92,7 +92,7 @@
  };</code></pre>
 
 </li>
-<li><p>file and upload now scans for environment specifiy files first</p>
+<li><p>file and upload now scans for environment specific files first</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard6"> task "upload", "server1", sub {
@@ -109,10 +109,10 @@
 <li><p>added -nolog parameter to logging function to disable logging at all</p>
 
 </li>
-<li><p>added posibility to evaluate perl code within the -H cli parameter</p>
+<li><p>added possibility to evaluate perl code within the -H CLI parameter</p>
 
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard7"> bash# rex -H &#39;perl:map { "server-$_"; } (1,2,3)&#39; task</code></pre>
+<pre><code class="bash" id="clipboard7"> bash# rex -H &#39;perl:map { "server-$_"; } (1,2,3)&#39; task</code></pre>
 
 </li>
 </ul>
