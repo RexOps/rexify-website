@@ -6,15 +6,14 @@
       <meta name="keywords" content="Rex, API, Documentation">
 % end
 <h1><%= title %></h1>
-<p>Download (R)?ex here: http://rexify.org/.</p>
 <h1>Common</h1>
-<h4>Inventory Cache</h4>
+<h4>Inventory cache</h4>
 <p>If you want to cache the inventory and to use this cache for subsequent rex calls, you can use the <em>REX_CACHE_TYPE</em> environment variable.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="bash">REX_CACHE_TYPE=YAML rex $task
 </code></pre>
 
-<p>This will create a folder ".cache" and creates one cache-file for each host. If you want to use a different folder you can set the environment variable <em>REX_CACHE_PATH</em>.</p>
+<p>This will create a folder ".cache" and creates a separate cache file for each host. If you want to use a different folder you can set it in the <em>REX_CACHE_PATH</em> environment variable.</p>
 <p>You can also set the cache type inside your <em>Rexfile</em></p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1"># Rexfile
@@ -24,12 +23,12 @@ password "...";
 cache "YAML";
 </code></pre>
 
-<p>It is also possible to create custom cache classes. For example if you want to save the inventory cache inside a datebase. Just take a look at the file <em>lib/Rex/Interface/Cache/YAML.pm</em> to see how it is implemented.</p>
-<h4>Reporting of Changes</h4>
+<p>It is also possible to create custom cache classes. For example if you want to save the inventory cache inside a database. Just take a look at <a href="https://github.com/RexOps/Rex/blob/master/lib/Rex/Interface/Cache/YAML.pm">Rex::Interface::Cache::YAML</a> to see how it is implemented.</p>
+<h4>Reporting of changes</h4>
 <p>If you want to get a report of the changes Rex had done on your systems, you can use the new reporting feature.</p>
-<p>Currently not every Rex function gets monitored by this feature. But all important ones are.
+<p>Currently not every Rex function gets monitored by this feature, but all important ones are.
 This feature will be extended with version 2 of rex.</p>
-<p>To activate the reporting you can use the environment variable <em>REX_REPORT_TYPE</em> or use the <em>reporting</em> feature inside your <em>Rexfile</em>.</p>
+<p>To activate the reporting you can use the <em>REX_REPORT_TYPE</em> environment variable or use the <em>reporting</em> feature inside your <em>Rexfile</em>.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="bash">REX_REPORT_TYPE=YAML rex the-task
 </code></pre>
@@ -41,18 +40,18 @@ use Rex -base;
 report -on =&gt; "YAML";
 </code></pre>
 
-<p>The YAML report will be created inside the directory <em>report</em>. If you want to use a different directory you can set it with a special variable.</p>
+<p>The YAML report will be created inside a directory called <em>report</em>. If you want to use a different directory you can set it with a special variable.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard3">use Rex -base;
 report -on =&gt; "YAML";
 set report_path =&gt; "/path/to/";
 </code></pre>
 
-<p>It is also possible to create custom reporting classes. Just take a look at: https://github.com/RexIO/rex-io-reports/blob/master/rex/lib/Rex/Report/RexIO.pm </p>
-<h4>New cli commands to better integrate Rex into your Shell Scripts</h4>
+<p>It is also possible to create custom reporting classes. Just take a look at <a href="https://github.com/RexIO/rex-io-reports/blob/master/rex/lib/Rex/Report/RexIO.pm">Rex::Report::RexIO</a>.</p>
+<h4>New CLI commands to better integrate Rex into your shell scripts</h4>
 <p>With these commands it is easy to use Rex from within a shell script.</p>
-<p>You can test these scripts by checking out the repository at: https://github.com/krimdomu/rex-shell-extension</p>
-<p>login to fe01.my.lan and execute uptime</p>
+<p>You can test these scripts by checking out the <a href="https://github.com/krimdomu/rex-shell-extension">krimdomu/rex-shell-extension</a> GitHub repository.</p>
+<p>Login to fe01.my.lan and execute uptime</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="bash">#!/bin/bash
 export REX_REMOTE_HOST="fe01.my.lan"
@@ -62,9 +61,7 @@ for group in $GROUPS; do
 done
 </code></pre>
 
-<p>login to fe01.my.lan
-testing if /etc/sudoers is there
-if not, install package and upload a template sudoers file</p>
+<p>Login to fe01.my.lan, testing if /etc/sudoers is there, and if not, install package and upload a template sudoers file</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="bash">#!/bin/bash
 export REX_REMOTE_HOST="fe01.my.lan"
@@ -75,7 +72,7 @@ if ! rex-test -f /etc/sudoers; then
 fi
 </code></pre>
 
-<h4>Initial support for OpenWrt (Ferki)</h4>
+<h4>Initial support for OpenWrt (FErki)</h4>
 <p>In a limited way, Rex now supports OpenWrt.</p>
 <h4>Enhancements</h4>
 <ul>
@@ -83,7 +80,7 @@ fi
 </ul>
 <p>rex will now only upload a file if it really changes and it will upload the file into a temporary file and rename it after the upload.</p>
 <ul>
-<li>setting options for openssh connection mode</li>
+<li>setting options for OpenSSH connection mode</li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard5">Rex::Config-&gt;set_openssh_opt(StrictHostKeyChecking =&gt; "no");
@@ -103,10 +100,10 @@ task "mytask", "myserver", sub {
 
 <ul>
 <li>
-<p>if a given feature-flag isn't supported, Rex will now die(). - #177</p>
+<p>if a given feature flag isn't supported, Rex will now die() - #177</p>
 </li>
 <li>
-<p>Rex now has an interface to support other shells than bash in a plugable way. (Gnouc) - #180</p>
+<p>Rex now has an interface to support other shells than bash in a pluggable way. (Gnouc) - #180</p>
 </li>
 <li>
 <p>Prefer ip command over ifconfig (ferki) - #194</p>
@@ -127,10 +124,10 @@ task "mytask", "myserver", sub {
 <h4>Bugfixes</h4>
 <ul>
 <li>
-<p>Support port with ranged hostnamed - #196</p>
+<p>Support port with ranged hostnames - #196</p>
 </li>
 <li>
-<p>bug in sync_up module if used in modules - #206</p>
+<p>Fixed bug in sync_up module if used in modules - #206</p>
 </li>
 <li>
 <p>Fix a typo in example code - #195 Boris Däppen</p>

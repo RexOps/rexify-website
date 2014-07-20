@@ -23,16 +23,16 @@ task "test", sub {
 };
 </code></pre>
 
-<p>Possible formating options:</p>
+<p>Possible formatting options:</p>
 <ul>
-<li>%D - Current date (yyyy-mm-dd HH:mm:ss)</li>
+<li>%D - current date (yyyy-mm-dd HH:mm:ss)</li>
 <li>%h - the target host</li>
 <li>%p - the pid</li>
 <li>
 <p>%s - the string to output</p>
 </li>
 <li>
-<p>userdefined columns for ps() command - #175 - dirkcjelli</p>
+<p>user-defined columns for ps() command - #175 - dirkcjelli</p>
 </li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
@@ -46,7 +46,7 @@ task "test", sub {
 <p>using tilde (~) sign for directories - #198 - Gnouc, Krimdomu</p>
 </li>
 <li>
-<p>SCM::Git, now uses cwd option of run() command, so it works also remote. - #211 - atrodo</p>
+<p>Rex::SCM::Git now uses cwd option of run() command, so it also works remotely. - #211 - atrodo</p>
 </li>
 <li>
 <p>Box default pkg update - #217 - endyman</p>
@@ -102,7 +102,7 @@ register_function_hooks {
 </code></pre>
 
 <ul>
-<li>added on_change hook for sync_up/sync_down - #232</li>
+<li>added on_change hook for sync_up and sync_down - #232</li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4">sync_up "files/", "/remote/folder", {
@@ -131,8 +131,7 @@ register_function_hooks {
 <p>Add service status support for OpenWrt - #246 - ferki</p>
 </li>
 <li>
-<p>make ssh read buffer configurable (for Net::SSH2 connections) - #247
-this will speedup the connection, but may break on older systems!</p>
+<p>Make ssh read buffer configurable (for Net::SSH2 connections) - #247. This will speedup the connection, but may break on older systems!</p>
 </li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
@@ -171,7 +170,7 @@ task prepare =&gt; sub {};
 
 <ul>
 <li>
-<p>Cloud::Amazon Check to make sure it is HASH before key look up - #263 - oneness</p>
+<p>Cloud::Amazon: check to make sure it is HASH before key look up - #263 - oneness</p>
 </li>
 <li>
 <p>autodie feature if run() fail - #265</p>
@@ -204,13 +203,13 @@ task "prepare", sub {
 <p>Flag existing feature sudo_without_sh as found - #253 - gittex</p>
 </li>
 <li>
-<p>Cleaned-Up Data module dependence - #254</p>
+<p>Cleaned up Data module dependency - #254</p>
 </li>
 <li>
 <p>iptables arguments needs quote if they are whitespaced - #257 - jorisd</p>
 </li>
 <li>
-<p>add Pod encoding marker - #259 - sergeyromanov</p>
+<p>add pod encoding marker - #259 - sergeyromanov</p>
 </li>
 <li>
 <p>"needs" doesn't know how to call tasks from the main Rexfile - #260</p>
@@ -219,7 +218,7 @@ task "prepare", sub {
 <p>gathering alias network interfaces like eth0:0 - #264</p>
 </li>
 <li>
-<p>Cron: Jobs can be duplicated - #269 - jorisd</p>
+<p>Cron: jobs can be duplicated - #269 - jorisd</p>
 </li>
 <li>
 <p>FreeBSD: store netmask in dotted decimal format - #287 - andrejzverev</p>
@@ -228,14 +227,13 @@ task "prepare", sub {
 <p>Uninitialized value in OpenSSH.pm - #290 - samuelet</p>
 </li>
 </ul>
-<h1>Community Modules</h1>
+<h1>Community modules</h1>
 <ul>
 <li>
-<p>Rex::Ext::Crypt - Encrypt strings inside a Rexfile.</p>
+<p>Rex::Ext::Crypt - encrypt strings inside a Rexfile.</p>
 </li>
 <li>
-<p>Rex::Ext::Backup - A simple backup module
-This module creates a backup of a file before rex changes it.</p>
+<p>Rex::Ext::Backup - a simple backup module. This module creates a backup of a file before rex changes it.</p>
 </li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard10">Copy to clipboard</div>
@@ -249,14 +247,13 @@ This module creates a backup of a file before rex changes it.</p>
 </code></pre>
 
 <ul>
-<li>Rex::Commands::Pstree - Module to run pstree - fanyeren</li>
+<li>Rex::Commands::Pstree - module to run pstree - fanyeren</li>
 </ul>
-<h1>Package Repository</h1>
-<p>This is the first release build with the new build system on build.rexify.org. Due to this fact some repository urls have changed.</p>
-<p>Repository URLs changed for:</p>
+<h1>Package repository</h1>
+<p>This is the first release build with the new build system on <a href="https://build.rexify.org">build.rexify.org</a>. Due to this fact the following repository URLs have changed:</p>
 <ul>
 <li>Fedora</li>
 <li>Mageia</li>
 <li>OpenSuSE</li>
 </ul>
-<p>Please see http://www.rexify.org/get/ for the new URLs.</p>
+<p>Please see the <a href="/get">Get Rex</a> page for the new URLs.</p>

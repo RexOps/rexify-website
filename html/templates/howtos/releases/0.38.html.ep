@@ -51,7 +51,7 @@
 <p>Amazon support for Rex/Boxes</p>
 </li>
 <li>
-<p>Possibility to describe your Rex/Boxes via a YAML file. So that you don't need to alter your Rexfile if you want to change the Box Provider. (for example to switch from VirtualBox to Amazon).</p>
+<p>Possibility to describe your Rex/Boxes via a YAML file. So that you don't need to alter your Rexfile if you want to change the Box provider (for example to switch from VirtualBox to Amazon).</p>
 </li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>

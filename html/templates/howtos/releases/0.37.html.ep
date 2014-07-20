@@ -8,9 +8,9 @@
 <h1><%= title %></h1>
 <h1>General</h1>
 <ul>
-<li>Eclipse Plugin for Rex</li>
+<li>Eclipse plugin for Rex</li>
 </ul>
-<p>With this plugin it is possible to call Rex tasks from within Eclipse. See https://github.com/krimdomu/eclipse-rex-plugin for more information.</p>
+<p>With this plugin it is possible to call Rex tasks from within Eclipse. See the <a href="https://github.com/RexOps/eclipse-rex-plugin">RexOps/eclipse-rex-plugin</a> for more information.</p>
 <ul>
 <li>Manipulate BIND DNS</li>
 </ul>
@@ -48,9 +48,9 @@ task sometask =&gt; sub {
 };
 </code></pre>
 
-<p>See http://modules.rexify.org/module/Rex::DNS::Bind for the API documentation.</p>
+<p>See <a href="http://modules.rexify.org/module/Rex::DNS::Bind">Rex::DNS::Bind</a> for the API documentation.</p>
 <ul>
-<li>run_taks now accepts additional parameters for tasks (will overwrite console parameter)</li>
+<li>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</li>
 </ul>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard2">task "taskone", sub {
@@ -65,14 +65,10 @@ task "tasktwo", sub {
 
 <ul>
 <li>Code changes for better extendability of core functions.</li>
-<li>Hardware Module is now plugable</li>
-<li>Virtualization Module detection is now plugable</li>
-<li>Box Module is now plugable</li>
-<li>Package Module is now plugable</li>
-<li>
-<p>Service Module is now plugable</p>
-</li>
-<li>
-<p>Fixed a <em>zypper ref</em> call on SuSE systems for unsigned repositories.</p>
-</li>
+<li>Hardware module is now pluggable</li>
+<li>Virtualization module detection is now pluggable</li>
+<li>Box module is now pluggable</li>
+<li>Package module is now pluggable</li>
+<li>Service module is now pluggable</li>
+<li>Fixed a <em>zypper ref</em> call on SuSE systems for unsigned repositories.</li>
 </ul>

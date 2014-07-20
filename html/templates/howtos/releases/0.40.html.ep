@@ -7,8 +7,8 @@
 % end
 <h1><%= title %></h1>
 <h1>Common</h1>
-<h2>Added basic cmdb interface.</h2>
-<p>First CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * "default".</p>
+<h2>Added basic CMDB interface.</h2>
+<p>The first CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * "default".</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0">use Cwd 'getcwd';
 use Rex::CMDB;
@@ -30,9 +30,9 @@ task "prepare", sub {
 <li>cmdb/$server.yml</li>
 <li>cmdb/default.yml</li>
 </ol>
-<p>If it find the value for "vhosts" in one of these files it will return the value and exit the search.</p>
+<p>If it find the value for "vhosts" in one of these files, it will return that value and exit the search.</p>
 <h2>VirtualBox</h2>
-<p>It is now possible to use VirtualBox in Headless mode. (MacOSX and Linux)</p>
+<p>It is now possible to use VirtualBox in headless mode on MacOSX and Linux.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard1">set  virtualization =&gt; { 
    type =&gt; "VBox",
@@ -59,8 +59,8 @@ vms:
       setup: setup_frontend
 </code></pre>
 
-<h2>INI Style group files</h2>
-<p>from Franky Van Liedekerke</p>
+<h2>INI style group files</h2>
+<p>From Franky Van Liedekerke.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
 <pre><code>; my group file
 [frontends]
@@ -88,9 +88,9 @@ db[01..02]
 groups_file "file.ini";
 </code></pre>
 
-<h2>Source Global /etc/profile</h2>
-<p>There is now a new setting source_global_profile. This will source /etc/profile before every run() command.</p>
-<p>On some systems this is needed because the users profile (.bashrc or .bash_profile) doesn't source the global file. Before you use this function consider changing your .bashrc.</p>
+<h2>Source global /etc/profile</h2>
+<p>There is a new setting called source_global_profile. This will source /etc/profile before every run() command.</p>
+<p>On some systems this is needed because the user's profile (.bashrc, .bash_profile) doesn't source the global file. Before you use this function consider changing your .bashrc.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4">source_global_profile TRUE;
 </code></pre>
@@ -98,8 +98,8 @@ groups_file "file.ini";
 <h2>Bugs</h2>
 <ul>
 <li>refactored sudo module for #98 - Dominik Schulz</li>
-<li>refactored path calculation for upload(), file() and template() functions #103 and #101</li>
+<li>refactored path calculation for upload(), file() and template() functions (#103 and #101)</li>
 <li>export update_system sub - Ferenc Erki</li>
-<li>Fixing regex which gets name interfaces - Fran Rodriguez</li>
-<li>fixed dmidecode on openbsd</li>
+<li>fixed regex which gets name of interfaces - Fran Rodriguez</li>
+<li>fixed dmidecode on OpenBSD</li>
 </ul>

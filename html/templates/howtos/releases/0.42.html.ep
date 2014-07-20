@@ -8,9 +8,9 @@
 <h1><%= title %></h1>
 <h1>Common</h1>
 <h4>Net::OpenSSH connection mode - chenryn</h4>
-<p>As of this release it is possible to use Net::OpenSSH for the connection. With this it is possible to use also kerberos authentication and all features openssh has (like ProxyCommand, ...)</p>
+<p>As of this release it is possible to use Net::OpenSSH for the connection. With this it is also possible to use kerberos authentication and all features OpenSSH has (like ProxyCommand, etc.).</p>
 <p>To use Net::OpenSSH you have to set the connection type in your Rexfile.</p>
-<p>This fixes a long ago opened pull request #70.</p>
+<p>This fixes long standing pull request #70.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard0">use Rex -feature =&gt; '0.42';
 
@@ -52,9 +52,9 @@ krb5_auth;
 };
 </code></pre>
 
-<h4>new feature flag use_server_auth to enable auth properties in ini files</h4>
-<h4>define server groups with special server properties in ini files</h4>
-<p>The ini file feature is improved to allow custom properties for servers and to allow inheritance of sections.</p>
+<h4>new feature flag use_server_auth to enable auth properties in INI files</h4>
+<h4>define server groups with special server properties in INI files</h4>
+<p>The INI file feature is improved to allow custom properties for servers and to allow inheritance of sections.</p>
 <p>You have to use use_server_auth feature flag for this.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4"># Rexfile
@@ -102,7 +102,7 @@ redis: be01, be02, be04, redis01, redis02
 memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 </code></pre>
 
-<p>and memcache02 will use custom authentication and there will be a special option "services" for this server that can be queries like this:</p>
+<p>memcache02 will use custom authentication and there will be a special option "services" for this server that can be queried like this:</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard6">task "mytask", group =&gt; "memcache", sub {
     say connection-&gt;server-&gt;option("services");
@@ -118,40 +118,40 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 <h3>Speed improvements</h3>
 <ul>
 <li>
-<h1>123 - File manipulation speed for sed - liedekef</h1>
+#123 - File manipulation speed for sed - liedekef
 </li>
 <li>
-<h1>133 - speed of delete_lines_matching function - liedekef</h1>
+#133 - speed of delete_lines_matching function - liedekef
 </li>
 <li>
-<h1>135 #136 #137 - speed improvement for os detection - liedekef</h1>
+#135 #136 #137 - speed improvement for os detection - liedekef
 </li>
 <li>
-<h1>143 - speed of append_if_no_such_line - liedekef</h1>
+#143 - speed of append_if_no_such_line - liedekef
 </li>
 </ul>
-<h1>Bugfixs/Cleanups/Enhancements</h1>
+<h1>Bugfixes/cleanups/enhancements</h1>
 <ul>
 <li>
-<h1>115 - fixed the most possible things (sudo_without_sh flag)</h1>
+#115 - fixed the most possible things (sudo_without_sh flag)
 </li>
-<li>removed blastwave package capabilities from solaris, because blastwave doesn't exists anymore</li>
+<li>removed Blastwave package capabilities from Solaris, because Blastwave doesn't exist anymore</li>
 <li>
-<h1>129 - removed an unnecessary opendir call - liedekef</h1>
-</li>
-<li>
-<h1>148 - use equery for Rex::Pkg::Gentoo in get_installed, later replaced by #165 - tianon</h1>
+#129 - removed an unnecessary opendir call - liedekef
 </li>
 <li>
-<h1>149 - updated most of Rsync with server-specific auth - tianon</h1>
+#148 - use equery for Rex::Pkg::Gentoo in get_installed, later replaced by #165 - tianon
 </li>
 <li>
-<h1>159 - don't execute a task if the defined group doesn't contain servers. There is a feature flag to disable this behavior (empty_groups)</h1>
+#149 - updated most of Rsync with server-specific auth - tianon
 </li>
 <li>
-<h1>163 - Rex::Pkg::Gentoo: Fix separator character between package name and version - ferki</h1>
+#159 - Don't execute a task if the defined group doesn't contain servers. There is a feature flag to disable this behavior (empty_groups)
 </li>
 <li>
-<h1>165 - Rex::Pkg::Gentoo: Replace get_installed checking method - ferki</h1>
+#163 - Rex::Pkg::Gentoo: Fix separator character between package name and version - ferki
+</li>
+<li>
+#165 - Rex::Pkg::Gentoo: Replace get_installed checking method - ferki
 </li>
 </ul>

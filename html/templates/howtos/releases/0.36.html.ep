@@ -8,7 +8,7 @@
 <h1><%= title %></h1>
 <h1>General</h1>
 <ul>
-<li>OpenNebula Support via Modules.</li>
+<li>OpenNebula Support via a module.</li>
 </ul>
 <p>You can download OpenNebula module with the following command:</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
@@ -64,9 +64,9 @@ task "list", sub {
 </code></pre>
 
 <ul>
-<li>New function run_task</li>
+<li>New function: run_task</li>
 </ul>
-<p>With this function you can run a specific task on a given host and get something in return.</p>
+<p>With this function you can run a specific task on a given host and get the output as a return value.</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard2">task "prepare", "server5", sub {
    # do something
@@ -85,12 +85,12 @@ task "get_free_mem", sub {
 
 <ul>
 <li>
-<p>get private ip of amazon ec2 instances (jdelgado7)</p>
+<p>get private IP of Amazon EC2 instances (jdelgado7)</p>
 </li>
 <li>
-<p>added function to extend cloud api with external modules</p>
+<p>added function to extend cloud API with external modules</p>
 </li>
 <li>
-<p>fixed #80. requiretty isn't a problem anymore</p>
+<p>fixed #80: requiretty isn't a problem anymore</p>
 </li>
 </ul>

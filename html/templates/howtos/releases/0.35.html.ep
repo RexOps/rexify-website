@@ -6,15 +6,15 @@
       <meta name="keywords" content="Rex, API, Documentation">
 % end
 <h1><%= title %></h1>
-<p>There are now 2 new Webservices:</p>
+<p>There are now 2 new websites:</p>
 <ul>
-<li>http://modules.rexify.org</li>
+<li><a href="http://modules.rexify.org">http://modules.rexify.org</a></li>
 </ul>
-<p>A website where you can search for Rex modules and browse the documentation.</p>
+<p>A website where you can search for Rex modules and browse their documentation.</p>
 <ul>
-<li>http://box.rexify.org</li>
+<li><a href="http://box.rexify.org">http://box.rexify.org</a></li>
 </ul>
-<p>A website where you can download prebuild Boxes and find information about Rex/Boxes. A module for easy deployment of development boxes. (currently only VirtualBox is supported)</p>
+<p>A website where you can download prebuilt Boxes and find information about Rex/Boxes. A module for easy deployment of development boxes (currently only VirtualBox is supported).</p>
 <h1>General</h1>
 <ul>
 <li>VirtualBox support for Rex::Commands::Virtualization</li>
@@ -77,8 +77,8 @@ vm create =&gt; "vm01",
       });
 
       # only works with network type = nat
-      # if a key ssh is present, rex will use this to log into the vm
-      # you need this if you run VirtualBox not on your local host.
+      # if an ssh key is present, rex will use this to log into the vm
+      # you need this if you don't run VirtualBox on your local host.
       $box-&gt;forward_port(ssh =&gt; [2222 =&gt; 22]);
 
       $box-&gt;share_folder("myhome" =&gt; "/home/jan");
@@ -147,8 +147,8 @@ vm create =&gt; "vm01",
  };
 </code></pre>
 
-<p>The Key that is used is the return value of <strong>get_operating_system()</strong>.</p>
-<p>It is also possible to add a <strong>after</strong> hook like this:</p>
+<p>The key that is used is the return value of <strong>get_operating_system()</strong>.</p>
+<p>It is also possible to add an <strong>after</strong> hook like this:</p>
 <div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
 <pre><code class="perl" id="clipboard4"> task "add-repo", "server1", "server2", sub {
    repository add =&gt; myrepo =&gt; {
@@ -183,11 +183,9 @@ vm create =&gt; "vm01",
 <p>Fixed API usage of Rex</p>
 </li>
 <li>
-<p>Merged pull request #82
-Better handling of $option parameter for 'install' - joris</p>
+<p>Merged pull request #82: Better handling of $option parameter for 'install' - joris</p>
 </li>
 <li>
-<p>Merged pull request #79
-Unwrapped double looping over files and regexes and adding $new_line if not present in absence of regexes - Mario Domgoergen</p>
+<p>Merged pull request #79: Unwrapped double looping over files and regexes and adding $new_line if not present in absence of regexes - Mario Domgoergen</p>
 </li>
 </ul>
