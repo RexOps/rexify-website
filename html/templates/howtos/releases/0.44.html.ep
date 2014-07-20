@@ -1,0 +1,262 @@
+% layout 'default';
+% title 'Release notes for 0.44';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+<h1><%= title %></h1>
+<h1>Common</h1>
+<ul>
+<li>
+<p>Docker support (experimental) - #278 - chenryn</p>
+</li>
+<li>
+<p>Format the output of say() - #155</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0">sayformat '%h: %s';
+
+task "test", sub {
+   say "hello world";
+};
+</code></pre>
+
+<p>Possible formating options:</p>
+<ul>
+<li>%D - Current date (yyyy-mm-dd HH:mm:ss)</li>
+<li>%h - the target host</li>
+<li>%p - the pid</li>
+<li>
+<p>%s - the string to output</p>
+</li>
+<li>
+<p>userdefined columns for ps() command - #175 - dirkcjelli</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1">task "ps", "server01", sub {
+   my @list = grep { $_-&gt;{"ni"} == -5 } ps("command","ni");
+};
+</code></pre>
+
+<ul>
+<li>
+<p>using tilde (~) sign for directories - #198 - Gnouc, Krimdomu</p>
+</li>
+<li>
+<p>SCM::Git, now uses cwd option of run() command, so it works also remote. - #211 - atrodo</p>
+</li>
+<li>
+<p>Box default pkg update - #217 - endyman</p>
+</li>
+<li>
+<p>run_batch() command to run batches on demand - #222 - jorisd</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2">my @return = run_batch "batchname", on =&gt; "192.168.3.56";
+</code></pre>
+
+<ul>
+<li>
+<p>Allow "sed" function to work on multiple lines. - #227 - davidolrik, krimdomu</p>
+</li>
+<li>
+<p>Added bulk_install() method for packages installing - #229 - jorisd</p>
+</li>
+<li>
+<p>Enable bulk_install for Gentoo and OpenWrt - #231 - ferki</p>
+</li>
+<li>
+<p>Added some hooks at central points in rex, so that it is possible to control the behaviour of rex in some points.</p>
+</li>
+</ul>
+<p>For example:</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3">use Rex::Hook;
+use Data::Dumper;
+
+register_function_hooks {
+   before =&gt; {
+      file =&gt; sub {
+         print Dumper(\@_);
+         print "before file\n";
+         return;
+      },
+      create_user =&gt; sub {
+         print "before create_user\n";
+         die;
+      },
+   },
+   after =&gt; {
+      file =&gt; sub {
+         print "after file\n";
+      },
+      create_user =&gt; sub {
+         print "after create_user\n";
+      },
+   }
+};
+</code></pre>
+
+<ul>
+<li>added on_change hook for sync_up/sync_down - #232</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4">sync_up "files/", "/remote/folder", {
+   on_change =&gt; sub {
+      my (@changed_files) = @_;
+     # do something
+   };
+};
+</code></pre>
+
+<ul>
+<li>Rex::Group::Lookup::Command - read hostnames from a command. - #233 - fanyeren</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard5">group "dbserver"   =&gt; lookup_command("cat ip.list | grep -v -E '^#'");
+</code></pre>
+
+<ul>
+<li>
+<p>Improve user and group management on OpenWrt - #242 - ferki</p>
+</li>
+<li>
+<p>Add kernel module (un)loading support for OpenWrt - #243 - ferki</p>
+</li>
+<li>
+<p>Add service status support for OpenWrt - #246 - ferki</p>
+</li>
+<li>
+<p>make ssh read buffer configurable (for Net::SSH2 connections) - #247
+this will speedup the connection, but may break on older systems!</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard6">set rex_internals =&gt; {
+   read_buffer_size =&gt; 2000,
+};
+</code></pre>
+
+<ul>
+<li>
+<p>Add systemd service provider support for Gentoo - #250 - ferki</p>
+</li>
+<li>
+<p>Add systemd service provider support for Mageia - #282</p>
+</li>
+<li>
+<p>feature flag to deactivate path cleanup - #261</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard7"># Rexfile
+use Rex -feature =&gt; ['no_path_cleanup'];
+
+task prepare =&gt; sub {};
+</code></pre>
+
+<ul>
+<li>feature flag to parse $HOME/.profile - #262</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard8">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard8"># Rexfile
+use Rex -feature =&gt; ['source_profile'];
+
+task prepare =&gt; sub {};
+</code></pre>
+
+<ul>
+<li>
+<p>Cloud::Amazon Check to make sure it is HASH before key look up - #263 - oneness</p>
+</li>
+<li>
+<p>autodie feature if run() fail - #265</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard9">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard9"># Rexfile
+use Rex -feature =&gt; ['exec_autodie'];
+
+task "prepare", sub {
+   run "this-command-fails";
+};
+</code></pre>
+
+<ul>
+<li>added support for tcsh shell - #284</li>
+</ul>
+<h1>Bugfixes</h1>
+<ul>
+<li>
+<p>Fix guestinfo for Gentoo - #236 - ferki</p>
+</li>
+<li>
+<p>get_host can't find aliases - #239, #240 - jorisd, ferki</p>
+</li>
+<li>
+<p>rsync get wrong user if using "auth for $task" - #252</p>
+</li>
+<li>
+<p>Flag existing feature sudo_without_sh as found - #253 - gittex</p>
+</li>
+<li>
+<p>Cleaned-Up Data module dependence - #254</p>
+</li>
+<li>
+<p>iptables arguments needs quote if they are whitespaced - #257 - jorisd</p>
+</li>
+<li>
+<p>add Pod encoding marker - #259 - sergeyromanov</p>
+</li>
+<li>
+<p>"needs" doesn't know how to call tasks from the main Rexfile - #260</p>
+</li>
+<li>
+<p>gathering alias network interfaces like eth0:0 - #264</p>
+</li>
+<li>
+<p>Cron: Jobs can be duplicated - #269 - jorisd</p>
+</li>
+<li>
+<p>FreeBSD: store netmask in dotted decimal format - #287 - andrejzverev</p>
+</li>
+<li>
+<p>Uninitialized value in OpenSSH.pm - #290 - samuelet</p>
+</li>
+</ul>
+<h1>Community Modules</h1>
+<ul>
+<li>
+<p>Rex::Ext::Crypt - Encrypt strings inside a Rexfile.</p>
+</li>
+<li>
+<p>Rex::Ext::Backup - A simple backup module
+This module creates a backup of a file before rex changes it.</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard10">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard10"> include qw/Rex::Ext::Backup/;
+
+ set backup_location =&gt; "backup/%h";
+
+ task yourtask =&gt; sub {
+    file "/etc/foo.conf", content =&gt; "new content\n";
+ };
+</code></pre>
+
+<ul>
+<li>Rex::Commands::Pstree - Module to run pstree - fanyeren</li>
+</ul>
+<h1>Package Repository</h1>
+<p>This is the first release build with the new build system on build.rexify.org. Due to this fact some repository urls have changed.</p>
+<p>Repository URLs changed for:</p>
+<ul>
+<li>Fedora</li>
+<li>Mageia</li>
+<li>OpenSuSE</li>
+</ul>
+<p>Please see http://www.rexify.org/get/ for the new URLs.</p>
