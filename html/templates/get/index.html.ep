@@ -11,6 +11,8 @@
 
 <p>你可以在命令行使用单行安装</p>
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+<p>If you want to use https to download the script, you have to trust <a href="http://www.cacert.org/">CAcert</a> certificate.</p>
+<pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>BSD 和 Linux</h2>
 <p>大多数主要发行版上都已经有了打包好的 Rex。选择你的发行版然后按照下面的步骤进行：</p>
