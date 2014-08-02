@@ -1,0 +1,39 @@
+% layout 'default';
+% title 'Release notes for 0.50.0';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Configuration, Management, Configuration Management, Linux, Deployment, Devops">
+% end
+
+         <h1>Release notes for 0.50.0</h1>
+         <p>These are the changes in 0.50 release.</p>
+
+<h2>Base</h2>
+<ul>
+  <li>
+  <p><b>Added Proxy Command support</b></p>
+  <p>If you need to use a jump-host to connect to your servers, you can now use a proxy command to do so. This feature is only available if you're using the <b>OpenSSH</b> connection model.</p>
+  <pre><code class="perl">use Rex -feature =&gt; ['0.50'];
+set connection =&gt; "OpenSSH";
+proxy_command "ssh user@jumphost nc %h %p 2&gt;/dev/null";
+</code></pre>
+
+  </li>
+  <li>
+  <p><b>Added a new experimental execution model</b></p>
+  <p>In the default mode the parallelity is managed by Rex::Fork::Manager which has limited capabilities regarding inter process communication and more things. See <a href="https://github.com/RexOps/Rex/issues/295">this ticket</a> for more information.</p>
+  <p>So with this release it is now possible to switch to <a href="https://metacpan.org/pod/Parallel::ForkManager">Parallel::ForkManager</a> to handle the parallelism.</p>
+  <pre><code class="perl">use Rex -feature =&gt; ['0.50'];
+set_distributor "Parallel_ForkManager";</code></pre>
+
+  </li>
+  <li>activate exit_status feature by default for non parallel task execution</li>
+</ul>
+
+<h2>Base</h2>
+<ul>
+  <li>Use stat() output for directory and file tests (fix #391) - FErki</li>
+  <li>fixed Problem with failed conditionals in Rex::Command::Run - #389</li>
+</ul>
+
