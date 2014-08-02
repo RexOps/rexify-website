@@ -1,0 +1,190 @@
+% layout 'default';
+% title 'Release notes for 0.33';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h1 id="General">General</h1>
+
+<ul>
+
+<li><p>Speed improvement</p>
+
+<p>The <i>-c</i> (cache) CLI option speeds up execution very much.</p>
+
+</li>
+<li><p>Profiler class</p>
+
+<p>This is mostly for developers. There is now a profiler class to profile execution of <i>things</i>.</p>
+
+<p>If you want to generate a profiling output you can do this with:</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> rex -dd $yourtask</code></pre>
+
+</li>
+<li><p>Mounting (thanks to Laird Liu)</p>
+
+<p>It is now possible to write mount entries to /etc/fstab with the <i>persistent</i> option.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> mount "/dev/sda5", "/mnt/sda5",
+    persistent =&gt; TRUE;</code></pre>
+
+</li>
+<li><p>Partitioning</p>
+
+<p>It is now possible to mount the new created partition.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> partition "/",
+    fstype =&gt; "ext3",
+    size   =&gt; 15000,
+    ondisk =&gt; "sda",
+    type   =&gt; "primary",
+    mount  =&gt; TRUE;</code></pre>
+
+<p>And if you want to write fstab entries directly.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3"> partition "/",
+    fstype =&gt; "ext3",
+    size   =&gt; 15000,
+    ondisk =&gt; "sda",
+    type   =&gt; "primary",
+    mount_persistent  =&gt; TRUE;</code></pre>
+
+</li>
+<li><p>New keyword <i>make</i>.</p>
+
+<p>This is just a cosmetic one. It is now possible to write tasks this way:</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4"> # old
+ task prepare =&gt; sub {
+    # do something
+ };
+ 
+ # new
+ task prepare =&gt; make {
+     # do something
+ };
+
+
+ # old
+ task "prepare", group =&gt; "foo", sub {
+     # do something
+ };
+ 
+ # new
+ task "prepare", group =&gt; "foo", make {
+    # do something
+ };</code></pre>
+
+</li>
+<li><p>Usability improvements, thanks to Anders Ossowicki</p>
+
+</li>
+</ul>
+
+<h1 id="User-Management">User Management</h1>
+
+<ul>
+
+<li><p>New option <i>no_create_home</i></p>
+
+<p>There is a new option <i>no_create_home</i>. If this option is set the home directory of the user will not be created.</p>
+
+<p>If the <i>ssh_key</i> option is set it will only create the .ssh directory if the home directory exists.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard5"> create_user "foo",
+     home =&gt; "/data/homes/foo",
+     no_create_home =&gt; TRUE;</code></pre>
+
+</li>
+<li><p>Fixed <i>expire</i> bug for create_user</p>
+
+</li>
+</ul>
+
+<h1 id="Templates">Templates</h1>
+
+<ul>
+
+<li><p>Template class now exchangeable (thanks to Laird Liu)</p>
+
+<p>If you want to use another Template class (for example Template::Toolkit) you can use it now.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard6"> # Rexfile
+ use strict;
+ use warnings;
+  
+ use Template;
+  
+ set template_function =&gt; sub {
+    my ($content, $vars) = @_;
+    my $t = Template-&gt;new;
+    my $out;
+    $t-&gt;process(\$content, $vars, \$out);
+    return $out;
+ };
+  
+ task foo =&gt; sub {
+    file "/etc/foo/service.conf",
+       content =&gt; template("service.conf.tpl", 
+                               name =&gt; "foo",
+                               port =&gt; 1903
+                  );
+ };</code></pre>
+
+</li>
+</ul>
+
+<h1 id="Modules">Modules</h1>
+
+<p>It is now easier to write independent modules. There is no break in compatibility. Both ways will work. But we suggest to rewrite/move your files.</p>
+
+<p>Old-way module structure:</p>
+
+<ul>
+
+<li><p>lib/Apache.pm</p>
+
+</li>
+<li><p>lib/templates/apache-template</p>
+
+</li>
+<li><p>lib/Apache/SubModule.pm</p>
+
+</li>
+</ul>
+
+<p>New module structure:</p>
+
+<ul>
+
+<li><p>lib/Apache/Module.pm (this is the old lib/Apache.pm)</p>
+
+</li>
+<li><p>lib/Apache/templates/apache-template</p>
+
+</li>
+<li><p>lib/Apache/SubModule.pm</p>
+
+</li>
+</ul>
+
+<h2 id="Converting-an-old-module">Converting an old module</h2>
+
+<p>It is easy to convert an old module. For the example from above, you just have to move the file "lib/Apache.pm" to "lib/Apache/Module.pm" (no code changes needed). And move the templates to "lib/Apache/templates".</p>
+
+
+

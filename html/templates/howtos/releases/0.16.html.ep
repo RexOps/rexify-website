@@ -1,0 +1,29 @@
+% layout 'default';
+% title 'Release notes for 0.16';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added NetBSD support</p>
+
+</li>
+<li><p>Added OpenBSD support</p>
+
+</li>
+<li><p>Fixed a bug in the Gentoo package management module</p>
+
+</li>
+</ul>
+
+
+

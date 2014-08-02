@@ -1,0 +1,172 @@
+% layout 'default';
+% title 'Release notes for 0.41';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+<h1><%= title %></h1>
+<h1>Common</h1>
+<ul>
+<li>Function to get the last output of a command that uses run() #104</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0">task "prepare", "mysystem01", sub {
+    install "ntp";
+    say last_command_output;
+};
+</code></pre>
+
+<ul>
+<li>Refactored Cron module, added environment variable support to cron</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1">task "prepare", "mysystem01", sub {
+   my @env = cron env =&gt; user =&gt; list;
+   cron env =&gt; user =&gt; add =&gt; {
+      MYVAR =&gt; "foo",
+   };
+   cron env =&gt; user =&gt; delete =&gt; "MYVAR";
+};
+</code></pre>
+
+<ul>
+<li>New sync module</li>
+</ul>
+<p>This module doesn't use rsync, so it works with sudo and Windows, too. And it is also possible to use it with templates. If a file should be used as a template, you have to name it somefile.ext.tpl.</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2">task "prepare", "mysystem01", sub {
+   # upload directory recursively to remote system. 
+   sync_up "/local/directory", "/remote/directory";
+
+   sync_up "/local/directory", "/remote/directory", {
+      # setting custom file permissions for every file
+      files =&gt; {
+         owner =&gt; "foo",
+         group =&gt; "bar",
+         mode  =&gt; 600,
+      },
+      # setting custom directory permissions for every directory
+      directories =&gt; {
+         owner =&gt; "foo",
+         group =&gt; "bar",
+         mode  =&gt; 700,
+      },
+   };
+
+   # download a directory recursively from the remote system to the local machine
+   sync_down "/remote/directory", "/local/directory";
+};
+</code></pre>
+
+<ul>
+<li>added Hardware::VirtInfo module #119 - Franky Van Liedekerke</li>
+</ul>
+<p>To get a list of all returned information:</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3">use Data::Dumper;
+my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
+print Dumper(\%hw_info);
+</code></pre>
+
+<p>To get the hypervisor:</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4">task "info", "mysystem01", sub {
+   my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
+
+   say "Role: " . $hw_info{VirtInfo}-&gt;{virtualization_role};
+   say "Type: " . $hw_info{VirtInfo}-&gt;{virtualization_type};
+};
+</code></pre>
+
+<ul>
+<li>new keyword "case"</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard5">task "prepare", "myserver01", sub {
+   my $package = case operating_system, {
+                     Debian =&gt; "vim",
+                     CentOS =&gt; "vim-enhanced",
+                     default =&gt; "vim",
+                 };
+
+   install $package;
+};
+</code></pre>
+
+<ul>
+<li>
+<p>Refactored net_ssh2_exec() function - Peter H. Ezetta</p>
+</li>
+<li>
+<p>Refactored local command execution to use IPC::Open3</p>
+</li>
+<li>
+<p>Changed the is_installed() function for Debian to use the more accurate get_installed function. - Samuele Tognini</p>
+</li>
+<li>
+<p>'-t' option should work with '-e' option. <code>rex -t 2 -H "hostA hostB" -e 'run "sleep 10"; say run "uptime"'</code> should run in parallel. - Tokuhiro Matsuno</p>
+</li>
+<li>
+<p>Fixed loading of modules in $HOME/.rex/recipes</p>
+</li>
+<li>
+<p>Don't calculate MD5 sums if there is no on_change hook for file() function - Franky Van Liedekerke</p>
+</li>
+<li>
+<p>More specific error messages for authentication - Franky Van Liedekerke</p>
+</li>
+<li>
+<p>Cloud/Amazon: support multiple security groups - RenatoCRON</p>
+</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard6">   $instance = cloud_instance create =&gt; {
+             image_id =&gt; "ami-5187bb25",
+             name     =&gt; "test01",
+             key      =&gt; "thekey",
+             zone     =&gt; "eu-west-1a",
+             type     =&gt; "m1.large",
+             security_groups =&gt; ["alltcpfoo", "default"],
+          };
+</code></pre>
+
+<h1>Documentation</h1>
+<ul>
+<li>Fix pod about pubkey authentication - Joris</li>
+</ul>
+<h1>Rex/Gearman</h1>
+<ul>
+<li>Fixed get_exit_codes use flag</li>
+</ul>
+<h1>Rex/Boxes</h1>
+<ul>
+<li>Creation order of VMs can now be defined in YAML file</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
+<pre><code class="yaml">type: VBox
+#vbox:
+#   headless: 1
+vms:
+   -  name: mem01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: "en0: Ethernet"
+      setup: setup_memcache
+   -  name: db01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: "en0: Ethernet"
+      setup: setup_db
+   -  name: www01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: "en0: Ethernet"
+      setup: setup_frontend
+</code></pre>

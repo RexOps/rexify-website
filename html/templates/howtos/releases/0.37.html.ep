@@ -1,0 +1,74 @@
+% layout 'default';
+% title 'Release notes for 0.37';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+<h1><%= title %></h1>
+<h1>General</h1>
+<ul>
+<li>Eclipse plugin for Rex</li>
+</ul>
+<p>With this plugin it is possible to call Rex tasks from within Eclipse. See the <a href="https://github.com/RexOps/eclipse-rex-plugin">RexOps/eclipse-rex-plugin</a> for more information.</p>
+<ul>
+<li>Manipulate BIND DNS</li>
+</ul>
+<p>You can use thise module by installing it via <em>rexify</em>.</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code># From within a project
+bash# rexify --use=Rex::DNS:Bind
+
+# To create a new project
+bash# rexify mynewproject --use=Rex::DNS::Bind
+</code></pre>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1">set dns =&gt; {
+      server =&gt; "127.0.0.1",
+      key_name =&gt; "mysuperkey",
+      key =&gt; "/foobar==",
+};
+
+task sometask =&gt; sub {
+    Rex::DNS::Bind::add_record(
+      domain =&gt; "rexify.org",
+      host   =&gt; "foobar01",
+      data   =&gt; "127.0.0.4",
+    );
+
+    Rex::DNS::Bind::delete_record(
+      domain =&gt; "rexify.org",
+      host   =&gt; "foobar01",
+      type   =&gt; "A",
+    );
+
+    my @entries = Rex::DNS::Bind::list_entries(domain =&gt; "rexify.org");
+    print Dumper(\@entries);
+};
+</code></pre>
+
+<p>See <a href="http://modules.rexify.org/module/Rex::DNS::Bind">Rex::DNS::Bind</a> for the API documentation.</p>
+<ul>
+<li>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2">task "taskone", sub {
+   run_task "tasktwo", on =&gt; "foo", params =&gt; { key1 =&gt; "value1", key2 =&gt; "value2" };
+};
+
+task "tasktwo", sub {
+   my $param = shift;
+   print Dumper($param);
+};
+</code></pre>
+
+<ul>
+<li>Code changes for better extendability of core functions.</li>
+<li>Hardware module is now pluggable</li>
+<li>Virtualization module detection is now pluggable</li>
+<li>Box module is now pluggable</li>
+<li>Package module is now pluggable</li>
+<li>Service module is now pluggable</li>
+<li>Fixed a <em>zypper ref</em> call on SuSE systems for unsigned repositories.</li>
+</ul>

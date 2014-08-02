@@ -1,0 +1,101 @@
+% layout 'default';
+% title 'Release notes for 0.2';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p><b>parallelism</b></p>
+
+<p>Configure the parallelism of servers running one task at the same time.</p>
+
+</li>
+<li><p><b>Error handling</b></p>
+
+<p>Now every command should <i>die</i> if it fails.</p>
+
+</li>
+<li><p><b>run</b></p>
+
+<p>Now <i>$?</i> gets populated with the commands return code.</p>
+
+</li>
+</ul>
+
+<h2 id="Filesystem">Filesystem</h2>
+
+<ul>
+
+<li><p><b>stat($file)</b></p>
+
+<p>Returns a hash with the following entries:</p>
+
+<ul>
+
+<li><p>uid - user ID</p>
+
+</li>
+<li><p>gid - group ID</p>
+
+</li>
+<li><p>mode - permissions</p>
+
+</li>
+<li><p>mtime - last modified time</p>
+
+</li>
+<li><p>atime - last access time</p>
+
+</li>
+<li><p>size - filesize</p>
+
+</li>
+<li><p>name - filename</p>
+
+</li>
+</ul>
+
+</li>
+<li><p><b>is_file($file)</b></p>
+
+<p>Returns true (1) if $file is a file.</p>
+
+</li>
+<li><p><b>is_dir($dir)</b></p>
+
+<p>Returns true (1) if $dir is a directory.</p>
+
+</li>
+<li><p><b>is_readable($file)</b></p>
+
+<p>Returns true (1) if $file is readable.</p>
+
+</li>
+<li><p><b>is_writable($file)</b></p>
+
+<p>Returns true (1) if $file is writable.</p>
+
+</li>
+<li><p><b>is_writeable($file)</b></p>
+
+<p>Is an alias for is_writable($file).</p>
+
+</li>
+<li><p><b>readlink($path)</b></p>
+
+<p>Returns the link target if $path is a symlink.</p>
+
+</li>
+</ul>
+
+
+
