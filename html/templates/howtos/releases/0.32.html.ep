@@ -1,0 +1,40 @@
+% layout 'default';
+% title 'Release notes for 0.32';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h1 id="General">General</h1>
+
+<ul>
+
+<li><p>Reporting class</p>
+
+<p>There is now a new function called <i>report($string)</i>. This function will be used in future releases to send reporting strings to report servers.</p>
+
+</li>
+<li><p>Exchangeable worker module</p>
+
+<p>It is now possible to replace the default worker module with custom ones. One custom worker is <a href="https://github.com/krimdomu/distributed-rex">distributed-rex</a>, which distributes the execution of tasks with the help of <a href="http://gearman.org">Gearman</a>.</p>
+
+</li>
+<li><p>Amazon cloud module</p>
+
+<p>Fixed a bug with the <i>stop</i> command. And added <i>start</i> command.</p>
+
+</li>
+<li><p>ALT Linux support</p>
+
+<p>Many thanks to Nikolay Fetisov. He wrote the ALT linux module.</p>
+
+</li>
+</ul>
+
+
+

@@ -1,0 +1,98 @@
+% layout 'default';
+% title 'Release notes for 0.24';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>use Rex as a library for your own project.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex;
+ use Rex::Commands::Run;
+ use Rex::Commands::Fs;
+ use Rex::Commands::Pkg;
+ 
+ Rex::connect(
+    server =&gt; "remotehost",
+    user   =&gt; "root",
+    private_key =&gt; "/home/jan/.ssh/id_rsa",
+    public_key  =&gt; "/home/jan/.ssh/id_rsa.pub",
+ );
+ 
+ if(is_file("/etc/sudoers")) {
+     # do something
+ }
+ 
+ install package =&gt; "apache2";</code></pre>
+</li>
+<li>Extended Iptables module with a flush command</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> use Rex::Commands::Iptables;
+ iptables -F;</code></pre>
+</li>
+<li>
+<p>Inline templates</p>
+
+<p>It is now possible to write templates inside your Rexfile.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> task "foo", sub {
+     file "/etc/foo",
+        content =&gt; template("@mytemplate.conf",
+            user =&gt; &#39;bar&#39;,
+        );
+ };
+ 
+ __DATA__
+ @mytemplate.conf
+ &lt;?php
+ $DB[&#39;user&#39;] = "&lt;%= $::user %&gt;";
+ @end</code></pre>
+</li>
+<li>
+<p>cloud_instance command now returns instance info after create</p>
+</li>
+<li>
+<p>added CLI parameters to before/around hooks</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3"> task "foo", sub {
+    my ($param) = shift;
+    # ...
+ };
+ 
+ before foo =&gt; sub {
+    my ($server, $server_ref, $param) = @_;
+    # do something before "foo"
+ };</code></pre>
+</li>
+<li>
+<p>added LVM create functions</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4"> pvcreate "/dev/sda1";
+ vgcreate vg0 =&gt; "/dev/sda1", "/dev/sda2";
+ lvcreate "lv0",
+    size =&gt; "20G",
+    onvg =&gt; "vg0",
+    fstype =&gt; "ext3";</code></pre>
+</li>
+<li>
+<p>fixed bugs</p>
+
+</li>
+</ul>
+
+
+

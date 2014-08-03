@@ -1,0 +1,88 @@
+% layout 'default';
+% title 'Release notes for 0.13';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>License changed to GPL3</p>
+
+</li>
+<li><p>Rex is now running under Windows. Tested with ActiveState Perl 5.12 and Windows 7. See the <a href="/get">Get Rex</a> page for installation instructions.</p>
+
+</li>
+<li><p>Added support for JiffyBox, a German cloud service of <a href="http://www.df.eu">domainfactory</a>.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex::Commands::Cloud;
+ 
+ user "root";
+ password "f00b4r";
+ pass_auth;
+ 
+ cloud_service "Jiffybox";
+ cloud_auth "yourkey";
+ 
+ group jiffybox =&gt; get_cloud_instances_as_group();
+ 
+ task "create", sub {
+    cloud_instance create =&gt; {
+       image_id     =&gt; "debian_squeeze_64bit",
+       name         =&gt; "test01",
+       plan_id      =&gt; 10,
+       password     =&gt; "f00b4r",
+    };
+ };
+ 
+ task "prepare", group =&gt; "jiffybox", sub {
+    update_package_db;
+    install package =&gt; "apache2";
+ };
+
+ $&gt; rex create preare</code></pre>
+
+</li>
+<li><p>Added function to update package database.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> task "update", "server1", "server2", sub {
+    update_package_db;
+ };</code></pre>
+
+</li>
+<li><p>Revised error handling. Now every function throws an exception on failure.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> task "test", "server1", "server2", sub {
+    unlink "/tmp/doesntexists";  # this will terminate the whole execution because it will fail.
+    
+    # this will catch the exception and store it in $@
+    eval {
+       unlink "/tmp/doesntexists";
+       # and more stuff
+    } or do {
+       say "Tried to unlink /tmp/doesntexists but it failed.";
+       say "Error: $@";
+    };
+ };</code></pre>
+
+</li>
+<li><p>added <i>rm</i> as an alias function for unlink</p>
+
+</li>
+<li><p>Added cache for the sftp object. This should speed up the execution.</p>
+
+</li>
+</ul>
+
+
+

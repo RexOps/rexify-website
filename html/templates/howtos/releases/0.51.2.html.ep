@@ -1,0 +1,105 @@
+% layout 'default';
+% title 'Release notes for 0.51.2';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Configuration, Management, Configuration Management, Linux, Deployment, Devops">
+% end
+
+         <h1>Release notes for 0.51.2</h1>
+         <p>These are the changes in 0.51 release.</p>
+
+<h2>Base</h2>
+<ul>
+  <li>
+  <p><b>Load CMDB by default.</b></p>
+    <p>If you want to store data seperated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
+    <ul>
+      <li>cmdb/{operatingsystem}/{hostname}.yml</li>
+      <li>cmdb/{operatingsystem}/default.yml</li>
+      <li>cmdb/{environment}/{hostname}.yml</li>
+      <li>cmdb/{environment}/default.yml</li>
+      <li>cmdb/{hostname}.yml</li>
+      <li>cmdb/default.yml</li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p>For example, if you have a <b>CentOS</b> server with the hostname <b>web01</b>, this means that if you request the key <b>maxconn</b> Rex will first try to find the key inside <b>cmdb/CentOS/web01.yml</b> and if it doesn't find the Rex will try the next file in the lookup path.</p>
+
+    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
+task "setup", make {
+  my $maxconn = get cmdb "maxconn";
+};
+</code></pre>
+
+    <p>&nbsp;</p>
+<p>If you're using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
+
+    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
+use Rex::Ext::ParamLookup;
+
+task "setup", make {
+  my $maxconn = param_lookup "maxconn", 4096;
+};
+</code></pre>
+<p>This will first check if there is a task parameter named <b>maxconn</b> and if not, it will try to look inside the CMDB. If it doesn't find the key anywhere it will just return the default provided by the second parameter (in this example <i>4096</i>).</p>
+
+
+    <p>&nbsp;</p>
+
+  </li>
+  <li>
+    <p><b>Store server groups in an ini file</b></p>
+    <p>This feature is also available since a long time and now loaded by default. If there is a file named <b>server.ini</b> beside your <b>Rexfile</b> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
+
+    <pre><code class="ini">; my group file (server.ini)
+[frontends]
+fe01
+fe02
+
+fe03
+fe04
+fe05
+
+# the backends
+[backends]
+be01 services=httpd,redis
+be02 services=httpd,redis
+;be03 services=httpd,redis
+be04 services=httpd,redis
+
+[db]
+db[01..02]
+
+[redis]
+@backends
+redis01 user=toor password=foob4r sudo=true services=redis
+redis02 user=toor password=foob4r sudo=true services=redis</code></pre>
+
+    <p>In your <b>Rexfile</b> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <b>services</b> which you can access within a task.</p>
+
+    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
+
+task "restart_services", group =&gt; "redis", make {
+  my @services = split /,/, connection-&gt;server-&gt;services;
+  service [ @services ]  =&gt; "restart";
+};
+</code></pre>
+    <p>&nbsp;</p>
+
+  </li>
+</ul>
+
+
+
+<h2>Bugfixes</h2>
+
+<ul>
+  <li>#394 - export of is_symlink function</li>
+  <li>#395 - is_file compatibility bug, doesn't detect symlinks anymore</li>
+  <li>#393 - Added "." in the allowed char of lvm create - samuelet</li>
+</ul>
+
+
+

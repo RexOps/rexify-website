@@ -1,0 +1,62 @@
+% layout 'default';
+% title 'Release notes for 0.27';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+
+
+<h1><%= title %></h1>
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p>Added support and packages for Ubuntu 12.04.</p>
+
+</li>
+<li><p>Added callback function to run command</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> task "foo", sub {
+    run "ls -l ", sub {
+       my ($stdout, $stderr) = @_;
+       print "&gt;&gt; $stdout\n";
+    };
+ };</code></pre>
+
+</li>
+<li><p>Added possibility to change logging format</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> logformat "[%D] - %h %p";</code></pre>
+
+<p>See <a href="/api/Rex/Commands.pm.html">Rex::Commands</a> for more information.</p>
+
+</li>
+<li><p>Added colorized output if Term::ANSIColor is available.</p>
+
+</li>
+<li><p>Added on_change option to sed command. Thanks to Samuele Tognini.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> task "foo", sub {
+    sed qr{search}, "replace", "/var/log/auth.log",
+           on_change =&gt; sub {
+              say "file was changed";
+           };
+ }; </code></pre>
+
+</li>
+<li><p>Fixed a bug with an older LVM version</p>
+
+</li>
+<li><p>Ongoing code refactoring, to support other transport protocols.</p>
+
+</li>
+</ul>
+
+
+
