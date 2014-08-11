@@ -180,6 +180,9 @@ yum install rex</code></pre>
          <pre><code class="bash">cd /usr/ports/sysutils/p5-Rex
 make install clean</code></pre>
 
+         <h3>Installation with pkg</h3>
+         <pre><code class="bash">pkg install p5-Rex</code></pre>
+
        </div>
 
 
