@@ -23,7 +23,7 @@ my $car = Car-&gt;new();   # this is an object from the class Car</code></pre>
 
          
 
-         <p>Array variables. Arrays are lists. Like a grocery list. They contains lot of scalars.</p>
+         <p>Array variables. Arrays are lists. Like a grocery list. They contain lots of scalars.</p>
             <pre><code class="perl">my @names = ("John", "Fred", "Charley");
 my @to_buy = qw(Cheese Butter Salt Lemons Oranges Apples);</code></pre>
 
