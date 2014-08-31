@@ -17,7 +17,7 @@
 <p>To use (R)?ex you don't need Perl knowledge at first. (R)?ex uses a simple DSL to describe your servers. Indeed, it is also possible to use (R)?ex from within your shell scripts without using perl at all.</p>
 <p>In fact, if you know a <a href="/howtos/perl.html">little bit perl</a> it won't hurt you.</p>
 <p>The starting point of every (R)?ex project is the so called <i>Rexfile</i>. You can think of this file like a Makefile. You can define tasks in this file.</p>
-<p>A <i>task</i> is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create <a href="/api/Rex/Transaction.pm.html">rollback szenarios</a> if something went wrong during the execution.</p>
+<p>A <i>task</i> is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create <a href="/api/Rex/Transaction.pm.html">rollback scenarios</a> if something went wrong during the execution.</p>
 
 
 <h2>Requirements</h2>
