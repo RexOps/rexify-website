@@ -359,9 +359,8 @@ __DATA__
                <h2>Conferences</h2>
 
                <div class="news_widget">
-                  <div class="news_date">2014-05-08 - 2014-05-10</div>
-                  <div class="news_content"><img src="/img/linuxtag.png" style="float: left; width: 78px;" /> <p>Visit us at the <a href="http://linuxtag.de/">LinuxTag</a> in Berlin. There will be also a Rex hands-on workshop on Friday (2014-05-09).</p>
-                  <p>LinuxTag is Europe's leading exhibition and conference for Linux, Free Software and Open Source.</p>
+                  <div class="news_date">2014-09-19</div>
+                  <div class="news_content"><p>This year there is a Rex workshop on the <a href="http://www.kieler-linux-tag.de/">Kieler LinuxTag</a>. You can register for this workshop in the <a href="http://www.kieler-linux-tag.de/index.php?seite=workshops.html">workshop</a> page.</p>
                   </div>
                </div>
 
