@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use utf8;
+use open ':encoding(utf8)';
 
 use DateTime;
 use IO::All;
