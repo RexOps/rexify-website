@@ -353,20 +353,11 @@ __DATA__
                  </div>
                % }
 
-               <div class="news_widget">
-                  <div class="news_date">2013-03-20</div>
-                  <div class="news_content">
-                     <img src="/img/init_mittelstand.png" style="float: left; height: 70px;" />
-                     <p>我们很自豪的宣布 Rex 被 <a href="http://www.imittelstand.de/">initiative mittelstand</a> 评选为 2013 年度最佳开源解决方案。感谢 <a href="http://inovex.de">inovex</a> 对此作出的贡献和支持。</p>
-                  </div>
-               </div>
 
                <h2>会议</h2>
 
-               <div class="news_widget">
-                  <div class="news_date">2014-05-08 - 2014-05-10</div>
-                  <div class="news_content"><img src="/img/linuxtag.png" style="float: left; width: 78px;" /> <p>我们在柏林 <a href="http://linuxtag.de/">LinuxTag</a> 等待您的光临</p>
-                  <p>LinuxTag 是欧洲领先的 Linux 、自由软件和开源展览会。</p>
+                  <div class="news_date">2014-09-19</div>
+                  <div class="news_content"><p>今年的 <a href="http://www.kieler-linux-tag.de/">Kieler LinuxTag</a> 会有 Rex workshop。你可以在 <a href="http://www.kieler-linux-tag.de/index.php?seite=workshops.html">workshop</a> 页面上注册参与。</p>
                   </div>
                </div>
 
