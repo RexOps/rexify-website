@@ -11,7 +11,7 @@
 
 <p>你可以在命令行使用单行安装</p>
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
-<p>If you want to use https to download the script, you have to trust <a href="http://www.cacert.org/">CAcert</a> certificate.</p>
+<p>如果你想用 https 协议下载这儿脚本，需要首先授权 <a href="http://www.cacert.org/">CAcert</a> 证书。</p>
 <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>BSD 和 Linux</h2>
