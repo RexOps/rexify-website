@@ -1,0 +1,76 @@
+% layout 'default';
+% title 'Release notes for 0.53.1';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Configuration, Management, Configuration Management, Linux, Deployment, Devops">
+% end
+
+         <h1>Release notes for 0.53.1</h1>
+         <p>These are the changes in 0.53 release.</p>
+
+         <p>This release brings a few bugfixes and compatibility to the current <a href="https://github.com/RexOps/rex-jobcontrol">Rex::JobControl</a> Webfrontend.</p>
+         <p>A first version of the Rex::JobControl Webfrontend will also be released in the next days. But this will be a seperate anouncement.</p>
+
+
+<h2>Base</h2>
+<ul>
+  <li>
+  <p>Added a new <b>resource</b> function.</p>
+  <p>A <i>resource</i> is a perl function that represent a <i>object</i> on your server. An <i>object</i> is for example a virtual host configuration for apache, a database user or a more complex thing like a Tomcat instance. With the resource() function it is possible to create custom resources that will also appear in the reporting.</p>
+  <p>Resources have a special syntax and some keywords.</p>
+  <pre><code class="perl">resource $resource_name,
+  option1 =&gt; "value1",
+  option2 =&gt; "value2",
+  ensure =&gt; "present, absent, ...";</pre></code>
+  <p>Currently there is only one keyword that every resource have to obey.</p>
+  <ul>
+    <li><b>ensure</b> - Can be <i>present</i> (default if not set) or <i>absent</i> or any other string.</li>
+  </ul>
+  <p>Every resource should also emit a changed signal if the resource did changes. With this signal the <i>on_change</i> hook gets triggerd and the reporting knows that the resource changed something.</p>
+  <p>resource() parameters will also be visible in the templates without the need to register them.</p>
+  <p>Resources get registerd as perl functions in the namespace where they are created. You can see a complete example <a href="#">here</a>.</p>
+
+  <pre><code class="perl">package BaseSystem;
+use Rex::Resource::Common;
+resource "motd", sub {
+  my ($params) = @_;
+  my $name     = resource_name;
+
+  if($params-&gt;{ensure} eq "present") {
+    # do some things.
+    if(! is_file($name) ) {
+      file $name, content =&gt; $params-&gt;{content};
+      emit changed;
+    }
+  }
+  elsif($params-&gt;{ensure} eq "absent") {
+    if( is_file($name) ) {
+      rm $name;
+      emit changed;
+    }
+  }
+};</code></pre>
+
+  <p>Now you can call this new resource with <code>BaseSystem::motd</code></p>
+  <pre><code class="perl">use BaseSystem;
+task "setup", sub {
+  BaseSystem::motd "/etc/motd",
+    ensure  =&gt; present,
+    content =&gt; "Hello World.",
+    on_change     =&gt; sub {
+      # do something when changed event was triggerd
+    };
+};
+</code></pre>
+  </li>
+  <li><p>Added new feature flag <b>register_cmdb_top_scope</b>. This will register all the topscope variables in your CMDB to templates.</p></li>
+</ul>
+
+
+<h2>Bugfixes</h2>
+<ul>
+  <li>fixed a problem with CentOS 7 gathering the ip address with virtualbox guest tools.</li>
+  <li>fixed on_change hook for file() resource when file was removed.</li>
+  <li>#419 - fixed chkconfig bug for Mageia, Redhat and SuSE - chenryn.</li>
+</ul>
