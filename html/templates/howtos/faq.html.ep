@@ -27,3 +27,22 @@ say $output;</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
 <pre><code class="bash">rex -H hostname mytask --parameter1=value1</code></pre>
+
+<h2>How can I run a block of code with one command?</h2>
+<p>You can use the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> module. This module can be installed by running:</p>
+<pre><code class="shell">$ rexify --use Rex::Misc::ShellBlock</code></pre>
+
+<p>Then, you can run your shell code remotely as:</p>
+
+<pre><code class="perl"> use Rex::Misc::ShellBlock;
+    
+ task "myexec", sub {
+    shell_block <<EOF;
+ echo "hi"
+ EOF
+  
+ };</code></pre>
+
+<p>See the linked documentation page for how to use this module with Perl,
+Python, or other languages.</p>
+
