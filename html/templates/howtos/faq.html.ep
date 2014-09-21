@@ -61,3 +61,9 @@ as pointed out above, you can run the script remotely with the command:</p>
 <p>Rex assigns the exit code from the remote invocation of <code>run</code>
 or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
 
+<h2>How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
+<pre><code class="perl">
+   Rex::Logger::info("some message");           # for INFO  (green)
+   Rex::Logger::info("some message", "warn");   # for WARN  (yellow)
+   Rex::Logger::info("some message", "error");  # for ERROR (red)
+</code></pre>
