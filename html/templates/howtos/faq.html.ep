@@ -57,3 +57,7 @@ as pointed out above, you can run the script remotely with the command:</p>
      shell_block template('files/script');
  };</code></pre>
 
+<h2>How do I check the exit status of a remotely run command?</h2>
+<p>Rex assigns the exit code from the remote invocation of <code>run</code>
+or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
+
