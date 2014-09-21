@@ -46,3 +46,24 @@ say $output;</code></pre>
 <p>See the linked documentation page for how to use this module with Perl,
 Python, or other languages.</p>
 
+<h2>How can I run a local script on the remote?</h2>
+<p>If you have a local script 'files/script', you can run it on the remote
+using the ShellBlock module referred to in the FAQ above. After you install
+as pointed out above, you can run the script remotely with the command:</p>
+
+<pre><code class="perl"> use Rex::Misc::ShellBlock;
+    
+ task "myexec", sub {
+     shell_block template('files/script');
+ };</code></pre>
+
+<h2>How do I check the exit status of a remotely run command?</h2>
+<p>Rex assigns the exit code from the remote invocation of <code>run</code>
+or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
+
+<h2>How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
+<pre><code class="perl">
+   Rex::Logger::info("some message");           # for INFO  (green)
+   Rex::Logger::info("some message", "warn");   # for WARN  (yellow)
+   Rex::Logger::info("some message", "error");  # for ERROR (red)
+</code></pre>
