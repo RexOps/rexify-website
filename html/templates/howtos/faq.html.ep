@@ -46,7 +46,7 @@ say $output;</code></pre>
 <p>See the linked documentation page for how to use this module with Perl,
 Python, or other languages.</p>
 
-<h2>How can I run a local script on the remote?<h2>
+<h2>How can I run a local script on the remote?</h2>
 <p>If you have a local script 'files/script', you can run it on the remote
 using the ShellBlock module referred to in the FAQ above. After you install
 as pointed out above, you can run the script remotely with the command:</p>
