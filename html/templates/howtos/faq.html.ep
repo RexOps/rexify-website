@@ -63,7 +63,9 @@ to run the script as a different user, the solution looks like below:</p>
 <pre><code class="perl">
 task "myexec", sub {
      sudo {
-        command => template('files/script');
+        command => sub {
+           shell_block template('files/script');
+        },
         user    => 'root'
      };
 };</code></pre>
