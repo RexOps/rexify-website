@@ -57,6 +57,19 @@ as pointed out above, you can run the script remotely with the command:</p>
      shell_block template('files/script');
  };</code></pre>
 
+<h2>How do I run a local script on the remote under a different user?</h2>
+<p>Given the same scenario as above, but with the additional requirement
+to run the script as a different user, the solution looks like below:</p>
+<pre><code class="perl">
+task "myexec", sub {
+     sudo {
+        command => sub {
+           shell_block template('files/script');
+        },
+        user    => 'root'
+     };
+};</code></pre>
+
 <h2>How do I check the exit status of a remotely run command?</h2>
 <p>Rex assigns the exit code from the remote invocation of <code>run</code>
 or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
@@ -67,3 +80,4 @@ or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
    Rex::Logger::info("some message", "warn");   # for WARN  (yellow)
    Rex::Logger::info("some message", "error");  # for ERROR (red)
 </code></pre>
+
