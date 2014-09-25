@@ -37,13 +37,13 @@ say $output;</code></pre>
 <pre><code class="perl"> use Rex::Misc::ShellBlock;
     
  task "myexec", sub {
-    shell_block <<EOF;
+    shell_block &lt;&lt;EOF;
  echo "hi"
  EOF
   
  };</code></pre>
 
-<p>See the linked documentation page for how to use this module with Perl,
+<p>See the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">linked documentation</a> page for how to use this module with Perl,
 Python, or other languages.</p>
 
 <h2>How can I run a local script on the remote?</h2>
@@ -63,10 +63,10 @@ to run the script as a different user, the solution looks like below:</p>
 <pre><code class="perl">
 task "myexec", sub {
      sudo {
-        command => sub {
+        command =&gt; sub {
            shell_block template('files/script');
         },
-        user    => 'root'
+        user    =&gt; 'root'
      };
 };</code></pre>
 
