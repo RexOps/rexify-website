@@ -1,3 +1,4 @@
+2014-09-14,(R)?ex 0.53.1 released  阅读<a href="/howtos/releases/0.53.1.html">发版笔记</a>了解更多信息。
 2014-09-02,我们开始开发 Rex 的前端页面。代码发布在 <a href="https://github.com/RexOps/rex-jobcontrol">Github</a>，欢迎反馈和修改。
 2014-09-01,(R)?ex 0.52.1 released. 该版本主要是修复 bug。阅读<a href="/howtos/releases/0.52.1.html">发版笔记</a>了解更多信息。
 2014-08-01,(R)?ex 0.51.2 released. 该版本开始默认加载 CMDB 和 INI 分组模块并修复了一下 bug。阅读<a href="/howtos/releases/0.51.2.html">发版笔记</a>了解更多信息。

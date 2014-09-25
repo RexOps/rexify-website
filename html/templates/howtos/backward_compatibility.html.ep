@@ -31,6 +31,24 @@
             </tr>
 
             <tr>
+               <td>0.53</td>
+               <td>0.53</td>
+               <td>Will acivate <b>register_cmdb_top_scope.</b>. And all things 0.51 and down activated.</td>
+            </tr>
+
+            <tr>
+               <td>register_cmdb_top_scope</td>
+               <td>0.53</td>
+               <td>Will register all cmdb top scope variables automatically in the templates.</td>
+            </tr>
+
+            <tr>
+               <td>0.51</td>
+               <td>0.51</td>
+               <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.44 and down activated.</td>
+            </tr>
+
+            <tr>
                <td>source_profile</td>
                <td>0.44</td>
                <td>在运行命令前加载 $HOME/.profile。</td>
