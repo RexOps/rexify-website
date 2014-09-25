@@ -17,12 +17,12 @@
 say $output;</code></pre>
 
 <h2>How can I get the current server from within a task?</h2>
-<pre><code class="perl">my $current_server = connection->server;</code></pre>
+<pre><code class="perl">my $current_server = connection-&gt;server;</code></pre>
 
 <h2>How can I pass parameters to a task?</h2>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
-  my $parameter1_value = $parameters->{parameter1};
+  my $parameter1_value = $parameters-&gt;{parameter1};
 };</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
