@@ -16,23 +16,23 @@
    <pre><code class="perl">my $output = run "df -h";
 say $output;</code></pre>
 
-<h2>How can I get the current server from within a task?</h2>
+<h2>怎么获取当前任务运行在哪台服务器上？</h2>
 <pre><code class="perl">my $current_server = connection->server;</code></pre>
 
-<h2>How can I pass parameters to a task?</h2>
+<h2>怎么给任务传递参数？</h2>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
   my $parameter1_value = $parameters->{parameter1};
 };</code></pre>
 
-<p>Then you can run mytask from CLI like this:</p>
+<p>然后你就可以再命令行上这么运行任务：</p>
 <pre><code class="bash">rex -H hostname mytask --parameter1=value1</code></pre>
 
-<h2>How can I run a block of code with one command?</h2>
-<p>You can use the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> module. This module can be installed by running:</p>
+<h2>怎么运行一大段代码构成的单个命令？</h2>
+<p>可以用 <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> 模块。这个模块可通过运行下面命令安装：</p>
 <pre><code class="shell">$ rexify --use Rex::Misc::ShellBlock</code></pre>
 
-<p>Then, you can run your shell code remotely as:</p>
+<p>然后你就可以这样远程运行多行 shell 代码了：</p>
 
 <pre><code class="perl"> use Rex::Misc::ShellBlock;
     
@@ -43,13 +43,11 @@ say $output;</code></pre>
   
  };</code></pre>
 
-<p>See the linked documentation page for how to use this module with Perl,
-Python, or other languages.</p>
+<p>查看上面链接中的文档，学习如何用这个模块运行 Perl, Python 和其他语言的代码。</p>
 
-<h2>How can I run a local script on the remote?</h2>
-<p>If you have a local script 'files/script', you can run it on the remote
-using the ShellBlock module referred to in the FAQ above. After you install
-as pointed out above, you can run the script remotely with the command:</p>
+<h2>如何在远程执行一个本地脚本？</h2>
+<p>如果你有一个本地脚本 'files/script'，你可以用上面提到的 ShellBlock 模块在远端
+运行它。向上面说的那样安装好模块后，用下面这样命令即可：</p>
 
 <pre><code class="perl"> use Rex::Misc::ShellBlock;
     
@@ -57,9 +55,8 @@ as pointed out above, you can run the script remotely with the command:</p>
      shell_block template('files/script');
  };</code></pre>
 
-<h2>How do I run a local script on the remote under a different user?</h2>
-<p>Given the same scenario as above, but with the additional requirement
-to run the script as a different user, the solution looks like below:</p>
+<h2>如何在远程用其他用户执行一个本地脚本？</h2>
+<p>在上例基础上，加上一个其他用户的要求，解决办法如下：</p>
 <pre><code class="perl">
 task "myexec", sub {
      sudo {
@@ -70,11 +67,11 @@ task "myexec", sub {
      };
 };</code></pre>
 
-<h2>How do I check the exit status of a remotely run command?</h2>
-<p>Rex assigns the exit code from the remote invocation of <code>run</code>
-or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
+<h2>怎么检查远程运行命令的退出值？</h2>
+<p>Rex 会把远程运行的 <code>run</code>
+或者 <code>shell_block</code> 语句的退出值存入 <code>$?</code> 变量。</p>
 
-<h2>How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
+<h2>如何利用 Rex 内置的日志记录器来标记 ERROR/WARN/INFO/DEBUG 消息？</h2>
 <pre><code class="perl">
    Rex::Logger::info("some message");           # for INFO  (green)
    Rex::Logger::info("some message", "warn");   # for WARN  (yellow)
