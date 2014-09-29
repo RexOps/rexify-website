@@ -214,14 +214,14 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>Other / From Source</h2>
 
-<p>If you want to download the latest sources from GitHub you can do it this way. The master branch is the current latest stable version. Every development is done in its own version branch.</p>
+<p>If you want to download the latest sources from GitHub you can do it this way. Development is done in the master branch, and we also tag each release there.</p>
 
 <pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
-perl Makefile.PL
-make
-make test
-make install</code></pre>
+cpanm Dist::Zilla
+dzil listdeps --missing | cpanm
+dzil install
+</code></pre>
 
 <p>You can also use the CPAN shell to install Rex. This will download the latest release form CPAN.</p>
 <pre><code class="bash">perl -MCPAN -eshell
