@@ -214,14 +214,14 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>其他 / 基于源码安装</h2>
 
-<p>如果你想从 Github 上下载最新的源代码，你可以通过这个方式来进行。主分支是目前最新的稳定版本。每个特性的开发都是在自己的版本分支中完成的。</p>
+<p>如果你想从 Github 上下载最新的源代码，你可以通过这个方式来进行。开发是在主分支上完成的，我们也会给每个版本做 tag 标签。</p>
 
 <pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
-perl Makefile.PL
-make
-make test
-make install</code></pre>
+cpanm Dist::Zilla
+dzil listdeps --missing | cpanm
+dzil install
+</code></pre>
 
 <p>你可以用Perl 的CPAN 安装Rex .也是安装最新版本</p>
 <pre><code class="bash">perl -MCPAN -eshell

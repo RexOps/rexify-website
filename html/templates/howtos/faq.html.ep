@@ -17,12 +17,12 @@
 say $output;</code></pre>
 
 <h2>怎么获取当前任务运行在哪台服务器上？</h2>
-<pre><code class="perl">my $current_server = connection->server;</code></pre>
+<pre><code class="perl">my $current_server = connection-&gt;server;</code></pre>
 
 <h2>怎么给任务传递参数？</h2>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
-  my $parameter1_value = $parameters->{parameter1};
+  my $parameter1_value = $parameters-&gt;{parameter1};
 };</code></pre>
 
 <p>然后你就可以再命令行上这么运行任务：</p>
@@ -37,13 +37,13 @@ say $output;</code></pre>
 <pre><code class="perl"> use Rex::Misc::ShellBlock;
     
  task "myexec", sub {
-    shell_block <<EOF;
+    shell_block &lt;&lt;EOF;
  echo "hi"
  EOF
   
  };</code></pre>
 
-<p>查看上面链接中的文档，学习如何用这个模块运行 Perl, Python 和其他语言的代码。</p>
+<p>查看上面<a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">链接中的文档</a>，学习如何用这个模块运行 Perl, Python 和其他语言的代码。</p>
 
 <h2>如何在远程执行一个本地脚本？</h2>
 <p>如果你有一个本地脚本 'files/script'，你可以用上面提到的 ShellBlock 模块在远端
@@ -60,10 +60,10 @@ say $output;</code></pre>
 <pre><code class="perl">
 task "myexec", sub {
      sudo {
-        command => sub {
+        command =&gt; sub {
            shell_block template('files/script');
         },
-        user    => 'root'
+        user    =&gt; 'root'
      };
 };</code></pre>
 

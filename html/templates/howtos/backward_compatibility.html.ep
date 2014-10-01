@@ -33,19 +33,19 @@
             <tr>
                <td>0.53</td>
                <td>0.53</td>
-               <td>Will acivate <b>register_cmdb_top_scope.</b>. And all things 0.51 and down activated.</td>
+               <td>会激活 <b>register_cmdb_top_scope</b>。而且所有 0.51 及以下版本的指令都会激活。</td>
             </tr>
 
             <tr>
                <td>register_cmdb_top_scope</td>
                <td>0.53</td>
-               <td>Will register all cmdb top scope variables automatically in the templates.</td>
+               <td>会自动注册所有 cmdb 顶层域变量到模板里。</td>
             </tr>
 
             <tr>
                <td>0.51</td>
                <td>0.51</td>
-               <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.44 and down activated.</td>
+               <td>默认会自动加载 <b>Rex::Constants</b> 和 <b>CMDB</b>。而且所有 0.44 及以下版本的指令都会激活。</td>
             </tr>
 
             <tr>
