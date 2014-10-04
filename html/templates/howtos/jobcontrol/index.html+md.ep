@@ -1,0 +1,43 @@
+# JobControl
+
+JobControl is a small webinterface to manage and execute Rex Tasks. Currently it is in early development stage and we are looking for feedback from the community to get known to their needs.
+
+So if you have wishes, suggestions or bug reports don't hesitate to contact us via or [issue tracker](https://github.com/RexOps/rex-jobcontrol/issues) on Github or or irc channel on [irc.freenode.net/irc](irc://irc.freenode.net/rex).
+
+## Getting Started
+
+To get started with JobControl we suggest using CentOS/RHEL 7, Fedora, OpenSuSE or Ubuntu 12.04/14.04. Currently we don't have init scripts for System V init. But if you want to install JobControl on CentOS 6 or Debian this won't be much work to generate those.
+
+Also you need a 64bit installation of your OS because one module JobControl uses needs support for 64bit integers in your perl interpreter.
+
+### Architecture
+
+JobControl consists of 2 services. One webfrontend, which is written in [Mojolicious](http://www.mojolicio.us/). And a worker (called *minion*). This worker is executing long running actions like imports of *Rexfiles* and execution of Jobs. It is possible to start multiple workers.
+
+You can control JobControl via the webinterface or via the *rexify* command line tool that ships with Rex. Currently there is no REST API integrated but this is planed for a later version.
+
+
+## Installation Guides
+
+* [CentOS 7](/howtos/jobcontrol/installation_centos.html)
+* [Ubuntu 12.04 and 14.04](/howtos/jobcontrol/installation_ubuntu.html)
+
+## Managing Users
+
+* [Default user management](/howtos/jobcontrol/managing_users.html)
+
+## Accessing the Webfrontend
+
+After you have setup JobControl the *setup* command created a first user with username *admin* and password *admin*. The Webinterface is listening on the port 8080. To connect to it, you have to make sure that there is no firewall blocking this port.
+
+So now you can point your browser to *http://$your-server:8080*.
+
+## Creating Projects and Jobs
+
+You can organize your *Rexfiles* by creating projects and jobs. Projects can contain multiple jobs. You need at least one project.
+
+Jobs consists of one or more *Rexfiles*. In a job you can define in which order your *Rexfiles* and *tasks* should be executed and which fail strategy it should follow.
+
+You can also create *Formulars*. With formulars you can create self service portals for your team or other teams. For example you can create a formular for your developers so that they can create new virtual machines with a pre installed and configured apache webserver on it without the need to ask you.
+
+* [Creating Projects](/howtos/jobcontrol/create_project.html)

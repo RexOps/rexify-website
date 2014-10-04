@@ -1,0 +1,96 @@
+# Release notes for 0.54.3
+These are the changes in 0.54 release.
+
+We want to thank every contributor that makes this release possible.
+
+## Common
+
+#### path_map - variable path mapping
+
+path_map is a new feature developed by Erik Huelsmann to ease the management of files for different hosts. In the past, if you wanted to upload a file (for example /etc/security/access.conf) to your servers and wanted to have different access.conf files per environment, or for a special host, you had to build this logic by yourself. With the *path_map* feature you only have to define the lookup path and Rex is doing this for you.
+
+<pre><code class="perl">use Rex -feature => ['0.54'];
+
+set path_map => {
+  "files/" => [
+    "files/{environment}/{hostname}/",
+    "files/{environment}/",
+    "files/{hostname}/",
+  ],
+  "templates/" => [
+    "templates/{environment}/{hostname}/",
+    "templates/{environment}/",
+    "templates/{hostname}/",
+  ],
+};
+
+task "setup", group => "frontends", sub {
+  file "/etc/security/access.conf",
+    source => "files/etc/security/access.conf",
+    owner  => "root",
+    group  => "root",
+    mode   => 644;
+
+  file "/etc/ntp.conf",
+    content => template("templates/etc/ntp.conf"),
+    owner   => "root",
+    group   => "root",
+    mode    => 644;
+};</code></pre>
+
+This example will search for the files it should upload or process as templates in the following direction:
+
+**Given:**
+
+* environment = production
+* hostname = fe01
+
+**Lookup-Path:**
+
+* files/production/fe01/etc/security/access.conf
+* files/production/etc/security/access.conf
+* files/fe01/etc/security/access.conf
+* files/etc/security/access.conf
+
+**And for the template it is just the same:**
+
+* templates/production/fe01/etc/ntp.conf
+* templates/production/etc/ntp.conf
+* templates/fe01/etc/ntp.conf
+* templates/etc/ntp.conf
+
+You can use **any** variable that the inventory can [gather from the system](/howtos/book/getting_info_of_the_environment.html).
+
+
+## Cloud
+
+* **Jiffybox** - Added possibility to clone a jiffybox image. #439 - Peter Manthey
+
+
+## Bugfixes
+
+### Rex::Test
+
+* Only execute testfiles which end on .t - #434 - Robert Abraham
+* Close last used ssh connection after test - #433 - Robert Abraham
+* Check if file exists before checking contents - fix #432 - FErki
+
+### Cloud
+
+* **OpenStack** - Fixed return value for flavors function - #406 - exzz
+
+### Common
+
+* Add error message when attempting to run a non-existing task - FErki
+* Refactored the behaviour of set() function to do what it is saying. So with feature 0.54 enabled set is always overwriting the existing values. (#425)
+* Add service_exists for Gentoo - FErki
+* Fixing nested sudo operations. - #423
+* Added check if service exists - #407
+* Handle hostgroup members with leading numeric ranges - FErki
+* Redirect nohup output to /dev/null
+* Make apt-listchanges non-interactive - #417 - aowi
+* Don't try to run dmidecode if it is not in PATH - Andrej Zverev
+* Enhanced support for pkgng (FreeBSD) - Andrej Zverev
+* Fixed Rex::Commands::MD5::md5() to obey path settings
+
+
