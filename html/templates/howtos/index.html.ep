@@ -11,6 +11,7 @@
          <ul class="simple-list">
             <li><a href="start.html">开始使用 (R)?ex</a></li>
             <li><a href="faq.html">常见问题</a></li>
+            <li><a href="/howtos/jobcontrol/index.html">JobControl(网页界面)初步</a></li>
             <li><a href="working_with_packages.html">包安装</a></li>
             <li><a href="using_templates.html">使用模块和模板</a></li>
             <li><a href="perl.html">简单的 Perl 文档</a></li>

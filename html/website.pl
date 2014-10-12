@@ -12,8 +12,11 @@ use Cwd qw(getcwd);
 use Mojolicious::Lite;
 use Mojo::UserAgent;
 use Data::Dumper;
+use Text::Markdown;
 
 plugin 'RenderFile';
+
+my $m = Text::Markdown->new(tab_width => 2, empty_element_suffix => '/>');
 
 sub get_news {
   my @content = eval { local (@ARGV) = ("news.txt"); <>; };
@@ -118,7 +121,7 @@ get '/*file' => sub {
 
   $self->stash( "news", [get_news] );
 
-  my ($cat) = ( $template =~ m/^([^\/]+)\// );
+  my ($cat) = split(/\//, $template);
   $cat ||= "";
   $self->stash( "cat", $cat );
 
@@ -144,6 +147,11 @@ get '/*file' => sub {
   if ( -f "templates/$template.ep" ) {
     $template =~ s/\.html$//;
     $self->render( $template, no_disqus => 0, root => 0 );
+  }
+  elsif ( -f "templates/$template+md.ep" ) {
+    $template =~ s/\.html$//;
+    my $str = $self->render_to_string( $template, no_disqus => 0, root => 0, variant => 'md' );
+    $self->render( $template, format => 'html', no_disqus => 0, root => 0, variant => 'header', content => $m->markdown($str));
   }
   else {
     $self->render( '404', status => 404, no_disqus => 1, root => 0 );

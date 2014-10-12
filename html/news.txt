@@ -1,10 +1,7 @@
-2014-09-14,(R)?ex 0.53.1 released  阅读<a href="/howtos/releases/0.53.1.html">发版笔记</a>了解更多信息。
+2014-10-03,发布第一版 JobControl -- Rex 的官方网页界面。阅读<a href="/howtos/jobcontrol/index.html">初步</a>了解其内容。
+2014-10-03,(R)?ex 0.54.3 released. 主要是 bug 修复，不过有一个非常棒的新特性。阅读<a href="/howtos/releases/0.54.3.html">发版笔记</a>了解更多信息。
+2014-09-14,(R)?ex 0.53.1 released. 阅读<a href="/howtos/releases/0.53.1.html">发版笔记</a>了解更多信息。
 2014-09-02,我们开始开发 Rex 的前端页面。代码发布在 <a href="https://github.com/RexOps/rex-jobcontrol">Github</a>，欢迎反馈和修改。
 2014-09-01,(R)?ex 0.52.1 released. 该版本主要是修复 bug。阅读<a href="/howtos/releases/0.52.1.html">发版笔记</a>了解更多信息。
-2014-08-01,(R)?ex 0.51.2 released. 该版本开始默认加载 CMDB 和 INI 分组模块并修复了一下 bug。阅读<a href="/howtos/releases/0.51.2.html">发版笔记</a>了解更多信息。
-2014-07-20,(R)?ex 0.50.0 released. 这是一个 bug 修复版本。阅读<a href="/howtos/releases/0.50.0.html">发版笔记</a>了解更多信息。
-2014-07-13,(R)?ex 0.49.1 released. 新增 FreeBSD 10 和 pkgng 的支持。
-2014-07-09,(R)?ex 0.48.0 released. 新增 CentOS 7 和 RHEL 7 的支持。
-2014-07-07,(R)?ex 0.47.0 released. 新增 Rex::Test 的 KVM 支持，还有大量小优化和修正。阅读<a href="/howtos/releases/0.47.0.html">发版笔记</a> 了解更多信息。
+2014-07-02,为本站和 <a href="https://build.rexify.org">build.rexify.org</a> 使用由 <a href="https://www.cacert.org">CACert.org</a> 签名的 SSL 证书。
 2014-05-31, 阅读<a href="/howtos/book/deploying_openldap_and_sssd.html">新的 Howto</a> 指南学习如何用 Rex 设置 OpenLDAP 和 SSSD。
-2014-04-03, Ferenc Erki 在 Free Software Conference of Szeged 上的演讲上传到了 <a href="http://www.slideshare.net/FerencErki/rex-33051700">slideshare</a>。
