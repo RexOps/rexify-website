@@ -1,43 +1,42 @@
 # JobControl
 
-JobControl is a small webinterface to manage and execute Rex Tasks. Currently it is in early development stage and we are looking for feedback from the community to get known to their needs.
+JobControl 是一个用来管理和执行 Rex 任务的简单网页界面。目前还处于早期开发阶段，我们期待社区的反馈，好让我们知道你们需要什么？
 
-So if you have wishes, suggestions or bug reports don't hesitate to contact us via or [issue tracker](https://github.com/RexOps/rex-jobcontrol/issues) on Github or or irc channel on [irc.freenode.net/irc](irc://irc.freenode.net/rex).
+所以你有期望，建议或者 bug 报告，不要迟疑，赶紧联系我们，不管是 GitHub 上的 [issue tracker](https://github.com/RexOps/rex-jobcontrol/issues) 还是 [irc.freenode.net/irc](irc://irc.freenode.net/rex) 上的频道都可以。
 
-## Getting Started
+## 开始使用
 
-To get started with JobControl we suggest using CentOS/RHEL 7, Fedora, OpenSuSE or Ubuntu 12.04/14.04. Currently we don't have init scripts for System V init. But if you want to install JobControl on CentOS 6 or Debian this won't be much work to generate those.
+开始使用 JobControl 我们建议使用 CentOS/RHEL 7, Fedora, OpenSuSE 或者 Ubuntu 12.04/14.04。目前我们还没有准备好 System V init 风格的启动脚本。不过你想在 CentOS 6 或者 Debian 上安装 JobControl 的话，写这么个脚本也没多大工作量。
 
-Also you need a 64bit installation of your OS because one module JobControl uses needs support for 64bit integers in your perl interpreter.
+此外，你还需要保证你的操作系统是 64 位。因为 JobControl 用到了一个模块需要 Perl 解释器有  64 位整形值的支持。
 
-### Architecture
+### 架构
 
-JobControl consists of 2 services. One webfrontend, which is written in [Mojolicious](http://www.mojolicio.us/). And a worker (called *minion*). This worker is executing long running actions like imports of *Rexfiles* and execution of Jobs. It is possible to start multiple workers.
+JobControl 包括 2 个服务。一个是网页前端，用 [Mojolicious](http://www.mojolicio.us/) 写的。另一个是工作进程(叫 *minion*)。这个工作进程执行哪些需要长时间运行的动作，比如导入 *Rexfiles* 和执行任务。可以启动多个工作进程。
 
-You can control JobControl via the webinterface or via the *rexify* command line tool that ships with Rex. Currently there is no REST API integrated but this is planed for a later version.
+你可以通过网页前端控制 JobControl，也可以通过 Rex 自带分发的 *rexify* 命令行工具来做。目前还没有 REST API，不过未来的版本中有这个计划。
 
-
-## Installation Guides
+## 安装指南
 
 * [CentOS 7](/howtos/jobcontrol/installation_centos.html)
-* [Ubuntu 12.04 and 14.04](/howtos/jobcontrol/installation_ubuntu.html)
+* [Ubuntu 12.04 和 14.04](/howtos/jobcontrol/installation_ubuntu.html)
 
-## Managing Users
+## 管理用户
 
-* [Default user management](/howtos/jobcontrol/managing_users.html)
+* [默认的用户管理](/howtos/jobcontrol/managing_users.html)
 
-## Accessing the Webfrontend
+## 访问网页前端
 
-After you have setup JobControl the *setup* command created a first user with username *admin* and password *admin*. The Webinterface is listening on the port 8080. To connect to it, you have to make sure that there is no firewall blocking this port.
+你通过 *setup* 命令安装好 JobControl 后，就会创建好第一个用户，其用户名密码都是 *admin*。网站监听在 8080 端口，要访问网页，首先确定防火墙没有封禁这个端口。
 
-So now you can point your browser to *http://$your-server:8080*.
+现在，你可以在浏览器里输入 *http://$your-server:8080* 了。
 
-## Creating Projects and Jobs
+## 创建项目和任务
 
-You can organize your *Rexfiles* by creating projects and jobs. Projects can contain multiple jobs. You need at least one project.
+你可以通过创建项目和任务的方式来组织你的 *Rexfiles*。项目里可以包含多个任务。你至少需要定义一个项目。
 
-Jobs consists of one or more *Rexfiles*. In a job you can define in which order your *Rexfiles* and *tasks* should be executed and which fail strategy it should follow.
+任务由一个或多个 *Rexfiles* 组成。在一个任务里，你可以定义你的 *Rexfiles* 和 *tasks* 的执行次序，以及失败时的策略。
 
-You can also create *Formulars*. With formulars you can create self service portals for your team or other teams. For example you can create a formular for your developers so that they can create new virtual machines with a pre installed and configured apache webserver on it without the need to ask you.
+你还可以创建 *Formulars*. 利用 formulars 你可以为自己以及其他团队创建自助服务界面。比如你可以给开发人员创建一个 formular ，这样他们可以创建一个安装和配置好 apache 服务器的虚拟机，不用再来问你帮忙了。
 
-* [Creating Projects](/howtos/jobcontrol/create_project.html)
+* [创建项目](/howtos/jobcontrol/create_project.html)

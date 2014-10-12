@@ -1,66 +1,66 @@
-# New Project
+# 新项目
 
-After your first login you'll see the following screen. 
+你第一次登录的时候，会看到如下界面：
 
 ![no projects available](/img/jobcontrol/0_project.png)
 
-This is because you don't have created a project now. To create a new project press the blue *New Project* button. This will lead you to another screen with some input fields to create a new project.
+这是因为你还没创建过项目。点击蓝色的 *New Project* 按钮创建一个新的项目。然后会跳转到另一个带有输入框的界面帮助你创建一个新的项目。
 
 
-## Create new Project
+## 创建新项目
 
 ![create new project](/img/jobcontrol/1_project.png)
 
-For this example it is important that your time is correct on the system where JobControl is running. Also is is important that you place your Amazon keys into */etc/rex/aws* directory.
+作为这个示例的很重要的一点，请确认运行 JobControl 的服务器的时间是正确的。此外，把你的亚马逊密钥放在 */etc/rex/aws* 目录下。
 
 * /etc/rex/aws/access.key
 * /etc/rex/aws/secret_access.key
 
-And the private and public keys into */etc/rex/aws/keys*.
+而私钥和公钥则放在 */etc/rex/aws/keys* 下。
 
-* private key: /etc/rex/aws/keys/{{keyname}}.pem
-* public key: /etc/rex/aws/keys/{{keyname}}.pub
+* 私钥: /etc/rex/aws/keys/{{keyname}}.pem
+* 公钥: /etc/rex/aws/keys/{{keyname}}.pub
 
 
-In this screen you have to enter the name for the new project. For example *Homepage*.
+在这一屏，你需要输入新项目的名称。比如 *Homepage*。
 
-After you have created the project you will return to the project overview page from the beginning. But now there is your new project listed.
+创建好项目后，会跳转回到开始的项目总览页。不过现在那里会出现你刚创建的新项目了：
 
 
 ![project listing](/img/jobcontrol/2_project.png)
 
-To get to your project you can click on the project name or choose your project from the menubar.
+点击项目名称，或者在菜单栏里选择项目，就可以进入你的项目了。
 
-## Configuring a Project
+## 配置项目
 
-A project consists of Rexfiles, jobs and formulars. To get started you first need to upload your Rexfiles. In this howto we will configure a project that will create an Amazon EC2 instance with a preconfigured apache webserver for developers to test their application.
+一个项目包括有 Rexfiles，jobs 和 formulars。第一步，你需要上传自己的 Rexfiles。作为示例，我们这里会配置项目来创建一个亚马逊 EC2 实例，为开发人员提供一个预配置好的 apache 服务器供他们测试应用。
 
-### Uploading Rexfiles
+### 上传 Rexfiles
 
-Now you have to upload a *Rexfile* into your project. Currently there are 3 options how you can do this.
+现在你得上传一个 *Rexfile* 到项目里。目前有 3 种可选方式。
 
-* Use git
-* Use rexify command
-* Create a .tar.gz file by hand
+* 用 git
+* 用 rexify 命令
+* 手工创建一个 .tar.gz 文件
 
-#### Using git
+#### 用 git
 
-This is the prefered way. To see how you can setup a git infrastructure for Rex you can read the [chapter](/howtos/book/complete_rex_infrastructure.html) in the book. With git you have the possibility to reload the *Rexfile* from within the UI.
+这是推荐的方式。怎么为 Rex 配置 git 架构可以阅读[本章](/howtos/book/complete_rex_infrastructure.html)。利用 git，你可以在 UI 界面中完成重载 *Rexfile* 的工作。
 
-This this example we're using the Rexfile from: [https://github.com/RexOps/service-ec2.git](https://github.com/RexOps/service-ec2). This Rexfile just creates a new Amazon EC2 instance and advice JobControl to connect to this new server for the next task that configures the Apache server.
+本例中，我会使用 [https://github.com/RexOps/service-ec2.git](https://github.com/RexOps/service-ec2)。这个 Rexfile 就是创建一个新的亚马逊 EC2 示例，然后建议 JobControl 连接到这个新服务器运行下一个配置 Apache 服务器的任务。
 
 
 ![rexfile via git](/img/jobcontrol/1_rexfile.png)
 
-After pressing *Create Rexfile* this will create a background job to download the Rexfile. The background job is executed by the minion. You'll find the log output in */var/log/rex/access.log*.
+点击 *Create Rexfile* 后，就会创建一个后台任务下载 Rexfile。这个后台任务是由 minion 执行的。日志输出记录在 */var/log/rex/access.log*。
 
-The minion will also take care of downloading the specified dependencies in the meta.yml file (if present).
+minion 还会自动处理 meta.yml 文件里定义的依赖(如果有的话)。
 
-So after a few minutes you can press the F5 button to reload the project overview and your Rexfile will appear in the listing.
+稍微等几分钟，你可以按 F5 键刷新项目总览页，就可以看到你的 Rexfile 出现在列表里了。
 
-#### Using rexify command
+#### 用 rexify 命令
 
-If you don't use git, you can upload your *Rexfile* with the *rexify* command. For this you have to open a shell and navigate to the folder of your *Rexfile*.
+如果你不用 git，你可以用 *rexify* 命令上传你的 *Rexfile*。打开终端，进到放 *Rexfile* 的文件夹里，执行命令：
 
   cd /path/to/your/Rexfile
   rexify --server=http://$your-server:8080 \\
@@ -72,11 +72,11 @@ If you don't use git, you can upload your *Rexfile* with the *rexify* command. F
     --description="Create a new EC2 Instance"
 
 
-The *rexify* command will create a .tar.gz file of the current directory and upload it to the server.
+*rexify* 命令会把当前目录打包成一个 .tar.gz 文件，上传到服务器。
 
-#### Create .tar.gz manually
+#### 手工创建 .tar.gz
 
-It is also possible to create the .tar.gz file manually. For this you have to create the following directory structur inside the .tar.gz file.
+你也可以手工创建 .tar.gz 文件。首先你需要创建下面这样的目录结构：
 
   + some-name
   +--+ Rexfile
@@ -85,77 +85,77 @@ It is also possible to create the .tar.gz file manually. For this you have to cr
     + ... other files
 
 
-### Uploading a 2nd Rexfile
+### 上传第 2 个 Rexfile
 
-Now we need to upload the Rexfile that creates the Apache webserver. For this you can use this example service [https://github.com/RexOps/service-webserver.git](https://github.com/RexOps/service-webserver).
+现在我们需要上传创建 Apache 服务器的 Rexfile 了。可以用这个示例服务 [https://github.com/RexOps/service-webserver.git](https://github.com/RexOps/service-webserver)。
 
-This Rexfile is able to install the apache webserver and to configure virtual hosts. Later we will configure a formular with which the developers can configure the virtual hosts on their EC2 instance.
+这个 Rexfile 可以安装 apache 服务器，然后配置虚拟主机。稍后，我们会配置一个 formular 给开发人员，他们可以用这个来配置自己 EC2 实例上的虚拟主机。
 
-So for this Rexfile please fill out the following values:
+所以这个 Rexfile 需要填充下列值：
 
-* Rexfile Name: Static Apache
-* Rexfile Description: Setup and configure Apache
-* Rexfile URL: https://github.com/RexOps/service-webserver.git
+* Rexfile 名称: Static Apache
+* Rexfile 描述: Setup and configure Apache
+* Rexfile 地址: https://github.com/RexOps/service-webserver.git
 
 
-## Creating a Job
+## 创建一个任务
 
-Now, after we have created our 2 Rexfiles it is time to create the first *Job*. A job is a collection of Rexfiles and Tasks that should be executed on selected hosts. If you import/upload Rexfiles the JobControl server will inspect the Rexfile and extract all servers you have defined their (It will also read your server.ini file if you have one.).
+现在我们已经创建 2 个 Rexfiles 了，是时候创建我们的第一个 *Job* 了。Job 是要在被选中的主机上执行的 Rexfiles 和 Tasks 的集合。如果你导入/上传 Rexfiles，JobControl 服务器会检查 Rexfile，然后提取你定义的所有服务器(如果有的话，也会读取你的 server.ini 文件)。
 
-So to create a new *Job* press the button *New Job*. This button will lead you to a formular where you can define the job and what the job should be executing.
+创建一个新的 *Job*，点击 *New Job* 按钮。跳转到 formular 页，在这里你可以定义任务以及任务需要在哪里执行。
 
 ![create new job](/img/jobcontrol/1_job.png)
 
-Please fill in the Job name and description.
+请输入任务名称和描述。
 
-In the *Options* section you can define the environment to use during execution. This will list all the environments you have defined in your Rexfiles.
+在 *Options* 区域，你可以定义执行时使用的环境参数。这里会列出你在 Rexfiles 里定义好的所有环境。
 
-In the *Workflow* section you can define what JobControl should do if a step fails. And you can define the *Execution strategy*. **Node** means, JobControl will execute *all* tasks on the first server and after that *all* tasks on the next server and so on. **Step** means, JobControl will execute the first task on each selected server and after that the second task on each selected server and so on.
+在 *Workflow* 区域，你可以定义在某一步失败时，JobControl 应该怎么做。还可以定义 *Execution strategy*。**Node** 表示，JobControl 会在第一台服务器上执行完*所有*任务，然后第二台执行*所有*任务，然后第三台，依次执行下去。**Step** 表示，JobControl 会在每台选中的服务器上执行第一个任务，然后每台上执行第二个任务，依次执行下去。
 
-So for this example you have to choose **Node** as the *Execute strategy*.
+在这里，我们选择 **Node** 作为 *Execute strategy*。
 
 
 ![define tasks](/img/jobcontrol/2_job.png)
 
-In the *Steps* section you can choose the tasks which the Job should execute. You can drag'n'drop the tasks from the right side to the left side. The screenshot means, first execute from the Rexfile *Create EC2 Instance* the task *setup* and then execute from the Rexfile *Static Webserver* the task *setup*.
+在 *Steps* 区域，你可以选择 Job 需要执行的任务。你可以从右边拖拽任务到左边。截图说明，从 Rexfile *Create EC2 Instance* 里的 *setup* 任务开始执行，然后再执行 Rexfile *Static Webserver* 里的 *setup* 任务。
 
-## Creating a formular
+## 创建一个 formular
 
-Now we have our Job and can execute this job. But in our Rexfiles we don't defined any servers so we can't execut it yet. And also we want to create Amazon EC2 instances with virtual hosts on it. So at last we need to create a formular where we can define all needed things.
+现在我们有了自己的 Job 而且可以执行它。不过在 Rexfiles 里没有定义具体的服务器，所以还不能真正的运行。而且我们还需要创建亚马逊 EC2 实例再配置虚拟主机。所以最后，我们需要创建一个 formular，来定义所有需要的这些东西。
 
 
 ![create formular](/img/jobcontrol/1_formular.png)
 
-If you click on the *New Formular* button in the Project overview you will get a page where you can configure your formular. Please fill in the formular name and description.
+在项目总览页点击 *New Formular* 按钮，跳转到 formular 配置页。填写 formular 名称和描述。
 
-In the *Job* dropdown you can choose which job the formular should execute. Choose our just created *Create EC2 Instance with Apache* job.
+在 *Job* 下拉栏选择 formular 需要执行哪个 job。选择我们刚创建的 *Create EC2 Instance with Apache* 。
 
-You can also decide if the formular should be public, this means that the users don't need to authenticate against JobControl to execute this formular. This is usefull if you don't want to create users for all your developers.
+你可以决定这个 formular 是否公开，也就是说 JobControl 对这个 formular 不需要做用户权限认证。如果你不想给所有的开发逐一创建用户，这个办法应该可行。
 
-Then you have to choose the *Steps File*. An example *Steps File* can be found in the [service-ec2](https://raw.githubusercontent.com/RexOps/service-ec2/master/formulars/create_instance.yml) project. Please download this file to your computer and select this file their. In this file you can also define which Amazon private/public keys the developers can choose. So take a look at this file and modify it to suite your needs.
+然后要选择 *Steps File*。示例见 [service-ec2](https://raw.githubusercontent.com/RexOps/service-ec2/master/formulars/create_instance.yml) 项目。下载这个文件到你电脑然后选中它。在这个文件里，你可以定义开发人员可以选择哪个亚马逊私钥/公钥。所以请仔细看看文件，修改成你需要的样子。
 
-In the *Choose the servers* section you can define on which servers the formular should be executed on. But currently we don't have any servers in our Rexfiles so just leave this empty.
+在 *Choose the servers* 区域，你可以定义 formular 应该在哪些服务器上执行。不过目前我们 Rexfiles 里没定义服务器，所以先留空。
 
 ![create formular](/img/jobcontrol/2_formular.png)
 
-After you have filled out every required field you can press the *Create Formular* button.
+填完所有必填项后，你可以点击 *Create Formular* 按钮。
 
-Now you can run the formular from the Project overview page.
+现在你可以在项目总览页运行 formular 了。
 
 ![run formular](/img/jobcontrol/3_formular.png)
 
-The formular contains 2 steps. One step to define the name of the EC2 instance and one to define the virtual hosts. You can define everything in the YAML file you have uploaded during the formular creation.
+formular 包括 2 步。第一步定义 EC2 实例的名字，第二步定义虚拟主机。这些你都可以在创建 formular 时上传的 YAML 文件里定义。
 
 ![step 1 formular](/img/jobcontrol/4_formular.png)
 
-If you take a look inside the steps yaml file you'll notice the key *repeatable* for the virtual hosts formular. This means, that you can define multiple virtual hosts by pressing the *Add* button.
+如果你看看这个 steps yaml 文件，你会注意到为虚拟主机 formular 做的 *repeatable* 配置。这个意思是：你可以通过点击 *Add* 按钮定义多个虚拟主机。
 
 ![step 2 formular](/img/jobcontrol/5_formular.png)
 
-You can see the already configured data of repeatable formulars at the bottom.
+你可以在底部看到已经配置好的 repeatable formular 数据。
 
 ![see the data of repeatable formulars](/img/jobcontrol/6_formular.png)
 
-After you have pressed the *Finish* button the job is scheduled for execution in the background.
+等你点击了 *Finish* 按钮，任务就进入后台排期，准备执行了。
 
 ![job scheduled](/img/jobcontrol/7_formular.png)

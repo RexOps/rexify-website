@@ -1,50 +1,50 @@
-# Installation on CentOS 7
+# 在 CentOS 7 上安装
 
-First you need to add the Rex repository to your */etc/yum.repos.d* directory. This can be done with an editor of your choice.
+首先你需要在自己的 */etc/yum.repos.d* 目录里添加 Rex 仓库。用编辑器编辑添加：
 
   [rex]
   name=Fedora $releasever - $basearch - Rex Repository
   baseurl=http://rex.linux-files.org/CentOS/$releasever/rex/$basearch/
   enabled=1
 
-After saving the file you need to import the PGP key for package verification.
+保存文件后，需要导入 PGP 密钥供软件包校验：
 
   rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
 
-Now you can install JobControl and its dependencies with the *yum* command.
+现在你可以用 *yum* 命令安装 JobControl 及其依赖了：
 
   yum makecache
   yum install perl-LWP-Protocol-https perl-DateTime perl-App-cpanminus gcc m4 flex bison git wget rex rex-jobcontrol
 
-## Configuring JobControl
+## 配置 JobControl
 
-To configure *JobControl* you need to create a directory */etc/rex* and place a file named *jobcontrol.conf* inside it. You can download an example configuration file from https://raw.githubusercontent.com/RexOps/rex-jobcontrol/master/jobcontrol.conf.
+要配置 *JobControl* 你需要创建一个 */etc/rex* 目录，然后在里面创建一个 *jobcontrol.conf* 文件。你可以从 https://raw.githubusercontent.com/RexOps/rex-jobcontrol/master/jobcontrol.conf 下载作为示例。
 
   mkdir -p /etc/rex
   wget -O /etc/rex/jobcontrol.conf https://raw.githubusercontent.com/RexOps/rex-jobcontrol/master/jobcontrol.conf
 
-This example configuration file should be good to go. The only thing you need to change is on line *18* the salt for the password encryption. This salt must be 16 bytes long (not more and not less).
+这个示例配置文件是很好的开始。你只需要修改第 *18* 行的盐字符串(用作密码加密)。盐的长度必须是 16 字节(不多不少)。
 
-Now you can prepare to start the services. The next command will create all necessary folders you configured in the configuration file.
+现在你可以开始准备启动服务了。下行命令会创建好你在配置文件里定义的所有必须的文件夹：
 
   rex_job_control jobcontrol setup
 
-## Starting the services
+## 启动服务
 
-After prepare the setup you can create the systemd unit files. To do this run the following command.
+完成设置后，你可以创建 systemd 单元文件。命令如下：
 
   rex_job_control jobcontrol systemd -c
 
-This will create 2 unit files for you. One to control the webfrontend and one to control a minion worker.
+这个会创建 2 个单元文件。一个控制网页前端，一个控制 minion 工作进程。
 
-To start both you need to run the next commands.
+启动这两个你需要运行下面命令：
 
   systemctl start rex-jobcontrol.service
   systemctl start rex-jobcontrol-minion.service
 
-## Open Firewall for Port 8080
+## 为端口 8080 开启防火墙
 
-The JobControl webservice is listening on port 8080. So you have to open this port in your firewall.
+JobControl 服务监听在 8080 端口，你需要在防火墙里打开这个端口：
 
   firewall-cmd --add-port=8080/tcp --permanent
   firewall-cmd --reload

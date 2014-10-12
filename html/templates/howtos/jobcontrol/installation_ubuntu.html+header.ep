@@ -1,4 +1,4 @@
 % layout 'default';
-% title 'JobControl - Installation on Ubuntu';
+% title 'JobControl - 在 Ubuntu 上的安装过程';
 
 <%== $content %>

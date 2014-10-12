@@ -1,4 +1,4 @@
 % layout 'default';
-% title 'JobControl - Getting started guide';
+% title 'JobControl - 入门指南';
 
 <%== $content %>

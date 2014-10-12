@@ -1,4 +1,4 @@
 % layout 'default';
-% title 'JobControl - Managing users';
+% title 'JobControl - 管理用户';
 
 <%== $content %>

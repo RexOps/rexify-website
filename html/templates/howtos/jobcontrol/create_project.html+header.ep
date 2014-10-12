@@ -1,4 +1,4 @@
 % layout 'default';
-% title 'JobControl - Create a new project';
+% title 'JobControl - 创建一个新项目';
 
 <%== $content %>
