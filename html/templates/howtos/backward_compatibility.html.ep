@@ -159,4 +159,7 @@
          <h2>Howto enable Feature Flags</h2>
          <p>You can enable feature flags in your <i>Rexfile</i> with the following code:</p>
          <pre><code class="perl"># Rexfile
-use Rex -feature =&gt; 0.31;</code></pre>
+use Rex -feature =&gt; ['0.31'];</code></pre>
+         <p>or even multiple ones like this:</p>
+         <pre><code class="perl"># Rexfile
+use Rex -feature =&gt; [qw(exec_autodie source_profile)];</code></pre>
