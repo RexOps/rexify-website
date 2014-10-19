@@ -20,8 +20,7 @@
          
          <h2>Feature Flags</h2>
 
-         <p>Currently there is one feature flag to enable special authentication options for a server group.</p>
-
+         <p>This is the current list of feature flags:</p>
          
          <table border="0" class="feature-table">
             <tr class="head">
