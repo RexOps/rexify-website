@@ -31,6 +31,12 @@
             </tr>
 
             <tr>
+               <td>0.54</td>
+               <td>0.54</td>
+               <td>Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
                <td>0.53</td>
                <td>0.53</td>
                <td>Will acivate <b>register_cmdb_top_scope.</b>. And all things 0.51 and down activated.</td>
