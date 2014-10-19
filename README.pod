@@ -16,7 +16,7 @@ Clone the repo: C<git clone https://github.com/RexOps/rexify-website.git>
 
 =item *
 
-Install Perl modules: C<cpanm DateTime IO::All Mojolicious Mojolicious::Plugin::RenderFile>
+Install Perl modules: C<cpanm DateTime IO::All Mojolicious Mojolicious::Plugin::RenderFile Text::Markdown>
 
 =item *
 
