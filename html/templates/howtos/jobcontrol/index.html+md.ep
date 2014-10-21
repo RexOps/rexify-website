@@ -20,6 +20,7 @@ JobControl 包括 2 个服务。一个是网页前端，用 [Mojolicious](http:/
 
 * [CentOS 7](/howtos/jobcontrol/installation_centos.html)
 * [Ubuntu 12.04 和 14.04](/howtos/jobcontrol/installation_ubuntu.html)
+* [源代码安装](https://github.com/RexOps/rex-jobcontrol#installation)
 
 ## 管理用户
 

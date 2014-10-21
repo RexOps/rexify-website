@@ -1,0 +1,68 @@
+# Release notes for 0.55.0
+
+下面是 0.55.0 版本的变更记录。
+
+感谢所有贡献者使新版本成为可能，欢迎 Denis Silakov 和 Graham Todd 成为新的贡献者。
+
+## Common
+
+### Pack rex with PAR
+
+现在你可以从一个 Rex 项目创建一个自包含的包，用下面命令：
+
+<pre><code class="bash">$ rexify --bundle</code></pre>
+
+这就会把 Rex 项目打包成一个“大”二进制文件。这个文件可以复制到其他系统上，只要有相同的架构和兼容的 glibc 库，哪怕没有 perl 解释器也能运行。
+
+复制过去的二进制文件，照样可以用 rex 命令的其他参数，比如：
+
+<pre><code class="bash">
+# 列出打包在内的所有任务
+$ ./rex-bundle -T
+
+# 运行打包好的 setup 任务
+$ ./rex-bundle setup
+
+# 在服务器 1.2.3.4 上运行打包好的 setup 任务
+$ ./rex-bundle -H 1.2.3.4 -u root -p pass setup
+</code></pre>
+
+已知问题：目前看起来只能在 64 位系统上正常工作。
+
+### Use Net::OpenSSH as default if possible
+
+如果开启 '0.55' 特性标识，默认将尝试使用 Net::OpenSSH 和 Net::SFTP::Foreign。
+
+### Initial ROSA systems support
+
+ROSA 企业版服务器是基于 RHEL 做了少量改动，其桌面环境是在旧的 Mandriva 上修改的。以 Rex 观点看，和 Mageia 很相似。Denis Silakov 迁移了绝大多数 Rex 命令以便在 ROSA 服务器和桌面环境上运行。感谢他！
+
+## Virtualization
+
+#### rex-kvm-agent
+
+KVM 不像 VMware 和 VirtualBox 那样有现成的 VM 客户端。所以有时候就没办法获取到一些内部信息，比如桥接网络的虚拟机 IP。
+
+To solve this, we wrote a small agent that can be installed inside a KVM machine. When the VM is created we create a serial adapter that is bound to a TCP port on the host (127.0.0.1). Then rex can communicat via this serial port with the rex-kvm-agent instance running inside the VM.
+为了解决这个问题，我们写了一个小客户端，用来安装到 KVM 机器里面。在创建虚拟机的时候，会创建一个串行适配器监听在本地 TCP 端口。然后 rex 通过这个端口跟运行在虚拟机里的 rex-kvm-agent 实例进行交互。
+
+rex-kvm-agent 有[它自己的仓库](https://github.com/RexOps/rex-kvm-agent)可阅。
+
+## Bugfixes
+
+### Common
+
+* fixed get_installed and is_installed functions in Rex::Pkg::Gentoo - #444 - Robert Abraham
+* Fix typo - Ferenc Erki
+* Make PkgVersion happy - Ferenc Erki
+* Work when swap in not enabled and values are undefined. - #452, #453 -  Graham Todd, Jan
+* fixed windows crashing on multiple connects - #448 - Jan
+
+### Virtualization
+
+* vm names in quote. so they can contain spaces - Jan
+
+### Rex::Test
+
+* don't throw error with multiple test files - #446 - Robert Abraham
+* Print out error messages during Test:run (fix #450) - Ferenc Erki

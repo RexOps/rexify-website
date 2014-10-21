@@ -20,14 +20,25 @@
          
          <h2>特性标记</h2>
 
-         <p>目前有一个特性标记来开启为服务器组设置单独的认证选项。</p>
-
+         <p>下面是当前可用的特性标记的清单：</p>
          
          <table border="0" class="feature-table">
             <tr class="head">
                <td>标记</td>
                <td>起始版本</td>
                <td>描述</td>
+            </tr>
+
+            <tr>
+               <td>0.55</td>
+               <td>0.55</td>
+               <td>Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+<tr>
+               <td>0.54</td>
+               <td>0.54</td>
+               <td>Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated.</td>
             </tr>
 
             <tr>
@@ -154,4 +165,7 @@
          <h2>如何开启特性标记</h2>
          <p>你可以在你的 <i>Rexfile</i> 里用如下代码开启特性标记：</p>
          <pre><code class="perl"># Rexfile
-use Rex -feature =&gt; 0.31;</code></pre>
+use Rex -feature =&gt; ['0.31'];</code></pre>
+         <p>or even multiple ones like this:</p>
+         <pre><code class="perl"># Rexfile
+use Rex -feature =&gt; [qw(exec_autodie source_profile)];</code></pre>
