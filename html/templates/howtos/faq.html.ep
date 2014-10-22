@@ -23,10 +23,11 @@ say $output;</code></pre>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
   my $parameter1_value = $parameters-&gt;{parameter1};
+  my $parameter2_value = $parameters-&gt;{parameter2};
 };</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
-<pre><code class="bash">rex -H hostname mytask --parameter1=value1</code></pre>
+<pre><code class="bash">rex -H hostname mytask --parameter1=value1 --parameter2=value2</code></pre>
 
 <h2>How can I run a block of code with one command?</h2>
 <p>You can use the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> module. This module can be installed by running:</p>
