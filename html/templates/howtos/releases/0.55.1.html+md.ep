@@ -1,0 +1,25 @@
+# Release notes for 0.55.1
+These are the changes in the 0.55.1 release.
+
+This is mainly a bugfix release with a minor new feature.
+
+## Rex::Test
+
+### Specify which tests to run as a parameter for Test:run
+
+Now you can use the `--test=` parameter to choose which tests you want to run with Test:run:
+
+<pre><code class="bash">$ rex Test:run --test=t/mytest.t</code></pre>
+
+Globbing also works:
+
+<pre><code class="bash">$ rex Test:run --test=t/*_test</code></pre>
+
+Default value is: `t/*.t`
+
+## Bugfixes
+
+* status call for services with upstart and systemd may not work properly - #460 - Jan
+* sudo with -e cli flag doesn't work - #461 - Jan
+* Cannot pass an argument with the value zero to a task - #463 - Jan
+* Issue tracker not in META.yml - #464 - Ferenc Erki
