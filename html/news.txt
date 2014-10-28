@@ -1,3 +1,4 @@
+2014-10-26,(R)?ex 0.55.1 released. This is mainly a bugfix release with a minor new feature. See the <a href="/howtos/releases/0.55.1.html">release notes</a> for more details.
 2014-10-20,(R)?ex 0.55.0 released. Now you can create self-containing bundles of your Rex project. See the <a href="/howtos/releases/0.55.0.html">release notes</a> for more details.
 2014-10-03,Announcing first version of JobControl - the official Rex webinterface. See <a href="/howtos/jobcontrol/index.html">first steps</a> guide for an introduction.
 2014-10-03,(R)?ex 0.54.3 released. This is mainly a bugfix release but with one cool new feature. See the <a href="/howtos/releases/0.54.3.html">release page</a> for more information.
