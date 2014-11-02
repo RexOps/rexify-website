@@ -1,3 +1,4 @@
+2014-11-02,(R)?ex 0.55.3 released. This is a bugfix-only release which fixes build/installation issues on Windows. See the <a href="/howtos/releases/0.55.3.html">release notes</a> for more details.
 2014-11-01,(R)?ex 0.55.2 released. This is a bugfix-only release which should fix test issues on Windows. See the <a href="/howtos/releases/0.55.2.html">release notes</a> for more details.
 2014-10-26,(R)?ex 0.55.1 released. This is mainly a bugfix release with a minor new feature. See the <a href="/howtos/releases/0.55.1.html">release notes</a> for more details.
 2014-10-20,(R)?ex 0.55.0 released. Now you can create self-containing bundles of your Rex project. See the <a href="/howtos/releases/0.55.0.html">release notes</a> for more details.
