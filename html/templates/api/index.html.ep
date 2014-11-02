@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'API Documentation for (R)?ex Version 0.55.2';
+% title 'API Documentation for (R)?ex Version 0.55.3';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
