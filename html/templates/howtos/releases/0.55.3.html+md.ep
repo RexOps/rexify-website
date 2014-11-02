@@ -1,0 +1,8 @@
+# Release notes for 0.55.3
+These are the changes in the 0.55.3 release.
+
+This is a bugfix-only release to fix @INC handling on Windows, therefore enabling Rex to be built and installed on that platform.
+
+## Bugfixes
+
+* Fix @INC compilation for Windows - Ferenc Erki
