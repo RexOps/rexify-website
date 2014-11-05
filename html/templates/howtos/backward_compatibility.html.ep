@@ -60,6 +60,12 @@
             </tr>
 
             <tr>
+               <td>verbose_run</td>
+               <td>0.47</td>
+               <td>Explicitly output "Successfully executed" or "Error executing" messages for run() commands.</td>
+            </tr>
+
+            <tr>
                <td>source_profile</td>
                <td>0.44</td>
                <td>Source $HOME/.profile before running a command.</td>
