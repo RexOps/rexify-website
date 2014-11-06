@@ -1,3 +1,6 @@
+2014-11-02,(R)?ex 0.55.3 released. This is a bugfix-only release which fixes build/installation issues on Windows. See the <a href="/howtos/releases/0.55.3.html">release notes</a> for more details.
+2014-11-01,(R)?ex 0.55.2 released. This is a bugfix-only release which should fix test issues on Windows. See the <a href="/howtos/releases/0.55.2.html">release notes</a> for more details.
+2014-10-26,(R)?ex 0.55.1 released. This is mainly a bugfix release with a minor new feature. See the <a href="/howtos/releases/0.55.1.html">release notes</a> for more details.
 2014-10-20,(R)?ex 0.55.0 released. 现在你可以给自己的 Rex 项目创建一个自包含的包。阅读<a href="/howtos/releases/0.55.0.html">发版笔记</a>了解更多信息。
 2014-10-03,发布第一版 JobControl -- Rex 的官方网页界面。阅读<a href="/howtos/jobcontrol/index.html">入门</a>了解其内容。
 2014-10-03,(R)?ex 0.54.3 released. 主要是 bug 修复，不过有一个非常棒的新特性。阅读<a href="/howtos/releases/0.54.3.html">发版笔记</a>了解更多信息。

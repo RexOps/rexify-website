@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Release notes for 0.55.3';
+
+% content_for header => begin
+      <meta name="description" content="(R)?ex - manage all your boxes from a central point - Release notes">
+      <meta name="keywords" content="Rex, API, Documentation">
+% end
+
+<%== $content %>

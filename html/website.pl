@@ -298,7 +298,7 @@ __DATA__
       <title><%= title %></title>
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
-
+      <link rel="shortcut icon" href="/img/favicon.png" />
       <link href="/css/hs/tomorrow.css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
       <link rel="stylesheet" href="/css/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
