@@ -44,7 +44,7 @@
             <tr>
                <td>0.53</td>
                <td>0.53</td>
-               <td>Will acivate <b>register_cmdb_top_scope.</b>. And all things 0.51 and down activated.</td>
+               <td>Will activate <b>register_cmdb_top_scope</b>. And all things 0.51 and down activated.</td>
             </tr>
 
             <tr>
@@ -56,7 +56,7 @@
             <tr>
                <td>0.51</td>
                <td>0.51</td>
-               <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.44 and down activated.</td>
+               <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.47 and down activated.</td>
             </tr>
 
             <tr>
