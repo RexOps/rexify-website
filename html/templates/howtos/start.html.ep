@@ -52,7 +52,7 @@
 <h2>Creating a Rexfile</h2>
 <p>First we need to create a new folder to store your Rexfile in it.</p>
 <pre><code class="bash">$ mkdir -p projects/my-first-rex-project</code></pre>
-<p>Now change into this directory and create a Rexfile.</p>
+<p>Now change into this directory and create a file called <i>Rexfile</i> with the following contents:</p>
 
             <pre><code class="perl">user "my-user";
 password "my-password";
