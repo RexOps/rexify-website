@@ -94,6 +94,8 @@ task "start_apache", group =&gt; "myservers", sub {
 Tasks
   start_apache                   Start Apache Service
   uptime                         Get the uptime of all servers
+Server Groups
+  myservers                       mywebserver, mymailserver, myfileserver
 </code></pre>
 
 <h2>Authentication</h2>
