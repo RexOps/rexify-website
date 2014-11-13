@@ -58,16 +58,16 @@
 password "my-password";
 pass_auth;
 
-group myserver =&gt; "mywebserver", "mymailserver", "myfileserver";
+group myservers =&gt; "mywebserver", "mymailserver", "myfileserver";
 
-desc "Get the uptime of all server";
-task "uptime", group =&gt; "myserver", sub {
+desc "Get the uptime of all servers";
+task "uptime", group =&gt; "myservers", sub {
    my $output = run "uptime";
    say $output;
 };</code></pre>
 
          
-         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myserver</i> and run the command "uptime".</p>
+         <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myservers</i> and run the command "uptime".</p>
 
          <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
 
@@ -80,11 +80,11 @@ $ rex uptime</code></pre>
          <p>To add a second task, just add the next lines to your <i>Rexfile</i>.</p>
 
             <pre><code class="perl">desc "Start Apache Service";
-task "start_apache", group =&gt; "myserver", sub {
+task "start_apache", group =&gt; "myservers", sub {
     service "apache2" =&gt; "start";
 };</code></pre>
 
-         <p>This task will start the service <i>apache2</i> on all the servers in the <i>myserver</i> group.</p>
+         <p>This task will start the service <i>apache2</i> on all the servers in the <i>myservers</i> group.</p>
 
          
          <h2>Display all tasks in a Rexfile</h2>
@@ -93,7 +93,7 @@ task "start_apache", group =&gt; "myserver", sub {
             <pre><code class="bash">$ rex -T
 Tasks
   start_apache                   Start Apache Service
-  uptime                         Get the uptime of all server
+  uptime                         Get the uptime of all servers
 </code></pre>
 
 <h2>Authentication</h2>
