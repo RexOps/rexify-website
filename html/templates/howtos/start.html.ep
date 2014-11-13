@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'First steps guide with Rex.';
+% title 'First steps guide with Rex';
 
 % content_for header => begin
       <meta name="description" content="A first steps guide for Rex.">
