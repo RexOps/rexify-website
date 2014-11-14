@@ -1,4 +1,4 @@
-2014-11-14,Gabor Szabo wrote an article on (R)?ex, focusing on different authentication methods and with tips on how to secure your unattended access. <a href="http://perlmaven.com/levels-of-security-using-rex">Check it out at Perl Maven</a>!
+2014-11-14,Gabor Szabo wrote an article on (R)?ex, focusing on different authentication methods and with tips about how to secure your unattended access. <a href="http://perlmaven.com/levels-of-security-using-rex">Check it out at Perl Maven</a>!
 2014-11-07,(R)?ex will be at the <a href="http://act.yapc.eu/npw2014">Nordic Perl Workshop 2014</a> with a talk sponsored by <a href="https://www.adjust.com">adjust</a>. Thank you!
 2014-11-02,(R)?ex 0.55.3 released. This is a bugfix-only release which fixes build/installation issues on Windows. See the <a href="/howtos/releases/0.55.3.html">release notes</a> for more details.
 2014-11-01,(R)?ex 0.55.2 released. This is a bugfix-only release which should fix test issues on Windows. See the <a href="/howtos/releases/0.55.2.html">release notes</a> for more details.
