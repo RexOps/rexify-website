@@ -20,7 +20,13 @@ group backends =&gt; "backend[01..02]";</code></pre>
 
 <p>This notation will just expand to <i>frontend01, frontend02 and frontend03</i> for the frontends group and to <i>backend01 and backend02</i> for the backends group.</p>
 
-<p>Though the Rexfile is a perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
+<p>Custom parameters for servers are possible with a slightly enhanced syntax since version 0.47:</p>
+<pre><code class="perl">group frontends =&gt;
+   "frontend01" =&gt; { user =&gt; "bob" },
+   "frontend02" =&gt; { user =&gt; "alice" },
+   "frontend03";</code></pre>
+
+<p>Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
 
 <p>To add your groups to the tasks you have to use the <i>group</i> option within the task generation.</p>
 
