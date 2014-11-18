@@ -121,7 +121,7 @@ map {
 
 <h2>Creating custom groups</h2>
 
-<p>If there is no buildin function that fitts your needs for group creation you can do it all by your self. Because the Rexfile is just a plain perl script and the <i>group</i> command is just a perl function that expects for the first parameter the group name and uses all other parameters for the servers you can create your own function.</p>
+<p>If there is no built-in function that fits your needs for group creation, you can do it all by yourself. Because the Rexfile is just a plain perl script and the <i>group</i> command is just a perl function that expects the group name as first parameter, and uses all other parameters for the servers, you can create your own function.</p>
 
 <pre><code class="perl">my @list = ("some", "list", "entries");
 group mygroup =&gt; grep { /list/ } @list;</code></pre>
