@@ -84,7 +84,7 @@
          <div class="vspace"></div>
          <h1>External Howtos</h1>
          <ul class="simple-list">
-            <li><a href="http://www.howtoforge.com/how-to-manage-your-servers-with-rex-best-practice">Howto Manage yourServers with Rex - Best Practice</a></li>
+            <li><a href="http://www.howtoforge.com/how-to-manage-your-servers-with-rex-best-practice">How to manage your servers with Rex - best practice</a></li>
             <li><a href="http://www.howtoforge.com/continuous-deployment-with-jenkins-and-rex">Continuous Deployment with Jenkins and Rex</a></li>
             <li><a href="http://www.howtoforge.com/install-tomcat-and-deploy-web-applications-with-rex">Install Tomcat and deploy Web Applications with (R)?ex</a></li>
          </ul>
