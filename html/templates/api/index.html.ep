@@ -73,6 +73,7 @@
          </ul>
 
          <div class="vspace"></div>
+         <a name="rexbox"></a>
          <h2>Rex::Box</h2>
          <ul class="simple-list">
             <li><a href="Rex/Box/Base.pm.html">Base.pm</a></li>
