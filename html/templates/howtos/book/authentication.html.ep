@@ -23,7 +23,7 @@ pass_auth;
 <h2>Key authentication</h2>
 <p>An other simple way is to use private and public key to authenticate against your servers. To do this you have to define the full path to your private key file and to your public key file.</p>
 <p>If you don't have a public key file you have to create it.</p>
-<pre><code class="bash">$ sshkey-gen -y -f /path/to/your/private.key &gt;public.key</code></pre>
+<pre><code class="bash">$ ssh-keygen -y -f /path/to/your/private.key &gt;public.key</code></pre>
 
 <p>To use this authentication algorithm you can use the following code snippet.</p>
 <pre><code class="perl">user "root";
