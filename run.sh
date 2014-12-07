@@ -10,9 +10,13 @@ mkdir -p doc/html/Rex/FS
 
 misc/create_pod.sh
 
-cp -R doc/html/Rex* /var/project/templates/api/
+cp -R doc/html/Rex* /var/project/html/templates/api/
 
 cd /var/project
+
+perl create_index.pl 172.17.42.1 9200 html/templates
+
+cd /var/project/html
 
 hypnotoad -f website.pl
 
