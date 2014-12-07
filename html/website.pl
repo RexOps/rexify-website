@@ -63,7 +63,7 @@ get '/get/mod/*mod' => sub {
 
   my $u = get_random( 32, 'a' .. 'z' );
   system(
-    "git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
+    "git clone https://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
   chdir("$u");
   system("git checkout master");
 
@@ -83,7 +83,7 @@ get '/search' => sub {
 
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->post(
-    "http://localhost:9200/_search?pretty=true",
+    "http://172.17.42.1:9200/_search?pretty=true",
     json => {
       query => {
         query_string => {
