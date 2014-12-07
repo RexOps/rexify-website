@@ -8,6 +8,8 @@ misc/create_pod.sh
 
 cp -R doc/html/Rex* /var/project/templates/api/
 
+cd /var/project
+
 hypnotoad -f website.pl
 
 
