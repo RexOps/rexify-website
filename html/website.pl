@@ -181,7 +181,7 @@ __DATA__
    <ul>
    % for my $r (@api_results) {
       <li>
-         <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
+         <p><a href="<%= $r->{fields}->{fs}->[0] %>"><%= $r->{fields}->{title}->[0] %></a></p>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
          % for my $h (@{ $r->{highlight}->{file} }) {
@@ -199,7 +199,7 @@ __DATA__
    <ul>
    % for my $r (@webpage_results) {
       <li>
-         <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
+         <a href="<%= $r->{fields}->{fs}->[0] %>"><%= $r->{fields}->{title}->[0] %></a>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
          % for my $h (@{ $r->{highlight}->{file} }) {
