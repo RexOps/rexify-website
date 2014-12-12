@@ -204,7 +204,7 @@ ldap_account "sampleuser",
 <h2>Setup SSHD</h2>
 
 <p>Since a few versions SSHd supports the execution of an external executable on connection. This is done with the <code>AuthorizedKeysCommand</code> option.
-If you use the <i>configure_ssh_ldap</i> option on client setup it will upload a script that queries the LADP server for the ssh key of the user that wants to login.</p>
+If you use the <i>configure_ssh_ldap</i> option on client setup it will upload a script that queries the LDAP server for the ssh key of the user that wants to login.</p>
 
 <p>The configuration of this script can be done in the file <i>/etc/ssh/pubkey.yaml</i>. The <code>Rex::LDAP::OpenLDAP::UserManagement::Client::setup</code> task automatically creates the right configuration for you.</p>
 
