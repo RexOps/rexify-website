@@ -28,7 +28,7 @@ To achieve this you need to follow some simple rules.</p>
 <li>Use a source control system like git.</li>
 <li>Build modules for every part of your architecture. A module should be <b>generic</b> and should <b>not contain</b> any project specific logic or configuration. For example a module to manage apache or ntp.</li>
 <li>Build services to tie the modules together. Services should hold <b>all the project specific information</b> need to build it.</li>
-<li>The code of every module and every service should be in a seperate code repository. With this it is easier to manage your infrastructure. You can create dependencies between services and modules on a branch level.</li>
+<li>The code of every module and every service should be in a separate code repository. With this it is easier to manage your infrastructure. You can create dependencies between services and modules on a branch level.</li>
 <li>Use a CMDB to seperate configuration from code.</li>
 </ul>
 
