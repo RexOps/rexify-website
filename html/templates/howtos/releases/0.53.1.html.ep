@@ -12,7 +12,6 @@
          <p>该版本带来一些 bugfix 和跟当前 <a href="https://github.com/RexOps/rex-jobcontrol">Rex::JobControl</a> 前端界面的兼容性修改。</p>
          <p>Rex::JobControl 前端界面的第一个版本会在随后几天内发布。不过这会单独开一个公告。</p>
 
-
 <h2>Base</h2>
 <ul>
   <li>

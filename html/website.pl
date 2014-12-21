@@ -64,7 +64,7 @@ get '/get/mod/*mod' => sub {
 
   my $u = get_random( 32, 'a' .. 'z' );
   system(
-    "git clone git://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
+    "git clone https://github.com/RexOps/rex-recipes.git $u >/dev/null 2>&1");
   chdir("$u");
   system("git checkout master");
 
@@ -84,7 +84,7 @@ get '/search' => sub {
 
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->post(
-    "http://localhost:9200/_search?pretty=true",
+    "http://172.17.42.1:9200/_search?pretty=true",
     json => {
       query => {
         query_string => {
@@ -182,7 +182,7 @@ __DATA__
    <ul>
    % for my $r (@api_results) {
       <li>
-         <p><a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a></p>
+         <p><a href="<%= $r->{fields}->{fs}->[0] %>"><%= $r->{fields}->{title}->[0] %></a></p>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
          % for my $h (@{ $r->{highlight}->{file} }) {
@@ -200,7 +200,7 @@ __DATA__
    <ul>
    % for my $r (@webpage_results) {
       <li>
-         <a href="<%= $r->{fields}->{fs} %>"><%= $r->{fields}->{title} %></a>
+         <a href="<%= $r->{fields}->{fs}->[0] %>"><%= $r->{fields}->{title}->[0] %></a>
          <div class="small-vspace"></div>
          <p><b>Found here:</b></p>
          % for my $h (@{ $r->{highlight}->{file} }) {

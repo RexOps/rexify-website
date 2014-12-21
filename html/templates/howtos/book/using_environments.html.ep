@@ -88,7 +88,7 @@ task "prepare", group =&gt; "frontend", make {
 
 <h2>Environments and the CMDB</h2>
 
-<p>If you're using a CMDB to seperate data from code you can also create YAML files for the different environments.</p>
+<p>If you're using a CMDB to separate data from code you can also create YAML files for the different environments.</p>
 <p>The lookup path for the default YAML CMDB is as follow:</p>
 <ol>
   <li>$server.yml</li>

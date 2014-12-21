@@ -131,7 +131,8 @@ sub index_document {
    print "\r";
    print " "x80;
 
-   if($tx->res->json && $tx->res->json->{ok}) {
+   #if($tx->res->json && $tx->res->json->{ok}) {
+   if($tx->success) {
       print "\r   [+] $doc ($idx)   \n";
    }
    else {

@@ -8,18 +8,15 @@
 
 <h1>使用 Rex/Boxes</h1>
 
-<p>从 Rex 0.38 版开始，可以使用一个额外的 YAML 文件来描述你的 Rex/Boxes。所以你可以用你的 Rexfile 管理任一种类的虚拟机。</p>
-
-<p>这意味着你不用修改你的 Rexfile，就能直接从 VirtualBox 虚拟机切换成亚马逊云主机。</p>
-
-
-
+<p>从 Rex 0.38 版开始，可以使用一个额外的 YAML 文件来描述你的 Rex/Boxes。所以你可以用你的 Rexfile 管理任一种类的虚拟机。这意味着你不用修改你的 Rexfile，就能直接从 VirtualBox 虚拟机切换成亚马逊云主机。</p>
 
 <h2>YAML 文件</h2>
 
-<p>YAML 文件描述了你希望创建的虚拟机。每个类型的供应层都有自己的选项，所以请查看 API 文档了解更详细的信息。</p>
+<p>YAML 文件描述了你希望创建的虚拟机。每个类型的供应层都有自己的选项，所以请查看 <a href="/api/index.html#rexbox">API 文档</a>了解更详细的信息。要用这些文件，你需要添加 <code>use Rex::Commands::Box</code> 到你的 Rexfile 里。</p>
 
+   <pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";</code></pre>
 
+</p>
 <h3>VirtualBox 示例</h3>
 <p>下面你将看到一个为 VirtualBox 虚拟机准备的配置示例。</p>
 
@@ -40,17 +37,11 @@ vms:
             bridge: eth0
       setup: setup_db</code></pre>
 
+<p>这个 YAML 文件会让 Rex 从 <code>http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</code> 下载 VBox 的基础镜像。然后创建 2 个 VirtualBox 虚拟机。一个名叫 <code>fe01</code> 另一个叫 <code>db01</code>。</p>
 
+<p>网络设置方面，会创建一个桥接网络，并使用 <code>eth0</code> 作为桥接设备。</p>
 
-<p>这个 YAML 文件将创建 2 个 VirtualBox 虚拟机。一个名叫 &raquo;fe01&laquo; 另一个叫 &raquo;db01&laquo;。它会从 &raquo;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&laquo; 下载 VBox 的基础镜像。</p>
-
-
-<p>网络设置方面，会创建一个桥接网络，并使用 &raquo;eth0&laquo; 作为桥接设备。</p>
-
-<p>虚拟机创建完成并成功运行起来后，就自动运行设置任务，任务名为 &raquo;setup&laquo;。</p>
-
-
-
+<p>虚拟机创建完成并成功运行起来后，就自动运行设置任务，任务名为 <code>setup</code>。</p>
 
 <h3>亚马逊云示例</h3>
 
@@ -74,28 +65,13 @@ vms:
       security_group: default
       setup: setup_db</code></pre>
 
-
-<p>这个 YAML 文件将会按照指定的 AMI-ID(ami-claaabb5) 创建 2 个亚马逊云主机。</p>
-
-
-<p>请注意文件中外加的 <i>amazon</i> 段。某些虚拟机供应层需要定义一些额外配置。详细信息可以在虚拟机供应层的 API 文档中找到。</p>
-
-
-
-<p>要使用这些文件，你需要把它加入到你的 Rexfile 里的 <i>use Rex::Commands::Box</i> 命令里：</p>
-
-   <pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";</code></pre>
-
-
-
+<p>这个 YAML 文件将会按照指定的 AMI-ID(<code>ami-claaabb5</code>) 创建 2 个亚马逊云主机。请注意文件中外加的 <code>amazon</code> 段。</p>
 
 <h2>Rexfile 文件</h2>
 
 <p>使用 YAML 文件你需要创建一个带有部署逻辑的 Rexfile。</p>
 
-
-
-   <pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";
+<pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";
 
 group myboxes =&gt; map { get_box($_-&gt;{name})-&gt;{ip} } list_boxes;
 
@@ -103,22 +79,13 @@ task "box", sub {
    boxes "init";
 };</code></pre>
 
-
-
 <p>利用 <i>list_boxes</i> 命令你可以获得所有虚拟机组成的一个数组。数组里的每个元素都是一个虚拟机(其实是虚拟机信息的哈希引用)，你可以控制这些虚拟机哪怕它当前是关机状态。</p>
-
-
 
 <p>获取虚拟机的 IP 可以用 <i>get_box($name)</i> 命令。这个命令会启动虚拟机然后返回采集到的所有信息。更多信息请阅读 <a href="/api/Rex/Commands/Gather.pm.html">get_system_information()</a>。</p>
 
-
 <p>采集到的信息会缓存在 <i>.box.cache</i> 文件里，这样就不用每次都请求一遍。</p>
 
-
-
-<p><i>boxes "init";</i>命令做的事情最多了。它会轮询 YAML 文件，创建并启动文件里描述的每一个虚拟机。</p>
-
-
+<p><code>boxes "init";</code>命令做的事情最多了。它会轮询 YAML 文件，创建并启动文件里描述的每一个虚拟机。</p>
 
 <p>启动或停止虚拟机，你可以用下面的命令。</p>
 
@@ -129,5 +96,3 @@ task "box", sub {
 task "start_boxes", sub {
    boxes start =&gt; qw/box1 box2/;
 };</code></pre>
-
-

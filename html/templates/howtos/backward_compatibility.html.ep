@@ -56,7 +56,7 @@
             <tr>
                <td>0.51</td>
                <td>0.51</td>
-               <td>默认会自动加载 <b>Rex::Constants</b> 和 <b>CMDB</b>。而且所有 0.44 及以下版本的指令都会激活。</td>
+               <td>默认会自动加载 <b>Rex::Constants</b> 和 <b>CMDB</b>。而且所有 0.47 及以下版本的指令都会激活。</td>
             </tr>
 
             <tr>
