@@ -13,7 +13,7 @@
 <ul>
   <li>
   <p><b>Load CMDB by default.</b></p>
-    <p>If you want to store data seperated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
+    <p>If you want to store data separated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
     <ul>
       <li>cmdb/{operatingsystem}/{hostname}.yml</li>
       <li>cmdb/{operatingsystem}/default.yml</li>

@@ -45,7 +45,7 @@
 
 <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
-<p>This command will install Rex onto you system. You need libssh2 development libraries installed for this to work.</p>
+<p>This command will install Rex on your system. You need libssh2 development libraries installed for this to work.</p>
 <p><b>We recommend</b> to use our packages from the <a href="/get/">repository</a>.</p>
 
 

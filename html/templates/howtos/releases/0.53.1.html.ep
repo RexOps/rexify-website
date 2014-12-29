@@ -10,7 +10,7 @@
          <p>These are the changes in 0.53 release.</p>
 
          <p>This release brings a few bugfixes and compatibility to the current <a href="https://github.com/RexOps/rex-jobcontrol">Rex::JobControl</a> Webfrontend.</p>
-         <p>A first version of the Rex::JobControl Webfrontend will also be released in the next days. But this will be a seperate anouncement.</p>
+         <p>A first version of the Rex::JobControl Webfrontend will also be released in the next days. But this will be a separate anouncement.</p>
 
 
 <h2>Base</h2>
