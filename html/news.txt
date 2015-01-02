@@ -1,3 +1,4 @@
+2014-12-30,(R)?ex 0.56.0 released. This is mostly a bugfix release but we also added a some new features. See the <a href="/howtos/releases/0.56.0.html">release notes</a> for more details.
 2014-11-14,Gabor Szabo 写了一篇关于 (R)?ex 的文章，专注于不同的认证方法和如何保护你的访问。<a href="http://perlmaven.com/levels-of-security-using-rex">上 Perl Maven 阅读</a>!
 2014-11-07,(R)?ex 将会在 <a href="http://act.yapc.eu/npw2014">Nordic Perl Workshop 2014</a> 上有一个演讲，由 <a href="https://www.adjust.com">adjust</a> 赞助。谢谢！
 2014-11-02,(R)?ex 0.55.3 released. This is a bugfix-only release which fixes build/installation issues on Windows. See the <a href="/howtos/releases/0.55.3.html">release notes</a> for more details.
