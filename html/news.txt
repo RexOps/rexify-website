@@ -1,3 +1,4 @@
+2014-01-04,Repositor.io 0.3.0 released. repositor.io is a repository management tool for apt and yum. This release brings support for private docker registry and to query errata information for packages. See the <a href="http://www.repositor.io/">website</a> for more details.
 2014-12-30,(R)?ex 0.56.0 released. This is mostly a bugfix release but we also added a some new features. See the <a href="/howtos/releases/0.56.0.html">release notes</a> for more details.
 2014-11-14,Gabor Szabo wrote an article on (R)?ex, focusing on different authentication methods and with tips about how to secure your unattended access. <a href="http://perlmaven.com/levels-of-security-using-rex">Check it out at Perl Maven</a>!
 2014-11-07,(R)?ex will be at the <a href="http://act.yapc.eu/npw2014">Nordic Perl Workshop 2014</a> with a talk sponsored by <a href="https://www.adjust.com">adjust</a>. Thank you!
