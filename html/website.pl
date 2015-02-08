@@ -17,6 +17,20 @@ plugin 'RenderFile';
 
 my $m = Text::Markdown->new(tab_width => 2, empty_element_suffix => '/>');
 
+
+sub get_trainings {
+  my @content = eval { local (@ARGV) = ("trainings.txt"); <>; };
+  chomp @content;
+
+  my @ret;
+  for my $line (@content) {
+    my ( $date, $text ) = split /,/, $line, 2;
+    push @ret, { date => $date, text => $text };
+  }
+
+  return @ret;
+}
+
 sub get_news {
   my @content = eval { local (@ARGV) = ("news.txt"); <>; };
   chomp @content;
@@ -34,6 +48,7 @@ get '/' => sub {
   my ($self) = @_;
   $self->stash( "no_side_bar", 0 );
   $self->stash( "news", [get_news] );
+  $self->stash( "trainings", [get_trainings] );
   $self->render( "index", root => 1, cat => "", no_disqus => 1 );
 };
 
@@ -119,6 +134,7 @@ get '/*file' => sub {
   my $template = $self->param("file");
 
   $self->stash( "news", [get_news] );
+  $self->stash( "trainings", [get_trainings] );
 
   my ($cat) = split(/\//, $template);
   $cat ||= "";
@@ -238,8 +254,8 @@ __DATA__
 
                   <div class="source">
                      <pre><code class="perl">task prepare => sub {
-   install "apache2";
-   service apache2 => ensure => "started";
+   pkg "apache2", ensure =&gt; "latest";
+   service "apache2", ensure => "started";
 };</code></pre>
                   </div> <!-- source -->
                   <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>
@@ -364,14 +380,18 @@ __DATA__
                % }
 
 
+               <h2>Training</h2>
 
-               <h2>Conferences</h2>
+               % for my $training_item (@{$trainings}) {
+                 <div class="news_widget">
+                    <div class="news_date"><%= $training_item->{date} %></div>
+                    <div class="news_content"><%== $training_item->{text} %></div>
+                 </div>
 
-               <div class="news_widget">
-                  <div class="news_date">2014-09-19</div>
-                  <div class="news_content"><p>This year there is a Rex workshop on the <a href="http://www.kieler-linux-tag.de/">Kieler LinuxTag</a>. You can register for this workshop in the <a href="http://www.kieler-linux-tag.de/index.php?seite=workshops.html">workshop</a> page.</p>
-                  </div>
-               </div>
+               % }
+
+<!--               <h2>Conferences</h2> -->
+
 
                <h2>Need Help?</h2>
                <p>Rex is a pure open source project, you can find community support in the following places:</p>

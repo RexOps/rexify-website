@@ -54,9 +54,10 @@
 <pre><code class="bash">$ mkdir -p projects/my-first-rex-project</code></pre>
 <p>Now change into this directory and create a file called <i>Rexfile</i> with the following contents:</p>
 
-            <pre><code class="perl">user "my-user";
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "my-user";
 password "my-password";
-pass_auth;
 
 group myservers =&gt; "mywebserver", "mymailserver", "myfileserver";
 
@@ -68,6 +69,7 @@ task "uptime", group =&gt; "myservers", sub {
 
          
          <p>This Example will login as <i>my-user</i> with the password <i>my-password</i> on all the servers in the group <i>myservers</i> and run the command "uptime".</p>
+         <p>The special first line <code>use Rex -feature =&gt; ['1.0'];</code> enables all features that are available for version 1.0. If you want to know more about feature flags, please read <a href="/howtos/backward_compatibility.html">this</a> page.</p>
 
          <p>Change into the directory where you just created the <i>Rexfile</i> (in a terminal).</p>
 
@@ -122,6 +124,8 @@ key_auth;</code></pre>
 <p>In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
 
 <pre><code class="perl"># Rexfile
+use Rex -feature =&gt; ['1.0'];
+
 user "root";
 private_key "/root/.ssh/id_rsa";
 public_key "/root/.ssh/id_rsa.pub";
@@ -131,7 +135,8 @@ group all_servers =&gt; "srv[001..150]";
 task "setup_ntp", group =&gt; "all_servers", sub {
 
    # first we will install the package
-   install "ntpd";
+   pkg "ntpd",
+     ensure =&gt; "present";
 
    # then we will upload a configuration file.
    # the configuration file is located in a subdirectory files/etc.
@@ -143,7 +148,8 @@ task "setup_ntp", group =&gt; "all_servers", sub {
       };
 
    # now we register the service to start at boot time.
-   service ntpd =&gt; ensure =&gt; "started";
+   service "ntpd",
+     ensure =&gt; "started";
 };</code></pre>
 
 <p>That's all.</p>

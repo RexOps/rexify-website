@@ -34,7 +34,8 @@ $ touch Rexfile</code></pre>
          
          <p>Insert the following code in your new Rexfile.</p>
 
-            <pre><code class="perl">use Rex::Commands::Cloud;
+         <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+use Rex::Commands::Cloud;
 
 user "root";
 public_key "/path/to/your/just/created/amazon-public.key";

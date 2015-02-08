@@ -32,9 +32,9 @@
 
 <p>If you open the <i>Rexfile</i> you'll see at the top some <code>use</code> commands.</p>
 
-<pre><code class="perl">use Rex -base;</code></pre>
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];</code></pre>
 
-<p>This loads the base functions of Rex, so that you can use them inside the Rexfile.</p>
+<p>This loads the base functions of Rex 1.0, so that you can use them inside the Rexfile.</p>
 
 <pre><code class="perl">use Rex::LDAP::OpenLDAP;
 use Rex::LDAP::OpenLDAP::Commands;

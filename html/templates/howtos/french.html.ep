@@ -70,7 +70,7 @@ rexify</H2>
 </UL>
 <p> <BR> </p>
 <p> Voici le contenu basique d'un fichier Rexfile créé à partir de la commande rexify&nbsp;:</p>
-<div class="black-box"><pre class="perl"> use lib 'lib';
+<div class="black-box"><pre class="perl">use Rex -feature =&gt; ['1.0'];
 
 # set your username
 user &quot;&lt;user&gt;&quot;;
@@ -104,8 +104,7 @@ require Rex::test;</pre></div>
 <p> Voici donc le contenu du fichier test.pm&nbsp;:</p>
 <div class="black-box"><pre class="perl">package Rex::test;
 
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get uptime of server&quot;;
 task &quot;uptime&quot;, group =&gt; 'servers', sub {
@@ -201,8 +200,7 @@ require Rex::example;</pre></div>
 
 package Rex::example;
 
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get uptime of server&quot;;
 task &quot;uptime&quot;, group =&gt; 'servers', sub {
@@ -240,7 +238,8 @@ Batches
 [root]# cd uptime
 [root]# cat > Rexfile << EoT
 
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
+
 user &quot;root&quot;;
 password &quot;xxxxxx&quot;;
 pass_auth;
@@ -265,8 +264,7 @@ Batches
 <div class="black-box"><pre class="perl"># lib/Rex/uptime.pm
 package Rex::uptime;
 
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get uptime of server&quot;;
 task &quot;uptime&quot;, group =&gt; 'servers', sub {
@@ -299,7 +297,7 @@ Batches</pre></div>
 [root]# rexify FS
 [root]# cd FS
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 password &quot;xxxxxx&quot;;
@@ -312,7 +310,7 @@ EoT
 [root]# cd lib/Rex/
 [root]# mv FS.pm FS.pm_bak
 [root]# cat &gt; FS.pm &lt;&lt;EoT
-use Rex::Commands::Fs;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 password &quot;xxxxxx&quot;;
@@ -360,7 +358,7 @@ Rexfile syntax OK
 [root]# rexify File
 [root]# cd File
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 password &quot;xxxxxx&quot;;
@@ -373,7 +371,7 @@ EoT
 [root]# cd lib/Rex/
 [root]# mv File.pm File.pm_bak
 [root]# cat &gt; File.pm &lt;&lt;EoT
-use Rex::Commands::File;
+use Rex -feature =&gt; ['1.0'];
 
 
 desc &quot;Show the syslog&quot;;
@@ -413,7 +411,8 @@ Rexfile syntax OK
 [root]# rexify ULDL
 [root]# cd ULDL
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
+
 
 user &quot;root&quot;;
 password &quot;xxxxxx&quot;;
@@ -426,8 +425,7 @@ EoT
 [root]# cd lib/Rex/
 [root]# mv ULDL.pm ULDL.pm_bak
 [root]# cat &gt; ULDL.pm &lt;&lt;EoT
-use Rex::Commands::Upload;
-use Rex::Commands::Download;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Upload test file&quot;;
 task &quot;upload&quot;, &quot;test1&quot;, &quot;test2&quot;, sub {
@@ -467,7 +465,7 @@ Rexfile syntax OK
 [root]# rexify status
 [root]# cd status
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -481,8 +479,7 @@ EoT
 [root]# cat &gt; status.pm &lt;&lt;EoT
 package Rex::status;
 
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get status of Apache&quot;;
 task &quot;httpd_status&quot;, group =&gt; 'servers', sub {
@@ -515,7 +512,7 @@ httpd est mort mais subsys est verrouillé</pre></div>
 [root]# rexify services
 [root]# cd services
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use lib 'lib';
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -529,8 +526,7 @@ EoT
 [root]# cat &gt; services.pm &lt;&lt;EoT
 package Rex::services;
 
-use Rex::Commands;
-use Rex::Commands::Service;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get status of ntpd&quot;;
 task &quot;ntpd_status&quot;, group =&gt; 'servers', sub {
@@ -563,8 +559,7 @@ Rexfile syntax OK
 [root]# cat &gt; services.pm &lt;&lt;EoT
 package Rex::services;
 
-use Rex::Commands;
-use Rex::Commands::Service;
+use Rex -feature =&gt; ['1.0'];
 
 desc &quot;Get status of ntpd&quot;;
 task &quot;ntpd_status&quot;, group =&gt; 'servers', sub {
@@ -622,6 +617,8 @@ Rexfile syntax OK
 [root]# mkdir tail
 [root]# cd tail
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
+
 use Rex::Commands::Tail;
 
 user &quot;root&quot;;
@@ -644,6 +641,8 @@ Batches
 
 ## Customiser la sortie de tail
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+
+use Rex -feature =&gt; ['1.0'];
 
 use Rex::Commands::Tail;
 
@@ -669,6 +668,7 @@ EoT</pre></div>
 [root]# mkdir hardware
 [root]# cd hardware
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Data::Dumper;
 use Rex::Hardware;
 
@@ -702,8 +702,8 @@ Batches
 [root]# mkdir gather
 [root]# cd gather
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Data::Dumper;
-use Rex::Commands::Gather;
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -723,7 +723,9 @@ EoT</pre></div>
 [root]# mkdir db
 [root]# cd db
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Data::Dumper;
+
 use Rex::Commands::DB {
             dsn=&gt; &quot;DBI:mysql:database=test;host=192.168.99.7&quot;,
             user=&gt; &quot;root&quot;,
@@ -761,6 +763,7 @@ EoT</pre></div>
 [root]# mkdir host
 [root]# cd host
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Rex::Commands::Host;
 
 user &quot;root&quot;;
@@ -801,6 +804,7 @@ Batches</pre></div>
 [root]# mkdir kernel
 [root]# cd kernel
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Rex::Commands::Kernel;
 
 user &quot;root&quot;;
@@ -829,6 +833,7 @@ Batches</pre></div>
 [root]# mkdir md5
 [root]# cd md5
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Data::Dumper
 use Rex::Commands::MD5;
 
@@ -853,7 +858,7 @@ Batches</pre></div>
 [root]# mkdir package
 [root]# cd package
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use Rex::Commands::Pkg;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -895,6 +900,7 @@ Batches</pre></div>
 
 ## UPLOAD (sync local vers remote)
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Rex::Commands::Rsync;
 
 user &quot;root&quot;;
@@ -913,6 +919,7 @@ EoT
 
 ## DOWNLOAD (sync remote vers local)
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Rex::Commands::Rsync;
 
 user &quot;root&quot;;
@@ -931,6 +938,7 @@ EoT</pre></div>
 [root]# mkdir sysctl
 [root]# cd sysctl
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
 use Rex::Commands::Sysctl;
 
 user &quot;root&quot;;
@@ -966,8 +974,9 @@ Batches
 [root]# mkdir user
 [root]# cd user
 [root]# cat &gt; Rexfile &lt;&lt;EoT
+use Rex -feature =&gt; ['1.0'];
+
 use Data::Dumper;
-use Rex::Commands::User;
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -1017,7 +1026,7 @@ EoT</pre></div>
 <div class="black-box"><pre class="perl">[root]# cd /home/rex
 [root]# mkdir status &amp;&amp; cd status
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use Rex::Commands::Service;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -1096,7 +1105,7 @@ task &quot;task2&quot;, &quot;server2&quot;, sub {
 [root]# mkdir do_task
 [root]# cd do_task
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use Rex::Commands::Service;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -1142,7 +1151,7 @@ Batches
 <h2>Needs</H2>
 <p> La fonction needs fonctionne quasiment comme la fonction do_task sauf que celle-ci ne lancera que le contenu de la tâche et pas la totalité de la tâche, c'est donc totalement indépendant du serveur concerné dans la tâche appelée par needs. Voici un exemple illustrant clairement comment fonctionne needs par rapport à do_task&nbsp;:</p>
 <div class="black-box"><pre class="perl">[root]# cat &gt; Rexfile &lt;&lt;EoT
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;
@@ -1190,7 +1199,7 @@ EoT</pre></div>
 [root]# mkdir rpm
 [root]# cd rpm
 [root]# cat &gt; Rexfile &lt;&lt;EoT
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 user &quot;root&quot;;
 private_key &quot;/root/.ssh/id_rsa&quot;;

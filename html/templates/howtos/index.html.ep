@@ -32,6 +32,7 @@
          <div class="vspace"></div>
          <h1>Extended Documentation</h1>
          <ul class="simple-list">
+            <li><a href="/howtos/rex_cheat_sheet.html">Rex Cheat Sheet</a></li>
             <li><a href="/api/">API Documentation</a></li>
             <li><a href="/howtos/backward_compatibility.html">A word on backward compatibility</a></li>
             <li><a href="/howtos/compatibility.html">Rex Compatibility List</a></li>
@@ -112,6 +113,7 @@
 <a name="releases"></a>
 <h1>Release Notes</h1>
 <ul class="simple-list">
+   <li><a href="releases/1.0.0.html">1.0.0</a></li>
    <li><a href="releases/0.57.0.html">0.57.0</a></li>
    <li><a href="releases/0.56.0.html">0.56.0</a></li>
    <li><a href="releases/0.55.3.html">0.55.3</a></li>

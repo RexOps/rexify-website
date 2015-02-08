@@ -46,7 +46,7 @@ drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
 
          <p>Open the file <i>Rexfile</i> and change it to suite your needs.</p>
 
-            <pre><code class="perl">use lib 'lib';
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 # set your username
 user "root";
@@ -106,32 +106,30 @@ Rexfile syntax OK
          <p>Create the file <i>lib/Rex/OS.pm</i></p>
 
             <pre><code class="perl">package Rex::OS;
-
-# include some Rex Modules
-use Rex::Commands;
-use Rex::Commands::Pkg;
-use Rex::Commands::Service;
-use Rex::Commands::Sysctl;
+use Rex -feature =&gt; ['1.0'];
 
 desc "Install base packages";
 task "prepare", sub {
-   install package =&gt; [ 
-                        "ntp",
-                        "hal",
-                        "dbus",
-                        "sudo",
-                        "vim",
-                      ];
+   pkg [ 
+         "ntp",
+         "hal",
+         "dbus",
+         "sudo",
+         "vim",
+       ],
+     ensure =&gt; 'present';
 };
 
 desc "Start base services";
 task "start-services", sub {
-   needs Rex::OS "prepare";
+   prepare();
 
-   service hal     =&gt; "start";
-   service dbus    =&gt; "start";
-
-   service rsyslog =&gt; "start";
+   service "hal",
+     ensure =&gt; "started";
+   service "dbus",
+     ensure =&gt; "started";
+   service "rsyslog",
+     ensure =&gt; "started";
 };
 
 desc "Tune some /proc parameters";
@@ -175,41 +173,35 @@ task "tune", sub {
          <p>Create the file <i>lib/Rex/Tomcat.pm</i></p>
 
             <pre><code class="perl">package Rex::Tomcat;
-
 use strict;
 use warnings;
 
+use Rex -feature =&gt; ['1.0'];
+
 # include our Rex::OS Module, so that we can build dependencies to that module
 use Rex::OS;
-
-# include Rex Modules
-use Rex::Commands;
-use Rex::Commands::Run;
-use Rex::Commands::Pkg;
-use Rex::Commands::File;
-use Rex::Commands::Service;
 
 desc "Install tomcat packages";
 task "prepare", sub {
    needs Rex::OS;
 
-   install package =&gt; [ 
-                        "tomcat6-common",
-                        "tomcat6",
-                        "tomcat6-admin",
-                      ];
+   pkg [ 
+          "tomcat6-common",
+          "tomcat6",
+          "tomcat6-admin",
+    ],
+    ensure =&gt; "present";
 };
 
 desc "Configure Tomcat Manager User";
 task "tomcat-user", sub {
-   needs Rex::Tomcat "prepare";
+   Rex::Tomcat::prepare();
 
    file "/etc/tomcat6/tomcat-users.xml",
       source    =&gt; "files/tomcat-users.xml",
       owner     =&gt; "root",
       group     =&gt; "tomcat6",
       mode      =&gt; 640,
-
       on_change =&gt; sub { service tomcat6 =&gt; "restart"; },
    };
 };
@@ -258,8 +250,7 @@ EOF </code></pre>
 use strict;
 use warnings;
 
-# include Rex Modules
-use Rex::Commands;
+use Rex -feature =&gt; ['1.0'];
 
 # include the deployer modules
 use Rex::Apache::Inject "Properties";
@@ -323,10 +314,10 @@ com.googlecode.psiprobe.beans.stats.collectors.runtime.period=10s </code></pre>
          <p>Open the file <i>lib/Rex/mysite.pm</i></p>
 
             <pre><code class="perl">package Rex::mysite;
+use strict;
+use warnings;
 
-# include Rex Modules
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc "Get uptime of server";
 task "uptime", group =&gt; "servers", sub {
@@ -342,7 +333,7 @@ task "tomcat", group =&gt; "servers", sub {
 # one task to deploy our application (probe.war)
 desc "Deploy Live Tomcats";
 task "deploy", group =&gt; "servers", sub {
-   needs Rex::Deploy::Live::Tomcat "deploy";
+   Rex::Deploy::Live::Tomcat::deploy();
 };
 
 1; </code></pre>
