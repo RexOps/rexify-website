@@ -31,7 +31,8 @@
 <p>This file is a normal Perl module. The only special thing is the filename, but don't think too much for it at first.</p>
 
 <pre><code class="perl">package Service::NTP;
-use Rex -base;
+use Rex -feature =&gt; ['1.0'];
+
 
 task prepare =&gt; sub {
    my $service_name = case operating_system, {
@@ -87,7 +88,7 @@ server ntp02.company.tld</code></pre>
 <p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
 
 <pre><code class="perl">package Service::NTP;
-use Rex -base;
+use Rex -feature =&gt; ['1.0'];
 
 task prepare =&gt; sub {
    my $service_name = case operating_system, {
@@ -216,7 +217,7 @@ $Host = {
 
 <p>To use your module you have to add it to your <i>Rexfile</i>. This can be simply achieved with one line.</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "root";
 password "foo";

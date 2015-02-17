@@ -20,7 +20,7 @@
          <h2>Creating a simple Rexfile</h2>
          <p>At first create a simple Rexfile in your $HOME directory.</p>
 
-            <pre><code class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";
@@ -51,7 +51,7 @@ task "tail-fe", group =&gt; "fe", sub {
          <h2>Customizing the tail output</h2>
          <p>If you want to customize the tail output, you can add a callback function as 2nd parameter.</p>
 
-            <pre><code class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";

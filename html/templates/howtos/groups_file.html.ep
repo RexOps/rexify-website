@@ -9,7 +9,7 @@
          <h1>Use an INI-style groups file</h1>
          <p>To use a INI-style groups file you can use the <i>groups_file</i> function. It will read in the ini file you provide as a parameter, after which you can use it as if you defined groups as usual in your Rexfile.</p>
 
-            <pre><code class="perl">use Rex -feature => [qw/use_server_auth/];
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 use Rex::Group::Lookup::INI;
 groups_file "file.ini";</code></pre>
 

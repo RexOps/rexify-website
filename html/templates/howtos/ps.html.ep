@@ -9,7 +9,7 @@
          <h1>Listing all running processes</h1>
          <p>To list all running process you can use the <i>ps</i> function. It will return an array of hashs with all information about the processes.</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";
@@ -32,7 +32,7 @@ task "ps", group =&gt; "myserver", sub {
 
          <p>If you want to see all the available options just use the <i>Data::Dumper</i> module.</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 use Data::Dumper;
             
 user "my-user";
@@ -52,7 +52,7 @@ task "ps", group =&gt; "myserver", sub {
          <h2>Getting the PID of a programm</h2>
          <p>If you want to get the pid of a running programm you can use the perl function <i>grep</i>.</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
             
 user "my-user";
 password "my-password";

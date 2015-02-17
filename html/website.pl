@@ -238,8 +238,8 @@ __DATA__
 
                   <div class="source">
                      <pre><code class="perl">task prepare => sub {
-   install "apache2";
-   service apache2 => ensure => "started";
+   pkg "apache2", ensure =&gt; "latest";
+   service "apache2", ensure => "started";
 };</code></pre>
                   </div> <!-- source -->
                   <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>

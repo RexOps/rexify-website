@@ -12,7 +12,7 @@
 
 <p>Rex comes with a hardware gathering module. To display all the things Rex knows about the environment your can create a test task that just dumps all the information.</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 task "dump-info", sub {
    dump_system_information;
@@ -92,14 +92,14 @@ $Host = {
 
 <p>To use these information inside the Rexfile you can query them with the <i>get_system_information</i> function or use the methods from the connection object</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 task "get_hostname", sub {
    my %info = get_system_information;
    say $info{hostname} . "." . $info{domain};
 };</code></pre>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 task "prepare", sub {
    my $libpath = case connection-&gt;server-&gt;architecture,

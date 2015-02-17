@@ -40,7 +40,9 @@ $ tar xvzf user_rollout.tgz</code></pre>
          
          <p>Insert the following code in your new Rexfile.</p>
 
-            <pre><code class="perl">user "root";
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "root";
 
 group "webservers" =&gt; "fe[01..12]", "mw[01..05]]";
 group "db" =&gt; "db[01..04]";

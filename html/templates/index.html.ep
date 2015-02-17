@@ -45,7 +45,9 @@ automate it!</p>
 </code></pre>
 
 <p>The same, but with a <i>Rexfile</i></p>
-<pre><code class="perl">desc "Get Disk Free";
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+desc "Get Disk Free";
 task "disk_free", sub {
    my $output = run "df -h";
    say $output;
@@ -61,16 +63,18 @@ task "disk_free", sub {
 <p>This example will install the Apache Webserver on 5 servers and keep the configuration in sync. If the configuration file was changed it will automatically reload apache.</p>
 <p>If this task gets executed against a virgin host (where no apache is installed) it will first install it.</p>
 
-<pre><code class="perl">user "root";
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "root";
 group frontend =&gt; "frontend[01..05]";
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
   pkg "apache2",
-    ensure => "latest";
+    ensure =&gt; "latest";
 
   service "apache2",
-    ensure => "started";
+    ensure =&gt; "started";
 };
 
 desc "Keep Configuration in sync";
@@ -85,17 +89,19 @@ task "configure", group =&gt; "frontend", sub {
 
 <h2>Running under sudo?</h2>
 <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
-<pre><code class="perl">user "ubuntu";
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "ubuntu";
 group frontend =&gt; "frontend[01..05]";
 sudo TRUE;
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
   pkg "apache2",
-    ensure => "latest";
+    ensure =&gt; "latest";
 
   service "apache2",
-    ensure => "started";
+    ensure =&gt; "started";
 };
 
 desc "Keep Configuration in sync";
