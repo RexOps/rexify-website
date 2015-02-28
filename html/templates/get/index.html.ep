@@ -201,19 +201,21 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>If you want to use <a href="http://box.rexify.org/">Rex/Boxes</a> you need to add the installation path of VirtualBox to your <i>PATH</i> environment variable. The default installation path is <i>C:\Program Files\Oracle\VirtualBox</i>. If you need instructions how to do that you can read this article on <a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
 
-<h2>Other / From Source</h2>
+<h2>From source</h2>
 
-<p>If you want to download the latest sources from GitHub you can do it this way. Development is done in the master branch, and we also tag each release there.</p>
+<p>You can clone our repository from GitHub and install Rex from source. Development is done in the master branch, and we also tag each release there.</p>
 
 <pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
 cpanm Dist::Zilla
+dzil authordeps --missing | cpanm
 dzil listdeps --missing | cpanm
 dzil install
 </code></pre>
 
-<p>You can also use the CPAN shell to install Rex. This will download the latest release form CPAN.</p>
-<pre><code class="bash">perl -MCPAN -eshell
-cpan[1]&gt; install Rex</code></pre>
+<h2>CPAN</h2>
+
+<p>The following command will download and install <a href="https://metacpan.org/pod/Rex">the latest Rex release from CPAN</a>.</p>
+<pre><code class="bash">cpanm Rex</code></pre>
 
 <p><small><i>All logos are registered trademarks of their respective companies and are not affiliated with and do not necessarily indicate that they either sponsor or endorse the services of rexify.org (and Rex).</i></small></p>
