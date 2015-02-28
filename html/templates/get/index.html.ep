@@ -6,7 +6,6 @@
       <meta name="keywords" content="Systemadministration, Rex, Remote, Configuration, Management, Framework, SSH, Linux">
 % end
 
-
 <h1>Get Rex</h1>
 
 <p>You can install Rex with a simple one-liner</p>
@@ -16,7 +15,6 @@
 
 <h2>BSD and Linux</h2>
 <p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown.</p>
-
 
 <div style="foat: left"> <!-- needed for bootstrap ... -->
  <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
@@ -46,8 +44,6 @@ apt-get install rex</code></pre>
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
-
-
 
          <h3>For Quantal (12.10)</h3>
 
@@ -141,7 +137,6 @@ EOF
 
 yum install rex</code></pre>
 
-
        </div>
        <div class="tab-pane" id="tab5">
          <h3>For 13.1</h3>
@@ -171,7 +166,6 @@ EOF
 
 yum install rex</code></pre>
 
-
        </div>
        <div class="tab-pane" id="tab8">
 
@@ -184,14 +178,11 @@ make install clean</code></pre>
          <pre><code class="bash">pkg install p5-Rex</code></pre>
 
        </div>
-
-
-
     </div>
  </div>
 </div>
 
- <h2>Apple Mac OS X</h2>
+<h2>Apple Mac OS X</h2>
 
 <p>To install Rex on Mac OSX you have to install <a href="http://libssh2.org/">libssh2</a> first. You can do this with <a href="http://www.macports.org/">MacPorts</a> or with <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
 <p>We recommend using MacPorts. First you need to install XCode. After you've installed it you'll find a package for your system <a href="http://www.macports.org/install.php">here</a>.</p>
@@ -201,7 +192,6 @@ make install clean</code></pre>
 <pre><code class="bash">sudo port install libssh2 perl5
 curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
-
 <h2>Microsoft Windows</h2>
 
 <p>Tested with Windows Vista and Windows 7 (64bit) and Strawberry Perl 5.x</p>
@@ -210,7 +200,6 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 <pre><code class="bash">cpanm Rex</code></pre>
 
 <p>If you want to use <a href="http://box.rexify.org/">Rex/Boxes</a> you need to add the installation path of VirtualBox to your <i>PATH</i> environment variable. The default installation path is <i>C:\Program Files\Oracle\VirtualBox</i>. If you need instructions how to do that you can read this article on <a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
-
 
 <h2>Other / From Source</h2>
 
