@@ -8,9 +8,7 @@
 
 <h1>Get Rex</h1>
 
-<p>You can install Rex with a simple one-liner</p>
-<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
-<p>If you want to use https to download the script, you have to trust <a href="http://www.cacert.org/">CAcert</a> certificate.</p>
+<p>You can install Rex with a simple one-liner:</p>
 <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>BSD and Linux</h2>
