@@ -10,15 +10,18 @@
 <p>Here we will maintain a list of frequently asked questions with their answers.</p>
 
 <div class="vspace"></div>
+<a name="run-command-output"></a>
 <h2>Why does the run command not format the output?</h2>
 <p>The <i>run</i> command - called in array context - will return an array.</p>
 <p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
    <pre><code class="perl">my $output = run "df -h";
 say $output;</code></pre>
 
+<a name="get-current-server"></a>
 <h2>How can I get the current server from within a task?</h2>
 <pre><code class="perl">my $current_server = connection-&gt;server;</code></pre>
 
+<a name="task-parameters"></a>
 <h2>How can I pass parameters to a task?</h2>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
@@ -29,6 +32,7 @@ say $output;</code></pre>
 <p>Then you can run mytask from CLI like this:</p>
 <pre><code class="bash">rex -H hostname mytask --parameter1=value1 --parameter2=value2</code></pre>
 
+<a name="run-shellblock"></a>
 <h2>How can I run a block of code with one command?</h2>
 <p>You can use the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> module. This module can be installed by running:</p>
 <pre><code class="shell">$ rexify --use Rex::Misc::ShellBlock</code></pre>
@@ -47,6 +51,7 @@ say $output;</code></pre>
 <p>See the <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">linked documentation</a> page for how to use this module with Perl,
 Python, or other languages.</p>
 
+<a name="run-local-script-remotely"></a>
 <h2>How can I run a local script on the remote?</h2>
 <p>If you have a local script 'files/script', you can run it on the remote
 using the ShellBlock module referred to in the FAQ above. After you install
@@ -58,6 +63,7 @@ as pointed out above, you can run the script remotely with the command:</p>
      shell_block template('files/script');
  };</code></pre>
 
+<a name="sudo-with-different-user"></a>
 <h2>How do I run a local script on the remote under a different user?</h2>
 <p>Given the same scenario as above, but with the additional requirement
 to run the script as a different user, the solution looks like below:</p>
@@ -71,10 +77,12 @@ task "myexec", sub {
      };
 };</code></pre>
 
+<a name="get-remote-exit-code"></a>
 <h2>How do I check the exit status of a remotely run command?</h2>
 <p>Rex assigns the exit code from the remote invocation of <code>run</code>
 or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
 
+<a name="using-rex-logger"></a>
 <h2>How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
 <pre><code class="perl">
    Rex::Logger::info("some message");           # for INFO  (green)
