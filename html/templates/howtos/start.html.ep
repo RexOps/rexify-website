@@ -58,7 +58,6 @@
 
 user "my-user";
 password "my-password";
-pass_auth;
 
 group myservers =&gt; "mywebserver", "mymailserver", "myfileserver";
 
@@ -136,7 +135,8 @@ group all_servers =&gt; "srv[001..150]";
 task "setup_ntp", group =&gt; "all_servers", sub {
 
    # first we will install the package
-   install "ntpd";
+   pkg "ntpd",
+     ensure =&gt; "present";
 
    # then we will upload a configuration file.
    # the configuration file is located in a subdirectory files/etc.
@@ -148,7 +148,8 @@ task "setup_ntp", group =&gt; "all_servers", sub {
       };
 
    # now we register the service to start at boot time.
-   service ntpd =&gt; ensure =&gt; "started";
+   service "ntpd",
+     ensure =&gt; "started";
 };</code></pre>
 
 <p>That's all.</p>

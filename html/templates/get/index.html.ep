@@ -150,6 +150,12 @@ yum install rex</code></pre>
 zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/13.1/rex/x86_64/ rex
 zypper install rex</code></pre>
 
+         <h3>For 13.2</h3>
+
+            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/13.2/rex/x86_64/ rex
+zypper install rex</code></pre>
+
        </div>
        <div class="tab-pane" id="tab6">
          <h3>Mageia 3</h3>
@@ -159,7 +165,7 @@ urpmi rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab7">
-         <h3>Fedora 18+</h3>
+         <h3>Fedora 20+</h3>
             <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
