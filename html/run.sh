@@ -16,7 +16,7 @@ cp -R doc/html/Rex* /var/project/templates/api/
 
 cd /var/tmp/website
 
-#perl create_index.pl 172.17.42.1 9200 /var/project/templates
+perl create_index.pl 172.17.42.1 9200 /var/project/templates
 
 cd /var/project
 
