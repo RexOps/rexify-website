@@ -2,15 +2,21 @@
 
 We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a **LTS** release, which means that it will get support from the community (at least) until **end of 2017**.
 
-We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things changes.
+We're developing Rex for more than 4 years and because Rex is now used in many production environments we felt it was the right time to release the first major version. We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things change.
 
-With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled. But you can always use the old communication with the following command:
+Rex is a project completely driven by volunteers and without all the support from the community by using it, sending bug reports and feature requests and submitting patches it wouldn't be the great project it is. So many thanks to all of you. If you want to help developing Rex and become part of the core team, feel free to contact us on irc (irc.freenode.net / #rex).
 
-<pre><code class="perl">set connection => 'SSH';</code></pre>
 
 These are the changes in 1.0.0 release.
 
 ## Common
+
+With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled. 
+
+* use Net::OpenSSH is now default. don't need feature flag 0.55 - Jan
+
+But you can always use the old communication with the following command:
+<pre><code class="perl">set connection => 'SSH';</code></pre>
 
 #### augeas
 
@@ -58,7 +64,6 @@ task "prepare", sub {
 
 #### base
 
-* use Net::OpenSSH is now default. don't need feature flag 0.55 - Jan
 * Allow setting of gpgkey for a repository - @tekcurmudgeon
 * added partial sudo support for rsync command - Jan
 * tail now also works with sudo also fixed #530 - Jan
