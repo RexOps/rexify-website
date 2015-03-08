@@ -1,0 +1,79 @@
+# Release notes for 1.0.0
+
+We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a *LTS* release, which means that it will get support from the community (at least) until *end of 2017*.
+
+We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things changes.
+
+With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled. But you can always use the old communication with the following command:
+
+<pre><code class="perl">set connection => 'SSH';</code></pre>
+
+These are the changes in 1.0.0 release.
+
+## Common
+
+* migrated augeas module into Rex core - #532 - Jan
+* Optimise Rex::Commands::Augeas - Andrew Beverley
+
+* Add PkgConf command to configure packages - Andrew Beverley
+
+* use Net::OpenSSH is now default. don't need feature flag 0.55 - Jan
+
+* Allow setting of gpgkey for a repository - @tekcurmudgeon 
+
+* added partial sudo support for rsync command - Jan
+* tail now also works with sudo also fixed #530 - Jan
+* Add password lock/unlock functions (Linux only) - Andrew Beverley
+* Add append_or_amend_line function to File command - Andrew Beverley
+* rex/CLI.pm: update docs for Rex options - Brian Manning
+
+* Added possibility to use group() also as a resource function - Jan
+* added possibility to define task parameters multiple times from cli. - #516 - Jan
+
+* Speed up connecting to Boxes - Ferenc Erki
+* allow call of run() command with arrayRef - Jan
+
+## Internal
+
+* Rex::FS::File accepts filenames now - reneeb
+* Restore perl-5.8.9 compatibility - Ferenc Erki
+
+### Testing
+
+* unit-test for Rex::Commands::DB - Volker Kroll (vkroll)
+* use more appropriate functions from Test::More in tests - reneeb
+* Use more helpful test functions - Ferenc Erki
+
+## Bugfixes
+
+* fix rsync with port definition - #520 - Jan
+* fixed late group lookup - #521 - Jan
+* if the evaluation of the Rexfile was without syntax errors, but don't return a true value, try to evaluate it manually. so is is not needed to return a true value at the end. - fix for #513 - Jan
+* fixed path resolution for private_key and public_key when used a ~ (tilde) sign. #517 - Jan
+* better fix for #521, don't print all servers by rex -T. Also fixed group authentication. - Jan
+* fixed #529 - odd number of elements - Jan
+* fixed #528 -Amazon list_services, doesn't get all ec2 instances - thanks to David Golovan - Jan
+* fixed an issue that causes the parser to think the rexfile has an error - Jan
+
+* fixed set_openssh_opt() function to allow multiple options - Jan
+* fixed #527 - Rex::Output leaks semaphores and shared memory - Jan
+* improved continous_read option for Net::SSH2 connection mode - Jan
+
+* CLI.pm: throw error if -T used with task arg, but no matching task found - Brian Manning
+* fixed #539 - detect primary network address - Jan
+
+* fixed Rex::Box with Net::OpenSSH - Jan
+
+* fixed windows tests - #514 - Jan
+* fixed #555 - default for Net::OpenSSH now also spawn a pty. Can be disabled with feature no_tty - Jan
+
+* stop 'profile' before returning from a subroutine. - Andrej Zverev
+* Rex::Helper:Run->i_run: check no_path_cleanup before calling get_path - Brian Manning
+* Rex::Commands::MD5: Make Rex use the /sbin/md5 binary on OS X - Brian Manning
+* Rex::Commands::User: fix typo in POD (user_group -> user_groups) - Brian Manning
+* fixed a problem if a server group was empty - Jan
+* fixed autodie bug for is_symlink function - Jan
+* don't redirect stdout 2 times. freebsd don't like it - Jan
+* fixed is_file() for files with spaces - Jan
+* fixed systemd status query - Jan
+* Remove hardcoded connection type if Rex is used as library (fix #579) - Ferenc Erki
