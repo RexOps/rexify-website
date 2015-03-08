@@ -1,6 +1,6 @@
 # Release notes for 1.0.0
 
-We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a *LTS* release, which means that it will get support from the community (at least) until *end of 2017*.
+We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a **LTS** release, which means that it will get support from the community (at least) until **end of 2017**.
 
 We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things changes.
 
@@ -12,24 +12,61 @@ These are the changes in 1.0.0 release.
 
 ## Common
 
+#### augeas
+
+With augeas it is possible to edit configuration files without the need to use templates and to overwrite all of the file. So if you want to allow people to edit the configuration files on your servers also by hand (for example on test machines for your developers) you can use augeas to ensure that some specific parameters in these configuration files are set.
+
+To use this it is required to have *augtool* installed on your servers. This is usually in the package *augeas* or *augeas-tools*.
+
 * migrated augeas module into Rex core - #532 - Jan
 * Optimise Rex::Commands::Augeas - Andrew Beverley
 
+<pre><code class="perl">use Rex::Commands::Augeas;
+
+task "prepare", sub {
+  augeas insert => "/files/etc/hosts",
+    label     => "01",
+    after     => "/7",
+    ipaddr    => "192.168.2.23",
+    canonical => "frontend01";
+
+  augeas modify => 
+    "/files/etc/ssh/sshd_config/PermitRootLogin" => "without-password",
+    on_change => sub {
+      service sshd => "restart";
+    };
+};
+</code></pre>
+
+
+#### PkgConf
+
+The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/API/Rex/Commands/PkgConf.pm.html">API</a> documentation.
+
 * Add PkgConf command to configure packages - Andrew Beverley
 
+<pre><code class="perl">use Rex::Commands::PkgConf;
+
+task "prepare", sub {
+  set_pkgconf("mysql-server-5.5", [
+    { question => 'mysql-server/root_password',       type => 'string', value => 'mysecret' },
+    { question => 'mysql-server/root_password_again', type => 'string', value => 'mysecret' },
+  ]);
+};
+</code></pre>
+
+
+#### base
+
 * use Net::OpenSSH is now default. don't need feature flag 0.55 - Jan
-
-* Allow setting of gpgkey for a repository - @tekcurmudgeon 
-
+* Allow setting of gpgkey for a repository - @tekcurmudgeon
 * added partial sudo support for rsync command - Jan
 * tail now also works with sudo also fixed #530 - Jan
 * Add password lock/unlock functions (Linux only) - Andrew Beverley
 * Add append_or_amend_line function to File command - Andrew Beverley
 * rex/CLI.pm: update docs for Rex options - Brian Manning
-
 * Added possibility to use group() also as a resource function - Jan
 * added possibility to define task parameters multiple times from cli. - #516 - Jan
-
 * Speed up connecting to Boxes - Ferenc Erki
 * allow call of run() command with arrayRef - Jan
 
@@ -54,19 +91,14 @@ These are the changes in 1.0.0 release.
 * fixed #529 - odd number of elements - Jan
 * fixed #528 -Amazon list_services, doesn't get all ec2 instances - thanks to David Golovan - Jan
 * fixed an issue that causes the parser to think the rexfile has an error - Jan
-
 * fixed set_openssh_opt() function to allow multiple options - Jan
 * fixed #527 - Rex::Output leaks semaphores and shared memory - Jan
 * improved continous_read option for Net::SSH2 connection mode - Jan
-
 * CLI.pm: throw error if -T used with task arg, but no matching task found - Brian Manning
 * fixed #539 - detect primary network address - Jan
-
 * fixed Rex::Box with Net::OpenSSH - Jan
-
 * fixed windows tests - #514 - Jan
 * fixed #555 - default for Net::OpenSSH now also spawn a pty. Can be disabled with feature no_tty - Jan
-
 * stop 'profile' before returning from a subroutine. - Andrej Zverev
 * Rex::Helper:Run->i_run: check no_path_cleanup before calling get_path - Brian Manning
 * Rex::Commands::MD5: Make Rex use the /sbin/md5 binary on OS X - Brian Manning
