@@ -61,6 +61,15 @@ task "prepare", sub {
 };
 </code></pre>
 
+#### pty usage
+
+If you're using <code class="perl">use Rex -feature => ['1.0'];</code> pty usage is disabled. This increases the compatibility with some init scripts that don't *disown* from the running pty. If you're using *sudo* then you need to configure the user to not need a pty to run sudo.
+
+<pre><code>Defaults:username !requiretty</code></pre>
+
+If you can't change this behaviour you can always use the *pty* feature to tell Rex to spawn a pty.
+
+<pre><code>use Rex -feature => ['1.0', 'pty'];</code></pre>
 
 #### base
 

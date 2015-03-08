@@ -30,6 +30,18 @@
             </tr>
 
             <tr>
+               <td>1.0</td>
+               <td>1.0</td>
+               <td>Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
+               <td>0.56</td>
+               <td>0.56</td>
+               <td>Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
                <td>0.55</td>
                <td>0.55</td>
                <td>Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
@@ -59,6 +71,19 @@
                <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.47 and down activated.</td>
             </tr>
 
+
+            <tr>
+               <td>no_autodie</td>
+               <td>1.0</td>
+               <td>Will disable autodie feature.</td>
+            </tr>
+
+            <tr>
+               <td>no_path_cleanup</td>
+               <td>0.44</td>
+               <td>Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
+            </tr>
+
             <tr>
                <td>verbose_run</td>
                <td>0.47</td>
@@ -78,17 +103,10 @@
             </tr>
 
             <tr>
-               <td>no_path_cleanup</td>
-               <td>0.44</td>
-               <td>Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
-            </tr>
-
-            <tr>
                <td>exec_autodie</td>
                <td>0.44</td>
                <td>If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
             </tr>
-
 
             <tr>
                <td>exec_and_sleep</td>
@@ -121,10 +139,17 @@
                <td>Enable the usage of special authentication options for servers.</td>
             </tr>
 
+
+            <tr>
+               <td>tty</td>
+               <td>1.0</td>
+               <td>Enable pty usage for ssh connections. (Default)</td>
+            </tr>
+
             <tr>
                <td>no_tty</td>
                <td>0.41</td>
-               <td>Disable pty usage for ssh connections</td>
+               <td>Disable pty usage for ssh connections.</td>
             </tr>
 
 
