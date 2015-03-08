@@ -6,12 +6,9 @@
       <meta name="keywords" content="Systemadministration, Rex, Remote, Configuration, Management, Framework, SSH, Linux">
 % end
 
-
 <h1>安装 Rex</h1>
 
 <p>你可以在命令行使用单行安装</p>
-<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
-<p>如果你想用 https 协议下载这儿脚本，需要首先授权 <a href="http://www.cacert.org/">CAcert</a> 证书。</p>
 <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>BSD 和 Linux</h2>
@@ -45,8 +42,6 @@ apt-get install rex</code></pre>
 wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
-
-
 
          <h3>For Quantal (12.10)</h3>
 
@@ -140,7 +135,6 @@ EOF
 
 yum install rex</code></pre>
 
-
        </div>
        <div class="tab-pane" id="tab5">
          <h3>For 13.1</h3>
@@ -170,7 +164,6 @@ EOF
 
 yum install rex</code></pre>
 
-
        </div>
        <div class="tab-pane" id="tab8">
 
@@ -183,25 +176,17 @@ make install clean</code></pre>
          <pre><code class="bash">pkg install p5-Rex</code></pre>
 
        </div>
-
-
-
     </div>
  </div>
 </div>
 
 <h2>Apple Mac OS X</h2>
 
-<p>在mac os 首先安装 <a href="http://libssh2.org/">libssh2</a> . 你可以通过  <a href="http://www.macports.org/">MacPorts</a> 或者 <a href="http://mxcl.github.com/homebrew/">Homebrew</a>进行安装.</p>
-<p>我们推荐使用 Macports，不过首先你应该先安装好 XCode，然后你可以从
-<a href="http://www.macports.org/install.php">这里</a>找到对应你系统的包了。</p>
-
 <p>如果你用homebrew 安装 我记得应该安装好 <a href="http://perlbrew.pl/">Perlbrew</a>.</p>
 
 <p>MacPort 的安装方式:</p>
 <pre><code class="bash">sudo port install libssh2 perl5
 curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
-
 
 <h2>Microsoft Windows</h2>
 <p>只在 Windows Vista 和 Windows 7 (64bit) 上用 Strawberry Perl 5.x 测试通过。</p>
@@ -211,7 +196,6 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>如果你想用 <a href="http://box.rexify.org/">Rex/Boxes</a> 你需要把你的 VirtualBox 安装路径添加到你的 <i>PATH</i> 环境变量中。默认路径应该是 <i>C:\Program Files\Oracle\VirtualBox</i>。更详细的介绍可以读这篇文章：<a href="http://www.computerhope.com/issues/ch000549.htm" target="_blank">ComputerHope</a>.</p>
 
-
 <h2>其他 / 基于源码安装</h2>
 
 <p>如果你想从 Github 上下载最新的源代码，你可以通过这个方式来进行。开发是在主分支上完成的，我们也会给每个版本做 tag 标签。</p>
@@ -219,12 +203,13 @@ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
 <pre><code class="bash">git clone https://github.com/RexOps/Rex.git
 cd Rex
 cpanm Dist::Zilla
+dzil authordeps --missing | cpanm
 dzil listdeps --missing | cpanm
 dzil install
 </code></pre>
 
-<p>你可以用Perl 的CPAN 安装Rex .也是安装最新版本</p>
-<pre><code class="bash">perl -MCPAN -eshell
-cpan[1]&gt; install Rex</code></pre>
+<h2>CPAN</h2>
+<p>下面这行命令会从 CPAN 下载并安装<a href="https://metacpan.org/pod/Rex">最新版的 Rex</a>。</p>
+<pre><code class="bash">cpanm Rex</code></pre>
 
 <p><small><i>所有的商标都是其各自公司注册，不隶属且不一定代表他们赞助和支持了 rexify.org (和 Rex).</i></small></p>

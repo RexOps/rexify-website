@@ -10,15 +10,18 @@
 <p>这里我们将维护一个常见问题列表和答案.</p>
 
 <div class="vspace"></div>
+<a name="run-command-output"></a>
 <h2>为什么 run 命令不格式化输出</h2>
 <p><i>run</i> 命令在数组上下文里将返回一个数组。</p>
 <p>如果你只是想打印标准输出的内容到终端，你可以强制在标量上下文中调用 run 命令。</p>
    <pre><code class="perl">my $output = run "df -h";
 say $output;</code></pre>
 
+<a name="get-current-server"></a>
 <h2>怎么获取当前任务运行在哪台服务器上？</h2>
 <pre><code class="perl">my $current_server = connection-&gt;server;</code></pre>
 
+<a name="task-parameters"></a>
 <h2>怎么给任务传递参数？</h2>
 <pre><code class="perl">task 'mytask', sub {
   my $parameters = shift;
@@ -29,6 +32,7 @@ say $output;</code></pre>
 <p>然后你就可以在命令行上这么运行任务：</p>
 <pre><code class="bash">rex -H hostname mytask --parameter1=value1 --parameter2=value2</code></pre>
 
+<a name="run-shellblock"></a>
 <h2>怎么运行一大段代码构成的单个命令？</h2>
 <p>可以用 <a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">ShellBlock</a> 模块。这个模块可通过运行下面命令安装：</p>
 <pre><code class="shell">$ rexify --use Rex::Misc::ShellBlock</code></pre>
@@ -46,6 +50,7 @@ say $output;</code></pre>
 
 <p>查看上面<a href="http://modules.rexify.org/module/Rex::Misc::ShellBlock">链接中的文档</a>，学习如何用这个模块运行 Perl, Python 和其他语言的代码。</p>
 
+<a name="run-local-script-remotely"></a>
 <h2>如何在远程执行一个本地脚本？</h2>
 <p>如果你有一个本地脚本 'files/script'，你可以用上面提到的 ShellBlock 模块在远端
 运行它。向上面说的那样安装好模块后，用下面这样命令即可：</p>
@@ -56,6 +61,7 @@ say $output;</code></pre>
      shell_block template('files/script');
  };</code></pre>
 
+<a name="sudo-with-different-user"></a>
 <h2>如何在远程用其他用户执行一个本地脚本？</h2>
 <p>在上例基础上，加上一个其他用户的要求，解决办法如下：</p>
 <pre><code class="perl">
@@ -68,10 +74,12 @@ task "myexec", sub {
      };
 };</code></pre>
 
+<a name="get-remote-exit-code"></a>
 <h2>怎么检查远程运行命令的退出值？</h2>
 <p>Rex 会把远程运行的 <code>run</code>
 或者 <code>shell_block</code> 语句的退出值存入 <code>$?</code> 变量。</p>
 
+<a name="using-rex-logger"></a>
 <h2>如何利用 Rex 内置的日志记录器来标记 ERROR/WARN/INFO/DEBUG 消息？</h2>
 <pre><code class="perl">
    Rex::Logger::info("some message");           # for INFO  (green)
