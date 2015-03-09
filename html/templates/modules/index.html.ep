@@ -9,6 +9,5 @@
          <h1>Modules</h1>
          <ul>
             <li><a href="application_deployment.html">Application Deployment</a></li>
-            <li><a href="augeas.html">Configuration Manipulation with Augeas</a></li>
          </ul>
 
