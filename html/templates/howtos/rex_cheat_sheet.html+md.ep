@@ -1,51 +1,51 @@
-# Rex Cheat Sheet
+# Rex 备忘录
 
-Small cheat sheet for the most used commands.
+最常用命令的简易备忘录。
 
-## Executing a command and parsing its output
+## 执行一个命令然后解析其输出
 
 ### run($command, %options)
 
-Run a remote command and returns its output.
+运行远程命令并返回输出。
 
-#### Options
+#### 参数(Options)
 
-* cwd - Work directory for the command.
-* only_if - Executes the command only if the condition completes successfully.
-* unless - Executes the command only unless the condition completes successfully.
-* only_notified - queues the command, to be executed upon notification.
-* env - sets environment variables for the command.
-* timeout - try to terminate the command after the given amount of seconds.
-* auto_die - die if the command returns with a non-zero exit code.
-* command - the command that should be executed.
-* creates - If the file given with this option already exists, the command won't be executed.
+* cwd - 命令的工作目录。
+* only_if - 仅当条件成功时执行命令。
+* unless - 仅当条件不成功时执行命令。
+* only_notified - 命令入队列，直到被通知触发时执行。
+* env - 设置命令的环境变量。
+* timeout - 尝试中断命令的超时时间。
+* auto_die - 如果命令返回非零退出值，自动 die。
+* command - 要执行的命令。
+* creates - 如果这个参数指定的文件存在，命令不会执行。
 
-##### Example to just run a command if a file doesn't exists
+##### 如果文件不存在才执行命令的示例
 <pre><code class="perl">run "/tmp/install_service.sh",
   creates => "/opt/myservice/conf.xml";
 </code></pre>
 
-##### Example to run a command and get its output
+##### 运行命令获取输出的示例
 <pre><code class="perl">my @output_lines = run "df -h";</code></pre>
 
 
-## Installing and configurating a service
+## 安装和配置一个服务
 
-The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the *file*, *pkg* and *service* functions.
+配置管理里最常用的函数就是安装/管理服务和配置文件。Rex 里，你可以用 *file*, *pkg* 和 *service* 函数。
 
 ### file($remote_file, %options)
-Manage files on remote systems.
+管理远端系统上的文件。
 
-#### Options
+#### 参数(Options)
 
-* ensure - Defines the state of the file. Valid parameters are *present*, *absent*, *directory*.
-* source - The local file that should be uploaded to the remote server.
-* content - Set the content directly. Can be used together with the *template()* function.
-* owner - The owner of the file.
-* group - The group the file should belong to.
-* mode - The file system privileges the file should have.
-* no_overwrite - If set to *TRUE* the file won't be overwritten if the file already exists.
-* on_change - A callback function that gets called when the file state changed. (For example if the file content was modified).
+* ensure - 定义文件的状态。可选值有：*present*, *absent*, *directory*。
+* source - 要上传到远端服务器的本地文件地址。
+* content - 直接设置内容。可以跟 *template()* 函数一起用。
+* owner - 文件属主。
+* group - 文件属组。
+* mode - 文件的文件系统权限。
+* no_overwrite - 如果设置为 *TRUE*，当文件已存在的时候，就不覆盖了。
+* on_change - 当文件状态改变的时候调用的回调函数。(比如当文件内容发生了修改)
 
 <pre><code class="perl">file "/etc/ntpd.conf",
   ensure => "present",
@@ -59,59 +59,60 @@ Manage files on remote systems.
 </code></pre>
 
 ### pkg($name, %options)
-Install a package on the remote system.
+在远端系统上安装一个软件包。
 
-#### Options
+#### 参数(Options)
 
-* ensure - Defines the state of the package. Valid parameters are *latest*, *present*, *absent* or the version that should be enforced.
-* on_change - A called function that gets called when the package state changed. (For example when it was updated)
+* ensure - 定义软件包的状态。可选值有：*latest*, *present*, *absent* 或者具体的版本号。
+* on_change - 软件包状态改变时调用的回调函数。(比如软件包升级时)
 
 <pre><code class="perl">pkg "ntpd",
   ensure => "latest",
   on_change => sub {
     service ntpd => "restart";
   };</code></pre>
+
 ### service
-Manage the state of a service.
+管理服务的状态
 
-This function can be called as a resource or as a normal function to directly stop/start/restart/... services.
+这个函数可以作为一个资源来调用，也可以作为普通的函数，直接停止/启动/重启……指定服务。
 
-#### Options (for calling as a resource)
+#### 参数(Options) (for calling as a resource)
 
-* ensure - Defines the state of the service. Valid parameters are *started*, *stopped*.
-* start - Custom command to start the service.
-* stop - Custom command to stop the service.
-* status - Custom command to get the status of a service.
-* restart - Custom command to restart a service.
-* reload - Custom command to reload a service.
+* ensure - 定义服务状态。可选值有 *started*, *stopped*。
+* start - 自定义启动服务的命令。
+* stop - 自定义停止服务的命令。
+* status - 自定义获取服务状态的命令。
+* restart - 自定义重启服务的命令。
+* reload - 自定义重载服务的命令。
 
-##### Example for calling as resource
+##### 作为资源调用的示例
 
 <pre><code class="perl">service "nptd",
   ensure => "started";
 </code></pre>
 
-#### Example for calling as function
+#### 作为函数调用的示例
 
 <pre><code class="perl">service ntpd => "restart";</code></pre>
 
-## Managing Cron
+## 管理定时任务
 
-Manage cron jobs.
+管理 cron 任务。
 
 ### cron_entry($entry_name, %options)
 
-#### Options
+#### 参数(Options)
 
-* ensure - Defines the state of the cron entry. Valid parameters are *present*, *absent*.
-* command - The command to run.
-* minute - The minute when to run the job.
-* hour - The hour when to run the job.
-* month - The month when to run the job.
+* ensure - 定义 cron 块的状态。可选值为 *present*, *absent*。
+* command - 要运行的命令。
+* minute - 运行任务的分钟值。
+* hour - 运行任务的时钟值。
+* month - 运行任务的月份值。
 * day_of_week
 * day_of_month
-* user - The user for the cron job.
-* on_change - A callback function that gets called when the cron entry state changed.
+* user - cron 任务的用户。
+* on_change - 当 cron 块状态发送变化时调用的回调函数。
 
 <pre><code class="perl">cron_entry "run-rhhunter",
   command => "rkhunter --cronjob",
@@ -119,26 +120,26 @@ Manage cron jobs.
   hour    => 1;
 </code></pre>
 
-## Managing users and groups
+## 管理用户和组
 
-Manage local user database.
+管理本地用户数据库
 
 ### account($user_name, %options)
 
-Manage user accounts.
+管理用户账号。
 
-#### Options
+#### 参数(Options)
 
-* ensure - Defines the state of the account. Valid parameters are *present*, *absent*.
-* uid - The user id.
-* groups - The groups the user should be member of. The first group is the primary.
-* home - The home directory.
-* expire - Date when the account will expire. Format: YYYY-MM-DD
-* password - Cleartext password for the user.
-* crypt_password - Crypted password for the user. Available on Linux, OpenBSD and NetBSD.
-* system - Create a system user.
-* create_home - If the home directory should be created. Valid parameters are *TRUE*, *FALSE*.
-* ssh_key - Add ssh key to *authorized_keys*.
+* ensure - 定义账号状态。可选值为 *present*, *absent*。
+* uid - 用户 id。
+* groups - 用户所属的组列表。第一个值为主属组。
+* home - 家目录。
+* expire - 账号过期时间。格式：YYYY-MM-DD
+* password - 用户的明文密码。
+* crypt_password - 用户的密文密码。仅在 Linux，OpenBSD 和 NetBSD 上有效。
+* system - 创建一个系统用户。
+* create_home - 是否创建家目录。可选值为 *TRUE*, *FALSE*。
+* ssh_key - 添加 SSH key 到 *authorized_keys*。
 * comment
 
 <pre><code class="perl">account "krimdomu",
@@ -155,13 +156,13 @@ Manage user accounts.
 
 ### group($group_name, %options)
 
-Manage groups.
+管理组。
 
-#### Options
+#### 参数(Options)
 
-* ensure - Defines the state of the group. Valid parameters are *present*, *absent*.
-* gid - The group id.
-* system - Create a system group.
+* ensure - 定义组的状态。可选值为 *present*, *absent*。
+* gid - 组 id。
+* system - 创建一个系统组。
 
 <pre><code class="perl">group "users",
   ensure => "present";
