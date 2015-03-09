@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex 0.57.0 API 文档';
+% title '(R)?ex 1.0 版 API 文档';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
@@ -31,6 +31,7 @@
          <div class="vspace"></div>
          <h2>Rex::Commands</h2>
          <ul class="simple-list">
+            <li><a href="Rex/Commands/Augeas.pm.html">Augeas.pm</a></li>
             <li><a href="Rex/Commands/Box.pm.html">Box.pm</a></li>
             <li><a href="Rex/Commands/Cloud.pm.html">Cloud.pm</a></li>
             <li><a href="Rex/Commands/Cron.pm.html">Cron.pm</a></li>

@@ -32,6 +32,7 @@
          <div class="vspace"></div>
          <h1>补充文档</h1>
          <ul class="simple-list">
+            <li><a href="/howtos/rex_cheat_sheet.html">Rex 备忘单</a></li>
             <li><a href="/api/">API 文档</a></li>
             <li><a href="/howtos/backward_compatibility.html">关于向后兼容性的概述</a></li>
             <li><a href="/howtos/compatibility.html">Rex 兼容性清单</a></li>
@@ -112,6 +113,7 @@
 <a name="releases"></a>
 <h1>发版笔记</h1>
 <ul class="simple-list">
+   <li><a href="releases/1.0.0.html">1.0.0</a></li>
    <li><a href="releases/0.57.0.html">0.57.0</a></li>
    <li><a href="releases/0.56.0.html">0.56.0</a></li>
    <li><a href="releases/0.55.3.html">0.55.3</a></li>

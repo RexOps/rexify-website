@@ -33,7 +33,8 @@ $ touch Rexfile</code></pre>
 
          <p>在 Rexfile 中插入下面的代码.</p>
 
-            <pre><code class="perl">use Rex::Commands::Cloud;
+         <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+use Rex::Commands::Cloud;
 
 user "root";
 public_key "/path/to/your/just/created/amazon-public.key";

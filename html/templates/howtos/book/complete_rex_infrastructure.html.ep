@@ -86,7 +86,7 @@ The <code>rexify --resolve-deps</code> command will read the <b>meta.yml</b> fil
 
 <h3>Load all required modules</h3>
 
-<pre><code class="perl">use Rex -feature =&gt; ['0.45'];
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 use Rex::CMDB;
 use Rex::Test;
 use Rex::Group::Lookup::INI;</code></pre>
@@ -94,7 +94,7 @@ use Rex::Group::Lookup::INI;</code></pre>
 <p>These lines loads all required modules.</p>
 
 <ul>
-  <li>Line <b>1</b>: Load the basic Rex functions and enable all features from version 0.45 and above.</li>
+  <li>Line <b>1</b>: Load the basic Rex functions and enable all features from version 1.0 and above.</li>
 <li>Line <b>2</b>: Load the CMDB functions.</li>
 <li>Line <b>3</b>: Load the Rex::Test suite. With this you can test your Rex code with local virtual box virtual machines.</li>
 <li>Line <b>4</b>: Load the function to read Rex groups from ini files.</li>
@@ -202,7 +202,7 @@ use Rex::Group::Lookup::INI;</code></pre>
 <h3>Example t/base.t test file</h3>
 
 <pre><code class="perl">use Rex::Test::Base;
-use Rex -base;</code></pre>
+use Rex -feature =&gt; ['1.0'];</code></pre>
 
 <p>Load the <b>Rex::Test::Base</b> framework and the Rex basic commands.</p>
 

@@ -31,7 +31,8 @@
 <p>这个文件也是一个普通的 Perl 模块。唯一不太一样的地方就是文件名，不过一开始你不用太在意这种事情。</p>
 
 <pre><code class="perl">package Service::NTP;
-use Rex -base;
+use Rex -feature =&gt; ['1.0'];
+
 
 task prepare =&gt; sub {
    my $service_name = case operating_system, {
@@ -39,7 +40,8 @@ task prepare =&gt; sub {
                          default =&gt; "ntpd",
                       };
 
-   install "ntp";
+   pkg "ntp",
+     ensure =&gt; "present";
 
    file "/etc/ntp.conf",
       source    =&gt; "files/etc/ntp.conf",
@@ -47,7 +49,8 @@ task prepare =&gt; sub {
          service $service_name =&gt; "restart";
       };
 
-   service $service_name =&gt; ensure =&gt; "started";
+   service $service_name,
+     ensure =&gt; "started";
 };
 
 1;</code></pre>
@@ -87,7 +90,7 @@ server ntp02.company.tld</code></pre>
 <p>不过这意味着，每次修改 ntp.conf 文件里的配置，你需要一口气修改 4 个文件。所以你需要用模板技术。</p>
 
 <pre><code class="perl">package Service::NTP;
-use Rex -base;
+use Rex -feature =&gt; ['1.0'];
 
 task prepare =&gt; sub {
    my $service_name = case operating_system, {
@@ -102,7 +105,8 @@ task prepare =&gt; sub {
                          default =&gt; ["ntp01.company.tld"],
                       };
 
-   install "ntp";
+   pkg "ntp",
+     ensure =&gt; "present";
 
    file "/etc/ntp.conf",
       content   =&gt; template("files/etc/ntp.conf", ntp_servers =&gt; $ntp_server),
@@ -110,7 +114,8 @@ task prepare =&gt; sub {
          service $service_name =&gt; "restart";
       };
 
-   service $service_name =&gt; ensure =&gt; "started";
+   service $service_name,
+     ensure =&gt; "started";
 };
 
 1;</code></pre>
@@ -216,7 +221,7 @@ $Host = {
 
 <p>使用你的模块就必须要添加到你的 <i>Rexfile</i> 里。这个非常简单，一行就行：</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "root";
 password "foo";

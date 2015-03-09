@@ -50,7 +50,7 @@ thread_concurrency      = 10
 
 <p>Than you can reference on it from within your Rexfile.</p>
 
-<pre><code class="perl">use Rex -base;
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "root";
 key_auth;
@@ -80,7 +80,7 @@ task "prepare_databases", group =&gt; "databases", sub {
 
 <strong>Using a single inline template</strong>
 <pre><code>
-use Rex -feature =&gt; 0.40;
+use Rex -feature =&gt; ['1.0'];
 
 task tempfiles =&gt; sub {
     file '/tmp/test.txt' =&gt;
@@ -116,7 +116,7 @@ for a project called &lt;%= $test->{target} %&gt;
 
 <strong>Using multiple inline templates</strong>
 <pre><code>
-use Rex -feature =&gt; 0.40;
+use Rex -feature =&gt; ['1.0'];
 
 task tempfiles =&gt; sub {
     file '/tmp/test.txt' =&gt;

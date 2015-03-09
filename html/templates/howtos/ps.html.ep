@@ -9,7 +9,7 @@
          <h1>列出所有正在运行的进程</h1>
          <p>要列出所有正在运行的进程，你可以使用 <i>ps</i> 函数。它会返回一个由包含进程全部信息的哈希组成的数组。</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";
@@ -32,7 +32,7 @@ task "ps", group =&gt; "myserver", sub {
 
          <p>想看到全部可用选项，使用 <i>Data::Dumper</i> 模块即可：</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 use Data::Dumper;
             
 user "my-user";
@@ -52,7 +52,7 @@ task "ps", group =&gt; "myserver", sub {
          <h2>获取进程的 PID</h2>
          <p>如果你要获取某个进程的 pid，你可以使用 Perl 函数 <i>grep</i>。</p>
 
-            <pre><code class="perl">use Rex::Commands::Process;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
             
 user "my-user";
 password "my-password";

@@ -26,7 +26,7 @@
 <p>Creating environments is as easy as creating groups. To create environments you can use the <i>environment</i> function. Inside an environment you can place everything that is specific for this environment (like authentication, server groups, tasks, ...).</p>
 
 <pre><code class="perl"># Rexfile
-use Rex -base;
+use Rex -feature =&gt; ['1.0'];
 
 environment test =&gt; sub {
   user "root";
@@ -71,18 +71,18 @@ environment live =&gt; sub {
 task "prepare", group =&gt; "frontend", make {
   # configure ntp.conf depending on the environment
   my $ntp_server = case environment, {
-                     test    => ["ntp01.test"],
-                     stage   => ["ntp01.stage"],
-                     live    => ["ntp01.live", "ntp02.live"],
-                     default => ["ntp01.test"],
+                     test    =&gt; ["ntp01.test"],
+                     stage   =&gt; ["ntp01.stage"],
+                     live    =&gt; ["ntp01.live", "ntp02.live"],
+                     default =&gt; ["ntp01.test"],
                    };
 
   file "/etc/ntp.conf",
-    content   => template("templates/etc/ntp.conf", ntp_server => $ntp_server),
-    owner     => "root",
-    group     => "root",
-    mode      => 644,
-    on_change => make { service ntpd => "restart"; };
+    content   =&gt; template("templates/etc/ntp.conf", ntp_server =&gt; $ntp_server),
+    owner     =&gt; "root",
+    group     =&gt; "root",
+    mode      =&gt; 644,
+    on_change =&gt; make { service ntpd =&gt; "restart"; };
 };
 </code></pre>
 
@@ -121,7 +121,7 @@ ntp_server:
 <p>To use the CMDB you have to require and configure the <i>Rex::CMDB</i> module first.</p>
 
 <pre><code class="perl"># Rexfile
-use Rex -feature =&gt; ['0.45'];
+use Rex -feature =&gt; ['1.0'];
 use Rex::CMDB;
 
 set cmdb =&gt; {
@@ -134,11 +134,11 @@ task "prepare", group =&gt; "frontend", make {
   my $ntp_server = get cmdb "ntp_server";
 
   file "/etc/ntp.conf",
-    content   => template("templates/etc/ntp.conf", ntp_server => $ntp_server),
-    owner     => "root",
-    group     => "root",
-    mode      => 644,
-    on_change => make { service ntpd => "restart"; };
+    content   =&gt; template("templates/etc/ntp.conf", ntp_server =&gt; $ntp_server),
+    owner     =&gt; "root",
+    group     =&gt; "root",
+    mode      =&gt; 644,
+    on_change =&gt; make { service ntpd =&gt; "restart"; };
 };</code></pre>
 
 

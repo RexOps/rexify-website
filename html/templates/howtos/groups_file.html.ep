@@ -9,7 +9,7 @@
          <h1>使用一个 INI-格式的服务器组定义文件</h1>
          <p>要使用一个 INI-格式的服务器组定义文件，你可以用 <i>groups_file</i> 函数。它会读取参数中提供的 ini 文件，然后你就可以在 Rexfile 中和平常一样使用服务器组了。</p>
 
-            <pre><code class="perl">use Rex -feature => [qw/use_server_auth/];
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 use Rex::Group::Lookup::INI;
 groups_file "file.ini";</code></pre>
 

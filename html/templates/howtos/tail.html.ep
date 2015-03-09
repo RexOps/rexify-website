@@ -20,7 +20,7 @@
          <h2>创建一个简单的 Rexfile</h2>
          <p>首先在 $HOME 目录创建一个简单的 Rexfile。</p>
 
-            <pre><code class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";
@@ -51,7 +51,7 @@ task "tail-fe", group =&gt; "fe", sub {
          <h2>定制 tail 输出</h2>
          <p>如果你想定制 tail 的输出，你可以添加一个回调函数作为第二个参数。</p>
 
-            <pre><code class="perl">use Rex::Commands::Tail;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 user "my-user";
 password "my-password";

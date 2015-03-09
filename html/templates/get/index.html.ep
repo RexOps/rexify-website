@@ -31,36 +31,25 @@
 
       <h3>For Trusty (14.04)</h3>
 
-   <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ trusty rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
-
-         <h3>For Saucy (13.10)</h3>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ saucy rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
-
-         <h3>For Quantal (12.10)</h3>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ quantal rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+   <pre><code class="bash">apt-get install apt-transport-https
+echo 'deb https://rex.linux-files.org/ubuntu/ trusty rex' &gt;&gt; /etc/apt/sources.list
+wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
          <h3>For Precise (12.04)</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ precise rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+            <pre><code class="bash">apt-get install apt-transport-https
+echo 'deb https://rex.linux-files.org/ubuntu/ precise rex' &gt;&gt; /etc/apt/sources.list
+wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
          <h3>For Lucid (10.04)</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+            <pre><code class="bash">apt-get install apt-transport-https
+echo 'deb https://rex.linux-files.org/ubuntu/ lucid rex' &gt;&gt; /etc/apt/sources.list
+wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
@@ -68,24 +57,17 @@ apt-get install rex</code></pre>
        <div class="tab-pane" id="tab2">
          <h3>For Wheezy</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+            <pre><code class="bash">apt-get install apt-transport-https
+echo 'deb https://rex.linux-files.org/debian/ wheezy rex' &gt;&gt; /etc/apt/sources.list
+wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
          <h3>For Squeeze</h3>
 
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
-apt-get update
-apt-get install rex</code></pre>
-
-         <h3>For Lenny</h3>
-
-         <p>For Lenny we have stopped building new packages since 0.31.</p>
-
-            <pre><code class="bash">echo 'deb http://rex.linux-files.org/debian/ lenny rex' &gt;&gt; /etc/apt/sources.list
-wget -O - http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
+            <pre><code class="bash">apt-get install apt-transport-https
+echo 'deb https://rex.linux-files.org/debian/ squeeze rex' &gt;&gt; /etc/apt/sources.list
+wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
 apt-get update
 apt-get install rex</code></pre>
 
@@ -98,12 +80,12 @@ apt-get install rex</code></pre>
        <div class="tab-pane" id="tab4">
          <h3>CentOS 7</h3>
 
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
 name=Fedora \$releasever - \$basearch - Rex Repository
-baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
@@ -111,12 +93,12 @@ yum install rex</code></pre>
 
          <h3>CentOS 6</h3>
 
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS6
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
 name=Fedora \$releasever - \$basearch - Rex Repository
-baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
@@ -124,12 +106,12 @@ yum install rex</code></pre>
 
          <h3>CentOS 5</h3>
 
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS5
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO.CENTOS5
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
 name=Fedora \$releasever - \$basearch - Rex Repository
-baseurl=http://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
+baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 
@@ -139,26 +121,32 @@ yum install rex</code></pre>
        <div class="tab-pane" id="tab5">
          <h3>For 13.1</h3>
 
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-zypper addrepo -t rpm-md -f -n rex http://rex.linux-files.org/OpenSuSE/13.1/rex/x86_64/ rex
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex https://rex.linux-files.org/OpenSuSE/13.1/rex/x86_64/ rex
+zypper install rex</code></pre>
+
+         <h3>For 13.2</h3>
+
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+zypper addrepo -t rpm-md -f -n rex https://rex.linux-files.org/OpenSuSE/13.2/rex/x86_64/ rex
 zypper install rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab6">
          <h3>Mageia 3</h3>
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
-urpmi.addmedia rex http://rex.linux-files.org/Mageia/3/rex/x86_64/
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+urpmi.addmedia rex https://rex.linux-files.org/Mageia/3/rex/x86_64/
 urpmi rex</code></pre>
 
        </div>
        <div class="tab-pane" id="tab7">
-         <h3>Fedora 18+</h3>
-            <pre><code class="bash">rpm --import http://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
+         <h3>Fedora 20+</h3>
+            <pre><code class="bash">rpm --import https://rex.linux-files.org/RPM-GPG-KEY-REXIFY-REPO
 
 cat &gt;/etc/yum.repos.d/rex.repo &lt;&lt;EOF
 [rex]
 name=Fedora \$releasever - \$basearch - Rex Repository
-baseurl=http://rex.linux-files.org/Fedora/\$releasever/rex/\$basearch/
+baseurl=https://rex.linux-files.org/Fedora/\$releasever/rex/\$basearch/
 enabled=1
 EOF
 

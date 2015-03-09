@@ -48,7 +48,7 @@ drwxr-xr-x  3 jan  staff  102 16 Apr 10:02 lib</code></pre>
          
          <p>编辑 <i>Rexfile</i> .</p>
 
-            <pre><code class="perl">use lib 'lib';
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
 # set your username
 user "root";
@@ -136,9 +136,8 @@ INSERT INTO virtual_hosts (enabled, servername, serveraliases, hostdirectory)
 use strict;
 use warnings;
 
-use Rex::Commands;
-use Rex::Commands::Service;
-use Rex::Commands::Pkg;
+use Rex -feature =&gt; ['1.0'];
+
 use Rex::Commands::DB {
                         dsn =&gt; "DBI:mysql:database=apache;host=db01",
                         user =&gt; "rex",
@@ -212,8 +211,7 @@ EOF</code></pre>
 
             <pre><code class="perl">package Rex::mysite;
 
-use Rex::Commands;
-use Rex::Commands::Run;
+use Rex -feature =&gt; ['1.0'];
 
 desc "Get uptime of server";
 task "uptime", group =&gt; 'servers', sub {

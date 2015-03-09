@@ -71,7 +71,9 @@ vms:
 
 <p>使用 YAML 文件你需要创建一个带有部署逻辑的 Rexfile。</p>
 
-<pre><code class="perl">use Rex::Commands::Box init_file =&gt; "box.yml";
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+use Rex::Commands::Box init_file =&gt; "box.yml";
 
 group myboxes =&gt; map { get_box($_-&gt;{name})-&gt;{ip} } list_boxes;
 

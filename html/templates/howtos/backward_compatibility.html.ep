@@ -30,6 +30,18 @@
             </tr>
 
             <tr>
+               <td>1.0</td>
+               <td>1.0</td>
+               <td>Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
+               <td>0.56</td>
+               <td>0.56</td>
+               <td>Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
                <td>0.55</td>
                <td>0.55</td>
                <td>Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
@@ -59,6 +71,19 @@
                <td>默认会自动加载 <b>Rex::Constants</b> 和 <b>CMDB</b>。而且所有 0.47 及以下版本的指令都会激活。</td>
             </tr>
 
+
+            <tr>
+               <td>no_autodie</td>
+               <td>1.0</td>
+               <td>Will disable autodie feature.</td>
+            </tr>
+
+            <tr>
+               <td>no_path_cleanup</td>
+               <td>0.44</td>
+               <td>Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
+            </tr>
+
             <tr>
                <td>verbose_run</td>
                <td>0.47</td>
@@ -78,17 +103,10 @@
             </tr>
 
             <tr>
-               <td>no_path_cleanup</td>
-               <td>0.44</td>
-               <td>Rex 在执行命令前会清空路径。开启这个特性则不清空。</td>
-            </tr>
-
-            <tr>
                <td>exec_autodie</td>
                <td>0.44</td>
                <td>用 run() 执行命令时，如果 RETVAL != 0，Rex会自动 die()。</td>
             </tr>
-
 
             <tr>
                <td>exec_and_sleep</td>
@@ -119,6 +137,13 @@
                <td>use_server_auth</td>
                <td>0.42</td>
                <td>支持对服务器设置特定的认证选项。</td>
+            </tr>
+
+
+            <tr>
+               <td>tty</td>
+               <td>1.0</td>
+               <td>Enable pty usage for ssh connections. (Default)</td>
             </tr>
 
             <tr>

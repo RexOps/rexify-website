@@ -43,7 +43,9 @@
          <p>创建一个构建任务。这个任务将会构建一个 tar.gz 的归档，包含有你的应用代码用来分发。比如说你可以把这个文件交给你的系统管理员。</p>
          <p>如果你想压缩你的 JavaScript 和 CSS 文件，只要下载 yuicompressor 然后放到你文件系统的某个地方，当然你还得安装好一个最新的 Java。</p>
 
-            <pre><code class="perl">use Rex::Apache::Build;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+use Rex::Apache::Build;
 
 # 设置 yuicompressor.jar 文件路径
 yui_path "./yuicompressor.jar";
@@ -111,7 +113,9 @@ document_root "/var/www/html";</code></pre>
 
          <p>这个示例将会部署 <i>myapp-1.0.war</i> 到 <i>tomcat01, tomcat02, tomcat03</i> 和 <i>tomcat04</i> 服务器上。它将通过 <i>Tomcat Manager</i> 来帮助部署应用到指定的 <i>/myapp</i> 路径。</p>
 
-            <pre><code class="perl">use Rex::Apache::Deploy Tomcat;
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+use Rex::Apache::Deploy Tomcat;
 
 # 应用版本
 my $VERSION = "1.0";

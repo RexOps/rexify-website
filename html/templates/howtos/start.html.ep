@@ -54,9 +54,10 @@
 <pre><code class="bash">$ mkdir -p projects/my-first-rex-project</code></pre>
 <p>Now change into this directory and create a file called <i>Rexfile</i> with the following contents:</p>
 
-            <pre><code class="perl">user "my-user";
+            <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "my-user";
 password "my-password";
-pass_auth;
 
 group myservers =&gt; "mywebserver", "mymailserver", "myfileserver";
 
@@ -66,7 +67,9 @@ task "uptime", group =&gt; "myservers", sub {
    say $output;
 };</code></pre>
 
-         <p>这个例子将会用<i>my-user</i>和<i>my-password</i> 登陆 <i>myserver</i> 服务器组里的所有机器，然后执行<i>uptime</i> 命令.</p>
+         <p>这个例子将会用用户 <i>my-user</i> 和密码 <i>my-password</i> 登陆 <i>myserver</i> 服务器组里的所有机器，然后执行<i>uptime</i> 命令。</p>
+         
+         <p>第一行这个特殊的 <code>use Rex -feature =&gt; ['1.0'];</code> 看起 v1.0 版所有可用的特性。如果想要了解关于特性标识更多细节，请阅读 <a href="/howtos/backward_compatibility.html">该页</a>。</p>
 
          <p>进入到你创建的 <i>Rexfile</i>目录下 (在终端中).</p>
 
@@ -120,6 +123,8 @@ key_auth;</code></pre>
 <p>本例中，你会学到如何安装和配置 ntp 服务。你可以很容易的迁移这个例子到其他服务的配置上。</p>
 
 <pre><code class="perl"># Rexfile
+use Rex -feature =&gt; ['1.0'];
+
 user "root";
 private_key "/root/.ssh/id_rsa";
 public_key "/root/.ssh/id_rsa.pub";
@@ -129,7 +134,8 @@ group all_servers =&gt; "srv[001..150]";
 task "setup_ntp", group =&gt; "all_servers", sub {
 
    # 首先安装软件包
-   install "ntpd";
+   pkg "ntpd",
+     ensure =&gt; "present";
 
    # 然后上传配置文件，文件位于 files/etc 子目录下
    file "/etc/ntp.conf",
@@ -140,7 +146,8 @@ task "setup_ntp", group =&gt; "all_servers", sub {
       };
 
    # 现在注册服务到主机启动的服务清单里
-   service ntpd =&gt; ensure =&gt; "started";
+   service "ntpd",
+     ensure =&gt; "started";
 };</code></pre>
 
 <p>全部搞定。</p>

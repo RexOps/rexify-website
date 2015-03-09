@@ -18,6 +18,20 @@ plugin 'RenderFile';
 
 my $m = Text::Markdown->new(tab_width => 2, empty_element_suffix => '/>');
 
+
+sub get_trainings {
+  my @content = eval { local (@ARGV) = ("trainings.txt"); <>; };
+  chomp @content;
+
+  my @ret;
+  for my $line (@content) {
+    my ( $date, $text ) = split /,/, $line, 2;
+    push @ret, { date => $date, text => $text };
+  }
+
+  return @ret;
+}
+
 sub get_news {
   my @content = eval { local (@ARGV) = ("news.txt"); <>; };
   chomp @content;
@@ -35,6 +49,7 @@ get '/' => sub {
   my ($self) = @_;
   $self->stash( "no_side_bar", 0 );
   $self->stash( "news", [get_news] );
+  $self->stash( "trainings", [get_trainings] );
   $self->render( "index", root => 1, cat => "", no_disqus => 1 );
 };
 
@@ -120,6 +135,7 @@ get '/*file' => sub {
   my $template = $self->param("file");
 
   $self->stash( "news", [get_news] );
+  $self->stash( "trainings", [get_trainings] );
 
   my ($cat) = split(/\//, $template);
   $cat ||= "";
@@ -237,8 +253,8 @@ __DATA__
 
                   <div class="source">
                      <pre><code class="perl">task prepare => sub {
-   install "apache2";
-   service apache2 => ensure => "started";
+   pkg "apache2", ensure =&gt; "latest";
+   service "apache2", ensure => "started";
 };</code></pre>
                   </div> <!-- source -->
                   <a class="headlink" href="/howtos/start.html">阅读我们的入门手册吧</a>
@@ -363,12 +379,17 @@ __DATA__
                % }
 
 
-               <h2>会议</h2>
+               <h2>培训</h2>
 
-                  <div class="news_date">2014-09-19</div>
-                  <div class="news_content"><p>今年的 <a href="http://www.kieler-linux-tag.de/">Kieler LinuxTag</a> 会有 Rex workshop。你可以在 <a href="http://www.kieler-linux-tag.de/index.php?seite=workshops.html">workshop</a> 页面上注册参与。</p>
-                  </div>
-               </div>
+               % for my $training_item (@{$trainings}) {
+                 <div class="news_widget">
+                    <div class="news_date"><%= $training_item->{date} %></div>
+                    <div class="news_content"><%== $training_item->{text} %></div>
+                 </div>
+
+               % }
+
+<!--               <h2>Conferences</h2> -->
 
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>
@@ -423,7 +444,7 @@ __DATA__
    <script type="text/javascript" charset="utf-8" src="/js/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/bootstrap.min.js"></script>
    <script type="text/javascript" charset="utf-8" src="/js/menu.js"></script>
-   <script type="text/javascript" charset="utf-8" src="http://stats.rexify.org/js/ZeroClipboard.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/ZeroClipboard.min.js"></script>
 
    <script>
       var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/ZeroClipboard.swf"});

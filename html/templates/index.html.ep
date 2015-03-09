@@ -44,8 +44,10 @@
 <pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
 </code></pre>
 
-<p>还有一些，基于 <i>Rexfile</i></p>
-<pre><code class="perl">desc "Get Disk Free";
+<p>统一效果，基于 <i>Rexfile</i> 文件的话：</p>
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+desc "Get Disk Free";
 task "disk_free", sub {
    my $output = run "df -h";
    say $output;
@@ -60,16 +62,18 @@ task "disk_free", sub {
 <p>这个例子将安装Apache webserver 在 5 个服务器上 并且保持配置文件同步.如果配置文件改变了 他会自动reload 你的apache 服务.</p>
 <p>如果这个任务将执行首先安装好apahce服务在做再做配置文件同步.</p>
 
-<pre><code class="perl">user "root";
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "root";
 group frontend =&gt; "frontend[01..05]";
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
   pkg "apache2",
-    ensure => "latest";
+    ensure =&gt; "latest";
 
   service "apache2",
-    ensure => "started";
+    ensure =&gt; "started";
 };
 
 desc "Keep Configuration in sync";
@@ -83,19 +87,20 @@ task "configure", group =&gt; "frontend", sub {
 </code></pre>
 
 <h2>在 sudo 下执行 ?</h2>
-<p>你也可以在sudo 下 运行任何的任务. 只需要激活sudo 和定义sudo 的密码</p>
-<pre><code class="perl">user "ubuntu";
-group "frontend" =&gt; "frontend[01..05]";
-sudo TRUE;   #激活sudo
-sudo_password 'sudopass';
+<p>你也可以在sudo 下 运行任何的任务. 只需要定义 sudo 的密码然后激活 sudo。</p>
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
+
+user "ubuntu";
+group frontend =&gt; "frontend[01..05]";
+sudo TRUE;
 
 desc "Prepare Frontend Server";
 task "prepare", group =&gt; "frontend", sub {
   pkg "apache2",
-    ensure => "latest";
+    ensure =&gt; "latest";
 
   service "apache2",
-    ensure => "started";
+    ensure =&gt; "started";
 };
 
 desc "Keep Configuration in sync";
