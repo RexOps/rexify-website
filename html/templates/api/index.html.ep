@@ -118,17 +118,6 @@
             <li><a href="Rex/Apache/Deploy/Package/rpm.pm.html">rpm.pm</a></li>
             <li><a href="Rex/Apache/Deploy/Package/deb.pm.html">deb.pm</a></li>
             <li><a href="Rex/Apache/Deploy/Package/tgz.pm.html">tgz.pm</a></li>
-         </ul>
-
-
-
-         <div class="vspace"></div>
-
-         <h1>This is the API documentation for (R)?ex Augeas Version 0.2</h1>
-
-         <div class="vspace"></div>
-         <ul class="simple-list">
-            <li><a href="Rex/Augeas.pm.html">Rex::Augeas</a></li>
          </ul> -->
 
          <br />

@@ -61,7 +61,6 @@
          <h1>Modules</h1>
          <ul class="simple-list">
             <li><a href="/modules/application_deployment.html">Application Deployment</a></li>
-            <li><a href="/modules/augeas.html">Configuration manipulation with augeas</a></li>
          </ul>
 
          <div class="vspace"></div>
