@@ -83,6 +83,12 @@
             <li><a href="Rex/Box/KVM.pm.html">KVM.pm</a></li>
          </ul>
 
+         <div class="vspace"></div>
+         <a name="rex-test"></a>
+         <h2>Rex::Test</h2>
+         <ul class="simple-list">
+            <li><a href="Rex/Test/Base.pm.html">Base.pm</a></li>
+         </ul>
 
          <!-- <div class="vspace"></div>
          <div class="vspace"></div>
