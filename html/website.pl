@@ -15,8 +15,7 @@ use Text::Markdown;
 
 plugin 'RenderFile';
 
-my $m = Text::Markdown->new(tab_width => 2, empty_element_suffix => '/>');
-
+my $m = Text::Markdown->new( tab_width => 2, empty_element_suffix => '/>' );
 
 sub get_trainings {
   my @content = eval { local (@ARGV) = ("trainings.txt"); <>; };
@@ -47,7 +46,7 @@ sub get_news {
 get '/' => sub {
   my ($self) = @_;
   $self->stash( "no_side_bar", 0 );
-  $self->stash( "news", [get_news] );
+  $self->stash( "news",      [get_news] );
   $self->stash( "trainings", [get_trainings] );
   $self->render( "index", root => 1, cat => "", no_disqus => 1 );
 };
@@ -114,15 +113,15 @@ get '/search' => sub {
     }
   );
 
-  $self->stash( "news", [get_news] );
+  $self->stash( "news",      [get_news] );
   $self->stash( "trainings", [get_trainings] );
   $self->stash( "no_side_bar", 0 );
   $self->stash( "root",        0 );
   $self->stash( "no_disqus",   1 );
   $self->stash( "cat",         "" );
-  $self->stash( "news", [get_news] );
 
   if ( my $json = $tx->res->json ) {
+    $self->app->log->error( Dumper( $json->{hits} ) );
     return $self->render( "search", hits => $json->{hits} );
   }
   else {
@@ -135,10 +134,10 @@ get '/*file' => sub {
 
   my $template = $self->param("file");
 
-  $self->stash( "news", [get_news] );
+  $self->stash( "news",      [get_news] );
   $self->stash( "trainings", [get_trainings] );
 
-  my ($cat) = split(/\//, $template);
+  my ($cat) = split( /\//, $template );
   $cat ||= "";
   $self->stash( "cat", $cat );
 
@@ -167,8 +166,20 @@ get '/*file' => sub {
   }
   elsif ( -f "templates/$template+md.ep" ) {
     $template =~ s/\.html$//;
-    my $str = $self->render_to_string( $template, no_disqus => 0, root => 0, variant => 'md' );
-    $self->render( $template, format => 'html', no_disqus => 0, root => 0, variant => 'header', content => $m->markdown($str));
+    my $str = $self->render_to_string(
+      $template,
+      no_disqus => 0,
+      root      => 0,
+      variant   => 'md'
+    );
+    $self->render(
+      $template,
+      format    => 'html',
+      no_disqus => 0,
+      root      => 0,
+      variant   => 'header',
+      content   => $m->markdown($str)
+    );
   }
   else {
     $self->render( '404', status => 404, no_disqus => 1, root => 0 );
