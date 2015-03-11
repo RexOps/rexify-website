@@ -114,6 +114,8 @@ get '/search' => sub {
     }
   );
 
+  $self->stash( "news", [get_news] );
+  $self->stash( "trainings", [get_trainings] );
   $self->stash( "no_side_bar", 0 );
   $self->stash( "root",        0 );
   $self->stash( "no_disqus",   1 );
