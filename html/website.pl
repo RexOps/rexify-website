@@ -196,14 +196,15 @@ __DATA__
 % layout 'default';
 % title 'Search for ' . param('q');
 
-% if( $hits->{total} == 0 ) {
+% my @api_results     = grep { $_->{_index} eq "api" } @{ $hits->{hits} };
+% my @webpage_results = grep { $_->{_index} eq "webpage" } @{ $hits->{hits} };
+
+% if( $hits->{total} == 0 || ( scalar @api_results == 0 && scalar @webpage_results == 0 ) ) {
 
 <p>I'm sorry. Your query had no results!</p>
 
 % } else {
 
-% my @api_results     = grep { $_->{_index} eq "api" } @{ $hits->{hits} };
-% my @webpage_results = grep { $_->{_index} eq "webpage" } @{ $hits->{hits} };
 
 % if(@api_results) {
 <h1>API</h1>
