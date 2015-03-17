@@ -47,7 +47,7 @@ task "prepare", sub {
 
 #### PkgConf
 
-The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/API/Rex/Commands/PkgConf.pm.html">API</a> documentation.
+The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/api/Rex/Commands/PkgConf.pm.html">API</a> documentation.
 
 * Add PkgConf command to configure packages - Andrew Beverley
 
