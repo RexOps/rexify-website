@@ -50,6 +50,7 @@
             <li><a href="Rex/Commands/Notify.pm.html">Notify.pm</a></li>
             <li><a href="Rex/Commands/Partition.pm.html">Partition.pm</a></li>
             <li><a href="Rex/Commands/Pkg.pm.html">Pkg.pm</a></li>
+            <li><a href="Rex/Commands/PkgConf.pm.html">PkgConf.pm</a></li>
             <li><a href="Rex/Commands/Process.pm.html">Process.pm</a></li>
             <li><a href="Rex/Commands/Rsync.pm.html">Rsync.pm</a></li>
             <li><a href="Rex/Commands/Run.pm.html">Run.pm</a></li>
