@@ -1,0 +1,83 @@
+# Release notes for 1.1.0
+These are the changes in the 1.1.0 release.
+
+We want to thank every contributor who made this release possible. We also welcome Alex Mestiashvili and Arnold Bechtoldt as new contributors.
+
+## New features
+
+### Pluggable shell detection
+
+ * Only check for iDrac signature if there was an output - Ferenc Erki
+ * Add initial iDrac shell support - Ferenc Erki
+ * added code to make shells pluggable. - RexOps/Rex#602 - Jan
+
+### Hiding sensitive data in debug output
+
+ * added a Rex::Logger::masq() function that can masq sensitiv data for logging output. (fix for RexOps/Rex#554) - Jan
+
+### Delayed auth settings
+
+ * Avoid noisy test output - Ferenc Erki
+ * added possibility to use auth(for => task) before a task is created - fixed #402 - Jan
+ * add test for #402 - Jan
+
+### Get server group membership
+
+ * this adds a new method to the server objects called group() and fixed - Jan
+
+### Rex::Test
+
+ * Add has_dir test - Ferenc Erki
+ * Print explicit PASS or FAIL output upon finishing a test suite - Ferenc Erki
+ * Add diag method for Rex::Test::Base - Ferenc Erki
+
+### Resources
+
+ * added error message - Jan
+ * added support to export resources to main namespace and added more events - Jan
+
+## Enhancements
+
+### General
+
+ * Update task tests #614 - Jan
+ * Recognize usable SSH modules separately - Ferenc Erki
+ * Describe platform-specific dependencies - Ferenc Erki
+ * sudo now inherits from base - Jan
+ * updated tests to use is() instead of ok(). reference: RexOps/Rex#608 - Jan
+ * Allow can_run method to accept command to do the check with - Jan
+ * Check if a command can be run before its execution (fix #514) - Ferenc Erki
+ * Refactor can_run - Ferenc Erki
+ * Support can_run command on Windows - Ferenc Erki
+ * Move can_run to Rex::Interface::Exec - Ferenc Erki
+ * Add can_run tests - Ferenc Erki 
+ * Create target directory before extracting an archive (fix #600, close #604) - Arnold Bechtoldt
+ * Add preferred type option for mount command (fix #469) - Ferenc Erki
+ * Drop potentially dangerous --force-yes option (fix #559) - Ferenc Erki
+
+### Documentation
+
+ * Sort CONTRIBUTORS file - Ferenc Erki
+ * Update POD (close #598) - Ferenc Erki
+ * Fix POD - Ferenc Erki
+ * misc/create_pod.sh: add PkgConf.pm to list of files to PODify - Brian Manning
+ * Update POD for Rex::Test::Base - Ferenc Erki
+ * Generate docs for Rex::Test (fix #483) - Ferenc Erki
+ * Sort modules alphabetically - Ferenc Erki
+ * update create_pod - Jan
+ * try to fix title generation - Jan
+
+### Rex::Test
+
+ * Reword has_{dir,file} test outputs - Ferenc Erki
+ * Allow has_stat test to handle directories (fix #582) - Ferenc Erki
+
+## Bugfixes
+
+ * Fix dependencies for openssh + pass_auth - Ferenc Erki
+ * Fix using ~/.ssh/config options without feature flags #615 - Jan
+ * Fix handling of symbolic links (fix #591, close #592) - Jan
+ * fixed setting of path environment variable - #583 - Jan
+ * Fix has_stat test for non-existing UIDs and GIDs - Ferenc Erki
+ * changed return code to undef if file/dir not found. fix for RexOps/Rex#608 - Jan
+ * Ensure proper return values for is_{dir,file} functions (fix #584) - Ferenc Erki
