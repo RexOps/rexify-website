@@ -53,7 +53,7 @@ Probably the most important of them is that Rex's dependencies are platform-spec
 
 The `can_run` method has been refactored to support Windows platforms by accepting an optional command to use when checking command availability. This also fixes some test failures on Windows.
 
-Other than the above, there are some minor but very useful changes increasing security and convenience, like creating the taget directory before extracting an archive to it, using the correct terms for mount command options, or dropping the `--force-yes` option when installing packages on Debian and its derivatives.
+Other than the above, there are some minor but very useful changes increasing security and convenience, like creating the target directory before extracting an archive to it, using the correct terms for mount command options, or dropping the `--force-yes` option when installing packages on Debian and its derivatives.
 
  * Update task tests #614 - Jan
  * Recognize usable SSH modules separately - Ferenc Erki
