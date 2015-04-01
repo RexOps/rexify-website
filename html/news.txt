@@ -1,6 +1,6 @@
+2015-04-01,Repositor.io 0.7.0 released. repositor.io is a repository management tool for apt, yum, yast and docker. See the <a href="http://www.repositor.io/">website</a> for more details.
 2015-03-29,(R)?ex 1.1.0 released. See the <a href="/howtos/releases/1.1.0.html">release notes</a> for more details.
 2015-03-27,View the slides of the talk <a href="http://www.slideshare.net/AndyBeverley/an-introduction-to-rex-floss-uk-devops-york-2015">An introduction to Rex</a> from Andy Beverley.
 2015-03-08,(R)?ex 1.0.0 released. See the <a href="/howtos/releases/1.0.0.html">release notes</a> for more details.
 2015-02-27,Work with (R)?ex at <a href="https://adjust.com">adjust</a>! Check out their <a href="https://www.adjust.com/careers/#sys-administrator">job posting</a> for details, or contact our fellow core developer, <a href="mailto:ferki@adjust.com?subject=I wanna work with (R)?ex!">FErki</a>.
-2015-03-06,Repositor.io 0.6.0 released. repositor.io is a repository management tool for apt, yum and docker. This is a bugfix release. See the <a href="http://www.repositor.io/">website</a> for more details.
 2014-11-14,Gabor Szabo wrote an article on (R)?ex, focusing on different authentication methods and with tips about how to secure your unattended access. <a href="http://perlmaven.com/levels-of-security-using-rex">Check it out at Perl Maven</a>!
