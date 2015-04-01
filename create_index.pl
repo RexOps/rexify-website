@@ -113,7 +113,7 @@ sub index_document {
 
    my $base64_content = encode_base64(join("\n", @content));
 
-   my $json = Mojo::JSON->new;
+   #my $json = Mojo::JSON->new;
    my $fs = $doc;
    $fs =~ s/$index_dir//;
    $fs =~ s/\.ep$//;
@@ -171,7 +171,7 @@ sub _post {
 
 sub _put {
    my ($url, $put) = @_;
-   _ua->put("http://$index_server:$index_port$url", _json->encode($put));
+   _ua->put("http://$index_server:$index_port$url", json => $put);
 }
 
 sub _delete {

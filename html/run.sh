@@ -9,6 +9,7 @@ mkdir -p doc/html/Rex/Box
 mkdir -p doc/html/Rex/Commands
 mkdir -p doc/html/Rex/Virtualization
 mkdir -p doc/html/Rex/FS
+mkdir -p doc/html/Rex/Test
 
 misc/create_pod.sh
 

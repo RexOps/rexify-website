@@ -47,7 +47,7 @@ task "prepare", sub {
 
 #### PkgConf
 
-The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/API/Rex/Commands/PkgConf.pm.html">API</a> documentation.
+The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/api/Rex/Commands/PkgConf.pm.html">API</a> documentation.
 
 * Add PkgConf command to configure packages - Andrew Beverley
 
@@ -61,15 +61,15 @@ task "prepare", sub {
 };
 </code></pre>
 
-#### pty usage
+#### tty usage
 
-If you're using <code class="perl">use Rex -feature => ['1.0'];</code> pty usage is disabled. This increases the compatibility with some init scripts that don't *disown* from the running pty. If you're using *sudo* then you need to configure the user to not need a pty to run sudo.
+If you're using <code class="perl">use Rex -feature => ['1.0'];</code> tty usage is disabled. This increases the compatibility with some init scripts that don't *disown* from the running tty. If you're using *sudo* then you need to configure the user to not need a tty to run sudo.
 
 <pre><code>Defaults:username !requiretty</code></pre>
 
-If you can't change this behaviour you can always use the *pty* feature to tell Rex to spawn a pty.
+If you can't change this behaviour you can always use the *tty* feature to tell Rex to spawn a tty.
 
-<pre><code>use Rex -feature => ['1.0', 'pty'];</code></pre>
+<pre><code>use Rex -feature => ['1.0', 'tty'];</code></pre>
 
 #### base
 

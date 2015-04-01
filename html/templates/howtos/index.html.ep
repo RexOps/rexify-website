@@ -61,7 +61,6 @@
          <h1>模块</h1>
          <ul class="simple-list">
             <li><a href="/modules/application_deployment.html">应用程序发布</a></li>
-            <li><a href="/modules/augeas.html">配置文件操作</a></li>
          </ul>
 
          <div class="vspace"></div>
@@ -113,6 +112,7 @@
 <a name="releases"></a>
 <h1>发版笔记</h1>
 <ul class="simple-list">
+   <li><a href="releases/1.1.0.html">1.1.0</a></li>
    <li><a href="releases/1.0.0.html">1.0.0</a></li>
    <li><a href="releases/0.57.0.html">0.57.0</a></li>
    <li><a href="releases/0.56.0.html">0.56.0</a></li>
