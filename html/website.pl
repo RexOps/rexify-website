@@ -394,6 +394,12 @@ __DATA__
                % }
 
 
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2015-05-07</div>
+                    <div class="news_content">Talk <i>Infrastructure as Code (ger)</i> at <a href="http://act.yapc.eu/gpw2015/schedule?day=2015-05-07">German Perl Workshop</a>.</div>
+                 </div>
+
                <h2>Training</h2>
 
                % for my $training_item (@{$trainings}) {
@@ -404,7 +410,6 @@ __DATA__
 
                % }
 
-<!--               <h2>Conferences</h2> -->
 
 
                <h2>Need Help?</h2>
