@@ -27,7 +27,7 @@
   <ul>
     <li><b>ensure</b> - Can be <i>present</i> (default if not set) or <i>absent</i> or any other string.</li>
   </ul>
-  <p>Every resource should also emit a changed signal if the resource did changes. With this signal the <i>on_change</i> hook gets triggerd and the reporting knows that the resource changed something.</p>
+  <p>Every resource should also emit a changed signal if the resource did changes. With this signal the <i>on_change</i> hook gets triggered and the reporting knows that the resource changed something.</p>
   <p>resource() parameters will also be visible in the templates without the need to register them.</p>
   <p>Resources get registerd as perl functions in the namespace where they are created. You can see a complete example <a href="#">here</a>.</p>
 
@@ -59,7 +59,7 @@ task "setup", sub {
     ensure  =&gt; present,
     content =&gt; "Hello World.",
     on_change     =&gt; sub {
-      # do something when changed event was triggerd
+      # do something when changed event was triggered
     };
 };
 </code></pre>
