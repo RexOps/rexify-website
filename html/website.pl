@@ -393,6 +393,12 @@ __DATA__
                % }
 
 
+               <h2>会议</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2015-05-07</div>
+                    <div class="news_content">在 <a href="http://act.yapc.eu/gpw2015/schedule?day=2015-05-07">German Perl Workshop</a> 上做 <i>Infrastructure as Code (ger)</i> 的演讲。</div>
+                 </div>
+
                <h2>培训</h2>
 
                % for my $training_item (@{$trainings}) {
@@ -403,7 +409,6 @@ __DATA__
 
                % }
 
-<!--               <h2>Conferences</h2> -->
 
                <h2>需要帮助吗?</h2>
                <p>Rex 是一个开源的项目，所以你可以找到社区的支持，连接如下：</p>

@@ -58,7 +58,7 @@ task "setup", sub {
     ensure  =&gt; present,
     content =&gt; "Hello World.",
     on_change     =&gt; sub {
-      # do something when changed event was triggerd
+      # do something when changed event was triggered
     };
 };
 </code></pre>

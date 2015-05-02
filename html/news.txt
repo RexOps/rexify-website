@@ -1,22 +1,6 @@
+2015-05-03,(R)?ex 1.2.0 released. See the <a href="/howtos/releases/1.2.0.html">release notes</a> for more details.
+2015-04-06,Repositor.io 1.0.0 released. repositor.io is a repository management tool for apt, yum, yast and docker. See the <a href="http://www.repositor.io/">website</a> for more details.
 2015-03-29,(R)?ex 1.1.0 released. 阅读 <a href="/howtos/releases/1.1.0.html">发版笔记</a>解更多信息。
 2015-03-27,阅读 Andy Beverley 带来的演讲文稿 <a href="http://www.slideshare.net/AndyBeverley/an-introduction-to-rex-floss-uk-devops-york-2015">An introduction to Rex</a>。
-2015-03-08,(R)?ex 1.0.0 released. 阅读 <a href="/howtos/releases/1.0.0.html">发版笔记</a>解更多信息。
-2015-03-06,Repositor.io 0.6.0 released. repositor.io 是一个 apt 和 yum 软件仓库管理工具。该版带来了对 Redhat 企业版镜像的支持。参看<a href="http://www.repositor.io/">网站</a>获取更多细节。
 2015-02-27,Work with (R)?ex at <a href="https://adjust.com">adjust</a>! Check out their <a href="https://www.adjust.com/careers/#sys-administrator">job posting</a> for details, or contact our fellow core developer, <a href="mailto:ferki@adjust.com?subject=I wanna work with (R)?ex!">FErki</a>.
-2015-01-11,(R)?ex 0.57.0 released. 主要是 bug 修复。阅读<a href="/howtos/releases/0.57.0.html">发版笔记</a>了解更多信息。
-2015-01-07,Repositor.io 0.4.0 released. repositor.io 是一个 apt 和 yum 软件仓库管理工具。该版带来了对 Redhat 企业版镜像的支持。参看<a href="http://www.repositor.io/">网站</a>获取更多细节。
-2015-01-04,Repositor.io 0.3.0 released. repositor.io 是一个 apt 和 yum 软件仓库管理工具。该版带来了对私有 docker 仓库的支持，并且可以请求软件包的勘误信息。参看<a href="http://www.repositor.io/">网站</a>获取更多细节。
-2014-12-30,(R)?ex 0.56.0 released. 主要是 bug 修复，不过我们也添加了一些新特性。阅读<a href="/howtos/releases/0.56.0.html">发版笔记</a>了解更多信息。
 2014-11-14,Gabor Szabo 写了一篇关于 (R)?ex 的文章，专注于不同的认证方法和如何保护你的访问。<a href="http://perlmaven.com/levels-of-security-using-rex">上 Perl Maven 阅读</a>!
-2014-11-07,(R)?ex 将会在 <a href="http://act.yapc.eu/npw2014">Nordic Perl Workshop 2014</a> 上有一个演讲，由 <a href="https://www.adjust.com">adjust</a> 赞助。谢谢！
-2014-11-02,(R)?ex 0.55.3 released. This is a bugfix-only release which fixes build/installation issues on Windows. See the <a href="/howtos/releases/0.55.3.html">release notes</a> for more details.
-2014-11-01,(R)?ex 0.55.2 released. This is a bugfix-only release which should fix test issues on Windows. See the <a href="/howtos/releases/0.55.2.html">release notes</a> for more details.
-2014-10-26,(R)?ex 0.55.1 released. This is mainly a bugfix release with a minor new feature. See the <a href="/howtos/releases/0.55.1.html">release notes</a> for more details.
-2014-10-20,(R)?ex 0.55.0 released. 现在你可以给自己的 Rex 项目创建一个自包含的包。阅读<a href="/howtos/releases/0.55.0.html">发版笔记</a>了解更多信息。
-2014-10-03,发布第一版 JobControl -- Rex 的官方网页界面。阅读<a href="/howtos/jobcontrol/index.html">入门</a>了解其内容。
-2014-10-03,(R)?ex 0.54.3 released. 主要是 bug 修复，不过有一个非常棒的新特性。阅读<a href="/howtos/releases/0.54.3.html">发版笔记</a>了解更多信息。
-2014-09-14,(R)?ex 0.53.1 released. 阅读<a href="/howtos/releases/0.53.1.html">发版笔记</a>了解更多信息。
-2014-09-02,我们开始开发 Rex 的前端页面。代码发布在 <a href="https://github.com/RexOps/rex-jobcontrol">Github</a>，欢迎反馈和修改。
-2014-09-01,(R)?ex 0.52.1 released. 该版本主要是修复 bug。阅读<a href="/howtos/releases/0.52.1.html">发版笔记</a>了解更多信息。
-2014-07-02,为本站和 <a href="https://build.rexify.org">build.rexify.org</a> 使用由 <a href="https://www.cacert.org">CACert.org</a> 签名的 SSL 证书。
-2014-05-31, 阅读<a href="/howtos/book/deploying_openldap_and_sssd.html">新的 Howto</a> 指南学习如何用 Rex 设置 OpenLDAP 和 SSSD。

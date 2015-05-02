@@ -1,5 +1,5 @@
 % layout 'default';
-% title '(R)?ex 1.1.0 版 API 文档';
+% title '(R)?ex 1.2.0 版 API 文档';
 
 % content_for header => begin
       <meta name="description" content="(R)?ex - API documentation">
