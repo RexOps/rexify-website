@@ -13,6 +13,7 @@
          <h2>Rex</h2>
          <ul class="simple-list">
             <li><a href="Rex.pm.html">Rex.pm</a></li>
+            <li><a href="Rex/CMDB.pm.html">CMDB.pm</a></li>
             <li><a href="Rex/Commands.pm.html">Commands.pm</a></li>
             <li><a href="Rex/Hardware.pm.html">Hardware.pm</a></li>
             <li><a href="Rex/Logger.pm.html">Logger.pm</a></li>
