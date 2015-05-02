@@ -1,3 +1,4 @@
+2015-05-03,(R)?ex 1.2.0 released. See the <a href="/howtos/releases/1.2.0.html">release notes</a> for more details.
 2015-04-01,Repositor.io 0.7.0 released. repositor.io is a repository management tool for apt, yum, yast and docker. See the <a href="http://www.repositor.io/">website</a> for more details.
 2015-03-29,(R)?ex 1.1.0 released. See the <a href="/howtos/releases/1.1.0.html">release notes</a> for more details.
 2015-03-27,View the slides of the talk <a href="http://www.slideshare.net/AndyBeverley/an-introduction-to-rex-floss-uk-devops-york-2015">An introduction to Rex</a> from Andy Beverley.
