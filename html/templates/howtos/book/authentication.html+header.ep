@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'The Rex Book / Authentication';
+
+% content_for header => begin
+      <meta name="description" content="Authentication with Rex">
+      <meta name="keywords" content="Rex, Authentication">
+% end
+
+<%== $content %>
