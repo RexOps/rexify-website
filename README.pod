@@ -27,3 +27,27 @@ Start a local webserver: C<cd rexify-website/html && hypnotoad website.pl>
 Open L<http://localhost:8080> in your favorite browser
 
 =back
+
+=head2 Browse Rex API docs locally
+
+This is most probably going to change, but we still felt like documenting the current method until then.
+
+=over
+
+=item *
+
+Clone the Rex repo: C<git clone https://github.com/RexOps/Rex.git>
+
+=item *
+
+Generate the docs by running C<misc/create_pod.sh> (currently it only works with the C<pod2html> version coming with perl-5.14.4)
+
+=item *
+
+Symlink the C<doc/html/Rex> directory generated in the Rex repo as C<html/templates/api/Rex> under the rexify-website repo
+
+=item *
+
+Open L<http://localhost:8080/api/index.html> in your favorite browser
+
+=back
