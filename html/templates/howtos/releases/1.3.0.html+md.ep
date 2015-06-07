@@ -75,6 +75,8 @@ most notably:
  * regular expression pattern fixes for perl-5.22.0 compatibility
  * improved validation and error handling in several places
 
+All those happened in the following commits:
+
  * Fix regex pattern for perl-5.22.0 - Ferenc Erki
  * pass cmdb() arguments to callback - fixed #709 - Jan
  * allow creation of inherited Rex::Group::Entry::Server objects - fixed #708 - Jan
