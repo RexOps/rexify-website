@@ -1,6 +1,5 @@
+2015-06-07,(R)?ex 1.3.0 released. See the <a href="/howtos/releases/1.3.0.html">release notes</a> for more details.
 2015-05-27,Read the first part of "Rex in practice" series about <a href="http://big-elephants.com/2015-05/rex-in-practice-infrastructure-as-code/">Infrastructure as code</a>.
 2015-05-09,repositor.io 1.1.0 released. <a href="http://www.repositor.io/">repositor.io</a> is a repository management tool for apt, yum, yast and docker. This is a bugfix release with fixes for ubuntu and centos7 installation media mirroring.
 2015-05-03,(R)?ex 1.2.0 released. See the <a href="/howtos/releases/1.2.0.html">release notes</a> for more details.
-2015-03-29,(R)?ex 1.1.0 released. 阅读 <a href="/howtos/releases/1.1.0.html">发版笔记</a>解更多信息。
 2015-03-27,阅读 Andy Beverley 带来的演讲文稿 <a href="http://www.slideshare.net/AndyBeverley/an-introduction-to-rex-floss-uk-devops-york-2015">An introduction to Rex</a>。
-2015-02-27,Work with (R)?ex at <a href="https://adjust.com">adjust</a>! Check out their <a href="https://www.adjust.com/careers/#sys-administrator">job posting</a> for details, or contact our fellow core developer, <a href="mailto:ferki@adjust.com?subject=I wanna work with (R)?ex!">FErki</a>.
