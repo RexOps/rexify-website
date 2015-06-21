@@ -25,20 +25,22 @@ Please see the [official compatibility page](compatibility.html#embedded). You m
 ## Requirements
 
  * >=rex-0.43: initial support has been added in this release
- * Attitude Adjustment (12.09 final): latest stable OpenWrt release as of 2014-01-12 and the only one which is tested to work with Rex, but Rex might work with other releases as well - let us know! :)
+ * enabled `no_tty` [feature flag](http://www.rexify.org/howtos/backward_compatibility.html) when using OpenSSH connection mode
+ * Attitude Adjustment (12.09 final) or Barrier Breaker (14.07 final)
 
 Generally you'll need the following packages on your OpenWrt box on top of a vanilla install:
 
- * SFTP server: openssh-sftp-server or gesftpserver
+ * SFTP server: openssh-sftp-server or gesftpserver (only available for 12.09)
  * perl
  * perl modules: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader
- * if you use >=rex-0.46: coreutils-nohup
+ * if you use >=rex-0.46: coreutils-nohup (required for service handling)
 
 Optional packages (only for specific Rex functions):
 
  * sync_up: rsync
  * user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod
  * inventory gathering: dmidecode
+ * swap handling: swap-utils (+ block-mount on 14.07)
 
 ## Details
 
@@ -64,6 +66,7 @@ It can be set up with the following commands:
 
 #### gesftpserver
 
+ * only available for 12.09
  * needs some (minimal) tinkering after installation
  * a bit bigger in size in itself
  * no cumbersome dependencies, good for minimal systems
