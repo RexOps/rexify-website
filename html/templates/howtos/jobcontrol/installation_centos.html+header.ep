@@ -1,4 +1,0 @@
-% layout 'default';
-% title 'JobControl - Installation on CentOS';
-
-<%== $content %>
