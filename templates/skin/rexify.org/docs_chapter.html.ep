@@ -4,18 +4,12 @@
 
 %== $page->content
 
+
 %# needed for the __SUB__ call
 % use v5.16;
 <% my $block = begin %>
-  % my ($page, $root) = @_;
+  % my ($page) = @_;
 
-
-% if($root) {
-  <h2><%= $page->title %></h2>
-    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
-    %=     __SUB__->($child);
-    %   }
-% } else {
 
 <ul>
   <li>
@@ -35,10 +29,8 @@
   </li>
 </ul>
 
-% }
-
 <% end %>
 
 % for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
-<%= $block->($child, 1) %>
+<%= $block->($child) %>
 % }
