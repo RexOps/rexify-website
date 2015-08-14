@@ -31,7 +31,7 @@
          <p>You have to install Rex::Gearman on your workstation (or the server where you run Rex) and on the machines you want to use to distribute the work.</p>
          <p>If you don't want to use the packages you can install it with the following command:</p>
 
-            <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
+            <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
 
 
          

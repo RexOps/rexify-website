@@ -176,7 +176,7 @@ make install clean</code></pre>
 
 <p>Installation instructions for MacPorts:</p>
 <pre><code class="bash">sudo port install libssh2 perl5
-curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>Microsoft Windows</h2>
 
