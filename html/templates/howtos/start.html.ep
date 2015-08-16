@@ -43,7 +43,7 @@
 <h2>Preparation</h2>
 <p>You can install (R)?ex on a Linux host via a simple one-liner. For other systems please read the instructions on the <a href="/get/">Get Rex</a> page.</p>
 
-<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+<pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>This command will install Rex on your system. You need libssh2 development libraries installed for this to work.</p>
 <p><b>We recommend</b> to use our packages from the <a href="/get/">repository</a>.</p>
