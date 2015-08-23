@@ -311,6 +311,7 @@ __DATA__
                         <li><a href="/howtos/faq.html">FAQ</a></li>
                         <li class="divider"></li>
                         <li><a href="/api/index.html">API</a></li>
+                        <li><a href="/howtos/backward_compatibility.html">Feature flags</a></li>
                         <li class="divider"></li>
                         <li><a href="http://rex.perl-china.com/">Chinese Rex Community Website</a></li>
                      </ul>
