@@ -18,7 +18,7 @@
          <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our <a href="https://github.com/RexOps/Rex/issues">issue tracker</a>.</p>
 
          
-         <h2>Feature Flags</h2>
+         <h2>Feature flags</h2>
 
          <p>This is the current list of feature flags:</p>
          
@@ -30,15 +30,45 @@
             </tr>
 
             <tr>
+               <td>1.3</td>
+               <td>1.3</td>
+               <td>Activating the new template engine by default.</td>
+            </tr>
+
+            <tr>
+               <td>no_template_ng</td>
+               <td>1.3</td>
+               <td>Disabling the new template engine.</td>
+            </tr>
+
+            <tr>
                <td>1.0</td>
                <td>1.0</td>
                <td>Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
             </tr>
 
             <tr>
+               <td>no_autodie</td>
+               <td>1.0</td>
+               <td>Will disable autodie feature.</td>
+            </tr>
+
+            <tr>
+               <td>template_ng</td>
+               <td>0.56</td>
+               <td>Enabling the new template engine (better error reporting, etc.)</td>
+            </tr>
+
+            <tr>
                <td>0.56</td>
                <td>0.56</td>
                <td>Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
+            </tr>
+
+            <tr>
+               <td>autodie</td>
+               <td>0.56</td>
+               <td>Will enable autodie feature: die on all failed <a href="/api/Rex/Commands/Fs.pm.html">filesytem commands</a></td>
             </tr>
 
             <tr>
@@ -69,13 +99,6 @@
                <td>0.51</td>
                <td>0.51</td>
                <td>Will load <b>Rex::Constants</b> and the <b>CMDB</b> by default. And all things 0.47 and down activated.</td>
-            </tr>
-
-
-            <tr>
-               <td>no_autodie</td>
-               <td>1.0</td>
-               <td>Will disable autodie feature.</td>
             </tr>
 
             <tr>
