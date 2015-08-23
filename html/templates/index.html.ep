@@ -6,22 +6,24 @@
 <div class="row-fluid">
    <div class="span4">
       <h2>Why use Rex?</h2>
-      <p>If you have to do a task more than once,
-automate it!</p>
-      <p>Don‘t forget an installation step anymore. Automation reduces the risk of failure and let you do your real work.</p>
-   </div><!--/span-->
-   <div class="span4">
-      <h2>Advantages</h2>
-      <ul class="no-list">
-         <li>uses ssh, no agent required</li>
-         <li>seamless integration, no conflicts</li>
-         <li>easy to use and to extend</li>
-         <li>easy to learn, it‘s just plain perl</li>
+      <ul>
+         <li>If you have to do a task more than once, automate it!</li>
+         <li>Don‘t forget an installation step anymore.</li>
+         <li>Automation reduces the risk of failure, and lets you do your real work.</li>
       </ul>
    </div><!--/span-->
    <div class="span4">
-      <h2>Open Source</h2>
-      <p>We believe in the idea of open source. So Rex and all its parts are released under Apache 2.0 license.</p>
+      <h2>Advantages</h2>
+      <ul>
+         <li>Uses SSH, no agent required</li>
+         <li>Seamless integration, no conflicts</li>
+         <li>Easy to use and extend</li>
+         <li>Easy to learn, it‘s just plain Perl</li>
+      </ul>
+   </div><!--/span-->
+   <div class="span4">
+      <h2>Open source</h2>
+      <p>We believe in the idea of open source. So Rex, and all its parts are released under the Apache 2.0 license.</p>
       <p>You‘re invited to join the community to make Rex better and better.</p>
    </div><!--/span-->
 </div><!--/row-->
@@ -40,8 +42,8 @@ automate it!</p>
 </div>
 
 <h2>Uptime?</h2>
-<p>This command line example will execute <code>uptime</code> on all the given hosts (frontend01, frontend02, ...).</p>
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
+<p>This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ..., <code>db04</code>).</p>
+<pre><code class="bash">$ rex -H 'frontend[01..15] middleware[01..05] db[01..04]' -e 'say run "uptime"'
 </code></pre>
 
 <p>The same, but with a <i>Rexfile</i></p>
@@ -54,7 +56,7 @@ task 'uptime', sub {
 </code></pre>
 
 <p>Now you can run your task with this command:</p>
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" uptime
+<pre><code class="bash">$ rex -H 'frontend[01..15] middleware[01..05] db[01..04]' uptime
 </code></pre>
 
 <h2>Keep your configuration in sync</h2>
@@ -77,7 +79,7 @@ task 'prepare', group =&gt; 'frontend', sub {
 
 desc 'Keep configuration in sync';
 task 'configure', group =&gt; 'frontend', sub {
-  prepare();
+  needs 'prepare';
 
   file '/etc/apache2/apache2.conf',
     source    =&gt; 'files/etc/apache2/apache2.conf',
@@ -92,6 +94,7 @@ task 'configure', group =&gt; 'frontend', sub {
 user 'ubuntu';
 group frontend =&gt; 'frontend[01..05]';
 sudo TRUE;
+sudo_password 'mysudopw';
 
 desc 'Prepare frontend servers';
 task 'prepare', group =&gt; 'frontend', sub {
@@ -104,7 +107,7 @@ task 'prepare', group =&gt; 'frontend', sub {
 
 desc 'Keep configuration in sync';
 task 'configure', group =&gt; 'frontend', sub {
-  prepare();
+  needs 'prepare';
 
   file '/etc/apache2/apache2.conf',
     source    =&gt; 'files/etc/apache2/apache2.conf',
