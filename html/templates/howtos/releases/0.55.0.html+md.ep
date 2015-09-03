@@ -11,7 +11,7 @@ Now it is possible to create a self-contained binary from a Rex project with:
 
 <pre><code class="bash">$ rexify --bundle</code></pre>
 
-This will create one "large" binary out of the Rex project. This binary can be copied to other systems (with the same architecture and compatible glibc). It don't need perl on those system.
+This will create one "large" binary out of the Rex project. This binary can be copied to other systems (with the same architecture and compatible glibc). It doesn't need perl on those system.
 
 Once copied, the binary can be executed with the normal rex parameters, for example:
 
