@@ -38,7 +38,11 @@
 
 <h3>Managed Hosts</h3>
 
-<p>On the systems you want to manage you just need a Perl 5 interpreter installed and a valid SSH account. If you want to do administrative tasks you need root or sudo access.</p>
+<p>On the systems you want to manage you need only two things: a Perl 5 interpreter, and a valid SSH account.</p>
+
+<p>Rex doesn't try use any non-core Perl modules on the remote hosts, but some operating systems (e.g. RHEL/CentOS 7, Fedora 21) might not supply them out of the box. In this case you might need to install them first (currently this means the Digest::MD5 module).</p>
+
+<p>If you want to run administrative tasks on the remote machines, you obviously would need root or sudo access on them.</p>
 
 <h2>Preparation</h2>
 <p>You can install (R)?ex on a Linux host via a simple one-liner. For other systems please read the instructions on the <a href="/get/">Get Rex</a> page.</p>
