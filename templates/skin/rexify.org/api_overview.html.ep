@@ -40,6 +40,5 @@
 <% end %>
 
 % for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
-% next if($child->name =~ m/release notes/i);
 <%= $block->($child, 1) %>
 % }
