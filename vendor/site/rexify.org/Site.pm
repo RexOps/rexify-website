@@ -53,7 +53,16 @@ sub page_not_found {
     $self->controller->redirect_to(lc($api_url));
   }
   else {
-    $self->controller->reply->not_found();
+    $self->controller->stash("news" => []);
+    $self->controller->stash("trainings" => []);
+    $self->controller->stash("cat" => 'home');
+    $self->controller->stash("no_disqus" => 1);
+    $self->controller->stash("no_side_bar" => 0);
+    $self->controller->stash("root" => 0);
+
+    $self->controller->stash(page => $self->site->get_page(1));
+    $self->controller->res->code(404);
+    $self->controller->render("skin/rexify.org/404");
   }
 }
 
