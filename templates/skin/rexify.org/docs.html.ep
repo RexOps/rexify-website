@@ -27,8 +27,17 @@
     % } else {
       <%= $page->title || $page->name %>
     % }
-    % if($page->is_branch) {
+    % if($page->is_branch && $page->type->name !~ m/^api/) {
     %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+    %=     __SUB__->($child);
+    %   }
+    % }
+    % else {  # api_* type
+    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0},
+    %     {
+    %       order_by => { -asc => [qw/name/] }
+    %     }
+    %   )) {
     %=     __SUB__->($child);
     %   }
     % }

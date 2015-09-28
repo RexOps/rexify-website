@@ -2,7 +2,7 @@
 
 <h1><%= $page->title %></h1>
 
-%== $page->content
+%== $page->content || ""
 
 
 %# needed for the __SUB__ call
@@ -22,7 +22,11 @@
       <%= $page->title || $page->name %>
     % }
     % if($page->is_branch) {
-    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0},
+    %     {
+    %       order_by => { -asc => [qw/name/] }
+    %     }
+    %   )) {
     %=     __SUB__->($child);
     %   }
     % }
@@ -31,6 +35,10 @@
 
 <% end %>
 
-% for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+% for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0},
+%   {
+%     order_by => { -asc => [qw/name/] }
+%   }
+% )) {
 <%= $block->($child) %>
 % }
