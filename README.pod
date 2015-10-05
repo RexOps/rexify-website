@@ -16,11 +16,11 @@ Clone the repo: C<git clone https://github.com/RexOps/rexify-website.git>
 
 =item *
 
-Install Perl modules: C<cpanm DateTime IO::All Mojolicious Mojolicious::Plugin::RenderFile Text::Markdown>
+Install Perl modules: C<cpanm --installdeps .>
 
 =item *
 
-Start a local webserver: C<cd rexify-website/html && hypnotoad website.pl>
+Start a local webserver: C<cd html && hypnotoad website.pl>
 
 =item *
 
