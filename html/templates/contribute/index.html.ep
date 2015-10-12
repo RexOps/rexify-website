@@ -6,14 +6,14 @@
       <meta name="keywords" content="Rex, Contribute, Project">
 % end
 
-
-      <h1>贡献 (R)?ex</h1>
+      <h1>给 (R)?ex 做贡献</h1>
       <p>(R)?ex 是没有一个背景的组织. 一切都是由志愿者在他们生活和工作的的空闲时间开发. (R)?ex 它是免费的开源项目.我们欢迎每一个贡献者.</p>
 <div class="vspace"></div>
 <h1>联系方式</h1>
 <p>你可以在 <a href="irc://irc.freenode.net/rex">irc.freenode.net 的 #rex 频道</a>找到我们。可能需要过几分钟才会有人回答，在此之前，请保持一点耐心，多谢！</p>
 
       <div class="vspace"></div>
+      <a name="documentation"></a>
       <h1>文档</h1>
       <p>每一个成功的项目都离不开他的文档,如果没有文档他将不会成功.所以希望你也能写出友好的文档</p>
       <div class="small-vspace"></div>
@@ -22,6 +22,7 @@
       <p>你可以检出rex的网站代码 <a href="https://github.com/RexOps/rexify-website">Github</a>.请阅读 <a href="https://github.com/RexOps/rexify-website/blob/master/README.pod">README 文件</a>，它会告诉你怎么运行网站在你的本地环境.</p>
       <p>请注意，API 文档时通过 <a href="https://github.com/RexOps/Rex">(R)?ex repo</a> 里文件的内嵌 POD 自动生成到网站的。</p>
       <div class="vspace"></div>
+      <a name="code"></a>
       <h1>代码</h1>
       <p>如果你想贡献新功能或者修改bug，<a href="https://github.com/RexOps/Rex">克隆这个仓库</a>，然后通过开发分支推送合并请求。我们希望你最好把自己的提交组合成不同的 topic/feature 分支，然后为每个分支提交一次 pull request。我们夜希望看到格式优美意义明确的 commit 信息，比如<a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">这里描述的</a>一样。</p>
 
@@ -29,10 +30,18 @@
       <p>如果关于怎么实现的有问题，请联系我们<a href="irc://irc.freenode.net/rex">irc.freenode.net/#rex</a>.</p>
 
       <div class="vspace"></div>
-      <h1>发起人</h1>
+      <a name="sponsoring"></a>
+      <h1>赞助</h1>
       <p>上面提到的全部是志愿者开发的.所以不能保证一个特殊的bug或者功能在一个指定的日期发布. 如果你需要一个特殊的功能,你可以赞助他. 这样我们才能关注下一个版本的功能. 你可以联系我们  <a href="mailto:feature@rexify.org">feature@rexify.org</a>.</p>
       <div class="small-vspace"></div>
-      <p>这些特殊的功能也被包含到开源代码离. 所以它是保证它是兼容版本后,你将有一个社区的利益寻找潜在的bug或贡献的增强.</p>
+      <p>这些特殊的功能也将使用和 (R)?ex 相同的开源协议发布到开源代码里。所以它是保证它是兼容版本后,你将有一个社区一起寻找潜在的bug或贡献。</p>
       <div class="vspace"></div>
+      <a name="hardware"></a>
       <h2>硬件</h2>
       <p>有个额外问题就是硬件。我们缺少足够的硬件/环境来测试 (R)?ex。尤其是即将发布 Rex.IO 版本 -- 一个 Rex 的裸部署和网页管理工具。如果你想赞助些硬件，请联系<a href="mailto:sponsor@rexify.org">sponsor@rexify.org</a>。</p>
+      <div class="vspace"></div>
+      <h3>硬件赞助商：</h3>
+
+      <div class="media">
+         <a href="https://www.adjust.com" target="_blank" class="pull-left"><img class="media-object" src="/img/adjust_transparent.png" width="25%" height="25%" /></a>
+      </div>

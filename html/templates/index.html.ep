@@ -6,13 +6,15 @@
 <div class="row-fluid">
    <div class="span4">
       <h2>为什么使用 Rex?</h2>
-      <p>如果你要做一个任务，运行两次以上，
- 请自动化它吧 !</p>
-      <p>不要忘记每一个安装的步骤,创建为自动化. 因为自动化可以减少失败的风险，让你真正的轻松工作.</p>
+      <ul>
+         <li>如果你要做一个任务，运行两次以上，请自动化它吧 !</li>
+         <li>再也不会忘记安装步骤了。</li>
+         <li>自动化可以减少失败的风险，让你干自己想干的活。</li>
+      </ul>
    </div><!--/span-->
    <div class="span4">
-      <h2>Rex 据有的优势</h2>
-      <ul class="no-list">
+      <h2>势</h2>
+      <ul>
          <li>基于 SSH，无需额外部署客户端</li>
          <li>无缝集成，没有冲突</li>
          <li>易用易扩展</li>
@@ -40,75 +42,76 @@
 </div>
 
 <h2>Uptime?</h2>
-<p>这个命令行例子 将执行 "uptime" 在所有的主机上 如 (frontend01, frontend02, ...).</p>
+<p>这个命令行例子将在指定的所有主机上如(<code>frontend01</code>, <code>frontend02</code>, ...)执行<code>uptime</code>。</p>
 <pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -e "say run 'uptime'"
 </code></pre>
 
 <p>统一效果，基于 <i>Rexfile</i> 文件的话：</p>
 <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
-desc "Get Disk Free";
-task "disk_free", sub {
-   my $output = run "df -h";
-   say $output;
+desc 'Get uptime';
+task 'uptime', sub {
+   say run 'uptime';
 };
 </code></pre>
 
 <p>现在你可以用这个命令运行你的任务</p>
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" disk_free
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" uptime
 </code></pre>
 
 <h2>保持你的配置文件同步</h2>
-<p>这个例子将安装Apache webserver 在 5 个服务器上 并且保持配置文件同步.如果配置文件改变了 他会自动reload 你的apache 服务.</p>
-<p>如果这个任务将执行首先安装好apahce服务在做再做配置文件同步.</p>
+<p>这个例子将在 5 个 apache 服务器上保持配置文件同步。如果配置文件改变了，他会自动 reload 服务。</p>
+<p>如果这个任务在一个未初始化(还没安装 Apache)的机器上运行，它将首先安装apache。</p>
+
 
 <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
-user "root";
-group frontend =&gt; "frontend[01..05]";
+user 'root';
+group frontend =&gt; 'frontend[01..05]';
 
-desc "Prepare Frontend Server";
-task "prepare", group =&gt; "frontend", sub {
-  pkg "apache2",
-    ensure =&gt; "latest";
+desc 'Prepare frontend server';
+task 'prepare', group =&gt; 'frontend', sub {
+  pkg 'apache2',
+    ensure =&gt; 'present';
 
-  service "apache2",
-    ensure =&gt; "started";
+  service 'apache2',
+    ensure =&gt; 'started';
 };
 
-desc "Keep Configuration in sync";
-task "configure", group =&gt; "frontend", sub {
-  prepare();
+desc 'Keep configuration in sync';
+task 'configure', group =&gt; 'frontend', sub {
+  needs 'prepare';
 
-  file "/etc/apache2/apache2.conf",
-    source    =&gt; "files/etc/apache2/apache2.conf",
-    on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file '/etc/apache2/apache2.conf',
+    source    =&gt; 'files/etc/apache2/apache2.conf',
+    on_change =&gt; sub { service apache2 =&gt; 'reload'; };
 };
 </code></pre>
 
 <h2>在 sudo 下执行 ?</h2>
-<p>你也可以在sudo 下 运行任何的任务. 只需要定义 sudo 的密码然后激活 sudo。</p>
+<p>你也可以在 <code>sudo</code> 下 运行任何的任务. 只需要定义 sudo 的密码然后激活 sudo。</p>
 <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
 
-user "ubuntu";
-group frontend =&gt; "frontend[01..05]";
+user 'ubuntu';
+group frontend =&gt; 'frontend[01..05]';
 sudo TRUE;
+sudo_password 'mysudopw';
 
-desc "Prepare Frontend Server";
-task "prepare", group =&gt; "frontend", sub {
-  pkg "apache2",
-    ensure =&gt; "latest";
+desc 'Prepare frontend servers';
+task 'prepare', group =&gt; 'frontend', sub {
+  pkg 'apache2',
+    ensure =&gt; 'latest';
 
-  service "apache2",
-    ensure =&gt; "started";
+  service 'apache2',
+    ensure =&gt; 'started';
 };
 
-desc "Keep Configuration in sync";
-task "configure", group =&gt; "frontend", sub {
-  prepare();
+desc 'Keep configuration in sync';
+task 'configure', group =&gt; 'frontend', sub {
+  needs 'prepare';
 
-  file "/etc/apache2/apache2.conf",
-    source    =&gt; "files/etc/apache2/apache2.conf",
-    on_change =&gt; sub { service apache2 =&gt; "reload"; };
+  file '/etc/apache2/apache2.conf',
+    source    =&gt; 'files/etc/apache2/apache2.conf',
+    on_change =&gt; sub { service apache2 =&gt; 'reload'; };
 };
 </code></pre>

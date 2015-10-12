@@ -38,12 +38,16 @@
 
 <h3>受控端主机</h3>
 
-<p>受控端上只需要一个 Perl5 解释器和一个可用的 SSH 账户。如果要做一些管理任务，你可能需要 root 或者 sudo 权限。</p>
+<p>受控端上只需要一个 Perl5 解释器和一个可用的 SSH 账户。</p>
+
+<p>在远端主机上，Rex 不会尝试使用任何非核心的 Perl 模块，不过有些发行版(比如 RHEL/CentOS 7, Fedora 21)可能默认并不带。这样你得先自己提前安装好(目前来说，我们指的是 Digest::MD5 模块)。</p>
+
+<p>如果要做一些管理任务，你可能需要 root 或者 sudo 权限。</p>
 
 <h2>准备</h2>
 <p>Linux 服务器上你可以通过很简单的单行命令安装 (R)?ex。其他系统上的做法请阅读 <a href="/get/">获取 Rex</a> 页。</p>
 
-<pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+<pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <p>这个命令会在你系统上安装好 Rex，不过你需要先安装好 libssh2 的开发包。</p>
 <p><b>我们建议</b>使用 <a href="/get">源</a> 里已有的包。</p>

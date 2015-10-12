@@ -31,7 +31,7 @@
          <p>你需要在你的工作节点(或者说你准备运行 Rex 的服务器)以及你准备用来分担工作的其他机器上都安装 Rex::Gearman。</p>
          <p>如果你不打算直接用我们打的包，你可以通过下面命令来安装：</p>
 
-            <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
+            <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex::Gearman</code></pre>
 
 
          

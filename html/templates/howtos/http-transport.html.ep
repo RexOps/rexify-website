@@ -43,7 +43,7 @@
          <p>Rex::Endpoint::HTTP 必须安装在目的主机上。</p>
          <p>其他平台上，你可以通过下面的命令安装。</p>
 
-            <pre><code class="bash">$ curl -L get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</code></pre>
+            <pre><code class="bash">$ curl -L https://get.rexify.org | perl - --sudo -n Rex::Endpoint::HTTP</code></pre>
 
 
          

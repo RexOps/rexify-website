@@ -174,7 +174,7 @@ make install clean</code></pre>
 
 <p>MacPort 的安装方式:</p>
 <pre><code class="bash">sudo port install libssh2 perl5
-curl -L get.rexify.org | perl - --sudo -n Rex</code></pre>
+curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
 
 <h2>Microsoft Windows</h2>
 <p>只在 Windows Vista 和 Windows 7 (64bit) 上用 Strawberry Perl 5.x 测试通过。</p>
