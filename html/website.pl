@@ -312,7 +312,7 @@ __DATA__
                         <li><a href="/api/index.html">API</a></li>
                         <li><a href="/howtos/backward_compatibility.html">Feature flags</a></li>
                         <li class="divider"></li>
-                        <li><a href="http://rex.perl-china.com/">中国 Rex 社区站点</a></li>
+                        <li><a href="http://rexify.org/">(R)?ex 官网</a></li>
                      </ul>
                   </li>
                </ul>
