@@ -1,0 +1,14 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "keywords" : null,
+   "description" : "",
+   "url" : "support",
+   "title" : "Support for Rex",
+   "type_name" : "support",
+   "content_type_name" : "text/html",
+   "active" : 1,
+   "name" : "Support",
+   "lock_date" : null,
+   "data" : {}
+}

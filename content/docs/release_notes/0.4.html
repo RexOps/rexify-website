@@ -1,0 +1,119 @@
+
+<h2 id="Rex">Rex</h2>
+
+<ul>
+
+<li><p><b>Hardware and Information gathering</b></p>
+
+<p>Now you can get information of the servers hardware and configuration.</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0"> use Rex::Hardware;
+ use Data::Dumper;
+
+ desc "Get Hardware Information";
+ task "hw-info", "testsystem", sub {
+     my %hw = Rex::Hardware-&gt;get( qw/ Host Kernel Memory Network Swap / );
+
+     print Dumper(\%hw);
+ };</code></pre>
+
+<p>Will produce the following example output:</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> $VAR1 = {
+          &#39;Network&#39; =&gt; {
+                         &#39;networkdevices&#39; =&gt; [
+                                               &#39;eth0&#39;,
+                                               &#39;wlan0&#39;
+                                             ],
+                         &#39;networkconfiguration&#39; =&gt; {
+                                                     &#39;wlan0&#39; =&gt; {
+                                                                  &#39;broadcast&#39; =&gt; &#39;192.168.2.255&#39;,
+                                                                  &#39;ip&#39; =&gt; &#39;192.168.2.229&#39;,
+                                                                  &#39;netmask&#39; =&gt; &#39;255.255.255.0&#39;,
+                                                                  &#39;mac&#39; =&gt; &#39;00:21:5C:5C:1E:5F&#39;
+                                                                },
+                                                     &#39;eth0&#39; =&gt; {
+                                                                 &#39;broadcast&#39; =&gt; undef,
+                                                                 &#39;ip&#39; =&gt; undef,
+                                                                 &#39;netmask&#39; =&gt; undef,
+                                                                 &#39;mac&#39; =&gt; &#39;00:1C:25:94:B0:85&#39;
+                                                               }
+                                                   }
+                       },
+          &#39;Memory&#39; =&gt; {
+                        &#39;shared&#39; =&gt; &#39;0&#39;,
+                        &#39;buffers&#39; =&gt; &#39;36&#39;,
+                        &#39;free&#39; =&gt; &#39;3168&#39;,
+                        &#39;used&#39; =&gt; &#39;792&#39;,
+                        &#39;total&#39; =&gt; &#39;3961&#39;,
+                        &#39;cached&#39; =&gt; &#39;407&#39;
+                      },
+          &#39;Kernel&#39; =&gt; {
+                        &#39;kernelversion&#39; =&gt; &#39;#1 SMP PREEMPT 2011-02-21 10:34:10 +0100&#39;,
+                        &#39;architecture&#39; =&gt; &#39;x86_64&#39;,
+                        &#39;kernel&#39; =&gt; &#39;Linux&#39;,
+                        &#39;kernelrelease&#39; =&gt; &#39;2.6.37.1-1.2-desktop&#39;
+                      },
+          &#39;Swap&#39; =&gt; {
+                      &#39;free&#39; =&gt; &#39;3812&#39;,
+                      &#39;used&#39; =&gt; &#39;0&#39;,
+                      &#39;total&#39; =&gt; &#39;3812&#39;
+                    },
+          &#39;Host&#39; =&gt; {
+                      &#39;domain&#39; =&gt; &#39;site&#39;,
+                      &#39;manufacturer&#39; =&gt; &#39;LENOVO&#39;,
+                      &#39;hostname&#39; =&gt; &#39;linux-ymf0.site&#39;,
+                      &#39;operatingsystemrelease&#39; =&gt; &#39;11.4&#39;,
+                      &#39;operatingsystem&#39; =&gt; &#39;SuSE&#39;
+                    }
+        };</code></pre>
+
+</li>
+<li><p><b>Install Packages</b></p>
+
+<p>Support for apt, yum and zypper (OpenSuSE)</p>
+
+<p>Example:</p>
+
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> # include for ,,install&#39;&#39; Function
+ use Rex::Commands::Pkg;
+
+ # include for ,,operating_system_is&#39;&#39; Function
+ use Rex::Commands::Gather;
+
+ user "root";
+ 
+ private_key "/Users/jan/.ssh/id_rsa";
+ public_key  "/Users/jan/.ssh/is_rsa.pub";
+
+ # group servers
+ group "test" =&gt; "debian01", "centos01", "suse01";
+
+ # run tasks in parallel
+ parallelism 2;
+
+ desc "Prepare System";
+ task "prepare", group =&gt; "test", sub {
+
+    # check if operating system is CentOS, because on CentOS vim is 
+    # available through the package "vim-enhanced".
+    if (operating_system_is("CentOS")) {
+        install package =&gt; "vim-enhanced";
+    }
+    else {
+        install package =&gt; "vim";
+    }
+
+    install package =&gt; "mc";
+
+ };</code></pre>
+
+<p>This task will install <i>vim</i> and <i>mc</i> on all the 3 systems.</p>
+
+</li>
+</ul>
+
+

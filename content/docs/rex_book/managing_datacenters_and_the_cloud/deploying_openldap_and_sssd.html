@@ -1,0 +1,71 @@
+<p>OpenLDAP (<a href="http://www.openldap.org/">http://www.openldap.org/</a>) is an open source directory server widely used for account management. It is easy to setup and administrate. There are also some Webfrontends like <a href="http://phpldapadmin.sourceforge.net/">http://phpldapadmin.sourceforge.net/</a> and <a href="https://www.ldap-account-manager.org/lamcms/">https://www.ldap-account-manager.org/lamcms/</a>.</p>
+<p>SSSD (<a href="https://fedorahosted.org/sssd/">https://fedorahosted.org/sssd/</a>) is the acronym for System Security Services Daemon. With its help it is possible to to authenticate your linux users against an OpenLDAP directory server with some nifty additions like offline support.</p>
+<h2>Preparation</h2>
+<p>This guide is written for CentOS 6. So if you're using another distribution you might need to change some things.</p>
+<h3>Project Setup</h3>
+<p>To initialize your project you can use the rexify command to download the code and all dependencies.</p>
+<pre>rexify --init=https://github.com/RexOps/ldap-sssd-ssh-rex.git</pre>
+<p>This command will download the code and all dependencies into the folder ldap-sssd-ssh-rex.</p>
+<h2>Exploring the Rexfile</h2>
+<p>Now i will guide you through the Rexfile so that you can modify it to your needs and setup your OpenLDAP/SSSD infrastructure.</p>
+<h3>Loading all required libraries</h3>
+<p>If you open the Rexfile you'll see at the top some use commands.</p>
+<pre><code class="perl">use Rex -feature =&gt; ['1.0'];</code></pre>
+<p>This loads the base functions of Rex 1.0, so that you can use them inside the Rexfile.</p>
+<pre><code class="perl">use Rex::LDAP::OpenLDAP;<br /></code><code class="perl">use Rex::LDAP::OpenLDAP::Commands;<br /></code><code class="perl">use Rex::LDAP::OpenLDAP::UserManagement::Commands;<br /></code><code class="perl">use Rex::LDAP::OpenLDAP::UserManagement::Client;<br /></code><code class="perl">use Rex::LDAP::OpenLDAP::UserManagement::Server;</code></pre>
+<p>This loads all the LDAP functions we're going to use to setup the OpenLDAP server and the authentication on the clients.</p>
+<h3>Authentication</h3>
+<p>You also need to tell Rex how it can login to your servers. Rex supports password and key authentication.</p>
+<pre><code class="perl">user "root";<br /></code><code class="perl">password "box";</code></pre>
+<p>Here Rex is taught to login as user root with the password box. If you want to use key based authentication you can use something like this.</p>
+<pre><code class="perl">user "root";<br /></code><code class="perl">private_key "/home/your-user/.ssh/id_rsa";<br /></code><code class="perl">public_key "/home/your-user/.ssh/id_rsa.pub";</code></pre>
+<h3>Group your server</h3>
+<p>Rex also needs to know on which server it should connect. So you can define server groups.</p>
+<pre><code class="perl">group server =&gt; "auth01";<br /></code><code class="perl">group client =&gt; "auth01", "fe[01..10]";</code></pre>
+<h3>Setup OpenLDAP</h3>
+<p>To setup OpenLDAP it is important to follow one rule. Never ever try to manage the configuration files inside /etc/openldap/slapd.d with an editor or by writing to the files directly. Sooner or later this will get you into trouble. So always use ldapmodify/ldapadd command to change things inside this directory.</p>
+<p>With Rex you can use ldap_entry resource to manage these entries.</p>
+<p>The default installation of OpenLDAP is not able to manage SSH Keys inside it. But there is a schema we will add to it later so that this is possible, too.</p>
+<p>If you consider to put your OpenLDAP installation to production i recommend you to read<a href="http://www.openldap.org/doc/admin24/replication.html"> http://www.openldap.org/doc/admin24/replication.html</a> how to setup replication.</p>
+<p>This tutorial also do not cover the access control management. Please read <a href="http://www.openldap.org/doc/admin24/access-control.html">http://www.openldap.org/doc/admin24/access-control.html</a> for more information on this topic.</p>
+<p>In the Rexfile you'll find the task setup_server.</p>
+<pre><code class="perl">task "setup_server",<br /></code><code class="perl">&nbsp; group =&gt; "server",<br /></code><code class="perl">&nbsp; make {</code></pre>
+<p>This task is configured to run on all servers registered in the group server.</p>
+<pre><code class="perl">Rex::LDAP::OpenLDAP::setup {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ldap_admin_password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'admin',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ldap_base_dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'dc=rexify,dc=org',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ldap_base_dn_admin_password =&gt; 'test',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ldap_configure_tls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; TRUE,<br /></code><code class="perl">&nbsp; };<br /><br /></code><code class="perl">&nbsp; Rex::LDAP::OpenLDAP::UserManagement::Server::add_ssh_public_key;</code></pre>
+<p>First it install OpenLDAP and create a root database for you. It also configures the admin password of your LDAP server.</p>
+<ul>
+<li><em>ldap_base_dn</em> is the name of the database Rex should create for you. Normaly you want to add your organizations domain. Something like dc=company,dc=tld.</li>
+<li><em>ldap_base_db_admin_password</em> is the password for the admin account of your database. This will be cn=admin,dc=rexify,dc=org.</li>
+<li><em>ldap_configure_tls</em> can be set to TRUE or FALSE. If you set it to true, you have to add the SSL cert-, key- and ca file into the folder files/openldap/certs, so that Rex can upload them to the LDAP server.</li>
+</ul>
+<p>The second function call <code>add_ssh_public_key</code> will add the SSH-key schema to the OpenLDAP server, so that it is possible to add the public ssh keys into OpenLDAP.</p>
+<h3>Populating OpenLDAP</h3>
+<p>Now you have a working OpenLDAP you need to populate it with some data.</p>
+<p>First we need to create a default folder structure inside it, so you can manage your groups and users. For this you can use the ldap_entry resource. This resource ensures that the entry exists and has the options set that are defined.</p>
+<pre><code class="perl">ldap_entry "ou=People,dc=rexify,dc=org",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; objectClass =&gt; [ 'top', 'organizationalUnit' ],<br /></code><code class="perl">&nbsp; ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'People';<br /><br /></code><code class="perl">ldap_entry "ou=Groups,dc=rexify,dc=org",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; objectClass =&gt; [ 'top', 'organizationalUnit' ],<br /></code><code class="perl">&nbsp; ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'Groups';<br /><br /></code><code class="perl">ldap_entry "ou=Services,dc=rexify,dc=org",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; objectClass =&gt; [ 'top', 'organizationalUnit' ],<br /></code><code class="perl">&nbsp; ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'Services';</code></pre>
+<p>This code creates 3 <em>folders</em> (the LDAP name for such a <em>folder</em> is <em>organizationalUnit</em>, hence the acronym ou). One for the user accounts <em>ou=People,dc=rexify,dc=org</em>, one for the groups <em>ou=Groups,dc=rexify,dc=org</em> and one for special service accounts <em>ou=Services,dc=rexify,dc=org</em>.</p>
+<p>You can create you own structure this is just an example.</p>
+<p>Then you need to create a service user for sssd. SSSD use this user to search the LDAP database to find the user that tries to login.</p>
+<pre><code class="perl">ldap_account "sssd",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'ou=Services,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; givenName&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'SSSD',<br /></code><code class="perl">&nbsp; sn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'Service User',<br /></code><code class="perl">&nbsp; uidNumber&nbsp;&nbsp;&nbsp;&nbsp; =&gt; '4000',<br /></code><code class="perl">&nbsp; gidNumber&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 0,<br /></code><code class="perl">&nbsp; loginShell&nbsp;&nbsp;&nbsp; =&gt; '/bin/false',<br /></code><code class="perl">&nbsp; homeDirectory =&gt; '/tmp',<br /></code><code class="perl">&nbsp; userPassword&nbsp; =&gt; 'abcdef';</code></pre>
+<p>Now lets create a sample group and user.</p>
+<pre><code class="perl">ldap_group "ldapusers",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'ou=Groups,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; gidNumber =&gt; 3000;<br /><br /></code><code class="perl">ldap_account "sampleuser",<br /></code><code class="perl">&nbsp; ensure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'present',<br /></code><code class="perl">&nbsp; dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'ou=People,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; givenName&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'SampleUser',<br /></code><code class="perl">&nbsp; sn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'Surename',<br /></code><code class="perl">&nbsp; uidNumber&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 5000,<br /></code><code class="perl">&nbsp; gidNumber&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 3000,<br /></code><code class="perl">&nbsp; homeDirectory =&gt; '/home/sampleuser',<br /></code><code class="perl">&nbsp; loginShell&nbsp;&nbsp;&nbsp; =&gt; '/bin/bash',<br /></code><code class="perl">&nbsp; mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'sample.user@gmail.com',<br /></code><code class="perl">&nbsp; userPassword&nbsp; =&gt; '{CRYPT}vPYgtKD.j9iL2',<br /></code><code class="perl">&nbsp; sshPublicKey&nbsp; =&gt; 'ssh-rsa AAAAB3NzaC1y...',<br /></code><code class="perl">&nbsp; groups =&gt; ['cn=ldapusers,ou=Groups,dc=rexify,dc=org'];</code></pre>
+<p>This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd.<br />Setup SSSD</p>
+<p>Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a task setup_client inside the Rexfile.</p>
+<pre><code class="perl">task "setup_client",<br /></code><code class="perl">&nbsp; group =&gt; "client",</code><br /><code class="perl">&nbsp; make {<br /></code></pre>
+<p>This task is configured to run on all servers inside the group client.</p>
+<pre><code class="perl">Rex::LDAP::OpenLDAP::UserManagement::Client::setup {<br /></code><code class="perl">&nbsp; ldap_base_dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; ldap_uri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'ldaps://10.211.55.168',<br /></code><code class="perl">&nbsp; ldap_bind_dn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; 'cn=sssd,ou=Services,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; ldap_bind_password =&gt; 'abcdef',<br /></code><code class="perl">&nbsp; ldap_base_user_dn&nbsp; =&gt; 'ou=People,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; ldap_base_group_dn =&gt; 'ou=Groups,dc=rexify,dc=org',<br /></code><code class="perl">&nbsp; configure_ssh_ldap =&gt; TRUE,<br /></code><code class="perl">};</code></pre>
+<ul>
+<li>ldap_base_dn is the root of your LDAP database.</li>
+<li>ldap_uri the URL to your OpenLDAP server. If you're not using SSL you can use ldap://servername.</li>
+<li>ldap_bind_dn the service use SSSD should use to search for the user that wants to login.</li>
+<li>ldap_bind_password the password for the service user.</li>
+<li>ldap_base_user_dn the root of the user directory.</li>
+<li>ldap_base_group_dn the root of the group directory.</li>
+<li>configure_ssh_ldap wether to configure sshd to check the public key against OpenLDAP.</li>
+</ul>
+<h2>Setup SSHD</h2>
+<p>Since a few versions SSHd supports the execution of an external executable on connection. This is done with the AuthorizedKeysCommand option. If you use the configure_ssh_ldap option on client setup it will upload a script that queries the LDAP server for the ssh key of the user that wants to login.</p>
+<p>The configuration of this script can be done in the file /etc/ssh/pubkey.yaml. The Rex::LDAP::OpenLDAP::UserManagement::Client::setup task automatically creates the right configuration for you.</p>
+<pre>host: 'dc=rexify,dc=org'<br />bind_dn: 'cn=sssd,ou=Services,dc=rexify,dc=org'<br />bind_pw: 'abcdef'<br />base_dn: 'dc=rexify,dc=org'<br />filter: (&amp;(uid={{LOGIN_NAME}})(objectClass=posixAccount))<br />#tls:<br />#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; verify: optional<br />#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cafile: /etc/openldap/certs/cacert.pem</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

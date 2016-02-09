@@ -1,0 +1,14 @@
+{
+   "active" : 1,
+   "name" : "FAQ",
+   "lock_date" : null,
+   "data" : {},
+   "description" : "",
+   "title" : "FAQ",
+   "url" : "faq",
+   "keywords" : null,
+   "type_name" : "faq_index",
+   "content_type_name" : "text/html",
+   "navigation" : 1,
+   "hidden" : 0
+}

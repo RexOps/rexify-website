@@ -1,0 +1,14 @@
+{
+   "content_type_name" : "text/html",
+   "type_name" : "page",
+   "keywords" : null,
+   "title" : "Getting information of the environment",
+   "url" : "getting_information_of_the_environment",
+   "description" : "Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.",
+   "lock_date" : null,
+   "data" : {},
+   "name" : "Getting information of the environment",
+   "active" : 1,
+   "hidden" : 0,
+   "navigation" : 1
+}

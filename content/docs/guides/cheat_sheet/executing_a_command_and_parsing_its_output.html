@@ -1,0 +1,19 @@
+<h3>run($command, %options)</h3>
+<p>Run a remote command and returns its output.</p>
+<h4>Options</h4>
+<ul>
+<li>cwd - Work directory for the command.</li>
+<li>only_if - Executes the command only if the condition completes successfully.</li>
+<li>unless - Executes the command only unless the condition completes successfully.</li>
+<li>only_notified - queues the command, to be executed upon notification.</li>
+<li>env - sets environment variables for the command.</li>
+<li>timeout - try to terminate the command after the given amount of seconds.</li>
+<li>auto_die - die if the command returns with a non-zero exit code.</li>
+<li>command - the command that should be executed.</li>
+<li>creates - If the file given with this option already exists, the command won't be executed.</li>
+</ul>
+<h4>Example to just run a command if a file doesn't exists</h4>
+<pre><code class="perl">run "/tmp/install_service.sh",<br /></code><code class="perl">&nbsp; creates =&gt; "/opt/myservice/conf.xml";</code></pre>
+<h4>Example to run a command and get its output</h4>
+<pre><code class="perl">my @output_lines = run "df -h";</code></pre>
+<p>&nbsp;</p>

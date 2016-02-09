@@ -1,0 +1,14 @@
+{
+   "name" : "Just enough Perl for Rex",
+   "active" : 1,
+   "lock_date" : null,
+   "data" : {},
+   "keywords" : null,
+   "url" : "just_enough_perl_for_rex",
+   "title" : "Just enough Perl for Rex",
+   "description" : "Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.",
+   "content_type_name" : "text/html",
+   "type_name" : "page",
+   "navigation" : 0,
+   "hidden" : 0
+}

@@ -1,0 +1,51 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Sync - Sync directories</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This module can sync directories between your Rex system and your servers without the need of rsync.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::Sync;
+
+ task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
+   # upload directory recursively to remote system.
+   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;;
+
+   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;, {
+     # setting custom file permissions for every file
+     files =&gt; {
+       owner =&gt; &quot;foo&quot;,
+       group =&gt; &quot;bar&quot;,
+       mode  =&gt; 600,
+     },
+     # setting custom directory permissions for every directory
+     directories =&gt; {
+       owner =&gt; &quot;foo&quot;,
+       group =&gt; &quot;bar&quot;,
+       mode  =&gt; 700,
+     },
+     exclude =&gt; [ &#39;*.tmp&#39; ],
+     parse_templates =&gt; TRUE|FALSE,
+     on_change =&gt; sub {
+      my (@files_changed) = @_;
+     },
+   };
+
+   # download a directory recursively from the remote system to the local machine
+   sync_down &quot;/remote/directory&quot;, &quot;/local/directory&quot;;
+ };</code></pre>
+
+

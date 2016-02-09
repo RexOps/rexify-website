@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "title" : "",
+   "url" : "slides_of__an_introduction_to_rex__online",
+   "description" : "",
+   "keywords" : null,
+   "content_type_name" : "text/html",
+   "type_name" : "news_entry",
+   "name" : "Slides of \"An introduction to Rex\" online",
+   "active" : 1,
+   "data" : {
+      "news_date" : "2015-03-27 00:00"
+   },
+   "lock_date" : null
+}

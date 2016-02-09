@@ -1,0 +1,14 @@
+{
+   "navigation" : 1,
+   "hidden" : 0,
+   "active" : 1,
+   "name" : "Start using (R)?ex",
+   "data" : {},
+   "lock_date" : null,
+   "keywords" : null,
+   "description" : "This is a small howto showing the first steps with Rex.",
+   "url" : "start_using__r__ex",
+   "title" : "Howto start using (R)?ex",
+   "type_name" : "page",
+   "content_type_name" : "text/html"
+}

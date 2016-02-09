@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "keywords" : null,
+   "description" : "",
+   "title" : "",
+   "url" : "rex_in_practice",
+   "type_name" : "news_entry",
+   "content_type_name" : "text/html",
+   "active" : 1,
+   "name" : "Rex in practice",
+   "lock_date" : null,
+   "data" : {
+      "news_date" : "2015-05-27 00:00"
+   }
+}

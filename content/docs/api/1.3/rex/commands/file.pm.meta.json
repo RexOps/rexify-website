@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "url" : "file.pm",
+   "title" : "File.pm",
+   "description" : null,
+   "keywords" : null,
+   "type_name" : "api_item",
+   "content_type_name" : "text/html",
+   "name" : "File.pm",
+   "active" : 1,
+   "lock_date" : null,
+   "data" : {
+      "search_info" : "API version 1.3"
+   }
+}

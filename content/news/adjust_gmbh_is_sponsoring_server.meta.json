@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "type_name" : "news_entry",
+   "content_type_name" : "text/html",
+   "url" : "adjust_gmbh_is_sponsoring_server",
+   "title" : "adjust GmbH is sponsoring server",
+   "description" : "",
+   "keywords" : null,
+   "data" : {
+      "news_date" : "2015-06-22 00:00"
+   },
+   "lock_date" : null,
+   "name" : "adjust GmbH is sponsoring server",
+   "active" : 1
+}

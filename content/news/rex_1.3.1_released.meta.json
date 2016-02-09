@@ -1,0 +1,16 @@
+{
+   "description" : "",
+   "url" : "rex_1.3.1_released",
+   "title" : "Rex 1.3.1 released",
+   "keywords" : null,
+   "type_name" : "news_entry",
+   "content_type_name" : "text/html",
+   "active" : 1,
+   "name" : "Rex 1.3.1 released",
+   "lock_date" : null,
+   "data" : {
+      "news_date" : "2015-06-08 00:00"
+   },
+   "hidden" : 0,
+   "navigation" : 1
+}

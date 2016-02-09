@@ -1,0 +1,14 @@
+{
+   "keywords" : null,
+   "title" : "Grouping servers",
+   "url" : "grouping_servers",
+   "description" : "Rex offers you a powerfull way to group your servers. In this chapter you will learn the basics and also learn how to use databases to generate groups.",
+   "type_name" : "page",
+   "content_type_name" : "text/html",
+   "name" : "Grouping servers",
+   "active" : 1,
+   "lock_date" : null,
+   "data" : {},
+   "hidden" : 0,
+   "navigation" : 1
+}

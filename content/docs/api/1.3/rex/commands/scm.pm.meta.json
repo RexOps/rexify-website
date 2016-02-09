@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "type_name" : "api_item",
+   "content_type_name" : "text/html",
+   "description" : null,
+   "url" : "scm.pm",
+   "title" : "SCM.pm",
+   "keywords" : null,
+   "lock_date" : null,
+   "data" : {
+      "search_info" : "API version 1.3"
+   },
+   "active" : 1,
+   "name" : "SCM.pm"
+}

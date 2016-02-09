@@ -1,0 +1,14 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "content_type_name" : "text/html",
+   "type_name" : "page",
+   "description" : "With environments it is easy to group your servers depending on the maturity of your configuration or your code. You can create environments for dev, staging and production machines. There is no limit for environments, so you can create as much as you need.",
+   "url" : "using_environments",
+   "title" : "Using Environments",
+   "keywords" : null,
+   "data" : {},
+   "lock_date" : null,
+   "active" : 1,
+   "name" : "Using Environments"
+}

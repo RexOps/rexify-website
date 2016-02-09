@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "description" : null,
+   "title" : "Augeas.pm",
+   "url" : "augeas.pm",
+   "keywords" : null,
+   "type_name" : "api_item",
+   "content_type_name" : "text/html",
+   "active" : 1,
+   "name" : "Augeas.pm",
+   "lock_date" : null,
+   "data" : {
+      "search_info" : "API version 1.3"
+   }
+}

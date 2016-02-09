@@ -1,0 +1,14 @@
+{
+   "name" : "Docs",
+   "active" : 1,
+   "lock_date" : null,
+   "data" : {},
+   "title" : "Documentation",
+   "url" : "docs",
+   "description" : "",
+   "keywords" : null,
+   "content_type_name" : "text/html",
+   "type_name" : "docs",
+   "navigation" : 1,
+   "hidden" : 0
+}

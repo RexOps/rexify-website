@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "keywords" : null,
+   "description" : null,
+   "title" : "Config.pm",
+   "url" : "config.pm",
+   "content_type_name" : "text/html",
+   "type_name" : "api_item",
+   "active" : 1,
+   "name" : "Config.pm",
+   "lock_date" : null,
+   "data" : {
+      "search_info" : "API version 1.3"
+   }
+}

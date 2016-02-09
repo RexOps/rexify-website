@@ -1,0 +1,14 @@
+{
+   "name" : "fedora",
+   "active" : 1,
+   "data" : {},
+   "lock_date" : null,
+   "keywords" : null,
+   "title" : "",
+   "url" : "fedora",
+   "description" : "",
+   "content_type_name" : "text/html",
+   "type_name" : "page",
+   "navigation" : 0,
+   "hidden" : 0
+}

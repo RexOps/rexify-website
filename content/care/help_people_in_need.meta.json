@@ -1,0 +1,14 @@
+{
+   "data" : {},
+   "lock_date" : null,
+   "active" : 1,
+   "name" : "Help people in need",
+   "type_name" : "page",
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "description" : "",
+   "url" : "help_people_in_need",
+   "title" : "Help people in need",
+   "navigation" : 1,
+   "hidden" : 0
+}

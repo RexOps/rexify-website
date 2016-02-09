@@ -1,0 +1,14 @@
+{
+   "navigation" : 1,
+   "hidden" : 0,
+   "active" : 1,
+   "name" : "Guides",
+   "data" : {},
+   "lock_date" : null,
+   "keywords" : null,
+   "description" : "",
+   "title" : "Guides",
+   "url" : "guides",
+   "content_type_name" : "text/html",
+   "type_name" : "docs_chapter"
+}

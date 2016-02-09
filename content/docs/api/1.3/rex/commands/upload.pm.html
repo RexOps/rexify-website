@@ -1,0 +1,70 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#upload-local-remote-">upload($local, $remote)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Upload - Upload a local file to a remote server</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can upload a local file via sftp to a remote host.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
+   upload &quot;localfile&quot;, &quot;/remote/file&quot;;
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="upload-local-remote-">upload($local, $remote)</h2>
+
+<p>Perform an upload. If $remote is a directory the file will be uploaded to that directory.</p>
+
+<pre><code> task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
+   upload &quot;localfile&quot;, &quot;/path&quot;;
+ };</code></pre>
+
+<p>This function supports the following hooks:</p>
+
+<dl>
+
+<dt id="before">before</dt>
+<dd>
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+</dd>
+<dt id="before_change">before_change</dt>
+<dd>
+
+<p>This gets executed right before the new file is written.</p>
+
+</dd>
+<dt id="after_change">after_change</dt>
+<dd>
+
+<p>This gets executed right after the file was written.</p>
+
+</dd>
+<dt id="after">after</dt>
+<dd>
+
+<p>This gets executed right before the upload() function returns.</p>
+
+</dd>
+</dl>
+
+

@@ -1,0 +1,16 @@
+{
+   "hidden" : 0,
+   "navigation" : 1,
+   "title" : "",
+   "url" : "repositor.io_1.1.0",
+   "description" : "",
+   "keywords" : null,
+   "content_type_name" : "text/html",
+   "type_name" : "news_entry",
+   "name" : "repositor.io 1.1.0",
+   "active" : 1,
+   "data" : {
+      "news_date" : "2015-05-09 00:00"
+   },
+   "lock_date" : null
+}

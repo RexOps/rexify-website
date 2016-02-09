@@ -1,0 +1,183 @@
+<p>There are now 2 new websites:</p>
+<ul>
+<li><a href="http://modules.rexify.org">http://modules.rexify.org</a></li>
+</ul>
+<p>A website where you can search for Rex modules and browse their documentation.</p>
+<ul>
+<li><a href="http://box.rexify.org">http://box.rexify.org</a></li>
+</ul>
+<p>A website where you can download prebuilt Boxes and find information about Rex/Boxes. A module for easy deployment of development boxes (currently only VirtualBox is supported).</p>
+<h1>General</h1>
+<ul>
+<li>VirtualBox support for Rex::Commands::Virtualization</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard0">use Rex::Commands::Virtualization;
+
+set virtualization =&gt; "VBox";
+
+use Data::Dumper;   
+
+print Dumper vm list =&gt; "all";
+print Dumper vm list =&gt; "running";
+
+vm destroy =&gt; "vm01";
+
+vm delete =&gt; "vm01"; 
+
+vm start =&gt; "vm01";
+
+vm shutdown =&gt; "vm01";
+
+vm reboot =&gt; "vm01";
+
+vm option =&gt; "vm01",
+         memory     =&gt; 512;
+
+print Dumper vm info =&gt; "vm01";
+
+# creating a vm 
+vm create =&gt; "vm01",
+      storage     =&gt; [
+         {   
+            file   =&gt; "/mnt/data/vbox/vm01.img",
+         }
+      ],
+      memory =&gt; 512,
+      type =&gt; "Linux26", 
+      cpus =&gt; 1,
+      boot =&gt; "cdrom";
+</code></pre>
+
+<ul>
+<li>Rex::Commands::Box</li>
+</ul>
+<p>Functions to easily work with VirtualBox images.</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard1"> use Rex::Commands::Box;
+
+ task "init", sub {
+
+   my $param = shift;
+
+   box {
+      my ($box) = @_;
+      $box-&gt;name($param-&gt;{name});
+      $box-&gt;url($param-&gt;{url});
+      $box-&gt;network(1 =&gt; {
+         type =&gt; "nat",
+      });
+
+      # only works with network type = nat
+      # if an ssh key is present, rex will use this to log into the vm
+      # you need this if you don't run VirtualBox on your local host.
+      $box-&gt;forward_port(ssh =&gt; [2222 =&gt; 22]);
+
+      $box-&gt;share_folder("myhome" =&gt; "/home/jan");
+
+      $box-&gt;auth(
+         user =&gt; "root",
+         password =&gt; "box",
+      );
+
+      $box-&gt;setup(qw/install_webserver/);
+   };
+
+ };
+
+ task "down", sub {
+
+   my $param = shift;
+
+   my $box = Rex::Commands::Box-&gt;new(name =&gt; $param-&gt;{name});
+   $box-&gt;stop;
+ };
+
+ task "install_webserver", sub {
+   install "apache2";
+ };
+</code></pre>
+
+<ul>
+<li><strong>auth for</strong> now works with regular expresions.</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard2"> # Rexfile
+
+ task foo =&gt; sub {
+ };
+ task example =&gt; sub {
+ };
+ task example2 =&gt; sub {
+ };
+
+  set auth for qr{^example\d$} =&gt;
+     user =&gt; "example",
+     password =&gt; "foob4r";
+</code></pre>
+
+<ul>
+<li>It is now possible to use the <strong>repository</strong> function for multiple distributions.</li>
+</ul>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard3"> task "add-repo", "server1", "server2", sub {
+   repository add =&gt; myrepo =&gt; {
+      Ubuntu =&gt; {
+         url =&gt; "http://foo.bar/repo",
+         distro =&gt; "precise",
+         repository =&gt; "foo",
+      },
+      Debian =&gt; {
+         url =&gt; "http://foo.bar/repo",
+         distro =&gt; "squeeze",
+         repository =&gt; "foo",
+      },
+      CentOS =&gt; {
+         url =&gt; "http://foo.bar/repo",
+      },
+   };
+ };
+</code></pre>
+
+<p>The key that is used is the return value of <strong>get_operating_system()</strong>.</p>
+<p>It is also possible to add an <strong>after</strong> hook like this:</p>
+<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
+<pre><code class="perl" id="clipboard4"> task "add-repo", "server1", "server2", sub {
+   repository add =&gt; myrepo =&gt; {
+      Ubuntu =&gt; {
+         url =&gt; "http://foo.bar/repo",
+         distro =&gt; "precise",
+         repository =&gt; "foo",
+         after =&gt; sub {
+              # import gpg key
+         },
+      },
+      Debian =&gt; {
+         url =&gt; "http://foo.bar/repo",
+         distro =&gt; "squeeze",
+         repository =&gt; "foo",
+         after =&gt; sub {
+              # import gpg key
+         },
+      },
+      CentOS =&gt; {
+         url =&gt; "http://foo.bar/repo",
+         after =&gt; sub {
+              # import gpg key
+         },
+      },
+   };
+ };
+</code></pre>
+
+<ul>
+<li>
+<p>Fixed API usage of Rex</p>
+</li>
+<li>
+<p>Merged pull request #82: Better handling of $option parameter for 'install' - joris</p>
+</li>
+<li>
+<p>Merged pull request #79: Unwrapped double looping over files and regexes and adding $new_line if not present in absence of regexes - Mario Domgoergen</p>
+</li>
+</ul>

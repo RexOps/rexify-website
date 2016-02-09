@@ -1,0 +1,14 @@
+{
+   "type_name" : "news",
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "description" : "",
+   "title" : "",
+   "url" : "news",
+   "data" : {},
+   "lock_date" : null,
+   "active" : 1,
+   "name" : "News",
+   "hidden" : 0,
+   "navigation" : 0
+}

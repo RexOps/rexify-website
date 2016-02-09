@@ -1,0 +1,14 @@
+{
+   "lock_date" : null,
+   "data" : {},
+   "name" : "Installing Packages",
+   "active" : 1,
+   "type_name" : "page",
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "installing_packages",
+   "title" : "Installing Packages",
+   "description" : "Installing packages is easy. You can use the pkg function for this.",
+   "navigation" : 1,
+   "hidden" : 0
+}

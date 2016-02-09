@@ -1,0 +1,3 @@
+<pre><code class="perl">task 'mytask', sub {<br /></code><code class="perl">&nbsp; my $parameters = shift;<br /></code><code class="perl">&nbsp; my $parameter1_value = $parameters-&gt;{parameter1};<br /></code><code class="perl">&nbsp; my $parameter2_value = $parameters-&gt;{parameter2};<br /></code><code class="perl">};</code></pre>
+<p>Then you can run mytask from CLI like this:</p>
+<pre>rex -H hostname mytask --parameter1=value1 --parameter2=value2</pre>

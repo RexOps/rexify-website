@@ -1,0 +1,14 @@
+{
+   "type_name" : "page",
+   "content_type_name" : "text/html",
+   "description" : "This guide tries to help you getting started with using Rex to manage OpenWrt boxes.",
+   "title" : "Manage OpenWrt",
+   "url" : "manage_openwrt",
+   "keywords" : null,
+   "data" : {},
+   "lock_date" : null,
+   "active" : 1,
+   "name" : "Manage OpenWrt",
+   "hidden" : 0,
+   "navigation" : 1
+}

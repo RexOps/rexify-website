@@ -1,0 +1,14 @@
+{
+   "active" : 1,
+   "name" : "SSH as an agent",
+   "data" : {},
+   "lock_date" : null,
+   "description" : "To setup an environment to work with Rex you don't have to do much. You have to install Rex on your workstation or a central administration server. For most distributions you'll find packages on the package server.",
+   "title" : "SSH as an agent",
+   "url" : "ssh_as_an_agent",
+   "keywords" : null,
+   "type_name" : "page",
+   "content_type_name" : "text/html",
+   "navigation" : 1,
+   "hidden" : 0
+}
