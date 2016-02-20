@@ -2,7 +2,8 @@
   "active": 1,
   "content_type_name": "text/html",
   {
-  }
+
+  },
   "description": "Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.",
   "hidden": 0,
   "keywords": null,

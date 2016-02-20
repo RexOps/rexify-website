@@ -2,7 +2,8 @@
   "active": 1,
   "content_type_name": "text/html",
   {
-  }
+
+  },
   "description": "In this example you will learn how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.",
   "hidden": 0,
   "keywords": null,

@@ -2,7 +2,8 @@
   "active": 1,
   "content_type_name": "text/html",
   {
-  }
+
+  },
   "description": "If you want to install or remove packages on your server Rex gives you a few functions to do this.",
   "hidden": 0,
   "keywords": null,

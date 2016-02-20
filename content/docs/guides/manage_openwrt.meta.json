@@ -2,7 +2,8 @@
   "active": 1,
   "content_type_name": "text/html",
   {
-  }
+
+  },
   "description": "This guide tries to help you getting started with using Rex to manage OpenWrt boxes.",
   "hidden": 0,
   "keywords": null,

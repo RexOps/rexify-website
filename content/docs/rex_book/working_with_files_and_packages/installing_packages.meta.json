@@ -2,7 +2,8 @@
   "active": 1,
   "content_type_name": "text/html",
   {
-  }
+
+  },
   "description": "Installing packages is easy. You can use the pkg function for this.",
   "hidden": 0,
   "keywords": null,
