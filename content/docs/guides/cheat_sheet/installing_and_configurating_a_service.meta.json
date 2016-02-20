@@ -1,14 +1,14 @@
 {
-   "data" : {},
-   "lock_date" : null,
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "installing_and_configurating_a_service",
+   "type_name" : "page",
    "name" : "Installing and configurating a service",
    "active" : 1,
-   "type_name" : "page",
-   "content_type_name" : "text/html",
-   "url" : "installing_and_configurating_a_service",
-   "title" : "Installing and configurating a service",
+   "data" : {},
    "description" : "",
-   "keywords" : null,
    "navigation" : 1,
+   "title" : "Installing and configurating a service",
+   "lock_date" : null,
    "hidden" : 0
 }

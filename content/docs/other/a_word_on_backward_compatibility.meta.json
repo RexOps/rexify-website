@@ -1,14 +1,14 @@
 {
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "a_word_on_backward_compatibility",
+   "type_name" : "page",
+   "name" : "A word on backward compatibility",
+   "active" : 1,
+   "data" : {},
+   "description" : "Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.",
    "navigation" : 1,
    "hidden" : 0,
-   "active" : 1,
-   "name" : "A word on backward compatibility",
-   "data" : {},
    "lock_date" : null,
-   "keywords" : null,
-   "description" : "Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.",
-   "url" : "a_word_on_backward_compatibility",
-   "title" : "A word on backward compatibility",
-   "content_type_name" : "text/html",
-   "type_name" : "page"
+   "title" : "A word on backward compatibility"
 }

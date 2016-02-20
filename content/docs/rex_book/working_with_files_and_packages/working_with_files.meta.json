@@ -1,14 +1,14 @@
 {
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "working_with_files",
+   "type_name" : "page",
    "name" : "Working with Files",
    "active" : 1,
-   "lock_date" : null,
    "data" : {},
-   "url" : "working_with_files",
-   "title" : "Working with Files",
    "description" : "One task in configuration management is managing files and keeping them in a consistant state. Rex gives you some easy to use functions to work with files.",
-   "keywords" : null,
-   "content_type_name" : "text/html",
-   "type_name" : "page",
    "navigation" : 1,
-   "hidden" : 0
+   "lock_date" : null,
+   "hidden" : 0,
+   "title" : "Working with Files"
 }

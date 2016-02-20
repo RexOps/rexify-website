@@ -1,14 +1,14 @@
 {
    "content_type_name" : "text/html",
-   "type_name" : "docs_chapter",
-   "title" : "Infrastructure",
-   "url" : "infrastructure",
-   "description" : "",
    "keywords" : null,
-   "data" : {},
-   "lock_date" : null,
+   "url" : "infrastructure",
+   "type_name" : "docs_chapter",
    "name" : "Infrastructure",
    "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 1,
    "hidden" : 0,
-   "navigation" : 1
+   "lock_date" : null,
+   "title" : "Infrastructure"
 }

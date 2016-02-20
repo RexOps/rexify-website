@@ -1,14 +1,14 @@
 {
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "cheat_sheet",
+   "type_name" : "cheat_sheet_index",
+   "name" : "Cheat Sheet",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
    "hidden" : 0,
-   "active" : 1,
-   "name" : "Cheat Sheet",
-   "data" : {},
    "lock_date" : null,
-   "description" : "",
-   "title" : "Cheat Sheet",
-   "url" : "cheat_sheet",
-   "keywords" : null,
-   "content_type_name" : "text/html",
-   "type_name" : "cheat_sheet_index"
+   "title" : "Cheat Sheet"
 }

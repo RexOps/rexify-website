@@ -1,16 +1,16 @@
 {
-   "name" : "CMDB.pm",
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "cmdb.pm",
+   "type_name" : "api_item",
    "active" : 1,
-   "lock_date" : null,
+   "name" : "CMDB.pm",
    "data" : {
       "search_info" : "API version 1.3"
    },
-   "url" : "cmdb.pm",
-   "title" : "CMDB.pm",
    "description" : null,
-   "keywords" : null,
-   "content_type_name" : "text/html",
-   "type_name" : "api_item",
    "navigation" : 1,
-   "hidden" : 0
+   "title" : "CMDB.pm",
+   "hidden" : 0,
+   "lock_date" : null
 }

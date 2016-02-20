@@ -1,14 +1,14 @@
 {
-   "type_name" : "faq_item",
    "content_type_name" : "text/html",
-   "url" : "how_can_i_pass_parameters_to_a_task_",
-   "title" : "How can I pass parameters to a task?",
-   "description" : "",
    "keywords" : null,
-   "data" : {},
-   "lock_date" : null,
+   "url" : "how_can_i_pass_parameters_to_a_task_",
+   "type_name" : "faq_item",
    "name" : "How can I pass parameters to a task?",
    "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 0,
    "hidden" : 0,
-   "navigation" : 0
+   "title" : "How can I pass parameters to a task?",
+   "lock_date" : null
 }

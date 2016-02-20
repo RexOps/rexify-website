@@ -1,14 +1,14 @@
 {
-   "name" : "Managing users and groups",
-   "active" : 1,
-   "data" : {},
-   "lock_date" : null,
+   "content_type_name" : "text/html",
    "keywords" : null,
    "url" : "managing_users_and_groups",
-   "title" : "Managing users and groups",
-   "description" : "",
    "type_name" : "page",
-   "content_type_name" : "text/html",
+   "active" : 1,
+   "name" : "Managing users and groups",
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
-   "hidden" : 0
+   "hidden" : 0,
+   "lock_date" : null,
+   "title" : "Managing users and groups"
 }

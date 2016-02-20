@@ -1,14 +1,14 @@
 {
-   "navigation" : 1,
-   "hidden" : 0,
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "0.45",
+   "type_name" : "page",
    "active" : 1,
    "name" : "0.45",
-   "lock_date" : null,
    "data" : null,
    "description" : null,
+   "navigation" : 1,
    "title" : "Release notes for 0.45",
-   "url" : "0.45",
-   "keywords" : null,
-   "content_type_name" : "text/html",
-   "type_name" : "page"
+   "lock_date" : null,
+   "hidden" : 0
 }

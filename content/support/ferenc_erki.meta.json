@@ -1,14 +1,14 @@
 {
-   "navigation" : 0,
-   "hidden" : 0,
-   "lock_date" : null,
-   "data" : {},
-   "active" : 1,
-   "name" : "Ferenc Erki",
-   "type_name" : "support_item",
    "content_type_name" : "text/html",
    "keywords" : null,
-   "description" : "",
    "url" : "ferenc_erki",
-   "title" : "Ferenc Erki - (R)?ex Core Developer"
+   "type_name" : "support_item",
+   "name" : "Ferenc Erki",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 0,
+   "lock_date" : null,
+   "title" : "Ferenc Erki - (R)?ex Core Developer",
+   "hidden" : 0
 }

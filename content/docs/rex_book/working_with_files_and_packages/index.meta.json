@@ -1,14 +1,14 @@
 {
-   "active" : 1,
-   "name" : "Working with Files and Packages",
-   "data" : {},
-   "lock_date" : null,
-   "keywords" : null,
-   "description" : "",
-   "title" : "Working with Files and Packages",
-   "url" : "working_with_files_and_packages",
    "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "working_with_files_and_packages",
    "type_name" : "docs_chapter",
+   "name" : "Working with Files and Packages",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
-   "hidden" : 0
+   "hidden" : 0,
+   "title" : "Working with Files and Packages",
+   "lock_date" : null
 }

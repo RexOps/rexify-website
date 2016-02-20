@@ -1,16 +1,16 @@
 {
-   "navigation" : 1,
-   "hidden" : 0,
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "rsync.pm",
+   "type_name" : "api_item",
    "name" : "Rsync.pm",
    "active" : 1,
-   "lock_date" : null,
    "data" : {
       "search_info" : "API version 1.3"
    },
-   "url" : "rsync.pm",
-   "title" : "Rsync.pm",
    "description" : null,
-   "keywords" : null,
-   "content_type_name" : "text/html",
-   "type_name" : "api_item"
+   "navigation" : 1,
+   "lock_date" : null,
+   "hidden" : 0,
+   "title" : "Rsync.pm"
 }

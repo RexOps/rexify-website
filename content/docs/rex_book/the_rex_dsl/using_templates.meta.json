@@ -1,14 +1,14 @@
 {
    "content_type_name" : "text/html",
-   "type_name" : "page",
-   "url" : "using_templates",
-   "title" : "Using templates",
-   "description" : "A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.",
    "keywords" : null,
-   "data" : {},
-   "lock_date" : null,
-   "name" : "Using templates",
+   "url" : "using_templates",
+   "type_name" : "page",
    "active" : 1,
+   "name" : "Using templates",
+   "data" : {},
+   "description" : "A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.",
+   "navigation" : 1,
+   "title" : "Using templates",
    "hidden" : 0,
-   "navigation" : 1
+   "lock_date" : null
 }

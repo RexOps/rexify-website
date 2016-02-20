@@ -1,14 +1,14 @@
 {
    "content_type_name" : "text/html",
-   "type_name" : "page",
    "keywords" : null,
-   "title" : "Release notes for 0.36",
    "url" : "0.36",
-   "description" : null,
-   "data" : null,
-   "lock_date" : null,
-   "name" : "0.36",
+   "type_name" : "page",
    "active" : 1,
+   "name" : "0.36",
+   "data" : null,
+   "description" : null,
+   "navigation" : 1,
+   "title" : "Release notes for 0.36",
    "hidden" : 0,
-   "navigation" : 1
+   "lock_date" : null
 }

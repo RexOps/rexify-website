@@ -1,16 +1,16 @@
 {
-   "type_name" : "news_entry",
    "content_type_name" : "text/html",
-   "description" : "",
-   "title" : "",
-   "url" : "_r__ex_1.1.0_released",
    "keywords" : null,
-   "lock_date" : null,
+   "url" : "_r__ex_1.1.0_released",
+   "type_name" : "news_entry",
+   "name" : "(R)?ex 1.1.0 released",
+   "active" : 0,
    "data" : {
       "news_date" : "2015-03-29 00:00"
    },
-   "active" : 0,
-   "name" : "(R)?ex 1.1.0 released",
+   "description" : "",
+   "navigation" : 1,
    "hidden" : 0,
-   "navigation" : 1
+   "title" : "",
+   "lock_date" : null
 }

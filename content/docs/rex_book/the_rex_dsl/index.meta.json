@@ -1,14 +1,14 @@
 {
-   "active" : 1,
-   "name" : "The Rex DSL",
-   "data" : {},
-   "lock_date" : null,
-   "description" : "",
-   "url" : "the_rex_dsl",
-   "title" : "The Rex DSL",
-   "keywords" : null,
-   "type_name" : "docs_chapter",
    "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "the_rex_dsl",
+   "type_name" : "docs_chapter",
+   "name" : "The Rex DSL",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
-   "hidden" : 0
+   "hidden" : 0,
+   "title" : "The Rex DSL",
+   "lock_date" : null
 }

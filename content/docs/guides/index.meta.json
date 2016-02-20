@@ -1,14 +1,14 @@
 {
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "guides",
+   "type_name" : "docs_chapter",
+   "name" : "Guides",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
    "hidden" : 0,
-   "active" : 1,
-   "name" : "Guides",
-   "data" : {},
    "lock_date" : null,
-   "keywords" : null,
-   "description" : "",
-   "title" : "Guides",
-   "url" : "guides",
-   "content_type_name" : "text/html",
-   "type_name" : "docs_chapter"
+   "title" : "Guides"
 }

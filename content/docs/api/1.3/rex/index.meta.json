@@ -1,16 +1,16 @@
 {
-   "navigation" : 1,
-   "hidden" : 0,
-   "lock_date" : null,
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "rex",
+   "type_name" : "api_folder",
+   "active" : 1,
+   "name" : "Rex",
    "data" : {
       "search_info" : "API version 1.3"
    },
-   "name" : "Rex",
-   "active" : 1,
-   "content_type_name" : "text/html",
-   "type_name" : "api_folder",
-   "title" : "Rex",
-   "url" : "rex",
    "description" : null,
-   "keywords" : null
+   "navigation" : 1,
+   "lock_date" : null,
+   "title" : "Rex",
+   "hidden" : 0
 }

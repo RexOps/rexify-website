@@ -1,14 +1,14 @@
 {
    "content_type_name" : "text/html",
-   "type_name" : "page",
-   "description" : "",
-   "title" : "Contribute to (R)?ex",
-   "url" : "help__r__ex",
    "keywords" : null,
-   "data" : {},
-   "lock_date" : null,
-   "active" : 1,
+   "url" : "help__r__ex",
+   "type_name" : "page",
    "name" : "Help (R)?ex",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 1,
    "hidden" : 0,
-   "navigation" : 1
+   "lock_date" : null,
+   "title" : "Contribute to (R)?ex"
 }

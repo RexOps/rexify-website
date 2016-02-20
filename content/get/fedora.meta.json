@@ -1,14 +1,14 @@
 {
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "fedora",
+   "type_name" : "page",
    "name" : "fedora",
    "active" : 1,
    "data" : {},
-   "lock_date" : null,
-   "keywords" : null,
-   "title" : "",
-   "url" : "fedora",
    "description" : "",
-   "content_type_name" : "text/html",
-   "type_name" : "page",
    "navigation" : 0,
+   "lock_date" : null,
+   "title" : "",
    "hidden" : 0
 }

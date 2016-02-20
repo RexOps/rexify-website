@@ -1,16 +1,16 @@
 {
-   "hidden" : 0,
-   "navigation" : 1,
-   "type_name" : "get",
    "content_type_name" : "text/html",
-   "description" : "",
-   "title" : "Get Rex",
-   "url" : "get",
    "keywords" : null,
+   "url" : "get",
+   "type_name" : "get",
+   "name" : "Get Rex",
+   "active" : 1,
    "data" : {
       "content_top" : "<p>You can install Rex with a simple one-liner:</p>\n<p>&nbsp;</p>\n<pre><code class=\"bash\">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>\n<p>&nbsp;</p>\n<p>BSD and Linux</p>\n<p>&nbsp;</p>\n<p>Rex is also available as a package for many major distributions. Just choose your distribution and follow the steps shown. </p>"
    },
+   "description" : "",
+   "navigation" : 1,
+   "title" : "Get Rex",
    "lock_date" : null,
-   "active" : 1,
-   "name" : "Get Rex"
+   "hidden" : 0
 }

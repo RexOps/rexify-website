@@ -1,14 +1,14 @@
 {
-   "hidden" : 0,
-   "navigation" : 1,
    "content_type_name" : "text/html",
-   "type_name" : "page",
    "keywords" : null,
-   "description" : "",
    "url" : "executing_a_command_and_parsing_its_output",
-   "title" : "Executing a command and parsing its output",
-   "data" : {},
-   "lock_date" : null,
+   "type_name" : "page",
+   "name" : "Executing a command and parsing its output",
    "active" : 1,
-   "name" : "Executing a command and parsing its output"
+   "data" : {},
+   "description" : "",
+   "navigation" : 1,
+   "lock_date" : null,
+   "title" : "Executing a command and parsing its output",
+   "hidden" : 0
 }

@@ -1,14 +1,14 @@
 {
    "content_type_name" : "text/html",
-   "type_name" : "faq_item",
    "keywords" : null,
-   "description" : "",
    "url" : "how_can_i_run_a_block_of_code_with_one_command_",
-   "title" : "How can I run a block of code with one command?",
-   "lock_date" : null,
-   "data" : {},
-   "active" : 1,
+   "type_name" : "faq_item",
    "name" : "How can I run a block of code with one command?",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 0,
+   "lock_date" : null,
    "hidden" : 0,
-   "navigation" : 0
+   "title" : "How can I run a block of code with one command?"
 }

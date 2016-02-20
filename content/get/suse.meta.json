@@ -1,14 +1,14 @@
 {
-   "type_name" : "page",
    "content_type_name" : "text/html",
-   "url" : "suse",
-   "title" : "",
-   "description" : "",
    "keywords" : null,
-   "lock_date" : null,
-   "data" : {},
-   "name" : "suse",
+   "url" : "suse",
+   "type_name" : "page",
    "active" : 1,
-   "hidden" : 0,
-   "navigation" : 0
+   "name" : "suse",
+   "data" : {},
+   "description" : "",
+   "navigation" : 0,
+   "lock_date" : null,
+   "title" : "",
+   "hidden" : 0
 }

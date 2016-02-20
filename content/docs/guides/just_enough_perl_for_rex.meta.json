@@ -1,14 +1,14 @@
 {
-   "name" : "Just enough Perl for Rex",
-   "active" : 1,
-   "lock_date" : null,
-   "data" : {},
+   "content_type_name" : "text/html",
    "keywords" : null,
    "url" : "just_enough_perl_for_rex",
-   "title" : "Just enough Perl for Rex",
-   "description" : "Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.",
-   "content_type_name" : "text/html",
    "type_name" : "page",
+   "name" : "Just enough Perl for Rex",
+   "active" : 1,
+   "data" : {},
+   "description" : "Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.",
    "navigation" : 0,
-   "hidden" : 0
+   "hidden" : 0,
+   "lock_date" : null,
+   "title" : "Just enough Perl for Rex"
 }

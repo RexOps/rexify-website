@@ -1,14 +1,14 @@
 {
-   "navigation" : 1,
-   "hidden" : 0,
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "changing_between_box_providers",
+   "type_name" : "page",
    "active" : 0,
    "name" : "Changing between Box providers",
    "data" : {},
-   "lock_date" : null,
-   "keywords" : null,
    "description" : "",
-   "title" : "Changing between Box providers",
-   "url" : "changing_between_box_providers",
-   "content_type_name" : "text/html",
-   "type_name" : "page"
+   "navigation" : 1,
+   "hidden" : 0,
+   "lock_date" : null,
+   "title" : "Changing between Box providers"
 }

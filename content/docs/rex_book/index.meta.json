@@ -1,14 +1,14 @@
 {
-   "title" : "Rex Book (work in progress)",
-   "url" : "rex_book",
-   "description" : "",
-   "keywords" : null,
    "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "rex_book",
    "type_name" : "docs_chapter",
-   "name" : "Rex Book (work in progress)",
    "active" : 1,
-   "lock_date" : null,
+   "name" : "Rex Book (work in progress)",
    "data" : {},
-   "hidden" : 0,
-   "navigation" : 1
+   "description" : "",
+   "navigation" : 1,
+   "lock_date" : null,
+   "title" : "Rex Book (work in progress)",
+   "hidden" : 0
 }

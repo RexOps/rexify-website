@@ -1,16 +1,16 @@
 {
-   "title" : "Rex 1.3.2 released",
-   "url" : "rex_1.3.2_released",
-   "description" : "",
-   "keywords" : null,
-   "type_name" : "news_entry",
    "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "rex_1.3.2_released",
+   "type_name" : "news_entry",
    "name" : "Rex 1.3.2 released",
    "active" : 1,
-   "lock_date" : null,
    "data" : {
       "news_date" : "2015-06-17 00:00"
    },
-   "hidden" : 0,
-   "navigation" : 1
+   "description" : "",
+   "navigation" : 1,
+   "lock_date" : null,
+   "title" : "Rex 1.3.2 released",
+   "hidden" : 0
 }

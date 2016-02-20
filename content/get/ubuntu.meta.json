@@ -1,14 +1,14 @@
 {
-   "lock_date" : null,
-   "data" : {},
-   "active" : 1,
-   "name" : "ubuntu",
    "content_type_name" : "text/html",
-   "type_name" : "page",
-   "description" : "",
-   "url" : "ubuntu",
-   "title" : "",
    "keywords" : null,
+   "url" : "ubuntu",
+   "type_name" : "page",
+   "name" : "ubuntu",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
    "navigation" : 0,
+   "lock_date" : null,
+   "title" : "",
    "hidden" : 0
 }

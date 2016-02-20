@@ -1,14 +1,14 @@
 {
-   "name" : "Docs",
-   "active" : 1,
-   "lock_date" : null,
-   "data" : {},
-   "title" : "Documentation",
-   "url" : "docs",
-   "description" : "",
-   "keywords" : null,
    "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "docs",
    "type_name" : "docs",
+   "active" : 1,
+   "name" : "Docs",
+   "data" : {},
+   "description" : "",
    "navigation" : 1,
-   "hidden" : 0
+   "title" : "Documentation",
+   "hidden" : 0,
+   "lock_date" : null
 }

@@ -1,14 +1,14 @@
 {
-   "hidden" : 0,
-   "navigation" : 1,
    "content_type_name" : "text/html",
-   "type_name" : "page",
-   "description" : "We recommend you to use a version control system for your development. Especially if you're working in a team it will bring you many advantages.",
-   "url" : "version_control_with_git",
-   "title" : "Version Control with Git",
    "keywords" : null,
-   "data" : {},
-   "lock_date" : null,
+   "url" : "version_control_with_git",
+   "type_name" : "page",
+   "name" : "Version Control with Git",
    "active" : 1,
-   "name" : "Version Control with Git"
+   "data" : {},
+   "description" : "We recommend you to use a version control system for your development. Especially if you're working in a team it will bring you many advantages.",
+   "navigation" : 1,
+   "hidden" : 0,
+   "lock_date" : null,
+   "title" : "Version Control with Git"
 }

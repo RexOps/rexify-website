@@ -1,14 +1,14 @@
 {
-   "navigation" : 0,
-   "hidden" : 0,
-   "active" : 1,
-   "name" : "Why does the run command not format the output?",
-   "data" : {},
-   "lock_date" : null,
-   "description" : "",
-   "title" : "Why does the run command not format the output?",
-   "url" : "why_does_the_run_command_not_format_the_output_",
-   "keywords" : null,
    "content_type_name" : "text/html",
-   "type_name" : "faq_item"
+   "keywords" : null,
+   "url" : "why_does_the_run_command_not_format_the_output_",
+   "type_name" : "faq_item",
+   "name" : "Why does the run command not format the output?",
+   "active" : 1,
+   "data" : {},
+   "description" : "",
+   "navigation" : 0,
+   "lock_date" : null,
+   "hidden" : 0,
+   "title" : "Why does the run command not format the output?"
 }

@@ -1,14 +1,14 @@
 {
-   "navigation" : 1,
-   "hidden" : 0,
-   "lock_date" : null,
-   "data" : {},
+   "content_type_name" : "text/html",
+   "keywords" : null,
+   "url" : "write_your_own_cloud_provider",
+   "type_name" : "page",
    "name" : "Write your own Cloud Provider",
    "active" : 0,
-   "type_name" : "page",
-   "content_type_name" : "text/html",
-   "title" : "Write your own Cloud Provider",
-   "url" : "write_your_own_cloud_provider",
+   "data" : {},
    "description" : "",
-   "keywords" : null
+   "navigation" : 1,
+   "hidden" : 0,
+   "title" : "Write your own Cloud Provider",
+   "lock_date" : null
 }

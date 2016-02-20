@@ -1,14 +1,14 @@
 {
-   "hidden" : 0,
-   "navigation" : 1,
+   "content_type_name" : "text/html",
    "keywords" : null,
    "url" : "other",
-   "title" : "Other Documentation",
-   "description" : "",
-   "content_type_name" : "text/html",
    "type_name" : "docs_chapter",
    "name" : "Other",
    "active" : 1,
    "data" : {},
+   "description" : "",
+   "navigation" : 1,
+   "hidden" : 0,
+   "title" : "Other Documentation",
    "lock_date" : null
 }

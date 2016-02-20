@@ -1,14 +1,14 @@
 {
-   "lock_date" : null,
-   "data" : {},
-   "name" : "Working with packages",
-   "active" : 1,
-   "type_name" : "page",
    "content_type_name" : "text/html",
-   "title" : "Working with packages",
-   "url" : "working_with_packages",
-   "description" : "If you want to install or remove packages on your server Rex gives you a few functions to do this.",
    "keywords" : null,
+   "url" : "working_with_packages",
+   "type_name" : "page",
+   "active" : 1,
+   "name" : "Working with packages",
+   "data" : {},
+   "description" : "If you want to install or remove packages on your server Rex gives you a few functions to do this.",
    "navigation" : 1,
-   "hidden" : 0
+   "lock_date" : null,
+   "hidden" : 0,
+   "title" : "Working with packages"
 }
