@@ -34,7 +34,7 @@
 
 ## Uptime?
 
-xxThis command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)
+This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)
 
 <pre><code class="bash">$ rex -H "frontend[01..15]" -e "say run 'uptime'"</code></pre>
 

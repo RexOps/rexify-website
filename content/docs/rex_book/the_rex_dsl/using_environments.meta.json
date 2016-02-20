@@ -1,7 +1,7 @@
 {
   "active": 1,
   "content_type_name": "text/html",
-  {
+  "data": {
 
   },
   "description": "With environments it is easy to group your servers depending on the maturity of your configuration or your code. You can create environments for dev, staging and production machines. There is no limit for environments, so you can create as much as you need.",

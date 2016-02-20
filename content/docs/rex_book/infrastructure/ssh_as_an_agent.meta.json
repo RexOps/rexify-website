@@ -1,7 +1,7 @@
 {
   "active": 1,
   "content_type_name": "text/html",
-  {
+  "data": {
 
   },
   "description": "To setup an environment to work with Rex you don't have to do much. You have to install Rex on your workstation or a central administration server. For most distributions you'll find packages on the package server.",

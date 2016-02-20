@@ -1,7 +1,7 @@
 {
   "active": 1,
   "content_type_name": "text/html",
-  {
+  "data": {
 
   },
   "description": "One task in configuration management is managing files and keeping them in a consistant state. Rex gives you some easy to use functions to work with files.",

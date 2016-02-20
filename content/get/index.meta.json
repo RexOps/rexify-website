@@ -1,7 +1,7 @@
 {
   "active": 1,
   "content_type_name": "text/html",
-  {
+  "data": {
     "content_top": "<p>You can install Rex with a simple one-liner:</p>
 <p>&nbsp;</p>
 <pre><code class=\"bash\">$ curl -L https://get.rexify.org | perl - --sudo -n Rex</code></pre>
