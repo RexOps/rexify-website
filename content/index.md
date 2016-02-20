@@ -32,7 +32,7 @@
 </div>
 </div>
 
-## Uptime?
+## xxUptime?
 
 This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)
 
