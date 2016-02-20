@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "how_can_i_run_a_block_of_code_with_one_command_",
-   "type_name" : "faq_item",
-   "name" : "How can I run a block of code with one command?",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "lock_date" : null,
-   "hidden" : 0,
-   "title" : "How can I run a block of code with one command?"
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "How can I run a block of code with one command?",
+  "navigation": 0,
+  "title": "How can I run a block of code with one command?",
+  "type_name": "faq_item",
+  "url": "how_can_i_run_a_block_of_code_with_one_command_"
 }

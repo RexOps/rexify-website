@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "writing_modules",
-   "type_name" : "docs_chapter",
-   "active" : 1,
-   "name" : "Writing Modules",
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "title" : "Writing Modules",
-   "lock_date" : null,
-   "hidden" : 0
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Writing Modules",
+  "navigation": 1,
+  "title": "Writing Modules",
+  "type_name": "docs_chapter",
+  "url": "writing_modules"
 }

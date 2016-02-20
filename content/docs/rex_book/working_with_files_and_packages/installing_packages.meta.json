@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "installing_packages",
-   "type_name" : "page",
-   "name" : "Installing Packages",
-   "active" : 1,
-   "data" : {},
-   "description" : "Installing packages is easy. You can use the pkg function for this.",
-   "navigation" : 1,
-   "hidden" : 0,
-   "title" : "Installing Packages",
-   "lock_date" : null
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "Installing packages is easy. You can use the pkg function for this.",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Installing Packages",
+  "navigation": 1,
+  "title": "Installing Packages",
+  "type_name": "page",
+  "url": "installing_packages"
 }

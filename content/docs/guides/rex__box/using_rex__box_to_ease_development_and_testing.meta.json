@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "using_rex__box_to_ease_development_and_testing",
-   "type_name" : "page",
-   "active" : 0,
-   "name" : "Using Rex::Box to ease development and testing",
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "lock_date" : null,
-   "hidden" : 0,
-   "title" : "Using Rex::Box to ease development and testing"
+  "active": 0,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Using Rex::Box to ease development and testing",
+  "navigation": 1,
+  "title": "Using Rex::Box to ease development and testing",
+  "type_name": "page",
+  "url": "using_rex__box_to_ease_development_and_testing"
 }

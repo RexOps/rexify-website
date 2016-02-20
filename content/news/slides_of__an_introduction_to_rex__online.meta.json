@@ -1,16 +1,16 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "slides_of__an_introduction_to_rex__online",
-   "type_name" : "news_entry",
-   "name" : "Slides of \"An introduction to Rex\" online",
-   "active" : 1,
-   "data" : {
-      "news_date" : "2015-03-27 00:00"
-   },
-   "description" : "",
-   "navigation" : 1,
-   "hidden" : 0,
-   "lock_date" : null,
-   "title" : ""
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+    "news_date": "2015-03-27 00:00"
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Slides of \"An introduction to Rex\" online",
+  "navigation": 1,
+  "title": "",
+  "type_name": "news_entry",
+  "url": "slides_of__an_introduction_to_rex__online"
 }

@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "how_do_i_run_a_local_script_on_the_remote_under_a_different_user_",
-   "type_name" : "faq_item",
-   "name" : "How do I run a local script on the remote under a different user?",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "hidden" : 0,
-   "lock_date" : null,
-   "title" : "How do I run a local script on the remote under a different user?"
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "How do I run a local script on the remote under a different user?",
+  "navigation": 0,
+  "title": "How do I run a local script on the remote under a different user?",
+  "type_name": "faq_item",
+  "url": "how_do_i_run_a_local_script_on_the_remote_under_a_different_user_"
 }

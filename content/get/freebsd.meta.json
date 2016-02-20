@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "freebsd",
-   "type_name" : "page",
-   "active" : 1,
-   "name" : "freebsd",
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "lock_date" : null,
-   "hidden" : 0,
-   "title" : ""
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "freebsd",
+  "navigation": 0,
+  "title": "",
+  "type_name": "page",
+  "url": "freebsd"
 }

@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "debian",
-   "type_name" : "page",
-   "active" : 1,
-   "name" : "debian",
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "hidden" : 0,
-   "lock_date" : null,
-   "title" : ""
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "debian",
+  "navigation": 0,
+  "title": "",
+  "type_name": "page",
+  "url": "debian"
 }

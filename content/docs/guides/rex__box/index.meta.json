@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "rex__box",
-   "type_name" : "docs_chapter",
-   "name" : "Rex::Box",
-   "active" : 0,
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "hidden" : 0,
-   "lock_date" : null,
-   "title" : "Rex::Box"
+  "active": 0,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Rex::Box",
+  "navigation": 1,
+  "title": "Rex::Box",
+  "type_name": "docs_chapter",
+  "url": "rex__box"
 }

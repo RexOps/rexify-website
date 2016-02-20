@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "example_of_a_complete_rex_code_infrastructure",
-   "type_name" : "page",
-   "name" : "Example of a complete Rex code infrastructure",
-   "active" : 1,
-   "data" : {},
-   "description" : "For maintainable and reusable code it is important to start with the right infrastructure choices and tools. In this chapter you will learn how to setup and design your project to achieve this.",
-   "navigation" : 1,
-   "title" : "Example of a complete Rex code infrastructure",
-   "lock_date" : null,
-   "hidden" : 0
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "For maintainable and reusable code it is important to start with the right infrastructure choices and tools. In this chapter you will learn how to setup and design your project to achieve this.",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Example of a complete Rex code infrastructure",
+  "navigation": 1,
+  "title": "Example of a complete Rex code infrastructure",
+  "type_name": "page",
+  "url": "example_of_a_complete_rex_code_infrastructure"
 }

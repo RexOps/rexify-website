@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "ferenc_erki",
-   "type_name" : "support_item",
-   "name" : "Ferenc Erki",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "lock_date" : null,
-   "title" : "Ferenc Erki - (R)?ex Core Developer",
-   "hidden" : 0
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Ferenc Erki",
+  "navigation": 0,
+  "title": "Ferenc Erki - (R)?ex Core Developer",
+  "type_name": "support_item",
+  "url": "ferenc_erki"
 }

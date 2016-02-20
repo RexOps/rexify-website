@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/markdown",
-   "keywords" : null,
-   "url" : "index",
-   "type_name" : "index",
-   "active" : 1,
-   "name" : "Home",
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "lock_date" : null,
-   "hidden" : 0,
-   "title" : "(R)?ex - A simple framework to simplify system administration and datacenter automation"
+  "active": 1,
+  "content_type_name": "text/markdown",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Home",
+  "navigation": 1,
+  "title": "(R)?ex - A simple framework to simplify system administration and datacenter automation",
+  "type_name": "index",
+  "url": "index"
 }

@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "gentoo",
-   "type_name" : "page",
-   "active" : 1,
-   "name" : "gentoo",
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "hidden" : 0,
-   "title" : "",
-   "lock_date" : null
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "gentoo",
+  "navigation": 0,
+  "title": "",
+  "type_name": "page",
+  "url": "gentoo"
 }

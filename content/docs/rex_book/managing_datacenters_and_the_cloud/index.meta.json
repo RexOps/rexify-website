@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "managing_datacenters_and_the_cloud",
-   "type_name" : "docs_chapter",
-   "name" : "Managing Datacenters and the Cloud",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "lock_date" : null,
-   "hidden" : 0,
-   "title" : "Managing Datacenters and the Cloud"
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Managing Datacenters and the Cloud",
+  "navigation": 1,
+  "title": "Managing Datacenters and the Cloud",
+  "type_name": "docs_chapter",
+  "url": "managing_datacenters_and_the_cloud"
 }

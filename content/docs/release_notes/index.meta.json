@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "release_notes",
-   "type_name" : "release_overview",
-   "name" : "Release notes",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 1,
-   "hidden" : 0,
-   "title" : "Release notes",
-   "lock_date" : null
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Release notes",
+  "navigation": 1,
+  "title": "Release notes",
+  "type_name": "release_overview",
+  "url": "release_notes"
 }

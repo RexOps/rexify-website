@@ -1,14 +1,15 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "inovex",
-   "type_name" : "support_item",
-   "name" : "inovex",
-   "active" : 1,
-   "data" : {},
-   "description" : "",
-   "navigation" : 0,
-   "hidden" : 0,
-   "title" : "inovex - Enabling Your Digital Future",
-   "lock_date" : null
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+  }
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "inovex",
+  "navigation": 0,
+  "title": "inovex - Enabling Your Digital Future",
+  "type_name": "support_item",
+  "url": "inovex"
 }

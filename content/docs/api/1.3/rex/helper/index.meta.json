@@ -1,16 +1,16 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "helper",
-   "type_name" : "api_folder",
-   "name" : "Helper",
-   "active" : 1,
-   "data" : {
-      "search_info" : "API version 1.3"
-   },
-   "description" : null,
-   "navigation" : 1,
-   "lock_date" : null,
-   "title" : "Helper",
-   "hidden" : 0
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+    "search_info": "API version 1.3"
+  }
+  "description": null,
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Helper",
+  "navigation": 1,
+  "title": "Helper",
+  "type_name": "api_folder",
+  "url": "helper"
 }

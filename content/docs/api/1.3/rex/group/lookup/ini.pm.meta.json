@@ -1,16 +1,16 @@
 {
-   "content_type_name" : "text/html",
-   "keywords" : null,
-   "url" : "ini.pm",
-   "type_name" : "api_item",
-   "name" : "INI.pm",
-   "active" : 1,
-   "data" : {
-      "search_info" : "API version 1.3"
-   },
-   "description" : null,
-   "navigation" : 1,
-   "lock_date" : null,
-   "title" : "INI.pm",
-   "hidden" : 0
+  "active": 1,
+  "content_type_name": "text/html",
+  {
+    "search_info": "API version 1.3"
+  }
+  "description": null,
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "INI.pm",
+  "navigation": 1,
+  "title": "INI.pm",
+  "type_name": "api_item",
+  "url": "ini.pm"
 }
