@@ -1,0 +1,146 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#clearpart-drive-">clearpart($drive)</a></li>
+      <li><a href="#partition-mountpoint-option-">partition($mountpoint, %option)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Partition - Partition module</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this Module you can partition your harddrive.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<p>All these functions are not idempotent.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::Partition;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="clearpart-drive-">clearpart($drive)</h2>
+
+<p>Clear partitions on drive `sda`:</p>
+
+<pre><code> clearpart &quot;sda&quot;;</code></pre>
+
+<p>Create a new GPT disk label (partition table) on drive `sda`:</p>
+
+<pre><code> clearpart &quot;sda&quot;,
+  initialize =&gt; &quot;gpt&quot;;</code></pre>
+
+<p>If GPT initialization is requested, the `bios_boot` option (default: TRUE) can also be set to TRUE or FALSE to control creation of a BIOS boot partition:</p>
+
+<pre><code> clearpart &quot;sda&quot;,
+  initialize =&gt; &quot;gpt&quot;,
+  bios_boot =&gt; FALSE;</code></pre>
+
+<h2 id="partition-mountpoint-option-">partition($mountpoint, %option)</h2>
+
+<p>Create a partition with the specified parameters:</p>
+
+<dl>
+
+<dt id="ondisk">ondisk</dt>
+<dd>
+
+<p>The disk to be partitioned. Mandatory.</p>
+
+</dd>
+<dt id="size">size</dt>
+<dd>
+
+<p>Desired size of the partition in MB. It is mandatory to pass either a <code>size</code> or a <code>grow</code> parameter (but not both).</p>
+
+</dd>
+<dt id="grow">grow</dt>
+<dd>
+
+<p>If <code>TRUE</code>, then the partition will take up all the available space on the disk. It is mandatory to pass either a <code>grow</code> or a <code>size</code> parameter (but not both).</p>
+
+</dd>
+<dt id="type">type</dt>
+<dd>
+
+<p>Partition type to be passed to <code>parted</code>&#39;s <code>mkpart</code> command. Optional, defaults to <code>primary</code>.</p>
+
+</dd>
+<dt id="boot">boot</dt>
+<dd>
+
+<p>Sets boot flag on the partition if <code>TRUE</code>. Optional, no boot flag is set by default.</p>
+
+</dd>
+<dt id="fstype">fstype</dt>
+<dd>
+
+<p>Create a filesystem after creating the partition. Optional, no filesystem is created by default.</p>
+
+</dd>
+<dt id="label">label</dt>
+<dd>
+
+<p>Label to be used with the filesystem. Optional, defaults to no label.</p>
+
+</dd>
+<dt id="mount">mount</dt>
+<dd>
+
+<p>If <code>TRUE</code>, try to mount the partition after creating it. Optional, no mount is attempted by default.</p>
+
+</dd>
+<dt id="mount_persistent">mount_persistent</dt>
+<dd>
+
+<p>If <code>TRUE</code>, try to mount the partition after creating it, and also register it in <code>/etc/fstab</code>. Optional, no mount or <code>/etc/fstab</code> manipulation is attempted by default.</p>
+
+</dd>
+<dt id="vg">vg</dt>
+<dd>
+
+<p>Creates an LVM PV, then creates the specifed LVM VG (or extends it, if the VG already exists). Needs <code>ondisk</code>.</p>
+
+</dd>
+</dl>
+
+<p>Examples:</p>
+
+<pre><code> partition &quot;/&quot;,
+   fstype =&gt; &quot;ext3&quot;,
+   size   =&gt; 15000,
+   ondisk =&gt; &quot;sda&quot;,
+   type   =&gt; &quot;primary&quot;;
+ 
+ partition &quot;none&quot;,
+   type   =&gt; &quot;extended&quot;,
+   ondisk =&gt; &quot;sda&quot;,
+   grow   =&gt; 1,
+   mount  =&gt; TRUE,
+ 
+ partition &quot;swap&quot;,
+   fstype =&gt; &quot;swap&quot;,
+   type   =&gt; &quot;logical&quot;,
+   ondisk =&gt; &quot;sda&quot;,
+   size   =&gt; 8000;
+
+ partition &quot;/&quot;,
+   fstype =&gt; &quot;ext3&quot;,
+   size   =&gt; 10000,
+   ondisk =&gt; &quot;sda&quot;,
+   vg     =&gt; &quot;vg0&quot;;</code></pre>
+
+

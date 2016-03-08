@@ -1,0 +1,65 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-RESOURCES">EXPORTED RESOURCES</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Resource::firewall - Firewall functions</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module it is easy to manage different firewall systems.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> # Configure a particular rule
+ task &quot;configure_firewall&quot;, &quot;server01&quot;, sub {
+   firewall &quot;some-name&quot;,
+     ensure      =&gt; &quot;present&quot;,
+     proto       =&gt; &quot;tcp&quot;,
+     action      =&gt; &quot;accept&quot;,
+     source      =&gt; &quot;192.168.178.0/24&quot;,
+     destination =&gt; &quot;192.168.1.0/24&quot;,
+     sport       =&gt; 80,
+     sapp        =&gt; &#39;www&#39;,    # source application, if provider supports it
+     port        =&gt; 80,       # same as dport
+     dport       =&gt; 80,
+     app         =&gt; &#39;www&#39;,    # same as dapp, destination application, if provider supports it
+     dapp        =&gt; &#39;www&#39;,    # destination application, if provider supports it
+     tcp_flags   =&gt; [&quot;FIN&quot;, &quot;SYN&quot;, &quot;RST&quot;],
+     chain       =&gt; &quot;INPUT&quot;,
+     table       =&gt; &quot;nat&quot;,
+     jump        =&gt; &quot;LOG&quot;,
+     iniface     =&gt; &quot;eth0&quot;,
+     outiface    =&gt; &quot;eth1&quot;,
+     reject_with =&gt; &quot;icmp-host-prohibited&quot;,
+     log         =&gt; &quot;new|all&quot;,  # if provider supports it
+     log_level   =&gt; &quot;&quot;,         # if provider supports it
+     log_prefix  =&gt; &quot;FW:&quot;,      # if provider supports it
+     state       =&gt; &quot;NEW&quot;,
+     ip_version  =&gt; -4;         # for iptables provider. valid options -4 and -6
+ };
+
+ # Add overall logging (if provider supports)
+ firewall &quot;some-name&quot;,
+   provider =&gt; &#39;ufw&#39;,
+   logging  =&gt; &quot;medium&quot;;</code></pre>
+
+<h1 id="EXPORTED-RESOURCES">EXPORTED RESOURCES</h1>
+
+<dl>
+
+<dt id="firewall-name-params-">firewall($name, %params)</dt>
+<dd>
+
+</dd>
+</dl>
+
+

@@ -1,0 +1,165 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#new-name-box_name-">new(name =&gt; $box_name)</a></li>
+      <li><a href="#box-sub-">box(sub {})</a></li>
+      <li><a href="#list_boxes">list_boxes</a></li>
+      <li><a href="#get_box-box_name-">get_box($box_name)</a></li>
+      <li><a href="#boxes-action-data-">boxes($action, @data)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Box - Functions / Class to manage Virtual Machines</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports Amazon, KVM and VirtualBox.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::Box;
+ 
+ set box =&gt; &quot;VBox&quot;;
+ 
+ group all_my_boxes =&gt; map { get_box($_-&gt;{name})-&gt;{ip} } list_boxes;
+ 
+ task mytask =&gt; sub {
+ 
+   box {
+     my ($box) = @_;
+     $box-&gt;name(&quot;boxname&quot;);
+     $box-&gt;url(&quot;http://box.rexify.org/box/base-image.box&quot;);
+ 
+     $box-&gt;network(1 =&gt; {
+      type =&gt; &quot;nat&quot;,
+     });
+ 
+     $box-&gt;network(1 =&gt; {
+      type =&gt; &quot;bridged&quot;,
+      bridge =&gt; &quot;eth0&quot;,
+     });
+ 
+     $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+ 
+     $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
+ 
+     $box-&gt;auth(
+      user =&gt; &quot;root&quot;,
+      password =&gt; &quot;box&quot;,
+     );
+ 
+     $box-&gt;setup(qw/task_to_customize_box/);
+ 
+   };
+ 
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="new-name-box_name-">new(name =&gt; $box_name)</h2>
+
+<p>Constructor if used in OO mode.</p>
+
+<pre><code> my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);</code></pre>
+
+<h2 id="box-sub-">box(sub {})</h2>
+
+<p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box.</p>
+
+<pre><code> box {
+   my ($box) = @_;
+   $box-&gt;name(&quot;boxname&quot;);
+   $box-&gt;url(&quot;http://box.rexify.org/box/base-image.box&quot;);
+ 
+   $box-&gt;network(1 =&gt; {
+    type =&gt; &quot;nat&quot;,
+   });
+ 
+   $box-&gt;network(1 =&gt; {
+    type =&gt; &quot;bridged&quot;,
+    bridge =&gt; &quot;eth0&quot;,
+   });
+ 
+   $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+ 
+   $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
+ 
+   $box-&gt;auth(
+    user =&gt; &quot;root&quot;,
+    password =&gt; &quot;box&quot;,
+   );
+ 
+   $box-&gt;setup(qw/task_to_customize_box/);
+ };</code></pre>
+
+<h2 id="list_boxes">list_boxes</h2>
+
+<p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn&#39;t start a Rex/Box.</p>
+
+<pre><code> use Data::Dumper;
+ task &quot;get_infos&quot;, sub {
+   my @all_boxes = list_boxes;
+   print Dumper(\@all_boxes);
+ };</code></pre>
+
+<h2 id="get_box-box_name-">get_box($box_name)</h2>
+
+<p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system.</p>
+
+<pre><code> use Data::Dumper;
+ task &quot;get_box_info&quot;, sub {
+   my $data = get_box($box_name);
+   print Dumper($data);
+ };</code></pre>
+
+<h2 id="boxes-action-data-">boxes($action, @data)</h2>
+
+<p>With this function you can control your boxes. Currently there are 3 actions.</p>
+
+<dl>
+
+<dt id="init">init</dt>
+<dd>
+
+<p>This action can only be used if you&#39;re using a YAML file to describe your Rex/Boxes.</p>
+
+<pre><code> task &quot;prepare_boxes&quot;, sub {
+   boxes &quot;init&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="start">start</dt>
+<dd>
+
+<p>This action start one or more Rex/Boxes.</p>
+
+<pre><code> task &quot;start_boxes&quot;, sub {
+   boxes &quot;start&quot;, &quot;box1&quot;, &quot;box2&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="stop">stop</dt>
+<dd>
+
+<p>This action stop one or more Rex/Boxes.</p>
+
+<pre><code> task &quot;stop_boxes&quot;, sub {
+   boxes &quot;stop&quot;, &quot;box1&quot;, &quot;box2&quot;;
+ };</code></pre>
+
+</dd>
+</dl>
+
+

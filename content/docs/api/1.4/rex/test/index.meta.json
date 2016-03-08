@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+    "search_info": "API version 1.4"
+  },
+  "description": null,
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Test",
+  "navigation": 1,
+  "title": "Test",
+  "type_name": "api_folder",
+  "url": "test"
+}

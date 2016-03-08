@@ -1,0 +1,50 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#groups_xml-file-">groups_xml($file)</a></li>
+      <li><a href="#schema_file">$schema_file</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Group::Lookup::XML - read hostnames and groups from a XML file</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can define hostgroups out of an xml file.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Group::Lookup::XML;
+ groups_xml &quot;file.xml&quot;;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="groups_xml-file-">groups_xml($file)</h2>
+
+<p>With this function you can read groups from xml files.</p>
+
+<p>File Example:</p>
+
+<p>&lt;configuration&gt; &lt;group name=&quot;database&quot;&gt; &lt;server name=&quot;machine01&quot; user=&quot;root&quot; password=&quot;foob4r&quot; sudo=&quot;true&quot; hdd=&quot;300&quot; loc=&quot;/opt&quot; /&gt; &lt;/group&gt; &lt;group name=&quot;application&quot;&gt; &lt;server name=&quot;machine01&quot; user=&quot;root&quot; password=&quot;foob4r&quot; sudo=&quot;true&quot; hdd=&quot;50&quot; loc=&quot;/export&quot; /&gt; &lt;server name=&quot;machine02&quot; user=&quot;root&quot; password=&quot;foob5r&quot; sudo=&quot;true&quot;/&gt; &lt;/group&gt; &lt;group name=&quot;profiler&quot;&gt; &lt;server name=&quot;machine03&quot; user=&quot;root&quot; password=&quot;blue123&quot;/&gt; &lt;/group&gt; &lt;/configuration&gt;</p>
+
+<pre><code> C&lt;groups_xml($file);&gt;
+ 
+ The XML file is validated against the following DTD schema:
+ 
+ </code></pre>
+
+<h2 id="schema_file">$schema_file</h2>
+
+<p>A global that defines the XSD schema for which the XML is check against.</p>
+
+
