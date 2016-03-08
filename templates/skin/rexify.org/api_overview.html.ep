@@ -49,7 +49,7 @@
 
 % for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0}, 
 %     {
-%       order_by => { -asc => [qw/name/] }
+%       order_by => { -desc => [qw/name/] }
 %     }
 %  )) {
 <%= $block->($child, 1) %>
