@@ -1,0 +1,73 @@
+# Release notes for 1.4.0
+
+经过半年开发修正，rex1.4.0正式发布，本次版本包含了16贡献271次commit提交，118个源文件4353行增加和1655行删除，大概了30%的源码进行了重构。这么大的变动离不开开源社区的支持和反馈，在线和线下的讨论，问题和上报，感谢所有支持rex的人，感谢开源社区。
+
+
+   新特性：
+
+   MKfs 命令
+   增加了参数解析
+
+   比如：
+
+     rex lib:task1 --option1=value1 lib:task2 --option2=value2
+     rex lib:task1 --option=value1 lib:task2 --option=value2
+     rex lib:task1  --option=value
+
+   新增加os支持：
+
+     增加对Arch linux的完整支持，Mint和Raspbian被当作Debian处理。
+
+
+   ParamLookup
+
+   Rex::Ext::ParamLookup 从 RexOps/rex-recipes中移到rex核心模块 Rex::Helper::Rexfile::ParamLookup，用来进行任务参数的管理
+
+    my $var = param_lookup "param_name", "default_value";
+
+   任务输出统计总结
+
+    对执行的任务完成后进行终结。
+
+    防火墙模块：
+
+    新增加防火墙资源来管理防火墙规则。
+
+     firewall "open-port-82-for-1.2.3.4",
+        ensure => "present",
+        action => "accept",
+        port   => 82,
+        source => "1.2.3.4";
+
+   UFW 防火墙的模块也从rex-recipes转入核心模块, 在默认iptables基础上支持管理.
+
+       open_port, [22, 80];    # 默认IPv4 规则
+       open_port -4, [22, 80]; # IPv4规则
+       open_port -6, [22, 80]; # IPv6规则
+
+ 配置管理：
+
+  CMDB可以包含模板代码
+
+增强Crontab 处理：
+
+   一般用户可以管理自己的crontabs.
+
+模板：
+  资源和任务支持自己的模板变量的命名空间。
+
+Rexfile/module 加载：
+
+     Rexfile和modules的加载方式完全重构，现在可以很方便的探测潜在的错误，反馈更有用的信息。
+虚拟客户机选项：
+   对虚拟机支持设置cpu和内存选项
+
+
+文档：
+
+ 全面更新，增加1.4的新版本文档支持。
+
+ 其他加强（略）
+
+http://rexify.org/docs/release_notes/1.4.0.html
+
