@@ -1,3 +1,4 @@
+2016-03-07,(R)?ex 1.4.0 发布, 包含大量更新. 详情 <a href="/howtos/releases/1.4.0.html">发布文档</a>.
 2015-09-04,(R)?ex 1.3.3 released, fixing a bunch of bugs. See the <a href="/howtos/releases/1.3.3.html">release notes</a> for more details.
 2015-06-22,adjust GmbH is <a href="/contribute/index.html#sponsoring">sponsoring</a> the (R)?ex project with a new build server. Thank you for your support!
 2015-06-17,(R)?ex 1.3.2 released, fixing issues related to file manipulation when run on BSDs. See the <a href="/howtos/releases/1.3.2.html">release notes</a> for more details.
