@@ -36,7 +36,7 @@
 
 <h2>摘要</h2>
 <p>(R)?ex 是一个用于简化远程执行命令操作的小脚本。你只要在 <em>Rexfile</em> 文件中创建任务即可。</p>
-<p>你可以在<a href="http://rexify.perl-china.com/">http://rexify.org/</a>中找到例子和如何使用rex的介绍。</p>
+<p>你可以在<a href="http://rex.perlchina.org">rex中国官方网站（qq群252744726）</a>中找到例子和如何使用rex的介绍。</p>
 <p>
 </p>
 

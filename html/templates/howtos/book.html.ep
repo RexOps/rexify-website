@@ -14,6 +14,7 @@
 <ol>
    <li>Rex 基础架构
       <ol>
+         <li><a href="http://ijz.me/?tag=rex">一些实例</a></li>
          <li><a href="/howtos/book/ssh_as_agent.html">SSH 作为客户端</a></li>
          <li><a href="/howtos/book/version_control_with_git.html">Git 做版本控制</a></li>
          <li>Using commit hooks</li>

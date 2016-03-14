@@ -288,10 +288,10 @@ __DATA__
                   <li <% if($cat eq "contribute") { %>class="active" <% } %>>
 
                      <b class="arrow_box"></b>
-                     <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">Care</a>
+                     <a href="#" title="Contribute to (R)?ex and help people in need." class="dropdown_link">关注</a>
                      <ul class="dropdown_menu dropdown_care">
-                        <li><a href="/contribute">Help (R)?ex</a></li>
-                        <li><a href="/contribute/donate.html">Help people in need</a></li>
+                        <li><a href="/contribute">加入(R)?ex</a></li>
+                        <li><a href="/contribute/donate.html">奉献爱心</a></li>
                      </ul>
 
                   </li>
