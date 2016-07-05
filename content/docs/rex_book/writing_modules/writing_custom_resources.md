@@ -43,7 +43,7 @@ just create a new folder.
 $ mkdir -p lib/HelloWorld
 ```
 
-Now we need to create 2 files. One *____module____.pm* for the resource definition
+Now we need to create 2 files. One *\_\_module\_\_.pm* for the resource definition
 and one *meta.yml* where we can define the dependencies our resource will have.
 This file is needed if you want to upload your module to a git server and share
 it between projects.
@@ -58,7 +58,7 @@ License: YourLicense
 # Requires:
 ```
 
-The *__module__.pm* file which creates the resource.
+The *\_\_module\_\_.pm* file which creates the resource.
 
 ```perl
 package HelloWorld;
