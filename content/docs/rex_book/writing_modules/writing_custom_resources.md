@@ -17,7 +17,7 @@ resources will be reported (if you are using the reporting feature) and have an
 `on_change` attribute .
 
 
-## Writing Resources for Rex 1.3+
+## Writing Resources for Rex 1.x (1.3+)
 
 ### Architecture of a Resource
 
