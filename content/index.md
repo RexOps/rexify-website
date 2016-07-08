@@ -48,7 +48,7 @@ task "uptime", sub {
 
 Now you can run your task with this command:
 
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password </user>uptime</code></pre>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password uptime</code></pre>
 
 ## Keep Your Configuration In Sync
 
