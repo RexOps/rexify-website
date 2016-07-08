@@ -41,14 +41,14 @@ This command line example will execute <code>uptime</code> on all the given host
 The same, but with a Rexfile
 
 <pre><code class="perl">use Rex -feature =&gt; ['1.0'];
-desc "Get Disk Free";
+desc "Get Uptime";
 task "uptime", sub {
   say run "uptime";
 };</code></pre>
 
 Now you can run your task with this command:
 
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" uptime</code></pre>
+<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password </user>uptime</code></pre>
 
 ## Keep Your Configuration In Sync
 
@@ -73,7 +73,7 @@ task "prepare", group =&gt; "frontend", sub {
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
   prepare();
-  
+
   file "/etc/apache2/apache2.conf",
     source    =&gt; "files/etc/apache2/apache2.conf",
     on_change =&gt; sub { service apache2 =&gt; "reload"; };
@@ -102,9 +102,9 @@ task "prepare", group =&gt; "frontend", sub {
 desc "Keep Configuration in sync";
 task "configure", group =&gt; "frontend", sub {
   prepare();
-  
+
   file "/etc/apache2/apache2.conf",
-    source    =&gt; "files/etc/apache2/apache2.conf", 
+    source    =&gt; "files/etc/apache2/apache2.conf",
     on_change =&gt; sub { service apache2 =&gt; "reload"; };
 };</code></pre>
 
