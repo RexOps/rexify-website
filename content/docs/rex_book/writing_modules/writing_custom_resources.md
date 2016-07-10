@@ -209,5 +209,23 @@ sub new {
 1; # this need to be the last line in the file</code></pre>
 
 
+### Using your resource
 
+After creating your module with the `greet` resource you can `use` this 
+resource in your `Rexfile`.
+
+<pre><code class="perl"># Rexfile
+use Rex -feature => ['1.4'];
+use HelloWorld;
+
+group myservers => "srv[01..10]";
+
+task "prepare", group => "myservers", sub {
+  HelloWorld::greet "mygreeting",
+    message => "Welcome to my server",
+    ensure  => "present",
+    on_change => sub {
+      say "server greeting has changed.";
+    };
+};</code></pre>
 
