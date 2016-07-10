@@ -39,9 +39,7 @@ reporting module get notified.
 To build a new resource you first have to create a new Rex module. Todo this,
 just create a new folder.
 
-```
-$ mkdir -p lib/HelloWorld
-```
+<pre><code class="bash">$ mkdir -p lib/HelloWorld</code></pre>
 
 Now we need to create 2 files. One *\_\_module\_\_.pm* for the resource definition
 and one *meta.yml* where we can define the dependencies our resource will have.
@@ -50,18 +48,15 @@ it between projects.
 
 In the *meta.yml* file you can just put the following lines.
 
-```yaml
-Name: HelloWorld
+<pre><code class="yaml">Name: HelloWorld
 Description: A hello world resource
 License: YourLicense
 # we don't require anything
-# Requires:
-```
+# Requires:</code></pre>
 
 The *\_\_module\_\_.pm* file which creates the resource.
 
-```perl
-package HelloWorld;
+<pre><code class="perl">package HelloWorld;
 
 use strict;
 use warnings;
@@ -118,22 +113,17 @@ resource "greet", sub {
 
 };
 
-1; # this need to be the last line in the file
-```
+1; # this need to be the last line in the file</code></pre>
 
 Now, after creating the resource definition we need to create our providers.
 To do so, you need to create the following directory.
 
-```
-$ mkdir -p lib/HelloWorld/greet/Provider
-```
+<pre><code class="bash">$ mkdir -p lib/HelloWorld/greet/Provider</code></pre>
 
 And place the two providers inside this directory.
 
-```
-$ touch lib/HelloWorld/greet/Provider/default.pm
-$ touch lib/HelloWorld/greet/Provider/centos.pm
-```
+<pre><code class="bash">$ touch lib/HelloWorld/greet/Provider/default.pm
+$ touch lib/HelloWorld/greet/Provider/centos.pm</code></pre>
 
 In this example we will create the *default.pm* provider and the *centos.pm*
 provider which will just inherit every method from the *default.pm* provider.
@@ -141,8 +131,7 @@ provider which will just inherit every method from the *default.pm* provider.
 In Rex < 2.0 we don't use any object system for perl so we need to create the
 bare class by our self.
 
-```perl
-# File: lib/HelloWorld/greet/Provider/default.pm
+<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/default.pm
 package HelloWorld::greet::Provider::default;
 
 use strict;
@@ -189,15 +178,13 @@ sub absent {
   return $changed;
 }
 
-1; # this need to be the last line in the file```
-```
+1; # this need to be the last line in the file</code></pre>
 
 The next file is the *centos* provider. We will just inherit from the *default*
 provider without overriding any functions. This is just for demonstration 
 purpose how to do inheritance.
 
-```perl
-# File: lib/HelloWorld/greet/Provider/centos.pm
+<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/centos.pm
 package HelloWorld::greet::Provider::centos;
 
 use strict;
@@ -219,8 +206,8 @@ sub new {
   return $self;
 }
 
-1; # this need to be the last line in the file```
-```
+1; # this need to be the last line in the file</code></pre>
+
 
 
 
