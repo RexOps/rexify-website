@@ -1,3 +1,4 @@
+*~
 .DS_Store
 *.sw*
 Makefile
@@ -13,7 +14,15 @@ debian/*.log
 *.old
 *.bak
 README
-config.pl
-*.zip
-elasticsearch
-*~
+MYMETA.yml
+MYMETA.json
+doc/bootstrap.pod
+doc/html
+*.txt
+screencasts
+.build
+vars.db
+vars.db.lock
+.includepath
+.project
+tmp/

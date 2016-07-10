@@ -224,9 +224,3 @@ sub new {
 
 
 
-## Writing Resources for Rex 2.0+
-
-### Architecture of a Resource
-
-### Hello World Resource
-
