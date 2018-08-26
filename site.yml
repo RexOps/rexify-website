@@ -15,6 +15,13 @@ basic_app:
     args:
         store: 'content'
         url_root: '/'
+        data:
+            no_side_bar: 0
+            root: 1
+            trainings:
+                date: 2018-08-26
+                text: test training
+            no_disqus: 1
 gh_pages:
     class: Statocles::Deploy::Git
     args:
