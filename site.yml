@@ -3,7 +3,8 @@ site:
     args:
         title: Rexify statocles
         base_url: https://rexops.github.io/rexify-website/
-        theme: '::bootstrap'
+        theme:
+            $ref: rexify
         apps:
             basic:
                 $ref: basic_app
@@ -19,3 +20,7 @@ gh_pages:
     args:
         branch: gh-pages
         base_url: https://rexops.github.io/rexify-website/
+rexify:
+    class: Statocles::Theme
+    args:
+        store: theme
