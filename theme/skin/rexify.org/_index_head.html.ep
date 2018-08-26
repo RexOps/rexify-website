@@ -1,0 +1,24 @@
+         <div id="head-div">
+            <div class="head_container">
+               <div class="slogan">
+                  <h1>Automate Everything, Relax Anytime</h1>
+                  <div class="slogan_list">
+                     <ul>
+                        <li>&gt; Integrates seamless in your running environment</li>
+                        <li>&gt; Easy to use and extend</li>
+                        <li>&gt; Easy to learn, it's just plain Perl</li>
+                        <li>&gt; Apache 2.0 licensed</li>
+                     </ul>
+                  </div> <!-- slogan_list -->
+
+                  <div class="source">
+                     <pre><code class="perl">task prepare => sub {
+   pkg "apache2", ensure =&gt; "latest";
+   service "apache2", ensure => "started";
+};</code></pre>
+                  </div> <!-- source -->
+                  <a class="headlink" href="/howtos/start.html">Read the Getting Started Guide</a>
+               </div> <!-- slogan -->
+
+            </div> <!-- head_container -->
+         </div>

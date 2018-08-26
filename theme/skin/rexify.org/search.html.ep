@@ -1,0 +1,28 @@
+% layout 'skin/rexify.org/default';
+
+<h1><%= $page->title %></h1>
+
+<form action="/search.html" method="get" accept-charset="utf-8">
+  <input type="text" name="q" value="" style="margin-top: 10px;" /> <input type="submit" value="Search" class="btn" />
+</form>
+
+% if(param("q")) {
+<ul>
+  % while(my $row = $search_res->fetchrow_hashref) {
+  % next unless($row->{id});
+  % my $page_o = $site->get_page($row->{id});
+  <li>
+    <a href="<%= $page_o->generate_url %>"><%= $page_o->name %></a>
+    % if($page_o->data && exists $page_o->data->{search_info}) {
+    (<%= $page_o->data->{search_info} %>)
+    % }
+    % my $h_content_res = sphinx->prepare("CALL SNIPPETS(?, 'cms', ?)");
+    % $h_content_res->bind_param(1, $page_o->content);
+    % $h_content_res->bind_param(2, param("q"));
+    % $h_content_res->execute;
+    % my $h_content = $h_content_res->fetchrow_hashref;
+    <p><%== $h_content->{snippet} %></p>
+  </li>
+  % }
+</ul>
+% }

@@ -1,0 +1,54 @@
+% layout 'skin/rexify.org/default';
+
+<h1><%= $page->title %></h1>
+
+%== $page->content
+
+%# needed for the __SUB__ call
+% use v5.16;
+<% my $block = begin %>
+  % my ($page, $root) = @_;
+
+
+% if($root) {
+  <h2><%= $page->title %></h2>
+    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+    %=     __SUB__->($child);
+    %   }
+% } else {
+
+<ul>
+  <li>
+    % if($page->type->name ne "api_folder") {
+      <a href="<%= $page->generate_url %>"><%= $page->title || $page->name %></a>
+      % if($page->description) {
+      <p><%= $page->description %></p>
+      % }
+    % } else {
+      <%= $page->title || $page->name %>
+    % }
+    % if($page->is_branch && $page->type->name !~ m/^api/) {
+    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+    %=     __SUB__->($child);
+    %   }
+    % }
+    % else {  # api_* type
+    %   for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0},
+    %     {
+    %       order_by => { -asc => [qw/name/] }
+    %     }
+    %   )) {
+    %=     __SUB__->($child);
+    %   }
+    % }
+  </li>
+</ul>
+
+% }
+
+<% end %>
+
+% for my $child ($page->children->search({"me.active" => 1, "me.hidden" => 0})) {
+% next if($child->name =~ m/release notes/i);
+<%= $block->($child, 1) %>
+% }

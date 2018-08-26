@@ -1,0 +1,178 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+      <title><%= $page->title %></title>
+
+      <meta name="viewport" content="width=1024, initial-scale=0.5">
+      <link rel="shortcut icon" href="/images/skin/rexify.org/favicon.png" />
+      <link href="/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/css/skin/rexify.org/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/css/skin/rexify.org/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
+      <script src="/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+% if($app->{data}{no_side_bar}) {
+         #content_container {
+            margin-left: 5px;
+         }
+
+         #widgets {
+            display: none;
+         }
+      % }
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+        % if($app->{data}{root}) {
+         <div id="index-top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+         </div>
+
+         %= include 'skin/rexify.org/_index_head.html.ep';
+         <div class="nav_title">
+            <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
+         </div>
+
+         <div id="index-nav-div">
+           <!-- %= include 'skin/rexify.org/_navigation.html.ep'; -->
+         </div>
+      % } else {
+         <div id="top-div" class="top_div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               <!-- %= include 'skin/rexify.org/_navigation.html.ep'; -->
+            </div>
+            </div>
+         </div>
+      % }
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <%= content %>
+
+              % if( ! $app->{data}{no_disqus}) {
+
+    <div id="disqus_thread" style="margin-top: 45px;"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'rexify'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    % }
+
+            </div>
+         </div> <!-- content -->
+
+      </div> <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" /></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
+   </div>
+
+   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/jquery.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/bootstrap.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/menu.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/ZeroClipboard.min.js"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

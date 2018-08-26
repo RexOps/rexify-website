@@ -1,0 +1,27 @@
+% my $root = $site->get_root_page();
+
+<div class="nav_links">
+  <ul>
+    <li><a href="/"><%= $root->name %></a></li>
+    % for my $child ($root->children) {
+      % next if($child->hidden || $child->navigation == 0 || !$child->active);
+      % my @sub_children = $child->children->search({"me.navigation" => 1, "me.hidden" => 0});
+      % if(scalar @sub_children > 0) {
+        <li>
+          <b class="arrow_box"></b>
+          <a href="<%= $child->generate_url %>" title="<%= $child->title %>" class="dropdown_link"><%= $child->name %></a>
+          <ul class="dropdown_menu dropdown_<%= lc($child->name) %>">
+            % for my $sub_child (@sub_children) {
+            % if($sub_child->name eq "API") {
+              <li class="divider"></li>
+            % }
+            <li><a href="<%= $sub_child->generate_url %>"><%= $sub_child->name %></a></li>
+            % }
+          </ul>
+        </li>
+      % } else {
+        <li><a href="<%= $child->generate_url %>" title="<%= $child->title %>"><%= $child->name %></a></li>
+      % }
+    % }
+  </ul>
+</div>
