@@ -1,0 +1,74 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#host_entry-name-option-">host_entry($name, %option)</a></li>
+      <li><a href="#create_host-">create_host($)</a></li>
+      <li><a href="#delete_host-host-">delete_host($host)</a></li>
+      <li><a href="#get_host-host-">get_host($host)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Host - Edit /etc/hosts</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can manage the host entries in /etc/hosts.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> task &quot;create-host&quot;, &quot;remoteserver&quot;, sub {
+   create_host &quot;rexify.org&quot; =&gt; {
+    ip    =&gt; &quot;88.198.93.110&quot;,
+    aliases =&gt; [&quot;www.rexify.org&quot;],
+   };
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="host_entry-name-option-">host_entry($name, %option)</h2>
+
+<p>Manages the entries in /etc/hosts.</p>
+
+<pre><code> host_entry &quot;rexify.org&quot;,
+   ensure    =&gt; &quot;present&quot;,
+   ip        =&gt; &quot;88.198.93.110&quot;,
+   aliases   =&gt; [&quot;www.rexify.org&quot;],
+   on_change =&gt; sub { say &quot;added host entry&quot;; };
+ 
+  host_entry &quot;rexify.org&quot;,
+    ensure    =&gt; &quot;absent&quot;,
+    on_change =&gt; sub { say &quot;removed host entry&quot;; };</code></pre>
+
+<h2 id="create_host-">create_host($)</h2>
+
+<p>Update or create a /etc/hosts entry.</p>
+
+<pre><code> create_host &quot;rexify.org&quot;, {
+   ip    =&gt; &quot;88.198.93.110&quot;,
+   aliases =&gt; [&quot;www.rexify.org&quot;, ...]
+ };</code></pre>
+
+<h2 id="delete_host-host-">delete_host($host)</h2>
+
+<p>Delete a host from /etc/hosts.</p>
+
+<pre><code> delete_host &quot;www.rexify.org&quot;;</code></pre>
+
+<h2 id="get_host-host-">get_host($host)</h2>
+
+<p>Returns the information of $host in /etc/hosts.</p>
+
+<pre><code> my @host_info = get_host &quot;localhost&quot;;
+ say &quot;Host-IP: &quot; . $host_info[0]-&gt;{&quot;ip&quot;};</code></pre>
+
+

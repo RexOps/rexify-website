@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "This chapter will show you how to manage your Amazon EC2 instances.",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Manage your Amazon EC2 instances",
+  "navigation": 1,
+  "title": "Manage your Amazon EC2 instances",
+  "type_name": "page",
+  "url": "manage_your_amazon_ec2_instances"
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link href="/rexify-website/theme/css/statocles-bootstrap.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Rexify statocles</title>
+        <meta content="Statocles 0.093" name="generator">
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#top-navbar-collapse-1" data-toggle="collapse" type="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/rexify-website/">Rexify statocles</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-9">
+                    <main>
+                        <p>This is a new bugfix release,
+upgrade is recommended for all users.</p>
+
+<p>Many thanks to all contributors who made this release possible.</p>
+
+<p>We would welcome 
+Andrew Solomon,
+Kent Fredric,
+Kirill Babikhin,
+Pierrick Dintrat,
+Rapenne Sol\xE8ne,
+Tamas Molnar
+as new contributors</p>
+
+<h2>Enhancements</h2>
+
+<ul>
+<li>added cache for can_run - Jan Gehring</li>
+<li>run task hooks before push_connection - Jan Gehring</li>
+<li>workaround for wrong behaviour with -f and windows symlinks - Jan Gehring</li>
+<li>Add possible root cause to authentication error message (fix #671) - Ferenc Erki</li>
+</ul>
+
+<h2>Documentation</h2>
+
+<ul>
+<li>show how to assign a user with a non-default shell - Andrew Solomon</li>
+<li>Fix example code (fix #1034) - Ferenc Erki</li>
+<li>Update example tasknames - Ferenc Erki</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<ul>
+<li>fixed bug with get_cloud_instances_as_group - Pierrick DINTRAT</li>
+<li>Adds 64bit module path to @INC for linux - Mitch Broadhead</li>
+<li>set ls quoting for fedora 24 which magically quotes filenames - Jan Gehring</li>
+<li>removed space from line ending. fixed test on centos 6 - Jan Gehring</li>
+<li>Don&#39;t add duplicates env variable in crontab - Rapenne Sol\xE8ne</li>
+<li>rsync: quote source and destination, so spaces in directory names are possible - Jan Gehring</li>
+<li>Don&#39;t hardcode LibXML dependency - Jan Gehring</li>
+<li>it seems that the channel sometimes doesn&#39;t get closed in time. so we need an option to force close it after command run. - Jan Gehring</li>
+<li>fixed reporting for named resource - Jan Gehring</li>
+<li>pass cli parameters to tasks for pre 1.4 feature flags. fix #1039 - Jan Gehring</li>
+<li>fixed old style Rex::Args-&gt;get when called from outside a task - Jan Gehring</li>
+<li>Fix for #1054 - get_private_key() to check the private key file - Tamas Molnar</li>
+<li>Fix for #1052 - mask sudo_password in debug log - Tamas Molnar</li>
+<li>exit rex with an exitcode of 1 if some tests failed. fix #989 - Jan Gehring</li>
+<li>Avoid hardcoded path - Ferenc Erki</li>
+<li>Refactor calls to reporting - Ferenc Erki</li>
+<li>Refactor reporting message handling - Ferenc Erki</li>
+<li>Simplify detection of pkg change type - Ferenc Erki</li>
+<li>Refactor pkg on_change handling - Ferenc Erki</li>
+<li>Report each pkg modification (fix #838) - Ferenc Erki</li>
+<li>Revert &quot;report all packages&quot; - Ferenc Erki</li>
+<li>Timeout value should be passed in milliseconds - Ferenc Erki</li>
+<li>Fix compatibility with recent Net::SSH2 (fix #1023) - Ferenc Erki</li>
+<li>Only log masked password if one is being used - Ferenc Erki</li>
+<li>Avoid logging undefined host during connection - Ferenc Erki</li>
+<li>Refactor do_task - Ferenc Erki</li>
+<li>Backport task existence check for do_task from #1010 (fix #992) - Ferenc Erki</li>
+<li>Initial tests for do_task - Ferenc Erki</li>
+<li>fix hardcoded git tag command - Kirill Babikhin</li>
+<li>Document perlcritic violations - Ferenc Erki</li>
+<li>Integer with leading zeros - Ferenc Erki</li>
+<li>Add S_IMODE - Ferenc Erki</li>
+<li>Variable declared in conditional statement - Ferenc Erki</li>
+<li>&quot;require&quot; statement with library name as string - Ferenc Erki</li>
+<li>&quot;select&quot; used to emulate &quot;sleep&quot; - Ferenc Erki</li>
+<li>Don&#39;t modify $_ in list functions - Ferenc Erki</li>
+<li>removed hard coded qemu-img create format and added use of driver_type option. fix #948 - Jan Gehring</li>
+<li>added understandable error message when no virtualization module is given. fix #949 - Jan Gehring</li>
+<li>print right error message if run_task is calling a task that is not available. fix #970 - Jan Gehring</li>
+<li>on windows test for SSH connection type. fix #965 - Jan Gehring</li>
+<li>Add more tests for shared arrays - Ferenc Erki</li>
+<li>Add unshift for shared arrays - Ferenc Erki</li>
+<li>Add tests for unshift to shared arrays - Ferenc Erki</li>
+<li>Add pop for shared arrays - Ferenc Erki</li>
+<li>Add tests for pop from shared arrays - Ferenc Erki</li>
+<li>Add shift for shared arrays (fix #921) - Ferenc Erki</li>
+<li>Add tests for shift from shared arrays (ref #921) - Ferenc Erki</li>
+<li>systemctl sometimes outputs to pager and hangs. Fix #967 - Harm M\xFCller</li>
+<li>Add META.json to CPAN release - Kent Fredric</li>
+</ul>
+
+
+                    </main>
+                </div>
+
+                <div class="col-md-3">
+                    
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+
+    </body>
+</html>

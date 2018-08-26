@@ -1,0 +1,94 @@
+
+<p>This is a bugfix release,
+upgrade is recommended for all users.</p>
+
+<p>Sometimes it's not that easy
+to categorize changes
+(and it's also not our main goal :),
+so some of them are halfway between
+the corners of the bugfix-enhancement-new feature triangle.
+We thought none of them are big enough
+to justify a new minor release,
+but at the same time
+we wanted to let those many small improvements out
+in a proper release.</p>
+
+<p>We would like to welcome
+okaoka,
+John Karr,
+Pavel Timofeev,
+and Elmer Quintanilla
+as new contributors.
+Special thanks
+to Daniel Cordero
+for his help on
+fixing service detection on Gentoo.</p>
+
+<h2>Enhancements</h2>
+
+<h3>Documentation</h3>
+
+<ul>
+<li>Fix generated links for Commands modules (fix #776) - Ferenc Erki</li>
+<li>Document alias of get_operating_system() - Ferenc Erki</li>
+<li>Update auth docs - Ferenc Erki</li>
+<li>Fix docs for transaction (fix #686, close #766) - Elmer Quintanilla</li>
+<li>Added doc about using regex for auth - Eivin Giske Skaaren</li>
+<li>Document hostname expressions support in INI files - Ferenc Erki</li>
+<li>Document -O CLI option - Ferenc Erki</li>
+<li>Revert "Remove unused CLI option" (fix RexOps/rex-jobcontrol#10) - Ferenc Erki</li>
+<li>Fix LEFT_PRECEDENCE typo - Dmitry Kopytov</li>
+</ul>
+
+<h3>General</h3>
+
+<ul>
+<li>Recognize multi-arch packages on Debian (fix #748, close #755) - Erik Huelsmann</li>
+<li>Support key files for Debian repositories + add docs (close #736) - John Karr</li>
+<li>Pass exception to on_rollback (fix #687, close #732) - Mitch Broadhead</li>
+<li>Support hostname expressions in INI files (close #713) - okaoka</li>
+<li>make Fcntl calls os independent - Jan</li>
+<li>added a wrapper module for File::Spec - Jan</li>
+<li>Add function for checkout of Git tags - Eivin Giske Skaaren</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<h3>BSD support</h3>
+
+<p>Thanks to Pavel Timofeev, services support on BSDs has been greatly improved, covering lot more cases.</p>
+
+<ul>
+<li>Catch another way to manage services on FreeBSD (close #773) - timp87</li>
+<li>Force syncing package information on FreeBSD - Ferenc Erki</li>
+<li>Take service name and rcvar mapping into account on FreeBSD (close #770) - timp87</li>
+<li>Fix ensure option for NetBSD services (close #759) - timp87</li>
+<li>Fix ensure option for FreeBSD services (close #752) - timp87</li>
+<li>Enable Rex to manage system services on FreeBSD (#752) - timp87</li>
+</ul>
+
+<h3>Templates</h3>
+
+<p>Some minor bugs has been fixed in the new templating engine.</p>
+
+<ul>
+<li>Fix code block output when there's no space before closing tag - Ferenc Erki</li>
+<li>Escape curly braces in template content - Ferenc Erki</li>
+</ul>
+
+<h3>General</h3>
+
+<ul>
+<li>Check if systemctl is functional before using it (fix #753) - Ferenc Erki</li>
+<li>Rearrange dist.ini - Ferenc Erki</li>
+<li>Fail early on unsupported Windows versions (fix #751) - Ferenc Erki</li>
+<li>Warn about missing environment instead of panicking (fix #742) - Ferenc Erki</li>
+<li>Fix perlcritic warnings about modifying list elements - Ferenc Erki</li>
+<li>Fix perlcritic warnings about two-argument open - Ferenc Erki</li>
+<li>Do not silently fail on update errors (close #758) - Andrew Beverley</li>
+<li>Fix Gentoo service detection (fix #747) - Ferenc Erki</li>
+<li>force apt-listchanges to not run - Anders Ossowicki</li>
+<li>Fixes #760 timeout for OpenSSH - Eivin Giske Skaaren</li>
+<li>Use the correct class for managing forks (fix #743) - Ferenc Erki</li>
+<li>Don't recreate connection during rethink_connection (fix #694, close #727) - Mitch Broadhead</li>
+</ul>

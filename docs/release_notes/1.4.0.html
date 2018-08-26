@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link href="/rexify-website/theme/css/statocles-bootstrap.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Rexify statocles</title>
+        <meta content="Statocles 0.093" name="generator">
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#top-navbar-collapse-1" data-toggle="collapse" type="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/rexify-website/">Rexify statocles</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-9">
+                    <main>
+                        <p>This is a new minor release,
+adding new features,
+upgrade is recommended for all users.</p>
+
+<p>As you may have noticed,
+the last release of Rex is around 6 months old.
+A lot has happened since then,
+and due to bigger internal changes,
+we wanted to be extra careful about the release,
+giving it as much time to bake as it needed.</p>
+
+<p>The result is so far the biggest release of Rex,
+containing 4353 insertions and 1655 deletions
+happened to the lines of 118 files
+on 271 commits
+from 16 contributors,
+closing 93 PRs and 48 issues.
+To put it in perspective,
+this means ~30% of all files,
+and ~20% of all lines
+were touched in one way or another.</p>
+
+<p>We couldn&#39;t have done this without the support
+of our fantastic community,
+keeping us busy with feedback,
+discussions both on- and offline,
+reporting issues,
+and sending pull requests.
+Thank you!</p>
+
+<p>We are especially happy to have Eric Johnson (kablamo)
+to join the project as a new core developer.
+Most of the big things in this release
+were originally his ideas,
+and he was restless implementing them.</p>
+
+<p>We would like to welcome
+H. Daniel Cesario,
+Harm M\xFCller,
+Hiroki Matsuo,
+Jose Luis Perez Diez,
+Ken Crowell,
+Patrick Lauer,
+petersonchen,
+Prajithp
+as new contributors.</p>
+
+<p>So as they say:</p>
+
+<p><em>Good things come to those who wait</em></p>
+
+<h2>Highlights</h2>
+
+<ul>
+<li>Rex can now manage Linux Mint, Raspian and Arch Linux systems</li>
+<li>tasks return exit codes</li>
+<li>summary output at the end of run</li>
+<li>unified firewall management via a new resource</li>
+<li>ParamLookup has been merged into core from rex-recipes</li>
+<li>values from CMDB and task parameters are now available directly as template variables</li>
+<li>better late, than never: official debian 8 packages</li>
+<li>experimental vim highlight support (see <a href="https://gist.github.com/ferki/d83ebd67ce828ef9d00f">this gist</a>)</li>
+<li>rex can use development versioning on CPAN correctly now (e.g. for BETA or RC releases) to provide early access</li>
+</ul>
+
+<h2>New features</h2>
+
+<h3>New Mkfs command</h3>
+
+<p>Now there&#39;s a dedicated <code>Mkfs</code> command,
+split out from LVM and partition handling modules,
+to deal with file system creation.</p>
+
+<ul>
+<li>start of refactor mkfs/mkswap into their own pm - Peter H. Ezetta</li>
+<li>starting to add option parsing - Peter H. Ezetta</li>
+<li>setting up logic for lvm vs raw disk - Peter H. Ezetta</li>
+<li>error checking on $lvname - Peter H. Ezetta</li>
+<li>code cleanup and addition of POD - Peter H. Ezetta</li>
+<li>refactoring swap logic into mkfs logic, silly to separate. - Peter H. Ezetta</li>
+<li>refactor Partition.pm, fix $lv_name in Mkfs.pm - Peter H. Ezetta</li>
+<li>Refactoring LVM.pm to use mkfs(); - Peter H. Ezetta</li>
+<li>Ensuring that labels can be added to swap partitions - Peter H. Ezetta</li>
+<li>Add Rex::Commands::Mkfs to rexify and pp.args - Ferenc Erki</li>
+<li>Check for fstype existence at the start - Ferenc Erki</li>
+<li>Skip creating filesystems for some reserved words - Ferenc Erki</li>
+<li>Don&#39;t fail mkfs if label is undefined - Ferenc Erki</li>
+<li>Pass options to mkfs (#fix 905) - Ferenc Erki</li>
+</ul>
+
+<h3>Improved argument parsing</h3>
+
+<p>As a preparation of another planned feature,
+it is now possible to pass arguments and CLI options to rex tasks,
+even if multiple ones are asked to be run.
+Please be aware
+this might not be a fully backwards compatible change for your use case.
+This feature is enabled by the 1.4 feature flag,
+but you can disable it with <code>no_task_chaining_cmdline_args</code>.</p>
+
+<p>For example:</p>
+
+<pre><code class="bash">rex lib:task1 --option1=value1 lib:task2 --option2=value2
+rex lib:task1 --option=value1 lib:task2 --option=value2
+rex lib:task1 <arg> --option=value
+</arg></code></pre>
+
+<ul>
+<li>Don&#39;t parse @ARGV on import. - Eric Johnson</li>
+<li>added feature flag for 1.4 and removed deprecated warning of Rex::RunList - Jan</li>
+<li>fixed a logic bug, that prevents batch creation - Jan</li>
+<li>default to empty task list - Jan</li>
+<li>Exit with an error message when a bad task name is used. - Eric Johnson</li>
+<li>Add missing Data::Dumper import - Ken Crowell</li>
+<li>Fix regression in deprecated static call to Rex::Task-&gt;run() - Eric Johnson</li>
+<li>added Rex::Args-&gt;get method again. fixes #860 - Jan</li>
+<li>don&#39;t clone task object. When cloned before_task_start/after_task_finished hooks doesn&#39;t work - fix #919 - Jan</li>
+<li>check if task is no object, and get the task object then - Jan Gehring</li>
+<li>fixed issue of calling Rex::Args-&gt;get inside before_task_start - RexOps/Rex#934 - Jan</li>
+</ul>
+
+<h3>New supported OSes</h3>
+
+<p>Managing Arch Linux is now supported via a completely new module,
+while Linux Mint and Raspbian are being recognized as Debian clones.</p>
+
+<ul>
+<li>Recognize LinuxMint as a Debian clone (close #506) - Ferenc Erki</li>
+<li>Recognize Raspbian as a Debian clone - Ferenc Erki</li>
+<li>added archlinux support - Harm M\xFCller</li>
+<li>Remove purge package action on arch (fix #867) - Ferenc Erki</li>
+</ul>
+
+<h3>ParamLookup</h3>
+
+<p><code>Rex::Ext::ParamLookup</code> from the <a href="https://github.com/RexOps/rex-recipes">RexOps/rex-recipes</a> repository
+is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
+
+<p><code>param_lookup</code> is a command to manage task parameters.</p>
+
+<pre><code class="perl">my $var = param_lookup &quot;param_name&quot;, &quot;default_value&quot;;
+</code></pre>
+
+<p>First param_lookup checks the task parameters for <code>param_name</code>.
+If it&#39;s not found, it tries to look it up from CMDB (if CMDB is used).
+If it&#39;s still not found, it falls back to <code>default_value</code>.
+Additionally it registers the parameters as template values.</p>
+
+<ul>
+<li>added ParamLookup and registering task parameter as template variables. - Jan</li>
+<li>fixed a bug that was introduced by b0416b1710611b900284ba5a2d9d74991fc4351b - Jan</li>
+<li>also lookup task name in cmdb - Jan</li>
+<li>don&#39;t concat caller package anymore - Jan</li>
+<li>fixed call of task as functions with normal parameters, #827 - Jan</li>
+</ul>
+
+<h3>Summary output</h3>
+
+<p>Now there&#39;s a short summary displayed at the end of each run,
+containing success/failure info of the executed tasks.
+If there were any errors,
+they are listed by remote machine (ordered by hostname).</p>
+
+<ul>
+<li>Summarize success/failure at the end of a run - Eric Johnson</li>
+<li>Summary tests for all permutations of Parallel::ForkManager, Base, and exec_autodie - Eric Johnson</li>
+<li>fixed calling of exit hooks after summary - Jan Gehring</li>
+<li>Fix summary tests for Mac OS X - Ferenc Erki</li>
+<li>print the error message in the summary when a task die()d - Jan</li>
+<li>Use error level output in the summary if some tasks failed - Ferenc Erki</li>
+<li>Refactor summary output - Ferenc Erki</li>
+<li>Further simplify summary output - Ferenc Erki</li>
+<li>Sort failure list - Ferenc Erki</li>
+<li>Fix summary test tasks for Windows - Ferenc Erki</li>
+<li>don&#39;t print summary on rex -T - Jan</li>
+<li>Exit codes now work when using &#39;rex -e&#39; (fix #761, close #840) - Eric Johnson</li>
+<li>Exit codes need to be bit shifted by 8.  Do it in one place. - Eric Johnson</li>
+<li>fix error code in $? after a run command which was introduced by 6c8441 - Jan</li>
+<li>remove error message, we don&#39;t need it for the tests - Jan</li>
+<li>try to fix failing tests on freebsd - #901 - Jan</li>
+<li>Avoid bitshifting error code twice (fix #901) - Ferenc Erki</li>
+<li>Don&#39;t confess upon failure of a non-resource (fix #936) - Ferenc Erki</li>
+</ul>
+
+<h3>Firewall handling</h3>
+
+<p>There&#39;s a new firewall resource to manage firewall rules.</p>
+
+<pre><code class="perl">firewall &quot;open-port-82-for-1.2.3.4&quot;,
+    ensure =&gt; &quot;present&quot;,
+    action =&gt; &quot;accept&quot;,
+    port   =&gt; 82,
+    source =&gt; &quot;1.2.3.4&quot;;
+</code></pre>
+
+<p>The UFW firewall provider has been moved from rex-recipes to core too,
+and it is now available on top of the default iptables provider.</p>
+
+<p>On top of that, IPv6 support has been added.</p>
+
+<pre><code class="perl">open_port, [22, 80];    # defaults to IPv4 rule
+open_port -4, [22, 80]; # IPv4 rule
+open_port -6, [22, 80]; # IPv6 rule
+</code></pre>
+
+<ul>
+<li>Added a firewall module to manage different firewall models with one interface. - Jan</li>
+<li>Add support for ip6tables (close #795) - Dmitry Kopytov</li>
+<li>fixed firewall resource to work with ipv6 patch - Jan</li>
+<li>detect iptables version and choose syntax for ip adresses - Jan</li>
+</ul>
+
+<h3>CMDB</h3>
+
+<p>Now CMDB can contain template code too.</p>
+
+<ul>
+<li>YAML cmdb can now contain template code - Jan</li>
+<li>make environment available inside cmdb template - Jan</li>
+<li>allow config (set) vars in cmdb templates - Jan</li>
+<li>Fix template handling in YAML CMDB files - Ferenc Erki</li>
+</ul>
+
+<h2>Enhancements</h2>
+
+<h3>Crontab handling</h3>
+
+<p>Unprivileged users can now manage their own crontabs.</p>
+
+<ul>
+<li>Add _whoami to determine remote effective username - Ferenc Erki</li>
+<li>Fix managing a user&#39;s own crontab via cron_entry - Ferenc Erki</li>
+<li>Suppress STDERR during crontab listings - Ferenc Erki</li>
+</ul>
+
+<h3>Templates</h3>
+
+<ul>
+<li>resource and task now have own namespace for template variables - Jan</li>
+</ul>
+
+<h3>Rexfile/module loading</h3>
+
+<p>The way of loading Rexfile and modules,
+has completely been refactored,
+making it easier to detect potential errors,
+and giving more useful feedback about them.</p>
+
+<ul>
+<li>Simplify loading the Rexfile and improve error handling. - Eric Johnson</li>
+<li>Put Rexfile exists check inside load_rexfile() - Eric Johnson</li>
+<li>Refactor out logic for loading server ini file into load_server_ini_file(). - Eric Johnson</li>
+<li>Refactor out some code into handle_lock_file() - Eric Johnson</li>
+<li>Fix indentation - Eric Johnson</li>
+<li>load a rexfile also if it doesn&#39;t return a true value. This fixes a regression - RexOps/Rex#513 - Jan</li>
+<li>fixed loading of rexfiles with -f - Jan</li>
+<li>fix loading of libraries in lib directory when use -f path/to/Rexfile - Jan</li>
+<li>Avoid __Rexfile__ as dependency - Ferenc Erki</li>
+<li>readd close of stderr - Jan</li>
+<li>fix loading of Rexfile on perl 5.8.9 - RexOps/Rex#922 - Jan</li>
+<li>debug output now gets displayed again. - fix RexOps/Rex#910 - Jan</li>
+<li>Reopen STDERR after loading Rexfile - Dmitry Kopytov</li>
+</ul>
+
+<h3>Guest VM options</h3>
+
+<p>Now it is possible to set CPU and memory options for (test) VMs.</p>
+
+<ul>
+<li>Allow tests so set Box memory and cpus (close #839) - Patrick Lauer</li>
+<li>Fix passing memory/cpus options to constructor - Ferenc Erki</li>
+<li>defaults for cpus and memory - Jan</li>
+<li>add default values for cpu and memory - Jan</li>
+</ul>
+
+<h3>Documentation</h3>
+
+<ul>
+<li>Fix GetRex link url - hiroraba</li>
+<li>Add docs on glob usage with file command (close #712, fix #738) - Jose Luis Perez Diez</li>
+<li>Updated documentation in bin/rex (pod/man page) - Eric Johnson</li>
+<li>Updated pod in bin/rex and lib/Rex.pm - Eric Johnson</li>
+<li>Slightly reword synopsis - Ferenc Erki</li>
+<li>Fix examples - Ferenc Erki</li>
+<li>Update docs for partition command - Ferenc Erki</li>
+<li>Update sudo docs (fix #918) - Ferenc Erki</li>
+<li>Add docs for Rex::Shared::Var (fix #920) - Ferenc Erki</li>
+<li>Update docs for Rex::Task - Ferenc Erki</li>
+</ul>
+
+<h3>General</h3>
+
+<p>A bunch of general enhancements happened:</p>
+
+<ul>
+<li>host-specific sudo settings now take precedence</li>
+<li>colored log output on Windows (if <code>Win32::Console::ANSI</code> is present)</li>
+<li>supporting <code>key_url</code> and <code>key_file</code> for Red Hat repositories</li>
+<li>shell detection has been improved</li>
+<li>we can use development versioning now to make BETA and RC releases available early</li>
+<li><code>do_task</code> now accepts and handles parameters passed to it</li>
+<li>less verbose connection output</li>
+</ul>
+
+<p>Full list of commits:</p>
+
+<ul>
+<li>Avoid unnecessary package rebuilds on Gentoo (close #809) - Patrick Lauer</li>
+<li>Added option for rebase during pull. - Eivin Giske Skaaren</li>
+<li>Mute noisy tests - Ferenc Erki</li>
+<li>Use static comments to avoid alignment change later - Ferenc Erki</li>
+<li>Fix static side comments - Ferenc Erki</li>
+<li>give server configuration precedence - Jan</li>
+<li>Custom storage path for kvm - Prajithp</li>
+<li>use can_run to detect arp command - Jan Gehring</li>
+<li>fixed lookup path for arp command - Jan</li>
+<li>allow nested resources in reports - Jan</li>
+<li>ignore eclipse files - Jan</li>
+<li>Prefer uid over getlogin as fallback username (close #793, fix #792) - Ferenc Erki</li>
+<li>allow mix of modules.rexify.org modules and git modules - Jan</li>
+<li>Tests for needs() were not useful.  Now they are. - Eric Johnson</li>
+<li>color for windows - Jan</li>
+<li>Output full task names (fix #825, close #842) - Daniel Cesario</li>
+<li>support key_url and key_file also on redhat systems - Jan</li>
+<li>fixed tests for windows - Jan</li>
+<li>added tmp to gitignore - Jan</li>
+<li>Refactor Rex::TaskList.  No functional change. - Eric Johnson</li>
+<li>fixed reporting of nested resources (changed resource) - Jan</li>
+<li>only update chained resource when the upper resource wasn&#39;t changed before. Also removed &#39;inside resource check&#39; because this is not needed anymore due to stacked resources - Jan</li>
+<li>moved detect method to base, because it is everywhere the same, created direct_exec method for all interfaces - Jan</li>
+<li>fixed inheritance problem, moved shell() method to base class. - Jan</li>
+<li>remove unnecessary new lines - Jan</li>
+<li>run shell detection a second time if first time failed - Jan</li>
+<li>Use development versioning - Ferenc Erki</li>
+<li>Enable more feature flags for development releases - Ferenc Erki</li>
+<li>Add tests for task hooks - Ferenc Erki</li>
+<li>added parameters to do_task and fixed LOCAL block - Jan Gehring</li>
+<li>removed connecting to mesages (change to debug level) - Jan Gehring</li>
+<li>can&#39;t connect message must be ::info logging - Jan</li>
+<li>Let service tests be silent - Ferenc Erki</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<h3>Shared variables</h3>
+
+<p>Previously there was a race condition while using Rex::Shared::Var to share variables across tasks.</p>
+
+<ul>
+<li>Test for race condition problem in Rex::Shared::Var. - Eric Johnson</li>
+<li>Avoid race condition when doing IPC. - Eric Johnson</li>
+<li>Refactor child/parent pid logic + comments to be more readable - Eric Johnson</li>
+</ul>
+
+<h3>Templates</h3>
+
+<ul>
+<li>use empty string to prevent uninitialized warning messages - Jan</li>
+<li>Test rendering of false values in templates - Ferenc Erki</li>
+<li>Fix rendering of false values in templates - Ferenc Erki</li>
+</ul>
+
+<h3>AWS handling</h3>
+
+<p>We now use <code>AWS::Signature4</code> to talk to Amazon services.</p>
+
+<ul>
+<li>added AWS::Signature4 directly to code, due to problems with Centos5 dependencies (#737) - Jan</li>
+<li>Unbundle AWS::Signature4 - Ferenc Erki</li>
+</ul>
+
+<h3>Draining IO in parallel</h3>
+
+<p>The previous way to drain STDOUT/STEDERR output of a remote
+(or for that matter, local) connection
+proved to be, let&#39;s say suboptimal,
+leading to potential hangs,
+and other weirdness.
+This now has been fixed,
+moved to a common codebase,
+and we cover it with tests.</p>
+
+<ul>
+<li>Read STDOUT and STDERR in parallel (fix #756) - Ferenc Erki</li>
+<li>use sysread to read from filehandle. fixes #887 - Jan</li>
+<li>Use sysread for local exec interface too (fix #887) - Ferenc Erki</li>
+<li>fix continuous read bug - RexOps/#951 - Jan</li>
+<li>Add initial tests for draining IO - Ferenc Erki</li>
+<li>Fix draining IO - Ferenc Erki</li>
+<li>Handle partial last chunks from STDOUT and STDERR - Ferenc Erki</li>
+<li>removed read_buffer reduction - Jan Gehring</li>
+<li>Update read_buffer test for Windows - Ferenc Erki</li>
+<li>Test with a bit less output - Ferenc Erki</li>
+<li>Increase timeout for read_buffer test (fix #954) - Ferenc Erki</li>
+<li>cleanup newline(s) at the end. fix for #957 - Jan</li>
+<li>remove chr(13) everywhere - fix #957 - Jan</li>
+<li>fixed variable usage - Jan</li>
+<li>Normalize EOL characters earlier (fix #957) - Ferenc Erki</li>
+</ul>
+
+<h3>General</h3>
+
+<p>The reporting feature had some troubles when using <code>bulk_install</code>,
+so until a proper fix,
+Rex now simply falls back to sequential package installation as a workaround.</p>
+
+<p>On top of that, the most notable bug fixes are realted to task hooks
+and continuous reading of output.</p>
+
+<p>Full list of commits:</p>
+
+<ul>
+<li>Fatal exceptions if git switching fail - alex1line</li>
+<li>fix for Net::OpenSSH can&#39;t set initialize_options for the constructor - #796 - Jan Gehring</li>
+<li>fixes the problem of run_task connecting to the wrong host #788 - Jan Gehring</li>
+<li>fixed loading of Rex::Commands via require. RexOps/Rex#789 - Jan Gehring</li>
+<li>lower exitecode to less than 255 because some os have problems with larger ones - Jan</li>
+<li>Fix undef warnings if calling get() without param - Andy Beverley</li>
+<li>Map Debian clones correctly - Ferenc Erki</li>
+<li>iptables_clear should clear only loaded tables - Dmitry Kopytov</li>
+<li>Checking for a running rex process failed if the pidfile contains a pid that partially matches a running process. - petersonchen</li>
+<li>Ensure proper test-time connection type (fix #821) - Ferenc Erki</li>
+<li>use md5 binary if perl module is not available - fix for #834 - Jan</li>
+<li>report all packages - Jan</li>
+<li>fixed some unitialized warnings - Jan</li>
+<li>fix after hook call for connections that wasn&#39;t successfull - Jan</li>
+<li>call after task hook, even if connection to system failed - Jan</li>
+<li>Fix links in README (fix #853) - Ferenc Erki</li>
+<li>The after hook now runs even if the ssh connection fails. - Eric Johnson</li>
+<li>load right cron module if os is *bsd and shell is csh - #883 - Jan</li>
+<li>return always shell object - Jan</li>
+<li>some windows fixes for rexify command - Jan</li>
+<li>Fix POD - Ferenc Erki</li>
+<li>fixed loading of resource module in perl 5.8 - RexOps/Rex#917 - Jan</li>
+<li>Make CPAN Testers happy for unsupported OSes - Ferenc Erki</li>
+<li>Fix copy-pasta POD errors - Ferenc Erki</li>
+</ul>
+
+
+                    </main>
+                </div>
+
+                <div class="col-md-3">
+                    
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+
+    </body>
+</html>

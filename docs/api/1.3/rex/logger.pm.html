@@ -1,0 +1,70 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#VARIABLES">VARIABLES</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Logger - Logging Module</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This module is the logging module. You can define custom logformats.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> $Rex::Logger::format = &#39;[%D] %s&#39;;
+ # will output something like
+ # [2012-04-12 18:35:12] Installing package vim
+   
+ $Rex::Logger::format = &#39;%h - %D - %s&#39;;
+ # will output something like
+ # srv001 - 2012-04-12 18:35:12 - Installing package vim</code></pre>
+
+<h1 id="VARIABLES">VARIABLES</h1>
+
+<dl>
+
+<dt id="debug">$debug</dt>
+<dd>
+
+<p>Setting this variable to 1 will enable debug logging.</p>
+
+<pre><code> $Rex::Logger::debug = 1;</code></pre>
+
+</dd>
+<dt id="silent">$silent</dt>
+<dd>
+
+<p>If you set this variable to 1 nothing will be logged.</p>
+
+<pre><code> $Rex::Logger::silent = 1;</code></pre>
+
+</dd>
+<dt id="format">$format</dt>
+<dd>
+
+<p>You can define the logging format with the following parameters.</p>
+
+<p>%D - Appends the current date yyyy-mm-dd HH:mm:ss</p>
+
+<p>%h - The target host</p>
+
+<p>%p - The pid of the running process</p>
+
+<p>%l - Loglevel (INFO or DEBUG)</p>
+
+<p>%s - The Logstring</p>
+
+<p>Default is: [%D] %l - %s</p>
+
+</dd>
+</dl>
+
+

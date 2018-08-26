@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "FAQ",
+  "navigation": 1,
+  "title": "FAQ",
+  "type_name": "faq_index",
+  "url": "faq"
+}

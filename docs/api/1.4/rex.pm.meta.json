@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+    "search_info": "API version 1.4"
+  },
+  "description": null,
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Rex.pm",
+  "navigation": 1,
+  "title": "Rex.pm",
+  "type_name": "api_item",
+  "url": "rex.pm"
+}

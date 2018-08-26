@@ -1,0 +1,141 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#METHODS">METHODS</a>
+    <ul>
+      <li><a href="#info">info</a></li>
+      <li><a href="#name-vmname-">name($vmname)</a></li>
+      <li><a href="#setup-tasks-">setup(@tasks)</a></li>
+      <li><a href="#storage-path-to-vm-disk-">storage(&#39;path/to/vm/disk&#39;)</a></li>
+      <li><a href="#import_vm-">import_vm()</a></li>
+      <li><a href="#stop-">stop()</a></li>
+      <li><a href="#start-">start()</a></li>
+      <li><a href="#ip-">ip()</a></li>
+      <li><a href="#status-">status()</a></li>
+      <li><a href="#provision_vm-tasks-">provision_vm([@tasks])</a></li>
+      <li><a href="#cpus-count-">cpus($count)</a></li>
+      <li><a href="#memory-memory_size-">memory($memory_size)</a></li>
+      <li><a href="#network-option-">network(%option)</a></li>
+      <li><a href="#forward_port-option-">forward_port(%option)</a></li>
+      <li><a href="#list_boxes">list_boxes</a></li>
+      <li><a href="#url-url-">url($url)</a></li>
+      <li><a href="#auth-option-">auth(%option)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Box::Base - Rex/Boxes Base Module</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is a Rex/Boxes base module.</p>
+
+<h1 id="METHODS">METHODS</h1>
+
+<p>These methods are shared across all other Rex::Box modules.</p>
+
+<h2 id="info">info</h2>
+
+<p>Returns a hashRef of vm information.</p>
+
+<h2 id="name-vmname-">name($vmname)</h2>
+
+<p>Sets the name of the virtual machine.</p>
+
+<h2 id="setup-tasks-">setup(@tasks)</h2>
+
+<p>Sets the tasks that should be executed as soon as the VM is available through SSH.</p>
+
+<h2 id="storage-path-to-vm-disk-">storage(&#39;path/to/vm/disk&#39;)</h2>
+
+<p>Sets the disk path of the virtual machine. Works only on KVM</p>
+
+<h2 id="import_vm-">import_vm()</h2>
+
+<p>This method must be overwritten by the implementing class.</p>
+
+<h2 id="stop-">stop()</h2>
+
+<p>Stops the VM.</p>
+
+<h2 id="start-">start()</h2>
+
+<p>Starts the VM.</p>
+
+<h2 id="ip-">ip()</h2>
+
+<p>Return the ip:port to which rex will connect to.</p>
+
+<h2 id="status-">status()</h2>
+
+<p>Returns the status of a VM.</p>
+
+<p>Valid return values are &quot;running&quot; and &quot;stopped&quot;.</p>
+
+<h2 id="provision_vm-tasks-">provision_vm([@tasks])</h2>
+
+<p>Executes the given tasks on the VM.</p>
+
+<h2 id="cpus-count-">cpus($count)</h2>
+
+<p>Set the amount of CPUs for the VM.</p>
+
+<h2 id="memory-memory_size-">memory($memory_size)</h2>
+
+<p>Sets the memory of a VM in megabyte.</p>
+
+<h2 id="network-option-">network(%option)</h2>
+
+<p>Configure the network for a VM.</p>
+
+<p>Currently it supports 2 modes: <i>nat</i> and <i>bridged</i>. Currently it supports only one network card.</p>
+
+<pre><code> $box-&gt;network(
+   1 =&gt; {
+     type =&gt; &quot;nat&quot;,
+   },
+ }
+ 
+ $box-&gt;network(
+   1 =&gt; {
+     type =&gt; &quot;bridged&quot;,
+     bridge =&gt; &quot;eth0&quot;,
+   },
+ );</code></pre>
+
+<h2 id="forward_port-option-">forward_port(%option)</h2>
+
+<p>Set ports to be forwarded to the VM. This is not supported by all Box providers.</p>
+
+<pre><code> $box-&gt;forward_port(
+   name =&gt; [$from_host_port, $to_vm_port],
+   name2 =&gt; [$from_host_port_2, $to_vm_port_2],
+   ...
+ );</code></pre>
+
+<h2 id="list_boxes">list_boxes</h2>
+
+<p>List all available boxes.</p>
+
+<h2 id="url-url-">url($url)</h2>
+
+<p>The URL where to download the Base VM Image. You can use self-made images or prebuild images from http://box.rexify.org/.</p>
+
+<h2 id="auth-option-">auth(%option)</h2>
+
+<p>Configure the authentication to the VM.</p>
+
+<pre><code> $box-&gt;auth(
+   user =&gt; $user,
+   password =&gt; $password,
+   private_key =&gt; $private_key,
+   public_key =&gt; $public_key,
+ );</code></pre>
+
+

@@ -1,0 +1,16 @@
+<h3>Manage cron jobs.</h3>
+<p>cron_entry($entry_name, %options)</p>
+<h4>Options</h4>
+<ul>
+<li>ensure - Defines the state of the cron entry. Valid parameters are present, absent.</li>
+<li>command - The command to run.</li>
+<li>minute - The minute when to run the job.</li>
+<li>hour - The hour when to run the job.</li>
+<li>month - The month when to run the job.</li>
+<li>day_of_week</li>
+<li>day_of_month</li>
+<li>user - The user for the cron job.</li>
+<li>on_change - A callback function that gets called when the cron entry state changed.</li>
+</ul>
+<pre><code class="perl">cron_entry "run-rkhunter",<br /></code><code class="perl">&nbsp; command =&gt; "rkhunter --cronjob",<br /></code><code class="perl">&nbsp; minute&nbsp; =&gt; 5,<br /></code><code class="perl">&nbsp; hour&nbsp;&nbsp;&nbsp; =&gt; 1;</code></pre>
+<p>&nbsp;</p>

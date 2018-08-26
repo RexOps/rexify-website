@@ -1,0 +1,52 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#download-remote-local-">download($remote, [$local])</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Download - Download remote files</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can download a remotefile via sftp, http and ftp from a host to your local computer.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> # sftp
+ task &quot;download&quot;, &quot;remoteserver&quot;, sub {
+   download &quot;/remote/file&quot;, &quot;localfile&quot;;
+ };
+ 
+ # http
+ task &quot;download2&quot;, sub {
+   download &quot;http://server/remote/file&quot;;
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="download-remote-local-">download($remote, [$local])</h2>
+
+<p>Perform a download. If no local file is specified it will download the file to the current directory.</p>
+
+<pre><code> task &quot;download&quot;, &quot;remoteserver&quot;, sub {
+   download &quot;/remote/file&quot;, &quot;localfile&quot;;
+ };
+ 
+ task &quot;download&quot;, sub {
+   download &quot;http://www.rexify.org/index.html&quot;, &quot;localfile.html&quot;;
+ };</code></pre>
+
+

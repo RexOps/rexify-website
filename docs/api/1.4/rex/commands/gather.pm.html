@@ -1,0 +1,277 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#get_operating_system">get_operating_system</a></li>
+      <li><a href="#operating_system">operating_system</a></li>
+      <li><a href="#get_system_information">get_system_information</a></li>
+      <li><a href="#dump_system_information">dump_system_information</a></li>
+      <li><a href="#operating_system_is-string-">operating_system_is($string)</a></li>
+      <li><a href="#operating_system_version-">operating_system_version()</a></li>
+      <li><a href="#operating_system_release-">operating_system_release()</a></li>
+      <li><a href="#network_interfaces">network_interfaces</a></li>
+      <li><a href="#memory">memory</a></li>
+      <li><a href="#is_freebsd">is_freebsd</a></li>
+      <li><a href="#is_redhat">is_redhat</a></li>
+      <li><a href="#is_fedora">is_fedora</a></li>
+      <li><a href="#is_suse">is_suse</a></li>
+      <li><a href="#is_mageia">is_mageia</a></li>
+      <li><a href="#is_debian">is_debian</a></li>
+      <li><a href="#is_alt">is_alt</a></li>
+      <li><a href="#is_netbsd">is_netbsd</a></li>
+      <li><a href="#is_openbsd">is_openbsd</a></li>
+      <li><a href="#is_linux">is_linux</a></li>
+      <li><a href="#is_bsd">is_bsd</a></li>
+      <li><a href="#is_solaris">is_solaris</a></li>
+      <li><a href="#is_windows">is_windows</a></li>
+      <li><a href="#is_openwrt">is_openwrt</a></li>
+      <li><a href="#is_gentoo">is_gentoo</a></li>
+      <li><a href="#is_arch">is_arch</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Gather - Hardware and Information gathering</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can gather hardware and software information.</p>
+
+<p>All these functions will not be reported. These functions don&#39;t modify anything.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> operating_system_is(&quot;SuSE&quot;);</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="get_operating_system">get_operating_system</h2>
+
+<p>Will return the current operating system name.</p>
+
+<pre><code> task &quot;get-os&quot;, &quot;server01&quot;, sub {
+   say get_operating_system();
+ };</code></pre>
+
+<p>Aliased by operating_system().</p>
+
+<h2 id="operating_system">operating_system</h2>
+
+<p>Alias for get_operating_system()</p>
+
+<h2 id="get_system_information">get_system_information</h2>
+
+<p>Will return a hash of all system information. These Information will be also used by the template function.</p>
+
+<h2 id="dump_system_information">dump_system_information</h2>
+
+<p>This function dumps all known system information on stdout.</p>
+
+<h2 id="operating_system_is-string-">operating_system_is($string)</h2>
+
+<p>Will return 1 if the operating system is $string.</p>
+
+<pre><code> task &quot;is_it_suse&quot;, &quot;server01&quot;, sub {
+   if( operating_system_is(&quot;SuSE&quot;) ) {
+     say &quot;This is a SuSE system.&quot;;
+   }
+ };</code></pre>
+
+<h2 id="operating_system_version-">operating_system_version()</h2>
+
+<p>Will return the os release number as an integer. For example, it will convert 5.10 to 510, 10.04 to 1004 or 6.0.3 to 603.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server01&quot;, sub {
+   if( operating_system_version() &gt;= 510 ) {
+     say &quot;OS Release is higher or equal to 510&quot;;
+   }
+ };</code></pre>
+
+<h2 id="operating_system_release-">operating_system_release()</h2>
+
+<p>Will return the os release number as is.</p>
+
+<h2 id="network_interfaces">network_interfaces</h2>
+
+<p>Return an HashRef of all the networkinterfaces and their configuration.</p>
+
+<pre><code> task &quot;get_network_information&quot;, &quot;server01&quot;, sub {
+   my $net_info = network_interfaces();
+ };</code></pre>
+
+<p>You can iterate over the devices as follow</p>
+
+<pre><code> my $net_info = network_interfaces();
+ for my $dev ( keys %{ $net_info } ) {
+   say &quot;$dev has the ip: &quot; . $net_info-&gt;{$dev}-&gt;{&quot;ip&quot;} . &quot; and the netmask: &quot; . $net_info-&gt;{$dev}-&gt;{&quot;netmask&quot;};
+ }</code></pre>
+
+<h2 id="memory">memory</h2>
+
+<p>Return an HashRef of all memory information.</p>
+
+<pre><code> task &quot;get_memory_information&quot;, &quot;server01&quot;, sub {
+   my $memory = memory();
+
+   say &quot;Total:  &quot; . $memory-&gt;{&quot;total&quot;};
+   say &quot;Free:   &quot; . $memory-&gt;{&quot;free&quot;};
+   say &quot;Used:   &quot; . $memory-&gt;{&quot;used&quot;};
+   say &quot;Cached:  &quot; . $memory-&gt;{&quot;cached&quot;};
+   say &quot;Buffers: &quot; . $memory-&gt;{&quot;buffers&quot;};
+ };</code></pre>
+
+<h2 id="is_freebsd">is_freebsd</h2>
+
+<p>Returns true if the target system is a FreeBSD.</p>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_freebsd) {
+     say &quot;This is a freebsd system...&quot;;
+   }
+   else {
+     say &quot;This is not a freebsd system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_redhat">is_redhat</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_redhat) {
+     # do something on a redhat system (like RHEL, Fedora, CentOS, Scientific Linux
+   }
+ };</code></pre>
+
+<h2 id="is_fedora">is_fedora</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_fedora) {
+     # do something on a fedora system
+   }
+ };</code></pre>
+
+<h2 id="is_suse">is_suse</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_suse) {
+     # do something on a suse system
+   }
+ };</code></pre>
+
+<h2 id="is_mageia">is_mageia</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_mageia) {
+     # do something on a mageia system (or other Mandriva followers)
+   }
+ };</code></pre>
+
+<h2 id="is_debian">is_debian</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_debian) {
+     # do something on a debian system
+   }
+ };</code></pre>
+
+<h2 id="is_alt">is_alt</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_alt) {
+     # do something on a ALT Linux system
+   }
+ };</code></pre>
+
+<h2 id="is_netbsd">is_netbsd</h2>
+
+<p>Returns true if the target system is a NetBSD.</p>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_netbsd) {
+     say &quot;This is a netbsd system...&quot;;
+   }
+   else {
+     say &quot;This is not a netbsd system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_openbsd">is_openbsd</h2>
+
+<p>Returns true if the target system is an OpenBSD.</p>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_openbsd) {
+     say &quot;This is an openbsd system...&quot;;
+   }
+   else {
+     say &quot;This is not an openbsd system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_linux">is_linux</h2>
+
+<p>Returns true if the target system is a Linux System.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_linux) {
+    say &quot;This is a linux system...&quot;;
+   }
+   else {
+    say &quot;This is not a linux system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_bsd">is_bsd</h2>
+
+<p>Returns true if the target system is a BSD System.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_bsd) {
+    say &quot;This is a BSD system...&quot;;
+   }
+   else {
+    say &quot;This is not a BSD system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_solaris">is_solaris</h2>
+
+<p>Returns true if the target system is a Solaris System.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   if(is_solaris) {
+    say &quot;This is a Solaris system...&quot;;
+   }
+   else {
+    say &quot;This is not a Solaris system...&quot;;
+   }
+ };</code></pre>
+
+<h2 id="is_windows">is_windows</h2>
+
+<p>Returns true if the target system is a Windows System.</p>
+
+<h2 id="is_openwrt">is_openwrt</h2>
+
+<p>Returns true if the target system is an OpenWrt System.</p>
+
+<h2 id="is_gentoo">is_gentoo</h2>
+
+<p>Returns true if the target system is a Gentoo System.</p>
+
+<h2 id="is_arch">is_arch</h2>
+
+<pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
+   if(is_arch) {
+     # do something on a arch system
+   }
+ };</code></pre>
+
+

@@ -1,0 +1,77 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#CLASS-METHODS">CLASS METHODS</a>
+    <ul>
+      <li><a href="#get-modules-">get(@modules)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Hardware - Base Class for hardware / information gathering</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This module is the base class for hardware/information gathering.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Hardware;
+ 
+ my %host_info = Rex::Hardware-&gt;get(qw/ Host /);
+ my %all_info  = Rex::Hardware-&gt;get(qw/ All /);</code></pre>
+
+<h1 id="CLASS-METHODS">CLASS METHODS</h1>
+
+<h2 id="get-modules-">get(@modules)</h2>
+
+<p>Returns a hash with the wanted information.</p>
+
+<pre><code> task &quot;get-info&quot;, &quot;server1&quot;, sub {
+   %hw_info = Rex::Hardware-&gt;get(qw/ Host Network /);
+ };</code></pre>
+
+<p>Or if you want to get all information</p>
+
+<pre><code> task &quot;get-all-info&quot;, &quot;server1&quot;, sub {
+   %hw_info = Rex::Hardware-&gt;get(qw/ All /);
+ };</code></pre>
+
+<p>Available modules:</p>
+
+<dl>
+
+<dt id="Host">Host</dt>
+<dd>
+
+</dd>
+<dt id="Kernel">Kernel</dt>
+<dd>
+
+</dd>
+<dt id="Memory">Memory</dt>
+<dd>
+
+</dd>
+<dt id="Network">Network</dt>
+<dd>
+
+</dd>
+<dt id="Swap">Swap</dt>
+<dd>
+
+</dd>
+<dt id="VirtInfo">VirtInfo</dt>
+<dd>
+
+</dd>
+</dl>
+
+

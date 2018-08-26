@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Authentication",
+  "navigation": 1,
+  "title": "Authentication",
+  "type_name": "page",
+  "url": "authentication"
+}

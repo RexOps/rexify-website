@@ -1,0 +1,113 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#CLASS-METHODS">CLASS METHODS</a>
+    <ul>
+      <li><a href="#new">new</a></li>
+      <li><a href="#write-buf-">write($buf)</a></li>
+      <li><a href="#seek-offset-">seek($offset)</a></li>
+      <li><a href="#read-len-">read($len)</a></li>
+      <li><a href="#read_all">read_all</a></li>
+      <li><a href="#close">close</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::FS::File - File Class</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is the File Class used by <i>file_write</i> and <i>file_read</i>.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Interface::File;
+ my $fh = Rex::Interface::File-&gt;create(&#39;Local&#39;);
+ $fh-&gt;open( &#39;&lt;&#39;, &#39;filename&#39; );
+
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);
+ $file-&gt;read($len);
+ $file-&gt;read_all;
+ $file-&gt;write($buf);
+ $file-&gt;close;</code></pre>
+
+<h1 id="CLASS-METHODS">CLASS METHODS</h1>
+
+<h2 id="new">new</h2>
+
+<p>This is the constructor. You need to set the filehandle which the object should work on or pass a filename. If you pass a filehandle, it has to be a <code>Rex::Interface::File::*</code> object</p>
+
+<pre><code> my $fh = Rex::Interface::File-&gt;create(&#39;Local&#39;);
+ $fh-&gt;open( &#39;&lt;&#39;, &#39;filename&#39; );
+ 
+ my $file = Rex::FS::File-&gt;new(fh =&gt; $fh);</code></pre>
+
+<p>Create a <code>Rex::FS::File</code> object with a filename</p>
+
+<pre><code> # open a local file in read mode
+ my $file = Rex::FS::File-&gt;new(
+   filename =&gt; &#39;filename&#39;,
+   mode     =&gt; &#39;r&#39;, # or &#39;&lt;&#39;
+   type     =&gt; &#39;Local&#39;,
+ );
+ 
+ # or shorter
+ my $file = Rex::FS::File-&gt;new( filename =&gt; &#39;filename&#39; );
+ 
+ # open a local file in write mode
+ my $file = Rex::FS::File-&gt;new(
+   filename =&gt; &#39;filename&#39;,
+   mode     =&gt; &#39;w&#39;, # or &#39;&gt;&#39;
+ );</code></pre>
+
+<p>Allowed modes:</p>
+
+<pre><code> &lt;  read
+ r  read
+ &gt;  write
+ w  write
+ &gt;&gt; append
+ a  append</code></pre>
+
+<p>For allowed <code>types</code> see documentation of <a>Rex::Interface::File</a>.</p>
+
+<h2 id="write-buf-">write($buf)</h2>
+
+<p>Write $buf into the filehandle.</p>
+
+<pre><code> $file-&gt;write(&quot;Hello World&quot;);</code></pre>
+
+<h2 id="seek-offset-">seek($offset)</h2>
+
+<p>Seek to the file position $offset.</p>
+
+<p>Set the file pointer to the 5th byte.</p>
+
+<pre><code> $file-&gt;seek(5);</code></pre>
+
+<h2 id="read-len-">read($len)</h2>
+
+<p>Read $len bytes out of the filehandle.</p>
+
+<pre><code> my $content = $file-&gt;read(1024);</code></pre>
+
+<h2 id="read_all">read_all</h2>
+
+<p>Read everything out of the filehandle.</p>
+
+<pre><code> my $content = $file-&gt;read_all;</code></pre>
+
+<h2 id="close">close</h2>
+
+<p>Close the file.</p>
+
+<pre><code> $file-&gt;close;</code></pre>
+
+

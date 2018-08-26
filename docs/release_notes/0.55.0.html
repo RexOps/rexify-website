@@ -1,0 +1,74 @@
+
+<p>These are the changes in the 0.55.0 release.</p>
+
+<p>We want to thank every contributor who made this release possible. We also welcome Denis Silakov and Graham Todd as new contributors.</p>
+
+<h2>Common</h2>
+
+<h3>Pack rex with PAR</h3>
+
+<p>Now it is possible to create a self-contained binary from a Rex project with:</p>
+
+<pre><code class="bash">$ rexify --bundle</code></pre>
+
+<p>This will create one "large" binary out of the Rex project. This binary can be copied to other systems (with the same architecture and compatible glibc). It doesn't need perl on those system.</p>
+
+<p>Once copied, the binary can be executed with the normal rex parameters, for example:</p>
+
+<pre><code class="bash">
+# list the bundled tasks
+$ ./rex-bundle -T
+
+# run the bundled setup task
+$ ./rex-bundle setup
+
+# run the bundled setup task on server 1.2.3.4
+$ ./rex-bundle -H 1.2.3.4 -u root -p pass setup
+</code></pre>
+
+<p>Known issues: currently this seem to only work for 64-bit systems.</p>
+
+<h3>Use Net::OpenSSH as default if possible</h3>
+
+<p>If the '0.55' feature flag is enabled, then Net::OpenSSH and Net::SFTP::Foreign would be used by default, provided they found on the system.</p>
+
+<pre><code class="perl">use Rex -feature => ['0.55'];</code></pre>
+
+<h3>Initial ROSA systems support</h3>
+
+<p>ROSA Enterprise Server is based of RHEL with minor editions, while ROSA Desktop is based on old Mandriva, and is similar to Mageia from Rex's point of view. Denis Silakov managed to make most Rex commands work on ROSA Server and ROSA Desktop. Kudos!</p>
+
+<h2>Virtualization</h2>
+
+<h4>rex-kvm-agent</h4>
+
+<p>KVM doesn't have a VM agent yet (like VMware, VirtualBox), so it is sometimes impossible to get internal information about them (like the IP of a VM while using bridged networking).</p>
+
+<p>To solve this, we wrote a small agent that can be installed inside a KVM machine. When the VM is created we create a serial adapter that is bound to a TCP port on the host (127.0.0.1). Then rex can communicat via this serial port with the rex-kvm-agent instance running inside the VM.</p>
+
+<p>You can find rex-kvm-agent in <a href="https://github.com/RexOps/rex-kvm-agent">its own repository</a>.</p>
+
+<h2>Bugfixes</h2>
+
+<h3>Common</h3>
+
+<ul>
+<li>fixed get_installed and is_installed functions in Rex::Pkg::Gentoo - #444 - Robert Abraham</li>
+<li>Fix typo - Ferenc Erki</li>
+<li>Make PkgVersion happy - Ferenc Erki</li>
+<li>Work when swap in not enabled and values are undefined. - #452, #453 -  Graham Todd, Jan</li>
+<li>fixed windows crashing on multiple connects - #448 - Jan</li>
+</ul>
+
+<h3>Virtualization</h3>
+
+<ul>
+<li>vm names in quote. so they can contain spaces - Jan</li>
+</ul>
+
+<h3>Rex::Test</h3>
+
+<ul>
+<li>don't throw error with multiple test files - #446 - Robert Abraham</li>
+<li>Print out error messages during Test:run (fix #450) - Ferenc Erki</li>
+</ul>

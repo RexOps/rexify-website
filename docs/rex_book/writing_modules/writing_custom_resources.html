@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link href="/rexify-website/theme/css/statocles-bootstrap.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Rexify statocles</title>
+        <meta content="Statocles 0.093" name="generator">
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#top-navbar-collapse-1" data-toggle="collapse" type="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/rexify-website/">Rexify statocles</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-9">
+                    <main>
+                        <p>Resoures are the units that are responsible to manage your configurations. 
+Resources have a state. Compared to remote execution functions, that means, 
+that a resource is only applied if the remote system is not in the specific
+state.</p>
+
+<p>Rex has simple remote execution functions (like <code>mkdir</code>, <code>is_dir</code>, <code>is_file</code>
+and more). But it has also resources (like <code>file</code>, <code>pkg</code>, <code>service</code> and more).</p>
+
+<p>Currently the resources and remote execution functions are mostly all in the
+<code>Rex::Commands</code> namespace but in the next major release (2.0) resources will
+have their own namespace (<code>Rex::Resource</code>).</p>
+
+<p>Every command that has the option <code>ensure</code> is a resource.</p>
+
+<p>Another difference between resources and remote execution functions is that
+resources will be reported (if you are using the reporting feature) and have an
+<code>on_change</code> attribute .</p>
+
+<h2>Writing Resources for Rex 1.x (1.3+)</h2>
+
+<h3>Architecture of a Resource</h3>
+
+<p>A resource always exists of at least 2 files. The module which creates the
+resource definition and exports the function (if wanted).
+And a so called <em>provider</em> which provides the functionality for a specific
+implementation. For example the <em>firewall</em> resource has a provider for <em>ufw</em> 
+and for <em>iptables</em>.</p>
+
+<p>The resource definition defines the parameters which are valid for the resource,
+load the wanted or auto-detected provider class and execute the requested 
+state.</p>
+
+<p>After the execution of the requested state it will also emit the change, so the
+reporting module get notified.</p>
+
+<h3>Hello World Resource</h3>
+
+<p>To build a new resource you first have to create a new Rex module. Todo this,
+just create a new folder.</p>
+
+<pre><code class="bash">$ mkdir -p lib/HelloWorld</code></pre>
+
+<p>Now we need to create 2 files. One <em>__module__.pm</em> for the resource definition
+and one <em>meta.yml</em> where we can define the dependencies our resource will have.
+This file is needed if you want to upload your module to a git server and share
+it between projects.</p>
+
+<p>In the <em>meta.yml</em> file you can just put the following lines.</p>
+
+<pre><code class="yaml">Name: HelloWorld
+Description: A hello world resource
+License: YourLicense
+# we don&#39;t require anything
+# Requires:</code></pre>
+
+<p>The <em>__module__.pm</em> file which creates the resource.</p>
+
+<pre><code class="perl">package HelloWorld;
+
+use strict;
+use warnings;
+
+use Rex -minimal; # for Rex <1.4 # $__provider="{" -base; `operating_system` available carp; default="" function. functions functions, gather have list load my providers resource rex rex::commands::gather; rex::resource::common; so the use we> &quot;HelloWorld::greet::Provider::default&quot;,
+  CentOS  =&gt; &quot;HelloWorld::greet::Provider::centos&quot;,
+};
+
+# create a resource HelloWorld::greet
+resource &quot;greet&quot;, sub {
+  my $rule_name = resource_name;
+
+  my $rule_config = {
+    ensure  =&gt; param_lookup( &quot;ensure&quot;, &quot;present&quot; ),
+    message =&gt; param_lookup( &quot;message&quot;, &quot;<default value>&quot; ),
+  };
+
+  # get the right provider if it is not defined via the operating system
+  # and the list from above.
+  my $provider =
+    param_lookup( &quot;provider&quot;, case ( lc(operating_system), $__provider ) );
+
+  # load the provider class
+  $provider-&gt;require;
+
+  # create a new instance of the provider class
+  my $provider_o = $provider-&gt;new();
+
+  # and execute the requested state.
+  if ( $rule_config-&gt;{ensure} eq &quot;present&quot; ) {
+    if ( $provider_o-&gt;present($rule_config) ) {
+      emit created, &quot;HelloWorld::greet resource created.&quot;;
+    }
+  }
+  elsif ( $rule_config-&gt;{ensure} eq &quot;absent&quot; ) {
+    if ( $provider_o-&gt;absent($rule_config) ) {
+      emit removed, &quot;HelloWorld::greet resource removed.&quot;;
+    }
+  }
+  else {
+    die &quot;Error: $rule_config-&gt;{ensure} not a valid option for &#39;ensure&#39;.&quot;;
+  }
+
+};
+
+1; # this need to be the last line in the file</default></1.4></code></pre>
+
+<p>Now, after creating the resource definition we need to create our providers.
+To do so, you need to create the following directory.</p>
+
+<pre><code class="bash">$ mkdir -p lib/HelloWorld/greet/Provider</code></pre>
+
+<p>And place the two providers inside this directory.</p>
+
+<pre><code class="bash">$ touch lib/HelloWorld/greet/Provider/default.pm
+$ touch lib/HelloWorld/greet/Provider/centos.pm</code></pre>
+
+<p>In this example we will create the <em>default.pm</em> provider and the <em>centos.pm</em>
+provider which will just inherit every method from the <em>default.pm</em> provider.</p>
+
+<p>In Rex &lt; 2.0 we don&#39;t use any object system for perl so we need to create the
+bare class by our self.</p>
+
+<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/default.pm
+package HelloWorld::greet::Provider::default;
+
+use strict;
+use warnings;
+
+use Rex::Commands::File;
+
+# the constructor
+sub new {
+  my $that  = shift;
+  my $proto = ref($that) || $that;
+  my $self  = {@_};
+
+  bless( $self, $proto );
+
+  return $self;
+}
+
+# the ensure methods
+sub present {
+  my ( $self, $rule_config ) = @_;
+
+  my $changed = 0;
+
+  file &quot;/etc/motd&quot;,
+    content =&gt; $rule_config-&gt;{message},
+    owner   =&gt; &quot;root&quot;,
+    group   =&gt; &quot;root&quot;,
+    mode    =&gt; &#39;0644&#39;,
+    on_change =&gt; sub { $changed = 1; };
+
+  return $changed;
+}
+
+sub absent {
+  my ( $self, $rule_config ) = @_;
+
+  my $changed = 0;
+
+  file &quot;/etc/motd&quot;,
+    ensure    =&gt; &quot;absent&quot;,
+    on_change =&gt; sub { $changed = 1; };
+
+  return $changed;
+}
+
+1; # this need to be the last line in the file</code></pre>
+
+<p>The next file is the <em>centos</em> provider. We will just inherit from the <em>default</em>
+provider without overriding any functions. This is just for demonstration 
+purpose how to do inheritance.</p>
+
+<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/centos.pm
+package HelloWorld::greet::Provider::centos;
+
+use strict;
+use warnings;
+
+use Rex::Commands::File;
+use parent qw(HelloWorld::greet::Provider::default);
+
+# the constructor
+sub new {
+  my $that  = shift;
+  my $proto = ref($that) || $that;
+
+  # here we call the constructor of the parent class
+  my $self  = $proto-&gt;SUPER::new(@_);
+
+  bless( $self, $proto );
+
+  return $self;
+}
+
+1; # this need to be the last line in the file</code></pre>
+
+<h3>Using your resource</h3>
+
+<p>After creating your module with the <code>greet</code> resource you can <code>use</code> this 
+resource in your <code>Rexfile</code>.</p>
+
+<pre><code class="perl"># Rexfile
+use Rex -feature =&gt; [&#39;1.4&#39;];
+use HelloWorld;
+
+group myservers =&gt; &quot;srv[01..10]&quot;;
+
+task &quot;prepare&quot;, group =&gt; &quot;myservers&quot;, sub {
+  HelloWorld::greet &quot;mygreeting&quot;,
+    message =&gt; &quot;Welcome to my server&quot;,
+    ensure  =&gt; &quot;present&quot;,
+    on_change =&gt; sub {
+      say &quot;server greeting has changed.&quot;;
+    };
+};</code></pre>
+
+
+                    </main>
+                </div>
+
+                <div class="col-md-3">
+                    
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+
+    </body>
+</html>

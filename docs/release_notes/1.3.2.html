@@ -1,0 +1,81 @@
+
+<p>This is a bugfix release,
+upgrade is recommended for all users.</p>
+
+<p>Shortly after releasing 1.3.0,
+we followed it up with 1.3.1,
+fixing a Rex::Commands::DB related testing bug,
+that slipped through our test suite.</p>
+
+<p>During that work we also discovered another bug,
+that was affecting BSD users since 1.2.1.
+The solution was to refactor the MD5 checksum calculation method,
+that is being used during e.g. file change detection.</p>
+
+<p>Among other smaller improvements mentioned below,
+the fix for this issue is now being released as 1.3.2.</p>
+
+<p>Since we're keen to continuously improve our QA processes,
+we also added new tests that could catch similar issues in the future,
+as part of this fix.</p>
+
+<p>Special thanks for stephanj on IRC
+who helped a lot
+with testing those changes
+and suggesting further modifications.</p>
+
+<h2>Enhancements</h2>
+
+<h3>MD5 calculation</h3>
+
+<p>We replaced the previous MD5 checksum calculation method
+basically with perl one-liners.
+According to our benchmarks this method provides an overall better performance,
+while remaining OS-agnostic and memory efficient.
+Since this function is used in many places,
+we are looking forward to improve it further.</p>
+
+<ul>
+<li>Use binmode as a function - Jan</li>
+<li>Remove md5sum usage - Ferenc Erki</li>
+<li>Fix for filenames with at sign in them - Ferenc Erki</li>
+<li>Add test case for filenames with at sign - Ferenc Erki</li>
+<li>Refactor MD5 checksum calculation (fix #719) - Ferenc Erki</li>
+<li>Add initial MD5 test - Ferenc Erki</li>
+</ul>
+
+<h3>Documentation</h3>
+
+<p>We also decided to include a typo fix to the documentation of this release.</p>
+
+<ul>
+<li>Fix LEFT_PRECEDENCE typo - Dmitry Kopytov</li>
+</ul>
+
+<h3>General</h3>
+
+<p>Based on the feedback from stephanj via IRC,
+we improved detection of environment-specific files,
+and also cleaned up useless <code>which perl</code> calls on Windows,
+by using the built-on <code>can_run</code> instead.
+Plus there were some test cleanups.</p>
+
+<ul>
+<li>Add missing test names - Ferenc Erki</li>
+<li>Only display diagnostic message if something went wrong - Ferenc Erki</li>
+<li>Fix check for environment-specific filenames - Ferenc Erki</li>
+<li>Use OS-agnostic perl executable detection - Ferenc Erki</li>
+<li>Fix RC version handling - Ferenc Erki</li>
+<li>Use raw Rex::Interface::Exec to call can_run - Jan</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<h3>Rex::Commands::DB test fixes</h3>
+
+<p>Now <code>t/db.t</code> should properly skip tests
+when some prerequisite is missing.</p>
+
+<ul>
+<li>Explicitly test for optional dependencies - Ferenc Erki</li>
+</ul>

@@ -1,0 +1,50 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#METHODS">METHODS</a>
+    <ul>
+      <li><a href="#share">share</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Shared::Var - Share variables across Rex tasks</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Share variables across Rex tasks with the help of Storable, using a <code>vars.db.$PID</code> file in the local directory, where <code>$PID</code> is the PID of the parent process.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> BEGIN {                           # put share in a BEGIN block
+   use Rex::Shared::Var;
+   share qw($scalar @array %hash); # share the listed variables
+ }</code></pre>
+
+<h1 id="METHODS">METHODS</h1>
+
+<h2 id="share">share</h2>
+
+<p>Share the passed list of variables across Rex tasks. Should be used in a <code>BEGIN</code> block.</p>
+
+<pre><code> BEGIN {
+   use Rex::Shared::Var;
+   share qw($error_count);
+ }
+
+ task &#39;count&#39;, sub {
+   $error_count += run &#39;wc -l /var/log/syslog&#39;;
+ };
+
+ after_task_finished &#39;count&#39;, sub {
+   say &quot;Total number of errors: $error_count&quot;;
+ };</code></pre>
+
+
