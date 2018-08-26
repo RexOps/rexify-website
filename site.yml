@@ -1,0 +1,21 @@
+site:
+    class: Statocles::Site
+    args:
+        title: Rexify statocles
+        base_url: https://rexops.github.io/rexify-website/
+        theme: '::bootstrap'
+        apps:
+            basic:
+                $ref: basic_app
+        deploy:
+            $ref: gh_pages
+basic_app:
+    class: Statocles::App::Basic
+    args:
+        store: 'content'
+        url_root: '/'
+gh_pages:
+    class: Statocles::Deploy::Git
+    args:
+        branch: gh-pages
+        base_url: https://rexops.github.io/rexify-website/
