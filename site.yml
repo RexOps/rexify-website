@@ -8,6 +8,8 @@ site:
         apps:
             basic:
                 $ref: basic_app
+            public:
+                $ref: public
         deploy:
             $ref: gh_pages
         data:
@@ -58,6 +60,11 @@ basic_app:
     args:
         store: 'content'
         url_root: '/'
+public:
+    class: Statocles::App::Basic
+    args:
+        store: 'public'
+        url_root: '/public'
 gh_pages:
     class: Statocles::Deploy::Git
     args:
