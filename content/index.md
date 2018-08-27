@@ -24,10 +24,10 @@
 <div class="row-fluid">
 <div class="span4">&nbsp;</div>
 <div class="span4">
-<p><a class="btn" href="../../docs/guides/just_enough_perl_for_rex.html">Just enough Perl for Rex &raquo;</a></p>
+<p><a class="btn" href="/docs/guides/just_enough_perl_for_rex.html">Just enough Perl for Rex &raquo;</a></p>
 </div>
 <div class="span4">
-<p><a class="btn" href="../../care/help__r__ex.html">View details &raquo;</a></p>
+<p><a class="btn" href="/care/help__r__ex.html">View details &raquo;</a></p>
 </div>
 </div>
 </div>
