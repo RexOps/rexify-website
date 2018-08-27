@@ -1,26 +1,23 @@
-% my $root = $site->get_root_page();
+% my $nav = $site->{data}{nav};
 
 <div class="nav_links">
   <ul>
-    <li><a href="/"><%= $root->name %></a></li>
-    % for my $child ($root->children) {
-      % next if($child->hidden || $child->navigation == 0 || !$child->active);
-      % my @sub_children = $child->children->search({"me.navigation" => 1, "me.hidden" => 0});
-      % if(scalar @sub_children > 0) {
-        <li>
-          <b class="arrow_box"></b>
-          <a href="<%= $child->generate_url %>" title="<%= $child->title %>" class="dropdown_link"><%= $child->name %></a>
-          <ul class="dropdown_menu dropdown_<%= lc($child->name) %>">
-            % for my $sub_child (@sub_children) {
-            % if($sub_child->name eq "API") {
-              <li class="divider"></li>
-            % }
-            <li><a href="<%= $sub_child->generate_url %>"><%= $sub_child->name %></a></li>
-            % }
-          </ul>
-        </li>
+    % for my $menu (@{$nav}) {
+      % if ( $menu->{children} ) {
+    <li>
+      <b class="arrow_box"></b>
+      <a href="<%= $menu->{url} %>" title="<%= $menu->{title} %>" class="dropdown_link"><%= $menu->{name} %></a>
+      <ul class="dropdown_menu dropdown_<%= lc($menu->{name}) %>">
+        % for my $submenu ( @{$menu->{children}}) {
+          % if ( $submenu->{name} eq 'API' ) {
+            <li class="divider"></li>
+          % } 
+          <li><a href="<%= $submenu->{url} %>"><%= $submenu->{name} %></a></li>
+        % }
+      </ul>
+    </li>
       % } else {
-        <li><a href="<%= $child->generate_url %>" title="<%= $child->title %>"><%= $child->name %></a></li>
+    <li><a href="<%= $menu->{url} %>"><%= $menu->{name} %></a></li>
       % }
     % }
   </ul>

@@ -42,13 +42,13 @@
          </div>
 
          <div id="index-nav-div">
-           <!-- %= include 'skin/rexify.org/_navigation.html.ep'; -->
+           %= include 'skin/rexify.org/_navigation.html.ep';
          </div>
       % } else {
          <div id="top-div" class="top_div">
             <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
             <div id="nav-div">
-               <!-- %= include 'skin/rexify.org/_navigation.html.ep'; -->
+               %= include 'skin/rexify.org/_navigation.html.ep';
             </div>
             </div>
          </div>

@@ -12,6 +12,49 @@ site:
                 $ref: public
         deploy:
             $ref: gh_pages
+        data:
+            nav:
+                - name: Home
+                  url: /
+                  title: home
+                - url: /get/index.html
+                  title: get
+                  name: Get Rex
+                - url: /care/index.html
+                  title: care
+                  name: Care
+                  children:
+                      - url: /care/help__r__ex.html
+                        title: rex
+                        name: Help Rex
+                      - url: /care/help_people_in_need.html
+                        title: people
+                        name: Help people
+                - url: /support/index.html
+                  title: support
+                  name: Support
+                - url: /docs/index.html
+                  title: docs
+                  name: Docs
+                  children:
+                      - url: /docs/faq/index.html
+                        title: faq
+                        name: FAQ
+                      - url: /docs/guides/index.html
+                        title: guides
+                        name: Guides
+                      - url: /docs/rex_book/index.html
+                        title: rex_book
+                        name: Rex Book (work in progress)
+                      - url: /docs/other/index.html
+                        title: other
+                        name: Other
+                      - url: /docs/release_notes/index.html
+                        title: release_notes
+                        name: Release notes
+                      - url: /docs/api/index.html
+                        title: api
+                        name: API
 basic_app:
     class: Statocles::App::Basic
     args:
