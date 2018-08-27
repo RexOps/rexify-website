@@ -19,7 +19,6 @@ basic_app:
         url_root: '/'
         data:
             no_side_bar: 0
-            root: 1
             trainings:
                 date: 2018-08-26
                 text: test training
