@@ -1,40 +1,336 @@
-<p>Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.</p>
-<p>If you have suggestions or wishes, please post a comment, tell us in our #rex channel on freenode, or just send a pull request against the GitHub repository.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="index-top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+         </div>
+
+                  <div id="head-div">
+            <div class="head_container">
+               <div class="slogan">
+                  <h1>Automate Everything, Relax Anytime</h1>
+                  <div class="slogan_list">
+                     <ul>
+                        <li>&gt; Integrates seamless in your running environment</li>
+                        <li>&gt; Easy to use and extend</li>
+                        <li>&gt; Easy to learn, it&#39;s just plain Perl</li>
+                        <li>&gt; Apache 2.0 licensed</li>
+                     </ul>
+                  </div> <!-- slogan_list -->
+
+                  <div class="source">
+                     <pre><code class="perl">task prepare =&gt; sub {
+   pkg &quot;apache2&quot;, ensure =&gt; &quot;latest&quot;;
+   service &quot;apache2&quot;, ensure =&gt; &quot;started&quot;;
+};</code></pre>
+                  </div> <!-- source -->
+                  <a class="headlink" href="/rexify-website/howtos/start.html">Read the Getting Started Guide</a>
+               </div> <!-- slogan -->
+
+            </div> <!-- head_container -->
+         </div>
+
+         <div class="nav_title">
+            <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
+         </div>
+
+         <div id="index-nav-div">
+           <!-- %= include 'skin/rexify.org/_navigation.html.ep'; -->
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>Perl is a scripting language designed to keep easy things easy, and make
+hard things possible. In this tutorial you will learn just enough Perl
+to write your own Rex tasks.</p>
+
+<p>If you have suggestions or wishes, please post a comment, tell us in our
+#rex channel on freenode, or just send a pull request against the
+GitHub repository.</p>
+
 <h2>Variables</h2>
+
 <h3>Scalar variables</h3>
-<p>Scalars can contain single items, like strings, numbers, objects or references.</p>
-<pre><code class="perl">my $name = "John";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # this is a string<br /></code><code class="perl">my $age = 28;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # this is a number (integer)<br /></code><code class="perl">my $float = 28.5;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # also a number, but a float<br /></code><code class="perl">my $car = Car-&gt;new();&nbsp;&nbsp; # this is an object from the class Car</code></pre>
+
+<p>Scalars can contain single items, like strings, numbers, objects or
+references.</p>
+
+<pre><code>my $name = &quot;John&quot;;      # this is a string
+my $age = 28;           # this is a number (integer)
+my $float = 28.5;       # also a number, but a float
+my $car = Car-&gt;new();   # this is an object from the class Car
+</code></pre>
+
 <h3>Array variables</h3>
+
 <p>Arrays are lists of scalars. Like a grocery list.</p>
-<pre><code class="perl">my @names = ( "John", "Fred", "Charley" );<br /></code><code class="perl">my @to_buy = qw( Cheese Butter Salt Lemons Oranges Apples );</code></pre>
-<p>To access an array element you have to use its index, which starts at zero:</p>
-<pre><code class="perl">say "First name: " . $names[0];<br /></code><code class="perl">say "Last name: " . $name[2];<br /></code><code class="perl">say "Also last name: " . $name[-1];</code></pre>
+
+<pre><code>my @names = ( &quot;John&quot;, &quot;Fred&quot;, &quot;Charley&quot; );
+my @to_buy = qw( Cheese Butter Salt Lemons Oranges Apples );
+</code></pre>
+
+<p>To access an array element you have to use its index, which starts at
+zero:</p>
+
+<pre><code>say &quot;First name: &quot; . $names[0];
+say &quot;Last name: &quot; . $name[2];
+say &quot;Also last name: &quot; . $name[-1];
+</code></pre>
+
 <p>Split a string into an array:</p>
-<pre><code class="perl">my $string = "John,Fred,Carl,Lewis";<br /></code><code class="perl">my @names = split( /,/, $string );</code></pre>
+
+<pre><code>my $string = &quot;John,Fred,Carl,Lewis&quot;;
+my @names = split( /,/, $string );
+</code></pre>
+
 <p>Join the items of an array into a string:</p>
-<pre><code class="perl">my @names = ( "John", "Fred", "Carl", "Lewis" );<br /></code><code class="perl">my $string = join( ",", @names );&nbsp;&nbsp;&nbsp;&nbsp; # -&gt; John,Fred,Carl,Lewis</code></pre>
+
+<pre><code>my @names = ( &quot;John&quot;, &quot;Fred&quot;, &quot;Carl&quot;, &quot;Lewis&quot; );
+my $string = join( &quot;,&quot;, @names );     # -&gt; John,Fred,Carl,Lewis
+</code></pre>
+
 <p>If you want to iterate over an array, do it like this:</p>
-<pre><code class="perl">for my $name (@names) {<br /></code><code class="perl">  say "Current name: $name";<br /></code><code class="perl">}</code></pre>
+
+<pre><code>for my $name (@names) {
+  say &quot;Current name: $name&quot;;
+}
+</code></pre>
+
 <h3>Hash variables</h3>
+
 <p>Hashes are like arrays, but with named indexes, called keys.</p>
-<pre><code class="perl">my %person = (<br /></code><code class="perl">  name =&gt; "John",<br /></code><code class="perl">&nbsp; age&nbsp; =&gt; 28,<br /></code><code class="perl">&nbsp; city =&gt; "New York"<br /></code><code class="perl">);</code></pre>
+
+<pre><code>my %person = (
+  name =&gt; &quot;John&quot;,
+  age  =&gt; 28,
+  city =&gt; &quot;New York&quot;
+);
+</code></pre>
+
 <p>To access a hash element you have to use its key:</p>
-<pre><code class="perl">say "Name: " . $person{"name"};<br /></code><code class="perl">say "Age: " . $person{"age"};<br /></code><code class="perl">say "City: " . $person{"city"};</code></pre>
+
+<pre><code>say &quot;Name: &quot; . $person{&quot;name&quot;};
+say &quot;Age: &quot; . $person{&quot;age&quot;};
+say &quot;City: &quot; . $person{&quot;city&quot;};
+</code></pre>
+
 <p>If you want to iterate over a hash, do it like this:</p>
-<pre><code class="perl">for my $key ( keys %person ) {<br /></code><code class="perl">&nbsp; say "key: $key -&gt; value: " . $person{$key};</code><br /><code class="perl">}</code></pre>
+
+<pre><code>for my $key ( keys %person ) {
+  say &quot;key: $key -&gt; value: &quot; . $person{$key};
+}
+</code></pre>
+
 <p>But remember an important note: hashes are always unsorted.</p>
+
 <h2>Conditional statements</h2>
-<pre><code class="perl">if ( $name eq "John" ) {<br /></code><code class="perl">&nbsp; say "Hello, my name is John!";<br /></code><code class="perl">} else {<br /></code><code class="perl">&nbsp; say "Well, my name is not John...";<br /></code><code class="perl">}<br /><br /></code><code class="perl">if ( $name ne "John" ) {<br /></code><code class="perl">&nbsp; say "Yes, my name is NOT John...";<br /></code><code class="perl">} else {<br /></code><code class="perl">&nbsp; say "Hello, my name is John!";<br /></code><code class="perl">}<br /><br /></code><code class="perl">if ( $age &lt; 30 ) {<br /></code><code class="perl">&nbsp; say "I'm younger than 30.";<br /></code><code class="perl">} elsif ( $age &gt;= 30 &amp;&amp; $age &lt;= 50 ) {<br /></code><code class="perl">&nbsp; say "Well, I'm between 30 and 50.";<br /></code><code class="perl">} else {<br /></code><code class="perl">&nbsp; say "I'm older than 50.";<br /></code><code class="perl">}</code> </pre>
+
+<pre><code>if ( $name eq &quot;John&quot; ) {
+  say &quot;Hello, my name is John!&quot;;
+} else {
+  say &quot;Well, my name is not John...&quot;;
+}
+
+if ( $name ne &quot;John&quot; ) {
+  say &quot;Yes, my name is NOT John...&quot;;
+} else {
+  say &quot;Hello, my name is John!&quot;;
+}
+
+if ( $age &lt; 30 ) {
+  say &quot;I&#39;m younger than 30.&quot;;
+} elsif ( $age &gt;= 30 &amp;&amp; $age &lt;= 50 ) {
+  say &quot;Well, I&#39;m between 30 and 50.&quot;;
+} else {
+  say &quot;I&#39;m older than 50.&quot;;
+} 
+</code></pre>
+
 <h2>Loops</h2>
-<pre><code class="perl">for my $num (1..5) {<br /></code><code class="perl">&nbsp; say "&gt; $num";<br /></code><code class="perl">}</code><br /><code class="perl"><br /># looping over an array<br /></code><code class="perl">for my $item (@array) {<br /></code><code class="perl">&nbsp; say "&gt; $item";<br /></code><code class="perl">}</code> </pre>
+
+<pre><code>for my $num (1..5) {
+  say &quot;&gt; $num&quot;;
+}
+
+# looping over an array
+for my $item (@array) {
+  say &quot;&gt; $item&quot;;
+} 
+</code></pre>
+
 <h2>Regular expressions</h2>
-<pre><code class="perl">my $name = "John";<br /></code><code class="perl">if ( $name =~ m/john/ ) {&nbsp;&nbsp;&nbsp;&nbsp; # will not match, because the "J" in $name is uppercase<br /></code><code class="perl">}<br /></code><code class="perl"><br />if ( $name =~ m/john/i ) {&nbsp;&nbsp;&nbsp; # _will_ match, because we use the "i" modifier for case-insensitive matching<br /></code><code class="perl">}<br /><br /></code><code class="perl">$name =~ s/john/Fred/i;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # this will replace the first match of "john" (regardless of its case) with "Fred"<br /></code><code class="perl">$name =~ s/john/Fred/ig;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # this will replace all matches of "john" (regardless of its case) with "Fred"</code></pre>
+
+<pre><code>my $name = &quot;John&quot;;
+if ( $name =~ m/john/ ) {     # will not match, because the &quot;J&quot; in $name is uppercase
+}
+
+if ( $name =~ m/john/i ) {    # _will_ match, because we use the &quot;i&quot; modifier for case-insensitive matching
+}
+
+$name =~ s/john/Fred/i;       # this will replace the first match of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;
+$name =~ s/john/Fred/ig;      # this will replace all matches of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;
+</code></pre>
+
 <h2>Functions</h2>
-<pre><code class="perl">sub my_function {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # define the function called "my_function"<br /></code><code class="perl">}<br /><br /></code><code class="perl">sub my_function {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # define the function called "my_function" <br /></code><code class="perl">&nbsp; my $param1 = $_[0]; # get the 1st parameter and save it in $param1<br /></code><code class="perl">&nbsp; my $param2 = $_[1]; # get the 2nd parameter and save it in $param2<br /></code><code class="perl">&nbsp; my $param3 = $_[2]; # get the 3rd parameter and save it in $param3</code><br /><code class="perl">}<br /><br /></code><code class="perl">sub my_function {<br /></code><code class="perl">&nbsp; my ($param1, $param2, $param3) = @_; # the same as above<br /></code><code class="perl">}</code><br /><code class="perl"><br />my_function();&nbsp;&nbsp;&nbsp;&nbsp; # call the function "my_function"<br /></code><code class="perl">my_function;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # also calls "my_function"<br /></code><code class="perl">&amp;my_function;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # also calls "my_function"<br /></code><code class="perl">my_function("john", 28);&nbsp;&nbsp;&nbsp; # call "my_function" with 2 parameters<br /></code><code class="perl">my_function "john", 28;&nbsp;&nbsp;&nbsp;&nbsp; # also calls "my_function" with 2 parameters: the brackets are not needed</code></pre>
+
+<pre><code>sub my_function {      # define the function called &quot;my_function&quot;
+}
+
+sub my_function {      # define the function called &quot;my_function&quot; 
+  my $param1 = $_[0]; # get the 1st parameter and save it in $param1
+  my $param2 = $_[1]; # get the 2nd parameter and save it in $param2
+  my $param3 = $_[2]; # get the 3rd parameter and save it in $param3
+}
+
+sub my_function {
+  my ($param1, $param2, $param3) = @_; # the same as above
+}
+
+my_function();     # call the function &quot;my_function&quot;
+my_function;       # also calls &quot;my_function&quot;
+&amp;my_function;      # also calls &quot;my_function&quot;
+my_function(&quot;john&quot;, 28);    # call &quot;my_function&quot; with 2 parameters
+my_function &quot;john&quot;, 28;     # also calls &quot;my_function&quot; with 2 parameters: the brackets are not needed
+</code></pre>
+
 <h2>Useful helpers</h2>
+
 <p>Dump the content of a scalar, array or hash</p>
-<pre><code class="perl">use Data::Dumper;<br /></code><code class="perl">say Dumper($scalar);<br /></code><code class="perl">say Dumper(@array);<br /></code><code class="perl">say Dumper(%hash);</code></pre>
-<p>&nbsp;</p>
+
+<pre><code>use Data::Dumper;
+say Dumper($scalar);
+say Dumper(@array);
+</code></pre>
+
+<p>say Dumper(%hash);</p>
+
+<p> </p>
+
 <h2>More Documentation</h2>
-<p>If you want to learn more Perl you can find a great online tutorial on <a href="http://perlmaven.com/perl-tutorial">Perl Maven</a>.</p>
-<p>&nbsp;</p>
+
+<p>If you want to learn more Perl you can find a great online tutorial on
+<a href="http://perlmaven.com/perl-tutorial">Perl Maven</a>.</p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+      </div> <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>
