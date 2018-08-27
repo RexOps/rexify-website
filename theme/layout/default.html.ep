@@ -8,11 +8,11 @@
       <title><%= $page->title %></title>
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
-      <link rel="shortcut icon" href="/images/skin/rexify.org/favicon.png" />
-      <link href="/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet"/>
-      <link rel="stylesheet" href="/css/skin/rexify.org/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/css/skin/rexify.org/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
-      <script src="/js/skin/rexify.org/highlight.pack.js"></script>
+      <link rel="shortcut icon" href="/public/images/skin/rexify.org/favicon.png" />
+      <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/public/css/skin/rexify.org/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
+      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
 
       <meta name="description" content="<%= $page->{data}{description} // '' %>" />
       <meta name="keywords" content="<%= $page->{data}{keywords} // '' %>" />
@@ -84,13 +84,13 @@
       <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span style="display: none;" id="syntax_high"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>&nbsp;&nbsp;&nbsp;-.ô.-&nbsp;&nbsp;&nbsp;<a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a></p>
    </div>
 
-   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/jquery.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/bootstrap.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/menu.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/js/skin/rexify.org/ZeroClipboard.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/jquery.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/bootstrap.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/menu.js"></script>
+   <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/ZeroClipboard.min.js"></script>
 
    <script>
-      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/js/skin/rexify.org/ZeroClipboard.swf"});
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
    </script>
 
    <script>
@@ -111,7 +111,7 @@
    </script>
 
 
-<script src="/js/skin/rexify.org/browser.js"></script>
+<script src="/public/js/skin/rexify.org/browser.js"></script>
 <script>
   hljs.tabReplace = '    ';
 //  hljs.initHighlighting();
