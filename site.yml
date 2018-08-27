@@ -8,6 +8,8 @@ site:
         apps:
             basic:
                 $ref: basic_app
+            public:
+                $ref: public
         deploy:
             $ref: gh_pages
 basic_app:
@@ -22,6 +24,11 @@ basic_app:
                 date: 2018-08-26
                 text: test training
             no_disqus: 1
+public:
+    class: Statocles::App::Basic
+    args:
+        store: 'public'
+        url_root: '/public'
 gh_pages:
     class: Statocles::Deploy::Git
     args:
