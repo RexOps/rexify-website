@@ -4,1735 +4,1735 @@
         <loc>https://rexops.github.io/rexify-website/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/care/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/care/help__r__ex.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/care/help_people_in_need.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/box/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/box/amazon.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/box/base.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/box/kvm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/box/vbox.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/cmdb.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/augeas.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/box.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/cloud.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/cron.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/db.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/download.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/fs.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/gather.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/host.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/inventory.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/iptables.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/kernel.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/lvm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/md5.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/network.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/notify.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/partition.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/pkg.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/pkgconf.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/process.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/rsync.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/run.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/scm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/service.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/simplecheck.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/sync.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/sysctl.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/tail.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/upload.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/user.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/commands/virtualization.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/config.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/fs/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/fs/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/command.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/dbi.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/ini.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/xml.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/group/lookup/yaml.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/hardware.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/helper/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/helper/ssh2/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/helper/ssh2/expect.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/logger.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/resource/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/resource/common.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/task.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/template.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/test/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/test/base.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/transaction.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/virtualization/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/virtualization/docker.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/virtualization/libvirt.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.3/rex/virtualization/vbox.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/box/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/box/amazon.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/box/base.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/box/kvm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/box/vbox.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/cmdb.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/augeas.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/box.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/cloud.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/cron.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/db.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/download.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/fs.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/gather.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/host.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/inventory.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/iptables.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/kernel.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/lvm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/md5.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/mkfs.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/network.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/notify.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/partition.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/pkg.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/pkgconf.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/process.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/rsync.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/run.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/scm.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/service.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/simplecheck.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/sync.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/sysctl.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/tail.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/upload.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/user.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/commands/virtualization.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/config.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/fs/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/fs/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/command.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/dbi.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/file.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/ini.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/xml.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/group/lookup/yaml.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/hardware.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/helper/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/helper/rexfile/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/helper/rexfile/paramlookup.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/helper/ssh2/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/helper/ssh2/expect.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/logger.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/resource/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/resource/common.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/resource/firewall.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/shared/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/shared/var.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/task.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/template.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/test/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/test/base.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/transaction.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/virtualization/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/virtualization/docker.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/virtualization/libvirt.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/api/1.4/rex/virtualization/vbox.pm.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/compatibility_list.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_can_i_get_the_current_server_from_within_a_task_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_can_i_pass_parameters_to_a_task_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_can_i_run_a_block_of_code_with_one_command_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_can_i_run_a_local_script_on_the_remote_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_do_i_check_the_exit_status_of_a_remotely_run_command_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_do_i_run_a_local_script_on_the_remote_under_a_different_user_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/how_do_i_use_rex_s_built-in_logger_for_error_warn_info_debug_messages_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/faq/why_does_the_run_command_not_format_the_output_.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/executing_a_command_and_parsing_its_output.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/installing_and_configurating_a_service.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/managing_cron.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/managing_users_and_groups.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cloud_management/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cloud_management/manage_your_amazon_ec2_instances.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cloud_management/write_your_own_cloud_provider.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/just_enough_perl_for_rex.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/manage_openwrt.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/rex__box/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/rex__box/changing_between_box_providers.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/rex__box/using_rex__box_to_ease_development_and_testing.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/start_using__r__ex.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/using_modules_and_templates.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/working_with_packages.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/other/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/other/a_word_on_backward_compatibility.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.10.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.11.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.12.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.13.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.14.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.15.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.16.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.17.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.18.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.19.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.2.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.20.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.21.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.22.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.24.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.25.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.26.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.27.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.28.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.29.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.3.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.30.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.31.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.32.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.33.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.34.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.35.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.36.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.37.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.38.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.39.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.4.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.40.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.41.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.42.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.43.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.44.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.45.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.46.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.47.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.48.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.49.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.50.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.51.2.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.52.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.53.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.54.3.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.55.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.55.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.55.2.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.55.3.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.56.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.57.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.8.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/0.9.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.0.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.1.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.2.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.3.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.3.2.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.3.3.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.4.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.4.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/release_notes/1.6.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/infrastructure/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/infrastructure/example_of_a_complete_rex_code_infrastructure.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/infrastructure/ssh_as_an_agent.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/infrastructure/version_control_with_git.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/managing_datacenters_and_the_cloud/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/managing_datacenters_and_the_cloud/deploying_openldap_and_sssd.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/the_rex_dsl/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/the_rex_dsl/authentication.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/the_rex_dsl/grouping_servers.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/the_rex_dsl/using_environments.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/the_rex_dsl/using_templates.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/working_with_files_and_packages/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/working_with_files_and_packages/installing_packages.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/working_with_files_and_packages/working_with_files.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/writing_modules/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/writing_modules/getting_information_of_the_environment.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/docs/rex_book/writing_modules/writing_custom_resources.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/centos.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/debian.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/fedora.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/freebsd.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/gentoo.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/suse.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/get/ubuntu.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/_r__ex_1.1.0_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/_r__ex_1.2.0_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/adjust_gmbh_is_sponsoring_server.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/repositor.io_1.1.0.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_1.3.1_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_1.3.2_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_1.3.3_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_1.4.0_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_1.4.1_released.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/rex_in_practice.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/slides_of__an_introduction_to_rex__online.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/news/work_with_rex_at_adjust.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/search.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/support/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/support/ferenc_erki.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
     <url>
         <loc>https://rexops.github.io/rexify-website/support/inovex.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
-        <lastmod>2018-08-27</lastmod>
+        <lastmod>2018-09-19</lastmod>
     </url>
 </urlset>
 

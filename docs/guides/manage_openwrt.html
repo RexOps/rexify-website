@@ -1,49 +1,172 @@
-<p><a href="https://openwrt.org/">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p><a href="https://openwrt.org/">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
+
 <h2>Overview</h2>
-<h3>What's working?</h3>
+
+<h3>What&#39;s working?</h3>
+
 <p>Please see the official compatibility page. You may also want to check the current project weather on build.rexify.org.</p>
+
 <h3>Known limitations</h3>
+
 <ul>
-<li>Service status<br />Despite OpenWrt provides a service_check() function in /lib/functions/service.sh, it seems that it's only sporadically used in initscripts. Nevertheless Rex currently implements its service status check via this function but it's more of a workaround than a solution. It's also worth noting that sometimes the initscript's name and its executable's name are not the same (e.g cron vs. crond). You should use the executable's name in your OpenWrt status checks.</li>
-<li>Missing renice<br />AFAIK renice isn't available for OpenWrt.</li>
-<li>Inventory gathering<br />OpenWrt doesn't provide dmidecode for all architectures so this might or might not work for you.</li>
+<li>Service status
+Despite OpenWrt provides a service_check() function in /lib/functions/service.sh, it seems that it&#39;s only sporadically used in initscripts. Nevertheless Rex currently implements its service status check via this function but it&#39;s more of a workaround than a solution. It&#39;s also worth noting that sometimes the initscript&#39;s name and its executable&#39;s name are not the same (e.g cron vs. crond). You should use the executable&#39;s name in your OpenWrt status checks.</li>
+<li>Missing renice
+AFAIK renice isn&#39;t available for OpenWrt.</li>
+<li>Inventory gathering
+OpenWrt doesn&#39;t provide dmidecode for all architectures so this might or might not work for you.</li>
 </ul>
+
 <h3>Requirements</h3>
+
 <ul>
 <li>&gt;=rex-0.43: initial support has been added in this release</li>
 <li>enabled no_tty feature flag when using OpenSSH connection mode</li>
 <li>Attitude Adjustment (12.09 final) or Barrier Breaker (14.07 final)</li>
 </ul>
-<p>Generally you'll need the following packages on your OpenWrt box on top of a vanilla install:</p>
+
+<p>Generally you&#39;ll need the following packages on your OpenWrt box on top of a vanilla install:</p>
+
 <ul>
 <li>SFTP server: openssh-sftp-server or gesftpserver (only available for 12.09)</li>
 <li>perl</li>
 <li>perl modules: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
 <li>if you use &gt;=rex-0.46: coreutils-nohup (required for service handling)</li>
 </ul>
+
 <p>Optional packages (only for specific Rex functions):</p>
+
 <ul>
 <li>sync_up: rsync</li>
 <li>user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
 <li>inventory gathering: dmidecode</li>
 <li>swap handling: swap-utils (+ block-mount on 14.07)</li>
 </ul>
+
 <h4>Details</h4>
+
 <h5>SFTP server</h5>
-<p>By default OpenWrt doesn't provide an SFTP server. As Rex does lots of lower level operations via SFTP (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you should install on your box is either openssh-sftp-server or gesftpserver.</p>
+
+<p>By default OpenWrt doesn&#39;t provide an SFTP server. As Rex does lots of lower level operations via SFTP (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you should install on your box is either openssh-sftp-server or gesftpserver.</p>
+
 <p>A massively subjective comparison of these two may help to make your decision:</p>
+
 <h5>openssh-sftp-server</h5>
+
 <ul>
-<li>&nbsp;&nbsp;&nbsp; easier to set up</li>
-<li>&nbsp;&nbsp;&nbsp; a bit smaller size in itself</li>
-<li>&nbsp;&nbsp;&nbsp; depends on libopenssl and zlib (and they are "huge" and probably not needed by other packages)</li>
-<li>&nbsp;&nbsp;&nbsp; only supports SFTP v3 (that should be fine in general though)</li>
-<li>&nbsp;&nbsp;&nbsp; widespread use</li>
-<li>&nbsp;&nbsp;&nbsp; BSD licensed</li>
+<li>    easier to set up</li>
+<li>    a bit smaller size in itself</li>
+<li>    depends on libopenssl and zlib (and they are &quot;huge&quot; and probably not needed by other packages)</li>
+<li>    only supports SFTP v3 (that should be fine in general though)</li>
+<li>    widespread use</li>
+<li>    BSD licensed</li>
 </ul>
+
 <p>It can be set up with the following commands:</p>
-<pre><code class="perl">opkg update<br /></code><code class="perl">opkg install openssh-sftp-server</code></pre>
+
+<pre><code>opkg update
+opkg install openssh-sftp-server
+</code></pre>
+
 <h5>gesftpserver</h5>
+
 <ul>
 <li>only available for 12.09</li>
 <li>needs some (minimal) tinkering after installation</li>
@@ -53,11 +176,22 @@
 <li>still under development</li>
 <li>GPL licensed</li>
 </ul>
+
 <p>It can be set up with the following commands:</p>
-<pre><code class="perl">opkg update<br /></code><code class="perl">opkg install gesftpserver<br /></code><code class="perl">mkdir /usr/libexec<br /></code><code class="perl">ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server</code></pre>
-<p>If you want to automate the set up of the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. The bottom line is to don't try to use the built-in <code>mkdir</code> and <code class="perl">symlink</code> functions at this point as they are broken before you have an SFTP server in place.<br /><br />You can find out more about gesftpserver and a comparison of different SFTP implementations/versions on their <a href="http://www.greenend.org.uk/rjk/sftpserver/">website</a>.</p>
+
+<pre><code>opkg update
+opkg install gesftpserver
+mkdir /usr/libexec
+ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server
+</code></pre>
+
+<p>If you want to automate the set up of the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. The bottom line is to don&#39;t try to use the built-in <code>mkdir</code> and <code>symlink</code> functions at this point as they are broken before you have an SFTP server in place.
+You can find out more about gesftpserver and a comparison of different SFTP implementations/versions on their <a href="http://www.greenend.org.uk/rjk/sftpserver/">website</a>.</p>
+
 <h5>Perl</h5>
-<p>You'll need to install the following packages:</p>
+
+<p>You&#39;ll need to install the following packages:</p>
+
 <ul>
 <li>perl: obviously</li>
 <li>perlbase-bytes, perlbase-essential: very basic set of perl modules</li>
@@ -66,10 +200,15 @@
 <li>perlbase-digest: perlbase-data dependency and it is nice to have in order to speed up file operations in general (via MD5 hashing)</li>
 <li>perlbase-xsloader: perlbase-data and perlbase-file dependency</li>
 </ul>
+
 <h5>rsync</h5>
+
 <p>Merely needed by sync_up functionality.</p>
+
 <h5>shadow-*</h5>
-<p>OpenWrt doesn't provide traditional user and group management commands by default as these procedures are rarely needed in the majority of the targeted use cases. However, if you really need to do these type of stuff on your router, you're in luck, as you can easily install these packages from the official repository:</p>
+
+<p>OpenWrt doesn&#39;t provide traditional user and group management commands by default as these procedures are rarely needed in the majority of the targeted use cases. However, if you really need to do these type of stuff on your router, you&#39;re in luck, as you can easily install these packages from the official repository:</p>
+
 <ul>
 <li>shadow-groupadd</li>
 <li>shadow-groupdel</li>
@@ -78,3 +217,58 @@
 <li>shadow-userdel</li>
 <li>shadow-usermod</li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

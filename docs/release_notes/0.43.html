@@ -1,133 +1,296 @@
-<h1>Common</h1>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <h1>Common</h1>
+
 <h4>Inventory cache</h4>
+
 <p>If you want to cache the inventory and to use this cache for subsequent rex calls, you can use the <em>REX_CACHE_TYPE</em> environment variable.</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
-<pre><code class="bash">REX_CACHE_TYPE=YAML rex $task
+
+<p>Copy to clipboard</p>
+
+<pre><code>REX_CACHE_TYPE=YAML rex $task
 </code></pre>
 
-<p>This will create a folder ".cache" and creates a separate cache file for each host. If you want to use a different folder you can set it in the <em>REX_CACHE_PATH</em> environment variable.</p>
-<p>You can also set the cache type inside your <em>Rexfile</em></p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard1"># Rexfile
+<p>This will create a folder &quot;.cache&quot; and creates a separate cache file for each host. If you want to use a different folder you can set it in the <em>REX_CACHE_PATH</em> environment variable.</p>
 
-user "root";
-password "...";
-cache "YAML";
+<p>You can also set the cache type inside your <em>Rexfile</em></p>
+
+<p>Copy to clipboard</p>
+
+<pre><code># Rexfile
+
+user &quot;root&quot;;
+password &quot;...&quot;;
+cache &quot;YAML&quot;;
 </code></pre>
 
 <p>It is also possible to create custom cache classes. For example if you want to save the inventory cache inside a database. Just take a look at <a href="https://github.com/RexOps/Rex/blob/master/lib/Rex/Interface/Cache/YAML.pm">Rex::Interface::Cache::YAML</a> to see how it is implemented.</p>
+
 <h4>Reporting of changes</h4>
+
 <p>If you want to get a report of the changes Rex had done on your systems, you can use the new reporting feature.</p>
-<p>Currently not every Rex function gets monitored by this feature, but all important ones are.
-This feature will be extended with version 2 of rex.</p>
+
+<p>Currently not every Rex function gets monitored by this feature, but all important ones are. This feature will be extended with version 2 of rex.</p>
+
 <p>To activate the reporting you can use the <em>REX_REPORT_TYPE</em> environment variable or use the <em>reporting</em> feature inside your <em>Rexfile</em>.</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
-<pre><code class="bash">REX_REPORT_TYPE=YAML rex the-task
+
+<p>Copy to clipboard</p>
+
+<pre><code>REX_REPORT_TYPE=YAML rex the-task
 </code></pre>
 
 <p>Or, within the <em>Rexfile</em></p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard2"># Rexfile
+
+<p>Copy to clipboard</p>
+
+<pre><code># Rexfile
 use Rex -base;
-report -on =&gt; "YAML";
+report -on =&gt; &quot;YAML&quot;;
 </code></pre>
 
 <p>The YAML report will be created inside a directory called <em>report</em>. If you want to use a different directory you can set it with a special variable.</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard3">use Rex -base;
-report -on =&gt; "YAML";
-set report_path =&gt; "/path/to/";
+
+<p>Copy to clipboard</p>
+
+<pre><code>use Rex -base;
+report -on =&gt; &quot;YAML&quot;;
+set report_path =&gt; &quot;/path/to/&quot;;
 </code></pre>
 
 <p>It is also possible to create custom reporting classes. Just take a look at <a href="https://github.com/RexIO/rex-io-reports/blob/master/rex/lib/Rex/Report/RexIO.pm">Rex::Report::RexIO</a>.</p>
+
 <h4>New CLI commands to better integrate Rex into your shell scripts</h4>
+
 <p>With these commands it is easy to use Rex from within a shell script.</p>
+
 <p>You can test these scripts by checking out the <a href="https://github.com/krimdomu/rex-shell-extension">krimdomu/rex-shell-extension</a> GitHub repository.</p>
+
 <p>Login to fe01.my.lan and execute uptime</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
-<pre><code class="bash">#!/bin/bash
-export REX_REMOTE_HOST="fe01.my.lan"
-GROUPS=$(rex-run "id -Gn www-data")
+
+<p>Copy to clipboard</p>
+
+<pre><code>#!/bin/bash
+export REX_REMOTE_HOST=&quot;fe01.my.lan&quot;
+GROUPS=$(rex-run &quot;id -Gn www-data&quot;)
 for group in $GROUPS; do
     echo $group
 done
 </code></pre>
 
 <p>Login to fe01.my.lan, testing if /etc/sudoers is there, and if not, install package and upload a template sudoers file</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
-<pre><code class="bash">#!/bin/bash
-export REX_REMOTE_HOST="fe01.my.lan"
+
+<p>Copy to clipboard</p>
+
+<pre><code>#!/bin/bash
+export REX_REMOTE_HOST=&quot;fe01.my.lan&quot;
 
 if ! rex-test -f /etc/sudoers; then
    rex-install sudo
-   rex-template files/sudoers.tpl | rex-upload "/etc/sudoers"
+   rex-template files/sudoers.tpl | rex-upload &quot;/etc/sudoers&quot;
 fi
 </code></pre>
 
 <h4>Initial support for OpenWrt (FErki)</h4>
+
 <p>In a limited way, Rex now supports OpenWrt.</p>
+
 <h4>Enhancements</h4>
+
 <ul>
 <li>atomic uploads - #220</li>
 </ul>
+
 <p>rex will now only upload a file if it really changes and it will upload the file into a temporary file and rename it after the upload.</p>
+
 <ul>
 <li>setting options for OpenSSH connection mode</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard5">Rex::Config-&gt;set_openssh_opt(StrictHostKeyChecking =&gt; "no");
+
+<p>Copy to clipboard</p>
+
+<pre><code>Rex::Config-&gt;set_openssh_opt(StrictHostKeyChecking =&gt; &quot;no&quot;);
 </code></pre>
 
 <ul>
 <li>set temporary directory - #166</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard6">user "foo";
-password "b4r";
-tmp_dir "/home/foo/tmp";
 
-task "mytask", "myserver", sub {
+<p>Copy to clipboard</p>
+
+<pre><code>user &quot;foo&quot;;
+password &quot;b4r&quot;;
+tmp_dir &quot;/home/foo/tmp&quot;;
+
+task &quot;mytask&quot;, &quot;myserver&quot;, sub {
 };
 </code></pre>
 
 <ul>
-<li>
-<p>if a given feature flag isn't supported, Rex will now die() - #177</p>
-</li>
-<li>
-<p>Rex now has an interface to support other shells than bash in a pluggable way. (Gnouc) - #180</p>
-</li>
-<li>
-<p>Prefer ip command over ifconfig (ferki) - #194</p>
-</li>
-<li>
-<p>Turn "eval your Rexfile" into a debug message (aowi) - #186</p>
-</li>
-<li>
-<p>yum operations are now silent by default - #214</p>
-</li>
-<li>
-<p>rexify command to use proxy settings - #213, #231 (ajaxhelios)</p>
-</li>
-<li>
-<p>added another Red Hat Enterprise flavor - #231 (ajaxhelios)</p>
-</li>
+<li><p>if a given feature flag isn&#39;t supported, Rex will now die() - #177</p></li>
+<li><p>Rex now has an interface to support other shells than bash in a pluggable way. (Gnouc) - #180</p></li>
+<li><p>Prefer ip command over ifconfig (ferki) - #194</p></li>
+<li><p>Turn &quot;eval your Rexfile&quot; into a debug message (aowi) - #186</p></li>
+<li><p>yum operations are now silent by default - #214</p></li>
+<li><p>rexify command to use proxy settings - #213, #231 (ajaxhelios)</p></li>
+<li><p>added another Red Hat Enterprise flavor - #231 (ajaxhelios)</p></li>
 </ul>
+
 <h4>Bugfixes</h4>
+
 <ul>
-<li>
-<p>Support port with ranged hostnames - #196</p>
-</li>
-<li>
-<p>Fixed bug in sync_up module if used in modules - #206</p>
-</li>
-<li>
-<p>Fix a typo in example code - #195 Boris DÃ¤ppen</p>
-</li>
-<li>
-<p>Zero values in crontab fields - #189 Ferenc Erki</p>
-</li>
-<li>
-<p>zypper --no-gpg-checks option - #210</p>
-</li>
+<li><p>Support port with ranged hostnames - #196</p></li>
+<li><p>Fixed bug in sync_up module if used in modules - #206</p></li>
+<li><p>Fix a typo in example code - #195 Boris DÃ¤ppen</p></li>
+<li><p>Zero values in crontab fields - #189 Ferenc Erki</p></li>
+<li><p>zypper --no-gpg-checks option - #210</p></li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

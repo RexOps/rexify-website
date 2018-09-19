@@ -1,34 +1,287 @@
-<p>Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
-<pre><code class="perl">group frontends =&gt; "frontend01", "frontend02", "frontend03";<br /></code><code class="perl">group backends =&gt; "backend01", "backend02";</code></pre>
-<p>Rex offers also a simple notation to define server ranges, so that you don't need to type so much.</p>
-<pre><code class="perl">group frontends =&gt; "frontend[01..03]";<br /></code><code class="perl">group backends =&gt; "backend[01..02]";</code></pre>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
+
+<pre><code>group frontends =&gt; &quot;frontend01&quot;, &quot;frontend02&quot;, &quot;frontend03&quot;;
+group backends =&gt; &quot;backend01&quot;, &quot;backend02&quot;;
+</code></pre>
+
+<p>Rex offers also a simple notation to define server ranges, so that you don&#39;t need to type so much.</p>
+
+<pre><code>group frontends =&gt; &quot;frontend[01..03]&quot;;
+group backends =&gt; &quot;backend[01..02]&quot;;
+</code></pre>
+
 <p>This notation will just expand to frontend01, frontend02 and frontend03 for the frontends group and to backend01 and backend02 for the backends group.</p>
+
 <p>Custom parameters for servers are possible with a slightly enhanced syntax since version 0.47:</p>
-<pre><code class="perl">group frontends =&gt;<br /></code><code class="perl">&nbsp;&nbsp; "frontend01" =&gt; { user =&gt; "bob" },<br /></code><code class="perl">&nbsp;&nbsp; "frontend02" =&gt; { user =&gt; "alice" },<br /></code><code class="perl">&nbsp;&nbsp; "frontend03";</code></pre>
+
+<pre><code>group frontends =&gt;
+   &quot;frontend01&quot; =&gt; { user =&gt; &quot;bob&quot; },
+   &quot;frontend02&quot; =&gt; { user =&gt; &quot;alice&quot; },
+   &quot;frontend03&quot;;
+</code></pre>
+
 <p>Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
+
 <p>To add your groups to the tasks you have to use the group option within the task generation.</p>
-<pre><code class="perl">task "mytask", group =&gt; "mygroup", sub {<br /></code><code class="perl">&nbsp;&nbsp; # do something<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;mytask&quot;, group =&gt; &quot;mygroup&quot;, sub {
+   # do something
+};
+</code></pre>
+
 <p>If you need to define multiple groups for a task, you can just use an array.</p>
-<pre><code class="perl">task "mytask", group =&gt; ["mygroup", "mygroup2"], sub {<br /></code><code class="perl">&nbsp;&nbsp; # do something<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;mytask&quot;, group =&gt; [&quot;mygroup&quot;, &quot;mygroup2&quot;], sub {
+   # do something
+};
+</code></pre>
+
 <h2>Using an INI file to define server groups</h2>
+
 <p>Rex offers a simple way to query ini files for group creation. To use ini files you have to use the Rex::Group::Lookup::INI module.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /></code><code class="perl">use Rex::Group::Lookup::INI;<br /><br /></code><code class="perl">groups_file "/path/to/your/file.ini";</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+use Rex::Group::Lookup::INI;
+
+groups_file &quot;/path/to/your/file.ini&quot;;
+</code></pre>
+
 <p>Rex expects the following format inside your INI file.</p>
-<pre>[frontends]<br />frontend01<br />frontend02<br />frontend03<br /><br />[backends]<br />backend01<br />backend02</pre>
+
+<pre><code>[frontends]
+frontend01
+frontend02
+frontend03
+
+[backends]
+backend01
+backend02
+</code></pre>
+
 <p>Rex also offers a little bit advanced functions for the ini file. You can define custom parameters for each server or include groups inside groups.</p>
-<pre>[frontends]<br />frontend01<br />frontend02 user=root password=f00bar auth_type=pass maintenance=1<br />frontend03<br /><br />[backends]<br />backend01<br />backend02<br /><br />[all]<br />@frontends<br />@backends</pre>
+
+<pre><code>[frontends]
+frontend01
+frontend02 user=root password=f00bar auth_type=pass maintenance=1
+frontend03
+
+[backends]
+backend01
+backend02
+
+[all]
+@frontends
+@backends
+</code></pre>
+
 <p>These additional options (in this example maintenance can be queried with the option method from the connection object.</p>
-<pre><code class="perl">task "prepare", group =&gt; "frontends", sub {<br /></code><code class="perl">&nbsp;&nbsp; if(connection-&gt;server-&gt;option("maintenance")) {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; say "This server is in maintenance mode, so i'm going to stop all services";<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; service ["apache2", "postfix"] =&gt; "stop";<br /></code><code class="perl">&nbsp;&nbsp; }<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;prepare&quot;, group =&gt; &quot;frontends&quot;, sub {
+   if(connection-&gt;server-&gt;option(&quot;maintenance&quot;)) {
+      say &quot;This server is in maintenance mode, so i&#39;m going to stop all services&quot;;
+      service [&quot;apache2&quot;, &quot;postfix&quot;] =&gt; &quot;stop&quot;;
+   }
+};
+</code></pre>
+
 <h2>Quering a database to define server groups</h2>
+
 <p>If you want to get your server groups right out of an existing database you can use DBI to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /></code><code class="perl">use DBI;<br /><br /></code><code class="perl">my $username = "dbuser";<br /></code><code class="perl">my $password = "dbpassword";<br /></code><code class="perl">my $database = "hostdb";<br /></code><code class="perl">my $hostname = "mysql.intern.lan";<br /></code><code class="perl">my $port&nbsp;&nbsp;&nbsp;&nbsp; = 3306;<br /></code><code class="perl">my $dsn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "DBI:mysql:database=$database;host=$hostname;port=$port";<br /></code><code class="perl">my $dbh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = DBI-&gt;connect($username, $password);<br /><br /></code><code class="perl">my $sth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $dbh-&gt;prepare("SELECT * FROM hostlist WHERE enabled=1");<br /><br /></code><code class="perl">my %server_group = ();<br /></code><code class="perl">while(my $row = $sth-&gt;fetchrow_hashref) {<br /></code><code class="perl">&nbsp;&nbsp; my $group_name&nbsp; = $row-&gt;{server_group};<br /></code><code class="perl">&nbsp;&nbsp; my $server_name = $row-&gt;{server_name};<br /></code><code class="perl">&nbsp;&nbsp; push @{ $server_group{ $group_name } }, $server_name;<br /></code><code class="perl">}<br /><br /></code><code class="perl">map {<br /></code><code class="perl">&nbsp;&nbsp; group $_ =&gt; @{ $server_group{$_} };<br /></code><code class="perl">} keys %server_group;</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+use DBI;
+
+my $username = &quot;dbuser&quot;;
+my $password = &quot;dbpassword&quot;;
+my $database = &quot;hostdb&quot;;
+my $hostname = &quot;mysql.intern.lan&quot;;
+my $port     = 3306;
+my $dsn      = &quot;DBI:mysql:database=$database;host=$hostname;port=$port&quot;;
+my $dbh      = DBI-&gt;connect($username, $password);
+
+my $sth      = $dbh-&gt;prepare(&quot;SELECT * FROM hostlist WHERE enabled=1&quot;);
+
+my %server_group = ();
+while(my $row = $sth-&gt;fetchrow_hashref) {
+   my $group_name  = $row-&gt;{server_group};
+   my $server_name = $row-&gt;{server_name};
+   push @{ $server_group{ $group_name } }, $server_name;
+}
+
+map {
+   group $_ =&gt; @{ $server_group{$_} };
+} keys %server_group;
+</code></pre>
+
 <p>This example expects the following column names:</p>
+
 <ul>
 <li>server_group</li>
 <li>server_name</li>
 </ul>
+
 <h2>Creating custom groups</h2>
+
 <p>If there is no built-in function that fits your needs for group creation, you can do it all by yourself. Because the Rexfile is just a plain perl script and the group command is just a perl function that expects the group name as first parameter, and uses all other parameters for the servers, you can create your own function.</p>
-<pre><code class="perl">my @list = ("some", "list", "entries");<br /></code><code class="perl">group mygroup =&gt; grep { /list/ } @list;<br /></code><code class="perl">group myserver =&gt; map {"s$_.domain.com"} qw(1 3 7);</code></pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
+<pre><code>my @list = (&quot;some&quot;, &quot;list&quot;, &quot;entries&quot;);
+group mygroup =&gt; grep { /list/ } @list;
+</code></pre>
+
+<p>group myserver =&gt; map {&quot;s$_.domain.com&quot;} qw(1 3 7);</p>
+
+<p> </p>
+
+<p> </p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

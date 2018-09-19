@@ -1,30 +1,391 @@
-<p>Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>Uploading hardcoded configuration files to your servers often isn&#39;t enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.</p>
+
 <p>In this example you will learn how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.</p>
+
 <p>First, we create a new module. For this guide you need at least Rex 0.41 (because of the --create-module command and the case keyword.) Execute the following command in the same directory where your Rexfile lives.</p>
-<pre>rexify Service::NTP --create-module</pre>
+
+<pre><code>rexify Service::NTP --create-module
+</code></pre>
+
 <p>This will create some new directories and files in your lib directory.</p>
-<pre>.<br />├── Rexfile<br />└── lib<br />&nbsp;&nbsp;&nbsp; └── Service<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── NTP<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── __module__.pm<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── meta.yml</pre>
+
+<pre><code>.
+├── Rexfile
+└── lib
+    └── Service
+        └── NTP
+            ├── __module__.pm
+            └── meta.yml
+</code></pre>
+
 <p>The meta.yml file can be ignored. This file is only important if you want to share your module on the Rex modules directory.</p>
-<p>The important file is __module__.pm. Open this file in an editor.<br /><br />This file is a normal Perl module. The only special thing is the filename, but don't think too much for it at first.</p>
-<pre><code class="perl">package Service::NTP;<br /></code><code class="perl">use Rex -feature =&gt; ['1.3'];<br /></code><code class="perl"><br />task prepare =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp; my $service_name = case operating_system, {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Debian&nbsp; =&gt; "ntp",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default =&gt; "ntpd",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /></code><code class="perl">&nbsp;&nbsp; pkg "ntp",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "present";<br /><br /></code><code class="perl">&nbsp;&nbsp; file "/etc/ntp.conf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source&nbsp;&nbsp;&nbsp; =&gt; "files/etc/ntp.conf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on_change =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; service $service_name =&gt; "restart";<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /><br /></code><code class="perl">&nbsp;&nbsp; service $service_name,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "started";<br /></code><code class="perl">};<br /><br /></code>1;</pre>
-<p>First the module checks if the OS is a debian (or ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the on_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.<br /><br />Now it is time to create a basic ntp.conf file. Create the directory lib/Service/NTP/files/etc and place the ntp.conf file in there.</p>
-<pre># /etc/ntp.conf, managed by Rex<br /><br />driftfile /var/run/ntp.drift<br /><br />statistics loopstats peerstats clockstats<br />filegen loopstats file loopstats type day enable<br />filegen peerstats file peerstats type day enable<br />filegen clockstats file clockstats type day enable<br /><br />server ntp01.company.tld<br />server ntp02.company.tld</pre>
+
+<p>The important file is __module__.pm. Open this file in an editor.
+This file is a normal Perl module. The only special thing is the filename, but don&#39;t think too much for it at first.</p>
+
+<pre><code>package Service::NTP;
+use Rex -feature =&gt; [&#39;1.3&#39;];
+
+task prepare =&gt; sub {
+   my $service_name = case operating_system, {
+                         Debian  =&gt; &quot;ntp&quot;,
+                         default =&gt; &quot;ntpd&quot;,
+                      };
+   pkg &quot;ntp&quot;,
+     ensure =&gt; &quot;present&quot;;
+
+   file &quot;/etc/ntp.conf&quot;,
+      source    =&gt; &quot;files/etc/ntp.conf&quot;,
+      on_change =&gt; sub {
+         service $service_name =&gt; &quot;restart&quot;;
+      };
+
+   service $service_name,
+     ensure =&gt; &quot;started&quot;;
+};
+
+1;
+</code></pre>
+
+<p>First the module checks if the OS is a debian (or ubuntu) and set the service name to &quot;ntp&quot; otherwise to &quot;ntpd&quot;. After that it installs the &quot;ntp&quot; package and uploads the configuration file. Notice the on_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
+Now it is time to create a basic ntp.conf file. Create the directory lib/Service/NTP/files/etc and place the ntp.conf file in there.</p>
+
+<pre><code># /etc/ntp.conf, managed by Rex
+
+driftfile /var/run/ntp.drift
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+server ntp01.company.tld
+server ntp02.company.tld
+</code></pre>
+
 <p>If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it fallback to ntp.conf.</p>
-<pre>.<br />├── Rexfile<br />└── lib<br />&nbsp;&nbsp;&nbsp; └── Service<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── NTP<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── __module__.pm<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── files<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp; └── etc<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── ntp.conf<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── ntp.conf.preprod<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ├── ntp.conf.prod<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── ntp.conf.test<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── meta.yml</pre>
+
+<pre><code>.
+├── Rexfile
+└── lib
+    └── Service
+        └── NTP
+            ├── __module__.pm
+            ├── files
+            │   └── etc
+            │       ├── ntp.conf
+            │       ├── ntp.conf.preprod
+            │       ├── ntp.conf.prod
+            │       └── ntp.conf.test
+            └── meta.yml
+</code></pre>
+
 <p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
-<pre><code class="perl">package Service::NTP;<br /></code><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">task prepare =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp; my $service_name = case operating_system, {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Debian&nbsp; =&gt; "ntp",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default =&gt; "ntpd",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /><br /></code><code class="perl">&nbsp;&nbsp; my $ntp_server&nbsp;&nbsp; = case environment, {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prod&nbsp;&nbsp;&nbsp; =&gt; ["ntp01.company.tld", "ntp02.company.tld"],<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; preprod =&gt; ["ntp01.preprod.company.tld"],<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test&nbsp;&nbsp;&nbsp; =&gt; ["ntp01.test.company.tld"],<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default =&gt; ["ntp01.company.tld"],<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /><br /></code><code class="perl">&nbsp;&nbsp; pkg "ntp",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "present";<br /><br /></code><code class="perl">&nbsp;&nbsp; file "/etc/ntp.conf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content&nbsp;&nbsp; =&gt; template("files/etc/ntp.conf", ntp_servers =&gt; $ntp_server),<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on_change =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; service $service_name =&gt; "restart";<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /><br /></code><code class="perl">&nbsp;&nbsp; service $service_name,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "started";<br /></code><code class="perl">};<br /><br /></code><code class="perl">1;</code></pre>
+
+<pre><code>package Service::NTP;
+use Rex -feature =&gt; [&#39;1.0&#39;];
+
+task prepare =&gt; sub {
+   my $service_name = case operating_system, {
+                         Debian  =&gt; &quot;ntp&quot;,
+                         default =&gt; &quot;ntpd&quot;,
+                      };
+
+   my $ntp_server   = case environment, {
+                         prod    =&gt; [&quot;ntp01.company.tld&quot;, &quot;ntp02.company.tld&quot;],
+                         preprod =&gt; [&quot;ntp01.preprod.company.tld&quot;],
+                         test    =&gt; [&quot;ntp01.test.company.tld&quot;],
+                         default =&gt; [&quot;ntp01.company.tld&quot;],
+                      };
+
+   pkg &quot;ntp&quot;,
+     ensure =&gt; &quot;present&quot;;
+
+   file &quot;/etc/ntp.conf&quot;,
+      content   =&gt; template(&quot;files/etc/ntp.conf&quot;, ntp_servers =&gt; $ntp_server),
+      on_change =&gt; sub {
+         service $service_name =&gt; &quot;restart&quot;;
+      };
+
+   service $service_name,
+     ensure =&gt; &quot;started&quot;;
+};
+
+1;
+</code></pre>
+
 <p>Now we can create our template. The default template of Rex looks similar to other templating engines. But you can also use other template engines like Template::Toolkit.</p>
-<pre># /etc/ntp.conf, managed by Rex<br /><br />driftfile /var/run/ntp.drift<br /><br />statistics loopstats peerstats clockstats<br />filegen loopstats file loopstats type day enable<br />filegen peerstats file peerstats type day enable<br />filegen clockstats file clockstats type day enable<br /><br />&lt;% for my $server (@{ $ntp_servers }) { %&gt;<br />server &lt;%= $server %&gt;<br />&lt;% } %&gt;</pre>
+
+<pre><code># /etc/ntp.conf, managed by Rex
+
+driftfile /var/run/ntp.drift
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+&lt;% for my $server (@{ $ntp_servers }) { %&gt;
+server &lt;%= $server %&gt;
+&lt;% } %&gt;
+</code></pre>
+
 <h2>Predefined Variables</h2>
+
 <p>There are also some predefined variables you can use in your templates. For example the ip address of a network device if you want to bind a service on a specific ip. You can dump all predefined variable of a system with the following code.</p>
-<pre><code class="perl">task "get_infos", "server01", sub {<br /></code><code class="perl">&nbsp;&nbsp; dump_system_information;<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;get_infos&quot;, &quot;server01&quot;, sub {
+   dump_system_information;
+};
+</code></pre>
+
 <p>For example this is the output of a CentOS VM</p>
-<pre>$kernelversion = '#1 SMP Tue May 15 22:09:39 BST 2012'<br />$memory_cached = '357'<br />$memory_total = '498'<br />$kernelrelease = '2.6.32-220.17.1.el6.i686'<br />$Kernel = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelversion =&gt; '#1 SMP Tue May 15 22:09:39 BST 2012'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; architecture =&gt; 'i686'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernel =&gt; 'Linux'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelrelease =&gt; '2.6.32-220.17.1.el6.i686'<br />&nbsp;&nbsp; }<br />$hostname = 'c6test0232'<br />$operatingsystem = 'CentOS'<br />$operatingsystemrelease = '6.2'<br />$architecture = 'i686'<br />$domain = 'test.rexify.org'<br />$eth0_mac = '00:1C:42:9E:0E:28'<br />$kernel = 'Linux'<br />$swap_free = '2005'<br />$VirtInfo = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtualization_role =&gt; 'guest'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtualization_type =&gt; 'parallels'<br />&nbsp;&nbsp; }<br />$memory_shared = '0'<br />$Network = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; networkdevices =&gt; [<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'eth0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; networkconfiguration =&gt; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eth0 =&gt; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; broadcast =&gt; '10.211.55.255'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ip =&gt; '10.211.55.60'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netmask =&gt; '255.255.255.0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mac =&gt; '00:1C:42:9E:0E:28'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp; }<br />$memory_used = '440'<br />$kernelname = 'Linux'<br />$Swap = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; free =&gt; '2005'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; used =&gt; '10'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total =&gt; '2015'<br />&nbsp;&nbsp; }<br />$swap_total = '2015'<br />$memory_buffers = '47'<br />$eth0_ip = '10.211.55.60'<br />$swap_used = '10'<br />$memory_free = '57'<br />$manufacturer = 'Parallels Software International Inc.'<br />$Memory = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shared =&gt; '0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffers =&gt; '47'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; free =&gt; '57'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; used =&gt; '440'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total =&gt; '498'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cached =&gt; '357'<br />&nbsp;&nbsp; }<br />$eth0_broadcast = '10.211.55.255'<br />$eth0_netmask = '255.255.255.0'<br />$Host = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain =&gt; 'test.rexify.org'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; manufacturer =&gt; 'Parallels Software International Inc.'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelname =&gt; 'Linux'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hostname =&gt; 'c6test0232'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; operatingsystemrelease =&gt; '6.2'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; operatingsystem =&gt; 'CentOS'<br />&nbsp;&nbsp; }</pre>
+
+<pre><code>$kernelversion = &#39;#1 SMP Tue May 15 22:09:39 BST 2012&#39;
+$memory_cached = &#39;357&#39;
+$memory_total = &#39;498&#39;
+$kernelrelease = &#39;2.6.32-220.17.1.el6.i686&#39;
+$Kernel = {
+      kernelversion =&gt; &#39;#1 SMP Tue May 15 22:09:39 BST 2012&#39;
+      architecture =&gt; &#39;i686&#39;
+      kernel =&gt; &#39;Linux&#39;
+      kernelrelease =&gt; &#39;2.6.32-220.17.1.el6.i686&#39;
+   }
+$hostname = &#39;c6test0232&#39;
+$operatingsystem = &#39;CentOS&#39;
+$operatingsystemrelease = &#39;6.2&#39;
+$architecture = &#39;i686&#39;
+$domain = &#39;test.rexify.org&#39;
+$eth0_mac = &#39;00:1C:42:9E:0E:28&#39;
+$kernel = &#39;Linux&#39;
+$swap_free = &#39;2005&#39;
+$VirtInfo = {
+      virtualization_role =&gt; &#39;guest&#39;
+      virtualization_type =&gt; &#39;parallels&#39;
+   }
+$memory_shared = &#39;0&#39;
+$Network = {
+      networkdevices =&gt; [
+         &#39;eth0&#39;
+      ]
+      networkconfiguration =&gt; {
+         eth0 =&gt; {
+            broadcast =&gt; &#39;10.211.55.255&#39;
+            ip =&gt; &#39;10.211.55.60&#39;
+            netmask =&gt; &#39;255.255.255.0&#39;
+            mac =&gt; &#39;00:1C:42:9E:0E:28&#39;
+         }
+      }
+   }
+$memory_used = &#39;440&#39;
+$kernelname = &#39;Linux&#39;
+$Swap = {
+      free =&gt; &#39;2005&#39;
+      used =&gt; &#39;10&#39;
+      total =&gt; &#39;2015&#39;
+   }
+$swap_total = &#39;2015&#39;
+$memory_buffers = &#39;47&#39;
+$eth0_ip = &#39;10.211.55.60&#39;
+$swap_used = &#39;10&#39;
+$memory_free = &#39;57&#39;
+$manufacturer = &#39;Parallels Software International Inc.&#39;
+$Memory = {
+      shared =&gt; &#39;0&#39;
+      buffers =&gt; &#39;47&#39;
+      free =&gt; &#39;57&#39;
+      used =&gt; &#39;440&#39;
+      total =&gt; &#39;498&#39;
+      cached =&gt; &#39;357&#39;
+   }
+$eth0_broadcast = &#39;10.211.55.255&#39;
+$eth0_netmask = &#39;255.255.255.0&#39;
+$Host = {
+      domain =&gt; &#39;test.rexify.org&#39;
+      manufacturer =&gt; &#39;Parallels Software International Inc.&#39;
+      kernelname =&gt; &#39;Linux&#39;
+      hostname =&gt; &#39;c6test0232&#39;
+      operatingsystemrelease =&gt; &#39;6.2&#39;
+      operatingsystem =&gt; &#39;CentOS&#39;
+   }
+</code></pre>
+
 <p>You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.</p>
-<pre>Listen &lt;%= $eth1_ip %&gt;:80</pre>
+
+<pre><code>Listen &lt;%= $eth1_ip %&gt;:80
+</code></pre>
+
 <h2>Using the Module</h2>
+
 <p>To use your module you have to add it to your Rexfile. This can be simply achieved with one line.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.3'];<br /></code><code class="perl">user "root";<br /></code><code class="perl">password "foo";<br /><br /></code><code class="perl">require Service::NTP;<br /><br /></code><code class="perl">1;</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.3&#39;];
+user &quot;root&quot;;
+password &quot;foo&quot;;
+
+require Service::NTP;
+
+1;
+</code></pre>
+
 <p>Than you can list your Tasks and execute them.</p>
-<pre>$ rex -T<br />[2013-03-30 02:35:32] INFO - eval your Rexfile.<br />Tasks<br />&nbsp; Service:NTP:prepare</pre>
-<pre>$ rex -H yourserver01 Service:NTP:prepare</pre>
+
+<pre><code>$ rex -T
+[2013-03-30 02:35:32] INFO - eval your Rexfile.
+Tasks
+  Service:NTP:prepare
+
+$ rex -H yourserver01 Service:NTP:prepare
+</code></pre>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

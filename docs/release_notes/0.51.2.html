@@ -1,57 +1,159 @@
-         <p>These are the changes in 0.51 release.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.51 release.</p>
 
 <h2>Base</h2>
+
 <ul>
-  <li>
-  <p><b>Load CMDB by default.</b></p>
-    <p>If you want to store data separated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
-    <ul>
-      <li>cmdb/{operatingsystem}/{hostname}.yml</li>
-      <li>cmdb/{operatingsystem}/default.yml</li>
-      <li>cmdb/{environment}/{hostname}.yml</li>
-      <li>cmdb/{environment}/default.yml</li>
-      <li>cmdb/{hostname}.yml</li>
-      <li>cmdb/default.yml</li>
-    </ul>
+<li><p><strong>Load CMDB by default.</strong></p>
 
-    <p>&nbsp;</p>
+<p>If you want to store data separated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
 
-    <p>For example, if you have a <b>CentOS</b> server with the hostname <b>web01</b>, this means that if you request the key <b>maxconn</b> Rex will first try to find the key inside <b>cmdb/CentOS/web01.yml</b> and if it doesn't find the Rex will try the next file in the lookup path.</p>
+<ul>
+<li>cmdb/{operatingsystem}/{hostname}.yml</li>
+<li>cmdb/{operatingsystem}/default.yml</li>
+<li>cmdb/{environment}/{hostname}.yml</li>
+<li>cmdb/{environment}/default.yml</li>
+<li>cmdb/{hostname}.yml</li>
+<li><p>cmdb/default.yml</p>
 
-    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
-task "setup", make {
-  my $maxconn = get cmdb "maxconn";
-};
+<p> </p></li>
+</ul>
+
+<p>For example, if you have a <strong>CentOS</strong> server with the hostname <strong>web01</strong>, this means that if you request the key <strong>maxconn</strong> Rex will first try to find the key inside <strong>cmdb/CentOS/web01.yml</strong> and if it doesn&#39;t find the Rex will try the next file in the lookup path.</p>
+
+<pre><code>use Rex -feature =&gt; [&#39;0.51&#39;];
+task &quot;setup&quot;, make {
+  my $maxconn = get cmdb &quot;maxconn&quot;;
 </code></pre>
 
-    <p>&nbsp;</p>
-<p>If you're using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
+<p>};</p>
 
-    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
+<p> </p>
+
+<p>If you&#39;re using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
+
+<pre><code>use Rex -feature =&gt; [&#39;0.51&#39;];
 use Rex::Ext::ParamLookup;
 
-task "setup", make {
-  my $maxconn = param_lookup "maxconn", 4096;
+
+task &quot;setup&quot;, make {
+  my $maxconn = param_lookup &quot;maxconn&quot;, 4096;
 };
 </code></pre>
-<p>This will first check if there is a task parameter named <b>maxconn</b> and if not, it will try to look inside the CMDB. If it doesn't find the key anywhere it will just return the default provided by the second parameter (in this example <i>4096</i>).</p>
 
+<p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p>
 
-    <p>&nbsp;</p>
+<p> </p></li>
+<li><p><strong>Store server groups in an ini file</strong></p>
 
-  </li>
-  <li>
-    <p><b>Store server groups in an ini file</b></p>
-    <p>This feature is also available since a long time and now loaded by default. If there is a file named <b>server.ini</b> beside your <b>Rexfile</b> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
+<p>This feature is also available since a long time and now loaded by default. If there is a file named <strong>server.ini</strong> beside your <strong>Rexfile</strong> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
 
-    <pre><code class="ini">; my group file (server.ini)
+<pre><code>; my group file (server.ini)
 [frontends]
 fe01
 fe02
 
+
 fe03
 fe04
 fe05
+
 
 # the backends
 [backends]
@@ -60,36 +162,91 @@ be02 services=httpd,redis
 ;be03 services=httpd,redis
 be04 services=httpd,redis
 
+
 [db]
 db[01..02]
+
 
 [redis]
 @backends
 redis01 user=toor password=foob4r sudo=true services=redis
-redis02 user=toor password=foob4r sudo=true services=redis</code></pre>
-
-    <p>In your <b>Rexfile</b> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <b>services</b> which you can access within a task.</p>
-
-    <pre><code class="perl">use Rex -feature =&gt; ['0.51'];
-
-task "restart_services", group =&gt; "redis", make {
-  my @services = split /,/, connection-&gt;server-&gt;services;
-  service [ @services ]  =&gt; "restart";
-};
+redis02 user=toor password=foob4r sudo=true services=redis
 </code></pre>
-    <p>&nbsp;</p>
 
-  </li>
+<p>In your <strong>Rexfile</strong> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <strong>services</strong> which you can access within a task.</p>
+
+<pre><code>use Rex -feature =&gt; [&#39;0.51&#39;];
+
+
+task &quot;restart_services&quot;, group =&gt; &quot;redis&quot;, make {
+  my @services = split /,/, connection-&gt;server-&gt;services;
+  service [ @services ]  =&gt; &quot;restart&quot;;
+</code></pre>
+
+<p>};</p>
+
+<p> </p></li>
 </ul>
-
-
 
 <h2>Bugfixes</h2>
 
 <ul>
-  <li>#394 - export of is_symlink function</li>
-  <li>#395 - is_file compatibility bug, doesn't detect symlinks anymore</li>
-  <li>#393 - Added "." in the allowed char of lvm create - samuelet</li>
+<li>#394 - export of is_symlink function</li>
+<li>#395 - is_file compatibility bug, doesn&#39;t detect symlinks anymore</li>
+<li>#393 - Added &quot;.&quot; in the allowed char of lvm create - samuelet</li>
 </ul>
 
 
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

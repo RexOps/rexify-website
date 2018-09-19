@@ -1,145 +1,269 @@
-         <p>These are the changes in 0.45 release.</p>
-        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-         <h2>Cloud</h2>
-         <p>Changes in the Cloud API</p>
+      <title></title>
 
-         <ul class="simple-list">
-            <li>
-              <p>OpenStack Support - Ferenc Erki</p>
-              <ul>
-                <li>
-                  <p>Authentication and endpoint.</p>
-<pre><code class="perl">cloud_service "OpenStack";
-cloud_auth tenant_name =&gt; "tenant",
-           username    =&gt; "user",
-           password    =&gt; "password";
-cloud_region "http://openstack.domain.tld:5000/v2.0";</code></pre>
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
-                </li>
-                <li><p>Creating volumes and vms.</p>
+      <style>
+      </style>
 
-<pre><code class="perl">my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "nova", };
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.45 release.</p>
+
+<p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+
+<h2>Cloud</h2>
+
+<p>Changes in the Cloud API</p>
+
+<ul>
+<li><p>OpenStack Support - Ferenc Erki</p>
+
+<ul>
+<li><p>Authentication and endpoint.</p>
+
+<pre><code>cloud_service &quot;OpenStack&quot;;
+cloud_auth tenant_name =&gt; &quot;tenant&quot;,
+           username    =&gt; &quot;user&quot;,
+           password    =&gt; &quot;password&quot;;
+cloud_region &quot;http://openstack.domain.tld:5000/v2.0&quot;;
+</code></pre></li>
+<li><p>Creating volumes and vms.</p>
+
+<pre><code>my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;nova&quot;, };
+
 
 my $instance = cloud_instance create =&gt; {
-  image_id =&gt; "ccd8bcab-8ad2-4744-8227-08279fab7a42",
-  name     =&gt; "ostack01",
+  image_id =&gt; &quot;ccd8bcab-8ad2-4744-8227-08279fab7a42&quot;,
+  name     =&gt; &quot;ostack01&quot;,
   plan_id  =&gt; 2,
   volume   =&gt; $vol_id,
-};</code></pre>
+};
+</code></pre></li>
+<li><p>Terminating an instance and removing the volume.</p>
 
-                </li>
-                <li><p>Terminating an instance and removing the volume.</p>
-<pre><code class="perl">cloud_instance terminate =&gt; $instance->{id};
-cloud_volume delete =&gt; $vol_id;</code></pre>
+<pre><code>cloud_instance terminate =&gt; $instance-&gt;{id};
+cloud_volume delete =&gt; $vol_id;
+</code></pre></li>
+</ul></li>
+<li><p>added cloud_image_list() function</p></li>
+<li>added cloud_network() function to manage cloud networks if the provider supports it</li>
+</ul>
 
+<h2>Common</h2>
 
-              </li>
-              </ul>
-            </li>
-            <li>added cloud_image_list() function</li>
-            <li>added cloud_network() function to manage cloud networks if the provider supports it</li>
-         </ul>
+<p>Changes in the core. These include new resources and new options for existing one.</p>
 
-          <h2>Common</h2>
-          <p>Changes in the core. These include new resources and new options for existing one.</p>
+<ul>
+<li><p>new options for the file() resource</p>
 
-          <ul>
-            <li><p>new options for the file() resource</p>
-              <ul>
-                <li><p>no_overwrite option for file() resource.</p><p>If this option is set, the file will never be overwritten.</p>
-<pre><code class="perl">file "/var/named/$zone->{name}.zone",
-  content      =&gt; template( '@zone-file.tpl', conf =&gt; $conf, %{$zone} ),
-  owner        =&gt; "named",
-  group        =&gt; "named",
-  no_overwrite =&gt; TRUE;</code></pre>
-                </li>
-                <li><p>ensure directory option for file().</p><p>If the ensure option is set to directory the file() resource will create a directory instead of a file</p>
-<pre><code class="perl">file "/var/named",
-  ensure =&gt; "directory",
-  owner  =&gt; "named",
-  group  =&gt; "named";</code></pre>
-                </li>
-                <li><p>allow array for file() resource.</p><p>This allow operations on multiple files without duplicating the code.</p>
-<pre><code class="perl">file [
-    "/etc/rex/io/inventory/bootdevice", "/etc/rex/io/inventory/bridge",
-    "/etc/rex/io/inventory/sysinfo", "/etc/rex/io/inventory/os"
+<ul>
+<li><p>no_overwrite option for file() resource.</p>
+
+<p>If this option is set, the file will never be overwritten.</p>
+
+<pre><code>file &quot;/var/named/$zone-&gt;{name}.zone&quot;,
+  content      =&gt; template( &#39;@zone-file.tpl&#39;, conf =&gt; $conf, %{$zone} ),
+  owner        =&gt; &quot;named&quot;,
+  group        =&gt; &quot;named&quot;,
+  no_overwrite =&gt; TRUE;
+</code></pre></li>
+<li><p>ensure directory option for file().</p>
+
+<p>If the ensure option is set to directory the file() resource will create a directory instead of a file</p>
+
+<pre><code>file &quot;/var/named&quot;,
+  ensure =&gt; &quot;directory&quot;,
+  owner  =&gt; &quot;named&quot;,
+  group  =&gt; &quot;named&quot;;
+</code></pre></li>
+<li><p>allow array for file() resource.</p>
+
+<p>This allow operations on multiple files without duplicating the code.</p>
+
+<pre><code>file [
+    &quot;/etc/rex/io/inventory/bootdevice&quot;, &quot;/etc/rex/io/inventory/bridge&quot;,
+    &quot;/etc/rex/io/inventory/sysinfo&quot;, &quot;/etc/rex/io/inventory/os&quot;
   ],
-  owner =&gt; "root",
-  group =&gt; "root",
-  mode  =&gt; 755;</code></pre>
-                </li>
-              </ul>
-              <li><p>New options for run() resource.</p>
-                <ul>
-                  <li><p>run() resource can now have a name.</p><p>This is needed for notifications, if a command should only be executed if notified.</p>
-<pre><code class="perl">run "kill-process-httpd",
-  command       =&gt; "killall -KILL httpd",
+  owner =&gt; &quot;root&quot;,
+  group =&gt; &quot;root&quot;,
+  mode  =&gt; 755;
+</code></pre></li>
+</ul></li>
+<li><p>New options for run() resource.</p>
+
+<ul>
+<li><p>run() resource can now have a name.</p>
+
+<p>This is needed for notifications, if a command should only be executed if notified.</p>
+
+<pre><code>run &quot;kill-process-httpd&quot;,
+  command       =&gt; &quot;killall -KILL httpd&quot;,
   only_notified =&gt; TRUE;
 
-# somewhere else in the code
-notify run =&gt; "kill-process-httpd";</code></pre>
-                  </li>
-                  <li><p><i>creates</i> option for run() resource.</p><p>This tell Rex that this command creates a special file. If this file is found, the command won't get executed anymore.</p>
-<pre><code class="perl">run "download-ipxe",
-  command =&gt; "wget -O /var/lib/tftpboot/undionly.ipxe http://boot.ipxe.org/undionly.kpxe",
-  creates =&gt; "/var/lib/tftpboot/undionly.ipxe";</code></pre>
-                  </li>
-                  <li><p><i>only_if</i> and <i>unless</i> option for run() resource.</p><p>This will execute the command only if the command given will execute successfully (or terminate unsuccessfull).</p>
-<pre><code class="perl">run "add-service-os",
-    command =&gt; "mysql -uroot &lt; /tmp/data.sql",
-    unless  =&gt; "mysql -uroot dbschema -e 'SELECT id FROM os_template WHERE id=2' | grep -q 2";</code></pre>
-                  </li>
-                  <li><p>support for customized environments. - #316 - andrejzverev</p><p>It is now possible to add custom environment variables to the run() resource.</p>
-<pre><code class="perl">run "my_command",
-  env =&gt; {
-    env_var_1 =&gt; "the value for 1",
-    env_var_2 =&gt; "the value for 2",
-  };</code></pre>
-                  </li>
-                </ul>
-              </li>
-              <li><p>Added notifications for <i>run</i> and <i>service</i>.</p>
-                <ul>
-                  <li><p>services will notified at the end of the task.</p>
-<pre><code class="perl">service "httpd", ensure =&gt; "running";
 
 # somewhere else in the code
-file "/etc/httpd/httpd.conf",
-  content   =&gt; template("templates/httpd.conf.tpl", %vars),
-  on_change =&gt; sub { notify service =&gt; "httpd"; };</code></pre>
-                  </li>
-                </ul>
-              </li>
-              <li><p><i>pkg</i> resource (replacement for install function).</p>
-<pre><code class="perl">pkg "vim", ensure =&gt; "present";
-pkg "httpd", ensure =&gt; "2.4.6";
-pkg "vim-tiny", ensure =&gt; "absent";
-pkg ["tftp-server", "wget"], ensure =&gt; "latest";</code></pre>
-            </li>
-            <li><p>Added account() resource (as replacement for create_user).</p>
-<pre><code class="perl">account "krimdomu",
-  ensure   =&gt; "present",
+notify run =&gt; &quot;kill-process-httpd&quot;;
+</code></pre></li>
+<li><p><em>creates</em> option for run() resource.</p>
+
+<p>This tell Rex that this command creates a special file. If this file is found, the command won&#39;t get executed anymore.</p>
+
+<pre><code>run &quot;download-ipxe&quot;,
+  command =&gt; &quot;wget -O /var/lib/tftpboot/undionly.ipxe http://boot.ipxe.org/undionly.kpxe&quot;,
+  creates =&gt; &quot;/var/lib/tftpboot/undionly.ipxe&quot;;
+</code></pre></li>
+<li><p><em>only_if</em> and <em>unless</em> option for run() resource.</p>
+
+<p>This will execute the command only if the command given will execute successfully (or terminate unsuccessfull).</p>
+
+<pre><code>run &quot;add-service-os&quot;,
+    command =&gt; &quot;mysql -uroot &lt; /tmp/data.sql&quot;,
+    unless  =&gt; &quot;mysql -uroot dbschema -e &#39;SELECT id FROM os_template WHERE id=2&#39; | grep -q 2&quot;;
+</code></pre></li>
+<li><p>support for customized environments. - #316 - andrejzverev</p>
+
+<p>It is now possible to add custom environment variables to the run() resource.</p>
+
+<pre><code>run &quot;my_command&quot;,
+  env =&gt; {
+    env_var_1 =&gt; &quot;the value for 1&quot;,
+    env_var_2 =&gt; &quot;the value for 2&quot;,
+  };
+</code></pre></li>
+</ul></li>
+<li><p>Added notifications for <em>run</em> and <em>service</em>.</p>
+
+<ul>
+<li><p>services will notified at the end of the task.</p>
+
+<pre><code>service &quot;httpd&quot;, ensure =&gt; &quot;running&quot;;
+
+
+# somewhere else in the code
+file &quot;/etc/httpd/httpd.conf&quot;,
+  content   =&gt; template(&quot;templates/httpd.conf.tpl&quot;, %vars),
+  on_change =&gt; sub { notify service =&gt; &quot;httpd&quot;; };
+</code></pre></li>
+</ul></li>
+<li><p><em>pkg</em> resource (replacement for install function).</p>
+
+<pre><code>pkg &quot;vim&quot;, ensure =&gt; &quot;present&quot;;
+pkg &quot;httpd&quot;, ensure =&gt; &quot;2.4.6&quot;;
+pkg &quot;vim-tiny&quot;, ensure =&gt; &quot;absent&quot;;
+pkg [&quot;tftp-server&quot;, &quot;wget&quot;], ensure =&gt; &quot;latest&quot;;
+</code></pre></li>
+<li><p>Added account() resource (as replacement for create_user).</p>
+
+<pre><code>account &quot;krimdomu&quot;,
+  ensure   =&gt; &quot;present&quot;,
   uid      =&gt; 509,
-  home     =&gt; '/root',
-  comment  =&gt; 'User Account',
-  expire   =&gt; '2011-05-30',
-  groups   =&gt; ['root', '...'],
-  password =&gt; 'blahblah',
+  home     =&gt; &#39;/root&#39;,
+  comment  =&gt; &#39;User Account&#39;,
+  expire   =&gt; &#39;2011-05-30&#39;,
+  groups   =&gt; [&#39;root&#39;, &#39;...&#39;],
+  password =&gt; &#39;blahblah&#39;,
   system   =&gt; 1,
   no_create_home =&gt; TRUE,
-  ssh_key        =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";</code></pre>
-            </li>
+  ssh_key        =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
+</code></pre></li>
 <li><p>Support -g to supply group name - #330 - fanyeren</p></li>
-<li><p><i>can_run()</i> now returns the first command found as string - #193</p></li>
+<li><p><em>can_run()</em> now returns the first command found as string - #193</p></li>
 <li><p>read cpu information out of /proc/cpuinfo if dmidecode is not available - #306</p></li>
+</ul>
 
-          </ul>
+<h2>Bugfixes</h2>
 
-          <h2>Bugfixes</h2>
-          <p>Known bugs that has been fixed.</p>
+<p>Known bugs that has been fixed.</p>
 
-          <ul>
+<ul>
 <li><p>Check if iptables rule already exists.</p></li>
 <li><p>Fixed SCM::Git to work with sudo.</p></li>
 <li><p>Update _parse_ip subroutine. be possible to parse ppp0. #328 - Tomohiro Hosaka.</p></li>
@@ -147,4 +271,59 @@ pkg ["tftp-server", "wget"], ensure =&gt; "latest";</code></pre>
 <li><p>Fixed $Rex::Logger::format does not apply. - #335.</p></li>
 <li><p>Fixed download() command on windows.</p></li>
 <li><p>Fixed debian system_update - #339 - Niklas Larsson.</p></li>
-          </ul>
+</ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

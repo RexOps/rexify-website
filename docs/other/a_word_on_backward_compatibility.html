@@ -1,179 +1,221 @@
-<p>Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+
 <p>So there is one premise new versions of Rex has to fulfill. They must be backward compatible.</p>
+
 <p>I know this might be impossible in the one or other way, but to minimize this danger there is a thing called feature flags. If there is the need to break backward compatibility in favor of a new feature there will be a feature flag for this change. And only if this feature flag gets enabled in the Rexfile it will break compatibility.</p>
+
 <p>So the default is always to be compatible.</p>
+
 <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our issue tracker.</p>
+
 <h2>Feature flags</h2>
+
 <p>This is the current list of feature flags:</p>
-<table border="0">
-<tbody>
-<tr style="background-color: #efefef; margin: 5px;">
-<td style="padding: 5px;"><strong>Flag</strong></td>
-<td style="padding: 5px;"><strong>Since</strong></td>
-<td style="padding: 5px;"><strong>Description</strong></td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">1.3</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.3</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Activating the new template engine by default.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_template_ng</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.3</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Disabling the new template engine.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">1.0</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.0</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_autodie</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.0</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will disable autodie feature.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">template_ng</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.56</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Enabling the new template engine (better error reporting, etc.)</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.56</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.56</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">autodie</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.56</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will enable autodie feature: die on all failed <a href="../../api/Rex/Commands/Fs.pm.html">filesytem commands</a></td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.55</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.55</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.54</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.54</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.53</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.53</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will activate register_cmdb_top_scope. And all things 0.51 and down activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">register_cmdb_top_scope</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.53</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will register all cmdb top scope variables automatically in the templates.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.51</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.51</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will load Rex::Constants and the CMDB by default. And all things 0.47 and down activated.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_autodie</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.0</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Will disable autodie feature.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_path_cleanup</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.44</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Rex cleans the path before executing a command. With this feature Rex doesn't cleanup the path.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">verbose_run</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.47</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Explicitly output "Successfully executed" or "Error executing" messages for run() commands.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">source_profile</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.44</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Source $HOME/.profile before running a command.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">source_global_profile</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.44</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Source /etc/profile before running a command.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">exec_autodie</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.44</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">exec_and_sleep</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.43</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Sometimes some commands that fork away didn't keep running. With this flag rex will wait a few ms before exiting the shell.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">disable_strict_host_key_checking&nbsp;&nbsp;</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.43</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Disabling strict host key checking for openssh connection mode.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">reporting</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.43</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Enable reporting</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">empty_groups</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.42</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Enable usage of empty groups.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">use_server_auth</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.42</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Enable the usage of special authentication options for servers.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">tty</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">1.0</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Enable pty usage for ssh connections. (Default)</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_tty</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.41</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Disable pty usage for ssh connections.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">no_local_template_vars</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.40</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Use global variables in templates</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">sudo_without_sh</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.40</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Run sudo commands directly without the use of 'sh'. This might break things.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">sudo_without_locales</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.40</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">Run sudo commands without locales. this will break things if you don't use english locales.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">exit_status</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.39</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">This option tells Rex to return a non zero value on exit if a task fails.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.35</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.35</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
-</tr>
-<tr style="border-bottom: 1px dotted #e5e5e5; padding-bottom: 2px; padding-top: 2px;">
-<td style="padding-top: 2px; padding-bottom: 2px;">0.31</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">0.31</td>
-<td style="padding-top: 2px; padding-bottom: 2px;">To enable special authentication options for a server group. This will overwrite the default authentication options for a task.</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
+
+<p>|                                        |           |                                                                                                                                                                                                                             |
+|----------------------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <strong>Flag</strong>                               | <strong>Since</strong> | <strong>Description</strong>                                                                                                                                                                                                             |
+| 1.3                                    | 1.3       | Activating the new template engine by default.                                                                                                                                                                              |
+| no_template_ng                       | 1.3       | Disabling the new template engine.                                                                                                                                                                                          |
+| 1.0                                    | 1.0       | Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.                                                                                 |
+| no_autodie                            | 1.0       | Will disable autodie feature.                                                                                                                                                                                               |
+| template_ng                           | 0.56      | Enabling the new template engine (better error reporting, etc.)                                                                                                                                                             |
+| 0.56                                   | 0.56      | Will activate autodie feature. Furthermore, all features from earlier versions are activated.                                                                                                                               |
+| autodie                                | 0.56      | Will enable autodie feature: die on all failed <a href="../../api/Rex/Commands/Fs.pm.html">filesytem commands</a>                                                                                                                      |
+| 0.55                                   | 0.55      | Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.                                                                                                      |
+| 0.54                                   | 0.54      | Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated. |
+| 0.53                                   | 0.53      | Will activate register_cmdb_top_scope. And all things 0.51 and down activated.                                                                                                                                           |
+| register_cmdb_top_scope             | 0.53      | Will register all cmdb top scope variables automatically in the templates.                                                                                                                                                  |
+| 0.51                                   | 0.51      | Will load Rex::Constants and the CMDB by default. And all things 0.47 and down activated.                                                                                                                                   |
+| no_autodie                            | 1.0       | Will disable autodie feature.                                                                                                                                                                                               |
+| no_path_cleanup                      | 0.44      | Rex cleans the path before executing a command. With this feature Rex doesn&#39;t cleanup the path.                                                                                                                             |
+| verbose_run                           | 0.47      | Explicitly output &quot;Successfully executed&quot; or &quot;Error executing&quot; messages for run() commands.                                                                                                                                 |
+| source_profile                        | 0.44      | Source $HOME/.profile before running a command.                                                                                                                                                                             |
+| source_global_profile                | 0.44      | Source /etc/profile before running a command.                                                                                                                                                                               |
+| exec_autodie                          | 0.44      | If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.                                                                                                                                    |
+| exec_and_sleep                       | 0.43      | Sometimes some commands that fork away didn&#39;t keep running. With this flag rex will wait a few ms before exiting the shell.                                                                                                 |
+| disable_strict_host_key_checking   | 0.43      | Disabling strict host key checking for openssh connection mode.                                                                                                                                                             |
+| reporting                              | 0.43      | Enable reporting                                                                                                                                                                                                            |
+| empty_groups                          | 0.42      | Enable usage of empty groups.                                                                                                                                                                                               |
+| use_server_auth                      | 0.42      | Enable the usage of special authentication options for servers.                                                                                                                                                             |
+| tty                                    | 1.0       | Enable pty usage for ssh connections. (Default)                                                                                                                                                                             |
+| no_tty                                | 0.41      | Disable pty usage for ssh connections.                                                                                                                                                                                      |
+| no_local_template_vars              | 0.40      | Use global variables in templates                                                                                                                                                                                           |
+| sudo_without_sh                      | 0.40      | Run sudo commands directly without the use of &#39;sh&#39;. This might break things.                                                                                                                                                |
+| sudo_without_locales                 | 0.40      | Run sudo commands without locales. this will break things if you don&#39;t use english locales.                                                                                                                                 |
+| exit_status                           | 0.39      | This option tells Rex to return a non zero value on exit if a task fails.                                                                                                                                                   |
+| 0.35                                   | 0.35      | This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.                                                                      |
+| 0.31                                   | 0.31      | To enable special authentication options for a server group. This will overwrite the default authentication options for a task.                                                                                             |</p>
+
+<p> </p>
+
 <h2>Howto enable Feature Flags</h2>
+
 <p>You can enable feature flags in your Rexfile with the following code:</p>
-<pre><code class="perl"># Rexfile<br /></code><code class="perl">use Rex -feature =&gt; ['0.31'];</code></pre>
+
+<pre><code># Rexfile
+use Rex -feature =&gt; [&#39;0.31&#39;];
+</code></pre>
+
 <p>or even multiple ones like this:</p>
-<pre><code class="perl"># Rexfile<br /></code><code class="perl">use Rex -feature =&gt; [qw(exec_autodie source_profile)];</code></pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
+<pre><code># Rexfile
+</code></pre>
+
+<p>use Rex -feature =&gt; [qw(exec_autodie source_profile)];</p>
+
+<p> </p>
+
+<p> </p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

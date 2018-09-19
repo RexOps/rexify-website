@@ -1,109 +1,256 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-<h2 id="Rex">Rex</h2>
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <h2>Rex</h2>
 
 <ul>
-
 <li><p>Source control</p>
 
 <p>Now you can checkout subversion and git repositories with Rex.</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard0"> set repository =&gt; "myrepo",
-      url =&gt; "git@foo.bar:myrepo.git";
-    
- task "checkout", sub {
-    checkout "myrepo";
- };</code></pre>
+<p>Copy to clipboard</p>
 
-<p>See <a href="/api/Rex/Commands/SCM.pm.html">Rex::Commands::SCM</a> for more information.</p>
+<pre><code> set repository =&gt; &quot;myrepo&quot;,
+      url =&gt; &quot;git@foo.bar:myrepo.git&quot;;
 
-</li>
+
+ task &quot;checkout&quot;, sub {
+    checkout &quot;myrepo&quot;;
+ };
+</code></pre>
+
+<p>See <a href="/rexify-website/api/Rex/Commands/SCM.pm.html">Rex::Commands::SCM</a> for more information.</p></li>
 <li><p>allow multiple groups for a task</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard1"> group "frontend" =&gt; "fe01", "fe02";
- group "backend"  =&gt; "be01", "be02";
-    
- task "prepare", group =&gt; [ "frontend", "backend" ], sub {
-    say run "uptime";
- };</code></pre>
+<p>Copy to clipboard</p>
 
-</li>
+<pre><code> group &quot;frontend&quot; =&gt; &quot;fe01&quot;, &quot;fe02&quot;;
+ group &quot;backend&quot;  =&gt; &quot;be01&quot;, &quot;be02&quot;;
+
+
+ task &quot;prepare&quot;, group =&gt; [ &quot;frontend&quot;, &quot;backend&quot; ], sub {
+    say run &quot;uptime&quot;;
+ };
+</code></pre></li>
 <li><p>every task can have its own auth information</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard2"> user "root";
- password "test";
-    
- task "prepare", "server1", sub {
+<p>Copy to clipboard</p>
+
+<pre><code> user &quot;root&quot;;
+ password &quot;test&quot;;
+
+
+ task &quot;prepare&quot;, &quot;server1&quot;, sub {
      # will authenticate as root/test
  };
-   
- task "prepare2", "server1", sub {
+
+
+ task &quot;prepare2&quot;, &quot;server1&quot;, sub {
      # will also authenticate as root/test
  };
-   
+
+
  # all tasks from here down will authenticate as deploy/testdeploy
- user "deploy";
- password "testdeploy";
- task "deploy", "server1", sub {
+ user &quot;deploy&quot;;
+ password &quot;testdeploy&quot;;
+ task &quot;deploy&quot;, &quot;server1&quot;, sub {
      # will authenticate as deploy/testdeploy
- };</code></pre>
-
-</li>
-<li><p>fixed running of multiple tasks by do_task</p>
-
-</li>
+ };
+</code></pre></li>
+<li><p>fixed running of multiple tasks by do_task</p></li>
 <li><p>user module: add ssh key</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard3"> task "createuser", "server1", sub {
-    create_user "foo",
-        home =&gt; "/home/foo",
-        ssh_key =&gt; "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...";
- };</code></pre>
+<p>Copy to clipboard</p>
 
-</li>
-<li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p>
-
-</li>
+<pre><code> task &quot;createuser&quot;, &quot;server1&quot;, sub {
+    create_user &quot;foo&quot;,
+        home =&gt; &quot;/home/foo&quot;,
+        ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...&quot;;
+ };
+</code></pre></li>
+<li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p></li>
 <li><p>ssh port isn&#39;t fix anymore (patch from Jose Luis Martinez)</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard4"> group "frontend", "fe01:2222", "fe02";</code></pre>
+<p>Copy to clipboard</p>
+
+<pre><code> group &quot;frontend&quot;, &quot;fe01:2222&quot;, &quot;fe02&quot;;
+</code></pre>
 
 <p>Rex will now connect to fe01 on port 2222 and to fe02 on port 22.</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard5"> port 2222;
- task "prepare", "server1", "server2", sub {
-    # will always connect to port 2222
- };</code></pre>
+<p>Copy to clipboard</p>
 
-</li>
+<pre><code> port 2222;
+ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+    # will always connect to port 2222
+ };
+</code></pre></li>
 <li><p>file and upload now scans for environment specific files first</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard6"> task "upload", "server1", sub {
-    file "/etc/passwd",
-       source =&gt; "files/etc/passwd";
- };</code></pre>
+<p>Copy to clipboard</p>
 
-<p>If called with <i>rex -E stage</i> it will first try to upload "files/etc/passwd.stage" and if not found "files/etc/passwd"</p>
+<pre><code> task &quot;upload&quot;, &quot;server1&quot;, sub {
+    file &quot;/etc/passwd&quot;,
+       source =&gt; &quot;files/etc/passwd&quot;;
+ };
+</code></pre>
 
-</li>
-<li><p>fixed windows syslog bug #6, thanks to aero</p>
-
-</li>
-<li><p>added -nolog parameter to logging function to disable logging at all</p>
-
-</li>
+<p>If called with <em>rex -E stage</em> it will first try to upload &quot;files/etc/passwd.stage&quot; and if not found &quot;files/etc/passwd&quot;</p></li>
+<li><p>fixed windows syslog bug #6, thanks to aero</p></li>
+<li><p>added -nolog parameter to logging function to disable logging at all</p></li>
 <li><p>added possibility to evaluate perl code within the -H CLI parameter</p>
 
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
-<pre><code class="bash" id="clipboard7"> bash# rex -H &#39;perl:map { "server-$_"; } (1,2,3)&#39; task</code></pre>
+<p>Copy to clipboard</p>
 
-</li>
+<pre><code> bash# rex -H &#39;perl:map { &quot;server-$_&quot;; } (1,2,3)&#39; task
+</code></pre></li>
 </ul>
 
 
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

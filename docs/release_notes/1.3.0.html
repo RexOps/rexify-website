@@ -1,33 +1,111 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-<p>These are the changes in the 1.3.0 release.</p>
+      <title></title>
 
-<p>We want to thank every contributor who made this release possible.
-We also welcome Dmitry Kopytov as new contributor.</p>
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
-<p>During this release cycle
-we tried to focus more on smoothing out the rougher edges
-and improving the documentation and test suite.
-Several aspects of the documentation work
-are mainly happening in the background
-and not in the codebase itself for now.
-So there are no "real" new features this time,
-but because of the amount of changes,
-and especially because of enabling the new template engine by default,
-we felt a new major release was warranted.</p>
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in the 1.3.0 release.</p>
+
+<p>We want to thank every contributor who made this release possible. We also welcome Dmitry Kopytov as new contributor.</p>
+
+<p>During this release cycle we tried to focus more on smoothing out the rougher edges and improving the documentation and test suite. Several aspects of the documentation work are mainly happening in the background and not in the codebase itself for now. So there are no &quot;real&quot; new features this time, but because of the amount of changes, and especially because of enabling the new template engine by default, we felt a new major release was warranted.</p>
 
 <h2>Enhancements</h2>
 
 <h3>New template engine enabled by default</h3>
 
-<p>The enhanced template engine, <code>template_ng</code>,
-has been available since 0.56.0
-via the similarly named feature flag.
-The main advantage of it
-is the ability to provide actually useful error messages
-when something goes wrong during template processing,
-while the format itself remains backward compatible
-with the previous template handling.
-There are some examples of those error messages on the <a href="https://github.com/RexOps/Rex/issues/465">original issue</a>.</p>
+<p>The enhanced template engine, <code>template_ng</code>, has been available since 0.56.0 via the similarly named feature flag. The main advantage of it is the ability to provide actually useful error messages when something goes wrong during template processing, while the format itself remains backward compatible with the previous template handling. There are some examples of those error messages on the <a href="https://github.com/RexOps/Rex/issues/465">original issue</a>.</p>
 
 <ul>
 <li>added template_ng tests - Jan</li>
@@ -37,14 +115,7 @@ There are some examples of those error messages on the <a href="https://github.c
 
 <h3>Automatic parallelism settings</h3>
 
-<p>It is now possible set parallelism of task execution more dynamically,
-e.g. by setting it to <code>max</code>,
-Rex detects the number of servers a task should be run on,
-and automatically executes it on all of them in parallel.
-Some other notation are recognized and supported as well,
-like <code>max/3</code>, or <code>max 10%</code>.
-For details,
-check out the <a href="http://www.rexify.org/api/Rex/Commands.pm.html#parallelism-count-">documentation</a>.</p>
+<p>It is now possible set parallelism of task execution more dynamically, e.g. by setting it to <code>max</code>, Rex detects the number of servers a task should be run on, and automatically executes it on all of them in parallel. Some other notation are recognized and supported as well, like <code>max/3</code>, or <code>max 10%</code>. For details, check out the <a href="http://www.rexify.org/api/Rex/Commands.pm.html#parallelism-count-">documentation</a>.</p>
 
 <ul>
 <li>Set parallelism automatically (fix #491) - Ferenc Erki</li>
@@ -52,10 +123,7 @@ check out the <a href="http://www.rexify.org/api/Rex/Commands.pm.html#parallelis
 
 <h3>Tests</h3>
 
-<p>The local test suite has been greatly simplified
-as part of an ongoing improvement works.
-Those changes made the test suite ~30% faster
-and easier to maintain.</p>
+<p>The local test suite has been greatly simplified as part of an ongoing improvement works. Those changes made the test suite ~30% faster and easier to maintain.</p>
 
 <ul>
 <li>Cleanup a file used during testing - Ferenc Erki</li>
@@ -70,8 +138,7 @@ and easier to maintain.</p>
 
 <h3>General</h3>
 
-<p>A bunch of general improvements happened in this release cycle as well,
-most notably:</p>
+<p>A bunch of general improvements happened in this release cycle as well, most notably:</p>
 
 <ul>
 <li>systemd support for Debian (and its clones)</li>
@@ -96,7 +163,7 @@ most notably:</p>
 <li>Log STDERR on errors where auto_die is enabled - Dmitry Kopytov</li>
 <li>Fix checking of virsh command result upon VM creation - Ferenc Erki</li>
 <li>Add bios_boot option to GPT initialization - Ferenc Erki</li>
-<li>make report filename configurable. don't sleep in test - Jan</li>
+<li>make report filename configurable. don&#39;t sleep in test - Jan</li>
 <li>Check for CLI argument definedness (fix #668) - Ferenc Erki</li>
 <li>Include provided modules in META.yml - Ferenc Erki</li>
 <li>added systemd support for debian. fixes #659 - Jan</li>
@@ -104,13 +171,7 @@ most notably:</p>
 
 <h3>Documentation</h3>
 
-<p>We'd like to say thanks
-to Eric Johnson for an improved help screen
-and to Brian Manning for making it possible
-to list methods and DSL functions
-in the table of contents
-and linking to them directly within the page.
-We also added long-due documentation for the CMDB feature.</p>
+<p>We&#39;d like to say thanks to Eric Johnson for an improved help screen and to Brian Manning for making it possible to list methods and DSL functions in the table of contents and linking to them directly within the page. We also added long-due documentation for the CMDB feature.</p>
 
 <ul>
 <li>Filter changelogger output - Ferenc Erki</li>
@@ -128,10 +189,7 @@ We also added long-due documentation for the CMDB feature.</p>
 
 <h3>Uploading files from Windows to Linux</h3>
 
-<p>File upload from Windows machines was fixed
-by checking the availability of <code>uname</code> and <code>md5sum</code> commands
-before trying to use them.
-This fix has been released as rex-1.2.1 as well.</p>
+<p>File upload from Windows machines was fixed by checking the availability of <code>uname</code> and <code>md5sum</code> commands before trying to use them. This fix has been released as rex-1.2.1 as well.</p>
 
 <ul>
 <li>first detect if uname and md5sum can be run, then use it. fixed #665 - Jan</li>
@@ -139,9 +197,7 @@ This fix has been released as rex-1.2.1 as well.</p>
 
 <h3>do_task + before_task_start with modules</h3>
 
-<p>Fixed an issue when a task was specified in a module
-<em>and</em> had a <code>before_task_start</code> hook attached to it,
-then called with <code>do_task</code> from a different module.</p>
+<p>Fixed an issue when a task was specified in a module <em>and</em> had a <code>before_task_start</code> hook attached to it, then called with <code>do_task</code> from a different module.</p>
 
 <ul>
 <li>this commit fixes #667. this bug was introduced with the fix for #629 - Jan</li>
@@ -149,15 +205,67 @@ then called with <code>do_task</code> from a different module.</p>
 
 <h3>General</h3>
 
-<p>This release also has some general fixes,
-most notably around <code>sudo</code> usage
-(like avoiding an endless loop when used together with <code>auth for</code>
-or suppressing warnings about missing locales).</p>
+<p>This release also has some general fixes, most notably around <code>sudo</code> usage (like avoiding an endless loop when used together with <code>auth for</code> or suppressing warnings about missing locales).</p>
 
 <ul>
 <li>fixed the fix :-) the original fix was in the wrong subroutine - #692 - Jan</li>
-<li>Don't run into an endless loop: fix for #692 - Jan Gehring</li>
+<li>Don&#39;t run into an endless loop: fix for #692 - Jan Gehring</li>
 <li>Fix auth test when REX_USER env is present - Dmitry Kopytov</li>
 <li>this prevents the stderr output of perl to get send over the wire. fixes #658 - Jan</li>
 <li>fix warning if local file is not given. fixed #647 - Jan</li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

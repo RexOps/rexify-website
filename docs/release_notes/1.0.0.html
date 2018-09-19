@@ -1,23 +1,120 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-<p>We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a <strong>LTS</strong> release, which means that it will get support from the community (at least) until <strong>march 2017</strong>.</p>
+      <title></title>
 
-<p>We're developing Rex for more than 4 years and because Rex is now used in many production environments we felt it was the right time to release the first major version. We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things change.</p>
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
-<p>Rex is a project completely driven by volunteers and without all the support from the community by using it, sending bug reports and feature requests and submitting patches it wouldn't be the great project it is. So many thanks to all of you. If you want to help developing Rex and become part of the core team, feel free to contact us on irc (irc.freenode.net / #rex).</p>
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>We are proud to announce the 1.0.0 release of Rex. We want to thank every contributor that made this first major release possible. Rex 1.0 will be a <strong>LTS</strong> release, which means that it will get support from the community (at least) until <strong>march 2017</strong>.</p>
+
+<p>We&#39;re developing Rex for more than 4 years and because Rex is now used in many production environments we felt it was the right time to release the first major version. We try to follow the <a href="http://www.semver.org/">semver</a> versioning scheme, so that it is possible to have a good deprecation path if things change.</p>
+
+<p>Rex is a project completely driven by volunteers and without all the support from the community by using it, sending bug reports and feature requests and submitting patches it wouldn&#39;t be the great project it is. So many thanks to all of you. If you want to help developing Rex and become part of the core team, feel free to contact us on irc (irc.freenode.net / #rex).</p>
 
 <p>These are the changes in 1.0.0 release.</p>
 
 <h2>Common</h2>
 
-<p>With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled. </p>
+<p>With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled.</p>
 
 <ul>
-<li>use Net::OpenSSH is now default. don't need feature flag 0.55 - Jan</li>
+<li>use Net::OpenSSH is now default. don&#39;t need feature flag 0.55 - Jan</li>
 </ul>
 
 <p>But you can always use the old communication with the following command:</p>
 
-<pre><code class="perl">set connection => 'SSH';</code></pre>
+<pre><code>set connection =&gt; &#39;SSH&#39;;
+</code></pre>
 
 <h4>augeas</h4>
 
@@ -30,50 +127,56 @@
 <li>Optimise Rex::Commands::Augeas - Andrew Beverley</li>
 </ul>
 
-<pre><code class="perl">use Rex::Commands::Augeas;
+<!-- -->
 
-task "prepare", sub {
-  augeas insert => "/files/etc/hosts",
-    label     => "01",
-    after     => "/7",
-    ipaddr    => "192.168.2.23",
-    canonical => "frontend01";
+<pre><code>use Rex::Commands::Augeas;
 
-  augeas modify => 
-    "/files/etc/ssh/sshd_config/PermitRootLogin" => "without-password",
-    on_change => sub {
-      service sshd => "restart";
+task &quot;prepare&quot;, sub {
+  augeas insert =&gt; &quot;/files/etc/hosts&quot;,
+    label     =&gt; &quot;01&quot;,
+    after     =&gt; &quot;/7&quot;,
+    ipaddr    =&gt; &quot;192.168.2.23&quot;,
+    canonical =&gt; &quot;frontend01&quot;;
+
+  augeas modify =&gt; 
+    &quot;/files/etc/ssh/sshd_config/PermitRootLogin&quot; =&gt; &quot;without-password&quot;,
+    on_change =&gt; sub {
+      service sshd =&gt; &quot;restart&quot;;
     };
 };
 </code></pre>
 
 <h4>PkgConf</h4>
 
-<p>The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/api/Rex/Commands/PkgConf.pm.html">API</a> documentation.</p>
+<p>The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/rexify-website/api/Rex/Commands/PkgConf.pm.html">API</a> documentation.</p>
 
 <ul>
 <li>Add PkgConf command to configure packages - Andrew Beverley</li>
 </ul>
 
-<pre><code class="perl">use Rex::Commands::PkgConf;
+<!-- -->
 
-task "prepare", sub {
-  set_pkgconf("mysql-server-5.5", [
-    { question => 'mysql-server/root_password',       type => 'string', value => 'mysecret' },
-    { question => 'mysql-server/root_password_again', type => 'string', value => 'mysecret' },
+<pre><code>use Rex::Commands::PkgConf;
+
+task &quot;prepare&quot;, sub {
+  set_pkgconf(&quot;mysql-server-5.5&quot;, [
+    { question =&gt; &#39;mysql-server/root_password&#39;,       type =&gt; &#39;string&#39;, value =&gt; &#39;mysecret&#39; },
+    { question =&gt; &#39;mysql-server/root_password_again&#39;, type =&gt; &#39;string&#39;, value =&gt; &#39;mysecret&#39; },
   ]);
 };
 </code></pre>
 
 <h4>tty usage</h4>
 
-<p>If you're using <code class="perl">use Rex -feature => ['1.0'];</code> tty usage is disabled. This increases the compatibility with some init scripts that don't <em>disown</em> from the running tty. If you're using <em>sudo</em> then you need to configure the user to not need a tty to run sudo.</p>
+<p>If you&#39;re using <code>use Rex -feature =&gt; [&#39;1.0&#39;];</code> tty usage is disabled. This increases the compatibility with some init scripts that don&#39;t <em>disown</em> from the running tty. If you&#39;re using <em>sudo</em> then you need to configure the user to not need a tty to run sudo.</p>
 
-<pre><code>Defaults:username !requiretty</code></pre>
+<pre><code>Defaults:username !requiretty
+</code></pre>
 
-<p>If you can't change this behaviour you can always use the <em>tty</em> feature to tell Rex to spawn a tty.</p>
+<p>If you can&#39;t change this behaviour you can always use the <em>tty</em> feature to tell Rex to spawn a tty.</p>
 
-<pre><code>use Rex -feature => ['1.0', 'tty'];</code></pre>
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;, &#39;tty&#39;];
+</code></pre>
 
 <h4>base</h4>
 
@@ -110,11 +213,11 @@ task "prepare", sub {
 <ul>
 <li>fix rsync with port definition - #520 - Jan</li>
 <li>fixed late group lookup - #521 - Jan</li>
-<li>if the evaluation of the Rexfile was without syntax errors, but don't return a true value, try to evaluate it manually. so is is not needed to return a true value at the end. - fix for #513 - Jan</li>
+<li>if the evaluation of the Rexfile was without syntax errors, but don&#39;t return a true value, try to evaluate it manually. so is is not needed to return a true value at the end. - fix for #513 - Jan</li>
 <li>fixed path resolution for private_key and public_key when used a ~ (tilde) sign. #517 - Jan</li>
-<li>better fix for #521, don't print all servers by rex -T. Also fixed group authentication. - Jan</li>
+<li>better fix for #521, don&#39;t print all servers by rex -T. Also fixed group authentication. - Jan</li>
 <li>fixed #529 - odd number of elements - Jan</li>
-<li>fixed #528 -Amazon list_services, doesn't get all ec2 instances - thanks to David Golovan - Jan</li>
+<li>fixed #528 -Amazon list_services, doesn&#39;t get all ec2 instances - thanks to David Golovan - Jan</li>
 <li>fixed an issue that causes the parser to think the rexfile has an error - Jan</li>
 <li>fixed set_openssh_opt() function to allow multiple options - Jan</li>
 <li>fixed #527 - Rex::Output leaks semaphores and shared memory - Jan</li>
@@ -124,14 +227,69 @@ task "prepare", sub {
 <li>fixed Rex::Box with Net::OpenSSH - Jan</li>
 <li>fixed windows tests - #514 - Jan</li>
 <li>fixed #555 - default for Net::OpenSSH now also spawn a pty. Can be disabled with feature no_tty - Jan</li>
-<li>stop 'profile' before returning from a subroutine. - Andrej Zverev</li>
-<li>Rex::Helper:Run->i_run: check no_path_cleanup before calling get_path - Brian Manning</li>
+<li>stop &#39;profile&#39; before returning from a subroutine. - Andrej Zverev</li>
+<li>Rex::Helper:Run-&gt;i_run: check no_path_cleanup before calling get_path - Brian Manning</li>
 <li>Rex::Commands::MD5: Make Rex use the /sbin/md5 binary on OS X - Brian Manning</li>
-<li>Rex::Commands::User: fix typo in POD (user_group -> user_groups) - Brian Manning</li>
+<li>Rex::Commands::User: fix typo in POD (user_group -&gt; user_groups) - Brian Manning</li>
 <li>fixed a problem if a server group was empty - Jan</li>
 <li>fixed autodie bug for is_symlink function - Jan</li>
-<li>don't redirect stdout 2 times. freebsd don't like it - Jan</li>
+<li>don&#39;t redirect stdout 2 times. freebsd don&#39;t like it - Jan</li>
 <li>fixed is_file() for files with spaces - Jan</li>
 <li>fixed systemd status query - Jan</li>
 <li>Remove hardcoded connection type if Rex is used as library (fix #579) - Ferenc Erki</li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

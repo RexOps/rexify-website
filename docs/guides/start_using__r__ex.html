@@ -1,37 +1,304 @@
-<p>This is a small howto showing the first steps with Rex.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>This is a small howto showing the first steps with Rex.</p>
+
 <h1>Basic Architecture</h1>
-<p><img style="float: right;" src="../../media/docs/archi.png" alt="" width="410" height="272" />Rex is a server orchestration tool that doesn't need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.<br /><br />To use Rex you don't need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.<br /><br />In fact, if you know a little bit perl it won't hurt you.<br /><br />The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.<br /><br />A task is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create rollback scenarios if something went wrong during the execution.</p>
+
+<p><img height="272" src="../../media/docs/archi.png" width="410">Rex is a server orchestration tool that doesn&#39;t need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
+To use Rex you don&#39;t need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.
+In fact, if you know a little bit perl it won&#39;t hurt you.
+The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.
+A task is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create rollback scenarios if something went wrong during the execution.</p>
+
 <h1>Requirements</h1>
-<p>To run Rex you don't need much.</p>
+
+<p>To run Rex you don&#39;t need much.</p>
+
 <h2>Central Master Host</h2>
-<p>You can run Rex from your workstation or on a central master host.<br /><br />For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.<br /><br />On this host you also need some Perl modules installed. If you're using the provided packages or install Rex via cpanm the dependencies will be installed automatically.</p>
+
+<p>You can run Rex from your workstation or on a central master host.
+For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.
+On this host you also need some Perl modules installed. If you&#39;re using the provided packages or install Rex via cpanm the dependencies will be installed automatically.</p>
+
 <p>You can install Rex on a Linux host via a simple one-liner. For other systems please read the instructions on the Get Rex page.</p>
-<pre>$ curl -L https://get.rexify.org | perl - --sudo -n Rex</pre>
-<p>This command will install Rex on your system. <br /><br />We recommend to use our packages from the repository.</p>
+
+<pre><code>$ curl -L https://get.rexify.org | perl - --sudo -n Rex
+</code></pre>
+
+<p>This command will install Rex on your system.
+We recommend to use our packages from the repository.</p>
+
 <h2>Managed Hosts</h2>
+
 <p>On the systems you want to manage you need only two things: a Perl 5 interpreter, and a valid SSH account.</p>
+
 <p>Rex only uses core Perl modules on the remote hosts, but some operating systems (e.g. RHEL/CentOS 7, Fedora 21) might not supply all of them out of the box. In this case you might need to install them first (currently this means the Digest::MD5 module).</p>
+
 <p>You can install this module with <code>yum install perl-Digest-MD5</code>.</p>
-<p>If you want to run administrative tasks on the remote machines, you obviously would need root or sudo access on them.<br /><br /></p>
+
+<p>If you want to run administrative tasks on the remote machines, you obviously would need root or sudo access on them.</p>
+
 <h1>Creating a Rexfile</h1>
+
 <p>First we need to create a new folder to store your Rexfile in it.</p>
-<pre>$ mkdir -p projects/my-first-rex-project</pre>
+
+<pre><code>$ mkdir -p projects/my-first-rex-project
+</code></pre>
+
 <p>Now change into this directory and create a file called Rexfile with the following contents:</p>
-<pre class="perl"><code class="perl">use Rex -feature =&gt; ['1.3'];<br /><br /></code><code class="perl">user "my-user";<br /></code><code class="perl">password "my-password";<br /><br /></code><code class="perl">group myservers =&gt; "mywebserver", "mymailserver", "myfileserver";<br /><br /></code><code class="perl">desc "Get the uptime of all servers";<br /></code><code class="perl">task "uptime", group =&gt; "myservers", sub {<br /></code><code class="perl">&nbsp;&nbsp; my $output = run "uptime";<br /></code><code class="perl">&nbsp;&nbsp; say $output;<br /></code><code class="perl">};</code></pre>
-<p>This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command "uptime".<br /><br />The special first line <code>use Rex -feature =&gt; ['1.3'];</code> enables all features that are available for version 1.3. If you want to know more about feature flags, please read this page.<br /><br />Change into the directory where you just created the Rexfile (in a terminal).</p>
-<pre>$ cd projects/my-first-rex-project<br />$ rex uptime</pre>
+
+<p>``` perl
+use Rex -feature =&gt; [&#39;1.3&#39;];</p>
+
+<p>user &quot;my-user&quot;;
+password &quot;my-password&quot;;</p>
+
+<p>group myservers =&gt; &quot;mywebserver&quot;, &quot;mymailserver&quot;, &quot;myfileserver&quot;;</p>
+
+<p>desc &quot;Get the uptime of all servers&quot;;
+task &quot;uptime&quot;, group =&gt; &quot;myservers&quot;, sub {
+   my $output = run &quot;uptime&quot;;
+   say $output;
+};
+```</p>
+
+<p>This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command &quot;uptime&quot;.
+The special first line <code>use Rex -feature =&gt; [&#39;1.3&#39;];</code> enables all features that are available for version 1.3. If you want to know more about feature flags, please read this page.
+Change into the directory where you just created the Rexfile (in a terminal).</p>
+
+<pre><code>$ cd projects/my-first-rex-project
+$ rex uptime
+</code></pre>
+
 <h2>Adding a second task</h2>
+
 <p>To add a second task, just add the next lines to your Rexfile.</p>
-<pre><code class="perl">desc "Start Apache Service";<br /></code><code class="perl">task "start_apache", group =&gt; "myservers", sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; service "apache2" =&gt; "start";<br /></code><code class="perl">};</code></pre>
-<p>This task will start the service apache2 on all the servers in the myservers group.<br />Display all tasks in a Rexfile<br /><br />If you want to display all tasks in your Rexfile use the following command.</p>
-<pre>$ rex -T<br />Tasks<br />&nbsp; start_apache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start Apache Service<br />&nbsp; uptime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Get the uptime of all servers<br />Server Groups<br />&nbsp; myservers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mywebserver, mymailserver, myfileserver</pre>
+
+<pre><code>desc &quot;Start Apache Service&quot;;
+task &quot;start_apache&quot;, group =&gt; &quot;myservers&quot;, sub {
+    service &quot;apache2&quot; =&gt; &quot;start&quot;;
+};
+</code></pre>
+
+<p>This task will start the service apache2 on all the servers in the myservers group.
+Display all tasks in a Rexfile
+If you want to display all tasks in your Rexfile use the following command.</p>
+
+<pre><code>$ rex -T
+Tasks
+  start_apache                   Start Apache Service
+  uptime                         Get the uptime of all servers
+Server Groups
+  myservers                       mywebserver, mymailserver, myfileserver
+</code></pre>
+
 <h2>Authentication</h2>
-<p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.<br /><br />To use key authentication just define your private and public key inside the Rexfile.</p>
-<pre><code class="perl">user "my-user";<br /></code><code class="perl">private_key "/home/user/.ssh/id_rsa";<br /></code><code class="perl">public_key "/home/user/.ssh/id_rsa.pub";<br /></code><code class="perl">key_auth;</code></pre>
+
+<p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.
+To use key authentication just define your private and public key inside the Rexfile.</p>
+
+<pre><code>user &quot;my-user&quot;;
+private_key &quot;/home/user/.ssh/id_rsa&quot;;
+public_key &quot;/home/user/.ssh/id_rsa.pub&quot;;
+key_auth;
+</code></pre>
+
 <p>It is also possible to use your keys with a passphrase. Just add it to your Rexfile.</p>
-<pre><code class="perl">user "my-user";<br /></code><code class="perl">private_key "/home/user/.ssh/id_rsa";<br /></code><code class="perl">public_key "/home/user/.ssh/id_rsa.pub";<br /></code><code class="perl">password "key-passphrase";<br /></code><code class="perl">key_auth;</code></pre>
-<p>If you don't want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line key_auth;.</p>
+
+<pre><code>user &quot;my-user&quot;;
+private_key &quot;/home/user/.ssh/id_rsa&quot;;
+public_key &quot;/home/user/.ssh/id_rsa.pub&quot;;
+password &quot;key-passphrase&quot;;
+key_auth;
+</code></pre>
+
+<p>If you don&#39;t want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line key_auth;.</p>
+
 <h2>Managing Services</h2>
-<p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.<br /><br />In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
-<pre><code class="perl"># Rexfile<br /></code><code class="perl">use Rex -feature =&gt; ['1.3'];<br /><br /></code><code class="perl">user "root";<br /></code><code class="perl">private_key "/root/.ssh/id_rsa";<br /></code><code class="perl">public_key "/root/.ssh/id_rsa.pub";<br /><br /></code><code class="perl">group all_servers =&gt; "srv[001..150]";<br /><br /></code><code class="perl">task "setup_ntp", group =&gt; "all_servers", sub {<br /></code><code class="perl">&nbsp;&nbsp; # first we will install the package<br /></code><code class="perl">&nbsp;&nbsp; pkg "ntpd",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "present";</code><br /><code class="perl"><br />&nbsp;&nbsp; # then we will upload a configuration file.<br /></code><code class="perl">&nbsp;&nbsp; # the configuration file is located in a subdirectory files/etc.<br /></code><code class="perl">&nbsp;&nbsp; file "/etc/ntp.conf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source&nbsp;&nbsp;&nbsp; =&gt; "files/etc/ntp.conf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on_change =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; service ntpd =&gt; "restart";<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</code><br /><code class="perl"><br />&nbsp;&nbsp; # now we register the service to start at boot time.<br /></code><code class="perl">&nbsp;&nbsp; service "ntpd",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp; ensure =&gt; "started";<br /></code><code class="perl">};</code></pre>
-<p>That's all.<br /><br />This task will now install ntpd on your servers, upload a configuration file and start the service.<br /><br />You don't need to worry about the order of your commands. Rex will always executes your commands from top to bottom.<br /><br />To read more about <a href="../../docs/guides/using_modules_and_templates.html">using modules and templates please read this howto</a>.</p>
+
+<p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.
+In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
+
+<pre><code># Rexfile
+use Rex -feature =&gt; [&#39;1.3&#39;];
+
+user &quot;root&quot;;
+private_key &quot;/root/.ssh/id_rsa&quot;;
+public_key &quot;/root/.ssh/id_rsa.pub&quot;;
+
+group all_servers =&gt; &quot;srv[001..150]&quot;;
+
+task &quot;setup_ntp&quot;, group =&gt; &quot;all_servers&quot;, sub {
+   # first we will install the package
+   pkg &quot;ntpd&quot;,
+     ensure =&gt; &quot;present&quot;;
+
+   # then we will upload a configuration file.
+   # the configuration file is located in a subdirectory files/etc.
+   file &quot;/etc/ntp.conf&quot;,
+      source    =&gt; &quot;files/etc/ntp.conf&quot;,
+      on_change =&gt; sub {
+         # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
+         service ntpd =&gt; &quot;restart&quot;;
+      };
+
+   # now we register the service to start at boot time.
+   service &quot;ntpd&quot;,
+     ensure =&gt; &quot;started&quot;;
+};
+</code></pre>
+
+<p>That&#39;s all.
+This task will now install ntpd on your servers, upload a configuration file and start the service.
+You don&#39;t need to worry about the order of your commands. Rex will always executes your commands from top to bottom.
+To read more about <a href="../../docs/guides/using_modules_and_templates.html">using modules and templates please read this howto</a>.</p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

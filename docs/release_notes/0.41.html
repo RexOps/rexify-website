@@ -1,10 +1,110 @@
-<h1>Common</h1>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <h1>Common</h1>
+
 <ul>
 <li>Function to get the last output of a command that uses run() #104</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard0">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard0">task "prepare", "mysystem01", sub {
-    install "ntp";
+
+<p>Copy to clipboard</p>
+
+<pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
+    install &quot;ntp&quot;;
     say last_command_output;
 };
 </code></pre>
@@ -12,74 +112,86 @@
 <ul>
 <li>Refactored Cron module, added environment variable support to cron</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard1">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard1">task "prepare", "mysystem01", sub {
+
+<p>Copy to clipboard</p>
+
+<pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
    my @env = cron env =&gt; user =&gt; list;
    cron env =&gt; user =&gt; add =&gt; {
-      MYVAR =&gt; "foo",
+      MYVAR =&gt; &quot;foo&quot;,
    };
-   cron env =&gt; user =&gt; delete =&gt; "MYVAR";
+   cron env =&gt; user =&gt; delete =&gt; &quot;MYVAR&quot;;
 };
 </code></pre>
 
 <ul>
 <li>New sync module</li>
 </ul>
-<p>This module doesn't use rsync, so it works with sudo and Windows, too. And it is also possible to use it with templates. If a file should be used as a template, you have to name it somefile.ext.tpl.</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard2">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard2">task "prepare", "mysystem01", sub {
-   # upload directory recursively to remote system. 
-   sync_up "/local/directory", "/remote/directory";
 
-   sync_up "/local/directory", "/remote/directory", {
+<p>This module doesn&#39;t use rsync, so it works with sudo and Windows, too. And it is also possible to use it with templates. If a file should be used as a template, you have to name it somefile.ext.tpl.</p>
+
+<p>Copy to clipboard</p>
+
+<pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
+   # upload directory recursively to remote system. 
+   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;;
+
+   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;, {
       # setting custom file permissions for every file
       files =&gt; {
-         owner =&gt; "foo",
-         group =&gt; "bar",
+         owner =&gt; &quot;foo&quot;,
+         group =&gt; &quot;bar&quot;,
          mode  =&gt; 600,
       },
       # setting custom directory permissions for every directory
       directories =&gt; {
-         owner =&gt; "foo",
-         group =&gt; "bar",
+         owner =&gt; &quot;foo&quot;,
+         group =&gt; &quot;bar&quot;,
          mode  =&gt; 700,
       },
    };
 
    # download a directory recursively from the remote system to the local machine
-   sync_down "/remote/directory", "/local/directory";
+   sync_down &quot;/remote/directory&quot;, &quot;/local/directory&quot;;
 };
 </code></pre>
 
 <ul>
 <li>added Hardware::VirtInfo module #119 - Franky Van Liedekerke</li>
 </ul>
+
 <p>To get a list of all returned information:</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard3">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard3">use Data::Dumper;
+
+<p>Copy to clipboard</p>
+
+<pre><code>use Data::Dumper;
 my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
 print Dumper(\%hw_info);
 </code></pre>
 
 <p>To get the hypervisor:</p>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard4">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard4">task "info", "mysystem01", sub {
+
+<p>Copy to clipboard</p>
+
+<pre><code>task &quot;info&quot;, &quot;mysystem01&quot;, sub {
    my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
 
-   say "Role: " . $hw_info{VirtInfo}-&gt;{virtualization_role};
-   say "Type: " . $hw_info{VirtInfo}-&gt;{virtualization_type};
+   say &quot;Role: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_role};
+   say &quot;Type: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_type};
 };
 </code></pre>
 
 <ul>
-<li>new keyword "case"</li>
+<li>new keyword &quot;case&quot;</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard5">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard5">task "prepare", "myserver01", sub {
+
+<p>Copy to clipboard</p>
+
+<pre><code>task &quot;prepare&quot;, &quot;myserver01&quot;, sub {
    my $package = case operating_system, {
-                     Debian =&gt; "vim",
-                     CentOS =&gt; "vim-enhanced",
-                     default =&gt; "vim",
+                     Debian =&gt; &quot;vim&quot;,
+                     CentOS =&gt; &quot;vim-enhanced&quot;,
+                     default =&gt; &quot;vim&quot;,
                  };
 
    install $package;
@@ -87,56 +199,49 @@ print Dumper(\%hw_info);
 </code></pre>
 
 <ul>
-<li>
-<p>Refactored net_ssh2_exec() function - Peter H. Ezetta</p>
-</li>
-<li>
-<p>Refactored local command execution to use IPC::Open3</p>
-</li>
-<li>
-<p>Changed the is_installed() function for Debian to use the more accurate get_installed function. - Samuele Tognini</p>
-</li>
-<li>
-<p>'-t' option should work with '-e' option. <code>rex -t 2 -H "hostA hostB" -e 'run "sleep 10"; say run "uptime"'</code> should run in parallel. - Tokuhiro Matsuno</p>
-</li>
-<li>
-<p>Fixed loading of modules in $HOME/.rex/recipes</p>
-</li>
-<li>
-<p>Don't calculate MD5 sums if there is no on_change hook for file() function - Franky Van Liedekerke</p>
-</li>
-<li>
-<p>More specific error messages for authentication - Franky Van Liedekerke</p>
-</li>
-<li>
-<p>Cloud/Amazon: support multiple security groups - RenatoCRON</p>
-</li>
+<li><p>Refactored net_ssh2_exec() function - Peter H. Ezetta</p></li>
+<li><p>Refactored local command execution to use IPC::Open3</p></li>
+<li><p>Changed the is_installed() function for Debian to use the more accurate get_installed function. - Samuele Tognini</p></li>
+<li><p>&#39;-t&#39; option should work with &#39;-e&#39; option. <code>rex -t 2 -H &quot;hostA hostB&quot; -e &#39;run &quot;sleep 10&quot;; say run &quot;uptime&quot;&#39;</code> should run in parallel. - Tokuhiro Matsuno</p></li>
+<li><p>Fixed loading of modules in $HOME/.rex/recipes</p></li>
+<li><p>Don&#39;t calculate MD5 sums if there is no on_change hook for file() function - Franky Van Liedekerke</p></li>
+<li><p>More specific error messages for authentication - Franky Van Liedekerke</p></li>
+<li><p>Cloud/Amazon: support multiple security groups - RenatoCRON</p></li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard6">Copy to clipboard</div>
-<pre><code class="perl" id="clipboard6">   $instance = cloud_instance create =&gt; {
-             image_id =&gt; "ami-5187bb25",
-             name     =&gt; "test01",
-             key      =&gt; "thekey",
-             zone     =&gt; "eu-west-1a",
-             type     =&gt; "m1.large",
-             security_groups =&gt; ["alltcpfoo", "default"],
+
+<p>Copy to clipboard</p>
+
+<pre><code>   $instance = cloud_instance create =&gt; {
+             image_id =&gt; &quot;ami-5187bb25&quot;,
+             name     =&gt; &quot;test01&quot;,
+             key      =&gt; &quot;thekey&quot;,
+             zone     =&gt; &quot;eu-west-1a&quot;,
+             type     =&gt; &quot;m1.large&quot;,
+             security_groups =&gt; [&quot;alltcpfoo&quot;, &quot;default&quot;],
           };
 </code></pre>
 
 <h1>Documentation</h1>
+
 <ul>
 <li>Fix pod about pubkey authentication - Joris</li>
 </ul>
+
 <h1>Rex/Gearman</h1>
+
 <ul>
 <li>Fixed get_exit_codes use flag</li>
 </ul>
+
 <h1>Rex/Boxes</h1>
+
 <ul>
 <li>Creation order of VMs can now be defined in YAML file</li>
 </ul>
-<div class="btn btn-default copy-button pull-right" data-clipboard-target="clipboard7">Copy to clipboard</div>
-<pre><code class="yaml">type: VBox
+
+<p>Copy to clipboard</p>
+
+<pre><code>type: VBox
 #vbox:
 #   headless: 1
 vms:
@@ -145,20 +250,75 @@ vms:
       network:
          1:
             type: bridged
-            bridge: "en0: Ethernet"
+            bridge: &quot;en0: Ethernet&quot;
       setup: setup_memcache
    -  name: db01
       url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
       network:
          1:
             type: bridged
-            bridge: "en0: Ethernet"
+            bridge: &quot;en0: Ethernet&quot;
       setup: setup_db
    -  name: www01
       url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
       network:
          1:
             type: bridged
-            bridge: "en0: Ethernet"
+            bridge: &quot;en0: Ethernet&quot;
       setup: setup_frontend
 </code></pre>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

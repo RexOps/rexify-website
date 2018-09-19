@@ -1,12 +1,261 @@
-<p>Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.</p>
+
 <p>Rex comes with a hardware gathering module. To display all the things Rex knows about the environment your can create a test task that just dumps all the information.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">task "dump-info", sub {<br /></code><code class="perl">&nbsp;&nbsp; dump_system_information;<br /></code><code class="perl">};</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+
+task &quot;dump-info&quot;, sub {
+   dump_system_information;
+};
+</code></pre>
+
 <p>This will print out everything Rex knows about the remote system. You can use these information inside your Rexfile or a template.</p>
+
 <p>A sample output (CentOS 5.9 running inside KVM)</p>
-<pre>$kernelversion = '#1 SMP Tue May 21 15:29:55 EDT 2013'<br />$memory_cached = '127'<br />$memory_total = '497'<br />$kernelrelease = '2.6.18-348.6.1.el5'<br />$Kernel = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelversion =&gt; '#1 SMP Tue May 21 15:29:55 EDT 2013'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; architecture =&gt; 'x86_64'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernel =&gt; 'Linux'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelrelease =&gt; '2.6.18-348.6.1.el5'<br />&nbsp;&nbsp; }<br />$hostname = 'centos-5-amd64.rexify.org'<br />$operatingsystem = 'CentOS'<br />$operatingsystemrelease = '5.9'<br />$architecture = 'x86_64'<br />$domain = ''<br />$eth0_mac = '52:54:00:E8:69:15'<br />$kernel = 'Linux'<br />$swap_free = '1023'<br />$VirtInfo = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtualization_role =&gt; 'guest'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtualization_type =&gt; 'kvm'<br />&nbsp;&nbsp; }<br />$memory_shared = '0'<br />$Network = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; networkdevices =&gt; [<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'eth0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; networkconfiguration =&gt; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eth0 =&gt; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; broadcast =&gt; '192.168.122.255'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ip =&gt; '192.168.122.22'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netmask =&gt; '255.255.255.0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mac =&gt; '52:54:00:E8:69:15'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp; }<br />$memory_used = '218'<br />$kernelname = 'Linux'<br />$Swap = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; free =&gt; '1023'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; used =&gt; '0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total =&gt; '1023'<br />&nbsp;&nbsp; }<br />$swap_total = '1023'<br />$memory_buffers = '12'<br />$eth0_ip = '192.168.122.22'<br />$swap_used = '0'<br />$memory_free = '278'<br />$manufacturer = 'Bochs'<br />$Memory = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shared =&gt; '0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffers =&gt; '12'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; free =&gt; '278'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; used =&gt; '218'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total =&gt; '497'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cached =&gt; '127'<br />&nbsp;&nbsp; }<br />$eth0_broadcast = '192.168.122.255'<br />$eth0_netmask = '255.255.255.0'<br />$Host = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain =&gt; ''<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; manufacturer =&gt; 'Bochs'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernelname =&gt; 'Linux'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hostname =&gt; 'centos-5-amd64.rexify.org'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; operatingsystemrelease =&gt; '5.9'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; operatingsystem =&gt; 'CentOS'<br />&nbsp;&nbsp; }</pre>
+
+<pre><code>$kernelversion = &#39;#1 SMP Tue May 21 15:29:55 EDT 2013&#39;
+$memory_cached = &#39;127&#39;
+$memory_total = &#39;497&#39;
+$kernelrelease = &#39;2.6.18-348.6.1.el5&#39;
+$Kernel = {
+      kernelversion =&gt; &#39;#1 SMP Tue May 21 15:29:55 EDT 2013&#39;
+      architecture =&gt; &#39;x86_64&#39;
+      kernel =&gt; &#39;Linux&#39;
+      kernelrelease =&gt; &#39;2.6.18-348.6.1.el5&#39;
+   }
+$hostname = &#39;centos-5-amd64.rexify.org&#39;
+$operatingsystem = &#39;CentOS&#39;
+$operatingsystemrelease = &#39;5.9&#39;
+$architecture = &#39;x86_64&#39;
+$domain = &#39;&#39;
+$eth0_mac = &#39;52:54:00:E8:69:15&#39;
+$kernel = &#39;Linux&#39;
+$swap_free = &#39;1023&#39;
+$VirtInfo = {
+      virtualization_role =&gt; &#39;guest&#39;
+      virtualization_type =&gt; &#39;kvm&#39;
+   }
+$memory_shared = &#39;0&#39;
+$Network = {
+      networkdevices =&gt; [
+         &#39;eth0&#39;
+      ]
+      networkconfiguration =&gt; {
+         eth0 =&gt; {
+            broadcast =&gt; &#39;192.168.122.255&#39;
+            ip =&gt; &#39;192.168.122.22&#39;
+            netmask =&gt; &#39;255.255.255.0&#39;
+            mac =&gt; &#39;52:54:00:E8:69:15&#39;
+         }
+      }
+   }
+$memory_used = &#39;218&#39;
+$kernelname = &#39;Linux&#39;
+$Swap = {
+      free =&gt; &#39;1023&#39;
+      used =&gt; &#39;0&#39;
+      total =&gt; &#39;1023&#39;
+   }
+$swap_total = &#39;1023&#39;
+$memory_buffers = &#39;12&#39;
+$eth0_ip = &#39;192.168.122.22&#39;
+$swap_used = &#39;0&#39;
+$memory_free = &#39;278&#39;
+$manufacturer = &#39;Bochs&#39;
+$Memory = {
+      shared =&gt; &#39;0&#39;
+      buffers =&gt; &#39;12&#39;
+      free =&gt; &#39;278&#39;
+      used =&gt; &#39;218&#39;
+      total =&gt; &#39;497&#39;
+      cached =&gt; &#39;127&#39;
+   }
+$eth0_broadcast = &#39;192.168.122.255&#39;
+$eth0_netmask = &#39;255.255.255.0&#39;
+$Host = {
+      domain =&gt; &#39;&#39;
+      manufacturer =&gt; &#39;Bochs&#39;
+      kernelname =&gt; &#39;Linux&#39;
+      hostname =&gt; &#39;centos-5-amd64.rexify.org&#39;
+      operatingsystemrelease =&gt; &#39;5.9&#39;
+      operatingsystem =&gt; &#39;CentOS&#39;
+   }
+</code></pre>
+
 <p>To use these information inside the Rexfile you can query them with the get_system_information function or use the methods from the connection object</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">task "get_hostname", sub {<br /></code><code class="perl">&nbsp;&nbsp; my %info = get_system_information;<br /></code><code class="perl">&nbsp;&nbsp; say $info{hostname} . "." . $info{domain};<br /></code><code class="perl">};<br /><br /></code><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">task "prepare", sub {<br /></code><code class="perl">&nbsp;&nbsp; my $libpath = case connection-&gt;server-&gt;architecture,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "i386"&nbsp;&nbsp; =&gt; "/usr/lib",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "x86_64" =&gt; "/usr/lib64";<br /></code><code class="perl">};</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+
+task &quot;get_hostname&quot;, sub {
+   my %info = get_system_information;
+   say $info{hostname} . &quot;.&quot; . $info{domain};
+};
+
+use Rex -feature =&gt; [&#39;1.0&#39;];
+
+task &quot;prepare&quot;, sub {
+   my $libpath = case connection-&gt;server-&gt;architecture,
+                     &quot;i386&quot;   =&gt; &quot;/usr/lib&quot;,
+                     &quot;x86_64&quot; =&gt; &quot;/usr/lib64&quot;;
+};
+</code></pre>
+
 <h2>Using environment information inside templates</h2>
+
 <p>You can also use these information inside your template. For example if you want to add the ip address of eth0 or the hostname into a file or change settings of an application based on memory size.</p>
-<pre>Listen &lt;%= $eth0_ip %&gt;:80</pre>
-<p>&nbsp;</p>
+
+<p>Listen &lt;%= $eth0_ip %&gt;:80</p>
+
+<p> </p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

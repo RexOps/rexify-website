@@ -1,142 +1,274 @@
-         <p>These are the changes in 0.47 release.</p>
-        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.47 release.</p>
+
+<p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
 
 <h2>Security</h2>
+
 <ul>
-  <li>
-    <p>Use https to communicate with Amazon (Cloud).</p>
-  </li>
+<li>Use https to communicate with Amazon (Cloud).</li>
 </ul>
 
 <h2>Rex::Test</h2>
-<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.
-  </p>
+
+<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.</p>
 
 <ul>
-  <li>
-    <p>Rex::Box now also works with KVM</p>
+<li><p>Rex::Box now also works with KVM</p>
 
-    <pre><code class="perl">use Rex::Test::Base;
+<pre><code>use Rex::Test::Base;
     use Data::Dumper;
     use Rex -base;
 
-    set box =&gt; "KVM";
 
-    test {
-      my $t = shift;
-
-      $t-&gt;name("ubuntu test");
-
-      $t-&gt;base_vm("http://box.rexify.org/box/ubuntu-server-12.10-amd64.img");
-      $t-&gt;vm_auth(user =&gt; "root", password =&gt; "box");
-
-      $t-&gt;run_task("setup");
-
-      $t-&gt;has_package("vim");
-      $t-&gt;has_package("ntp");
-      $t-&gt;has_package("unzip");
-      $t-&gt;has_file("/etc/ntp.conf");
-      $t-&gt;has_service_running("ntp");
-      $t-&gt;has_content("/etc/passwd", qr{root:x:0:}ms);
-
-      run "ls -l";
-      $t-&gt;ok($? == 0, "ls -l returns success.");
-
-      $t-&gt;finish;
-    };
-
-    1;</code></pre>
+<pre><code>set box =&amp;gt; &quot;KVM&quot;;
 
 
-  </li>
+test {
+  my $t = shift;
+
+
+  $t-&amp;gt;name(&quot;ubuntu test&quot;);
+
+
+  $t-&amp;gt;base_vm(&quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.img&quot;);
+  $t-&amp;gt;vm_auth(user =&amp;gt; &quot;root&quot;, password =&amp;gt; &quot;box&quot;);
+
+
+  $t-&amp;gt;run_task(&quot;setup&quot;);
+
+
+  $t-&amp;gt;has_package(&quot;vim&quot;);
+  $t-&amp;gt;has_package(&quot;ntp&quot;);
+  $t-&amp;gt;has_package(&quot;unzip&quot;);
+  $t-&amp;gt;has_file(&quot;/etc/ntp.conf&quot;);
+  $t-&amp;gt;has_service_running(&quot;ntp&quot;);
+  $t-&amp;gt;has_content(&quot;/etc/passwd&quot;, qr{root:x:0:}ms);
+
+
+  run &quot;ls -l&quot;;
+  $t-&amp;gt;ok($? == 0, &quot;ls -l returns success.&quot;);
+
+
+  $t-&amp;gt;finish;
+};
+
+
+1;
+</code></pre>
+
+</code></pre></li>
 </ul>
 
 <h2>Base</h2>
 
 <ul>
-  <li>
-    <p>
-      Read server groups from xml file - nathanIL
-    </p>
-    <pre><code class="perl">use Rex::Group::Lookup::XML;
-group_xml "file.xml";</code></pre>
-    <pre><code class="xml">&lt;configuration&gt;
-   &lt;group name="database"&gt;
-   		&lt;server name="machine01" user="root" password="foob4r" sudo="true" hdd="300" loc="/opt" /&gt;
+<li><p>Read server groups from xml file - nathanIL</p>
+
+<pre><code>use Rex::Group::Lookup::XML;
+group_xml &quot;file.xml&quot;;
+
+
+&lt;configuration&gt;
+   &lt;group name=&quot;database&quot;&gt;
+        &lt;server name=&quot;machine01&quot; user=&quot;root&quot; password=&quot;foob4r&quot; sudo=&quot;true&quot; hdd=&quot;300&quot; loc=&quot;/opt&quot; /&gt;
    &lt;/group&gt;
-   &lt;group name="application"&gt;
-   		&lt;server name="machine01" user="root" password="foob4r" sudo="true" hdd="50" loc="/export" /&gt;
-   		&lt;server name="machine02" user="root" password="foob5r" sudo="true"/&gt;
+   &lt;group name=&quot;application&quot;&gt;
+        &lt;server name=&quot;machine01&quot; user=&quot;root&quot; password=&quot;foob4r&quot; sudo=&quot;true&quot; hdd=&quot;50&quot; loc=&quot;/export&quot; /&gt;
+        &lt;server name=&quot;machine02&quot; user=&quot;root&quot; password=&quot;foob5r&quot; sudo=&quot;true&quot;/&gt;
    &lt;/group&gt;
-   &lt;group name="profiler"&gt;
-   		&lt;server name="machine03" user="root" password="blue123"/&gt;
+   &lt;group name=&quot;profiler&quot;&gt;
+        &lt;server name=&quot;machine03&quot; user=&quot;root&quot; password=&quot;blue123&quot;/&gt;
    &lt;/group&gt;
-&lt;/configuration&gt;</code></pre>
-  </li>
-  <li>
-    <p>It is now possible to define <b>before</b>, <b>around</b> and <b>after</b> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
-    <pre><code class="perl">before ALL => sub {}</code></pre>
-  </li>
-  <li>
-    <p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
-    <pre><code class="perl">task "prepare", sub {
-   service "apache2",
-     ensure  =&gt; "started",
-     start   =&gt; "/usr/local/bin/httpd -f /etc/my/httpd.conf",
-     stop    =&gt; "killall httpd",
-     status  =&gt; "ps -efww | grep httpd",
-     restart =&gt; "killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf",
-     reload  =&gt; "killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf";
- };</code></pre>
-  </li>
-  <li>
-    <p>Syntax enhancement of <b>group</b> command #369 - Jens Berthold</p>
-    <pre><code class="perl">group "g1", "srv1" => { user => "other" }, "srv2";</code></pre>
-  <li>
-    <p>Package-Management with pkgng on FreeBSD 10</p>
-  </li>
-  <li>
-    <p>Amazon Linux is now detected properly.</p>
-  </li>
-  <li>
-    <p>Added MacOSX (Darwin) Network inventory module</p>
-  </li>
-  <li>
-    <p>Ident task description when running -T - Nathan Abu</p>
-  </li>
-  <li>
-    <p>added exclude option to sync commands - Cameron Daniel</p>
-  </li>
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p>It is now possible to define <strong>before</strong>, <strong>around</strong> and <strong>after</strong> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
+
+<pre><code>before ALL =&gt; sub {}
+</code></pre></li>
+<li><p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
+
+<pre><code>task &quot;prepare&quot;, sub {
+   service &quot;apache2&quot;,
+     ensure  =&gt; &quot;started&quot;,
+     start   =&gt; &quot;/usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+     stop    =&gt; &quot;killall httpd&quot;,
+     status  =&gt; &quot;ps -efww | grep httpd&quot;,
+     restart =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+     reload  =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;;
+ };
+</code></pre></li>
+<li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
+
+<pre><code>group &quot;g1&quot;, &quot;srv1&quot; =&gt; { user =&gt; &quot;other&quot; }, &quot;srv2&quot;;
+</code></pre></li>
+<li><p>Package-Management with pkgng on FreeBSD 10</p></li>
+<li><p>Amazon Linux is now detected properly.</p></li>
+<li><p>Added MacOSX (Darwin) Network inventory module</p></li>
+<li><p>Ident task description when running -T - Nathan Abu</p></li>
+<li><p>added exclude option to sync commands - Cameron Daniel</p></li>
 </ul>
 
 <h2>Bugfixes</h2>
+
 <ul>
-  <li>
-    <p>
-      Update default VNC listen address for KVM machines - FErki
-    </p>
-  </li>
-  <li>
-    <p>Fixed two problems where rsync can't authenticate on the remote host</p>
-  </li>
-  <li>
-    <p>Fixed run() command when used with callback and environment - alex1line</p>
-  </li>
-  <li>
-    <p>shell_path variable is not checked for empty value before use #376 - Ilya Evseev</p>
-  </li>
-  <li>
-    <p>Avoid warning if there's nothing to upgrade (update_system) - FErki</p>
-  </li>
-  <li>
-    <p>Fixed compatibility with perl 5.20. - FErki</p>
-  </li>
-  <li>
-    <p>Fixed a problem in the user management module if no /etc/shadow file was present.</p>
-  </li>
-  <li>
-    <p>Fixed inline templates in modules</p>
-  </li>
+<li><p>Update default VNC listen address for KVM machines - FErki</p></li>
+<li><p>Fixed two problems where rsync can&#39;t authenticate on the remote host</p></li>
+<li><p>Fixed run() command when used with callback and environment - alex1line</p></li>
+<li><p>shell_path variable is not checked for empty value before use #376 - Ilya Evseev</p></li>
+<li><p>Avoid warning if there&#39;s nothing to upgrade (update_system) - FErki</p></li>
+<li><p>Fixed compatibility with perl 5.20. - FErki</p></li>
+<li><p>Fixed a problem in the user management module if no /etc/shadow file was present.</p></li>
+<li><p>Fixed inline templates in modules</p></li>
 </ul>
-<!-- end -->
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

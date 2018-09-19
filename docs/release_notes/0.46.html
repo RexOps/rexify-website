@@ -1,228 +1,361 @@
-         <p>These are the changes in 0.46 release.</p>
-        <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.46 release.</p>
+
+<p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
 
 <h2>Incompatible Changes</h2>
-<p>We're sorry, but this release comes with some incompatible changes. The most
-  changes won't effect the majority of users, but we needed to change those things
-  to fix some nasty things and to be more flexible in the future.</p>
+
+<p>We&#39;re sorry, but this release comes with some incompatible changes. The most changes won&#39;t effect the majority of users, but we needed to change those things to fix some nasty things and to be more flexible in the future.</p>
+
 <ul>
-  <li>Reporting: The report format changed. The output and the internal API of the reporting
-     interface changed. With this change we are more flexible for future improvements.</li>
-  <li>User module: We changed the creation of home directories to follow the policy of the target system.</li>
-  <li>Core: Caching is now active by default. This might break things
-    if you're using chroot() inside a task, to change to another system. (For example to chroot from a debian system into a redhat system.)</li>
+<li>Reporting: The report format changed. The output and the internal API of the reporting interface changed. With this change we are more flexible for future improvements.</li>
+<li>User module: We changed the creation of home directories to follow the policy of the target system.</li>
+<li>Core: Caching is now active by default. This might break things if you&#39;re using chroot() inside a task, to change to another system. (For example to chroot from a debian system into a redhat system.)</li>
 </ul>
 
 <h2>Rex::Test</h2>
-<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.
-  Rex::Test uses Rex::Box to create the VM, but currently it only supports VirtualBox VMs.</p>
 
-<p>To create a test just create a new file inside a <i>t</i> directory: <i>t/base.t</i>.</p>
+<p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers. Rex::Test uses Rex::Box to create the VM, but currently it only supports VirtualBox VMs.</p>
 
-<pre><code class="perl">use Rex::Test::Base;
+<p>To create a test just create a new file inside a <em>t</em> directory: <em>t/base.t</em>.</p>
+
+<pre><code>use Rex::Test::Base;
 use Data::Dumper;
 use Rex -base;
 
 test {
   my $t = shift;
 
-  $t-&gt;name("ubuntu test");
+  $t-&gt;name(&quot;ubuntu test&quot;);
 
-  $t-&gt;base_vm("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
-  $t-&gt;vm_auth(user =&gt; "root", password =&gt; "box");
+  $t-&gt;base_vm(&quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&quot;);
+  $t-&gt;vm_auth(user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot;);
 
-  $t-&gt;run_task("setup");
+  $t-&gt;run_task(&quot;setup&quot;);
 
-  $t-&gt;has_package("vim");
-  $t-&gt;has_package("ntp");
-  $t-&gt;has_package("unzip");
-  $t-&gt;has_file("/etc/ntp.conf");
-  $t-&gt;has_service_running("ntp");
-  $t-&gt;has_content("/etc/passwd", qr{root:x:0:}ms);
+  $t-&gt;has_package(&quot;vim&quot;);
+  $t-&gt;has_package(&quot;ntp&quot;);
+  $t-&gt;has_package(&quot;unzip&quot;);
+  $t-&gt;has_file(&quot;/etc/ntp.conf&quot;);
+  $t-&gt;has_service_running(&quot;ntp&quot;);
+  $t-&gt;has_content(&quot;/etc/passwd&quot;, qr{root:x:0:}ms);
 
-  run "ls -l";
-  $t-&gt;ok($? == 0, "ls -l returns success.");
+  run &quot;ls -l&quot;;
+  $t-&gt;ok($? == 0, &quot;ls -l returns success.&quot;);
 
   $t-&gt;finish;
 };
 
-1;</code></pre>
+1;
+</code></pre>
 
 <h2>Rex::Box</h2>
+
 <p>Create clean development environments for your projects. Test your software in a production like environment.</p>
-<p>With Rex/Boxes you can easily create your test environment with VirtualBox.
-  You can use prebuild VM Images or roll your own. Read the <a href="http://box.rexify.org/guide">quickstart guide</a> to create your own environment in minutes.</p>
+
+<p>With Rex/Boxes you can easily create your test environment with VirtualBox. You can use prebuild VM Images or roll your own. Read the <a href="http://box.rexify.org/guide">quickstart guide</a> to create your own environment in minutes.</p>
+
 <ul>
-  <li>
-    <p>This release brings support for KVM boxes. The KVM Rex::Box provider also allows the creation of Boxes on remote systems.</p>
-<pre><code class="perl"># Rexfile
-set box =&gt; "KVM";
+<li><p>This release brings support for KVM boxes. The KVM Rex::Box provider also allows the creation of Boxes on remote systems.</p>
+
+<pre><code># Rexfile
+set box =&gt; &quot;KVM&quot;;
+
 
 #
 # CALL:
 # rex init --name=gpw --url=http://domain.tld/ubuntu-server-12.10-amd64.qcow2
-desc "Initialize and start the VM: rex init --name=vmname [--url=http://...]";
-task "init", make {
+desc &quot;Initialize and start the VM: rex init --name=vmname [--url=http://...]&quot;;
+task &quot;init&quot;, make {
   my $param = shift;
+
 
   box {
     my ($box) = @_;
     $box-&gt;name( $param-&gt;{name} );
 
-    # where to download the base image
-    $box-&gt;url( $param-&gt;{url} );
 
-    # default is nat
-    $box-&gt;network(
-      1 =&gt; {
-        type =&gt; "nat",
-      },
-      2 =&gt; {
-        type   =&gt; "bridged",
-        bridge =&gt; "br1",
-      }
-    );
+<pre><code># where to download the base image
+$box-&amp;gt;url( $param-&amp;gt;{url} );
 
-    # define the authentication to the box
-    # if you're downloading one from box.rexify.org this is the default.
-    $box-&gt;auth(
-      user     =&gt; "root",
-      password =&gt; "box",
-    );
 
-    # if you want to provision the machine,
-    # you can define the tasks to do that
-    $box-&gt;setup(qw/install_webserver/);
+# default is nat
+$box-&amp;gt;network(
+  1 =&amp;gt; {
+    type =&amp;gt; &quot;nat&quot;,
+  },
+  2 =&amp;gt; {
+    type   =&amp;gt; &quot;bridged&quot;,
+    bridge =&amp;gt; &quot;br1&quot;,
+  }
+);
+
+
+# define the authentication to the box
+# if you&#39;re downloading one from box.rexify.org this is the default.
+$box-&amp;gt;auth(
+  user     =&amp;gt; &quot;root&quot;,
+  password =&amp;gt; &quot;box&quot;,
+);
+
+
+# if you want to provision the machine,
+# you can define the tasks to do that
+$box-&amp;gt;setup(qw/install_webserver/);
+</code></pre>
+
   };
 
-};</code></pre>
-  </li>
+
+};
+</code></pre></li>
 </ul>
 
+<h2>Cloud</h2>
 
-         <h2>Cloud</h2>
-         <p>Changes in the Cloud API</p>
-<ul class="simple-list">
-   <li>
-     <p>Support for RackSpace via <a href="#">modules</a>.</p>
-     <ul>
-       <li>
-         <p>Authentication and endpoint.</p>
-<pre><code class="perl">cloud_service "RackSpace";
-cloud_auth "user", "key";
-cloud_region "IAD";
-</code></pre>
+<p>Changes in the Cloud API</p>
 
-       </li>
-       <li><p>Creating volumes and vms.</p>
+<ul>
+<li><p>Support for RackSpace via <a href="#">modules</a>.</p>
 
-<pre><code class="perl">my $vol_id = cloud_volume create =&gt; { size =&gt; 1, };
+<ul>
+<li><p>Authentication and endpoint.</p>
+
+<pre><code>cloud_service &quot;RackSpace&quot;;
+cloud_auth &quot;user&quot;, &quot;key&quot;;
+cloud_region &quot;IAD&quot;;
+</code></pre></li>
+<li><p>Creating volumes and vms.</p>
+
+<pre><code>my $vol_id = cloud_volume create =&gt; { size =&gt; 1, };
+
 
 my $instance = cloud_instance create =&gt; {
-  image_id =&gt; "80fbcb55-b206-41f9-9bc2-2dd7aac6c061",
-  name     =&gt; "myvm01",
-  flavor   =&gt; "performance1-1",
-  networks =&gt; ["a733f9d7-098e-4bf1-881d-5a91e84b44bb"];  # networks is optional
+  image_id =&gt; &quot;80fbcb55-b206-41f9-9bc2-2dd7aac6c061&quot;,
+  name     =&gt; &quot;myvm01&quot;,
+  flavor   =&gt; &quot;performance1-1&quot;,
+  networks =&gt; [&quot;a733f9d7-098e-4bf1-881d-5a91e84b44bb&quot;];  # networks is optional
 };
 
+
 cloud_volume attach =&gt; $vol_id,
-    to =&gt $instance&gt;{id};
-</code></pre>
+    to =&gt; $instance&gt;{id};
+</code></pre></li>
+<li><p>Terminating an instance and removing the volume.</p>
 
-       </li>
-       <li><p>Terminating an instance and removing the volume.</p>
-<pre><code class="perl">cloud_instance terminate =&gt; $instance&gt;{id};
-cloud_volume delete =&gt; $vol_id;</code></pre>
-
-     </li>
-     </ul>
-
-   </li>
-   <li>fixed a case where amazon returns instance item in an array - Kasim Tuman</li>
-   <li>fixed multiple tags - David Golovan</li>
- </ul>
+<pre><code>cloud_instance terminate =&gt; $instance&gt;{id};
+cloud_volume delete =&gt; $vol_id;
+</code></pre></li>
+</ul></li>
+<li><p>fixed a case where amazon returns instance item in an array - Kasim Tuman</p></li>
+<li>fixed multiple tags - David Golovan</li>
+</ul>
 
 <h2>Reporting</h2>
-<ul>
-  <li>
-<p>Refactored report generation. This change break backward compatibility because the report format changed.</p>
-</li>
-</ul>
 
+<ul>
+<li>Refactored report generation. This change break backward compatibility because the report format changed.</li>
+</ul>
 
 <h2>Core</h2>
+
 <ul>
-  <li>
-    <p>Caching is now enabled by default. This might break backward compatibility if you're using chroot() inside a task to chroot to another OS.</p>
-  </li>
-  <li>
-    <p>
-      Allow passing template content to template command - #345 - reneeb
-    </p>
-    <pre><code class="perl">file "/etc/file.cnf",
-  content =&gt; template(\'&lt;%= $name %&gt; is cool!', name =&gt; 'Rex');</code></pre>
-  </li>
-  <li>
-    <p>
-      Added 'no_cache' feature. If you need to disable the cache, use this.
-    </p>
-    <pre><code class="perl"># Rexfile
-use Rex -feature =&gt; ['no_cache'];</code></pre>
-  </li>
-  <li>
-    <p>Added a special load path for perl libraries, so that we don't mix up perl and rex modules. (lib/perl)</p>
-  </li>
-  <li>
-    <p>Refactored handling of home directory creation. This might break compat. because we are following the system default now. (added create_home option) - #270 - FErki</p>
-  </li>
-  <li>
-    <p>CMDB path can now have variables / can be extended.</p>
-    <pre><code class="perl"># Rexfile
+<li><p>Caching is now enabled by default. This might break backward compatibility if you&#39;re using chroot() inside a task to chroot to another OS.</p></li>
+<li><p>Allow passing template content to template command - #345 - reneeb</p>
+
+<pre><code>file &quot;/etc/file.cnf&quot;,
+  content =&gt; template(\&#39;&lt;%= $name %&gt; is cool!&#39;, name =&gt; &#39;Rex&#39;);
+</code></pre></li>
+<li><p>Added &#39;no_cache&#39; feature. If you need to disable the cache, use this.</p>
+
+<pre><code># Rexfile
+use Rex -feature =&gt; [&#39;no_cache&#39;];
+</code></pre></li>
+<li><p>Added a special load path for perl libraries, so that we don&#39;t mix up perl and rex modules. (lib/perl)</p></li>
+<li><p>Refactored handling of home directory creation. This might break compat. because we are following the system default now. (added create_home option) - #270 - FErki</p></li>
+<li><p>CMDB path can now have variables / can be extended.</p>
+
+<pre><code># Rexfile
 use Rex::CMDB;
 set cmdb =&gt; {
-  type =&gt; "YAML",
+  type =&gt; &quot;YAML&quot;,
   path =&gt; [
-    "cmdb/{operatingsystem}/{hostname}.yml",
-    "cmdb/{operatingsystem}/default.yml",
-    "cmdb/{environment}/{hostname}.yml",
-    "cmdb/{environment}/default.yml",
-    "cmdb/{hostname}.yml",
-    "cmdb/default.yml",
+    &quot;cmdb/{operatingsystem}/{hostname}.yml&quot;,
+    &quot;cmdb/{operatingsystem}/default.yml&quot;,
+    &quot;cmdb/{environment}/{hostname}.yml&quot;,
+    &quot;cmdb/{environment}/default.yml&quot;,
+    &quot;cmdb/{hostname}.yml&quot;,
+    &quot;cmdb/default.yml&quot;,
   ],
-};</code></pre>
-  </li>
-  <li>
-    <p>Connect failure reports "Error running task/batch: Wrong username/password or wrong key"  - #359 - eduardoj</p>
-  </li>
-  <li>
-    <p>Extended rexify command to work with git.</p>
-  </li>
-  <li>
-    <p>Added description to environments - #274</p>
-    <pre><code class="perl"># Rexfile
-desc "The live environment";
-environment live => sub {};</code></pre>
-  </li>
-  <li>
-    <p>Added <code>groups_dbi()</code> function to generate server groups from sql - #346 - Jean-Marie RENOUARD</p>
-  </li>
-  <li>
-    <p>Added <code>groups_yaml()</code> function to generate server groups from yaml file - Jean-Marie RENOUARD</p>
-  </li>
-  <li>
-    <p>Add support for df on a given mount point - Simon Bertrang</p>
-  </li>
-  <li>
-    <p>Added authentication to download() function. - #340</p>
-    <pre><code class="perl">download "http://secured.location.tld/foo.tgz", "foo.tgz",
-  user =&gt; "httpuser",
-  password =&gt; "password";</code></pre>
-  </li>
-  <li>
-    <p>Refactored tmp dir generation - FErki</p>
-  </li>
+};
+</code></pre></li>
+<li><p>Connect failure reports &quot;Error running task/batch: Wrong username/password or wrong key&quot; - #359 - eduardoj</p></li>
+<li><p>Extended rexify command to work with git.</p></li>
+<li><p>Added description to environments - #274</p>
+
+<pre><code># Rexfile
+desc &quot;The live environment&quot;;
+environment live =&gt; sub {};
+</code></pre></li>
+<li><p>Added <code>groups_dbi()</code> function to generate server groups from sql - #346 - Jean-Marie RENOUARD</p></li>
+<li><p>Added <code>groups_yaml()</code> function to generate server groups from yaml file - Jean-Marie RENOUARD</p></li>
+<li><p>Add support for df on a given mount point - Simon Bertrang</p></li>
+<li><p>Added authentication to download() function. - #340</p>
+
+<pre><code>download &quot;http://secured.location.tld/foo.tgz&quot;, &quot;foo.tgz&quot;,
+  user =&gt; &quot;httpuser&quot;,
+  password =&gt; &quot;password&quot;;
+</code></pre></li>
+<li><p>Refactored tmp dir generation - FErki</p></li>
 </ul>
 
 
 
-<!-- end -->
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

@@ -1,85 +1,228 @@
-         <p>These are the changes in 0.52 release.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-         <p>This release don't bring many new features but fixes bugs and enhanced some existing functions.</p>
-         <p>But we have another delicacy for you. Currently we are developing an easy to use <b>Webfrontend</b> for Rex. A first working development snapshot is available at <a href="https://github.com/RexOps/rex-jobcontrol">https://github.com/RexOps/rex-jobcontrol</a>. You will also find some screenshots there.</p> 
-         <p>The installation is easy and it is described in the README.md file in the repository.</p>
-         <p>We welcome any feedback and if you want to help developing this webfrontend feel free to contact us via irc on <a href="irc://irc.freenode.net/#rex">irc.freenode.net</a> #rex.</p>
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.52 release.</p>
+
+<p>This release don&#39;t bring many new features but fixes bugs and enhanced some existing functions.</p>
+
+<p>But we have another delicacy for you. Currently we are developing an easy to use <strong>Webfrontend</strong> for Rex. A first working development snapshot is available at <a href="https://github.com/RexOps/rex-jobcontrol">https://github.com/RexOps/rex-jobcontrol</a>. You will also find some screenshots there.</p>
+
+<p>The installation is easy and it is described in the README.md file in the repository.</p>
+
+<p>We welcome any feedback and if you want to help developing this webfrontend feel free to contact us via irc on <a href="irc://irc.freenode.net/#rex">irc.freenode.net</a> #rex.</p>
 
 <h2>Base</h2>
+
 <ul>
-  <li>
-  <p><b>on_change</b> hook for update_system</p>
-    <pre><code class="perl">update_system
+<li><p><strong>on_change</strong> hook for update_system</p>
+
+<pre><code>update_system
   on_change =&gt; sub {
     my (@modified_packates) = @_;
       for my $pkg (@modified_packages) {
-        say "Name: $pkg-&gt;{name}";
-        say "Version: $pkg-&gt;{version}";
-        say "Action: $pkg-&gt;{action}";   # some of updated, installed or removed
+        say &quot;Name: $pkg-&gt;{name}&quot;;
+        say &quot;Version: $pkg-&gt;{version}&quot;;
+        say &quot;Action: $pkg-&gt;{action}&quot;;   # some of updated, installed or removed
       }
-  };</code></pre>
-  </li>
-  <li>
-    <p>Added support for <b>end_if_matched</b> option to run command - nathanIL</p>
-    <pre><code class="perl">run "my_command",
-   end_if_matched =&gt; qr/PATTERN/;</code></pre>
+  };
+</code></pre></li>
+<li><p>Added support for <strong>end_if_matched</strong> option to run command - nathanIL</p>
 
-  </li>
-  <li>
-    <p>Tie server.ini to specified -E environment (server.$environment.ini). - ehu</p>
-  </li>
-  <li>
-    <p>Added <b>before_task_start</b> and <b>after_task_finished</b> hooks</p>
-    <p>The before_task_start hook will be executed before the fork for the task is made. The after_task_finished hook will be executed after all servers has finished the task.</p>
-    <pre><code class="perl">before_task_start mytask =&gt; sub {
+<pre><code>run &quot;my_command&quot;,
+   end_if_matched =&gt; qr/PATTERN/;
+</code></pre></li>
+<li><p>Tie server.ini to specified -E environment (server.$environment.ini). - ehu</p></li>
+<li><p>Added <strong>before_task_start</strong> and <strong>after_task_finished</strong> hooks</p>
+
+<p>The before_task_start hook will be executed before the fork for the task is made. The after_task_finished hook will be executed after all servers has finished the task.</p>
+
+<pre><code>before_task_start mytask =&gt; sub {
    # do some things
 };
 after_task_finished mytask =&gt; sub {
    # do some things
-};</code></pre>
-  </li>
-  <li>
-    <p>Added <b>fallback authentication</b> support.</p>
-    <p>Sometimes you have different authentications on different hosts and you don't know beforehand which one you have to use. For these cases you can now define multiple authentication options. Rex will try all of them.</p>
-    <pre><code class="perl">auth fallback =&gt; {
-   user        =&gt; "fallback_user1",
-   password    =&gt; "fallback_pw1",
-   public_key  =&gt; "",
-   private_key =&gt; "",
+};
+</code></pre></li>
+<li><p>Added <strong>fallback authentication</strong> support.</p>
+
+<p>Sometimes you have different authentications on different hosts and you don&#39;t know beforehand which one you have to use. For these cases you can now define multiple authentication options. Rex will try all of them.</p>
+
+<pre><code>auth fallback =&gt; {
+   user        =&gt; &quot;fallback_user1&quot;,
+   password    =&gt; &quot;fallback_pw1&quot;,
+   public_key  =&gt; &quot;&quot;,
+   private_key =&gt; &quot;&quot;,
 }, {
-   user        =&gt; "fallback_user2",
-   password    =&gt; "fallback_pw2",
-   public_key  =&gt; "keys/public.key",
-   private_key =&gt; "keys/private.key",
+   user        =&gt; &quot;fallback_user2&quot;,
+   password    =&gt; &quot;fallback_pw2&quot;,
+   public_key  =&gt; &quot;keys/public.key&quot;,
+   private_key =&gt; &quot;keys/private.key&quot;,
    sudo        =&gt; TRUE,
-};</code></pre>
-  </li>
+};
+</code></pre></li>
 </ul>
 
- 
 <h2>Cloud</h2>
-<ul>
-  <li>
-    <p>Add <b>floating ip</b> support to openstack provider - exzz</p>
-  </li>
-  <li>
-    <p><b>Auto upload</b> ssh key to openstack cloud provider - exzz</p>
-  </li>
-</ul>
 
+<ul>
+<li><p>Add <strong>floating ip</strong> support to openstack provider - exzz</p></li>
+<li><p><strong>Auto upload</strong> ssh key to openstack cloud provider - exzz</p></li>
+</ul>
 
 <h2>Bugfixes</h2>
+
 <ul>
-  <li>
-    <p>#381 - file NAME, ensure =&gt; 'absent' for a directory</p>
-  </li>
-   <li>
-    <p>#392 - run conditional options with exec_autodir</p>
-  </li>
-  <li>
-    <p>#399 - Rex::Output to persist across different processes - nathanIL</p>
-  </li>
-  <li>
-    <p>#416 - fixed pkg with ensure =&gt; 'ver.si.on'</p>
-  </li>
+<li><p>#381 - file NAME, ensure =&gt; &#39;absent&#39; for a directory</p></li>
+<li><p>#392 - run conditional options with exec_autodir</p></li>
+<li><p>#399 - Rex::Output to persist across different processes - nathanIL</p></li>
+<li><p>#416 - fixed pkg with ensure =&gt; &#39;ver.si.on&#39;</p></li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

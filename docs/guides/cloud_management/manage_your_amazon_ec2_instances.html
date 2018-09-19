@@ -1,36 +1,288 @@
-<h2>Starting Point</h2>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <h2>Starting Point</h2>
+
 <p>In this howto i will show you how to create and manage your Amazon EC2 instances.</p>
+
 <h2>Preparation</h2>
+
 <ul>
 <li>Register at http://aws.amazon.com/de/</li>
 <li>Get your AccessKey and your Secret AccessKey</li>
 <li>Create a key-pair and save it to your disk</li>
 <li>Create a public key out of your just downloaded private key. You can do this with ssh-keygen -y -f your-aws-private-key.pem</li>
 </ul>
+
 <h2>Creating a Rexfile</h2>
+
 <p>At first you need to create a Rexfile in a directory of your choice.</p>
-<pre>$ mkdir amazon<br />$ cd amazon<br />$ touch Rexfile</pre>
+
+<pre><code>$ mkdir amazon
+$ cd amazon
+$ touch Rexfile
+</code></pre>
+
 <p>Open the Rexfile in your preferred editor.</p>
+
 <p>Insert the following code in your new Rexfile.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /></code><code class="perl">use Rex::Commands::Cloud;<br /><br /></code><code class="perl">user "root";<br /></code><code class="perl">public_key "/path/to/your/just/created/amazon-public.key";<br /></code><code class="perl">private_key "/path/to/your/just/downloaded/amazon-private-key.pem";<br /><br /></code><code class="perl">my $access_key = "your-access-key";<br /></code><code class="perl">my $secret_access_key = "your-secret-key";<br /><br /></code><code class="perl">cloud_service "Amazon";<br /></code><code class="perl">cloud_auth "$access_key", "$secret_access_key";<br /></code><code class="perl">cloud_region "ec2.eu-west-1.amazonaws.com";<br /><br /></code><code class="perl">task "create", sub {<br /></code><code class="perl">&nbsp;&nbsp; cloud_instance create =&gt; { <br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; image_id =&gt; "ami-02103876",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "static01",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "dev-test",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br /></code><code class="perl">};</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+use Rex::Commands::Cloud;
+
+user &quot;root&quot;;
+public_key &quot;/path/to/your/just/created/amazon-public.key&quot;;
+private_key &quot;/path/to/your/just/downloaded/amazon-private-key.pem&quot;;
+
+my $access_key = &quot;your-access-key&quot;;
+my $secret_access_key = &quot;your-secret-key&quot;;
+
+cloud_service &quot;Amazon&quot;;
+cloud_auth &quot;$access_key&quot;, &quot;$secret_access_key&quot;;
+cloud_region &quot;ec2.eu-west-1.amazonaws.com&quot;;
+
+task &quot;create&quot;, sub {
+   cloud_instance create =&gt; { 
+            image_id =&gt; &quot;ami-02103876&quot;,
+            name     =&gt; &quot;static01&quot;,
+            key      =&gt; &quot;dev-test&quot;,
+         };
+};
+</code></pre>
+
 <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
+
 <h3>Create an instance with an EBS block volume</h3>
+
 <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
-<pre><code class="perl">task "create", sub {<br /></code><code class="perl">&nbsp;&nbsp; my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; "eu-west-1a", };<br /></code><code class="perl">&nbsp;&nbsp; cloud_instance create =&gt; { <br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; image_id =&gt; "ami-02103876",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "static01",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "dev-test",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; volume&nbsp;&nbsp; =&gt; $vol_id,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zone&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "eu-west-1a",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</code><br /><code class="perl">};</code></pre>
+
+<pre><code>task &quot;create&quot;, sub {
+   my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;, };
+   cloud_instance create =&gt; { 
+            image_id =&gt; &quot;ami-02103876&quot;,
+            name     =&gt; &quot;static01&quot;,
+            key      =&gt; &quot;dev-test&quot;,
+            volume   =&gt; $vol_id,
+            zone     =&gt; &quot;eu-west-1a&quot;,
+         };
+};
+</code></pre>
+
 <h3>Listing Regions and zones</h3>
+
 <p>To get a list of all regions and zone you can use the following functions.</p>
-<pre><code class="perl">task "list", sub {<br /></code><code class="perl">&nbsp;&nbsp; print Dumper get_cloud_regions;<br /></code><code class="perl">&nbsp;&nbsp; print Dumper get_cloud_availability_zones;<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;list&quot;, sub {
+   print Dumper get_cloud_regions;
+   print Dumper get_cloud_availability_zones;
+};
+</code></pre>
+
 <h3>List your instances</h3>
+
 <p>To get a list of all your instances and volumes you can use these functions.</p>
-<pre><code class="perl">task "list", sub {<br /></code><code class="perl">&nbsp;&nbsp; print Dumper cloud_instance_list;<br /></code><code class="perl">&nbsp;&nbsp; print Dumper cloud_volume_list;<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;list&quot;, sub {
+   print Dumper cloud_instance_list;
+   print Dumper cloud_volume_list;
+};
+</code></pre>
+
 <h3>Destroy your instances / volumes</h3>
-<p>If you don't need your instances or volumes anymore, you can just destroy them.</p>
-<pre><code class="perl">task "destroy", sub {<br /></code><code class="perl">&nbsp;&nbsp; cloud_volume delete =&gt; "$volume_id";<br /></code><code class="perl">&nbsp;&nbsp; cloud_instance terminate =&gt; "$instance_id";<br /></code><code class="perl">};</code></pre>
+
+<p>If you don&#39;t need your instances or volumes anymore, you can just destroy them.</p>
+
+<pre><code>task &quot;destroy&quot;, sub {
+   cloud_volume delete =&gt; &quot;$volume_id&quot;;
+   cloud_instance terminate =&gt; &quot;$instance_id&quot;;
+};
+</code></pre>
+
 <h3>Put all your EC2 instances in a host group</h3>
+
 <p>If you have many instances you can easily add them all into a hostgroup.</p>
-<pre><code class="perl">group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
+
+<pre><code>group ec2 =&gt; get_cloud_instances_as_group();
+</code></pre>
+
 <h3>Installing some Software and run Rex</h3>
+
 <p>Now we need to add some software to our fresh EC2 instance.</p>
-<pre><code class="perl">task "prepare", group =&gt; "ec2", sub {<br /></code><code class="perl">&nbsp;&nbsp; run "apt-get update";<br /></code><code class="perl">&nbsp;&nbsp; install package =&gt; "apache2";<br /><br /></code><code class="perl">&nbsp;&nbsp; service apache2 =&gt; "ensure", "started";<br /><br /></code><code class="perl">&nbsp;&nbsp; # deploy your webapp, see Rex::Apache::Deploy for more information.<br /></code><code class="perl">&nbsp;&nbsp; deploy "my-site.tar.gz";<br /><br /></code><code class="perl">&nbsp;&nbsp; # or upload some files<br /></code><code class="perl">&nbsp;&nbsp; file "/etc/passwd",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source =&gt; "/etc/passwd";<br /></code><code class="perl"><br />&nbsp;&nbsp; # do what ever you want<br /></code><code class="perl">&nbsp;&nbsp; use Rex::Commands::Iptables;<br /></code><code class="perl">&nbsp;&nbsp; close_port "all";<br /></code><code class="perl">};</code></pre>
+
+<pre><code>task &quot;prepare&quot;, group =&gt; &quot;ec2&quot;, sub {
+   run &quot;apt-get update&quot;;
+   install package =&gt; &quot;apache2&quot;;
+
+   service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+
+   # deploy your webapp, see Rex::Apache::Deploy for more information.
+   deploy &quot;my-site.tar.gz&quot;;
+
+   # or upload some files
+   file &quot;/etc/passwd&quot;,
+      source =&gt; &quot;/etc/passwd&quot;;
+
+   # do what ever you want
+   use Rex::Commands::Iptables;
+   close_port &quot;all&quot;;
+};
+</code></pre>
+
 <p>Now you can run Rex to create the instance and prepare the system for use.</p>
-<pre>$ rex create prepare<br />[2011-08-06 10:25:58] (5783) - INFO - Running task: create<br />[2011-08-06 10:26:38] (5783) - INFO - Running task: prepare<br />[2011-08-06 10:26:38] (5801) - INFO - Connecting to 46.51.135.11 (root)<br />[2011-08-06 10:27:14] (5801) - INFO - Installing apache2.<br />[2011-08-06 10:27:30] (5801) - INFO - Uploadling files/index.html -&gt; /var/www/index.html</pre>
+
+<pre><code>$ rex create prepare
+[2011-08-06 10:25:58] (5783) - INFO - Running task: create
+[2011-08-06 10:26:38] (5783) - INFO - Running task: prepare
+[2011-08-06 10:26:38] (5801) - INFO - Connecting to 46.51.135.11 (root)
+[2011-08-06 10:27:14] (5801) - INFO - Installing apache2.
+[2011-08-06 10:27:30] (5801) - INFO - Uploadling files/index.html -&gt; /var/www/index.html
+</code></pre>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

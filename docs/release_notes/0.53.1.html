@@ -1,67 +1,230 @@
-         <p>These are the changes in 0.53 release.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-         <p>This release brings a few bugfixes and compatibility to the current <a href="https://github.com/RexOps/rex-jobcontrol">Rex::JobControl</a> Webfrontend.</p>
-         <p>A first version of the Rex::JobControl Webfrontend will also be released in the next days. But this will be a separate anouncement.</p>
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>These are the changes in 0.53 release.</p>
+
+<p>This release brings a few bugfixes and compatibility to the current <a href="https://github.com/RexOps/rex-jobcontrol">Rex::JobControl</a> Webfrontend.</p>
+
+<p>A first version of the Rex::JobControl Webfrontend will also be released in the next days. But this will be a separate anouncement.</p>
 
 <h2>Base</h2>
-<ul>
-  <li>
-  <p>Added a new <b>resource</b> function.</p>
-  <p>A <i>resource</i> is a perl function that represent a <i>object</i> on your server. An <i>object</i> is for example a virtual host configuration for apache, a database user or a more complex thing like a Tomcat instance. With the resource() function it is possible to create custom resources that will also appear in the reporting.</p>
-  <p>Resources have a special syntax and some keywords.</p>
-  <pre><code class="perl">resource $resource_name,
-  option1 =&gt; "value1",
-  option2 =&gt; "value2",
-  ensure =&gt; "present, absent, ...";</pre></code>
-  <p>Currently there is only one keyword that every resource have to obey.</p>
-  <ul>
-    <li><b>ensure</b> - Can be <i>present</i> (default if not set) or <i>absent</i> or any other string.</li>
-  </ul>
-  <p>Every resource should also emit a changed signal if the resource did changes. With this signal the <i>on_change</i> hook gets triggered and the reporting knows that the resource changed something.</p>
-  <p>resource() parameters will also be visible in the templates without the need to register them.</p>
-  <p>Resources get registerd as perl functions in the namespace where they are created. You can see a complete example <a href="#">here</a>.</p>
 
-  <pre><code class="perl">package BaseSystem;
+<ul>
+<li><p>Added a new <strong>resource</strong> function.</p>
+
+<p>A <em>resource</em> is a perl function that represent a <em>object</em> on your server. An <em>object</em> is for example a virtual host configuration for apache, a database user or a more complex thing like a Tomcat instance. With the resource() function it is possible to create custom resources that will also appear in the reporting.</p>
+
+<p>Resources have a special syntax and some keywords.</p>
+
+<pre><code>resource $resource_name,
+  option1 =&gt; &quot;value1&quot;,
+  option2 =&gt; &quot;value2&quot;,
+  ensure =&gt; &quot;present, absent, ...&quot;;
+</code></pre>
+
+<p>Currently there is only one keyword that every resource have to obey.</p>
+
+<ul>
+<li><strong>ensure</strong> - Can be <em>present</em> (default if not set) or <em>absent</em> or any other string.</li>
+</ul>
+
+<p>Every resource should also emit a changed signal if the resource did changes. With this signal the <em>on_change</em> hook gets triggered and the reporting knows that the resource changed something.</p>
+
+<p>resource() parameters will also be visible in the templates without the need to register them.</p>
+
+<p>Resources get registerd as perl functions in the namespace where they are created. You can see a complete example <a href="#">here</a>.</p>
+
+<pre><code>package BaseSystem;
 use Rex::Resource::Common;
-resource "motd", sub {
+resource &quot;motd&quot;, sub {
   my ($params) = @_;
   my $name     = resource_name;
 
-  if($params-&gt;{ensure} eq "present") {
+
+  if($params-&gt;{ensure} eq &quot;present&quot;) {
     # do some things.
     if(! is_file($name) ) {
       file $name, content =&gt; $params-&gt;{content};
       emit changed;
     }
   }
-  elsif($params-&gt;{ensure} eq "absent") {
+  elsif($params-&gt;{ensure} eq &quot;absent&quot;) {
     if( is_file($name) ) {
       rm $name;
       emit changed;
     }
   }
-};</code></pre>
+};
+</code></pre>
 
-  <p>Now you can call this new resource with <code>BaseSystem::motd</code></p>
-  <pre><code class="perl">use BaseSystem;
-task "setup", sub {
-  BaseSystem::motd "/etc/motd",
+<p>Now you can call this new resource with <code>BaseSystem::motd</code></p>
+
+<pre><code>use BaseSystem;
+task &quot;setup&quot;, sub {
+  BaseSystem::motd &quot;/etc/motd&quot;,
     ensure  =&gt; present,
-    content =&gt; "Hello World.",
+    content =&gt; &quot;Hello World.&quot;,
     on_change     =&gt; sub {
       # do something when changed event was triggered
     };
 };
-</code></pre>
-  </li>
-  <li><p>Added new feature flag <b>register_cmdb_top_scope</b>. This will register all the topscope variables in your CMDB to templates.</p></li>
+</code></pre></li>
+<li><p>Added new feature flag <strong>register_cmdb_top_scope</strong>. This will register all the topscope variables in your CMDB to templates.</p></li>
 </ul>
-
 
 <h2>Bugfixes</h2>
+
 <ul>
-  <li>fixed a problem with CentOS 7 gathering the ip address with virtualbox guest tools.</li>
-  <li>fixed on_change hook for file() resource when file was removed.</li>
-  <li>#419 - fixed chkconfig bug for Mageia, Redhat and SuSE - chenryn.</li>
+<li>fixed a problem with CentOS 7 gathering the ip address with virtualbox guest tools.</li>
+<li>fixed on_change hook for file() resource when file was removed.</li>
+<li>#419 - fixed chkconfig bug for Mageia, Redhat and SuSE - chenryn.</li>
 </ul>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

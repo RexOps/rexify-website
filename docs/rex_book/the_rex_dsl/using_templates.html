@@ -1,20 +1,286 @@
-<p>A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.</p>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+      <title></title>
+
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
+
+      <style>
+      </style>
+
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="get">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="care" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="helprex">Help Rex</a></li>
+          <li><a href="helppeople">Help people</a></li>
+            <li class="divider"></li>
+          <li><a href="api">API</a></li>
+  </ul>
+</li></ul></div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Search</h2>
+               <form action="/search.html" method="GET">
+                  <input class="search_field" id="q" name="q" type="text"><button class="btn">Go</button>
+               </form>
+               <h2>News</h2>
+
+               <!-- % my $news_o = $site->get_page(11); -->
+               <!-- % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) { -->
+               <!-- % my ($news_date) = split(/ /, $news_item->data->{news_date}); -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Training</h2>
+
+               <!-- % for my $training_item (@{$app->{data}{trainings}}) { -->
+               <!--   <div class="news_widget"> -->
+               <!--   </div> -->
+
+               <!-- % } -->
+
+
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              <!-- %= include 'skin/rexify.org/_breadcrumb.html.ep'; -->
+              
+              <p>A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.</p>
+
 <p>The default template engine is a special Rex template engine. The syntax is a bit like php or erb. But you can use any template engine you want. Just browse cpan and find one you like.</p>
+
 <p>For example:</p>
-<pre>Hello &lt;%= $name %&gt;!</pre>
-<p>If $name contains "World" this template would result in the string Hello World!. This is very usefull if you have to maintain a large set of nearly identical configuration files.</p>
+
+<pre><code>Hello &lt;%= $name %&gt;!
+</code></pre>
+
+<p>If $name contains &quot;World&quot; this template would result in the string Hello World!. This is very usefull if you have to maintain a large set of nearly identical configuration files.</p>
+
 <h2>Working with a template</h2>
+
 <p>First you have to create it</p>
-<pre>$ mkdir files<br />$ vim files/my.cnf.tpl</pre>
-<pre>[mysqld]<br />datadir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = /var/lib/mysql<br />socket&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = /var/run/mysqld/mysqld.sock<br />user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = mysql<br /># Disabling symbolic-links is recommended to prevent assorted security risks<br />symbolic-links&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0<br />datadir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = /var/lib/mysql<br />tmpdir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = /tmp<br />skip-external-locking<br />max_allowed_packet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 64M<br />thread_stack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 192K<br />max_connections&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &lt;%= exists $conf-&gt;{"max_connections"} ? $conf-&gt;{"max_connections"} : "1000" %&gt;<br /><br />max_connect_errors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1000<br />table_cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &lt;%= exists $conf-&gt;{"table_cache"} ? $conf-&gt;{"table_cache"} : "5000" %&gt;<br />table_open_cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &lt;%= exists $conf-&gt;{"table_open_cache"} ? $conf-&gt;{"table_open_cache"} : "5000" %&gt;<br />thread_concurrency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 10<br /><br />#<br /># ... and more ...<br />#</pre>
+
+<pre><code>$ mkdir files
+$ vim files/my.cnf.tpl
+
+[mysqld]
+datadir                 = /var/lib/mysql
+socket                  = /var/run/mysqld/mysqld.sock
+user                    = mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links          = 0
+datadir                 = /var/lib/mysql
+tmpdir                  = /tmp
+skip-external-locking
+max_allowed_packet      = 64M
+thread_stack            = 192K
+max_connections         = &lt;%= exists $conf-&gt;{&quot;max_connections&quot;} ? $conf-&gt;{&quot;max_connections&quot;} : &quot;1000&quot; %&gt;
+
+max_connect_errors      = 1000
+table_cache             = &lt;%= exists $conf-&gt;{&quot;table_cache&quot;} ? $conf-&gt;{&quot;table_cache&quot;} : &quot;5000&quot; %&gt;
+table_open_cache        = &lt;%= exists $conf-&gt;{&quot;table_open_cache&quot;} ? $conf-&gt;{&quot;table_open_cache&quot;} : &quot;5000&quot; %&gt;
+thread_concurrency      = 10
+
+#
+# ... and more ...
+#
+</code></pre>
+
 <p>Than you can reference on it from within your Rexfile.</p>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">user "root";<br /></code><code class="perl">key_auth;<br /><br /></code><code class="perl">group databases=&gt; "mydb01", "mydb02";<br /><br /></code><code class="perl">task "prepare_databases", group =&gt; "databases", sub {<br /></code><code class="perl">&nbsp;&nbsp; file "/etc/my.cnf",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; owner&nbsp;&nbsp; =&gt; "root",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; group&nbsp;&nbsp; =&gt; "root",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mode&nbsp;&nbsp;&nbsp; =&gt; "644",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content =&gt; template("files/my.cnf.tpl", conf =&gt; {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max_connections =&gt; "500",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; table_cache&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "2500",<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });<br /></code><code class="perl">};</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+
+user &quot;root&quot;;
+key_auth;
+
+group databases=&gt; &quot;mydb01&quot;, &quot;mydb02&quot;;
+
+task &quot;prepare_databases&quot;, group =&gt; &quot;databases&quot;, sub {
+   file &quot;/etc/my.cnf&quot;,
+      owner   =&gt; &quot;root&quot;,
+      group   =&gt; &quot;root&quot;,
+      mode    =&gt; &quot;644&quot;,
+      content =&gt; template(&quot;files/my.cnf.tpl&quot;, conf =&gt; {
+                             max_connections =&gt; &quot;500&quot;,
+                             table_cache     =&gt; &quot;2500&quot;,
+                          });
+};
+</code></pre>
+
 <h2>Inline Templates</h2>
+
 <p>When you want to deliver a rexfile that includes the templates, you can use inline templates. To use this feature, you have to use the __DATA__ section of your rexfile. You can also define several templates in that section:</p>
+
 <h3>Using a single inline template</h3>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /><br /></code><code class="perl">task tempfiles =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; file '/tmp/test.txt' =&gt;<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content =&gt; template(<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '@test',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test =&gt; {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; author =&gt; 'reneeb',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; target =&gt; 'rex',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ),<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chmod =&gt; 644,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ;<br /></code><code class="perl">};<br /><br /></code><code class="perl">__DATA__<br /></code><code class="perl">@test<br /></code><code class="perl">This is a test written by &lt;%= $test-&gt;{author} %&gt;<br /></code><code class="perl">for a project called &lt;%= $test-&gt;{target} %&gt;<br /></code><code class="perl">@end</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+
+task tempfiles =&gt; sub {
+    file &#39;/tmp/test.txt&#39; =&gt;
+        content =&gt; template(
+            &#39;@test&#39;,
+            test =&gt; {
+                author =&gt; &#39;reneeb&#39;,
+                target =&gt; &#39;rex&#39;,
+            },
+        ),
+        chmod =&gt; 644,
+    ;
+};
+
+__DATA__
+@test
+This is a test written by &lt;%= $test-&gt;{author} %&gt;
+for a project called &lt;%= $test-&gt;{target} %&gt;
+@end
+</code></pre>
+
 <p>The <code>__DATA__</code> section is the last section of the Rexfile. The first parameter of the template method call gets the name of the inline template. Note that names of inline templates begin with <code>@</code>.</p>
+
 <p>Rex knows that it has to look up the template in the <code>__DATA__</code> section of the file where template was called. Within the section the template starts with its name (here: <code>@test</code>) and then follows the template text.</p>
+
 <h3>Using multiple inline templates</h3>
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];<br /></code><code class="perl">task tempfiles =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; file '/tmp/test.txt' =&gt;<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content =&gt; template(<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '@test',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test =&gt; {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; author =&gt; 'reneeb',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; target =&gt; 'rex',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ),<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chmod =&gt; 644,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ;<br /><br /></code><code class="perl">&nbsp;&nbsp;&nbsp; file '/tmp/rex.txt' =&gt;<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content =&gt; template(&gt;<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '@rex',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test =&gt; {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; author =&gt; 'krimdomu',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; target =&gt; 'rex',<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ),<br /></code><code class="perl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chmod =&gt; 644,<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; ;<br /></code><code class="perl">};<br /><br /></code><code class="perl">__DATA__<br /></code><code class="perl">@test<br /></code><code class="perl">This is a test written by &lt;%= $test-&gt;{author} %&gt;<br /></code><code class="perl">for a project called &lt;%= $test-&gt;{target} %&gt;<br /></code><code class="perl">@end<br /><br /></code><code class="perl">@rex<br /></code><code class="perl">Contribution by &lt;%= $test-&gt;{author} %&gt;<br /></code><code class="perl">for a project called &lt;%= $test-&gt;{target} %&gt;<br /></code><code class="perl">@end</code></pre>
+
+<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
+task tempfiles =&gt; sub {
+    file &#39;/tmp/test.txt&#39; =&gt;
+        content =&gt; template(
+            &#39;@test&#39;,
+            test =&gt; {
+                author =&gt; &#39;reneeb&#39;,
+                target =&gt; &#39;rex&#39;,
+            },
+        ),
+        chmod =&gt; 644,
+    ;
+
+    file &#39;/tmp/rex.txt&#39; =&gt;
+        content =&gt; template(&gt;
+            &#39;@rex&#39;,
+            test =&gt; {
+                author =&gt; &#39;krimdomu&#39;,
+                target =&gt; &#39;rex&#39;,
+            },
+        ),
+        chmod =&gt; 644,
+    ;
+};
+
+__DATA__
+@test
+This is a test written by &lt;%= $test-&gt;{author} %&gt;
+for a project called &lt;%= $test-&gt;{target} %&gt;
+@end
+
+@rex
+Contribution by &lt;%= $test-&gt;{author} %&gt;
+for a project called &lt;%= $test-&gt;{target} %&gt;
+@end
+</code></pre>
+
 <p>Now we just look at the <code>__DATA__</code> section: You notice the token <code>@end</code>. This is used to separate the templates. At the end of each template (except for the last one) this token is needed. Otherwise Rex will use everything up to the first <code>@end</code> as the template which is most likely too much.</p>
+
+
+
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>
