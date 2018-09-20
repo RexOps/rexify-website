@@ -60,6 +60,7 @@ basic_app:
     args:
         store: 'content'
         url_root: '/'
+        disable_content_template: 1
         data:
             no_side_bar: 0
             trainings:
