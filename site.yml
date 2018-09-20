@@ -60,6 +60,7 @@ basic_app:
     args:
         store: 'content'
         url_root: '/'
+        disable_content_template: 1
 public:
     class: Statocles::App::Basic
     args:
