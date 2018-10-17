@@ -1,0 +1,80 @@
+<p><a href="https://openwrt.org/">OpenWrt</a> is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.</p>
+<h2>Overview</h2>
+<h3>What's working?</h3>
+<p>Please see the official compatibility page. You may also want to check the current project weather on build.rexify.org.</p>
+<h3>Known limitations</h3>
+<ul>
+<li>Service status<br />Despite OpenWrt provides a service_check() function in /lib/functions/service.sh, it seems that it's only sporadically used in initscripts. Nevertheless Rex currently implements its service status check via this function but it's more of a workaround than a solution. It's also worth noting that sometimes the initscript's name and its executable's name are not the same (e.g cron vs. crond). You should use the executable's name in your OpenWrt status checks.</li>
+<li>Missing renice<br />AFAIK renice isn't available for OpenWrt.</li>
+<li>Inventory gathering<br />OpenWrt doesn't provide dmidecode for all architectures so this might or might not work for you.</li>
+</ul>
+<h3>Requirements</h3>
+<ul>
+<li>&gt;=rex-0.43: initial support has been added in this release</li>
+<li>enabled no_tty feature flag when using OpenSSH connection mode</li>
+<li>Attitude Adjustment (12.09 final) or Barrier Breaker (14.07 final)</li>
+</ul>
+<p>Generally you'll need the following packages on your OpenWrt box on top of a vanilla install:</p>
+<ul>
+<li>SFTP server: openssh-sftp-server or gesftpserver (only available for 12.09)</li>
+<li>perl</li>
+<li>perl modules: perlbase-bytes perlbase-data perlbase-digest perlbase-essential perlbase-file perlbase-xsloader</li>
+<li>if you use &gt;=rex-0.46: coreutils-nohup (required for service handling)</li>
+</ul>
+<p>Optional packages (only for specific Rex functions):</p>
+<ul>
+<li>sync_up: rsync</li>
+<li>user management: shadow-groupadd shadow-groupdel shadow-groupmod shadow-useradd shadow-userdel shadow-usermod</li>
+<li>inventory gathering: dmidecode</li>
+<li>swap handling: swap-utils (+ block-mount on 14.07)</li>
+</ul>
+<h4>Details</h4>
+<h5>SFTP server</h5>
+<p>By default OpenWrt doesn't provide an SFTP server. As Rex does lots of lower level operations via SFTP (<code>is_dir()</code>, <code>is_file()</code>, ...), the first package you should install on your box is either openssh-sftp-server or gesftpserver.</p>
+<p>A massively subjective comparison of these two may help to make your decision:</p>
+<h5>openssh-sftp-server</h5>
+<ul>
+<li>&nbsp;&nbsp;&nbsp; easier to set up</li>
+<li>&nbsp;&nbsp;&nbsp; a bit smaller size in itself</li>
+<li>&nbsp;&nbsp;&nbsp; depends on libopenssl and zlib (and they are "huge" and probably not needed by other packages)</li>
+<li>&nbsp;&nbsp;&nbsp; only supports SFTP v3 (that should be fine in general though)</li>
+<li>&nbsp;&nbsp;&nbsp; widespread use</li>
+<li>&nbsp;&nbsp;&nbsp; BSD licensed</li>
+</ul>
+<p>It can be set up with the following commands:</p>
+<pre><code class="perl">opkg update<br /></code><code class="perl">opkg install openssh-sftp-server</code></pre>
+<h5>gesftpserver</h5>
+<ul>
+<li>only available for 12.09</li>
+<li>needs some (minimal) tinkering after installation</li>
+<li>a bit bigger in size in itself</li>
+<li>no cumbersome dependencies, good for minimal systems</li>
+<li>supports SFTP v3-v6</li>
+<li>still under development</li>
+<li>GPL licensed</li>
+</ul>
+<p>It can be set up with the following commands:</p>
+<pre><code class="perl">opkg update<br /></code><code class="perl">opkg install gesftpserver<br /></code><code class="perl">mkdir /usr/libexec<br /></code><code class="perl">ln -s /usr/bin/gesftpserver /usr/libexec/sftp-server</code></pre>
+<p>If you want to automate the set up of the chosen SFTP server on a fresh OpenWrt installation, just put the according steps into <code>run</code> calls in a Rex task. The bottom line is to don't try to use the built-in <code>mkdir</code> and <code class="perl">symlink</code> functions at this point as they are broken before you have an SFTP server in place.<br /><br />You can find out more about gesftpserver and a comparison of different SFTP implementations/versions on their <a href="http://www.greenend.org.uk/rjk/sftpserver/">website</a>.</p>
+<h5>Perl</h5>
+<p>You'll need to install the following packages:</p>
+<ul>
+<li>perl: obviously</li>
+<li>perlbase-bytes, perlbase-essential: very basic set of perl modules</li>
+<li>perlbase-data: for Data::Dumper</li>
+<li>perlbase-file: for glob operations</li>
+<li>perlbase-digest: perlbase-data dependency and it is nice to have in order to speed up file operations in general (via MD5 hashing)</li>
+<li>perlbase-xsloader: perlbase-data and perlbase-file dependency</li>
+</ul>
+<h5>rsync</h5>
+<p>Merely needed by sync_up functionality.</p>
+<h5>shadow-*</h5>
+<p>OpenWrt doesn't provide traditional user and group management commands by default as these procedures are rarely needed in the majority of the targeted use cases. However, if you really need to do these type of stuff on your router, you're in luck, as you can easily install these packages from the official repository:</p>
+<ul>
+<li>shadow-groupadd</li>
+<li>shadow-groupdel</li>
+<li>shadow-groupmod</li>
+<li>shadow-useradd</li>
+<li>shadow-userdel</li>
+<li>shadow-usermod</li>
+</ul>

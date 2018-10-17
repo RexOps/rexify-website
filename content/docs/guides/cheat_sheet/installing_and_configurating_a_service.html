@@ -1,0 +1,40 @@
+<p>The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the file, pkg and service functions.</p>
+<h3>file($remote_file, %options)</h3>
+<p>Manage files on remote systems.</p>
+<h4>Options</h4>
+<ul>
+<li>ensure - Defines the state of the file. Valid parameters are present, absent, directory.</li>
+<li>source - The local file that should be uploaded to the remote server.</li>
+<li>content - Set the content directly. Can be used together with the template() function.</li>
+<li>owner - The owner of the file.</li>
+<li>group - The group the file should belong to.</li>
+<li>mode - The file system privileges the file should have.</li>
+<li>no_overwrite - If set to TRUE the file won't be overwritten if the file already exists.</li>
+<li>on_change - A callback function that gets called when the file state changed. (For example if the file content was modified).</li>
+</ul>
+<pre><code class="perl">file "/etc/ntpd.conf",<br /></code><code class="perl">&nbsp; ensure =&gt; "present",<br /></code><code class="perl">&nbsp; source =&gt; "files/ntpd.conf",<br /></code><code class="perl">&nbsp; owner&nbsp; =&gt; "root",<br /></code><code class="perl">&nbsp; group&nbsp; =&gt; "root",<br /></code><code class="perl">&nbsp; mode&nbsp;&nbsp; =&gt; 644,<br /></code><code class="perl">&nbsp; on_change =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; service ntpd =&gt; "restart";<br /></code><code class="perl">&nbsp; };</code></pre>
+<h3>pkg($name, %options)</h3>
+<p>Install a package on the remote system.</p>
+<h4>Options</h4>
+<ul>
+<li>ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.</li>
+<li>on_change - A called function that gets called when the package state changed. (For example when it was updated)</li>
+</ul>
+<pre><code class="perl">pkg "ntpd",<br /></code><code class="perl">&nbsp; ensure =&gt; "latest",<br /></code><code class="perl">&nbsp; on_change =&gt; sub {<br /></code><code class="perl">&nbsp;&nbsp;&nbsp; service ntpd =&gt; "restart";<br /></code><code class="perl">&nbsp; };</code></pre>
+<h3>service</h3>
+<p>Manage the state of a service.</p>
+<p>This function can be called as a resource or as a normal function to directly stop/start/restart/... services.</p>
+<h4>Options (for calling as a resource)</h4>
+<ul>
+<li>ensure - Defines the state of the service. Valid parameters are started, stopped.</li>
+<li>start - Custom command to start the service.</li>
+<li>stop - Custom command to stop the service.</li>
+<li>status - Custom command to get the status of a service.</li>
+<li>restart - Custom command to restart a service.</li>
+<li>reload - Custom command to reload a service.</li>
+</ul>
+<h4>Example for calling as resource</h4>
+<pre><code class="perl">service "nptd",<br /></code><code class="perl">&nbsp; ensure =&gt; "started";</code></pre>
+<h4>Example for calling as function</h4>
+<pre><code class="perl">service ntpd =&gt; "restart";</code></pre>
+<p>&nbsp;</p>

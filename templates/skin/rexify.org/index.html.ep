@@ -1,0 +1,3 @@
+% layout 'skin/rexify.org/default';
+
+<%== $page->get_parsed_content %>

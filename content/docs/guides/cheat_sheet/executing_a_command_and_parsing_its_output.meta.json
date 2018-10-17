@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Executing a command and parsing its output",
+  "navigation": 1,
+  "title": "Executing a command and parsing its output",
+  "type_name": "page",
+  "url": "executing_a_command_and_parsing_its_output"
+}

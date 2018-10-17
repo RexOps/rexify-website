@@ -1,0 +1,85 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#pvs">pvs</a></li>
+      <li><a href="#vgs">vgs</a></li>
+      <li><a href="#lvs">lvs</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::LVM - Get LVM Information</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can get information of your lvm setup.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<p>All these functions are not idempotent.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::LVM;
+ 
+ my @physical_devices = pvs;
+ my @volume_groups = vgs;
+ my @logical_volumes = lvs;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="pvs">pvs</h2>
+
+<p>Get Information for all your physical volumes.</p>
+
+<pre><code> use Data::Dumper;
+ use Rex::Commands::LVM;
+ 
+ task &quot;lvm&quot;, sub {
+   my @physical_volumes = pvs;
+ 
+   for my $physical_volume (@physical_volumes) {
+     say Dumper($physical_volume);
+   }
+ };</code></pre>
+
+<h2 id="vgs">vgs</h2>
+
+<p>Get Information for all your volume groups.</p>
+
+<pre><code> use Data::Dumper;
+ use Rex::Commands::LVM;
+ 
+ task &quot;lvm&quot;, sub {
+   my @volume_groups = vgs;
+ 
+   for my $volume_group (@volume_groups) {
+     say Dumper($volume_group);
+   }
+ };</code></pre>
+
+<h2 id="lvs">lvs</h2>
+
+<p>Get Information for all your logical volumes.</p>
+
+<pre><code> use Data::Dumper;
+ use Rex::Commands::LVM;
+ 
+ task &quot;lvm&quot;, sub {
+   my @logical_volumes = lvs;
+ 
+   for my $logical_volume (@logical_volumes) {
+     say Dumper($logical_volume);
+   }
+ };</code></pre>
+
+

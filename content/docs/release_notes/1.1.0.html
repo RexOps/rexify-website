@@ -1,0 +1,131 @@
+
+<p>These are the changes in the 1.1.0 release.</p>
+
+<p>We want to thank every contributor who made this release possible. We also welcome Alex Mestiashvili and Arnold Bechtoldt as new contributors.</p>
+
+<h2>New features</h2>
+
+<h3>Pluggable shell detection</h3>
+
+<p>The shell detection code has been refactored, so it is easier to extend the list of shells which are recognized and supported by Rex. This also made initial iDrac-over-SSH support possible, and opened up the way for further exotic shells to be included later.</p>
+
+<ul>
+<li>Only check for iDrac signature if there was an output - Ferenc Erki</li>
+<li>Add initial iDrac shell support - Ferenc Erki</li>
+<li>added code to make shells pluggable. - RexOps/Rex#602 - Jan</li>
+</ul>
+
+<h3>Hiding sensitive data in debug output</h3>
+
+<p>Sensitive data is now being hidden in debug outputs making their sharing easier and safer. This behaviour can be overridden by setting <code>REX_DEBUG_INSECURE</code> environment variable to 1.</p>
+
+<ul>
+<li>added a Rex::Logger::masq() function that can mask sensitive data for logging output. (fix for RexOps/Rex#554) - Jan</li>
+</ul>
+
+<h3>Delayed auth settings</h3>
+
+<p>It is now possible to set special authentication options with <code>auth for</code> <em>after</em> the related task or group definition.</p>
+
+<ul>
+<li>Avoid noisy test output - Ferenc Erki</li>
+<li>added possibility to use auth(for => task) before a task is created - fixed #402 - Jan</li>
+<li>add test for #402 - Jan</li>
+</ul>
+
+<h3>Get server group membership</h3>
+
+<p>Group membership information for servers are now exposed and can be retrieve directly from the server object with the <code>groups</code> method. It also has an alias called <code>group</code>, but it always returns the list of groups a server is member of:</p>
+
+<pre><code class="perl">my @groups = connection->server->groups;</code></pre>
+
+<ul>
+<li>this adds a new method to the server objects called group() and fixed - Jan</li>
+</ul>
+
+<h3>Rex::Test</h3>
+
+<p>Rex tests are now printing an explicit FAIL or PASS message to indicate overall test results. A new <code>has_dir</code> test (similar to <code>has_file</code>) is supported now for easier directory existence checks. A diag method is also available from now on to be used with new test implementations.</p>
+
+<ul>
+<li>Add has_dir test - Ferenc Erki</li>
+<li>Print explicit PASS or FAIL output upon finishing a test suite - Ferenc Erki</li>
+<li>Add diag method for Rex::Test::Base - Ferenc Erki</li>
+</ul>
+
+<h2>Enhancements</h2>
+
+<h3>General</h3>
+
+<p>Rex-1.1.0 contains quite a few general enhancements as well.</p>
+
+<p>Probably the most important of them is that Rex's dependencies are platform-specific now. On Windows it will depend on Net::SSH2 module, while on any other platform on the combination of Net::OpenSSH and Net::SFTP::Foreign. This latter pair of modules were already the preferred ones by default if they were available, but from now each platform will only need their own preferred dependencies to be installed.</p>
+
+<p>The <code>can_run</code> method has been refactored to support Windows platforms by accepting an optional command to use when checking command availability. This also fixes some test failures on Windows.</p>
+
+<p>Other than the above, there are some minor but very useful changes increasing security and convenience, like creating the target directory before extracting an archive to it, using the correct terms for mount command options, or dropping the <code>--force-yes</code> option when installing packages on Debian and its derivatives.</p>
+
+<ul>
+<li>Update task tests #614 - Jan</li>
+<li>Recognize usable SSH modules separately - Ferenc Erki</li>
+<li>Describe platform-specific dependencies - Ferenc Erki</li>
+<li>sudo now inherits from base - Jan</li>
+<li>updated tests to use is() instead of ok(). reference: RexOps/Rex#608 - Jan</li>
+<li>Allow can_run method to accept command to do the check with - Jan</li>
+<li>Check if a command can be run before its execution (fix #514) - Ferenc Erki</li>
+<li>Refactor can_run - Ferenc Erki</li>
+<li>Support can_run command on Windows - Ferenc Erki</li>
+<li>Move can_run to Rex::Interface::Exec - Ferenc Erki</li>
+<li>Add can_run tests - Ferenc Erki </li>
+<li>Create target directory before extracting an archive (fix #600, close #604) - Arnold Bechtoldt</li>
+<li>Add preferred type option for mount command (fix #469) - Ferenc Erki</li>
+<li>Drop potentially dangerous --force-yes option (fix #559) - Ferenc Erki</li>
+</ul>
+
+<h3>Documentation</h3>
+
+<p>Both POD quality and quantity has been improved by syntax fixes, content updates and generating documentation for new modules to be published here on the website.</p>
+
+<ul>
+<li>Sort CONTRIBUTORS file - Ferenc Erki</li>
+<li>Update POD (close #598) - Ferenc Erki</li>
+<li>Fix POD - Ferenc Erki</li>
+<li>misc/create_pod.sh: add PkgConf.pm to list of files to PODify - Brian Manning</li>
+<li>Update POD for Rex::Test::Base - Ferenc Erki</li>
+<li>Generate docs for Rex::Test (fix #483) - Ferenc Erki</li>
+<li>Sort modules alphabetically - Ferenc Erki</li>
+<li>update create_pod - Jan</li>
+<li>try to fix title generation - Jan</li>
+</ul>
+
+<h3>Resources</h3>
+
+<p>It is now easier to work with resources in modules as they can be exported to the main namespace, and they also support more events (created, removed, message).</p>
+
+<ul>
+<li>added error message - Jan</li>
+<li>added support to export resources to main namespace and added more events - Jan</li>
+</ul>
+
+<h3>Rex::Test</h3>
+
+<p>The <code>has_stat</code> test can now handle directories, not just files.</p>
+
+<ul>
+<li>Reword has_{dir,file} test outputs - Ferenc Erki</li>
+<li>Allow has_stat test to handle directories (fix #582) - Ferenc Erki</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<p>The following bugs/regressions were also fixed during this release cycle:</p>
+
+<ul>
+<li>Fix dependencies for openssh + pass_auth - Ferenc Erki</li>
+<li>Fix using ~/.ssh/config options without feature flags #615 - Jan</li>
+<li>Fix handling of symbolic links (fix #591, close #592) - Jan</li>
+<li>fixed setting of path environment variable - #583 - Jan</li>
+<li>Fix has_stat test for non-existing UIDs and GIDs - Ferenc Erki</li>
+<li>changed return code to undef if file/dir not found. fix for RexOps/Rex#608 - Jan</li>
+<li>Ensure proper return values for is_{dir,file} functions (fix #584) - Ferenc Erki</li>
+</ul>

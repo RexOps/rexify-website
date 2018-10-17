@@ -1,0 +1,49 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#groups_file-file-">groups_file($file)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Group::Lookup::INI - read hostnames and groups from a INI style file</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can define hostgroups out of an ini style file.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Group::Lookup::INI;
+ groups_file &quot;file.ini&quot;;
+ </code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="groups_file-file-">groups_file($file)</h2>
+
+<p>With this function you can read groups from INI style files.</p>
+
+<p>File example:</p>
+
+<pre><code> [webserver]
+ fe01
+ fe02
+ f03
+    
+ [backends]
+ be01
+ be02</code></pre>
+
+<p>It also supports hostname expressions like [1..3], [1,2,3] and [1..5/2].</p>
+
+

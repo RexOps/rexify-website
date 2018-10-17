@@ -1,0 +1,65 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#checkout-name-data-">checkout($name, %data);</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::SCM - Sourcecontrol for Subversion and Git.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can checkout subversion and git repositories.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<p>All these functions are not idempotent.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::SCM;
+ 
+ set repository =&gt; &quot;myrepo&quot;,
+    url =&gt; &#39;git@foo.bar:myrepo.git&#39;;
+ 
+ set repository =&gt; &quot;myrepo2&quot;,
+    url      =&gt; &quot;https://foo.bar/myrepo&quot;,
+    type     =&gt; &quot;subversion&quot;,
+    username =&gt; &quot;myuser&quot;,
+    password =&gt; &quot;mypass&quot;;
+ 
+ task &quot;checkout&quot;, sub {
+   checkout &quot;myrepo&quot;;
+ 
+   checkout &quot;myrepo&quot;,
+     path =&gt; &quot;webapp&quot;;
+ 
+   checkout &quot;myrepo&quot;,
+     path   =&gt; &quot;webapp&quot;,
+     branch =&gt; 1.6;    # branch only for git
+ 
+   # For Git only, will replay any local commits on top of pulled commits
+   checkout &quot;myrepo&quot;,
+     path   =&gt; &quot;script_dir&quot;,
+     rebase =&gt; TRUE;
+ 
+   checkout &quot;myrepo2&quot;;
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="checkout-name-data-">checkout($name, %data);</h2>
+
+<p>With this function you can checkout a repository defined with <i>set repository</i>. See Synopsis.</p>
+
+

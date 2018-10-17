@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Search",
+  "navigation": 0,
+  "title": "Search rexify.org",
+  "type_name": "search",
+  "url": "search"
+}

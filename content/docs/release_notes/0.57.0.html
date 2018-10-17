@@ -1,0 +1,28 @@
+
+<p>These are the changes in 0.57 release.</p>
+
+<p>We want to thank every contributor that makes this release possible.</p>
+
+<h2>Common</h2>
+
+<ul>
+<li>New option for sync_up and sync_down function to not parse tpl files</li>
+</ul>
+
+<pre><code class="perl">task "setup", sub {
+  sync_up "local", "remote", {
+    parse_templates => FALSE,
+  };
+}</code></pre>
+
+<h2>Bugfixes</h2>
+
+<h3>Common</h3>
+
+<ul>
+<li>allow definition of gpgkey for redhat/yum repositories - #522 - tekcurmudgeon</li>
+<li>fixed Group defined after task definition - #521</li>
+<li>fixed rsync will execute failed when use -H 127.0.0.1:2222 - #520</li>
+<li>fixed failed authentication when used ~ symbol - #517</li>
+<li>fixed before_task_start() fails with an ambiguous error when your Rexfile does not return a true value - #513</li>
+</ul>

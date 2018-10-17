@@ -1,0 +1,85 @@
+         <p>These are the changes in 0.52 release.</p>
+
+         <p>This release don't bring many new features but fixes bugs and enhanced some existing functions.</p>
+         <p>But we have another delicacy for you. Currently we are developing an easy to use <b>Webfrontend</b> for Rex. A first working development snapshot is available at <a href="https://github.com/RexOps/rex-jobcontrol">https://github.com/RexOps/rex-jobcontrol</a>. You will also find some screenshots there.</p> 
+         <p>The installation is easy and it is described in the README.md file in the repository.</p>
+         <p>We welcome any feedback and if you want to help developing this webfrontend feel free to contact us via irc on <a href="irc://irc.freenode.net/#rex">irc.freenode.net</a> #rex.</p>
+
+<h2>Base</h2>
+<ul>
+  <li>
+  <p><b>on_change</b> hook for update_system</p>
+    <pre><code class="perl">update_system
+  on_change =&gt; sub {
+    my (@modified_packates) = @_;
+      for my $pkg (@modified_packages) {
+        say "Name: $pkg-&gt;{name}";
+        say "Version: $pkg-&gt;{version}";
+        say "Action: $pkg-&gt;{action}";   # some of updated, installed or removed
+      }
+  };</code></pre>
+  </li>
+  <li>
+    <p>Added support for <b>end_if_matched</b> option to run command - nathanIL</p>
+    <pre><code class="perl">run "my_command",
+   end_if_matched =&gt; qr/PATTERN/;</code></pre>
+
+  </li>
+  <li>
+    <p>Tie server.ini to specified -E environment (server.$environment.ini). - ehu</p>
+  </li>
+  <li>
+    <p>Added <b>before_task_start</b> and <b>after_task_finished</b> hooks</p>
+    <p>The before_task_start hook will be executed before the fork for the task is made. The after_task_finished hook will be executed after all servers has finished the task.</p>
+    <pre><code class="perl">before_task_start mytask =&gt; sub {
+   # do some things
+};
+after_task_finished mytask =&gt; sub {
+   # do some things
+};</code></pre>
+  </li>
+  <li>
+    <p>Added <b>fallback authentication</b> support.</p>
+    <p>Sometimes you have different authentications on different hosts and you don't know beforehand which one you have to use. For these cases you can now define multiple authentication options. Rex will try all of them.</p>
+    <pre><code class="perl">auth fallback =&gt; {
+   user        =&gt; "fallback_user1",
+   password    =&gt; "fallback_pw1",
+   public_key  =&gt; "",
+   private_key =&gt; "",
+}, {
+   user        =&gt; "fallback_user2",
+   password    =&gt; "fallback_pw2",
+   public_key  =&gt; "keys/public.key",
+   private_key =&gt; "keys/private.key",
+   sudo        =&gt; TRUE,
+};</code></pre>
+  </li>
+</ul>
+
+ 
+<h2>Cloud</h2>
+<ul>
+  <li>
+    <p>Add <b>floating ip</b> support to openstack provider - exzz</p>
+  </li>
+  <li>
+    <p><b>Auto upload</b> ssh key to openstack cloud provider - exzz</p>
+  </li>
+</ul>
+
+
+<h2>Bugfixes</h2>
+<ul>
+  <li>
+    <p>#381 - file NAME, ensure =&gt; 'absent' for a directory</p>
+  </li>
+   <li>
+    <p>#392 - run conditional options with exec_autodir</p>
+  </li>
+  <li>
+    <p>#399 - Rex::Output to persist across different processes - nathanIL</p>
+  </li>
+  <li>
+    <p>#416 - fixed pkg with ensure =&gt; 'ver.si.on'</p>
+  </li>
+</ul>

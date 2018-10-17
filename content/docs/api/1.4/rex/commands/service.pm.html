@@ -1,0 +1,165 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#service-service-action-option-">service($service, $action, [$option])</a></li>
+      <li><a href="#service_provider_for-os-type-">service_provider_for $os =&gt; $type;</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Service - Manage System Services</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can manage Linux services.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::Service
+
+ service apache2 =&gt; &quot;start&quot;;
+
+ service apache2 =&gt; &quot;stop&quot;;
+
+ service apache2 =&gt; &quot;restart&quot;;
+
+ service apache2 =&gt; &quot;status&quot;;
+
+ service apache2 =&gt; &quot;reload&quot;;
+
+ service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+
+ service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="service-service-action-option-">service($service, $action, [$option])</h2>
+
+<p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform.</p>
+
+<dl>
+
+<dt id="starting-a-service">starting a service</dt>
+<dd>
+
+<pre><code> task &quot;start-service&quot;, &quot;server01&quot;, sub {
+   service apache2 =&gt; &quot;start&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="stopping-a-service">stopping a service</dt>
+<dd>
+
+<pre><code> task &quot;stop-service&quot;, &quot;server01&quot;, sub {
+   service apache2 =&gt; &quot;stop&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="restarting-a-service">restarting a service</dt>
+<dd>
+
+<pre><code> task &quot;restart-service&quot;, &quot;server01&quot;, sub {
+   service apache2 =&gt; &quot;restart&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="checking-status-of-a-service">checking status of a service</dt>
+<dd>
+
+<pre><code> task &quot;status-service&quot;, &quot;server01&quot;, sub {
+   if( service apache2 =&gt; &quot;status&quot; ) {
+     say &quot;Apache2 is running&quot;;
+   }
+   else {
+     say &quot;Apache2 is not running&quot;;
+   }
+ };</code></pre>
+
+</dd>
+<dt id="reloading-a-service">reloading a service</dt>
+<dd>
+
+<pre><code> task &quot;reload-service&quot;, &quot;server01&quot;, sub {
+   service apache2 =&gt; &quot;reload&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="ensure-that-a-service-will-started-at-boot-time">ensure that a service will started at boot time</dt>
+<dd>
+
+<pre><code> task &quot;prepare&quot;, sub {
+   service &quot;apache2&quot;,
+     ensure =&gt; &quot;started&quot;;
+ };</code></pre>
+
+</dd>
+<dt id="ensure-that-a-service-will-NOT-be-started.">ensure that a service will NOT be started.</dt>
+<dd>
+
+<pre><code> task &quot;prepare&quot;, sub {
+   service &quot;apache2&quot;,
+     ensure =&gt; &quot;stopped&quot;;
+ };</code></pre>
+
+<p>If you need to define a custom command for start, stop, restart, reload or status you can do this with the corresponding options.</p>
+
+<pre><code> task &quot;prepare&quot;, sub {
+   service &quot;apache2&quot;,
+     ensure  =&gt; &quot;started&quot;,
+     start   =&gt; &quot;/usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+     stop    =&gt; &quot;killall httpd&quot;,
+     status  =&gt; &quot;ps -efww | grep httpd&quot;,
+     restart =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+     reload  =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;;
+ };</code></pre>
+
+<p>This function supports the following hooks:</p>
+
+<dl>
+
+<dt id="before_action">before_<i>action</i></dt>
+<dd>
+
+<p>For example: before_start, before_stop, before_restart</p>
+
+<p>This gets executed right before the service action.</p>
+
+</dd>
+<dt id="after_action">after_<i>action</i></dt>
+<dd>
+
+<p>For example: after_start, after_stop, after_restart</p>
+
+<p>This gets executed right after the service action.</p>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<h2 id="service_provider_for-os-type-">service_provider_for $os =&gt; $type;</h2>
+
+<p>To set another service provider as the default, use this function.</p>
+
+<pre><code> user &quot;root&quot;;
+
+ group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
+ service_provider_for SunOS =&gt; &quot;svcadm&quot;;
+
+ task &quot;start&quot;, group =&gt; &quot;db&quot;, sub {
+    service ssh =&gt; &quot;restart&quot;;
+ };</code></pre>
+
+<p>This example will restart the <i>ssh</i> service via svcadm (but only on SunOS, on other operating systems it will use the default).</p>
+
+

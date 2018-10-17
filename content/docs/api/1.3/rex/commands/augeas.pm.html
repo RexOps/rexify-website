@@ -1,0 +1,114 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#augeas-action-options-">augeas($action, @options)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Augeas - An augeas module for (R)?ex</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is a simple module to manipulate configuration files with the help of augeas.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> my $k = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot;, &quot;127.0.0.1&quot;;
+    
+ augeas insert =&gt; &quot;/files/etc/hosts&quot;,
+           label =&gt; &quot;01&quot;,
+           after =&gt; &quot;/7&quot;,
+           ipaddr =&gt; &quot;192.168.2.23&quot;,
+           canonical =&gt; &quot;test&quot;;
+   
+ augeas dump =&gt; &quot;/files/etc/hosts&quot;;
+
+ augeas modify =&gt;
+    &quot;/files/etc/ssh/sshd_config/PermitRootLogin&quot; =&gt; &quot;without-password&quot;,
+    on_change =&gt; sub {
+       service ssh =&gt; &quot;restart&quot;;
+    };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="augeas-action-options-">augeas($action, @options)</h2>
+
+<p>It returns 1 on success and 0 on failure.</p>
+
+<p>Actions:</p>
+
+<dl>
+
+<dt id="modify">modify</dt>
+<dd>
+
+<p>This modifies the keys given in @options in $file.</p>
+
+<pre><code> augeas modify =&gt;
+           &quot;/files/etc/hosts/7/ipaddr&quot;    =&gt; &quot;127.0.0.2&quot;,
+           &quot;/files/etc/hosts/7/canonical&quot; =&gt; &quot;test01&quot;,
+           on_change                      =&gt; sub { say &quot;I changed!&quot; };</code></pre>
+
+</dd>
+<dt id="remove">remove</dt>
+<dd>
+
+<p>Remove an entry.</p>
+
+<pre><code> augeas remove    =&gt; &quot;/files/etc/hosts/2&quot;,
+        on_change =&gt; sub { say &quot;I changed!&quot; };</code></pre>
+
+</dd>
+<dt id="insert">insert</dt>
+<dd>
+
+<p>Insert an item into the file. Here, the order of the options is important. If the order is wrong it won&#39;t save your changes.</p>
+
+<pre><code> augeas insert =&gt; &quot;/files/etc/hosts&quot;,
+           label     =&gt; &quot;01&quot;,
+           after     =&gt; &quot;/7&quot;,
+           ipaddr    =&gt; &quot;192.168.2.23&quot;,
+           alias     =&gt; &quot;test02&quot;,
+           on_change =&gt; sub { say &quot;I changed!&quot; };</code></pre>
+
+</dd>
+<dt id="dump">dump</dt>
+<dd>
+
+<p>Dump the contents of a file to STDOUT.</p>
+
+<pre><code> augeas dump =&gt; &quot;/files/etc/hosts&quot;;</code></pre>
+
+</dd>
+<dt id="exists">exists</dt>
+<dd>
+
+<p>Check if an item exists.</p>
+
+<pre><code> my $exists = augeas exists =&gt; &quot;/files/etc/hosts/*/ipaddr&quot; =&gt; &quot;127.0.0.1&quot;;
+ if($exists) {
+     say &quot;127.0.0.1 exists!&quot;;
+ }</code></pre>
+
+</dd>
+<dt id="get">get</dt>
+<dd>
+
+<p>Returns the value of the given item.</p>
+
+<pre><code> my $val = augeas get =&gt; &quot;/files/etc/hosts/1/ipaddr&quot;;</code></pre>
+
+</dd>
+</dl>
+
+

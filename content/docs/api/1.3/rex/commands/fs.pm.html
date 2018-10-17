@@ -1,0 +1,429 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#list_files-path-">list_files(&quot;/path&quot;);</a></li>
+      <li><a href="#ls-path-">ls($path)</a></li>
+      <li><a href="#symlink-from-to-">symlink($from, $to)</a></li>
+      <li><a href="#ln-from-to-">ln($from, $to)</a></li>
+      <li><a href="#unlink-file-">unlink($file)</a></li>
+      <li><a href="#rm-file-">rm($file)</a></li>
+      <li><a href="#rmdir-dir-">rmdir($dir)</a></li>
+      <li><a href="#mkdir-newdir-">mkdir($newdir)</a></li>
+      <li><a href="#chown-owner-file-">chown($owner, $file)</a></li>
+      <li><a href="#chgrp-group-file-">chgrp($group, $file)</a></li>
+      <li><a href="#chmod-mode-file-">chmod($mode, $file)</a></li>
+      <li><a href="#stat-file-">stat($file)</a></li>
+      <li><a href="#is_file-file-">is_file($file)</a></li>
+      <li><a href="#is_dir-dir-">is_dir($dir)</a></li>
+      <li><a href="#is_symlink-file-">is_symlink($file)</a></li>
+      <li><a href="#is_readable-file-">is_readable($file)</a></li>
+      <li><a href="#is_writable-file-">is_writable($file)</a></li>
+      <li><a href="#is_writeable-file-">is_writeable($file)</a></li>
+      <li><a href="#readlink-link-">readlink($link)</a></li>
+      <li><a href="#rename-old-new-">rename($old, $new)</a></li>
+      <li><a href="#mv-old-new-">mv($old, $new)</a></li>
+      <li><a href="#chdir-newdir-">chdir($newdir)</a></li>
+      <li><a href="#cd-newdir-">cd($newdir)</a></li>
+      <li><a href="#df-device-">df([$device])</a></li>
+      <li><a href="#du-path-">du($path)</a></li>
+      <li><a href="#cp-source-destination-">cp($source, $destination)</a></li>
+      <li><a href="#mount-device-mount_point-options-">mount($device, $mount_point, @options)</a></li>
+      <li><a href="#umount-mount_point-">umount($mount_point)</a></li>
+      <li><a href="#glob-glob-">glob($glob)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Fs - Filesystem commands</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can do file system tasks like creating a directory, deleting files, moving files, and more.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> my @files = list_files &quot;/etc&quot;;
+ 
+ unlink(&quot;/tmp/file&quot;);
+ 
+ rmdir(&quot;/tmp&quot;);
+ mkdir(&quot;/tmp&quot;);
+ 
+ my %stat = stat(&quot;/etc/passwd&quot;);
+ 
+ my $link = readlink(&quot;/path/to/a/link&quot;);
+ symlink(&quot;/source&quot;, &quot;/dest&quot;);
+ 
+ rename(&quot;oldname&quot;, &quot;newname&quot;);
+ 
+ chdir(&quot;/tmp&quot;);
+ 
+ is_file(&quot;/etc/passwd&quot;);
+ is_dir(&quot;/etc&quot;);
+ is_writeable(&quot;/tmp&quot;);
+ is_writable(&quot;/tmp&quot;);
+ 
+ chmod 755, &quot;/tmp&quot;;
+ chown &quot;user&quot;, &quot;/tmp&quot;;
+ chgrp &quot;group&quot;, &quot;/tmp&quot;;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="list_files-path-">list_files(&quot;/path&quot;);</h2>
+
+<p>This function list all entries (files, directories, ...) in a given directory and returns a array.</p>
+
+<pre><code> task &quot;ls-etc&quot;, &quot;server01&quot;, sub {
+   my @tmp_files = grep { /\.tmp$/ } list_files(&quot;/etc&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="ls-path-">ls($path)</h2>
+
+<p>Just an alias for <i>list_files</i></p>
+
+<h2 id="symlink-from-to-">symlink($from, $to)</h2>
+
+<p>This function will create a symlink from $from to $to.</p>
+
+<pre><code> task &quot;symlink&quot;, &quot;server01&quot;, sub {
+   symlink(&quot;/var/www/versions/1.0.0&quot;, &quot;/var/www/html&quot;);
+ };</code></pre>
+
+<h2 id="ln-from-to-">ln($from, $to)</h2>
+
+<p>ln is an alias for <i>symlink</i></p>
+
+<h2 id="unlink-file-">unlink($file)</h2>
+
+<p>This function will remove the given file.</p>
+
+<pre><code> task &quot;unlink&quot;, &quot;server01&quot;, sub {
+   unlink(&quot;/tmp/testfile&quot;);
+ };</code></pre>
+
+<h2 id="rm-file-">rm($file)</h2>
+
+<p>This is an alias for unlink.</p>
+
+<h2 id="rmdir-dir-">rmdir($dir)</h2>
+
+<p>This function will remove the given directory.</p>
+
+<pre><code> task &quot;rmdir&quot;, &quot;server01&quot;, sub {
+   rmdir(&quot;/tmp&quot;);
+ };</code></pre>
+
+<p>Since: 0.45 Please use the file() resource instead.</p>
+
+<pre><code> task &quot;prepare&quot;, sub {
+   file &quot;/tmp&quot;,
+     ensure =&gt; &quot;absent&quot;;
+ };</code></pre>
+
+<h2 id="mkdir-newdir-">mkdir($newdir)</h2>
+
+<p>This function will create a new directory.</p>
+
+<p>Since: 0.45 Please use the file() resource instead.</p>
+
+<pre><code> task &quot;prepare&quot;, sub {
+   file &quot;/tmp&quot;,
+     ensure =&gt; &quot;directory&quot;,
+     owner  =&gt; &quot;root&quot;,
+     group  =&gt; &quot;root&quot;,
+     mode   =&gt; 1777;
+ };
+ 
+ task &quot;mkdir&quot;, &quot;server01&quot;, sub {
+   mkdir &quot;/tmp&quot;;
+ 
+   mkdir &quot;/tmp&quot;,
+     owner =&gt; &quot;root&quot;,
+     group =&gt; &quot;root&quot;,
+     mode =&gt; 1777;
+ };</code></pre>
+
+<h2 id="chown-owner-file-">chown($owner, $file)</h2>
+
+<p>Change the owner of a file or a directory.</p>
+
+<pre><code> chown &quot;www-data&quot;, &quot;/var/www/html&quot;;
+ 
+ chown &quot;www-data&quot;, &quot;/var/www/html&quot;,
+                recursive =&gt; 1;</code></pre>
+
+<p>This command will not be reported.</p>
+
+<p>If you want to use reports, please use the file() resource instead.</p>
+
+<h2 id="chgrp-group-file-">chgrp($group, $file)</h2>
+
+<p>Change the group of a file or a directory.</p>
+
+<pre><code> chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;;
+ 
+ chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;,
+              recursive =&gt; 1;</code></pre>
+
+<p>This command will not be reported.</p>
+
+<p>If you want to use reports, please use the file() resource instead.</p>
+
+<h2 id="chmod-mode-file-">chmod($mode, $file)</h2>
+
+<p>Change the permissions of a file or a directory.</p>
+
+<pre><code> chmod 755, &quot;/var/www/html&quot;;
+ 
+ chmod 755, &quot;/var/www/html&quot;,
+          recursive =&gt; 1;</code></pre>
+
+<p>This command will not be reported.</p>
+
+<p>If you want to use reports, please use the file() resource instead.</p>
+
+<h2 id="stat-file-">stat($file)</h2>
+
+<p>This function will return a hash with the following information about a file or directory.</p>
+
+<dl>
+
+<dt id="mode">mode</dt>
+<dd>
+
+</dd>
+<dt id="size">size</dt>
+<dd>
+
+</dd>
+<dt id="uid">uid</dt>
+<dd>
+
+</dd>
+<dt id="gid">gid</dt>
+<dd>
+
+</dd>
+<dt id="atime">atime</dt>
+<dd>
+
+</dd>
+<dt id="mtime">mtime</dt>
+<dd>
+
+</dd>
+</dl>
+
+<pre><code> task &quot;stat&quot;, &quot;server01&quot;, sub {
+   my %file_stat = stat(&quot;/etc/passwd&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_file-file-">is_file($file)</h2>
+
+<p>This function tests if $file is a file. Returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;isfile&quot;, &quot;server01&quot;, sub {
+   if( is_file(&quot;/etc/passwd&quot;) ) {
+     say &quot;it is a file.&quot;;
+   }
+   else {
+     say &quot;hm, this is not a file.&quot;;
+   }
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_dir-dir-">is_dir($dir)</h2>
+
+<p>This function tests if $dir is a directory. Returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;isdir&quot;, &quot;server01&quot;, sub {
+   if( is_dir(&quot;/etc&quot;) ) {
+     say &quot;it is a directory.&quot;;
+   }
+   else {
+     say &quot;hm, this is not a directory.&quot;;
+   }
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_symlink-file-">is_symlink($file)</h2>
+
+<p>This function tests if $file is a symlink. Returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;issym&quot;, &quot;server01&quot;, sub {
+   if( is_symlink(&quot;/etc/foo.txt&quot;) ) {
+     say &quot;it is a symlink.&quot;;
+   }
+   else {
+     say &quot;hm, this is not a symlink.&quot;;
+   }
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_readable-file-">is_readable($file)</h2>
+
+<p>This function tests if $file is readable. It returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;readable&quot;, &quot;server01&quot;, sub {
+   if( is_readable(&quot;/etc/passwd&quot;) ) {
+     say &quot;passwd is readable&quot;;
+   }
+   else {
+     say &quot;not readable.&quot;;
+   }
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_writable-file-">is_writable($file)</h2>
+
+<p>This function tests if $file is writable. It returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;writable&quot;, &quot;server01&quot;, sub {
+   if( is_writable(&quot;/etc/passwd&quot;) ) {
+     say &quot;passwd is writable&quot;;
+   }
+   else {
+     say &quot;not writable.&quot;;
+   }
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="is_writeable-file-">is_writeable($file)</h2>
+
+<p>This is only an alias for <i>is_writable</i>.</p>
+
+<p>This command will not be reported.</p>
+
+<h2 id="readlink-link-">readlink($link)</h2>
+
+<p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die.</p>
+
+<pre><code> task &quot;islink&quot;, &quot;server01&quot;, sub {
+   my $link;
+   eval {
+     $link = readlink(&quot;/tmp/testlink&quot;);
+   };
+ 
+   say &quot;this is a link&quot; if($link);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="rename-old-new-">rename($old, $new)</h2>
+
+<p>This function will rename $old to $new. Will return 1 on success and 0 on failure.</p>
+
+<pre><code> task &quot;rename&quot;, &quot;server01&quot;, sub {
+   rename(&quot;/tmp/old&quot;, &quot;/tmp/new&quot;);
+ };</code></pre>
+
+<h2 id="mv-old-new-">mv($old, $new)</h2>
+
+<p>mv is an alias for <i>rename</i>.</p>
+
+<h2 id="chdir-newdir-">chdir($newdir)</h2>
+
+<p>This function will change the current workdirectory to $newdir. This function currently only works local.</p>
+
+<pre><code> task &quot;chdir&quot;, &quot;server01&quot;, sub {
+   chdir(&quot;/tmp&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="cd-newdir-">cd($newdir)</h2>
+
+<p>This is an alias of <i>chdir</i>.</p>
+
+<h2 id="df-device-">df([$device])</h2>
+
+<p>This function returns a hashRef reflecting the output of <i>df</i></p>
+
+<pre><code> task &quot;df&quot;, &quot;server01&quot;, sub {
+    my $df = df();
+    my $df_on_sda1 = df(&quot;/dev/sda1&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="du-path-">du($path)</h2>
+
+<p>Returns the disk usage of $path.</p>
+
+<pre><code> task &quot;du&quot;, &quot;server01&quot;, sub {
+   say &quot;size of /var/www: &quot; . du(&quot;/var/www&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+<h2 id="cp-source-destination-">cp($source, $destination)</h2>
+
+<p>cp will copy $source to $destination (it is recursive)</p>
+
+<pre><code> task &quot;cp&quot;, &quot;server01&quot;, sub {
+    cp(&quot;/var/www&quot;, &quot;/var/www.old&quot;);
+ };</code></pre>
+
+<h2 id="mount-device-mount_point-options-">mount($device, $mount_point, @options)</h2>
+
+<p>Mount devices.</p>
+
+<pre><code> task &quot;mount&quot;, &quot;server01&quot;, sub {
+   mount &quot;/dev/sda5&quot;, &quot;/tmp&quot;;
+   mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+          ensure    =&gt; &quot;present&quot;,
+          type      =&gt; &quot;ext3&quot;,
+          options   =&gt; [qw/noatime async/],
+          on_change =&gt; sub { say &quot;device mounted&quot;; };
+   #
+   # mount persistent with entry in /etc/fstab
+ 
+   mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+          ensure     =&gt; &quot;persistent&quot;,
+          type       =&gt; &quot;ext3&quot;,
+          options    =&gt; [qw/noatime async/],
+          on_change  =&gt; sub { say &quot;device mounted&quot;; };
+ 
+   # to umount a device
+   mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+          ensure =&gt; &quot;absent&quot;;
+ 
+ };</code></pre>
+
+<p>In order to be more aligned with `mount` terminology, the previously used `fs` option has been deprecated in favor of the `type` option. The `fs` option is still supported and works as previously, but Rex prints a warning if it is being used. There&#39;s also a warning if both `fs` and `type` options are specified, and in this case `type` will be used.</p>
+
+<h2 id="umount-mount_point-">umount($mount_point)</h2>
+
+<p>Unmount device.</p>
+
+<pre><code> task &quot;umount&quot;, &quot;server01&quot;, sub {
+   umount &quot;/tmp&quot;;
+ };</code></pre>
+
+<h2 id="glob-glob-">glob($glob)</h2>
+
+<pre><code> task &quot;glob&quot;, &quot;server1&quot;, sub {
+   my @files_with_p = grep { is_file($_) } glob(&quot;/etc/p*&quot;);
+ };</code></pre>
+
+<p>This command will not be reported.</p>
+
+

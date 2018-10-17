@@ -1,0 +1,203 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#open_port-port-option-">open_port($port, $option)</a></li>
+      <li><a href="#close_port-port-option-">close_port($port, $option)</a></li>
+      <li><a href="#redirect_port-in_port-option-">redirect_port($in_port, $option)</a></li>
+      <li><a href="#iptables-params-">iptables(@params)</a></li>
+      <li><a href="#is_nat_gateway">is_nat_gateway</a></li>
+      <li><a href="#default_state_rule-option-">default_state_rule(%option)</a></li>
+      <li><a href="#iptables_list">iptables_list</a></li>
+      <li><a href="#iptables_clear">iptables_clear</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Iptables - Iptable Management Commands</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this Module you can manage basic Iptables rules.</p>
+
+<p>Version &lt;= 1.0: All these functions will not be reported.</p>
+
+<p>Only <i>open_port</i> and <i>close_port</i> are idempotent.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> use Rex::Commands::Iptables;
+ 
+ task &quot;firewall&quot;, sub {
+   iptables_clear;
+ 
+   open_port 22;
+   open_port [22, 80] =&gt; {
+     dev =&gt; &quot;eth0&quot;,
+   };
+ 
+   close_port 22 =&gt; {
+     dev =&gt; &quot;eth0&quot;,
+   };
+   close_port &quot;all&quot;;
+ 
+   redirect_port 80 =&gt; 10080;
+   redirect_port 80 =&gt; {
+     dev =&gt; &quot;eth0&quot;,
+     to  =&gt; 10080,
+   };
+ 
+   default_state_rule;
+   default_state_rule dev =&gt; &quot;eth0&quot;;
+ 
+   is_nat_gateway;
+ 
+   iptables t =&gt; &quot;nat&quot;,
+         A =&gt; &quot;POSTROUTING&quot;,
+         o =&gt; &quot;eth0&quot;,
+         j =&gt; &quot;MASQUERADE&quot;;
+
+   # The &#39;iptables&#39; function also accepts long options,
+   # however, options with dashes need to be quoted
+   iptables table =&gt; &quot;nat&quot;,
+         accept          =&gt; &quot;POSTROUTING&quot;,
+         &quot;out-interface&quot; =&gt; &quot;eth0&quot;,
+         jump            =&gt; &quot;MASQUERADE&quot;;
+
+   # Version of IP can be specified in the first argument
+   # of any function: -4 or -6 (defaults to -4)
+   iptables_clear -6;
+
+   open_port -6, [22, 80];
+   close_port -6, &quot;all&quot;;
+   redirect_port -6, 80 =&gt; 10080;
+   default_state_rule -6;
+
+   iptables -6, &quot;flush&quot;;
+   iptables -6,
+         t     =&gt; &quot;filter&quot;,
+         A     =&gt; &quot;INPUT&quot;,
+         i     =&gt; &quot;eth0&quot;,
+         m     =&gt; &quot;state&quot;,
+         state =&gt; &quot;RELATED,ESTABLISHED&quot;,
+         j     =&gt; &quot;ACCEPT&quot;;
+ };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="open_port-port-option-">open_port($port, $option)</h2>
+
+<p>Open a port for inbound connections.</p>
+
+<pre><code> task &quot;firewall&quot;, sub {
+   open_port 22;
+   open_port [22, 80];
+   open_port [22, 80],
+     dev =&gt; &quot;eth1&quot;;
+ };
+ 
+ task &quot;firewall&quot;, sub {
+  open_port 22,
+    dev    =&gt; &quot;eth1&quot;,
+    only_if =&gt; &quot;test -f /etc/firewall.managed&quot;;
+} ;</code></pre>
+
+<h2 id="close_port-port-option-">close_port($port, $option)</h2>
+
+<p>Close a port for inbound connections.</p>
+
+<pre><code> task &quot;firewall&quot;, sub {
+   close_port 22;
+   close_port [22, 80];
+   close_port [22, 80],
+     dev    =&gt; &quot;eth0&quot;,
+     only_if =&gt; &quot;test -f /etc/firewall.managed&quot;;
+ };</code></pre>
+
+<h2 id="redirect_port-in_port-option-">redirect_port($in_port, $option)</h2>
+
+<p>Redirect $in_port to another local port.</p>
+
+<pre><code> task &quot;redirects&quot;, sub {
+   redirect_port 80 =&gt; 10080;
+   redirect_port 80 =&gt; {
+     to  =&gt; 10080,
+     dev =&gt; &quot;eth0&quot;,
+   };
+ };</code></pre>
+
+<h2 id="iptables-params-">iptables(@params)</h2>
+
+<p>Write standard iptable comands.</p>
+
+<p>Note that there is a short form for the iptables <code>--flush</code> option; when you pass the option of <code>-F|&quot;flush&quot;</code> as the only argument, the command <code>iptables -F</code> is run on the connected host. With the two argument form of <code>flush</code> shown in the examples below, the second argument is table you want to flush.</p>
+
+<pre><code> task &quot;firewall&quot;, sub {
+   iptables t =&gt; &quot;nat&quot;, A =&gt; &quot;POSTROUTING&quot;, o =&gt; &quot;eth0&quot;, j =&gt; &quot;MASQUERADE&quot;;
+   iptables t =&gt; &quot;filter&quot;, i =&gt; &quot;eth0&quot;, m =&gt; &quot;state&quot;, state =&gt; &quot;RELATED,ESTABLISHED&quot;, j =&gt; &quot;ACCEPT&quot;;
+ 
+   # automatically flushes all tables; equivalent to &#39;iptables -F&#39;
+   iptables &quot;flush&quot;;
+   iptables -F;
+
+   # flush only the &quot;filter&quot; table
+   iptables flush =&gt; &quot;filter&quot;;
+   iptables -F =&gt; &quot;filter&quot;;
+ };
+
+ # Note: options with dashes &quot;-&quot; need to be quoted to escape them from Perl
+ task &quot;long_form_firewall&quot;, sub {
+   iptables table =&gt; &quot;nat&quot;,
+        append          =&gt; &quot;POSTROUTING&quot;,
+        &quot;out-interface&quot; =&gt; &quot;eth0&quot;,
+        jump            =&gt; &quot;MASQUERADE&quot;;
+   iptables table =&gt; &quot;filter&quot;,
+        &quot;in-interface&quot; =&gt; &quot;eth0&quot;,
+        match          =&gt; &quot;state&quot;,
+        state          =&gt; &quot;RELATED,ESTABLISHED&quot;,
+        jump           =&gt; &quot;ACCEPT&quot;;
+ };</code></pre>
+
+<h2 id="is_nat_gateway">is_nat_gateway</h2>
+
+<p>This function creates a NAT gateway for the device the default route points to.</p>
+
+<pre><code> task &quot;make-gateway&quot;, sub {
+   is_nat_gateway;
+   is_nat_gateway -6;
+ };</code></pre>
+
+<h2 id="default_state_rule-option-">default_state_rule(%option)</h2>
+
+<p>Set the default state rules for the given device.</p>
+
+<pre><code> task &quot;firewall&quot;, sub {
+   default_state_rule(dev =&gt; &quot;eth0&quot;);
+ };</code></pre>
+
+<h2 id="iptables_list">iptables_list</h2>
+
+<p>List all iptables rules.</p>
+
+<pre><code> task &quot;list-iptables&quot;, sub {
+   print Dumper iptables_list;
+   print Dumper iptables_list -6;
+ };</code></pre>
+
+<h2 id="iptables_clear">iptables_clear</h2>
+
+<p>Remove all iptables rules.</p>
+
+<pre><code> task &quot;no-firewall&quot;, sub {
+   iptables_clear;
+ };</code></pre>
+
+

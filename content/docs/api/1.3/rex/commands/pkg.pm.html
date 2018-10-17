@@ -1,0 +1,315 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#pkg-package-options-">pkg($package, %options)</a></li>
+      <li><a href="#install-type-data-options-">install($type, $data, $options)</a></li>
+      <li><a href="#remove-type-package-options-">remove($type, $package, $options)</a></li>
+      <li><a href="#update_system">update_system</a></li>
+      <li><a href="#installed_packages">installed_packages</a></li>
+      <li><a href="#is_installed">is_installed</a></li>
+      <li><a href="#update_package_db">update_package_db</a></li>
+      <li><a href="#repository-action-data-">repository($action, %data)</a></li>
+      <li><a href="#package_provider_for-os-type-">package_provider_for $os =&gt; $type;</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::Pkg - Install/Remove Software packages</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can install packages and files.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> install file =&gt; &quot;/etc/passwd&quot;, {
+              source =&gt; &quot;/export/files/etc/passwd&quot;
+            };
+
+ install package =&gt; &quot;perl&quot;;</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="pkg-package-options-">pkg($package, %options)</h2>
+
+<p>Since: 0.45</p>
+
+<p>Use this resource to install or update a package. This resource will generate reports.</p>
+
+<pre><code> pkg &quot;httpd&quot;,
+   ensure    =&gt; &quot;latest&quot;,    # ensure that the newest version is installed (auto-update)
+   on_change =&gt; sub { say &quot;package was installed/updated&quot;; };
+
+ pkg &quot;httpd&quot;,
+   ensure =&gt; &quot;absent&quot;;    # remove the package
+
+ pkg &quot;httpd&quot;,
+   ensure =&gt; &quot;present&quot;;   # ensure that some version is installed (no auto-update)
+
+ pkg &quot;httpd&quot;,
+   ensure =&gt; &quot;2.4.6&quot;;    # ensure that version 2.4.6 is installed
+
+ pkg &quot;apache-server&quot;,    # with a custom resource name
+   package =&gt; &quot;httpd&quot;,
+   ensure  =&gt; &quot;present&quot;;</code></pre>
+
+<h2 id="install-type-data-options-">install($type, $data, $options)</h2>
+
+<p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files.</p>
+
+<p>If you need reports, please use the pkg() resource.</p>
+
+<dl>
+
+<dt id="installing-a-package-This-is-only-supported-on-CentOS-OpenSuSE-and-Debian-systems.-">installing a package (This is only supported on CentOS, OpenSuSE and Debian systems.)</dt>
+<dd>
+
+<pre><code> task &quot;prepare&quot;, &quot;server01&quot;, sub {
+   install package =&gt; &quot;perl&quot;;
+
+   # or if you have to install more packages.
+   install package =&gt; [
+                  &quot;perl&quot;,
+                  &quot;ntp&quot;,
+                  &quot;dbus&quot;,
+                  &quot;hal&quot;,
+                  &quot;sudo&quot;,
+                  &quot;vim&quot;,
+                ];
+ };</code></pre>
+
+</dd>
+<dt id="installing-a-file">installing a file</dt>
+<dd>
+
+<p>This is deprecated since 0.9. Please use <a>File</a> <i>file</i> instead.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server01&quot;, sub {
+   install file =&gt; &quot;/etc/passwd&quot;, {
+                source =&gt; &quot;/export/files/etc/passwd&quot;,
+                owner  =&gt; &quot;root&quot;,
+                group  =&gt; &quot;root&quot;,
+                mode  =&gt; 644,
+              };
+ };</code></pre>
+
+</dd>
+<dt id="installing-a-file-and-do-something-if-the-file-was-changed.">installing a file and do something if the file was changed.</dt>
+<dd>
+
+<pre><code> task &quot;prepare&quot;, &quot;server01&quot;, sub {
+   install file =&gt; &quot;/etc/httpd/apache2.conf&quot;, {
+                source   =&gt; &quot;/export/files/etc/httpd/apache2.conf&quot;,
+                owner    =&gt; &quot;root&quot;,
+                group    =&gt; &quot;root&quot;,
+                mode    =&gt; 644,
+                on_change =&gt; sub { say &quot;File was modified!&quot;; }
+              };
+ };</code></pre>
+
+</dd>
+<dt id="installing-a-file-from-a-template.">installing a file from a template.</dt>
+<dd>
+
+<pre><code> task &quot;prepare&quot;, &quot;server01&quot;, sub {
+   install file =&gt; &quot;/etc/httpd/apache2.tpl&quot;, {
+                source   =&gt; &quot;/export/files/etc/httpd/apache2.conf&quot;,
+                owner    =&gt; &quot;root&quot;,
+                group    =&gt; &quot;root&quot;,
+                mode    =&gt; 644,
+                on_change =&gt; sub { say &quot;File was modified!&quot;; },
+                template  =&gt; {
+                           greeting =&gt; &quot;hello&quot;,
+                           name    =&gt; &quot;Ben&quot;,
+                         },
+              };
+ };</code></pre>
+
+</dd>
+</dl>
+
+<p>This function supports the following hooks:</p>
+
+<dl>
+
+<dt id="before">before</dt>
+<dd>
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+</dd>
+<dt id="before_change">before_change</dt>
+<dd>
+
+<p>This gets executed right before the new package is installed. This hook is only available for package installations. If you need file hooks, you have to use the file() function.</p>
+
+</dd>
+<dt id="after_change">after_change</dt>
+<dd>
+
+<p>This gets executed right after the new package was installed. This hook is only available for package installations. If you need file hooks, you have to use the file() function.</p>
+
+</dd>
+<dt id="after">after</dt>
+<dd>
+
+<p>This gets executed right before the install() function returns.</p>
+
+</dd>
+</dl>
+
+<h2 id="remove-type-package-options-">remove($type, $package, $options)</h2>
+
+<p>This function will remove the given package from a system.</p>
+
+<pre><code> task &quot;cleanup&quot;, &quot;server01&quot;, sub {
+   remove package =&gt; &quot;vim&quot;;
+ };</code></pre>
+
+<h2 id="update_system">update_system</h2>
+
+<p>This function does a complete system update.</p>
+
+<p>For example <i>apt-get upgrade</i> or <i>yum update</i>.</p>
+
+<pre><code> task &quot;update-system&quot;, &quot;server1&quot;, sub {
+   update_system;
+ };</code></pre>
+
+<p>If you want to get the packages that where updated, you can use the <i>on_change</i> hook.</p>
+
+<pre><code> task &quot;update-system&quot;, &quot;server1&quot;, sub {
+   update_system
+     on_change =&gt; sub {
+       my (@modified_packages) = @_;
+       for my $pkg (@modified_packages) {
+         say &quot;Name: $pkg-&gt;{name}&quot;;
+         say &quot;Version: $pkg-&gt;{version}&quot;;
+         say &quot;Action: $pkg-&gt;{action}&quot;;   # some of updated, installed or removed
+       }
+     };
+ };</code></pre>
+
+<h2 id="installed_packages">installed_packages</h2>
+
+<p>This function returns all installed packages and their version.</p>
+
+<pre><code> task &quot;get-installed&quot;, &quot;server1&quot;, sub {
+
+    for my $pkg (installed_packages()) {
+      say &quot;name    : &quot; . $pkg-&gt;{&quot;name&quot;};
+      say &quot;  version: &quot; . $pkg-&gt;{&quot;version&quot;};
+    }
+
+ };</code></pre>
+
+<h2 id="is_installed">is_installed</h2>
+
+<p>This function tests if $package is installed. Returns 1 if true. 0 if false.</p>
+
+<pre><code> task &quot;isinstalled&quot;, &quot;server01&quot;, sub {
+   if( is_installed(&quot;rex&quot;) ) {
+     say &quot;Rex is installed&quot;;
+   }
+   else {
+     say &quot;Rex is not installed&quot;;
+   }
+ };</code></pre>
+
+<h2 id="update_package_db">update_package_db</h2>
+
+<p>This function updates the local package database. For example, on CentOS it will execute <i>yum makecache</i>.</p>
+
+<pre><code> task &quot;update-pkg-db&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   update_package_db;
+   install package =&gt; &quot;apache2&quot;;
+ };</code></pre>
+
+<h2 id="repository-action-data-">repository($action, %data)</h2>
+
+<p>Add or remove a repository from the package manager.</p>
+
+<p>For Debian: If you have no source repository, or if you don&#39;t want to add it, just remove the <i>source</i> parameter.</p>
+
+<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   repository &quot;add&quot; =&gt; &quot;repository-name&quot;,
+      url      =&gt; &quot;http://rex.linux-files.org/debian/squeeze&quot;,
+      key_url  =&gt; &quot;http://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO&quot;
+      distro    =&gt; &quot;squeeze&quot;,
+      repository =&gt; &quot;rex&quot;,
+      source    =&gt; 1;
+ };</code></pre>
+
+<p>To specify a key from a file use key_file =&gt; &#39;/tmp/mykeyfile&#39;.</p>
+
+<p>To use a keyserver use key_server and key_id.</p>
+
+<p>For ALT Linux: If repository is unsigned, just remove the <i>sign_key</i> parameter.</p>
+
+<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   repository &quot;add&quot; =&gt; &quot;altlinux-sisyphus&quot;,
+      url      =&gt; &quot;ftp://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus&quot;,
+      sign_key  =&gt; &quot;alt&quot;,
+      arch     =&gt; &quot;noarch, x86_64&quot;,
+      repository =&gt; &quot;classic&quot;;
+ };</code></pre>
+
+<p>For CentOS, Mageia and SuSE only the name and the url are needed.</p>
+
+<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   repository add =&gt; &quot;repository-name&quot;,
+      url =&gt; &#39;http://rex.linux-files.org/CentOS/$releasever/rex/$basearch/&#39;;
+
+ };</code></pre>
+
+<p>To remove a repository just delete it with its name.</p>
+
+<pre><code> task &quot;rm-repo&quot;, &quot;server1&quot;, sub {
+   repository remove =&gt; &quot;repository-name&quot;;
+ };</code></pre>
+
+<p>You can also use one call to repository to add repositories on multiple platforms:</p>
+
+<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  repository add =&gt; myrepo =&gt; {
+    Ubuntu =&gt; {
+      url =&gt; &quot;http://foo.bar/repo&quot;,
+      distro =&gt; &quot;precise&quot;,
+      repository =&gt; &quot;foo&quot;,
+    },
+    Debian =&gt; {
+      url =&gt; &quot;http://foo.bar/repo&quot;,
+      distro =&gt; &quot;squeeze&quot;,
+      repository =&gt; &quot;foo&quot;,
+    },
+    CentOS =&gt; {
+      url =&gt; &quot;http://foo.bar/repo&quot;,
+    },
+  };
+ };</code></pre>
+
+<h2 id="package_provider_for-os-type-">package_provider_for $os =&gt; $type;</h2>
+
+<p>To set another package provider as the default, use this function.</p>
+
+<pre><code> user &quot;root&quot;;
+
+ group &quot;db&quot; =&gt; &quot;db[01..10]&quot;;
+ package_provider_for SunOS =&gt; &quot;blastwave&quot;;
+
+ task &quot;prepare&quot;, group =&gt; &quot;db&quot;, sub {
+    install package =&gt; &quot;vim&quot;;
+ };</code></pre>
+
+<p>This example will install <i>vim</i> on every db server. If the server is a Solaris (SunOS) it will use the <i>blastwave</i> Repositories.</p>
+
+

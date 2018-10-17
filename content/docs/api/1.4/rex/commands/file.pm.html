@@ -1,0 +1,335 @@
+
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+    <ul>
+      <li><a href="#template-file-params-">template($file, @params)</a></li>
+      <li><a href="#file-file_name-options-">file($file_name, %options)</a></li>
+      <li><a href="#file_write-file_name-">file_write($file_name)</a></li>
+      <li><a href="#file_append-file_name-">file_append($file_name)</a></li>
+      <li><a href="#file_read-file_name-">file_read($file_name)</a></li>
+      <li><a href="#cat-file_name-">cat($file_name)</a></li>
+      <li><a href="#delete_lines_matching-file-regexp-">delete_lines_matching($file, $regexp)</a></li>
+      <li><a href="#delete_lines_according_to-search-file-options-">delete_lines_according_to($search, $file, @options)</a></li>
+      <li><a href="#append_if_no_such_line-file-new_line-regexp-">append_if_no_such_line($file, $new_line, @regexp)</a></li>
+      <li><a href="#append_or_amend_line-file-line-regexp-">append_or_amend_line($file, $line, @regexp)</a></li>
+      <li><a href="#extract-file-options-">extract($file [, %options])</a></li>
+      <li><a href="#sed-search-replace-file-">sed($search, $replace, $file)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Rex::Commands::File - Transparent File Manipulation</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With this module you can manipulate files.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> task &quot;read-passwd&quot;, &quot;server01&quot;, sub {
+   my $fh = file_read &quot;/etc/passwd&quot;;
+   for my $line = ($fh-&gt;read_all) {
+     print $line;
+   }
+   $fh-&gt;close;
+ };
+ 
+ task &quot;read-passwd2&quot;, &quot;server01&quot;, sub {
+   say cat &quot;/etc/passwd&quot;;
+ };
+
+
+ task &quot;write-passwd&quot;, &quot;server01&quot;, sub {
+   my $fh = file_write &quot;/etc/passwd&quot;;
+   $fh-&gt;write(&quot;root:*:0:0:root user:/root:/bin/sh\n&quot;);
+   $fh-&gt;close;
+ };
+ 
+ delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; &quot;root&quot;;
+ delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; qr{Failed};
+ delete_lines_matching &quot;/var/log/auth.log&quot;,
+                matching =&gt; &quot;root&quot;, qr{Failed}, &quot;nobody&quot;;
+ 
+ file &quot;/path/on/the/remote/machine&quot;,
+   source =&gt; &quot;/path/on/local/machine&quot;;
+ 
+ file &quot;/path/on/the/remote/machine&quot;,
+   content =&gt; &quot;foo bar&quot;;
+ 
+ file &quot;/path/on/the/remote/machine&quot;,
+   source =&gt; &quot;/path/on/local/machine&quot;,
+   owner  =&gt; &quot;root&quot;,
+   group  =&gt; &quot;root&quot;,
+   mode  =&gt; 400,
+   on_change =&gt; sub { say &quot;File was changed.&quot;; };</code></pre>
+
+<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+
+<h2 id="template-file-params-">template($file, @params)</h2>
+
+<p>Parse a template and return the content.</p>
+
+<pre><code> my $content = template(&quot;/files/templates/vhosts.tpl&quot;,
+              name =&gt; &quot;test.lan&quot;,
+              webmaster =&gt; &#39;webmaster@test.lan&#39;);</code></pre>
+
+<p>The file name specified is subject to &quot;path_map&quot; processing as documented under the file() function to resolve to a physical file name.</p>
+
+<p>In addition to the &quot;path_map&quot; processing, if the <b>-E</b> command line switch is used to specify an environment name, existence of a file ending with &#39;.&lt;env&gt;&#39; is checked and has precedence over the file without one, if it exists. E.g. if rex is started as:</p>
+
+<pre><code> $ rex -E prod task1</code></pre>
+
+<p>then in task1 defined as:</p>
+
+<pre><code> task &quot;task1&quot;, sub {
+
+    say template(&quot;files/etc/ntpd.conf&quot;);
+
+ };</code></pre>
+
+<p>will print the content of &#39;files/etc/ntpd.conf.prod&#39; if it exists.</p>
+
+<p>Note: the appended environment mechanism is always applied, after the &#39;path_map&#39; mechanism, if that is configured.</p>
+
+<h2 id="file-file_name-options-">file($file_name, %options)</h2>
+
+<p>This function is the successor of <i>install file</i>. Please use this function to upload files to your server.</p>
+
+<pre><code> task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+   file &quot;/file/on/remote/machine&quot;,
+     source =&gt; &quot;/file/on/local/machine&quot;;
+ 
+   file &quot;/etc/hosts&quot;,
+     content =&gt; template(&quot;templates/etc/hosts.tpl&quot;),
+     owner  =&gt; &quot;user&quot;,
+     group  =&gt; &quot;group&quot;,
+     mode   =&gt; 700,
+     on_change =&gt; sub { say &quot;Something was changed.&quot; };
+ 
+   file &quot;/etc/motd&quot;,
+     content =&gt; `fortune`;
+ 
+   file &quot;/etc/named.conf&quot;,
+     content    =&gt; template(&quot;templates/etc/named.conf.tpl&quot;),
+     no_overwrite =&gt; TRUE;  # this file will not be overwritten if already exists.
+ 
+   file &quot;/etc/httpd/conf/httpd.conf&quot;,
+     source =&gt; &quot;/files/etc/httpd/conf/httpd.conf&quot;,
+     on_change =&gt; sub { service httpd =&gt; &quot;restart&quot;; };
+ 
+   file &quot;/etc/named.d&quot;,
+     ensure =&gt; &quot;directory&quot;,  # this will create a directory
+     owner  =&gt; &quot;root&quot;,
+     group  =&gt; &quot;root&quot;;
+ 
+   file &quot;/etc/motd&quot;,
+     ensure =&gt; &quot;absent&quot;;   # this will remove the file or directory
+ 
+ };</code></pre>
+
+<p>The first parameter is either a string or an array reference. In the latter case the function is called for all strings in the array. Therefore, the following constructs are equivalent:</p>
+
+<pre><code>  file &#39;/tmp/test1&#39;, ensure =&gt; &#39;directory&#39;;
+  file &#39;/tmp/test2&#39;, ensure =&gt; &#39;directory&#39;;
+
+  file [ qw( /tmp/test1 /tmp/test2 ) ], ensure =&gt; &#39;directory&#39;; # use array ref
+
+  file [ glob(&#39;/tmp/test{1,2}&#39;) ], ensure =&gt; &#39;directory&#39;; # explicit glob call for array contents</code></pre>
+
+<p>Use the glob carefully as <b>it can leak local filesystem information</b> (e.g. when using wildcards).</p>
+
+<p>The <i>source</i> is subject to a path resolution algorithm. This algorithm can be configured using the <i>set</i> function to set the value of the <i>path_map</i> variable to a hash containing path prefixes as its keys. The associated values are arrays listing the prefix replacements in order of (decreasing) priority.</p>
+
+<pre><code>  set &quot;path_map&quot;, {
+    &quot;files/&quot; =&gt; [ &quot;files/{environment}/{hostname}/_root_/&quot;,
+                  &quot;files/{environment}/_root_/&quot; ]
+  };</code></pre>
+
+<p>With this configuration, the file &quot;files/etc/ntpd.conf&quot; will be probed for in the following locations:</p>
+
+<pre><code> - files/{environment}/{hostname}/_root_/etc/ntpd.conf
+ - files/{environment}/_root_/etc/ntpd.conf
+ - files/etc/ntpd.conf</code></pre>
+
+<p>Furthermore, if a path prefix matches multiple prefix entries in &#39;path_map&#39;, e.g. &quot;files/etc/ntpd.conf&quot; matching both &quot;files/&quot; and &quot;files/etc/&quot;, the longer matching prefix(es) have precedence over shorter ones. Note that keys without a trailing slash (i.e. &quot;files/etc&quot;) will be treated as having a trailing slash when matching the prefix (&quot;files/etc/&quot;).</p>
+
+<p>If no file is found using the above procedure and <i>source</i> is relative, it will search from the location of your <i>Rexfile</i> or the <i>.pm</i> file if you use Perl packages.</p>
+
+<p>All the possible variables (&#39;{environment}&#39;, &#39;{hostname}&#39;, ...) are documented in the CMDB YAML documentation.</p>
+
+<p>This function supports the following hooks:</p>
+
+<dl>
+
+<dt id="before">before</dt>
+<dd>
+
+<p>This gets executed before everything is done. The return value of this hook overwrite the original parameters of the function-call.</p>
+
+</dd>
+<dt id="before_change">before_change</dt>
+<dd>
+
+<p>This gets executed right before the new file is written. Only with <i>content</i> parameter. For the <i>source</i> parameter the hook of the upload function is used.</p>
+
+</dd>
+<dt id="after_change">after_change</dt>
+<dd>
+
+<p>This gets executed right after the file was written. Only with <i>content</i> parameter. For the <i>source</i> parameter the hook of the upload function is used.</p>
+
+</dd>
+<dt id="after">after</dt>
+<dd>
+
+<p>This gets executed right before the file() function returns.</p>
+
+</dd>
+</dl>
+
+<h2 id="file_write-file_name-">file_write($file_name)</h2>
+
+<p>This function opens a file for writing (it will truncate the file if it already exists). It returns a Rex::FS::File object on success.</p>
+
+<p>On failure it will die.</p>
+
+<pre><code> my $fh;
+ eval {
+   $fh = file_write(&quot;/etc/groups&quot;);
+ };
+ 
+ # catch an error
+ if($@) {
+   print &quot;An error occured. $@.\n&quot;;
+ }
+ 
+ # work with the filehandle
+ $fh-&gt;write(&quot;...&quot;);
+ $fh-&gt;close;</code></pre>
+
+<h2 id="file_append-file_name-">file_append($file_name)</h2>
+
+<h2 id="file_read-file_name-">file_read($file_name)</h2>
+
+<p>This function opens a file for reading. It returns a Rex::FS::File object on success.</p>
+
+<p>On failure it will die.</p>
+
+<pre><code> my $fh;
+ eval {
+   $fh = read(&quot;/etc/groups&quot;);
+ };
+ 
+ # catch an error
+ if($@) {
+   print &quot;An error occured. $@.\n&quot;;
+ }
+ 
+ # work with the filehandle
+ my $content = $fh-&gt;read_all;
+ $fh-&gt;close;</code></pre>
+
+<h2 id="cat-file_name-">cat($file_name)</h2>
+
+<p>This function returns the complete content of $file_name as a string.</p>
+
+<pre><code> print cat &quot;/etc/passwd&quot;;</code></pre>
+
+<h2 id="delete_lines_matching-file-regexp-">delete_lines_matching($file, $regexp)</h2>
+
+<p>Delete lines that match $regexp in $file.</p>
+
+<pre><code> task &quot;clean-logs&quot;, sub {
+    delete_lines_matching &quot;/var/log/auth.log&quot; =&gt; &quot;root&quot;;
+ };</code></pre>
+
+<h2 id="delete_lines_according_to-search-file-options-">delete_lines_according_to($search, $file, @options)</h2>
+
+<p>This is the successor of the delete_lines_matching() function. This function also allows the usage of an on_change hook.</p>
+
+<p>It will search for $search in $file and remove the found lines. If on_change hook is present it will execute this if the file was changed.</p>
+
+<pre><code> task &quot;cleanup&quot;, &quot;server1&quot;, sub {
+   delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;,
+    on_change =&gt; sub {
+      say &quot;removed user foo.&quot;;
+    };
+ };</code></pre>
+
+<h2 id="append_if_no_such_line-file-new_line-regexp-">append_if_no_such_line($file, $new_line, @regexp)</h2>
+
+<p>Append $new_line to $file if none in @regexp is found. If no regexp is supplied, the line is appended unless there is already an identical line in $file.</p>
+
+<pre><code> task &quot;add-group&quot;, sub {
+   append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, on_change =&gt; sub { service sshd =&gt; &quot;restart&quot;; };
+ };</code></pre>
+
+<p>Since 0.42 you can use named parameters as well</p>
+
+<pre><code> task &quot;add-group&quot;, sub {
+   append_if_no_such_line &quot;/etc/groups&quot;,
+     line  =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+     regexp =&gt; qr{^mygroup},
+     on_change =&gt; sub {
+                say &quot;file was changed, do something.&quot;;
+              };
+ 
+   append_if_no_such_line &quot;/etc/groups&quot;,
+     line  =&gt; &quot;mygroup:*:100:myuser1,myuser2&quot;,
+     regexp =&gt; [qr{^mygroup:}, qr{^ourgroup:}]; # this is an OR
+ };</code></pre>
+
+<h2 id="append_or_amend_line-file-line-regexp-">append_or_amend_line($file, $line, @regexp)</h2>
+
+<p>Similar to <a>append_if_no_such_line</a>, but if the line in the regexp is found, it will be updated. Otherwise, it will be appended.</p>
+
+<pre><code> task &quot;update-group&quot;, sub {
+   append_or_amend_line &quot;/etc/groups&quot;,
+     line  =&gt; &quot;mygroup:*:100:myuser3,myuser4&quot;,
+     regexp =&gt; qr{^mygroup},
+     on_change =&gt; sub {
+                say &quot;file was changed, do something.&quot;;
+              };
+ };</code></pre>
+
+<h2 id="extract-file-options-">extract($file [, %options])</h2>
+
+<p>This function extracts a file. The target directory optionally specified with the `to` option will be created automatically.</p>
+
+<p>Supported formats are .box, .tar, .tar.gz, .tgz, .tar.Z, .tar.bz2, .tbz2, .zip, .gz, .bz2, .war, .jar.</p>
+
+<pre><code> task prepare =&gt; sub {
+   extract &quot;/tmp/myfile.tar.gz&quot;,
+    owner =&gt; &quot;root&quot;,
+    group =&gt; &quot;root&quot;,
+    to   =&gt; &quot;/etc&quot;;
+ 
+   extract &quot;/tmp/foo.tgz&quot;,
+    type =&gt; &quot;tgz&quot;,
+    mode =&gt; &quot;g+rwX&quot;;
+ };</code></pre>
+
+<p>Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</p>
+
+<h2 id="sed-search-replace-file-">sed($search, $replace, $file)</h2>
+
+<p>Search some string in a file and replace it.</p>
+
+<pre><code> task sar =&gt; sub {
+   # this will work line by line
+   sed qr{search}, &quot;replace&quot;, &quot;/var/log/auth.log&quot;;
+ 
+   # to use it in a multiline way
+   sed qr{search}, &quot;replace&quot;, &quot;/var/log/auth.log&quot;,
+    multiline =&gt; TRUE;
+ };</code></pre>
+
+

@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?",
+  "navigation": 0,
+  "title": "How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?",
+  "type_name": "faq_item",
+  "url": "how_do_i_use_rex_s_built-in_logger_for_error_warn_info_debug_messages_"
+}

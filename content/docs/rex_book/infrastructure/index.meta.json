@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Infrastructure",
+  "navigation": 1,
+  "title": "Infrastructure",
+  "type_name": "docs_chapter",
+  "url": "infrastructure"
+}

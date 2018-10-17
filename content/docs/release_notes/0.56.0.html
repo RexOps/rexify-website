@@ -1,0 +1,67 @@
+
+<p>These are the changes in 0.56 release.</p>
+
+<p>We want to thank every contributor that makes this release possible.</p>
+
+<h2>Common</h2>
+
+<h4>New template engine with better error reporting.</h4>
+
+<p>The code is still in testing, so you can activate this new engine with a feature flag:</p>
+
+<pre><code class="perl">use Rex -feature => ['template_ng'];
+</code></pre>
+
+<p>The template code is the same, so you can just use your old templates.</p>
+
+<ul>
+<li>Added before_execute and after_execute task hooks - Jan</li>
+<li>Add basic tests for Rex::Logger (close #484) - Renee BÃ¤cker</li>
+<li>Clarify/correct documentation (close #486) - Sascha Askani</li>
+<li>Use OurPkgVersion for automatic module versioning - Ferenc Erki</li>
+</ul>
+
+<h2>Bugfixes</h2>
+
+<h3>Common</h3>
+
+<ul>
+<li>Extend documentation of run() options (#466) - Ferenc Erki</li>
+<li>Only try to run umount if mount point is already mounted - Ferenc Erki</li>
+<li>Set changed flag for umount after the command has been run - Ferenc Erki</li>
+<li>Fix error when only grow option was given to partition() - Ferenc Erki</li>
+<li>Fix regex to find end of partition instead of size - Ferenc Erki</li>
+<li>Use kB as unit when determining partition boundaries - Ferenc Erki</li>
+<li>Fix missing <code>strict</code> and <code>warnings</code> pragmas - Ferenc Erki</li>
+<li>Add LICENSE section to POD - Ferenc Erki</li>
+<li>Replace defined-or operator to restore perl-5.8.0 compatibility - Ferenc Erki</li>
+<li>Improve evaluation of hostnames (fix #479, close #480) - Renee BÃ¤cker</li>
+<li>Fix POD (close #488) - Brian Manning</li>
+<li>Fix mode option for mkdir command - Ferenc Erki</li>
+<li>Fixed needs function - Jan</li>
+<li>Check versions of installed packages - Ferenc Erki</li>
+<li>fix for #473 - download root restricted files in sudo mode - Jan</li>
+<li>fix for #498 - added autodie feature flag - Jan</li>
+<li>fixed local mkdir return code - Jan</li>
+<li>fixed path quoting for #512 - Jan</li>
+<li>added glob_to_regex function (Text::Glob) - fix for #495 - Jan</li>
+<li>use test binary instead of '[ ... ]' for file tests - Jan</li>
+</ul>
+
+<h3>Cloud/Virtualization</h3>
+
+<ul>
+<li>Fix test for Parallel::ForkManager - Ferenc Erki</li>
+<li>Fix test for Amazon Cloud Module - Ferenc Erki</li>
+<li>Add rex_kvm_agent feature flag - Ferenc Erki</li>
+<li>Fixed some deprecated docker calls - Jan</li>
+</ul>
+
+<h3>Rex::Test</h3>
+
+<ul>
+<li>Allow multiple tasks to run with Rex::Test::Base (fix #476) - Robert Abraham</li>
+<li>Refactor has_package test for simpler version matching - Ferenc Erki</li>
+<li>Add has_stat to Rex::Test - Robert Abraham</li>
+<li>Add documentation for has_stat (close #474) - Ferenc Erki</li>
+</ul>

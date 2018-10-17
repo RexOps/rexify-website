@@ -1,4 +1,0 @@
-% layout 'default';
-% title 'JobControl - Create a new project';
-
-<%== $content %>

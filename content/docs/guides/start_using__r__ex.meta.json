@@ -1,0 +1,16 @@
+{
+  "active": 1,
+  "content_type_name": "text/html",
+  "data": {
+
+  },
+  "description": "This is a small howto showing the first steps with Rex.",
+  "hidden": 0,
+  "keywords": null,
+  "lock_date": null,
+  "name": "Start using (R)?ex",
+  "navigation": 1,
+  "title": "Howto start using (R)?ex",
+  "type_name": "page",
+  "url": "start_using__r__ex"
+}
