@@ -17,18 +17,6 @@
       <meta name="description" content="<%= $page->description %>" />
       <meta name="keywords" content="<%= $page->keywords %>" />
 
-      <style>
-      % if($no_side_bar) {
-         #content_container {
-            margin-left: 5px;
-         }
-
-         #widgets {
-            display: none;
-         }
-      % }
-      </style>
-
    </head>
    <body>
 
