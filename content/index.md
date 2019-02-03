@@ -1,3 +1,7 @@
+---
+data:
+  root: 1
+---
 <div style="float: left;">
 <div class="row-fluid">
 <div class="span4">
