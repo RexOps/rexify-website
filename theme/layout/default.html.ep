@@ -51,18 +51,6 @@
                <form action="/search.html" method="GET">
                   <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
                </form>
-               <h2>News</h2>
-
-               % my $news_o = $site->get_page(11);
-               % for my $news_item ($news_o->children({"me.active" => 1, "me.hidden" => 0})) {
-               % my ($news_date) = split(/ /, $news_item->data->{news_date});
-                 <div class="news_widget">
-                   <div class="news_date"><%= $news_date %></div>
-                   <div class="news_content"><%== $news_item->content %></div>
-                 </div>
-
-               % }
-
 
                <h2>Conferences</h2>
                  <div class="news_widget">
