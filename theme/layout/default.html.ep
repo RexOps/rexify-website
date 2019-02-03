@@ -22,7 +22,7 @@
 
       <div id="page">
 
-      % if($root) {
+      % if( $page->{data}{root} ) {
          <div id="index-top-div" class="top_div">
             <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
          </div>
