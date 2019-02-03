@@ -14,8 +14,8 @@
       <link rel="stylesheet" href="/css/skin/rexify.org/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
       <script src="/js/skin/rexify.org/highlight.pack.js"></script>
 
-      <meta name="description" content="<%= $page->description %>" />
-      <meta name="keywords" content="<%= $page->keywords %>" />
+      <meta name="description" content="<%= $page->{data}{description} // '' %>" />
+      <meta name="keywords" content="<%= $page->{data}{keywords} // '' %>" />
 
    </head>
    <body>
