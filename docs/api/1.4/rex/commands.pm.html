@@ -1,77 +1,157 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
+      <meta content="" name="description">
+      <meta content="" name="keywords">
 
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#COMMANDLIST">COMMANDLIST</a></li>
-  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
-    <ul>
-      <li><a href="#no_ssh-task-">no_ssh([$task])</a></li>
-      <li><a href="#task-name-servers-funcref-">task($name [, @servers], $funcref)</a></li>
-      <li><a href="#desc-description-">desc($description)</a></li>
-      <li><a href="#group-name-servers-">group($name, @servers)</a></li>
-      <li><a href="#batch-name-tasks-">batch($name, @tasks)</a></li>
-      <li><a href="#user-user-">user($user)</a></li>
-      <li><a href="#password-password-">password($password)</a></li>
-      <li><a href="#auth-for-entity-data-">auth(for =&gt; $entity, %data)</a></li>
-      <li><a href="#port-port-">port($port)</a></li>
-      <li><a href="#sudo_password-password-">sudo_password($password)</a></li>
-      <li><a href="#timeout-seconds-">timeout($seconds)</a></li>
-      <li><a href="#max_connect_retries-count-">max_connect_retries($count)</a></li>
-      <li><a href="#get_random-count-chars-">get_random($count, @chars)</a></li>
-      <li><a href="#do_task-task-">do_task($task)</a></li>
-      <li><a href="#run_task-task_name-option-">run_task($task_name, %option)</a></li>
-      <li><a href="#run_batch-batch_name-option-">run_batch($batch_name, %option)</a></li>
-      <li><a href="#public_key-key-">public_key($key)</a></li>
-      <li><a href="#private_key-key-">private_key($key)</a></li>
-      <li><a href="#pass_auth">pass_auth</a></li>
-      <li><a href="#key_auth">key_auth</a></li>
-      <li><a href="#krb5_auth">krb5_auth</a></li>
-      <li><a href="#parallelism-count-">parallelism($count)</a></li>
-      <li><a href="#proxy_command-cmd-">proxy_command($cmd)</a></li>
-      <li><a href="#set_distributor-distributor-">set_distributor($distributor)</a></li>
-      <li><a href="#template_function-sub-...-">template_function(sub { ... })</a></li>
-      <li><a href="#logging">logging</a></li>
-      <li><a href="#needs-package-tasks-">needs($package [, @tasks])</a></li>
-      <li><a href="#include-Module::Name">include Module::Name</a></li>
-      <li><a href="#environment-name-code-">environment($name =&gt; $code)</a></li>
-      <li><a href="#LOCAL-">LOCAL(&amp;)</a></li>
-      <li><a href="#path-path-">path(@path)</a></li>
-      <li><a href="#set-key-value-">set($key, $value)</a></li>
-      <li><a href="#get-key-value-">get($key, $value)</a></li>
-      <li><a href="#before-task-sub-">before($task =&gt; sub {})</a></li>
-      <li><a href="#after-task-sub-">after($task =&gt; sub {})</a></li>
-      <li><a href="#around-task-sub-">around($task =&gt; sub {})</a></li>
-      <li><a href="#before_task_start-task-sub-">before_task_start($task =&gt; sub {})</a></li>
-      <li><a href="#after_task_finished-task-sub-">after_task_finished($task =&gt; sub {})</a></li>
-      <li><a href="#logformat-format-">logformat($format)</a></li>
-      <li><a href="#connection">connection</a></li>
-      <li><a href="#cache">cache</a></li>
-      <li><a href="#profiler">profiler</a></li>
-      <li><a href="#report-switch-type-">report($switch, $type)</a></li>
-      <li><a href="#source_global_profile-0-1-">source_global_profile(0|1)</a></li>
-      <li><a href="#last_command_output">last_command_output</a></li>
-      <li><a href="#case-compare-option-">case($compare, $option)</a></li>
-      <li><a href="#set_executor_for-type-executor-">set_executor_for($type, $executor)</a></li>
-      <li><a href="#tmp_dir-tmp_dir-">tmp_dir($tmp_dir)</a></li>
-      <li><a href="#inspect-varRef-">inspect($varRef)</a></li>
-      <li><a href="#sayformat-format-">sayformat($format)</a></li>
-    </ul>
-  </li>
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="/rexify-website/get/index.html">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/care/index.html" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="/rexify-website/care/help__r__ex.html">Help (R)?ex</a></li>
+          <li><a href="/rexify-website/care/help_people_in_need.html">Help people</a></li>
+      </ul>
+    </li>
+    <li><a href="/rexify-website/support/index.html">Support</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/docs/index.html" title="docs">Docs</a>
+      <ul class="dropdown_menu dropdown_docs">
+          <li><a href="/rexify-website/docs/faq/index.html">FAQ</a></li>
+          <li><a href="/rexify-website/docs/guides/index.html">Guides</a></li>
+          <li><a href="/rexify-website/docs/rex_book/index.html">Rex Book (work in progress)</a></li>
+          <li><a href="/rexify-website/docs/other/index.html">Other</a></li>
+          <li><a href="/rexify-website/docs/release_notes/index.html">Release notes</a></li>
+            <li class="divider"></li>
+          <li><a href="/rexify-website/docs/api/index.html">API</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              
+              <ul>
+<li><a href="#NAME">NAME</a></li>
+<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a href="#COMMANDLIST">COMMANDLIST</a></li>
+<li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+<ul>
+<li><a href="#no_ssh-task-">no_ssh([$task])</a></li>
+<li><a href="#task-name-servers-funcref-">task($name [, @servers], $funcref)</a></li>
+<li><a href="#desc-description-">desc($description)</a></li>
+<li><a href="#group-name-servers-">group($name, @servers)</a></li>
+<li><a href="#batch-name-tasks-">batch($name, @tasks)</a></li>
+<li><a href="#user-user-">user($user)</a></li>
+<li><a href="#password-password-">password($password)</a></li>
+<li><a href="#auth-for-entity-data-">auth(for =&gt; $entity, %data)</a></li>
+<li><a href="#port-port-">port($port)</a></li>
+<li><a href="#sudo_password-password-">sudo_password($password)</a></li>
+<li><a href="#timeout-seconds-">timeout($seconds)</a></li>
+<li><a href="#max_connect_retries-count-">max_connect_retries($count)</a></li>
+<li><a href="#get_random-count-chars-">get_random($count, @chars)</a></li>
+<li><a href="#do_task-task-">do_task($task)</a></li>
+<li><a href="#run_task-task_name-option-">run_task($task_name, %option)</a></li>
+<li><a href="#run_batch-batch_name-option-">run_batch($batch_name, %option)</a></li>
+<li><a href="#public_key-key-">public_key($key)</a></li>
+<li><a href="#private_key-key-">private_key($key)</a></li>
+<li><a href="#pass_auth">pass_auth</a></li>
+<li><a href="#key_auth">key_auth</a></li>
+<li><a href="#krb5_auth">krb5_auth</a></li>
+<li><a href="#parallelism-count-">parallelism($count)</a></li>
+<li><a href="#proxy_command-cmd-">proxy_command($cmd)</a></li>
+<li><a href="#set_distributor-distributor-">set_distributor($distributor)</a></li>
+<li><a href="#template_function-sub-...-">template_function(sub { ... })</a></li>
+<li><a href="#logging">logging</a></li>
+<li><a href="#needs-package-tasks-">needs($package [, @tasks])</a></li>
+<li><a href="#include-Module::Name">include Module::Name</a></li>
+<li><a href="#environment-name-code-">environment($name =&gt; $code)</a></li>
+<li><a href="#LOCAL-">LOCAL(&amp;)</a></li>
+<li><a href="#path-path-">path(@path)</a></li>
+<li><a href="#set-key-value-">set($key, $value)</a></li>
+<li><a href="#get-key-value-">get($key, $value)</a></li>
+<li><a href="#before-task-sub-">before($task =&gt; sub {})</a></li>
+<li><a href="#after-task-sub-">after($task =&gt; sub {})</a></li>
+<li><a href="#around-task-sub-">around($task =&gt; sub {})</a></li>
+<li><a href="#before_task_start-task-sub-">before_task_start($task =&gt; sub {})</a></li>
+<li><a href="#after_task_finished-task-sub-">after_task_finished($task =&gt; sub {})</a></li>
+<li><a href="#logformat-format-">logformat($format)</a></li>
+<li><a href="#connection">connection</a></li>
+<li><a href="#cache">cache</a></li>
+<li><a href="#profiler">profiler</a></li>
+<li><a href="#report-switch-type-">report($switch, $type)</a></li>
+<li><a href="#source_global_profile-0-1-">source_global_profile(0|1)</a></li>
+<li><a href="#last_command_output">last_command_output</a></li>
+<li><a href="#case-compare-option-">case($compare, $option)</a></li>
+<li><a href="#set_executor_for-type-executor-">set_executor_for($type, $executor)</a></li>
+<li><a href="#tmp_dir-tmp_dir-">tmp_dir($tmp_dir)</a></li>
+<li><a href="#inspect-varRef-">inspect($varRef)</a></li>
+<li><a href="#sayformat-format-">sayformat($format)</a></li>
+</ul></li>
 </ul>
 
-<h1 id="NAME">NAME</h1>
+<h1>NAME</h1>
 
 <p>Rex::Commands - All the basic commands</p>
 
-<h1 id="DESCRIPTION">DESCRIPTION</h1>
+<h1>DESCRIPTION</h1>
 
 <p>This module is the core commands module.</p>
 
-<h1 id="SYNOPSIS">SYNOPSIS</h1>
+<h1>SYNOPSIS</h1>
 
 <pre><code> desc &quot;Task description&quot;;
 
@@ -89,250 +169,180 @@
    password &quot;foobar&quot;;
    pass_auth;
    group frontend =&gt; &quot;www01&quot;, &quot;www02&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h1 id="COMMANDLIST">COMMANDLIST</h1>
+<h1>COMMANDLIST</h1>
 
 <ul>
-
-<li><p>Augeas config file management library <a>Rex::Commands::Augeas</a></p>
-
-</li>
-<li><p>Cloud Management <a>Rex::Commands::Cloud</a></p>
-
-</li>
-<li><p>Cron Management <a>Rex::Commands::Cron</a></p>
-
-</li>
-<li><p>Database Commands <a>Rex::Commands::DB</a></p>
-
-</li>
-<li><p>SCP Up- and Download <a>Rex::Commands::Upload</a>, <a>Rex::Commands::Download</a></p>
-
-</li>
-<li><p>File Manipulation <a>Rex::Commands::File</a></p>
-
-</li>
-<li><p>Filesystem Manipulation <a>Rex::Commands::Fs</a></p>
-
-</li>
-<li><p>Information Gathering <a>Rex::Commands::Gather</a></p>
-
-</li>
-<li><p>Manipulation of /etc/hosts <a>Rex::Commands::Host</a></p>
-
-</li>
-<li><p>Get an inventory of your Hardware <a>Rex::Commands::Inventory</a></p>
-
-</li>
-<li><p>Manage your iptables rules <a>Rex::Commands::Iptables</a></p>
-
-</li>
-<li><p>Kernel Commands <a>Rex::Commands::Kernel</a></p>
-
-</li>
-<li><p>LVM Commands <a>Rex::Commands::LVM</a></p>
-
-</li>
-<li><p>MD5 checksums <a>Rex::Commands::MD5</a></p>
-
-</li>
-<li><p>Network commands <a>Rex::Commands::Network</a></p>
-
-</li>
-<li><p>Notify resources to execute <a>Rex::Commands::Notify</a></p>
-
-</li>
-<li><p>Package Commands <a>Rex::Commands::Pkg</a></p>
-
-</li>
-<li><p>Partition your storage device(s) <a>Rex::Commands::Partition</a></p>
-
-</li>
-<li><p>Configure packages (via debconf) <a>Rex::Commands::PkgConf</a></p>
-
-</li>
-<li><p>Process Management <a>Rex::Commands::Process</a></p>
-
-</li>
-<li><p>Rsync Files <a>Rex::Commands::Rsync</a></p>
-
-</li>
-<li><p>Run Remote Commands <a>Rex::Commands::Run</a></p>
-
-</li>
-<li><p>Source control via Subversion/Git <a>Rex::Commands::SCM</a></p>
-
-</li>
-<li><p>Manage System Services (sysvinit) <a>Rex::Commands::Service</a></p>
-
-</li>
-<li><p>Simple TCP/alive checks <a>Rex::Commands::SimpleCheck</a></p>
-
-</li>
-<li><p>Sync directories <a>Rex::Commands::Sync</a></p>
-
-</li>
-<li><p>Sysctl Commands <a>Rex::Commands::Sysctl</a></p>
-
-</li>
-<li><p>Live Tail files <a>Rex::Commands::Tail</a></p>
-
-</li>
-<li><p>Upload local file to remote server <a>Rex::Commands::Upload</a></p>
-
-</li>
-<li><p>Manage user and group accounts <a>Rex::Commands::User</a></p>
-
-</li>
-<li><p>Manage your virtual environments <a>Rex::Commands::Virtualization</a></p>
-
-</li>
+<li><p>Augeas config file management library <span>Rex::Commands::Augeas</span></p></li>
+<li><p>Cloud Management <span>Rex::Commands::Cloud</span></p></li>
+<li><p>Cron Management <span>Rex::Commands::Cron</span></p></li>
+<li><p>Database Commands <span>Rex::Commands::DB</span></p></li>
+<li><p>SCP Up- and Download <span>Rex::Commands::Upload</span>, <span>Rex::Commands::Download</span></p></li>
+<li><p>File Manipulation <span>Rex::Commands::File</span></p></li>
+<li><p>Filesystem Manipulation <span>Rex::Commands::Fs</span></p></li>
+<li><p>Information Gathering <span>Rex::Commands::Gather</span></p></li>
+<li><p>Manipulation of /etc/hosts <span>Rex::Commands::Host</span></p></li>
+<li><p>Get an inventory of your Hardware <span>Rex::Commands::Inventory</span></p></li>
+<li><p>Manage your iptables rules <span>Rex::Commands::Iptables</span></p></li>
+<li><p>Kernel Commands <span>Rex::Commands::Kernel</span></p></li>
+<li><p>LVM Commands <span>Rex::Commands::LVM</span></p></li>
+<li><p>MD5 checksums <span>Rex::Commands::MD5</span></p></li>
+<li><p>Network commands <span>Rex::Commands::Network</span></p></li>
+<li><p>Notify resources to execute <span>Rex::Commands::Notify</span></p></li>
+<li><p>Package Commands <span>Rex::Commands::Pkg</span></p></li>
+<li><p>Partition your storage device(s) <span>Rex::Commands::Partition</span></p></li>
+<li><p>Configure packages (via debconf) <span>Rex::Commands::PkgConf</span></p></li>
+<li><p>Process Management <span>Rex::Commands::Process</span></p></li>
+<li><p>Rsync Files <span>Rex::Commands::Rsync</span></p></li>
+<li><p>Run Remote Commands <span>Rex::Commands::Run</span></p></li>
+<li><p>Source control via Subversion/Git <span>Rex::Commands::SCM</span></p></li>
+<li><p>Manage System Services (sysvinit) <span>Rex::Commands::Service</span></p></li>
+<li><p>Simple TCP/alive checks <span>Rex::Commands::SimpleCheck</span></p></li>
+<li><p>Sync directories <span>Rex::Commands::Sync</span></p></li>
+<li><p>Sysctl Commands <span>Rex::Commands::Sysctl</span></p></li>
+<li><p>Live Tail files <span>Rex::Commands::Tail</span></p></li>
+<li><p>Upload local file to remote server <span>Rex::Commands::Upload</span></p></li>
+<li><p>Manage user and group accounts <span>Rex::Commands::User</span></p></li>
+<li><p>Manage your virtual environments <span>Rex::Commands::Virtualization</span></p></li>
 </ul>
 
-<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+<h1>EXPORTED FUNCTIONS</h1>
 
-<h2 id="no_ssh-task-">no_ssh([$task])</h2>
+<h2>no_ssh([$task])</h2>
 
 <p>Disable ssh for all tasks or a specified task.</p>
 
 <p>If you want to disable ssh connection for your complete tasks (for example if you only want to use libVirt) put this in the main section of your Rexfile.</p>
 
-<pre><code> no_ssh;</code></pre>
+<pre><code> no_ssh;
+</code></pre>
 
-<p>If you want to disable ssh connection for a given task, put <i>no_ssh</i> in front of the task definition.</p>
+<p>If you want to disable ssh connection for a given task, put <em>no_ssh</em> in front of the task definition.</p>
 
 <pre><code> no_ssh task &quot;mytask&quot;, &quot;myserver&quot;, sub {
    say &quot;Do something without a ssh connection&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="task-name-servers-funcref-">task($name [, @servers], $funcref)</h2>
+<h2>task($name [, @servers], $funcref)</h2>
 
 <p>This function will create a new task.</p>
 
-<dl>
+<p>Create a local task (a server independent task) <br>
+     task &quot;mytask&quot;, sub {
+       say &quot;Do something&quot;;
+     };</p>
 
-<dt id="Create-a-local-task-a-server-independent-task-">Create a local task (a server independent task)</dt>
-<dd>
+<p>If you call this task with (R)?ex it will run on your local machine. You can explicit run this task on other machines if you specify the <em>-H</em> command line parameter.</p>
 
-<pre><code> task &quot;mytask&quot;, sub {
-   say &quot;Do something&quot;;
- };</code></pre>
-
-<p>If you call this task with (R)?ex it will run on your local machine. You can explicit run this task on other machines if you specify the <i>-H</i> command line parameter.</p>
-
-</dd>
-<dt id="Create-a-server-bound-task.">Create a server bound task.</dt>
-<dd>
-
-<pre><code> task &quot;mytask&quot;, &quot;server1&quot;, sub {
-   say &quot;Do something&quot;;
- };</code></pre>
+<p>Create a server bound task. <br>
+     task &quot;mytask&quot;, &quot;server1&quot;, sub {
+       say &quot;Do something&quot;;
+     };</p>
 
 <p>You can also specify more than one server.</p>
 
 <pre><code> task &quot;mytask&quot;, &quot;server1&quot;, &quot;server2&quot;, &quot;server3&quot;, sub {
    say &quot;Do something&quot;;
- };</code></pre>
+ };
+</code></pre>
 
 <p>Or you can use some expressions to define more than one server.</p>
 
 <pre><code> task &quot;mytask&quot;, &quot;server[1..3]&quot;, sub {
    say &quot;Do something&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<p>If you want, you can overwrite the servers with the <i>-H</i> command line parameter.</p>
+<p>If you want, you can overwrite the servers with the <em>-H</em> command line parameter.</p>
 
-</dd>
-<dt id="Create-a-group-bound-task.">Create a group bound task.</dt>
-<dd>
-
-<p>You can define server groups with the <i>group</i> function.</p>
+<p>Create a group bound task. <br>
+You can define server groups with the <em>group</em> function.</p>
 
 <pre><code> group &quot;allserver&quot; =&gt; &quot;server[1..3]&quot;, &quot;workstation[1..10]&quot;;
 
  task &quot;mytask&quot;, group =&gt; &quot;allserver&quot;, sub {
    say &quot;Do something&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-</dd>
-</dl>
-
-<h2 id="desc-description-">desc($description)</h2>
+<h2>desc($description)</h2>
 
 <p>Set the description of a task.</p>
 
 <pre><code> desc &quot;This is a task description of the following task&quot;;
  task &quot;mytask&quot;, sub {
    say &quot;Do something&quot;;
- }</code></pre>
+ }
+</code></pre>
 
-<h2 id="group-name-servers-">group($name, @servers)</h2>
+<h2>group($name, @servers)</h2>
 
 <p>With this function you can group servers, so that you don&#39;t need to write too much ;-)</p>
 
-<pre><code> group &quot;servergroup&quot;, &quot;www1&quot;, &quot;www2&quot;, &quot;www3&quot;, &quot;memcache01&quot;, &quot;memcache02&quot;, &quot;memcache03&quot;;</code></pre>
+<pre><code> group &quot;servergroup&quot;, &quot;www1&quot;, &quot;www2&quot;, &quot;www3&quot;, &quot;memcache01&quot;, &quot;memcache02&quot;, &quot;memcache03&quot;;
+</code></pre>
 
 <p>Or with the expression syntax:</p>
 
-<pre><code> group &quot;servergroup&quot;, &quot;www[1..3]&quot;, &quot;memcache[01..03]&quot;;</code></pre>
+<pre><code> group &quot;servergroup&quot;, &quot;www[1..3]&quot;, &quot;memcache[01..03]&quot;;
+</code></pre>
 
 <p>You can also specify server options after a server name with a hash reference:</p>
 
-<pre><code> group &quot;servergroup&quot;, &quot;www1&quot; =&gt; { user =&gt; &quot;other&quot; }, &quot;www2&quot;;</code></pre>
+<pre><code> group &quot;servergroup&quot;, &quot;www1&quot; =&gt; { user =&gt; &quot;other&quot; }, &quot;www2&quot;;
+</code></pre>
 
 <p>These expressions are allowed:</p>
 
 <ul>
-
 <li><p>\d+..\d+ (range)</p>
 
 <p>The first number is the start and the second number is the end for numbering the servers.</p>
 
-<pre><code> group &quot;name&quot;, &quot;www[1..3]&quot;; # www1, www2, www3</code></pre>
-
-</li>
+<pre><code> group &quot;name&quot;, &quot;www[1..3]&quot;; # www1, www2, www3
+</code></pre></li>
 <li><p>\d+..\d+/\d+ (range with step)</p>
 
 <p>Just like the range notation, but with an additional &quot;step&quot; defined. If step is omitted, it defaults to 1 (i.e. it behaves like a simple range expression).</p>
 
 <pre><code> group &quot;name&quot;, &quot;www[1..5/2]&quot;;      # www1, www3, www5
- group &quot;name&quot;, &quot;www[111..133/11]&quot;; # www111, www122, www133</code></pre>
-
-</li>
+ group &quot;name&quot;, &quot;www[111..133/11]&quot;; # www111, www122, www133
+</code></pre></li>
 <li><p>\d+,\d+,\d+ (list)</p>
 
 <p>With this variant you can define fixed values.</p>
 
-<pre><code> group &quot;name&quot;, &quot;www[1,3,7,01]&quot;; # www1, www3, www7, www01</code></pre>
-
-</li>
+<pre><code> group &quot;name&quot;, &quot;www[1,3,7,01]&quot;; # www1, www3, www7, www01
+</code></pre></li>
 <li><p>Mixed list, range and range with step</p>
 
 <p>You can mix the three variants above</p>
 
-<pre><code> www[1..3,5,9..21/3]; # www1, www2, www3, www5, www9, www12, www15, www18, www21</code></pre>
-
-</li>
+<pre><code> www[1..3,5,9..21/3]; # www1, www2, www3, www5, www9, www12, www15, www18, www21
+</code></pre></li>
 </ul>
 
-<h2 id="batch-name-tasks-">batch($name, @tasks)</h2>
+<h2>batch($name, @tasks)</h2>
 
 <p>With the batch function you can call tasks in a batch.</p>
 
-<pre><code> batch &quot;name&quot;, &quot;task1&quot;, &quot;task2&quot;, &quot;task3&quot;;</code></pre>
+<pre><code> batch &quot;name&quot;, &quot;task1&quot;, &quot;task2&quot;, &quot;task3&quot;;
+</code></pre>
 
-<p>And call it with the <i>-b</i> console parameter. <i>rex -b name</i></p>
+<p>And call it with the <em>-b</em> console parameter. <em>rex -b name</em></p>
 
-<h2 id="user-user-">user($user)</h2>
+<h2>user($user)</h2>
 
 <p>Set the user for the ssh connection.</p>
 
-<h2 id="password-password-">password($password)</h2>
+<h2>password($password)</h2>
 
 <p>Set the password for the ssh connection (or for the private key file).</p>
 
-<h2 id="auth-for-entity-data-">auth(for =&gt; $entity, %data)</h2>
+<h2>auth(for =&gt; $entity, %data)</h2>
 
 <p>With this function you can modify/set special authentication parameters for tasks and groups. If you want to modify a group&#39;s authentication you first have to create it. (Place the auth command after the group.)</p>
 
@@ -341,14 +351,14 @@
 <pre><code> use Rex -feature =&gt; 0.31; # activate setting auth for a group
 
  # auth for groups
- 
+
  group frontends =&gt; &quot;web[01..10]&quot;;
  group backends =&gt; &quot;be[01..05]&quot;;
- 
+
  auth for =&gt; &quot;frontends&quot; =&gt;
             user =&gt; &quot;root&quot;,
             password =&gt; &quot;foobar&quot;;
- 
+
  auth for =&gt; &quot;backends&quot; =&gt;
             user =&gt; &quot;admin&quot;,
             private_key =&gt; &quot;/path/to/id_rsa&quot;,
@@ -356,24 +366,24 @@
             sudo =&gt; TRUE;
 
  # auth for tasks
- 
+
  task &quot;prepare&quot;, group =&gt; [&quot;frontends&quot;, &quot;backends&quot;], sub {
    # do something
  };
- 
+
  auth for =&gt; &quot;prepare&quot; =&gt;
             user =&gt; &quot;root&quot;;
 
  # auth for multiple tasks with regular expression
- 
+
  task &quot;step_1&quot;, sub {
   # do something
  };
- 
+
  task &quot;step_2&quot;, sub {
   # do something
  };
- 
+
  auth for =&gt; qr/step/ =&gt;
    user     =&gt; $user,
    password =&gt; $password;
@@ -390,31 +400,33 @@
    public_key  =&gt; &quot;keys/public.key&quot;,
    private_key =&gt; &quot;keys/private.key&quot;,
    sudo        =&gt; TRUE,
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="port-port-">port($port)</h2>
+<h2>port($port)</h2>
 
 <p>Set the port where the ssh server is listening.</p>
 
-<h2 id="sudo_password-password-">sudo_password($password)</h2>
+<h2>sudo_password($password)</h2>
 
 <p>Set the password for the sudo command.</p>
 
-<h2 id="timeout-seconds-">timeout($seconds)</h2>
+<h2>timeout($seconds)</h2>
 
 <p>Set the timeout for the ssh connection and other network related stuff.</p>
 
-<h2 id="max_connect_retries-count-">max_connect_retries($count)</h2>
+<h2>max_connect_retries($count)</h2>
 
 <p>Set the maximum number of connection retries.</p>
 
-<h2 id="get_random-count-chars-">get_random($count, @chars)</h2>
+<h2>get_random($count, @chars)</h2>
 
 <p>Returns a random string of $count characters on the basis of @chars.</p>
 
-<pre><code> my $rnd = get_random(8, &#39;a&#39; .. &#39;z&#39;);</code></pre>
+<pre><code> my $rnd = get_random(8, &#39;a&#39; .. &#39;z&#39;);
+</code></pre>
 
-<h2 id="do_task-task-">do_task($task)</h2>
+<h2>do_task($task)</h2>
 
 <p>Call $task from another task. It will establish a new connection to the server defined in $task and then execute $task there.</p>
 
@@ -425,17 +437,20 @@
 
  task &quot;task2&quot;, &quot;server2&quot;, sub {
    say &quot;Running on server2&quot;;
- };</code></pre>
+ };
+</code></pre>
 
 <p>You may also use an arrayRef for $task if you want to call multiple tasks.</p>
 
-<pre><code> do_task [ qw/task1 task2 task3/ ];</code></pre>
+<pre><code> do_task [ qw/task1 task2 task3/ ];
+</code></pre>
 
-<h2 id="run_task-task_name-option-">run_task($task_name, %option)</h2>
+<h2>run_task($task_name, %option)</h2>
 
 <p>Run a task on a given host.</p>
 
-<pre><code> my $return = run_task &quot;taskname&quot;, on =&gt; &quot;192.168.3.56&quot;;</code></pre>
+<pre><code> my $return = run_task &quot;taskname&quot;, on =&gt; &quot;192.168.3.56&quot;;
+</code></pre>
 
 <p>Do something on server5 if memory is less than 100 MB free on server3.</p>
 
@@ -449,7 +464,8 @@
 
  task &quot;get_free_mem&quot;, sub {
     return memory-&gt;{free};
- };</code></pre>
+ };
+</code></pre>
 
 <p>If called without a hostname the task is run localy.</p>
 
@@ -461,156 +477,145 @@
 
  task &quot;check_something&quot;, &quot;server4&quot;, sub {
    return &quot;foo&quot;;
- };</code></pre>
+ };
+</code></pre>
 
 <p>If you want to add custom parameters for the task you can do it this way.</p>
 
 <pre><code> task &quot;prepare&quot;, &quot;server5&quot;, sub {
   run_task &quot;check_something&quot;, on =&gt; &quot;foo&quot;, params =&gt; { param1 =&gt; &quot;value1&quot;, param2 =&gt; &quot;value2&quot; };
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="run_batch-batch_name-option-">run_batch($batch_name, %option)</h2>
+<h2>run_batch($batch_name, %option)</h2>
 
 <p>Run a batch on a given host.</p>
 
-<pre><code> my @return = run_batch &quot;batchname&quot;, on =&gt; &quot;192.168.3.56&quot;;</code></pre>
+<pre><code> my @return = run_batch &quot;batchname&quot;, on =&gt; &quot;192.168.3.56&quot;;
+</code></pre>
 
 <p>It calls internally run_task, and passes it any option given.</p>
 
-<h2 id="public_key-key-">public_key($key)</h2>
+<h2>public_key($key)</h2>
 
 <p>Set the public key.</p>
 
-<h2 id="private_key-key-">private_key($key)</h2>
+<h2>private_key($key)</h2>
 
 <p>Set the private key.</p>
 
-<h2 id="pass_auth">pass_auth</h2>
+<h2>pass_auth</h2>
 
-<p>If you want to use password authentication, then you need to call <i>pass_auth</i>.</p>
+<p>If you want to use password authentication, then you need to call <em>pass_auth</em>.</p>
 
 <pre><code> user &quot;root&quot;;
  password &quot;root&quot;;
 
- pass_auth;</code></pre>
+ pass_auth;
+</code></pre>
 
-<h2 id="key_auth">key_auth</h2>
+<h2>key_auth</h2>
 
-<p>If you want to use pubkey authentication, then you need to call <i>key_auth</i>.</p>
+<p>If you want to use pubkey authentication, then you need to call <em>key_auth</em>.</p>
 
 <pre><code> user &quot;bob&quot;;
  private_key &quot;/home/bob/.ssh/id_rsa&quot;; # passphrase-less key
  public_key &quot;/home/bob/.ssh/id_rsa.pub&quot;;
 
- key_auth;</code></pre>
+ key_auth;
+</code></pre>
 
-<h2 id="krb5_auth">krb5_auth</h2>
+<h2>krb5_auth</h2>
 
-<p>If you want to use kerberos authentication, then you need to call <i>krb5_auth</i>. This authentication mechanism is only available if you use Net::OpenSSH.</p>
+<p>If you want to use kerberos authentication, then you need to call <em>krb5_auth</em>. This authentication mechanism is only available if you use Net::OpenSSH.</p>
 
 <pre><code> set connection =&gt; &quot;OpenSSH&quot;;
  user &quot;root&quot;;
- krb5_auth;</code></pre>
+ krb5_auth;
+</code></pre>
 
-<h2 id="parallelism-count-">parallelism($count)</h2>
+<h2>parallelism($count)</h2>
 
 <p>Will execute the tasks in parallel on the given servers. $count is the thread count to be used:</p>
 
-<pre><code> parallelism &#39;2&#39;; # set parallelism to 2</code></pre>
+<pre><code> parallelism &#39;2&#39;; # set parallelism to 2
+</code></pre>
 
 <p>Alternatively, the following notation can be used to set thread count more dynamically:</p>
 
 <pre><code> parallelism &#39;max&#39;;     # set parallelism to the number of servers a task is asked to run on
  parallelism &#39;max/3&#39;;   # set parallelism to 1/3 of the number of servers
- parallelism &#39;max 10%&#39;; # set parallelism to 10% of the number of servers</code></pre>
+ parallelism &#39;max 10%&#39;; # set parallelism to 10% of the number of servers
+</code></pre>
 
 <p>If an unrecognized value is passed, or the calculated thread count would be less than 1, Rex falls back to use a single thread.</p>
 
-<h2 id="proxy_command-cmd-">proxy_command($cmd)</h2>
+<h2>proxy_command($cmd)</h2>
 
 <p>Set a proxy command to use for the connection. This is only possible with OpenSSH connection method.</p>
 
 <pre><code> set connection =&gt; &quot;OpenSSH&quot;;
- proxy_command &quot;ssh user@jumphost nc %h %p 2&gt;/dev/null&quot;;</code></pre>
+ proxy_command &quot;ssh user@jumphost nc %h %p 2&gt;/dev/null&quot;;
+</code></pre>
 
-<h2 id="set_distributor-distributor-">set_distributor($distributor)</h2>
+<h2>set_distributor($distributor)</h2>
 
 <p>This sets the task distribution module. Default is &quot;Base&quot;.</p>
 
 <p>Possible values are: Base, Gearman, Parallel_ForkManager</p>
 
-<h2 id="template_function-sub-...-">template_function(sub { ... })</h2>
+<h2>template_function(sub { ... })</h2>
 
 <p>This function sets the template processing function. So it is possible to change the template engine. For example to Template::Toolkit.</p>
 
-<h2 id="logging">logging</h2>
+<h2>logging</h2>
 
 <p>With this function you can define the logging behaviour of (R)?ex.</p>
 
-<dl>
+<p>Logging to a file <br>
+     logging to_file =&gt; &quot;rex.log&quot;;</p>
 
-<dt id="Logging-to-a-file">Logging to a file</dt>
-<dd>
+<p>Logging to syslog <br>
+     logging to_syslog =&gt; $facility;</p>
 
-<pre><code> logging to_file =&gt; &quot;rex.log&quot;;</code></pre>
+<h2>needs($package [, @tasks])</h2>
 
-</dd>
-<dt id="Logging-to-syslog">Logging to syslog</dt>
-<dd>
+<p>With <em>needs</em> you can define dependencies between tasks. The &quot;needed&quot; tasks will be called with the same server configuration as the calling task.</p>
 
-<pre><code> logging to_syslog =&gt; $facility;</code></pre>
+<p><em>needs</em> will not execute before, around and after hooks.</p>
 
-</dd>
-</dl>
-
-<h2 id="needs-package-tasks-">needs($package [, @tasks])</h2>
-
-<p>With <i>needs</i> you can define dependencies between tasks. The &quot;needed&quot; tasks will be called with the same server configuration as the calling task.</p>
-
-<p><i>needs</i> will not execute before, around and after hooks.</p>
-
-<dl>
-
-<dt id="Depend-on-all-tasks-in-a-given-package.">Depend on all tasks in a given package.</dt>
-<dd>
-
-<p>Depend on all tasks in the package MyPkg. All tasks will be called with the server <i>server1</i>.</p>
+<p>Depend on all tasks in a given package. <br>
+Depend on all tasks in the package MyPkg. All tasks will be called with the server <em>server1</em>.</p>
 
 <pre><code> task &quot;mytask&quot;, &quot;server1&quot;, sub {
    needs MyPkg;
- };</code></pre>
+ };
+</code></pre>
 
-</dd>
-<dt id="Depend-on-a-single-task-in-a-given-package.">Depend on a single task in a given package.</dt>
-<dd>
-
-<p>Depend on the <i>uname</i> task in the package MyPkg. The <i>uname</i> task will be called with the server <i>server1</i>.</p>
+<p>Depend on a single task in a given package. <br>
+Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task will be called with the server <em>server1</em>.</p>
 
 <pre><code> task &quot;mytask&quot;, &quot;server1&quot;, sub {
    needs MyPkg &quot;uname&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-</dd>
-<dt id="To-call-tasks-defined-in-the-Rexfile-from-within-a-module">To call tasks defined in the Rexfile from within a module</dt>
-<dd>
+<p>To call tasks defined in the Rexfile from within a module <br>
+     task &quot;mytask&quot;, &quot;server1&quot;, sub {
+       needs main &quot;uname&quot;;
+     };</p>
 
-<pre><code> task &quot;mytask&quot;, &quot;server1&quot;, sub {
-   needs main &quot;uname&quot;;
- };</code></pre>
-
-</dd>
-</dl>
-
-<h2 id="include-Module::Name">include Module::Name</h2>
+<h2>include Module::Name</h2>
 
 <p>Include a module without registering its tasks.</p>
 
 <pre><code>  include qw/
     Module::One
     Module::Two
-  /;</code></pre>
+  /;
+</code></pre>
 
-<h2 id="environment-name-code-">environment($name =&gt; $code)</h2>
+<h2>environment($name =&gt; $code)</h2>
 
 <p>Define an environment. With environments one can use the same task for different hosts. For example if you want to use the same task on your integration-, test- and production servers.</p>
 
@@ -640,9 +645,10 @@
 
  task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, sub {
     say run &quot;hostname&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<p>Calling this task <i>rex prepare</i> will execute on testwww01. Calling this task with <i>rex -E live prepare</i> will execute on www01, www02, www03. Calling this task <i>rex -E stage prepare</i> will execute on stagewww01.</p>
+<p>Calling this task <em>rex prepare</em> will execute on testwww01. Calling this task with <em>rex -E live prepare</em> will execute on www01, www02, www03. Calling this task <em>rex -E stage prepare</em> will execute on stagewww01.</p>
 
 <p>You can call the function within a task to get the current environment.</p>
 
@@ -650,11 +656,12 @@
    if(environment() eq &quot;dev&quot;) {
      say &quot;i&#39;m in the dev environment&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
-<p>If no <i>-E</i> option is passed on the command line, the default environment (named &#39;default&#39;) will be used.</p>
+<p>If no <em>-E</em> option is passed on the command line, the default environment (named &#39;default&#39;) will be used.</p>
 
-<h2 id="LOCAL-">LOCAL(&amp;)</h2>
+<h2>LOCAL(&amp;)</h2>
 
 <p>With the LOCAL function you can do local commands within a task that is defined to work on remote servers.</p>
 
@@ -666,15 +673,17 @@
     LOCAL {
       say run &quot;uptime&quot;;
     };
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="path-path-">path(@path)</h2>
+<h2>path(@path)</h2>
 
 <p>Set the execution path for all commands.</p>
 
-<pre><code> path &quot;/bin&quot;, &quot;/sbin&quot;, &quot;/usr/bin&quot;, &quot;/usr/sbin&quot;, &quot;/usr/pkg/bin&quot;, &quot;/usr/pkg/sbin&quot;;</code></pre>
+<pre><code> path &quot;/bin&quot;, &quot;/sbin&quot;, &quot;/usr/bin&quot;, &quot;/usr/sbin&quot;, &quot;/usr/pkg/bin&quot;, &quot;/usr/pkg/sbin&quot;;
+</code></pre>
 
-<h2 id="set-key-value-">set($key, $value)</h2>
+<h2>set($key, $value)</h2>
 
 <p>Set a configuration parameter. These variables can be used in templates as well.</p>
 
@@ -682,15 +691,17 @@
 
  task &quot;prepare&quot;, sub {
    my $db = get &quot;database&quot;;
- };</code></pre>
+ };
+</code></pre>
 
 <p>Or in a template</p>
 
-<pre><code> DB: &lt;%= $::database %&gt;</code></pre>
+<pre><code> DB: &lt;%= $::database %&gt;
+</code></pre>
 
 <p>The following list of configuration parameters are Rex specific:</p>
 
-<h2 id="get-key-value-">get($key, $value)</h2>
+<h2>get($key, $value)</h2>
 
 <p>Get a configuration parameter.</p>
 
@@ -698,13 +709,15 @@
 
  task &quot;prepare&quot;, sub {
    my $db = get &quot;database&quot;;
- };</code></pre>
+ };
+</code></pre>
 
 <p>Or in a template</p>
 
-<pre><code> DB: &lt;%= $::database %&gt;</code></pre>
+<pre><code> DB: &lt;%= $::database %&gt;
+</code></pre>
 
-<h2 id="before-task-sub-">before($task =&gt; sub {})</h2>
+<h2>before($task =&gt; sub {})</h2>
 
 <p>Run code before executing the specified task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;before&#39; functions.</p>
 
@@ -715,9 +728,10 @@
 <pre><code> before mytask =&gt; sub {
   my ($server, $server_ref, $cli_args) = @_;
   run &quot;vzctl start vm$server&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="after-task-sub-">after($task =&gt; sub {})</h2>
+<h2>after($task =&gt; sub {})</h2>
 
 <p>Run code after the task is finished. The special taskname &#39;ALL&#39; can be used to run code after all tasks. If called repeatedly, each sub will be appended to a list of &#39;after&#39; functions.</p>
 
@@ -728,9 +742,10 @@
   if($failed) { say &quot;Connection to $server failed.&quot;; }
 
   run &quot;vzctl stop vm$server&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="around-task-sub-">around($task =&gt; sub {})</h2>
+<h2>around($task =&gt; sub {})</h2>
 
 <p>Run code before and after the task is finished. The special taskname &#39;ALL&#39; can be used to run code around all tasks. If called repeatedly, each sub will be appended to a list of &#39;around&#39; functions.</p>
 
@@ -747,9 +762,10 @@
   else {
     say &quot;After Task\n&quot;;
   }
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="before_task_start-task-sub-">before_task_start($task =&gt; sub {})</h2>
+<h2>before_task_start($task =&gt; sub {})</h2>
 
 <p>Run code before executing the specified task. This gets executed only once for a task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;before_task_start&#39; functions.</p>
 
@@ -757,9 +773,10 @@
 
 <pre><code> before_task_start mytask =&gt; sub {
    # do some things
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="after_task_finished-task-sub-">after_task_finished($task =&gt; sub {})</h2>
+<h2>after_task_finished($task =&gt; sub {})</h2>
 
 <p>Run code after the task is finished (and after the ssh connection is terminated). This gets executed only once for a task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;after_task_finished&#39; functions.</p>
 
@@ -767,9 +784,10 @@
 
 <pre><code> after_task_finished mytask =&gt; sub {
    # do some things
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="logformat-format-">logformat($format)</h2>
+<h2>logformat($format)</h2>
 
 <p>You can define the logging format with the following parameters.</p>
 
@@ -785,44 +803,47 @@
 
 <p>Default is: [%D] %l - %s</p>
 
-<h2 id="connection">connection</h2>
+<h2>connection</h2>
 
 <p>This function returns the current connection object.</p>
 
 <pre><code> task &quot;foo&quot;, group =&gt; &quot;baz&quot;, sub {
    say &quot;Current Server: &quot; . connection-&gt;server;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="cache">cache</h2>
+<h2>cache</h2>
 
 <p>This function returns the current cache object.</p>
 
-<h2 id="profiler">profiler</h2>
+<h2>profiler</h2>
 
 <p>Returns the profiler object for the current connection.</p>
 
-<h2 id="report-switch-type-">report($switch, $type)</h2>
+<h2>report($switch, $type)</h2>
 
 <p>This function will initialize the reporting.</p>
 
-<pre><code> report -on =&gt; &quot;YAML&quot;;</code></pre>
+<pre><code> report -on =&gt; &quot;YAML&quot;;
+</code></pre>
 
-<h2 id="source_global_profile-0-1-">source_global_profile(0|1)</h2>
+<h2>source_global_profile(0|1)</h2>
 
 <p>If this option is set, every run() command will first source /etc/profile before getting executed.</p>
 
-<h2 id="last_command_output">last_command_output</h2>
+<h2>last_command_output</h2>
 
 <p>This function returns the output of the last &quot;run&quot; command.</p>
 
-<p>On a debian system this example will return the output of <i>apt-get install foobar</i>.</p>
+<p>On a debian system this example will return the output of <em>apt-get install foobar</em>.</p>
 
 <pre><code> task &quot;mytask&quot;, &quot;myserver&quot;, sub {
    install &quot;foobar&quot;;
    say last_command_output();
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="case-compare-option-">case($compare, $option)</h2>
+<h2>case($compare, $option)</h2>
 
 <p>This is a function to compare a string with some given options.</p>
 
@@ -841,28 +862,31 @@
                  qr{debian}i =&gt; &quot;ntp&quot;,
                  default    =&gt; sub { return &quot;foo&quot;; },
                };
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="set_executor_for-type-executor-">set_executor_for($type, $executor)</h2>
+<h2>set_executor_for($type, $executor)</h2>
 
 <p>Set the executor for a special type. This is primary used for the upload_and_run helper function.</p>
 
-<pre><code> set_executor_for perl =&gt; &quot;/opt/local/bin/perl&quot;;</code></pre>
+<pre><code> set_executor_for perl =&gt; &quot;/opt/local/bin/perl&quot;;
+</code></pre>
 
-<h2 id="tmp_dir-tmp_dir-">tmp_dir($tmp_dir)</h2>
+<h2>tmp_dir($tmp_dir)</h2>
 
 <p>Set the tmp directory on the remote host to store temporary files.</p>
 
-<h2 id="inspect-varRef-">inspect($varRef)</h2>
+<h2>inspect($varRef)</h2>
 
 <p>This function dumps the contents of a variable to STDOUT.</p>
 
 <p>task &quot;mytask&quot;, &quot;myserver&quot;, sub { my $myvar = { name =&gt; &quot;foo&quot;, sys =&gt; &quot;bar&quot;, };</p>
 
 <pre><code>  inspect $myvar;
-};</code></pre>
+};
+</code></pre>
 
-<h2 id="sayformat-format-">sayformat($format)</h2>
+<h2>sayformat($format)</h2>
 
 <p>You can define the format of the say() function.</p>
 
@@ -881,3 +905,55 @@
 <p>asis - will print every single parameter in its own line. This is useful if you want to print the output of a command.</p>
 
 
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

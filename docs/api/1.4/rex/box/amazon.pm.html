@@ -1,33 +1,113 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
+      <meta content="" name="description">
+      <meta content="" name="keywords">
 
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#EXAMPLES">EXAMPLES</a></li>
-  <li><a href="#METHODS">METHODS</a>
-    <ul>
-      <li><a href="#new-name-vmname-">new(name =&gt; $vmname)</a></li>
-      <li><a href="#ami-ami_id-">ami($ami_id)</a></li>
-      <li><a href="#type-type-">type($type)</a></li>
-      <li><a href="#security_group-sec_group-">security_group($sec_group)</a></li>
-      <li><a href="#forward_port-option-">forward_port(%option)</a></li>
-      <li><a href="#share_folder-option-">share_folder(%option)</a></li>
-      <li><a href="#info">info</a></li>
-    </ul>
-  </li>
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="/rexify-website/get/index.html">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/care/index.html" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="/rexify-website/care/help__r__ex.html">Help (R)?ex</a></li>
+          <li><a href="/rexify-website/care/help_people_in_need.html">Help people</a></li>
+      </ul>
+    </li>
+    <li><a href="/rexify-website/support/index.html">Support</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/docs/index.html" title="docs">Docs</a>
+      <ul class="dropdown_menu dropdown_docs">
+          <li><a href="/rexify-website/docs/faq/index.html">FAQ</a></li>
+          <li><a href="/rexify-website/docs/guides/index.html">Guides</a></li>
+          <li><a href="/rexify-website/docs/rex_book/index.html">Rex Book (work in progress)</a></li>
+          <li><a href="/rexify-website/docs/other/index.html">Other</a></li>
+          <li><a href="/rexify-website/docs/release_notes/index.html">Release notes</a></li>
+            <li class="divider"></li>
+          <li><a href="/rexify-website/docs/api/index.html">API</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              
+              <ul>
+<li><a href="#NAME">NAME</a></li>
+<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#EXAMPLES">EXAMPLES</a></li>
+<li><a href="#METHODS">METHODS</a>
+<ul>
+<li><a href="#new-name-vmname-">new(name =&gt; $vmname)</a></li>
+<li><a href="#ami-ami_id-">ami($ami_id)</a></li>
+<li><a href="#type-type-">type($type)</a></li>
+<li><a href="#security_group-sec_group-">security_group($sec_group)</a></li>
+<li><a href="#forward_port-option-">forward_port(%option)</a></li>
+<li><a href="#share_folder-option-">share_folder(%option)</a></li>
+<li><a href="#info">info</a></li>
+</ul></li>
 </ul>
 
-<h1 id="NAME">NAME</h1>
+<h1>NAME</h1>
 
 <p>Rex::Box::Amazon - Rex/Boxes Amazon Module</p>
 
-<h1 id="DESCRIPTION">DESCRIPTION</h1>
+<h1>DESCRIPTION</h1>
 
 <p>This is a Rex/Boxes module to use Amazon EC2.</p>
 
-<h1 id="EXAMPLES">EXAMPLES</h1>
+<h1>EXAMPLES</h1>
 
 <p>To use this module inside your Rexfile you can use the following commands.</p>
 
@@ -39,25 +119,26 @@
    zone =&gt; &quot;eu-west-1a&quot;,
    authkey =&gt; &quot;default&quot;,
  };
-  
+
  task &quot;prepare_box&quot;, sub {
    box {
      my ($box) = @_;
-       
+
      $box-&gt;name(&quot;mybox&quot;);
      $box-&gt;ami(&quot;ami-c1aaabb5&quot;);
      $box-&gt;type(&quot;m1.large&quot;); 
-        
+
      $box-&gt;security_group(&quot;default&quot;);
-        
+
      $box-&gt;auth(
        user =&gt; &quot;root&quot;,
        password =&gt; &quot;box&quot;,
      );
-        
+
      $box-&gt;setup(&quot;setup_task&quot;);
    };
- };</code></pre>
+ };
+</code></pre>
 
 <p>If you want to use a YAML file you can use the following template.</p>
 
@@ -73,48 +154,103 @@
      ami: ami-c1aaabb5
      type: m1.large
      security_group: default
-     setup: setup_task</code></pre>
+     setup: setup_task
+</code></pre>
 
 <p>And then you can use it the following way in your Rexfile.</p>
 
 <pre><code> use Rex::Commands::Box init_file =&gt; &quot;file.yml&quot;;
-   
+
  task &quot;prepare_vms&quot;, sub {
    boxes &quot;init&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h1 id="METHODS">METHODS</h1>
+<h1>METHODS</h1>
 
 <p>See also the Methods of Rex::Box::Base. This module inherits all methods of it.</p>
 
-<h2 id="new-name-vmname-">new(name =&gt; $vmname)</h2>
+<h2>new(name =&gt; $vmname)</h2>
 
 <p>Constructor if used in OO mode.</p>
 
-<pre><code> my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);</code></pre>
+<pre><code> my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);
+</code></pre>
 
-<h2 id="ami-ami_id-">ami($ami_id)</h2>
+<h2>ami($ami_id)</h2>
 
 <p>Set the AMI ID for the box.</p>
 
-<h2 id="type-type-">type($type)</h2>
+<h2>type($type)</h2>
 
 <p>Set the type of the Instance. For example &quot;m1.large&quot;.</p>
 
-<h2 id="security_group-sec_group-">security_group($sec_group)</h2>
+<h2>security_group($sec_group)</h2>
 
 <p>Set the Amazon security group for this Instance.</p>
 
-<h2 id="forward_port-option-">forward_port(%option)</h2>
+<h2>forward_port(%option)</h2>
 
 <p>Not available for Amazon Boxes.</p>
 
-<h2 id="share_folder-option-">share_folder(%option)</h2>
+<h2>share_folder(%option)</h2>
 
 <p>Not available for Amazon Boxes.</p>
 
-<h2 id="info">info</h2>
+<h2>info</h2>
 
 <p>Returns a hashRef of vm information.</p>
 
 
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

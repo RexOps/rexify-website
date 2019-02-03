@@ -1,39 +1,120 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
+      <meta content="" name="description">
+      <meta content="" name="keywords">
 
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
-    <ul>
-      <li><a href="#run-command-callback-">run($command [, $callback])</a></li>
-      <li><a href="#run-command_description-command-command-options-">run($command_description, command =&gt; $command, %options)</a></li>
-      <li><a href="#can_run-command-">can_run($command)</a></li>
-      <li><a href="#sudo">sudo</a></li>
-    </ul>
-  </li>
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="/rexify-website/get/index.html">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/care/index.html" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="/rexify-website/care/help__r__ex.html">Help (R)?ex</a></li>
+          <li><a href="/rexify-website/care/help_people_in_need.html">Help people</a></li>
+      </ul>
+    </li>
+    <li><a href="/rexify-website/support/index.html">Support</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/docs/index.html" title="docs">Docs</a>
+      <ul class="dropdown_menu dropdown_docs">
+          <li><a href="/rexify-website/docs/faq/index.html">FAQ</a></li>
+          <li><a href="/rexify-website/docs/guides/index.html">Guides</a></li>
+          <li><a href="/rexify-website/docs/rex_book/index.html">Rex Book (work in progress)</a></li>
+          <li><a href="/rexify-website/docs/other/index.html">Other</a></li>
+          <li><a href="/rexify-website/docs/release_notes/index.html">Release notes</a></li>
+            <li class="divider"></li>
+          <li><a href="/rexify-website/docs/api/index.html">API</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              
+              <ul>
+<li><a href="#NAME">NAME</a></li>
+<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+<ul>
+<li><a href="#run-command-callback-">run($command [, $callback])</a></li>
+<li><a href="#run-command_description-command-command-options-">run($command_description, command =&gt; $command, %options)</a></li>
+<li><a href="#can_run-command-">can_run($command)</a></li>
+<li><a href="#sudo">sudo</a></li>
+</ul></li>
 </ul>
 
-<h1 id="NAME">NAME</h1>
+<h1>NAME</h1>
 
 <p>Rex::Commands::Run - Execute a remote command</p>
 
-<h1 id="DESCRIPTION">DESCRIPTION</h1>
+<h1>DESCRIPTION</h1>
 
 <p>With this module you can run a command.</p>
 
-<h1 id="SYNOPSIS">SYNOPSIS</h1>
+<h1>SYNOPSIS</h1>
 
 <pre><code> my $output = run &quot;ls -l&quot;;
- sudo &quot;id&quot;;</code></pre>
+ sudo &quot;id&quot;;
+</code></pre>
 
-<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+<h1>EXPORTED FUNCTIONS</h1>
 
-<h2 id="run-command-callback-">run($command [, $callback])</h2>
+<h2>run($command [, $callback])</h2>
 
-<h2 id="run-command_description-command-command-options-">run($command_description, command =&gt; $command, %options)</h2>
+<h2>run($command_description, command =&gt; $command, %options)</h2>
 
 <p>This function will execute the given command and returns the output. In scalar context it returns the raw output as is, and in list context it returns the list of output lines. The exit value of the command is stored in the $? variable.</p>
 
@@ -44,7 +125,8 @@
      my $server = Rex::get_current_connection()-&gt;{server};
      say &quot;[$server] $stdout\n&quot;;
    };
- };</code></pre>
+ };
+</code></pre>
 
 <p>Supported options are:</p>
 
@@ -68,7 +150,8 @@
     becomes an identifier for the run block (e.g. to be triggered with notify)
   creates       =&gt; $file_to_create
     tries to create $file_to_create upon execution
-    skips execution if the file already exists</code></pre>
+    skips execution if the file already exists
+</code></pre>
 
 <p>Examples:</p>
 
@@ -82,15 +165,17 @@
    # some code ...
 
    notify &quot;run&quot;, &quot;extract-something&quot;;  # now the command gets executed
- };</code></pre>
+ };
+</code></pre>
 
-<p>If you only want to run a command if another command succeeds or fails, you can use <i>only_if</i> or <i>unless</i> option.</p>
+<p>If you only want to run a command if another command succeeds or fails, you can use <em>only_if</em> or <em>unless</em> option.</p>
 
 <pre><code> run &quot;some-command&quot;,
    only_if =&gt; &quot;ps -ef | grep -q httpd&quot;;   # only run if httpd is running
 
  run &quot;some-other-command&quot;,
-   unless =&gt; &quot;ps -ef | grep -q httpd&quot;;    # only run if httpd is not running</code></pre>
+   unless =&gt; &quot;ps -ef | grep -q httpd&quot;;    # only run if httpd is not running
+</code></pre>
 
 <p>If you want to set custom environment variables you can do it like this:</p>
 
@@ -99,11 +184,12 @@
     env =&gt; {
      env_var_1 =&gt; &quot;the value for 1&quot;,
      env_var_2 =&gt; &quot;the value for 2&quot;,
-   };</code></pre>
+   };
+</code></pre>
 
 <p>If you want to end the command upon receiving a certain output: run &quot;my_command&quot;, end_if_matched =&gt; qr/PATTERN/;</p>
 
-<h2 id="can_run-command-">can_run($command)</h2>
+<h2>can_run($command)</h2>
 
 <p>This function checks if a command is in the path or is available. You can specify multiple commands, the first command found will be returned.</p>
 
@@ -111,46 +197,104 @@
    if( my $cmd = can_run(&quot;uptime&quot;, &quot;downtime&quot;) ) {
      say run $cmd;
    }
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="sudo">sudo</h2>
+<h2>sudo</h2>
 
 <p>Run a single command, a code block, or all commands with <code>sudo</code>. You need perl to be available on the remote systems to use <code>sudo</code>.</p>
 
-<p>Depending on your remote sudo configuration, you may need to define a sudo password with <i>sudo_password</i> first:</p>
+<p>Depending on your remote sudo configuration, you may need to define a sudo password with <em>sudo_password</em> first:</p>
 
-<pre><code> sudo_password &#39;my_sudo_password&#39;; # hardcoding</code></pre>
+<pre><code> sudo_password &#39;my_sudo_password&#39;; # hardcoding
+</code></pre>
 
 <p>Or alternatively, since Rexfile is plain perl, you can read the password from terminal at the start:</p>
 
 <pre><code> use Term::ReadKey;
- 
+
  print &#39;I need sudo password: &#39;;
  ReadMode(&#39;noecho&#39;);
  sudo_password ReadLine(0);
- ReadMode(&#39;restore&#39;);</code></pre>
+ ReadMode(&#39;restore&#39;);
+</code></pre>
 
 <p>Similarly, it is also possible to read it from a secret file, database, etc.</p>
 
 <p>You can turn sudo on globally with:</p>
 
-<pre><code> sudo TRUE; # run _everything_ with sudo</code></pre>
+<pre><code> sudo TRUE; # run _everything_ with sudo
+</code></pre>
 
 <p>To run only a specific command with sudo, use :</p>
 
 <pre><code> say sudo &#39;id&#39;;                # passing a remote command directly
  say sudo { command =&gt; &#39;id&#39; }; # passing anonymous hashref
- 
- say sudo { command =&gt; &#39;id&#39;, user =&gt; &#39;different&#39; }; # run a single command with sudo as different user
- 
- # running a single command with sudo as different user, and `cd` to another directory too
- say sudo { command =&gt; &#39;id&#39;, user =&gt; &#39;different&#39;, cwd =&gt; &#39;/home/different&#39; };</code></pre>
 
-<p>Passing an anonymous <i>coderef</i> to <code>sudo</code> allows for running the commands in the sub with sudo:</p>
+ say sudo { command =&gt; &#39;id&#39;, user =&gt; &#39;different&#39; }; # run a single command with sudo as different user
+
+ # running a single command with sudo as different user, and `cd` to another directory too
+ say sudo { command =&gt; &#39;id&#39;, user =&gt; &#39;different&#39;, cwd =&gt; &#39;/home/different&#39; };
+</code></pre>
+
+<p>Passing an anonymous <em>coderef</em> to <code>sudo</code> allows for running the commands in the sub with sudo:</p>
 
 <pre><code> sudo sub {
      service &#39;nginx&#39; =&gt; &#39;restart&#39;;
      say run &#39;id&#39;;
- };</code></pre>
+ };
+</code></pre>
 
 
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

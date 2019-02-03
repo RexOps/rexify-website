@@ -1,137 +1,223 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
+      <meta content="" name="description">
+      <meta content="" name="keywords">
 
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
-    <ul>
-      <li><a href="#list_files-path-">list_files(&quot;/path&quot;);</a></li>
-      <li><a href="#ls-path-">ls($path)</a></li>
-      <li><a href="#symlink-from-to-">symlink($from, $to)</a></li>
-      <li><a href="#ln-from-to-">ln($from, $to)</a></li>
-      <li><a href="#unlink-file-">unlink($file)</a></li>
-      <li><a href="#rm-file-">rm($file)</a></li>
-      <li><a href="#rmdir-dir-">rmdir($dir)</a></li>
-      <li><a href="#mkdir-newdir-">mkdir($newdir)</a></li>
-      <li><a href="#chown-owner-file-">chown($owner, $file)</a></li>
-      <li><a href="#chgrp-group-file-">chgrp($group, $file)</a></li>
-      <li><a href="#chmod-mode-file-">chmod($mode, $file)</a></li>
-      <li><a href="#stat-file-">stat($file)</a></li>
-      <li><a href="#is_file-file-">is_file($file)</a></li>
-      <li><a href="#is_dir-dir-">is_dir($dir)</a></li>
-      <li><a href="#is_symlink-file-">is_symlink($file)</a></li>
-      <li><a href="#is_readable-file-">is_readable($file)</a></li>
-      <li><a href="#is_writable-file-">is_writable($file)</a></li>
-      <li><a href="#is_writeable-file-">is_writeable($file)</a></li>
-      <li><a href="#readlink-link-">readlink($link)</a></li>
-      <li><a href="#rename-old-new-">rename($old, $new)</a></li>
-      <li><a href="#mv-old-new-">mv($old, $new)</a></li>
-      <li><a href="#chdir-newdir-">chdir($newdir)</a></li>
-      <li><a href="#cd-newdir-">cd($newdir)</a></li>
-      <li><a href="#df-device-">df([$device])</a></li>
-      <li><a href="#du-path-">du($path)</a></li>
-      <li><a href="#cp-source-destination-">cp($source, $destination)</a></li>
-      <li><a href="#mount-device-mount_point-options-">mount($device, $mount_point, @options)</a></li>
-      <li><a href="#umount-mount_point-">umount($mount_point)</a></li>
-      <li><a href="#glob-glob-">glob($glob)</a></li>
-    </ul>
-  </li>
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="/rexify-website/get/index.html">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/care/index.html" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="/rexify-website/care/help__r__ex.html">Help (R)?ex</a></li>
+          <li><a href="/rexify-website/care/help_people_in_need.html">Help people</a></li>
+      </ul>
+    </li>
+    <li><a href="/rexify-website/support/index.html">Support</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/docs/index.html" title="docs">Docs</a>
+      <ul class="dropdown_menu dropdown_docs">
+          <li><a href="/rexify-website/docs/faq/index.html">FAQ</a></li>
+          <li><a href="/rexify-website/docs/guides/index.html">Guides</a></li>
+          <li><a href="/rexify-website/docs/rex_book/index.html">Rex Book (work in progress)</a></li>
+          <li><a href="/rexify-website/docs/other/index.html">Other</a></li>
+          <li><a href="/rexify-website/docs/release_notes/index.html">Release notes</a></li>
+            <li class="divider"></li>
+          <li><a href="/rexify-website/docs/api/index.html">API</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              
+              <ul>
+<li><a href="#NAME">NAME</a></li>
+<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+<ul>
+<li><a href="#list_files-path-">list_files(&quot;/path&quot;);</a></li>
+<li><a href="#ls-path-">ls($path)</a></li>
+<li><a href="#symlink-from-to-">symlink($from, $to)</a></li>
+<li><a href="#ln-from-to-">ln($from, $to)</a></li>
+<li><a href="#unlink-file-">unlink($file)</a></li>
+<li><a href="#rm-file-">rm($file)</a></li>
+<li><a href="#rmdir-dir-">rmdir($dir)</a></li>
+<li><a href="#mkdir-newdir-">mkdir($newdir)</a></li>
+<li><a href="#chown-owner-file-">chown($owner, $file)</a></li>
+<li><a href="#chgrp-group-file-">chgrp($group, $file)</a></li>
+<li><a href="#chmod-mode-file-">chmod($mode, $file)</a></li>
+<li><a href="#stat-file-">stat($file)</a></li>
+<li><a href="#is_file-file-">is_file($file)</a></li>
+<li><a href="#is_dir-dir-">is_dir($dir)</a></li>
+<li><a href="#is_symlink-file-">is_symlink($file)</a></li>
+<li><a href="#is_readable-file-">is_readable($file)</a></li>
+<li><a href="#is_writable-file-">is_writable($file)</a></li>
+<li><a href="#is_writeable-file-">is_writeable($file)</a></li>
+<li><a href="#readlink-link-">readlink($link)</a></li>
+<li><a href="#rename-old-new-">rename($old, $new)</a></li>
+<li><a href="#mv-old-new-">mv($old, $new)</a></li>
+<li><a href="#chdir-newdir-">chdir($newdir)</a></li>
+<li><a href="#cd-newdir-">cd($newdir)</a></li>
+<li><a href="#df-device-">df([$device])</a></li>
+<li><a href="#du-path-">du($path)</a></li>
+<li><a href="#cp-source-destination-">cp($source, $destination)</a></li>
+<li><a href="#mount-device-mount_point-options-">mount($device, $mount_point, @options)</a></li>
+<li><a href="#umount-mount_point-">umount($mount_point)</a></li>
+<li><a href="#glob-glob-">glob($glob)</a></li>
+</ul></li>
 </ul>
 
-<h1 id="NAME">NAME</h1>
+<h1>NAME</h1>
 
 <p>Rex::Commands::Fs - Filesystem commands</p>
 
-<h1 id="DESCRIPTION">DESCRIPTION</h1>
+<h1>DESCRIPTION</h1>
 
 <p>With this module you can do file system tasks like creating a directory, deleting files, moving files, and more.</p>
 
-<h1 id="SYNOPSIS">SYNOPSIS</h1>
+<h1>SYNOPSIS</h1>
 
 <pre><code> my @files = list_files &quot;/etc&quot;;
- 
+
  unlink(&quot;/tmp/file&quot;);
- 
+
  rmdir(&quot;/tmp&quot;);
  mkdir(&quot;/tmp&quot;);
- 
+
  my %stat = stat(&quot;/etc/passwd&quot;);
- 
+
  my $link = readlink(&quot;/path/to/a/link&quot;);
  symlink(&quot;/source&quot;, &quot;/dest&quot;);
- 
+
  rename(&quot;oldname&quot;, &quot;newname&quot;);
- 
+
  chdir(&quot;/tmp&quot;);
- 
+
  is_file(&quot;/etc/passwd&quot;);
  is_dir(&quot;/etc&quot;);
  is_writeable(&quot;/tmp&quot;);
  is_writable(&quot;/tmp&quot;);
- 
+
  chmod 755, &quot;/tmp&quot;;
  chown &quot;user&quot;, &quot;/tmp&quot;;
- chgrp &quot;group&quot;, &quot;/tmp&quot;;</code></pre>
+ chgrp &quot;group&quot;, &quot;/tmp&quot;;
+</code></pre>
 
-<h1 id="EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</h1>
+<h1>EXPORTED FUNCTIONS</h1>
 
-<h2 id="list_files-path-">list_files(&quot;/path&quot;);</h2>
+<h2>list_files(&quot;/path&quot;);</h2>
 
 <p>This function list all entries (files, directories, ...) in a given directory and returns a array.</p>
 
 <pre><code> task &quot;ls-etc&quot;, &quot;server01&quot;, sub {
    my @tmp_files = grep { /\.tmp$/ } list_files(&quot;/etc&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="ls-path-">ls($path)</h2>
+<h2>ls($path)</h2>
 
-<p>Just an alias for <i>list_files</i></p>
+<p>Just an alias for <em>list_files</em></p>
 
-<h2 id="symlink-from-to-">symlink($from, $to)</h2>
+<h2>symlink($from, $to)</h2>
 
 <p>This function will create a symlink from $from to $to.</p>
 
 <pre><code> task &quot;symlink&quot;, &quot;server01&quot;, sub {
    symlink(&quot;/var/www/versions/1.0.0&quot;, &quot;/var/www/html&quot;);
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="ln-from-to-">ln($from, $to)</h2>
+<h2>ln($from, $to)</h2>
 
-<p>ln is an alias for <i>symlink</i></p>
+<p>ln is an alias for <em>symlink</em></p>
 
-<h2 id="unlink-file-">unlink($file)</h2>
+<h2>unlink($file)</h2>
 
 <p>This function will remove the given file.</p>
 
 <pre><code> task &quot;unlink&quot;, &quot;server01&quot;, sub {
    unlink(&quot;/tmp/testfile&quot;);
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="rm-file-">rm($file)</h2>
+<h2>rm($file)</h2>
 
 <p>This is an alias for unlink.</p>
 
-<h2 id="rmdir-dir-">rmdir($dir)</h2>
+<h2>rmdir($dir)</h2>
 
 <p>This function will remove the given directory.</p>
 
 <pre><code> task &quot;rmdir&quot;, &quot;server01&quot;, sub {
    rmdir(&quot;/tmp&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>Since: 0.45 Please use the file() resource instead.</p>
 
 <pre><code> task &quot;prepare&quot;, sub {
    file &quot;/tmp&quot;,
      ensure =&gt; &quot;absent&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="mkdir-newdir-">mkdir($newdir)</h2>
+<h2>mkdir($newdir)</h2>
 
 <p>This function will create a new directory.</p>
 
@@ -144,94 +230,85 @@
      group  =&gt; &quot;root&quot;,
      mode   =&gt; 1777;
  };
- 
+
  task &quot;mkdir&quot;, &quot;server01&quot;, sub {
    mkdir &quot;/tmp&quot;;
- 
+
    mkdir &quot;/tmp&quot;,
      owner =&gt; &quot;root&quot;,
      group =&gt; &quot;root&quot;,
      mode =&gt; 1777;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="chown-owner-file-">chown($owner, $file)</h2>
+<h2>chown($owner, $file)</h2>
 
 <p>Change the owner of a file or a directory.</p>
 
 <pre><code> chown &quot;www-data&quot;, &quot;/var/www/html&quot;;
- 
+
  chown &quot;www-data&quot;, &quot;/var/www/html&quot;,
-                recursive =&gt; 1;</code></pre>
+                recursive =&gt; 1;
+</code></pre>
 
 <p>This command will not be reported.</p>
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2 id="chgrp-group-file-">chgrp($group, $file)</h2>
+<h2>chgrp($group, $file)</h2>
 
 <p>Change the group of a file or a directory.</p>
 
 <pre><code> chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;;
- 
+
  chgrp &quot;nogroup&quot;, &quot;/var/www/html&quot;,
-              recursive =&gt; 1;</code></pre>
+              recursive =&gt; 1;
+</code></pre>
 
 <p>This command will not be reported.</p>
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2 id="chmod-mode-file-">chmod($mode, $file)</h2>
+<h2>chmod($mode, $file)</h2>
 
 <p>Change the permissions of a file or a directory.</p>
 
 <pre><code> chmod 755, &quot;/var/www/html&quot;;
- 
+
  chmod 755, &quot;/var/www/html&quot;,
-          recursive =&gt; 1;</code></pre>
+          recursive =&gt; 1;
+</code></pre>
 
 <p>This command will not be reported.</p>
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2 id="stat-file-">stat($file)</h2>
+<h2>stat($file)</h2>
 
 <p>This function will return a hash with the following information about a file or directory.</p>
 
-<dl>
+<p>mode  </p>
 
-<dt id="mode">mode</dt>
-<dd>
+<p>size  </p>
 
-</dd>
-<dt id="size">size</dt>
-<dd>
+<p>uid  </p>
 
-</dd>
-<dt id="uid">uid</dt>
-<dd>
+<p>gid  </p>
 
-</dd>
-<dt id="gid">gid</dt>
-<dd>
+<p>atime  </p>
 
-</dd>
-<dt id="atime">atime</dt>
-<dd>
+<p>mtime  </p>
 
-</dd>
-<dt id="mtime">mtime</dt>
-<dd>
-
-</dd>
-</dl>
+<!-- -->
 
 <pre><code> task &quot;stat&quot;, &quot;server01&quot;, sub {
    my %file_stat = stat(&quot;/etc/passwd&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_file-file-">is_file($file)</h2>
+<h2>is_file($file)</h2>
 
 <p>This function tests if $file is a file. Returns 1 if true. 0 if false.</p>
 
@@ -242,11 +319,12 @@
    else {
      say &quot;hm, this is not a file.&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_dir-dir-">is_dir($dir)</h2>
+<h2>is_dir($dir)</h2>
 
 <p>This function tests if $dir is a directory. Returns 1 if true. 0 if false.</p>
 
@@ -257,11 +335,12 @@
    else {
      say &quot;hm, this is not a directory.&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_symlink-file-">is_symlink($file)</h2>
+<h2>is_symlink($file)</h2>
 
 <p>This function tests if $file is a symlink. Returns 1 if true. 0 if false.</p>
 
@@ -272,11 +351,12 @@
    else {
      say &quot;hm, this is not a symlink.&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_readable-file-">is_readable($file)</h2>
+<h2>is_readable($file)</h2>
 
 <p>This function tests if $file is readable. It returns 1 if true. 0 if false.</p>
 
@@ -287,11 +367,12 @@
    else {
      say &quot;not readable.&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_writable-file-">is_writable($file)</h2>
+<h2>is_writable($file)</h2>
 
 <p>This function tests if $file is writable. It returns 1 if true. 0 if false.</p>
 
@@ -302,17 +383,18 @@
    else {
      say &quot;not writable.&quot;;
    }
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="is_writeable-file-">is_writeable($file)</h2>
+<h2>is_writeable($file)</h2>
 
-<p>This is only an alias for <i>is_writable</i>.</p>
+<p>This is only an alias for <em>is_writable</em>.</p>
 
 <p>This command will not be reported.</p>
 
-<h2 id="readlink-link-">readlink($link)</h2>
+<h2>readlink($link)</h2>
 
 <p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die.</p>
 
@@ -321,68 +403,74 @@
    eval {
      $link = readlink(&quot;/tmp/testlink&quot;);
    };
- 
+
    say &quot;this is a link&quot; if($link);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="rename-old-new-">rename($old, $new)</h2>
+<h2>rename($old, $new)</h2>
 
 <p>This function will rename $old to $new. Will return 1 on success and 0 on failure.</p>
 
 <pre><code> task &quot;rename&quot;, &quot;server01&quot;, sub {
    rename(&quot;/tmp/old&quot;, &quot;/tmp/new&quot;);
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="mv-old-new-">mv($old, $new)</h2>
+<h2>mv($old, $new)</h2>
 
-<p>mv is an alias for <i>rename</i>.</p>
+<p>mv is an alias for <em>rename</em>.</p>
 
-<h2 id="chdir-newdir-">chdir($newdir)</h2>
+<h2>chdir($newdir)</h2>
 
 <p>This function will change the current workdirectory to $newdir. This function currently only works local.</p>
 
 <pre><code> task &quot;chdir&quot;, &quot;server01&quot;, sub {
    chdir(&quot;/tmp&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="cd-newdir-">cd($newdir)</h2>
+<h2>cd($newdir)</h2>
 
-<p>This is an alias of <i>chdir</i>.</p>
+<p>This is an alias of <em>chdir</em>.</p>
 
-<h2 id="df-device-">df([$device])</h2>
+<h2>df([$device])</h2>
 
-<p>This function returns a hashRef reflecting the output of <i>df</i></p>
+<p>This function returns a hashRef reflecting the output of <em>df</em></p>
 
 <pre><code> task &quot;df&quot;, &quot;server01&quot;, sub {
     my $df = df();
     my $df_on_sda1 = df(&quot;/dev/sda1&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="du-path-">du($path)</h2>
+<h2>du($path)</h2>
 
 <p>Returns the disk usage of $path.</p>
 
 <pre><code> task &quot;du&quot;, &quot;server01&quot;, sub {
    say &quot;size of /var/www: &quot; . du(&quot;/var/www&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
-<h2 id="cp-source-destination-">cp($source, $destination)</h2>
+<h2>cp($source, $destination)</h2>
 
 <p>cp will copy $source to $destination (it is recursive)</p>
 
 <pre><code> task &quot;cp&quot;, &quot;server01&quot;, sub {
     cp(&quot;/var/www&quot;, &quot;/var/www.old&quot;);
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="mount-device-mount_point-options-">mount($device, $mount_point, @options)</h2>
+<h2>mount($device, $mount_point, @options)</h2>
 
 <p>Mount devices.</p>
 
@@ -395,35 +483,90 @@
           on_change =&gt; sub { say &quot;device mounted&quot;; };
    #
    # mount persistent with entry in /etc/fstab
- 
+
    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
           ensure     =&gt; &quot;persistent&quot;,
           type       =&gt; &quot;ext3&quot;,
           options    =&gt; [qw/noatime async/],
           on_change  =&gt; sub { say &quot;device mounted&quot;; };
- 
+
    # to umount a device
    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
           ensure =&gt; &quot;absent&quot;;
- 
- };</code></pre>
+
+ };
+</code></pre>
 
 <p>In order to be more aligned with `mount` terminology, the previously used `fs` option has been deprecated in favor of the `type` option. The `fs` option is still supported and works as previously, but Rex prints a warning if it is being used. There&#39;s also a warning if both `fs` and `type` options are specified, and in this case `type` will be used.</p>
 
-<h2 id="umount-mount_point-">umount($mount_point)</h2>
+<h2>umount($mount_point)</h2>
 
 <p>Unmount device.</p>
 
 <pre><code> task &quot;umount&quot;, &quot;server01&quot;, sub {
    umount &quot;/tmp&quot;;
- };</code></pre>
+ };
+</code></pre>
 
-<h2 id="glob-glob-">glob($glob)</h2>
+<h2>glob($glob)</h2>
 
 <pre><code> task &quot;glob&quot;, &quot;server1&quot;, sub {
    my @files_with_p = grep { is_file($_) } glob(&quot;/etc/p*&quot;);
- };</code></pre>
+ };
+</code></pre>
 
 <p>This command will not be reported.</p>
 
 
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>

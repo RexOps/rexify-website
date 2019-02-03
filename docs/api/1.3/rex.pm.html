@@ -1,55 +1,126 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
+      <title></title>
 
+      <meta content="width=1024, initial-scale=0.5" name="viewport">
+      <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
+      <link href="/rexify-website/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
+      <link charset="utf-8" href="/rexify-website/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
+      <script src="/rexify-website/public/js/skin/rexify.org/highlight.pack.js"></script>
 
+      <meta content="" name="description">
+      <meta content="" name="keywords">
 
-<ul id="index">
-  <li><a href="#NAME">NAME</a></li>
-  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-  <li><a href="#GETTING-HELP">GETTING HELP</a></li>
-  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-  <li><a href="#CLASS-METHODS">CLASS METHODS</a>
-    <ul>
-      <li><a href="#get_current_connection">get_current_connection</a></li>
-      <li><a href="#is_ssh">is_ssh</a></li>
-      <li><a href="#is_local">is_local</a></li>
-      <li><a href="#is_sudo">is_sudo</a></li>
-      <li><a href="#get_sftp">get_sftp</a></li>
-      <li><a href="#connect">connect</a></li>
-    </ul>
-  </li>
-  <li><a href="#CONTRIBUTORS">CONTRIBUTORS</a></li>
-  <li><a href="#LICENSE">LICENSE</a></li>
+   </head>
+   <body>
+
+      <div id="page">
+
+         <div class="top_div" id="top-div">
+            <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
+            <div id="nav-div">
+               
+<div class="nav_links">
+  <ul>
+    <li><a href="/rexify-website/">Home</a></li>
+    <li><a href="/rexify-website/get/index.html">Get Rex</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/care/index.html" title="care">Care</a>
+      <ul class="dropdown_menu dropdown_care">
+          <li><a href="/rexify-website/care/help__r__ex.html">Help (R)?ex</a></li>
+          <li><a href="/rexify-website/care/help_people_in_need.html">Help people</a></li>
+      </ul>
+    </li>
+    <li><a href="/rexify-website/support/index.html">Support</a></li>
+    <li>
+      <b class="arrow_box"></b>
+      <a class="dropdown_link" href="/rexify-website/docs/index.html" title="docs">Docs</a>
+      <ul class="dropdown_menu dropdown_docs">
+          <li><a href="/rexify-website/docs/faq/index.html">FAQ</a></li>
+          <li><a href="/rexify-website/docs/guides/index.html">Guides</a></li>
+          <li><a href="/rexify-website/docs/rex_book/index.html">Rex Book (work in progress)</a></li>
+          <li><a href="/rexify-website/docs/other/index.html">Other</a></li>
+          <li><a href="/rexify-website/docs/release_notes/index.html">Release notes</a></li>
+            <li class="divider"></li>
+          <li><a href="/rexify-website/docs/api/index.html">API</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            </div>
+         </div>
+
+         <div id="widgets_container">
+            <div id="widgets">
+               <h2>Conferences</h2>
+                 <div class="news_widget">
+                    <div class="news_date">2016-06-21</div>
+                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
+                 </div>
+
+               <h2>Need Help?</h2>
+               <p>Rex is a pure open source project, you can find community support in the following places:</p>
+               <ul>
+                  <li>IRC: <a href="irc://irc.freenode.net/rex">#rex on irc.freenode.net</a></li>
+                  <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
+                  <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
+                  <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
+                  <li>Feature: you miss a <a href="/rexify-website/feature.html">feature</a>?</li>
+               </ul>
+               <p><a href="/rexify-website/support/index.html">Professional support</a> is also available.</p>
+            </div>
+         </div> <!-- widgets -->
+
+         <div id="content_container">
+            <div id="content">
+              
+              <ul>
+<li><a href="#NAME">NAME</a></li>
+<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a href="#GETTING-HELP">GETTING HELP</a></li>
+<li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a href="#CLASS-METHODS">CLASS METHODS</a>
+<ul>
+<li><a href="#get_current_connection">get_current_connection</a></li>
+<li><a href="#is_ssh">is_ssh</a></li>
+<li><a href="#is_local">is_local</a></li>
+<li><a href="#is_sudo">is_sudo</a></li>
+<li><a href="#get_sftp">get_sftp</a></li>
+<li><a href="#connect">connect</a></li>
+</ul></li>
+<li><a href="#CONTRIBUTORS">CONTRIBUTORS</a></li>
+<li><a href="#LICENSE">LICENSE</a></li>
 </ul>
 
-<h1 id="NAME">NAME</h1>
+<h1>NAME</h1>
 
 <p>Rex - Remote Execution</p>
 
-<h1 id="DESCRIPTION">DESCRIPTION</h1>
+<h1>DESCRIPTION</h1>
 
-<p>(R)?ex is a small script to ease the execution of remote commands. You can write small tasks in a file named <i>Rexfile</i>.</p>
+<p>(R)?ex is a small script to ease the execution of remote commands. You can write small tasks in a file named <em>Rexfile</em>.</p>
 
 <p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
 
-<h1 id="GETTING-HELP">GETTING HELP</h1>
+<h1>GETTING HELP</h1>
 
 <ul>
-
-<li><p>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></p>
-
-</li>
-<li><p>IRC: irc.freenode.net #rex</p>
-
-</li>
-<li><p>Bug Tracker: <a href="https://github.com/RexOps/Rex/issues">https://github.com/RexOps/Rex/issues</a></p>
-
-</li>
-<li><p>Twitter: <a href="http://twitter.com/jfried83">http://twitter.com/jfried83</a></p>
-
-</li>
+<li><p>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></p></li>
+<li><p>IRC: irc.freenode.net #rex</p></li>
+<li><p>Bug Tracker: <a href="https://github.com/RexOps/Rex/issues">https://github.com/RexOps/Rex/issues</a></p></li>
+<li><p>Twitter: <a href="http://twitter.com/jfried83">http://twitter.com/jfried83</a></p></li>
 </ul>
 
-<h1 id="SYNOPSIS">SYNOPSIS</h1>
+<h1>SYNOPSIS</h1>
 
 <pre><code> use strict;
  use warnings;
@@ -62,51 +133,42 @@
     say run &quot;uname -a&quot;;
  };
 
- bash# rex -H &quot;server[01..10]&quot; uname</code></pre>
+ bash# rex -H &quot;server[01..10]&quot; uname
+</code></pre>
 
-<p>See <a>Rex::Commands</a> for a list of all commands you can use.</p>
+<p>See <span>Rex::Commands</span> for a list of all commands you can use.</p>
 
-<h1 id="CLASS-METHODS">CLASS METHODS</h1>
+<h1>CLASS METHODS</h1>
 
-<h2 id="get_current_connection">get_current_connection</h2>
+<h2>get_current_connection</h2>
 
 <p>This function is deprecated since 0.28! See Rex::Commands::connection.</p>
 
 <p>Returns the current connection as a hashRef.</p>
 
-<dl>
+<p>server <br>
+The server name</p>
 
-<dt id="server">server</dt>
-<dd>
+<p>ssh <br>
+1 if it is a ssh connection, 0 if not.</p>
 
-<p>The server name</p>
-
-</dd>
-<dt id="ssh">ssh</dt>
-<dd>
-
-<p>1 if it is a ssh connection, 0 if not.</p>
-
-</dd>
-</dl>
-
-<h2 id="is_ssh">is_ssh</h2>
+<h2>is_ssh</h2>
 
 <p>Returns 1 if the current connection is a ssh connection. 0 if not.</p>
 
-<h2 id="is_local">is_local</h2>
+<h2>is_local</h2>
 
 <p>Returns 1 if the current connection is local. Otherwise 0.</p>
 
-<h2 id="is_sudo">is_sudo</h2>
+<h2>is_sudo</h2>
 
 <p>Returns 1 if the current operation is executed within sudo.</p>
 
-<h2 id="get_sftp">get_sftp</h2>
+<h2>get_sftp</h2>
 
 <p>Returns the sftp object for the current ssh connection.</p>
 
-<h2 id="connect">connect</h2>
+<h2>connect</h2>
 
 <p>Use this function to create a connection if you use Rex as a library.</p>
 
@@ -126,14 +188,67 @@
    print &quot;Do something...\n&quot;;
  }
 
- my $output = run(&quot;uptime&quot;);</code></pre>
+ my $output = run(&quot;uptime&quot;);
+</code></pre>
 
-<h1 id="CONTRIBUTORS">CONTRIBUTORS</h1>
+<h1>CONTRIBUTORS</h1>
 
 <p>Many thanks to the contributors for their work. Please see <a href="https://github.com/RexOps/Rex/blob/master/CONTRIBUTORS">CONTRIBUTORS</a> file for a complete list.</p>
 
-<h1 id="LICENSE">LICENSE</h1>
+<h1>LICENSE</h1>
 
 <p>Rex is a free software, licensed under: The Apache License, Version 2.0, January 2004</p>
 
 
+
+            </div>
+         </div> <!-- content -->
+
+       <!-- page -->
+
+
+     <a href="http://github.com/RexOps/Rex"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+
+   <div class="clearfix"></div>
+   <div class="bottom_bar">
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+   </div>
+
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/jquery.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/bootstrap.min.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/menu.js" type="text/javascript"></script>
+   <script charset="utf-8" src="/rexify-website/public/js/skin/rexify.org/ZeroClipboard.min.js" type="text/javascript"></script>
+
+   <script>
+      var client = new ZeroClipboard($(".copy-button"), { moviePath: "/public/js/skin/rexify.org/ZeroClipboard.swf"});
+   </script>
+
+   <script>
+      if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+      }
+      $(window).on('resize', function() {
+       if($(window).width() <= 1100) {
+         // hide API link
+         $("#li_api").hide();
+       }
+       else {
+         $("#li_api").show();
+       }
+
+      });
+   </script>
+
+
+<script src="/rexify-website/public/js/skin/rexify.org/browser.js"></script>
+<script>
+  hljs.tabReplace = '    ';
+//  hljs.initHighlighting();
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+   </body>
+
+</html>
