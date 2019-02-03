@@ -27,7 +27,7 @@
             <h1>(R)?ex <small>Deployment &amp; Configuration Management</small></h1>
          </div>
 
-         %= include 'skin/rexify.org/_index_head';
+         %= include 'skin/rexify.org/_index_head.html.ep';
          <div class="nav_title">
             <span style="color: #7b4d29;">Y</span>our <span style="color: #7b4d29;">W</span>ay
          </div>
