@@ -47,11 +47,6 @@
 
          <div id="widgets_container">
             <div id="widgets">
-               <h2>Search</h2>
-               <form action="/search.html" method="GET">
-                  <input type="text" name="q" id="q" class="search_field" /><button class="btn">Go</button>
-               </form>
-
                <h2>Conferences</h2>
                  <div class="news_widget">
                     <div class="news_date">2016-06-21</div>
