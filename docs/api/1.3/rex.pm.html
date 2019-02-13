@@ -101,17 +101,17 @@
 <li><a href="#LICENSE">LICENSE</a></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex - Remote Execution</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>(R)?ex is a small script to ease the execution of remote commands. You can write small tasks in a file named <em>Rexfile</em>.</p>
 
 <p>You can find examples and howtos on <a href="http://rexify.org/">http://rexify.org/</a></p>
 
-<h1>GETTING HELP</h1>
+<h1 id="gettinghelp">GETTING HELP</h1>
 
 <ul>
 <li><p>Web Site: <a href="http://rexify.org/">http://rexify.org/</a></p></li>
@@ -120,7 +120,7 @@
 <li><p>Twitter: <a href="http://twitter.com/jfried83">http://twitter.com/jfried83</a></p></li>
 </ul>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use strict;
  use warnings;
@@ -138,9 +138,9 @@
 
 <p>See <span>Rex::Commands</span> for a list of all commands you can use.</p>
 
-<h1>CLASS METHODS</h1>
+<h1 id="classmethods">CLASS METHODS</h1>
 
-<h2>get_current_connection</h2>
+<h2 id="get_current_connection">get_current_connection</h2>
 
 <p>This function is deprecated since 0.28! See Rex::Commands::connection.</p>
 
@@ -152,23 +152,23 @@ The server name</p>
 <p>ssh <br>
 1 if it is a ssh connection, 0 if not.</p>
 
-<h2>is_ssh</h2>
+<h2 id="is_ssh">is_ssh</h2>
 
 <p>Returns 1 if the current connection is a ssh connection. 0 if not.</p>
 
-<h2>is_local</h2>
+<h2 id="is_local">is_local</h2>
 
 <p>Returns 1 if the current connection is local. Otherwise 0.</p>
 
-<h2>is_sudo</h2>
+<h2 id="is_sudo">is_sudo</h2>
 
 <p>Returns 1 if the current operation is executed within sudo.</p>
 
-<h2>get_sftp</h2>
+<h2 id="get_sftp">get_sftp</h2>
 
 <p>Returns the sftp object for the current ssh connection.</p>
 
-<h2>connect</h2>
+<h2 id="connect">connect</h2>
 
 <p>Use this function to create a connection if you use Rex as a library.</p>
 
@@ -191,11 +191,11 @@ The server name</p>
  my $output = run(&quot;uptime&quot;);
 </code></pre>
 
-<h1>CONTRIBUTORS</h1>
+<h1 id="contributors">CONTRIBUTORS</h1>
 
 <p>Many thanks to the contributors for their work. Please see <a href="https://github.com/RexOps/Rex/blob/master/CONTRIBUTORS">CONTRIBUTORS</a> file for a complete list.</p>
 
-<h1>LICENSE</h1>
+<h1 id="license">LICENSE</h1>
 
 <p>Rex is a free software, licensed under: The Apache License, Version 2.0, January 2004</p>
 

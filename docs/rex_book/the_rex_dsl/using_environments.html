@@ -91,7 +91,7 @@
 
 <p><img height="464" src="../../media/book/book_env.png" width="619"></p>
 
-<h2>Creating Environments</h2>
+<h2 id="creatingenvironments">Creating Environments</h2>
 
 <p>Creating environments is as easy as creating groups. To create environments you can use the environment function. Inside an environment you can place everything that is specific for this environment (like authentication, server groups, tasks, ...).</p>
 
@@ -132,7 +132,7 @@ environment live =&gt; sub {
 };
 </code></pre>
 
-<h2>Running tasks</h2>
+<h2 id="runningtasks">Running tasks</h2>
 
 <p>To run the task inside a special environment you have to use the cli option -E</p>
 
@@ -160,7 +160,7 @@ task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, make {
 };
 </code></pre>
 
-<h2>Environments and the CMDB</h2>
+<h2 id="environmentsandthecmdb">Environments and the CMDB</h2>
 
 <p>If you&#39;re using a CMDB to separate data from code you can also create YAML files for the different environments.</p>
 
@@ -173,7 +173,7 @@ task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, make {
 <li>default.yml</li>
 </ul>
 
-<h3>The YAML files</h3>
+<h3 id="theyamlfiles">The YAML files</h3>
 
 <pre><code># File: cmdb/default.yml
 ntp_server:
@@ -193,7 +193,7 @@ ntp_server:
   - ntp02.live
 </code></pre>
 
-<h3>The Rexfile</h3>
+<h3 id="therexfile">The Rexfile</h3>
 
 <p>To use the CMDB you have to require and configure the Rex::CMDB module first.</p>
 

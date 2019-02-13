@@ -91,7 +91,7 @@
 
 <p>These are the changes in 1.0.0 release.</p>
 
-<h2>Common</h2>
+<h2 id="common">Common</h2>
 
 <p>With Rex 1.0 we changed the communication from libssh2 (Net::SSH2) to openssh (Net::OpenSSH) by default, because many of us already uses this and it was also the default if featureset 0.55 was enabled.</p>
 
@@ -104,7 +104,7 @@
 <pre><code>set connection =&gt; &#39;SSH&#39;;
 </code></pre>
 
-<h4>augeas</h4>
+<h4 id="augeas">augeas</h4>
 
 <p>With augeas it is possible to edit configuration files without the need to use templates and to overwrite all of the file. So if you want to allow people to edit the configuration files on your servers also by hand (for example on test machines for your developers) you can use augeas to ensure that some specific parameters in these configuration files are set.</p>
 
@@ -134,7 +134,7 @@ task &quot;prepare&quot;, sub {
 };
 </code></pre>
 
-<h4>PkgConf</h4>
+<h4 id="pkgconf">PkgConf</h4>
 
 <p>The PkgConf commands are especially usefull on debian/ubuntu systems to query and to modify package configurations. For example if you want to configure the mysql root password during package installation. To see more example please refer to the <a href="/rexify-website/api/Rex/Commands/PkgConf.pm.html">API</a> documentation.</p>
 
@@ -154,7 +154,7 @@ task &quot;prepare&quot;, sub {
 };
 </code></pre>
 
-<h4>tty usage</h4>
+<h4 id="ttyusage">tty usage</h4>
 
 <p>If you&#39;re using <code>use Rex -feature =&gt; [&#39;1.0&#39;];</code> tty usage is disabled. This increases the compatibility with some init scripts that don&#39;t <em>disown</em> from the running tty. If you&#39;re using <em>sudo</em> then you need to configure the user to not need a tty to run sudo.</p>
 
@@ -166,7 +166,7 @@ task &quot;prepare&quot;, sub {
 <pre><code>use Rex -feature =&gt; [&#39;1.0&#39;, &#39;tty&#39;];
 </code></pre>
 
-<h4>base</h4>
+<h4 id="base">base</h4>
 
 <ul>
 <li>Allow setting of gpgkey for a repository - @tekcurmudgeon</li>
@@ -181,14 +181,14 @@ task &quot;prepare&quot;, sub {
 <li>allow call of run() command with arrayRef - Jan</li>
 </ul>
 
-<h2>Internal</h2>
+<h2 id="internal">Internal</h2>
 
 <ul>
 <li>Rex::FS::File accepts filenames now - reneeb</li>
 <li>Restore perl-5.8.9 compatibility - Ferenc Erki</li>
 </ul>
 
-<h3>Testing</h3>
+<h3 id="testing">Testing</h3>
 
 <ul>
 <li>unit-test for Rex::Commands::DB - Volker Kroll (vkroll)</li>
@@ -196,7 +196,7 @@ task &quot;prepare&quot;, sub {
 <li>Use more helpful test functions - Ferenc Erki</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
 <ul>
 <li>fix rsync with port definition - #520 - Jan</li>

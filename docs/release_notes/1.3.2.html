@@ -95,9 +95,9 @@
 
 <p>Special thanks for stephanj on IRC who helped a lot with testing those changes and suggesting further modifications.</p>
 
-<h2>Enhancements</h2>
+<h2 id="enhancements">Enhancements</h2>
 
-<h3>MD5 calculation</h3>
+<h3 id="md5calculation">MD5 calculation</h3>
 
 <p>We replaced the previous MD5 checksum calculation method basically with perl one-liners. According to our benchmarks this method provides an overall better performance, while remaining OS-agnostic and memory efficient. Since this function is used in many places, we are looking forward to improve it further.</p>
 
@@ -110,7 +110,7 @@
 <li>Add initial MD5 test - Ferenc Erki</li>
 </ul>
 
-<h3>Documentation</h3>
+<h3 id="documentation">Documentation</h3>
 
 <p>We also decided to include a typo fix to the documentation of this release.</p>
 
@@ -118,7 +118,7 @@
 <li>Fix LEFT_PRECEDENCE typo - Dmitry Kopytov</li>
 </ul>
 
-<h3>General</h3>
+<h3 id="general">General</h3>
 
 <p>Based on the feedback from stephanj via IRC, we improved detection of environment-specific files, and also cleaned up useless <code>which perl</code> calls on Windows, by using the built-on <code>can_run</code> instead. Plus there were some test cleanups.</p>
 
@@ -131,9 +131,9 @@
 <li>Use raw Rex::Interface::Exec to call can_run - Jan</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<h3>Rex::Commands::DB test fixes</h3>
+<h3 id="rex::commands::dbtestfixes">Rex::Commands::DB test fixes</h3>
 
 <p>Now <code>t/db.t</code> should properly skip tests when some prerequisite is missing.</p>
 

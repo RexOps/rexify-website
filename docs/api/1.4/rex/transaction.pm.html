@@ -94,15 +94,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Transaction - Transaction support.</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can define transactions and rollback scenarios on failure.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> task &quot;do-something&quot;, &quot;server01&quot;, sub {
    transaction {
@@ -118,9 +118,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>transaction($codeRef)</h2>
+<h2 id="transactioncoderef">transaction($codeRef)</h2>
 
 <p>Start a transaction for $codeRef. If $codeRef dies it will rollback the transaction.</p>
 
@@ -142,7 +142,7 @@
  };
 </code></pre>
 
-<h2>on_rollback($codeRef)</h2>
+<h2 id="on_rollbackcoderef">on_rollback($codeRef)</h2>
 
 <p>This code will be executed if one step in the transaction fails.</p>
 

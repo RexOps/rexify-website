@@ -87,9 +87,9 @@
 
 <p>We want to thank every contributor who made this release possible. We also welcome Eric Johnson and Mitch Broadhead as new contributors.</p>
 
-<h2>New features</h2>
+<h2 id="newfeatures">New features</h2>
 
-<h3>CMDB merge</h3>
+<h3 id="cmdbmerge">CMDB merge</h3>
 
 <p>Now it is possible to merge CMDB data from different levels of the CMDB hierarchy by choosing various merge strategies. Default strategy is to use the previous behaviour, e.g. first match wins. This feature makes use of <a href="https://metacpan.org/pod/Hash::Merge">Hash::Merge</a>, so it is possible to specify any merge strategy that is <a href="https://metacpan.org/pod/Hash::Merge#specify_behavior-hashref-name">supported by that module</a>. For example:</p>
 
@@ -128,7 +128,7 @@
 <li>Add CMDB merge tests - Ferenc Erki</li>
 </ul>
 
-<h3>Bash tab completion</h3>
+<h3 id="bashtabcompletion">Bash tab completion</h3>
 
 <p>Following up on the <a href="https://groups.google.com/forum/#!searchin/rex-users/bash$20completion/rex-users/HlIbyKYJu2c/LnSkTblEj5gJ">tab completion script posted by Samuele Tognini</a> over at the Rex Users Google group, Eric Johnson took the idea one step forward. As a result of their much appreciated work it is now part of the repo as <code>misc/rex-tab-completion.bash</code>.</p>
 
@@ -138,9 +138,9 @@
 <li>Add tab completion (fix #652) - Eric Johnson</li>
 </ul>
 
-<h2>Enhancements</h2>
+<h2 id="enhancements">Enhancements</h2>
 
-<h3>Task list</h3>
+<h3 id="tasklist">Task list</h3>
 
 <p>Thanks to the ideas and work of Eric Johnson, the task list output of Rex became easier to read. Changes include sorting of all sections, smarter indention, empty lines between namespaces, plus top-level tasks (the ones in the Rexfile) gets listed before tasks in modules. On top of those, passing a (partial) task name to <code>rex -T</code> will try to match that string on the beginning of defined task names and will only list the matching ones.</p>
 
@@ -150,7 +150,7 @@
 <li>Sort tasklist output (fix #633) - Ferenc Erki</li>
 </ul>
 
-<h3>General</h3>
+<h3 id="general">General</h3>
 
 <p>Rex now allows single-character names for tasks, behaves more correctly when facing <code>stat</code> errors, and recognizes more Red Hat variants. It also become more friendly to hack on by avoiding to throw errors and warnings when used directly from a clone of the git repository.</p>
 
@@ -165,7 +165,7 @@
 <li>Allow single-character tasknames (fix #621) - Ferenc Erki</li>
 </ul>
 
-<h3>Documentation</h3>
+<h3 id="documentation">Documentation</h3>
 
 <ul>
 <li>Update modules listed in POD - Brian Manning</li>
@@ -173,7 +173,7 @@
 <li>Update list of contributors - Ferenc Erki</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
 <p>The following bugs/regressions were also fixed during this release cycle:</p>
 

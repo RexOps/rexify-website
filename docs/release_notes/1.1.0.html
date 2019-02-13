@@ -87,9 +87,9 @@
 
 <p>We want to thank every contributor who made this release possible. We also welcome Alex Mestiashvili and Arnold Bechtoldt as new contributors.</p>
 
-<h2>New features</h2>
+<h2 id="newfeatures">New features</h2>
 
-<h3>Pluggable shell detection</h3>
+<h3 id="pluggableshelldetection">Pluggable shell detection</h3>
 
 <p>The shell detection code has been refactored, so it is easier to extend the list of shells which are recognized and supported by Rex. This also made initial iDrac-over-SSH support possible, and opened up the way for further exotic shells to be included later.</p>
 
@@ -99,7 +99,7 @@
 <li>added code to make shells pluggable. - RexOps/Rex#602 - Jan</li>
 </ul>
 
-<h3>Hiding sensitive data in debug output</h3>
+<h3 id="hidingsensitivedataindebugoutput">Hiding sensitive data in debug output</h3>
 
 <p>Sensitive data is now being hidden in debug outputs making their sharing easier and safer. This behaviour can be overridden by setting <code>REX_DEBUG_INSECURE</code> environment variable to 1.</p>
 
@@ -107,7 +107,7 @@
 <li>added a Rex::Logger::masq() function that can mask sensitive data for logging output. (fix for RexOps/Rex#554) - Jan</li>
 </ul>
 
-<h3>Delayed auth settings</h3>
+<h3 id="delayedauthsettings">Delayed auth settings</h3>
 
 <p>It is now possible to set special authentication options with <code>auth for</code> <em>after</em> the related task or group definition.</p>
 
@@ -117,7 +117,7 @@
 <li>add test for #402 - Jan</li>
 </ul>
 
-<h3>Get server group membership</h3>
+<h3 id="getservergroupmembership">Get server group membership</h3>
 
 <p>Group membership information for servers are now exposed and can be retrieve directly from the server object with the <code>groups</code> method. It also has an alias called <code>group</code>, but it always returns the list of groups a server is member of:</p>
 
@@ -128,7 +128,7 @@
 <li>this adds a new method to the server objects called group() and fixed - Jan</li>
 </ul>
 
-<h3>Rex::Test</h3>
+<h3 id="rex::test">Rex::Test</h3>
 
 <p>Rex tests are now printing an explicit FAIL or PASS message to indicate overall test results. A new <code>has_dir</code> test (similar to <code>has_file</code>) is supported now for easier directory existence checks. A diag method is also available from now on to be used with new test implementations.</p>
 
@@ -138,9 +138,9 @@
 <li>Add diag method for Rex::Test::Base - Ferenc Erki</li>
 </ul>
 
-<h2>Enhancements</h2>
+<h2 id="enhancements">Enhancements</h2>
 
-<h3>General</h3>
+<h3 id="general">General</h3>
 
 <p>Rex-1.1.0 contains quite a few general enhancements as well.</p>
 
@@ -167,7 +167,7 @@
 <li>Drop potentially dangerous --force-yes option (fix #559) - Ferenc Erki</li>
 </ul>
 
-<h3>Documentation</h3>
+<h3 id="documentation">Documentation</h3>
 
 <p>Both POD quality and quantity has been improved by syntax fixes, content updates and generating documentation for new modules to be published here on the website.</p>
 
@@ -183,7 +183,7 @@
 <li>try to fix title generation - Jan</li>
 </ul>
 
-<h3>Resources</h3>
+<h3 id="resources">Resources</h3>
 
 <p>It is now easier to work with resources in modules as they can be exported to the main namespace, and they also support more events (created, removed, message).</p>
 
@@ -192,7 +192,7 @@
 <li>added support to export resources to main namespace and added more events - Jan</li>
 </ul>
 
-<h3>Rex::Test</h3>
+<h3 id="rex::test">Rex::Test</h3>
 
 <p>The <code>has_stat</code> test can now handle directories, not just files.</p>
 
@@ -201,7 +201,7 @@
 <li>Allow has_stat test to handle directories (fix #582) - Ferenc Erki</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
 <p>The following bugs/regressions were also fixed during this release cycle:</p>
 

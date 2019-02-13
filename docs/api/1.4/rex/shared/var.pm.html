@@ -93,15 +93,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Shared::Var - Share variables across Rex tasks</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>Share variables across Rex tasks with the help of Storable, using a <code>vars.db.$PID</code> file in the local directory, where <code>$PID</code> is the PID of the parent process.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> BEGIN {                           # put share in a BEGIN block
    use Rex::Shared::Var;
@@ -109,9 +109,9 @@
  }
 </code></pre>
 
-<h1>METHODS</h1>
+<h1 id="methods">METHODS</h1>
 
-<h2>share</h2>
+<h2 id="share">share</h2>
 
 <p>Share the passed list of variables across Rex tasks. Should be used in a <code>BEGIN</code> block.</p>
 

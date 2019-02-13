@@ -83,9 +83,9 @@
          <div id="content_container">
             <div id="content">
               
-              <h1>Common</h1>
+              <h1 id="common">Common</h1>
 
-<h4>Inventory cache</h4>
+<h4 id="inventorycache">Inventory cache</h4>
 
 <p>If you want to cache the inventory and to use this cache for subsequent rex calls, you can use the <em>REX_CACHE_TYPE</em> environment variable.</p>
 
@@ -109,7 +109,7 @@ cache &quot;YAML&quot;;
 
 <p>It is also possible to create custom cache classes. For example if you want to save the inventory cache inside a database. Just take a look at <a href="https://github.com/RexOps/Rex/blob/master/lib/Rex/Interface/Cache/YAML.pm">Rex::Interface::Cache::YAML</a> to see how it is implemented.</p>
 
-<h4>Reporting of changes</h4>
+<h4 id="reportingofchanges">Reporting of changes</h4>
 
 <p>If you want to get a report of the changes Rex had done on your systems, you can use the new reporting feature.</p>
 
@@ -142,7 +142,7 @@ set report_path =&gt; &quot;/path/to/&quot;;
 
 <p>It is also possible to create custom reporting classes. Just take a look at <a href="https://github.com/RexIO/rex-io-reports/blob/master/rex/lib/Rex/Report/RexIO.pm">Rex::Report::RexIO</a>.</p>
 
-<h4>New CLI commands to better integrate Rex into your shell scripts</h4>
+<h4 id="newclicommandstobetterintegraterexintoyourshellscripts">New CLI commands to better integrate Rex into your shell scripts</h4>
 
 <p>With these commands it is easy to use Rex from within a shell script.</p>
 
@@ -173,11 +173,11 @@ if ! rex-test -f /etc/sudoers; then
 fi
 </code></pre>
 
-<h4>Initial support for OpenWrt (FErki)</h4>
+<h4 id="initialsupportforopenwrtferki">Initial support for OpenWrt (FErki)</h4>
 
 <p>In a limited way, Rex now supports OpenWrt.</p>
 
-<h4>Enhancements</h4>
+<h4 id="enhancements">Enhancements</h4>
 
 <ul>
 <li>atomic uploads - #220</li>
@@ -218,7 +218,7 @@ task &quot;mytask&quot;, &quot;myserver&quot;, sub {
 <li><p>added another Red Hat Enterprise flavor - #231 (ajaxhelios)</p></li>
 </ul>
 
-<h4>Bugfixes</h4>
+<h4 id="bugfixes">Bugfixes</h4>
 
 <ul>
 <li><p>Support port with ranged hostnames - #196</p></li>

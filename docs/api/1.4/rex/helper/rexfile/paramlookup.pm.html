@@ -89,7 +89,7 @@
 <li><a href="#LOOKUP">LOOKUP</a></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Helper::Rexfile::ParamLookup - A command to manage task parameters.</p>
 
@@ -97,14 +97,14 @@
 
 <p>This module also looks inside a CMDB (if present) for a valid key.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> task &quot;setup&quot;, sub {
    my $var = param_lookup &quot;param_name&quot;, &quot;default_value&quot;;
  };
 </code></pre>
 
-<h1>LOOKUP</h1>
+<h1 id="lookup">LOOKUP</h1>
 
 <p>First <em>param_lookup</em> checks the task parameters for a valid parameter. If none is found and if a CMDB is used, it will look inside the cmdb.</p>
 

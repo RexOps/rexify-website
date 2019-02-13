@@ -96,30 +96,30 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Group::Lookup::DBI - read hostnames and groups from a DBI source</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can define hostgroups out of an DBI source.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Group::Lookup::DBI;
  groups_dbi &quot;dsn&quot;, &quot;user&quot;, &quot;password&quot;, &quot;SQL request&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>groups_dbi($dsn, $user, $password, $sql)</h2>
+<h2 id="groups_dbidsnuserpasswordsql">groups_dbi($dsn, $user, $password, $sql)</h2>
 
 <pre><code> With this function you can read groups from DBI source.
 </code></pre>
 
-<h2>Example: groups_dbi( &#39;DBI:mysql:rex;host=db01&#39;, user =&gt; &#39;username&#39;, password =&gt; &#39;password&#39;, sql =&gt; &quot;SELECT * FROM HOST&quot;, create_all_group =&gt; TRUE);</h2>
+<h2 id="example:groups_dbidbi:mysql:rexhostdb01usergtusernamepasswordgtpasswordsqlgtselectfromhostcreate_all_groupgttrue">Example: groups_dbi( &#39;DBI:mysql:rex;host=db01&#39;, user =&gt; &#39;username&#39;, password =&gt; &#39;password&#39;, sql =&gt; &quot;SELECT * FROM HOST&quot;, create_all_group =&gt; TRUE);</h2>
 
-<h2>Database sample for MySQL</h2>
+<h2 id="databasesampleformysql">Database sample for MySQL</h2>
 
 <pre><code> CREATE TABLE IF NOT EXISTS `HOST` (
    `ID` int(11) NOT NULL,
@@ -129,7 +129,7 @@
  );
 </code></pre>
 
-<h2>Data sample for MySQL</h2>
+<h2 id="datasampleformysql">Data sample for MySQL</h2>
 
 <pre><code> INSERT INTO `HOST` (`ID`, `GROUP`, `HOST`) VALUES
    (1, &#39;db&#39;, &#39;db01&#39;),

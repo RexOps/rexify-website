@@ -87,7 +87,7 @@
 
 <p>We want to thank all the people for contributing code and to fill bug reports. This helps making Rex better and better :)</p>
 
-<h2>Incompatible Changes</h2>
+<h2 id="incompatiblechanges">Incompatible Changes</h2>
 
 <p>We&#39;re sorry, but this release comes with some incompatible changes. The most changes won&#39;t effect the majority of users, but we needed to change those things to fix some nasty things and to be more flexible in the future.</p>
 
@@ -97,7 +97,7 @@
 <li>Core: Caching is now active by default. This might break things if you&#39;re using chroot() inside a task, to change to another system. (For example to chroot from a debian system into a redhat system.)</li>
 </ul>
 
-<h2>Rex::Test</h2>
+<h2 id="rex::test">Rex::Test</h2>
 
 <p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers. Rex::Test uses Rex::Box to create the VM, but currently it only supports VirtualBox VMs.</p>
 
@@ -133,7 +133,7 @@ test {
 1;
 </code></pre>
 
-<h2>Rex::Box</h2>
+<h2 id="rex::box">Rex::Box</h2>
 
 <p>Create clean development environments for your projects. Test your software in a production like environment.</p>
 
@@ -195,7 +195,7 @@ $box-&amp;gt;setup(qw/install_webserver/);
 </code></pre></li>
 </ul>
 
-<h2>Cloud</h2>
+<h2 id="cloud">Cloud</h2>
 
 <p>Changes in the Cloud API</p>
 
@@ -235,13 +235,13 @@ cloud_volume delete =&gt; $vol_id;
 <li>fixed multiple tags - David Golovan</li>
 </ul>
 
-<h2>Reporting</h2>
+<h2 id="reporting">Reporting</h2>
 
 <ul>
 <li>Refactored report generation. This change break backward compatibility because the report format changed.</li>
 </ul>
 
-<h2>Core</h2>
+<h2 id="core">Core</h2>
 
 <ul>
 <li><p>Caching is now enabled by default. This might break backward compatibility if you&#39;re using chroot() inside a task to chroot to another OS.</p></li>

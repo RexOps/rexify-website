@@ -101,15 +101,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Pkg - Install/Remove Software packages</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can install packages and files.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> install file =&gt; &quot;/etc/passwd&quot;, {
               source =&gt; &quot;/export/files/etc/passwd&quot;
@@ -118,9 +118,9 @@
  install package =&gt; &quot;perl&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>pkg($package, %options)</h2>
+<h2 id="pkgpackageoptions">pkg($package, %options)</h2>
 
 <p>Since: 0.45</p>
 
@@ -144,7 +144,7 @@
    ensure  =&gt; &quot;present&quot;;
 </code></pre>
 
-<h2>install($type, $data, $options)</h2>
+<h2 id="installtypedataoptions">install($type, $data, $options)</h2>
 
 <p>The install function can install packages (for CentOS, OpenSuSE and Debian) and files.</p>
 
@@ -219,7 +219,7 @@ This gets executed right after the new package was installed. This hook is only 
 <p>after <br>
 This gets executed right before the install() function returns.</p>
 
-<h2>remove($type, $package, $options)</h2>
+<h2 id="removetypepackageoptions">remove($type, $package, $options)</h2>
 
 <p>This function will remove the given package from a system.</p>
 
@@ -228,7 +228,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>update_system</h2>
+<h2 id="update_system">update_system</h2>
 
 <p>This function does a complete system update.</p>
 
@@ -254,7 +254,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>installed_packages</h2>
+<h2 id="installed_packages">installed_packages</h2>
 
 <p>This function returns all installed packages and their version.</p>
 
@@ -268,7 +268,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>is_installed</h2>
+<h2 id="is_installed">is_installed</h2>
 
 <p>This function tests if $package is installed. Returns 1 if true. 0 if false.</p>
 
@@ -282,7 +282,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>update_package_db</h2>
+<h2 id="update_package_db">update_package_db</h2>
 
 <p>This function updates the local package database. For example, on CentOS it will execute <em>yum makecache</em>.</p>
 
@@ -292,7 +292,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>repository($action, %data)</h2>
+<h2 id="repositoryactiondata">repository($action, %data)</h2>
 
 <p>Add or remove a repository from the package manager.</p>
 
@@ -360,7 +360,7 @@ This gets executed right before the install() function returns.</p>
  };
 </code></pre>
 
-<h2>package_provider_for $os =&gt; $type;</h2>
+<h2 id="package_provider_forosgttype">package_provider_for $os =&gt; $type;</h2>
 
 <p>To set another package provider as the default, use this function.</p>
 

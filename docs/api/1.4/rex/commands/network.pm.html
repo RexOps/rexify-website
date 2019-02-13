@@ -95,15 +95,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Network - Network Module</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can get information of the routing table, current network connections, open ports, ...</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Network;
 
@@ -117,17 +117,17 @@
  my @tcp_connections = grep { $_-&gt;{&quot;proto&quot;} eq &quot;tcp&quot; } netstat;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>route</h2>
+<h2 id="route">route</h2>
 
 <p>Get routing information</p>
 
-<h2>default_gateway([$default_gw])</h2>
+<h2 id="default_gatewaydefault_gw">default_gateway([$default_gw])</h2>
 
 <p>Get or set the default gateway.</p>
 
-<h2>netstat</h2>
+<h2 id="netstat">netstat</h2>
 
 <p>Get network connection information</p>
 

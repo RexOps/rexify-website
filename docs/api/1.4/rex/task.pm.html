@@ -140,15 +140,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Task - The Task Object</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>The Task Object. Typically you only need this class if you want to manipulate tasks after their initial creation.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Task;
 
@@ -164,9 +164,9 @@
  my $existing_task = Rex::TaskList-&gt;get_task(&#39;my_task&#39;);
 </code></pre>
 
-<h1>METHODS</h1>
+<h1 id="methods">METHODS</h1>
 
-<h2>new</h2>
+<h2 id="new">new</h2>
 
 <p>This is the constructor.</p>
 
@@ -194,67 +194,67 @@
  );
 </code></pre>
 
-<h2>connection</h2>
+<h2 id="connection">connection</h2>
 
 <p>Returns the current connection object.</p>
 
-<h2>executor</h2>
+<h2 id="executor">executor</h2>
 
 <p>Returns the current executor object.</p>
 
-<h2>hidden</h2>
+<h2 id="hidden">hidden</h2>
 
 <p>Returns true if the task is hidden. (Should not be displayed on ,,rex -T&#39;&#39;.)</p>
 
-<h2>server</h2>
+<h2 id="server">server</h2>
 
 <p>Returns the servers on which the task should be executed as an ArrayRef.</p>
 
-<h2>set_server(@server)</h2>
+<h2 id="set_serverserver">set_server(@server)</h2>
 
 <p>With this method you can set new servers on which the task should be executed on.</p>
 
-<h2>delete_server</h2>
+<h2 id="delete_server">delete_server</h2>
 
 <p>Delete every server registered to the task.</p>
 
-<h2>current_server</h2>
+<h2 id="current_server">current_server</h2>
 
 <p>Returns the current server on which the tasks gets executed right now.</p>
 
-<h2>desc</h2>
+<h2 id="desc">desc</h2>
 
 <p>Returns the description of a task.</p>
 
-<h2>set_desc($description)</h2>
+<h2 id="set_descdescription">set_desc($description)</h2>
 
 <p>Set the description of a task.</p>
 
-<h2>is_remote</h2>
+<h2 id="is_remote">is_remote</h2>
 
 <p>Returns true (1) if the task will be executed remotely.</p>
 
-<h2>is_local</h2>
+<h2 id="is_local">is_local</h2>
 
 <p>Returns true (1) if the task gets executed on the local host.</p>
 
-<h2>is_http</h2>
+<h2 id="is_http">is_http</h2>
 
 <p>Returns true (1) if the task gets executed over http protocol.</p>
 
-<h2>is_https</h2>
+<h2 id="is_https">is_https</h2>
 
 <p>Returns true (1) if the task gets executed over https protocol.</p>
 
-<h2>is_openssh</h2>
+<h2 id="is_openssh">is_openssh</h2>
 
 <p>Returns true (1) if the task gets executed with openssh.</p>
 
-<h2>want_connect</h2>
+<h2 id="want_connect">want_connect</h2>
 
 <p>Returns true (1) if the task will establish a connection to a remote system.</p>
 
-<h2>get_connection_type</h2>
+<h2 id="get_connection_type">get_connection_type</h2>
 
 <p>This method tries to guess the right connection type for the task and returns it.</p>
 
@@ -271,47 +271,47 @@
 <p>So you can use this type to iterate over a list of remote hosts, but don&#39;t let rex build a connection. For example if you want to use Sys::Virt or other modules.</p></li>
 </ul>
 
-<h2>modify($key, $value)</h2>
+<h2 id="modifykeyvalue">modify($key, $value)</h2>
 
 <p>With this method you can modify values of the task.</p>
 
-<h2>rethink_connection</h2>
+<h2 id="rethink_connection">rethink_connection</h2>
 
 <p>Deletes current connection object.</p>
 
-<h2>user</h2>
+<h2 id="user">user</h2>
 
 <p>Returns the username the task will use.</p>
 
-<h2>set_user($user)</h2>
+<h2 id="set_useruser">set_user($user)</h2>
 
 <p>Set the username of a task.</p>
 
-<h2>password</h2>
+<h2 id="password">password</h2>
 
 <p>Returns the password that will be used.</p>
 
-<h2>set_password($password)</h2>
+<h2 id="set_passwordpassword">set_password($password)</h2>
 
 <p>Set the password of the task.</p>
 
-<h2>name</h2>
+<h2 id="name">name</h2>
 
 <p>Returns the name of the task.</p>
 
-<h2>code</h2>
+<h2 id="code">code</h2>
 
 <p>Returns the code of the task.</p>
 
-<h2>set_code(\&amp;code_ref)</h2>
+<h2 id="set_codecode_ref">set_code(\&amp;code_ref)</h2>
 
 <p>Set the code of the task.</p>
 
-<h2>run_hook($server, $hook)</h2>
+<h2 id="run_hookserverhook">run_hook($server, $hook)</h2>
 
 <p>This method is used internally to execute the specified hooks.</p>
 
-<h2>set_auth($key, $value)</h2>
+<h2 id="set_authkeyvalue">set_auth($key, $value)</h2>
 
 <p>Set the authentication of the task.</p>
 
@@ -319,83 +319,83 @@
  $task-&gt;set_auth(&quot;password&quot;, &quot;bar&quot;);
 </code></pre>
 
-<h2>merge_auth($server)</h2>
+<h2 id="merge_authserver">merge_auth($server)</h2>
 
 <p>Merges the authentication information from $server into the task. Tasks authentication information have precedence.</p>
 
-<h2>get_sudo_password</h2>
+<h2 id="get_sudo_password">get_sudo_password</h2>
 
 <p>Returns the sudo password.</p>
 
-<h2>parallelism</h2>
+<h2 id="parallelism">parallelism</h2>
 
 <p>Get the parallelism count of a task.</p>
 
-<h2>set_parallelism($count)</h2>
+<h2 id="set_parallelismcount">set_parallelism($count)</h2>
 
 <p>Set the parallelism of the task.</p>
 
-<h2>connect($server)</h2>
+<h2 id="connectserver">connect($server)</h2>
 
 <p>Initiate the connection to $server.</p>
 
-<h2>disconnect</h2>
+<h2 id="disconnect">disconnect</h2>
 
 <p>Disconnect from the current connection.</p>
 
-<h2>get_data</h2>
+<h2 id="get_data">get_data</h2>
 
 <p>Dump task data.</p>
 
-<h2>run($server, %options)</h2>
+<h2 id="runserveroptions">run($server, %options)</h2>
 
 <p>Run the task on <code>$server</code>, with <code>%options</code>.</p>
 
-<h2>modify_task($task, $key =&gt; $value)</h2>
+<h2 id="modify_tasktaskkeygtvalue">modify_task($task, $key =&gt; $value)</h2>
 
 <p>Modify <code>$task</code>, by setting <code>$key</code> to <code>$value</code>.</p>
 
-<h2>is_task</h2>
+<h2 id="is_task">is_task</h2>
 
 <p>Returns true(1) if the passed object is a task.</p>
 
-<h2>get_tasks</h2>
+<h2 id="get_tasks">get_tasks</h2>
 
 <p>Returns list of tasks.</p>
 
-<h2>get_desc</h2>
+<h2 id="get_desc">get_desc</h2>
 
 <p>Returns description of task.</p>
 
-<h2>exit_on_connect_fail</h2>
+<h2 id="exit_on_connect_fail">exit_on_connect_fail</h2>
 
 <p>Returns true if rex should exit on connect failure.</p>
 
-<h2>set_exit_on_connect_fail</h2>
+<h2 id="set_exit_on_connect_fail">set_exit_on_connect_fail</h2>
 
 <p>Sets if rex should exit on connect failure.</p>
 
-<h2>get_args</h2>
+<h2 id="get_args">get_args</h2>
 
 <p>Returns arguments of task.</p>
 
-<h2>get_opts</h2>
+<h2 id="get_opts">get_opts</h2>
 
 <p>Returns options of task.</p>
 
-<h2>set_args</h2>
+<h2 id="set_args">set_args</h2>
 
 <p>Sets arguments for task.</p>
 
-<h2>set_opt</h2>
+<h2 id="set_opt">set_opt</h2>
 
 <p>Sets an option for task.</p>
 
-<h2>set_opts</h2>
+<h2 id="set_opts">set_opts</h2>
 
 <p>Sets options for task.</p>
 
-<h2>clone</h2>
+<h2 id="clone">clone</h2>
 
 <p>Clones a task.</p>
 

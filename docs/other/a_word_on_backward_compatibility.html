@@ -93,48 +93,187 @@
 
 <p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our issue tracker.</p>
 
-<h2>Feature flags</h2>
+<h2 id="featureflags">Feature flags</h2>
 
 <p>This is the current list of feature flags:</p>
 
-<p>|                                        |           |                                                                                                                                                                                                                             |
-|----------------------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <strong>Flag</strong>                               | <strong>Since</strong> | <strong>Description</strong>                                                                                                                                                                                                             |
-| 1.3                                    | 1.3       | Activating the new template engine by default.                                                                                                                                                                              |
-| no_template_ng                       | 1.3       | Disabling the new template engine.                                                                                                                                                                                          |
-| 1.0                                    | 1.0       | Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.                                                                                 |
-| no_autodie                            | 1.0       | Will disable autodie feature.                                                                                                                                                                                               |
-| template_ng                           | 0.56      | Enabling the new template engine (better error reporting, etc.)                                                                                                                                                             |
-| 0.56                                   | 0.56      | Will activate autodie feature. Furthermore, all features from earlier versions are activated.                                                                                                                               |
-| autodie                                | 0.56      | Will enable autodie feature: die on all failed <a href="../../api/Rex/Commands/Fs.pm.html">filesytem commands</a>                                                                                                                      |
-| 0.55                                   | 0.55      | Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.                                                                                                      |
-| 0.54                                   | 0.54      | Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated. |
-| 0.53                                   | 0.53      | Will activate register_cmdb_top_scope. And all things 0.51 and down activated.                                                                                                                                           |
-| register_cmdb_top_scope             | 0.53      | Will register all cmdb top scope variables automatically in the templates.                                                                                                                                                  |
-| 0.51                                   | 0.51      | Will load Rex::Constants and the CMDB by default. And all things 0.47 and down activated.                                                                                                                                   |
-| no_autodie                            | 1.0       | Will disable autodie feature.                                                                                                                                                                                               |
-| no_path_cleanup                      | 0.44      | Rex cleans the path before executing a command. With this feature Rex doesn&#39;t cleanup the path.                                                                                                                             |
-| verbose_run                           | 0.47      | Explicitly output &quot;Successfully executed&quot; or &quot;Error executing&quot; messages for run() commands.                                                                                                                                 |
-| source_profile                        | 0.44      | Source $HOME/.profile before running a command.                                                                                                                                                                             |
-| source_global_profile                | 0.44      | Source /etc/profile before running a command.                                                                                                                                                                               |
-| exec_autodie                          | 0.44      | If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.                                                                                                                                    |
-| exec_and_sleep                       | 0.43      | Sometimes some commands that fork away didn&#39;t keep running. With this flag rex will wait a few ms before exiting the shell.                                                                                                 |
-| disable_strict_host_key_checking   | 0.43      | Disabling strict host key checking for openssh connection mode.                                                                                                                                                             |
-| reporting                              | 0.43      | Enable reporting                                                                                                                                                                                                            |
-| empty_groups                          | 0.42      | Enable usage of empty groups.                                                                                                                                                                                               |
-| use_server_auth                      | 0.42      | Enable the usage of special authentication options for servers.                                                                                                                                                             |
-| tty                                    | 1.0       | Enable pty usage for ssh connections. (Default)                                                                                                                                                                             |
-| no_tty                                | 0.41      | Disable pty usage for ssh connections.                                                                                                                                                                                      |
-| no_local_template_vars              | 0.40      | Use global variables in templates                                                                                                                                                                                           |
-| sudo_without_sh                      | 0.40      | Run sudo commands directly without the use of &#39;sh&#39;. This might break things.                                                                                                                                                |
-| sudo_without_locales                 | 0.40      | Run sudo commands without locales. this will break things if you don&#39;t use english locales.                                                                                                                                 |
-| exit_status                           | 0.39      | This option tells Rex to return a non zero value on exit if a task fails.                                                                                                                                                   |
-| 0.35                                   | 0.35      | This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.                                                                      |
-| 0.31                                   | 0.31      | To enable special authentication options for a server group. This will overwrite the default authentication options for a task.                                                                                             |</p>
+<table>
+<col>
+<col>
+<thead>
+</thead>
+<tbody>
+<tr>
+	<td>----------------------------------------</td>
+	<td>-----------</td>
+	<td>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>
+</tr>
+<tr>
+	<td><strong>Flag</strong></td>
+	<td><strong>Since</strong></td>
+	<td><strong>Description</strong></td>
+</tr>
+<tr>
+	<td>1.3</td>
+	<td>1.3</td>
+	<td>Activating the new template engine by default.</td>
+</tr>
+<tr>
+	<td>no_template_ng</td>
+	<td>1.3</td>
+	<td>Disabling the new template engine.</td>
+</tr>
+<tr>
+	<td>1.0</td>
+	<td>1.0</td>
+	<td>Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
+</tr>
+<tr>
+	<td>no_autodie</td>
+	<td>1.0</td>
+	<td>Will disable autodie feature.</td>
+</tr>
+<tr>
+	<td>template_ng</td>
+	<td>0.56</td>
+	<td>Enabling the new template engine (better error reporting, etc.)</td>
+</tr>
+<tr>
+	<td>0.56</td>
+	<td>0.56</td>
+	<td>Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
+</tr>
+<tr>
+	<td>autodie</td>
+	<td>0.56</td>
+	<td>Will enable autodie feature: die on all failed <a href="../../api/Rex/Commands/Fs.pm.html">filesytem commands</a></td>
+</tr>
+<tr>
+	<td>0.55</td>
+	<td>0.55</td>
+	<td>Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
+</tr>
+<tr>
+	<td>0.54</td>
+	<td>0.54</td>
+	<td>Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated.</td>
+</tr>
+<tr>
+	<td>0.53</td>
+	<td>0.53</td>
+	<td>Will activate register_cmdb_top_scope. And all things 0.51 and down activated.</td>
+</tr>
+<tr>
+	<td>register_cmdb_top_scope</td>
+	<td>0.53</td>
+	<td>Will register all cmdb top scope variables automatically in the templates.</td>
+</tr>
+<tr>
+	<td>0.51</td>
+	<td>0.51</td>
+	<td>Will load Rex::Constants and the CMDB by default. And all things 0.47 and down activated.</td>
+</tr>
+<tr>
+	<td>no_autodie</td>
+	<td>1.0</td>
+	<td>Will disable autodie feature.</td>
+</tr>
+<tr>
+	<td>no_path_cleanup</td>
+	<td>0.44</td>
+	<td>Rex cleans the path before executing a command. With this feature Rex doesn&#39;t cleanup the path.</td>
+</tr>
+<tr>
+	<td>verbose_run</td>
+	<td>0.47</td>
+	<td>Explicitly output &quot;Successfully executed&quot; or &quot;Error executing&quot; messages for run() commands.</td>
+</tr>
+<tr>
+	<td>source_profile</td>
+	<td>0.44</td>
+	<td>Source $HOME/.profile before running a command.</td>
+</tr>
+<tr>
+	<td>source_global_profile</td>
+	<td>0.44</td>
+	<td>Source /etc/profile before running a command.</td>
+</tr>
+<tr>
+	<td>exec_autodie</td>
+	<td>0.44</td>
+	<td>If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
+</tr>
+<tr>
+	<td>exec_and_sleep</td>
+	<td>0.43</td>
+	<td>Sometimes some commands that fork away didn&#39;t keep running. With this flag rex will wait a few ms before exiting the shell.</td>
+</tr>
+<tr>
+	<td>disable_strict_host_key_checking</td>
+	<td>0.43</td>
+	<td>Disabling strict host key checking for openssh connection mode.</td>
+</tr>
+<tr>
+	<td>reporting</td>
+	<td>0.43</td>
+	<td>Enable reporting</td>
+</tr>
+<tr>
+	<td>empty_groups</td>
+	<td>0.42</td>
+	<td>Enable usage of empty groups.</td>
+</tr>
+<tr>
+	<td>use_server_auth</td>
+	<td>0.42</td>
+	<td>Enable the usage of special authentication options for servers.</td>
+</tr>
+<tr>
+	<td>tty</td>
+	<td>1.0</td>
+	<td>Enable pty usage for ssh connections. (Default)</td>
+</tr>
+<tr>
+	<td>no_tty</td>
+	<td>0.41</td>
+	<td>Disable pty usage for ssh connections.</td>
+</tr>
+<tr>
+	<td>no_local_template_vars</td>
+	<td>0.40</td>
+	<td>Use global variables in templates</td>
+</tr>
+<tr>
+	<td>sudo_without_sh</td>
+	<td>0.40</td>
+	<td>Run sudo commands directly without the use of &#39;sh&#39;. This might break things.</td>
+</tr>
+<tr>
+	<td>sudo_without_locales</td>
+	<td>0.40</td>
+	<td>Run sudo commands without locales. this will break things if you don&#39;t use english locales.</td>
+</tr>
+<tr>
+	<td>exit_status</td>
+	<td>0.39</td>
+	<td>This option tells Rex to return a non zero value on exit if a task fails.</td>
+</tr>
+<tr>
+	<td>0.35</td>
+	<td>0.35</td>
+	<td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
+</tr>
+<tr>
+	<td>0.31</td>
+	<td>0.31</td>
+	<td>To enable special authentication options for a server group. This will overwrite the default authentication options for a task.</td>
+</tr>
+</tbody>
+</table>
 
 <p> </p>
 
-<h2>Howto enable Feature Flags</h2>
+<h2 id="howtoenablefeatureflags">Howto enable Feature Flags</h2>
 
 <p>You can enable feature flags in your Rexfile with the following code:</p>
 

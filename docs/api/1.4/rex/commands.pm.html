@@ -143,15 +143,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands - All the basic commands</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>This module is the core commands module.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> desc &quot;Task description&quot;;
 
@@ -172,7 +172,7 @@
  };
 </code></pre>
 
-<h1>COMMANDLIST</h1>
+<h1 id="commandlist">COMMANDLIST</h1>
 
 <ul>
 <li><p>Augeas config file management library <span>Rex::Commands::Augeas</span></p></li>
@@ -208,9 +208,9 @@
 <li><p>Manage your virtual environments <span>Rex::Commands::Virtualization</span></p></li>
 </ul>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>no_ssh([$task])</h2>
+<h2 id="no_sshtask">no_ssh([$task])</h2>
 
 <p>Disable ssh for all tasks or a specified task.</p>
 
@@ -226,7 +226,7 @@
  };
 </code></pre>
 
-<h2>task($name [, @servers], $funcref)</h2>
+<h2 id="tasknameserversfuncref">task($name [, @servers], $funcref)</h2>
 
 <p>This function will create a new task.</p>
 
@@ -268,7 +268,7 @@ You can define server groups with the <em>group</em> function.</p>
  };
 </code></pre>
 
-<h2>desc($description)</h2>
+<h2 id="descdescription">desc($description)</h2>
 
 <p>Set the description of a task.</p>
 
@@ -278,7 +278,7 @@ You can define server groups with the <em>group</em> function.</p>
  }
 </code></pre>
 
-<h2>group($name, @servers)</h2>
+<h2 id="groupnameservers">group($name, @servers)</h2>
 
 <p>With this function you can group servers, so that you don&#39;t need to write too much ;-)</p>
 
@@ -325,7 +325,7 @@ You can define server groups with the <em>group</em> function.</p>
 </code></pre></li>
 </ul>
 
-<h2>batch($name, @tasks)</h2>
+<h2 id="batchnametasks">batch($name, @tasks)</h2>
 
 <p>With the batch function you can call tasks in a batch.</p>
 
@@ -334,15 +334,15 @@ You can define server groups with the <em>group</em> function.</p>
 
 <p>And call it with the <em>-b</em> console parameter. <em>rex -b name</em></p>
 
-<h2>user($user)</h2>
+<h2 id="useruser">user($user)</h2>
 
 <p>Set the user for the ssh connection.</p>
 
-<h2>password($password)</h2>
+<h2 id="passwordpassword">password($password)</h2>
 
 <p>Set the password for the ssh connection (or for the private key file).</p>
 
-<h2>auth(for =&gt; $entity, %data)</h2>
+<h2 id="authforgtentitydata">auth(for =&gt; $entity, %data)</h2>
 
 <p>With this function you can modify/set special authentication parameters for tasks and groups. If you want to modify a group&#39;s authentication you first have to create it. (Place the auth command after the group.)</p>
 
@@ -403,30 +403,30 @@ You can define server groups with the <em>group</em> function.</p>
  };
 </code></pre>
 
-<h2>port($port)</h2>
+<h2 id="portport">port($port)</h2>
 
 <p>Set the port where the ssh server is listening.</p>
 
-<h2>sudo_password($password)</h2>
+<h2 id="sudo_passwordpassword">sudo_password($password)</h2>
 
 <p>Set the password for the sudo command.</p>
 
-<h2>timeout($seconds)</h2>
+<h2 id="timeoutseconds">timeout($seconds)</h2>
 
 <p>Set the timeout for the ssh connection and other network related stuff.</p>
 
-<h2>max_connect_retries($count)</h2>
+<h2 id="max_connect_retriescount">max_connect_retries($count)</h2>
 
 <p>Set the maximum number of connection retries.</p>
 
-<h2>get_random($count, @chars)</h2>
+<h2 id="get_randomcountchars">get_random($count, @chars)</h2>
 
 <p>Returns a random string of $count characters on the basis of @chars.</p>
 
 <pre><code> my $rnd = get_random(8, &#39;a&#39; .. &#39;z&#39;);
 </code></pre>
 
-<h2>do_task($task)</h2>
+<h2 id="do_tasktask">do_task($task)</h2>
 
 <p>Call $task from another task. It will establish a new connection to the server defined in $task and then execute $task there.</p>
 
@@ -445,7 +445,7 @@ You can define server groups with the <em>group</em> function.</p>
 <pre><code> do_task [ qw/task1 task2 task3/ ];
 </code></pre>
 
-<h2>run_task($task_name, %option)</h2>
+<h2 id="run_tasktask_nameoption">run_task($task_name, %option)</h2>
 
 <p>Run a task on a given host.</p>
 
@@ -487,7 +487,7 @@ You can define server groups with the <em>group</em> function.</p>
  };
 </code></pre>
 
-<h2>run_batch($batch_name, %option)</h2>
+<h2 id="run_batchbatch_nameoption">run_batch($batch_name, %option)</h2>
 
 <p>Run a batch on a given host.</p>
 
@@ -496,15 +496,15 @@ You can define server groups with the <em>group</em> function.</p>
 
 <p>It calls internally run_task, and passes it any option given.</p>
 
-<h2>public_key($key)</h2>
+<h2 id="public_keykey">public_key($key)</h2>
 
 <p>Set the public key.</p>
 
-<h2>private_key($key)</h2>
+<h2 id="private_keykey">private_key($key)</h2>
 
 <p>Set the private key.</p>
 
-<h2>pass_auth</h2>
+<h2 id="pass_auth">pass_auth</h2>
 
 <p>If you want to use password authentication, then you need to call <em>pass_auth</em>.</p>
 
@@ -514,7 +514,7 @@ You can define server groups with the <em>group</em> function.</p>
  pass_auth;
 </code></pre>
 
-<h2>key_auth</h2>
+<h2 id="key_auth">key_auth</h2>
 
 <p>If you want to use pubkey authentication, then you need to call <em>key_auth</em>.</p>
 
@@ -525,7 +525,7 @@ You can define server groups with the <em>group</em> function.</p>
  key_auth;
 </code></pre>
 
-<h2>krb5_auth</h2>
+<h2 id="krb5_auth">krb5_auth</h2>
 
 <p>If you want to use kerberos authentication, then you need to call <em>krb5_auth</em>. This authentication mechanism is only available if you use Net::OpenSSH.</p>
 
@@ -534,7 +534,7 @@ You can define server groups with the <em>group</em> function.</p>
  krb5_auth;
 </code></pre>
 
-<h2>parallelism($count)</h2>
+<h2 id="parallelismcount">parallelism($count)</h2>
 
 <p>Will execute the tasks in parallel on the given servers. $count is the thread count to be used:</p>
 
@@ -550,7 +550,7 @@ You can define server groups with the <em>group</em> function.</p>
 
 <p>If an unrecognized value is passed, or the calculated thread count would be less than 1, Rex falls back to use a single thread.</p>
 
-<h2>proxy_command($cmd)</h2>
+<h2 id="proxy_commandcmd">proxy_command($cmd)</h2>
 
 <p>Set a proxy command to use for the connection. This is only possible with OpenSSH connection method.</p>
 
@@ -558,17 +558,17 @@ You can define server groups with the <em>group</em> function.</p>
  proxy_command &quot;ssh user@jumphost nc %h %p 2&gt;/dev/null&quot;;
 </code></pre>
 
-<h2>set_distributor($distributor)</h2>
+<h2 id="set_distributordistributor">set_distributor($distributor)</h2>
 
 <p>This sets the task distribution module. Default is &quot;Base&quot;.</p>
 
 <p>Possible values are: Base, Gearman, Parallel_ForkManager</p>
 
-<h2>template_function(sub { ... })</h2>
+<h2 id="template_functionsub...">template_function(sub { ... })</h2>
 
 <p>This function sets the template processing function. So it is possible to change the template engine. For example to Template::Toolkit.</p>
 
-<h2>logging</h2>
+<h2 id="logging">logging</h2>
 
 <p>With this function you can define the logging behaviour of (R)?ex.</p>
 
@@ -578,7 +578,7 @@ You can define server groups with the <em>group</em> function.</p>
 <p>Logging to syslog <br>
      logging to_syslog =&gt; $facility;</p>
 
-<h2>needs($package [, @tasks])</h2>
+<h2 id="needspackagetasks">needs($package [, @tasks])</h2>
 
 <p>With <em>needs</em> you can define dependencies between tasks. The &quot;needed&quot; tasks will be called with the same server configuration as the calling task.</p>
 
@@ -605,7 +605,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
        needs main &quot;uname&quot;;
      };</p>
 
-<h2>include Module::Name</h2>
+<h2 id="includemodule::name">include Module::Name</h2>
 
 <p>Include a module without registering its tasks.</p>
 
@@ -615,7 +615,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
   /;
 </code></pre>
 
-<h2>environment($name =&gt; $code)</h2>
+<h2 id="environmentnamegtcode">environment($name =&gt; $code)</h2>
 
 <p>Define an environment. With environments one can use the same task for different hosts. For example if you want to use the same task on your integration-, test- and production servers.</p>
 
@@ -661,7 +661,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
 
 <p>If no <em>-E</em> option is passed on the command line, the default environment (named &#39;default&#39;) will be used.</p>
 
-<h2>LOCAL(&amp;)</h2>
+<h2 id="local">LOCAL(&amp;)</h2>
 
 <p>With the LOCAL function you can do local commands within a task that is defined to work on remote servers.</p>
 
@@ -676,14 +676,14 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>path(@path)</h2>
+<h2 id="pathpath">path(@path)</h2>
 
 <p>Set the execution path for all commands.</p>
 
 <pre><code> path &quot;/bin&quot;, &quot;/sbin&quot;, &quot;/usr/bin&quot;, &quot;/usr/sbin&quot;, &quot;/usr/pkg/bin&quot;, &quot;/usr/pkg/sbin&quot;;
 </code></pre>
 
-<h2>set($key, $value)</h2>
+<h2 id="setkeyvalue">set($key, $value)</h2>
 
 <p>Set a configuration parameter. These variables can be used in templates as well.</p>
 
@@ -701,7 +701,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
 
 <p>The following list of configuration parameters are Rex specific:</p>
 
-<h2>get($key, $value)</h2>
+<h2 id="getkeyvalue">get($key, $value)</h2>
 
 <p>Get a configuration parameter.</p>
 
@@ -717,7 +717,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
 <pre><code> DB: &lt;%= $::database %&gt;
 </code></pre>
 
-<h2>before($task =&gt; sub {})</h2>
+<h2 id="beforetaskgtsub">before($task =&gt; sub {})</h2>
 
 <p>Run code before executing the specified task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;before&#39; functions.</p>
 
@@ -731,7 +731,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>after($task =&gt; sub {})</h2>
+<h2 id="aftertaskgtsub">after($task =&gt; sub {})</h2>
 
 <p>Run code after the task is finished. The special taskname &#39;ALL&#39; can be used to run code after all tasks. If called repeatedly, each sub will be appended to a list of &#39;after&#39; functions.</p>
 
@@ -745,7 +745,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>around($task =&gt; sub {})</h2>
+<h2 id="aroundtaskgtsub">around($task =&gt; sub {})</h2>
 
 <p>Run code before and after the task is finished. The special taskname &#39;ALL&#39; can be used to run code around all tasks. If called repeatedly, each sub will be appended to a list of &#39;around&#39; functions.</p>
 
@@ -765,7 +765,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>before_task_start($task =&gt; sub {})</h2>
+<h2 id="before_task_starttaskgtsub">before_task_start($task =&gt; sub {})</h2>
 
 <p>Run code before executing the specified task. This gets executed only once for a task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;before_task_start&#39; functions.</p>
 
@@ -776,7 +776,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>after_task_finished($task =&gt; sub {})</h2>
+<h2 id="after_task_finishedtaskgtsub">after_task_finished($task =&gt; sub {})</h2>
 
 <p>Run code after the task is finished (and after the ssh connection is terminated). This gets executed only once for a task. The special taskname &#39;ALL&#39; can be used to run code before all tasks. If called repeatedly, each sub will be appended to a list of &#39;after_task_finished&#39; functions.</p>
 
@@ -787,7 +787,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>logformat($format)</h2>
+<h2 id="logformatformat">logformat($format)</h2>
 
 <p>You can define the logging format with the following parameters.</p>
 
@@ -803,7 +803,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
 
 <p>Default is: [%D] %l - %s</p>
 
-<h2>connection</h2>
+<h2 id="connection">connection</h2>
 
 <p>This function returns the current connection object.</p>
 
@@ -812,26 +812,26 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>cache</h2>
+<h2 id="cache">cache</h2>
 
 <p>This function returns the current cache object.</p>
 
-<h2>profiler</h2>
+<h2 id="profiler">profiler</h2>
 
 <p>Returns the profiler object for the current connection.</p>
 
-<h2>report($switch, $type)</h2>
+<h2 id="reportswitchtype">report($switch, $type)</h2>
 
 <p>This function will initialize the reporting.</p>
 
 <pre><code> report -on =&gt; &quot;YAML&quot;;
 </code></pre>
 
-<h2>source_global_profile(0|1)</h2>
+<h2 id="source_global_profile01">source_global_profile(0|1)</h2>
 
 <p>If this option is set, every run() command will first source /etc/profile before getting executed.</p>
 
-<h2>last_command_output</h2>
+<h2 id="last_command_output">last_command_output</h2>
 
 <p>This function returns the output of the last &quot;run&quot; command.</p>
 
@@ -843,7 +843,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>case($compare, $option)</h2>
+<h2 id="casecompareoption">case($compare, $option)</h2>
 
 <p>This is a function to compare a string with some given options.</p>
 
@@ -865,18 +865,18 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
  };
 </code></pre>
 
-<h2>set_executor_for($type, $executor)</h2>
+<h2 id="set_executor_fortypeexecutor">set_executor_for($type, $executor)</h2>
 
 <p>Set the executor for a special type. This is primary used for the upload_and_run helper function.</p>
 
 <pre><code> set_executor_for perl =&gt; &quot;/opt/local/bin/perl&quot;;
 </code></pre>
 
-<h2>tmp_dir($tmp_dir)</h2>
+<h2 id="tmp_dirtmp_dir">tmp_dir($tmp_dir)</h2>
 
 <p>Set the tmp directory on the remote host to store temporary files.</p>
 
-<h2>inspect($varRef)</h2>
+<h2 id="inspectvarref">inspect($varRef)</h2>
 
 <p>This function dumps the contents of a variable to STDOUT.</p>
 
@@ -886,7 +886,7 @@ Depend on the <em>uname</em> task in the package MyPkg. The <em>uname</em> task 
 };
 </code></pre>
 
-<h2>sayformat($format)</h2>
+<h2 id="sayformatformat">sayformat($format)</h2>
 
 <p>You can define the format of the say() function.</p>
 

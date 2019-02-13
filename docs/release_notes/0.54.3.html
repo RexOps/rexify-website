@@ -87,9 +87,9 @@
 
 <p>We want to thank every contributor that makes this release possible.</p>
 
-<h2>Common</h2>
+<h2 id="common">Common</h2>
 
-<h4>path_map - variable path mapping</h4>
+<h4 id="path_map-variablepathmapping">path_map - variable path mapping</h4>
 
 <p>path_map is a new feature developed by Erik Huelsmann to ease the management of files for different hosts. In the past, if you wanted to upload a file (for example /etc/security/access.conf) to your servers and wanted to have different access.conf files per environment, or for a special host, you had to build this logic by yourself. With the <em>path_map</em> feature you only have to define the lookup path and Rex is doing this for you.</p>
 
@@ -152,15 +152,15 @@ task &quot;setup&quot;, group =&gt; &quot;frontends&quot;, sub {
 
 <p>You can use <strong>any</strong> variable that the inventory can <a href="/rexify-website/howtos/book/getting_info_of_the_environment.html">gather from the system</a>.</p>
 
-<h2>Cloud</h2>
+<h2 id="cloud">Cloud</h2>
 
 <ul>
 <li><strong>Jiffybox</strong> - Added possibility to clone a jiffybox image. #439 - Peter Manthey</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<h3>Rex::Test</h3>
+<h3 id="rex::test">Rex::Test</h3>
 
 <ul>
 <li>Only execute testfiles which end on .t - #434 - Robert Abraham</li>
@@ -168,13 +168,13 @@ task &quot;setup&quot;, group =&gt; &quot;frontends&quot;, sub {
 <li>Check if file exists before checking contents - fix #432 - FErki</li>
 </ul>
 
-<h3>Cloud</h3>
+<h3 id="cloud">Cloud</h3>
 
 <ul>
 <li><strong>OpenStack</strong> - Fixed return value for flavors function - #406 - exzz</li>
 </ul>
 
-<h3>Common</h3>
+<h3 id="common">Common</h3>
 
 <ul>
 <li>Add error message when attempting to run a non-existing task - FErki</li>

@@ -83,7 +83,7 @@
          <div id="content_container">
             <div id="content">
               
-              <p>Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.</p>
+              Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.<br>
 
 <p>Those SSH implementations support many different authentication methods like passwords, key based or Kerberos authentication, or using and forwarding SSH agent. If you don&#39;t specify one of them explicitly, Rex will try to figure out which one to use, but that may or may not work for you, or be the one you expected. Rex also tries to use the current user&#39;s username for authentication if it&#39;s not specified with user.</p>
 
@@ -91,7 +91,7 @@
 
 <p>You can find examples on how to configure them below.</p>
 
-<h2>Password authentication</h2>
+<h2 id="passwordauthentication">Password authentication</h2>
 
 <p>The simplest way to authenticate against your servers is to use password authentication. For this you need a valid user and a password on the remote host.</p>
 
@@ -102,7 +102,7 @@ pass_auth;
 
 <p>Specifying <code>pass_auth</code> is optional.</p>
 
-<h2>Key based authentication</h2>
+<h2 id="keybasedauthentication">Key based authentication</h2>
 
 <p>Another simple way is to use a pair of private and public keys to authenticate against your servers.</p>
 
@@ -110,7 +110,7 @@ pass_auth;
 
 <p>Due to the differences of their implementations, the key here (pun intended) is that you have to include the path to both of your keys when using Net::SSH2, but you can omit them when using Net::OpenSSH.</p>
 
-<h3>Net::SSH2</h3>
+<h3 id="net::ssh2">Net::SSH2</h3>
 
 <pre><code>user &#39;root&#39;;
 private_key &#39;/path/to/your/private.key&#39;;
@@ -118,7 +118,7 @@ public_key &#39;/path/to/your/public.key&#39;;
 key_auth;
 </code></pre>
 
-<h3>Net::OpenSSH</h3>
+<h3 id="net::openssh">Net::OpenSSH</h3>
 
 <pre><code>user &#39;root&#39;;
 key_auth;
@@ -126,7 +126,7 @@ key_auth;
 
 <p>If you use a passphrase with your private key, you can specify it simply as if it was a password:</p>
 
-<h3>Net::SSH2</h3>
+<h3 id="net::ssh2">Net::SSH2</h3>
 
 <pre><code>user &#39;root&#39;;
 private_key &#39;/path/to/your/private.key&#39;;
@@ -135,25 +135,25 @@ password &#39;my_password&#39;;
 key_auth;
 </code></pre>
 
-<h3>Net::OpenSSH</h3>
+<h3 id="net::openssh">Net::OpenSSH</h3>
 
 <pre><code>user &#39;root&#39;;
 password &#39;my_password&#39;;
 key_auth;
 </code></pre>
 
-<h2>Using an SSH agent</h2>
+<h2 id="usingansshagent">Using an SSH agent</h2>
 
 <p>If you can&#39;t or don&#39;t want to use any of the above methods, you can use agent authentication. Configuration for it is very similar to key based authentication, you only need to omit <code>key_auth</code>.</p>
 
-<h3>Net::SSH2</h3>
+<h3 id="net::ssh2">Net::SSH2</h3>
 
 <pre><code>user &#39;root&#39;;
 private_key &#39;/path/to/your/private.key&#39;;
 public_key &#39;/path/to/your/public.key&#39;;
 </code></pre>
 
-<h3>Net::OpenSSH</h3>
+<h3 id="net::openssh">Net::OpenSSH</h3>
 
 <pre><code>user &#39;root&#39;;
 </code></pre>
@@ -165,7 +165,7 @@ public_key &#39;/path/to/your/public.key&#39;;
 <li>Agent forwarding only works with Net::OpenSSH.</li>
 </ol>
 
-<h2>Kerberos authentication</h2>
+<h2 id="kerberosauthentication">Kerberos authentication</h2>
 
 <p>As of version 0.42.0, Rex supports Kerberos authentication through Net::OpenSSH:</p>
 

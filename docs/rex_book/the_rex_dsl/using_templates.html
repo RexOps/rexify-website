@@ -94,7 +94,7 @@
 
 <p>If $name contains &quot;World&quot; this template would result in the string Hello World!. This is very usefull if you have to maintain a large set of nearly identical configuration files.</p>
 
-<h2>Working with a template</h2>
+<h2 id="workingwithatemplate">Working with a template</h2>
 
 <p>First you have to create it</p>
 
@@ -145,11 +145,11 @@ task &quot;prepare_databases&quot;, group =&gt; &quot;databases&quot;, sub {
 };
 </code></pre>
 
-<h2>Inline Templates</h2>
+<h2 id="inlinetemplates">Inline Templates</h2>
 
 <p>When you want to deliver a rexfile that includes the templates, you can use inline templates. To use this feature, you have to use the __DATA__ section of your rexfile. You can also define several templates in that section:</p>
 
-<h3>Using a single inline template</h3>
+<h3 id="usingasingleinlinetemplate">Using a single inline template</h3>
 
 <pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
 
@@ -177,7 +177,7 @@ for a project called &lt;%= $test-&gt;{target} %&gt;
 
 <p>Rex knows that it has to look up the template in the <code>__DATA__</code> section of the file where template was called. Within the section the template starts with its name (here: <code>@test</code>) and then follows the template text.</p>
 
-<h3>Using multiple inline templates</h3>
+<h3 id="usingmultipleinlinetemplates">Using multiple inline templates</h3>
 
 <pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
 task tempfiles =&gt; sub {

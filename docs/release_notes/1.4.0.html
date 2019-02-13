@@ -134,7 +134,7 @@ as new contributors.</p>
 
 <p><em>Good things come to those who wait</em></p>
 
-<h2>Highlights</h2>
+<h2 id="highlights">Highlights</h2>
 
 <ul>
 <li>Rex can now manage Linux Mint, Raspian and Arch Linux systems</li>
@@ -148,9 +148,9 @@ as new contributors.</p>
 <li>rex can use development versioning on CPAN correctly now (e.g. for BETA or RC releases) to provide early access</li>
 </ul>
 
-<h2>New features</h2>
+<h2 id="newfeatures">New features</h2>
 
-<h3>New Mkfs command</h3>
+<h3 id="newmkfscommand">New Mkfs command</h3>
 
 <p>Now there&#39;s a dedicated <code>Mkfs</code> command,
 split out from LVM and partition handling modules,
@@ -173,7 +173,7 @@ to deal with file system creation.</p>
 <li>Pass options to mkfs (#fix 905) - Ferenc Erki</li>
 </ul>
 
-<h3>Improved argument parsing</h3>
+<h3 id="improvedargumentparsing">Improved argument parsing</h3>
 
 <p>As a preparation of another planned feature,
 it is now possible to pass arguments and CLI options to rex tasks,
@@ -204,7 +204,7 @@ rex lib:task1 <arg> --option=value
 <li>fixed issue of calling Rex::Args-&gt;get inside before_task_start - RexOps/Rex#934 - Jan</li>
 </ul>
 
-<h3>New supported OSes</h3>
+<h3 id="newsupportedoses">New supported OSes</h3>
 
 <p>Managing Arch Linux is now supported via a completely new module,
 while Linux Mint and Raspbian are being recognized as Debian clones.</p>
@@ -216,7 +216,7 @@ while Linux Mint and Raspbian are being recognized as Debian clones.</p>
 <li>Remove purge package action on arch (fix #867) - Ferenc Erki</li>
 </ul>
 
-<h3>ParamLookup</h3>
+<h3 id="paramlookup">ParamLookup</h3>
 
 <p><code>Rex::Ext::ParamLookup</code> from the <a href="https://github.com/RexOps/rex-recipes">RexOps/rex-recipes</a> repository
 is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
@@ -239,7 +239,7 @@ Additionally it registers the parameters as template values.</p>
 <li>fixed call of task as functions with normal parameters, #827 - Jan</li>
 </ul>
 
-<h3>Summary output</h3>
+<h3 id="summaryoutput">Summary output</h3>
 
 <p>Now there&#39;s a short summary displayed at the end of each run,
 containing success/failure info of the executed tasks.
@@ -267,7 +267,7 @@ they are listed by remote machine (ordered by hostname).</p>
 <li>Don&#39;t confess upon failure of a non-resource (fix #936) - Ferenc Erki</li>
 </ul>
 
-<h3>Firewall handling</h3>
+<h3 id="firewallhandling">Firewall handling</h3>
 
 <p>There&#39;s a new firewall resource to manage firewall rules.</p>
 
@@ -295,7 +295,7 @@ open_port -6, [22, 80]; # IPv6 rule
 <li>detect iptables version and choose syntax for ip adresses - Jan</li>
 </ul>
 
-<h3>CMDB</h3>
+<h3 id="cmdb">CMDB</h3>
 
 <p>Now CMDB can contain template code too.</p>
 
@@ -306,9 +306,9 @@ open_port -6, [22, 80]; # IPv6 rule
 <li>Fix template handling in YAML CMDB files - Ferenc Erki</li>
 </ul>
 
-<h2>Enhancements</h2>
+<h2 id="enhancements">Enhancements</h2>
 
-<h3>Crontab handling</h3>
+<h3 id="crontabhandling">Crontab handling</h3>
 
 <p>Unprivileged users can now manage their own crontabs.</p>
 
@@ -318,13 +318,13 @@ open_port -6, [22, 80]; # IPv6 rule
 <li>Suppress STDERR during crontab listings - Ferenc Erki</li>
 </ul>
 
-<h3>Templates</h3>
+<h3 id="templates">Templates</h3>
 
 <ul>
 <li>resource and task now have own namespace for template variables - Jan</li>
 </ul>
 
-<h3>Rexfile/module loading</h3>
+<h3 id="rexfilemoduleloading">Rexfile/module loading</h3>
 
 <p>The way of loading Rexfile and modules,
 has completely been refactored,
@@ -347,7 +347,7 @@ and giving more useful feedback about them.</p>
 <li>Reopen STDERR after loading Rexfile - Dmitry Kopytov</li>
 </ul>
 
-<h3>Guest VM options</h3>
+<h3 id="guestvmoptions">Guest VM options</h3>
 
 <p>Now it is possible to set CPU and memory options for (test) VMs.</p>
 
@@ -358,7 +358,7 @@ and giving more useful feedback about them.</p>
 <li>add default values for cpu and memory - Jan</li>
 </ul>
 
-<h3>Documentation</h3>
+<h3 id="documentation">Documentation</h3>
 
 <ul>
 <li>Fix GetRex link url - hiroraba</li>
@@ -373,7 +373,7 @@ and giving more useful feedback about them.</p>
 <li>Update docs for Rex::Task - Ferenc Erki</li>
 </ul>
 
-<h3>General</h3>
+<h3 id="general">General</h3>
 
 <p>A bunch of general enhancements happened:</p>
 
@@ -425,9 +425,9 @@ and giving more useful feedback about them.</p>
 <li>Let service tests be silent - Ferenc Erki</li>
 </ul>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<h3>Shared variables</h3>
+<h3 id="sharedvariables">Shared variables</h3>
 
 <p>Previously there was a race condition while using Rex::Shared::Var to share variables across tasks.</p>
 
@@ -437,7 +437,7 @@ and giving more useful feedback about them.</p>
 <li>Refactor child/parent pid logic + comments to be more readable - Eric Johnson</li>
 </ul>
 
-<h3>Templates</h3>
+<h3 id="templates">Templates</h3>
 
 <ul>
 <li>use empty string to prevent uninitialized warning messages - Jan</li>
@@ -445,7 +445,7 @@ and giving more useful feedback about them.</p>
 <li>Fix rendering of false values in templates - Ferenc Erki</li>
 </ul>
 
-<h3>AWS handling</h3>
+<h3 id="awshandling">AWS handling</h3>
 
 <p>We now use <code>AWS::Signature4</code> to talk to Amazon services.</p>
 
@@ -454,7 +454,7 @@ and giving more useful feedback about them.</p>
 <li>Unbundle AWS::Signature4 - Ferenc Erki</li>
 </ul>
 
-<h3>Draining IO in parallel</h3>
+<h3 id="drainingioinparallel">Draining IO in parallel</h3>
 
 <p>The previous way to drain STDOUT/STEDERR output of a remote
 (or for that matter, local) connection
@@ -483,7 +483,7 @@ and we cover it with tests.</p>
 <li>Normalize EOL characters earlier (fix #957) - Ferenc Erki</li>
 </ul>
 
-<h3>General</h3>
+<h3 id="general">General</h3>
 
 <p>The reporting feature had some troubles when using <code>bulk_install</code>,
 so until a proper fix,

@@ -83,11 +83,11 @@
          <div id="content_container">
             <div id="content">
               
-              <h2>Starting Point</h2>
+              <h2 id="startingpoint">Starting Point</h2>
 
 <p>In this howto i will show you how to create and manage your Amazon EC2 instances.</p>
 
-<h2>Preparation</h2>
+<h2 id="preparation">Preparation</h2>
 
 <ul>
 <li>Register at http://aws.amazon.com/de/</li>
@@ -96,7 +96,7 @@
 <li>Create a public key out of your just downloaded private key. You can do this with ssh-keygen -y -f your-aws-private-key.pem</li>
 </ul>
 
-<h2>Creating a Rexfile</h2>
+<h2 id="creatingarexfile">Creating a Rexfile</h2>
 
 <p>At first you need to create a Rexfile in a directory of your choice.</p>
 
@@ -134,7 +134,7 @@ task &quot;create&quot;, sub {
 
 <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
 
-<h3>Create an instance with an EBS block volume</h3>
+<h3 id="createaninstancewithanebsblockvolume">Create an instance with an EBS block volume</h3>
 
 <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
 
@@ -150,7 +150,7 @@ task &quot;create&quot;, sub {
 };
 </code></pre>
 
-<h3>Listing Regions and zones</h3>
+<h3 id="listingregionsandzones">Listing Regions and zones</h3>
 
 <p>To get a list of all regions and zone you can use the following functions.</p>
 
@@ -160,7 +160,7 @@ task &quot;create&quot;, sub {
 };
 </code></pre>
 
-<h3>List your instances</h3>
+<h3 id="listyourinstances">List your instances</h3>
 
 <p>To get a list of all your instances and volumes you can use these functions.</p>
 
@@ -170,7 +170,7 @@ task &quot;create&quot;, sub {
 };
 </code></pre>
 
-<h3>Destroy your instances / volumes</h3>
+<h3 id="destroyyourinstancesvolumes">Destroy your instances / volumes</h3>
 
 <p>If you don&#39;t need your instances or volumes anymore, you can just destroy them.</p>
 
@@ -180,14 +180,14 @@ task &quot;create&quot;, sub {
 };
 </code></pre>
 
-<h3>Put all your EC2 instances in a host group</h3>
+<h3 id="putallyourec2instancesinahostgroup">Put all your EC2 instances in a host group</h3>
 
 <p>If you have many instances you can easily add them all into a hostgroup.</p>
 
 <pre><code>group ec2 =&gt; get_cloud_instances_as_group();
 </code></pre>
 
-<h3>Installing some Software and run Rex</h3>
+<h3 id="installingsomesoftwareandrunrex">Installing some Software and run Rex</h3>
 
 <p>Now we need to add some software to our fresh EC2 instance.</p>
 

@@ -85,7 +85,7 @@
               
               <p>One task in configuration management is managing files and keeping them in a consistant state. Rex gives you some easy to use functions to work with files.</p>
 
-<h2>Simple changes</h2>
+<h2 id="simplechanges">Simple changes</h2>
 
 <p>If you need to verify that a given line exists or gets removed from a file you can use append_if_no_such_line and delete_lines_according_to.</p>
 
@@ -97,7 +97,7 @@ task &quot;setup&quot;, sub {
 
 <p>This code will just append the line loop to /etc/modules if it doesn&#39;t exists.</p>
 
-<h3>Using regular expression to match the line</h3>
+<h3 id="usingregularexpressiontomatchtheline">Using regular expression to match the line</h3>
 
 <p>It is also possible to define more complex rules. For example if you want to use a regular expression.</p>
 
@@ -109,7 +109,7 @@ task &quot;setup&quot;, sub {
 };
 </code></pre>
 
-<h3>Using a template and executing extra code if the file changed</h3>
+<h3 id="usingatemplateandexecutingextracodeifthefilechanged">Using a template and executing extra code if the file changed</h3>
 
 <p>If you need to add more than one line to a file or need to add dynamic content to it, you can also use the template() function to do this.</p>
 
@@ -124,7 +124,7 @@ task &quot;setup&quot;, sub {
 };
 </code></pre>
 
-<h3>Deleting lines</h3>
+<h3 id="deletinglines">Deleting lines</h3>
 
 <p>If you need to remove a line you can use delete_lines_according_to.</p>
 
@@ -135,7 +135,7 @@ task &quot;setup&quot;, sub {
 };
 </code></pre>
 
-<h2>Managing files with snippets</h2>
+<h2 id="managingfileswithsnippets">Managing files with snippets</h2>
 
 <p>Sometimes you need to create large configuration files because you don&#39;t have the ability to use conf.d folders.</p>
 
@@ -171,7 +171,7 @@ task &quot;setup&quot;, sub {
 
 <p>You can create as many concat_fragment() as you need. And you can create them anywhere you want. At the end of your code you have to call the concat() resource to generate the file out of all the fragments that have been written so far.</p>
 
-<h2>The file() resource</h2>
+<h2 id="thefileresource">The file() resource</h2>
 
 <p>If you want to manage complete files you can use the file() resource to do so. The file() resource supports also setting the permissions and executing actions for changes.</p>
 
@@ -217,7 +217,7 @@ task &quot;setup&quot;, sub {
 
 <p>This will restart the mysqld service if the file was modified.</p>
 
-<h3>Supervising files</h3>
+<h3 id="supervisingfiles">Supervising files</h3>
 
 <p>It is also possible to just supervise files if they are present or have special permissions. To do this, just create the file() resource without the source or content parameter.</p>
 

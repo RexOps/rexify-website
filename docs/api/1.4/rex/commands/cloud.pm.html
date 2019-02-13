@@ -120,17 +120,17 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Cloud - Cloud Management Commands</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this Module you can manage different Cloud services. Currently it supports Amazon EC2, Jiffybox and OpenStack.</p>
 
 <p>Version &lt;= 1.0: All these functions will not be reported.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Cloud;
 
@@ -163,9 +163,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>cloud_service($cloud_service)</h2>
+<h2 id="cloud_servicecloud_service">cloud_service($cloud_service)</h2>
 
 <p>Define which cloud service to use.</p>
 
@@ -176,7 +176,7 @@ Amazon  </p>
 
 <p>OpenStack  </p>
 
-<h2>cloud_auth($param1, $param2, ...)</h2>
+<h2 id="cloud_authparam1param2...">cloud_auth($param1, $param2, ...)</h2>
 
 <p>Set the authentication for the cloudservice.</p>
 
@@ -199,11 +199,11 @@ Amazon  </p>
  );
 </code></pre>
 
-<h2>cloud_region($region)</h2>
+<h2 id="cloud_regionregion">cloud_region($region)</h2>
 
 <p>Set the cloud region.</p>
 
-<h2>cloud_instance_list</h2>
+<h2 id="cloud_instance_list">cloud_instance_list</h2>
 
 <p>Get all instances of a cloud service.</p>
 
@@ -228,7 +228,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>cloud_volume_list</h2>
+<h2 id="cloud_volume_list">cloud_volume_list</h2>
 
 <p>Get all volumes of a cloud service.</p>
 
@@ -242,7 +242,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>cloud_network_list</h2>
+<h2 id="cloud_network_list">cloud_network_list</h2>
 
 <p>Get all networks of a cloud service.</p>
 
@@ -255,11 +255,11 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>cloud_image_list</h2>
+<h2 id="cloud_image_list">cloud_image_list</h2>
 
 <p>Get a list of all available cloud images.</p>
 
-<h2>cloud_upload_key</h2>
+<h2 id="cloud_upload_key">cloud_upload_key</h2>
 
 <p>Upload public SSH key to cloud provider</p>
 
@@ -275,7 +275,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>get_cloud_instances_as_group</h2>
+<h2 id="get_cloud_instances_as_group">get_cloud_instances_as_group</h2>
 
 <p>Get a list of all running instances of a cloud service. This can be used for a <em>group</em> definition.</p>
 
@@ -283,11 +283,11 @@ Amazon  </p>
  group ec2 =&gt; get_cloud_instances_as_group();
 </code></pre>
 
-<h2>cloud_instance($action, $data)</h2>
+<h2 id="cloud_instanceactiondata">cloud_instance($action, $data)</h2>
 
 <p>This function controls all aspects of a cloud instance.</p>
 
-<h2>create</h2>
+<h2 id="create">create</h2>
 
 <p>Create a new instance.</p>
 
@@ -301,36 +301,36 @@ Amazon  </p>
    };
 </code></pre>
 
-<h2>start</h2>
+<h2 id="start">start</h2>
 
 <p>Start an existing instance</p>
 
 <pre><code> cloud_instance start =&gt; &quot;instance-id&quot;;
 </code></pre>
 
-<h2>stop</h2>
+<h2 id="stop">stop</h2>
 
 <p>Stop an existing instance</p>
 
 <pre><code> cloud_instance stop =&gt; &quot;instance-id&quot;;
 </code></pre>
 
-<h2>terminate</h2>
+<h2 id="terminate">terminate</h2>
 
 <p>Terminate an instance. This will destroy all data and remove the instance.</p>
 
 <pre><code> cloud_instance terminate =&gt; &quot;i-zzzzzzz&quot;;
 </code></pre>
 
-<h2>get_cloud_regions</h2>
+<h2 id="get_cloud_regions">get_cloud_regions</h2>
 
 <p>Returns all regions as an array.</p>
 
-<h2>cloud_volume($action , $data)</h2>
+<h2 id="cloud_volumeactiondata">cloud_volume($action , $data)</h2>
 
 <p>This function controlls all aspects of a cloud volume.</p>
 
-<h2>create</h2>
+<h2 id="create">create</h2>
 
 <p>Create a new volume. Size is in Gigabytes.</p>
 
@@ -339,7 +339,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>attach</h2>
+<h2 id="attach">attach</h2>
 
 <p>Attach a volume to an instance.</p>
 
@@ -348,7 +348,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>detach</h2>
+<h2 id="detach">detach</h2>
 
 <p>Detach a volume from an instance.</p>
 
@@ -357,7 +357,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>delete</h2>
+<h2 id="delete">delete</h2>
 
 <p>Delete a volume. This will destroy all data.</p>
 
@@ -366,7 +366,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>get_cloud_floating_ip</h2>
+<h2 id="get_cloud_floating_ip">get_cloud_floating_ip</h2>
 
 <p>Returns first available floating IP</p>
 
@@ -383,9 +383,9 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>cloud_network</h2>
+<h2 id="cloud_network">cloud_network</h2>
 
-<h2>create</h2>
+<h2 id="create">create</h2>
 
 <p>Create a new network.</p>
 
@@ -394,7 +394,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>delete</h2>
+<h2 id="delete">delete</h2>
 
 <p>Delete a network.</p>
 
@@ -403,7 +403,7 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>get_cloud_availability_zones</h2>
+<h2 id="get_cloud_availability_zones">get_cloud_availability_zones</h2>
 
 <p>Returns all availability zones of a cloud services. If available.</p>
 
@@ -412,15 +412,15 @@ Amazon  </p>
  };
 </code></pre>
 
-<h2>get_cloud_plans</h2>
+<h2 id="get_cloud_plans">get_cloud_plans</h2>
 
 <p>Retrieve information of the available cloud plans. If supported.</p>
 
-<h2>get_cloud_operating_systems</h2>
+<h2 id="get_cloud_operating_systems">get_cloud_operating_systems</h2>
 
 <p>Retrieve information of the available cloud plans. If supported.</p>
 
-<h2>cloud_object</h2>
+<h2 id="cloud_object">cloud_object</h2>
 
 <p>Returns the cloud object itself.</p>
 

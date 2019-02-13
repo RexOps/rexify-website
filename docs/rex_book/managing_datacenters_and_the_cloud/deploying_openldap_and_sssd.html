@@ -87,11 +87,11 @@
 
 <p>SSSD (<a href="https://fedorahosted.org/sssd/">https://fedorahosted.org/sssd/</a>) is the acronym for System Security Services Daemon. With its help it is possible to to authenticate your linux users against an OpenLDAP directory server with some nifty additions like offline support.</p>
 
-<h2>Preparation</h2>
+<h2 id="preparation">Preparation</h2>
 
 <p>This guide is written for CentOS 6. So if you&#39;re using another distribution you might need to change some things.</p>
 
-<h3>Project Setup</h3>
+<h3 id="projectsetup">Project Setup</h3>
 
 <p>To initialize your project you can use the rexify command to download the code and all dependencies.</p>
 
@@ -100,11 +100,11 @@
 
 <p>This command will download the code and all dependencies into the folder ldap-sssd-ssh-rex.</p>
 
-<h2>Exploring the Rexfile</h2>
+<h2 id="exploringtherexfile">Exploring the Rexfile</h2>
 
 <p>Now i will guide you through the Rexfile so that you can modify it to your needs and setup your OpenLDAP/SSSD infrastructure.</p>
 
-<h3>Loading all required libraries</h3>
+<h3 id="loadingallrequiredlibraries">Loading all required libraries</h3>
 
 <p>If you open the Rexfile you&#39;ll see at the top some use commands.</p>
 
@@ -122,7 +122,7 @@ use Rex::LDAP::OpenLDAP::UserManagement::Server;
 
 <p>This loads all the LDAP functions we&#39;re going to use to setup the OpenLDAP server and the authentication on the clients.</p>
 
-<h3>Authentication</h3>
+<h3 id="authentication">Authentication</h3>
 
 <p>You also need to tell Rex how it can login to your servers. Rex supports password and key authentication.</p>
 
@@ -137,7 +137,7 @@ private_key &quot;/home/your-user/.ssh/id_rsa&quot;;
 public_key &quot;/home/your-user/.ssh/id_rsa.pub&quot;;
 </code></pre>
 
-<h3>Group your server</h3>
+<h3 id="groupyourserver">Group your server</h3>
 
 <p>Rex also needs to know on which server it should connect. So you can define server groups.</p>
 
@@ -145,7 +145,7 @@ public_key &quot;/home/your-user/.ssh/id_rsa.pub&quot;;
 group client =&gt; &quot;auth01&quot;, &quot;fe[01..10]&quot;;
 </code></pre>
 
-<h3>Setup OpenLDAP</h3>
+<h3 id="setupopenldap">Setup OpenLDAP</h3>
 
 <p>To setup OpenLDAP it is important to follow one rule. Never ever try to manage the configuration files inside /etc/openldap/slapd.d with an editor or by writing to the files directly. Sooner or later this will get you into trouble. So always use ldapmodify/ldapadd command to change things inside this directory.</p>
 
@@ -186,7 +186,7 @@ group client =&gt; &quot;auth01&quot;, &quot;fe[01..10]&quot;;
 
 <p>The second function call <code>add_ssh_public_key</code> will add the SSH-key schema to the OpenLDAP server, so that it is possible to add the public ssh keys into OpenLDAP.</p>
 
-<h3>Populating OpenLDAP</h3>
+<h3 id="populatingopenldap">Populating OpenLDAP</h3>
 
 <p>Now you have a working OpenLDAP you need to populate it with some data.</p>
 
@@ -281,7 +281,7 @@ Setup SSSD</p>
 <li>configure_ssh_ldap wether to configure sshd to check the public key against OpenLDAP.</li>
 </ul>
 
-<h2>Setup SSHD</h2>
+<h2 id="setupsshd">Setup SSHD</h2>
 
 <p>Since a few versions SSHd supports the execution of an external executable on connection. This is done with the AuthorizedKeysCommand option. If you use the configure_ssh_ldap option on client setup it will upload a script that queries the LDAP server for the ssh key of the user that wants to login.</p>
 

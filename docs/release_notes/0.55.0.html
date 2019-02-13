@@ -87,9 +87,9 @@
 
 <p>We want to thank every contributor who made this release possible. We also welcome Denis Silakov and Graham Todd as new contributors.</p>
 
-<h2>Common</h2>
+<h2 id="common">Common</h2>
 
-<h3>Pack rex with PAR</h3>
+<h3 id="packrexwithpar">Pack rex with PAR</h3>
 
 <p>Now it is possible to create a self-contained binary from a Rex project with:</p>
 
@@ -112,20 +112,20 @@ $ ./rex-bundle -H 1.2.3.4 -u root -p pass setup
 
 <p>Known issues: currently this seem to only work for 64-bit systems.</p>
 
-<h3>Use Net::OpenSSH as default if possible</h3>
+<h3 id="usenet::opensshasdefaultifpossible">Use Net::OpenSSH as default if possible</h3>
 
 <p>If the &#39;0.55&#39; feature flag is enabled, then Net::OpenSSH and Net::SFTP::Foreign would be used by default, provided they found on the system.</p>
 
 <pre><code>use Rex -feature =&gt; [&#39;0.55&#39;];
 </code></pre>
 
-<h3>Initial ROSA systems support</h3>
+<h3 id="initialrosasystemssupport">Initial ROSA systems support</h3>
 
 <p>ROSA Enterprise Server is based of RHEL with minor editions, while ROSA Desktop is based on old Mandriva, and is similar to Mageia from Rex&#39;s point of view. Denis Silakov managed to make most Rex commands work on ROSA Server and ROSA Desktop. Kudos!</p>
 
-<h2>Virtualization</h2>
+<h2 id="virtualization">Virtualization</h2>
 
-<h4>rex-kvm-agent</h4>
+<h4 id="rex-kvm-agent">rex-kvm-agent</h4>
 
 <p>KVM doesn&#39;t have a VM agent yet (like VMware, VirtualBox), so it is sometimes impossible to get internal information about them (like the IP of a VM while using bridged networking).</p>
 
@@ -133,9 +133,9 @@ $ ./rex-bundle -H 1.2.3.4 -u root -p pass setup
 
 <p>You can find rex-kvm-agent in <a href="https://github.com/RexOps/rex-kvm-agent">its own repository</a>.</p>
 
-<h2>Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<h3>Common</h3>
+<h3 id="common">Common</h3>
 
 <ul>
 <li>fixed get_installed and is_installed functions in Rex::Pkg::Gentoo - #444 - Robert Abraham</li>
@@ -145,13 +145,13 @@ $ ./rex-bundle -H 1.2.3.4 -u root -p pass setup
 <li>fixed windows crashing on multiple connects - #448 - Jan</li>
 </ul>
 
-<h3>Virtualization</h3>
+<h3 id="virtualization">Virtualization</h3>
 
 <ul>
 <li>vm names in quote. so they can contain spaces - Jan</li>
 </ul>
 
-<h3>Rex::Test</h3>
+<h3 id="rex::test">Rex::Test</h3>
 
 <ul>
 <li>don&#39;t throw error with multiple test files - #446 - Robert Abraham</li>

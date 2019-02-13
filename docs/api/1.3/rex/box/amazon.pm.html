@@ -99,15 +99,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Box::Amazon - Rex/Boxes Amazon Module</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>This is a Rex/Boxes module to use Amazon EC2.</p>
 
-<h1>EXAMPLES</h1>
+<h1 id="examples">EXAMPLES</h1>
 
 <p>To use this module inside your Rexfile you can use the following commands.</p>
 
@@ -166,38 +166,38 @@
  };
 </code></pre>
 
-<h1>METHODS</h1>
+<h1 id="methods">METHODS</h1>
 
 <p>See also the Methods of Rex::Box::Base. This module inherits all methods of it.</p>
 
-<h2>new(name =&gt; $vmname)</h2>
+<h2 id="newnamegtvmname">new(name =&gt; $vmname)</h2>
 
 <p>Constructor if used in OO mode.</p>
 
 <pre><code> my $box = Rex::Box::VBox-&gt;new(name =&gt; &quot;vmname&quot;);
 </code></pre>
 
-<h2>ami($ami_id)</h2>
+<h2 id="amiami_id">ami($ami_id)</h2>
 
 <p>Set the AMI ID for the box.</p>
 
-<h2>type($type)</h2>
+<h2 id="typetype">type($type)</h2>
 
 <p>Set the type of the Instance. For example &quot;m1.large&quot;.</p>
 
-<h2>security_group($sec_group)</h2>
+<h2 id="security_groupsec_group">security_group($sec_group)</h2>
 
 <p>Set the Amazon security group for this Instance.</p>
 
-<h2>forward_port(%option)</h2>
+<h2 id="forward_portoption">forward_port(%option)</h2>
 
 <p>Not available for Amazon Boxes.</p>
 
-<h2>share_folder(%option)</h2>
+<h2 id="share_folderoption">share_folder(%option)</h2>
 
 <p>Not available for Amazon Boxes.</p>
 
-<h2>info</h2>
+<h2 id="info">info</h2>
 
 <p>Returns a hashRef of vm information.</p>
 

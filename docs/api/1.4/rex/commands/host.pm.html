@@ -96,15 +96,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Host - Edit /etc/hosts</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manage the host entries in /etc/hosts.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> task &quot;create-host&quot;, &quot;remoteserver&quot;, sub {
    create_host &quot;rexify.org&quot; =&gt; {
@@ -114,9 +114,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>host_entry($name, %option)</h2>
+<h2 id="host_entrynameoption">host_entry($name, %option)</h2>
 
 <p>Manages the entries in /etc/hosts.</p>
 
@@ -131,7 +131,7 @@
     on_change =&gt; sub { say &quot;removed host entry&quot;; };
 </code></pre>
 
-<h2>create_host($)</h2>
+<h2 id="create_host">create_host($)</h2>
 
 <p>Update or create a /etc/hosts entry.</p>
 
@@ -141,14 +141,14 @@
  };
 </code></pre>
 
-<h2>delete_host($host)</h2>
+<h2 id="delete_hosthost">delete_host($host)</h2>
 
 <p>Delete a host from /etc/hosts.</p>
 
 <pre><code> delete_host &quot;www.rexify.org&quot;;
 </code></pre>
 
-<h2>get_host($host)</h2>
+<h2 id="get_hosthost">get_host($host)</h2>
 
 <p>Returns the information of $host in /etc/hosts.</p>
 

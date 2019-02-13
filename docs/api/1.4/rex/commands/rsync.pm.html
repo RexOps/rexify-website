@@ -94,11 +94,11 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Rsync - Simple Rsync Frontend</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can sync 2 directories via the <em>rsync</em> command.</p>
 
@@ -106,7 +106,7 @@
 
 <p>All these functions are not idempotent.</p>
 
-<h1>DEPENDENCIES</h1>
+<h1 id="dependencies">DEPENDENCIES</h1>
 
 <p>Expect <br>
 The <em>Expect</em> Perl module is required to be installed on the machine executing the rsync task.</p>
@@ -114,16 +114,16 @@ The <em>Expect</em> Perl module is required to be installed on the machine execu
 <p>rsync <br>
 The <em>rsync</em> command has to be installed on both machines involved in the execution of the rsync task.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Rsync;
 
  sync &quot;dir1&quot;, &quot;dir2&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>sync($source, $dest, $opts)</h2>
+<h2 id="syncsourcedestopts">sync($source, $dest, $opts)</h2>
 
 <p>This function executes rsync to sync $source and $dest.</p>
 

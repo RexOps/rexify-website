@@ -104,15 +104,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::File - Transparent File Manipulation</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manipulate files.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> task &quot;read-passwd&quot;, &quot;server01&quot;, sub {
    my $fh = file_read &quot;/etc/passwd&quot;;
@@ -152,9 +152,9 @@
    on_change =&gt; sub { say &quot;File was changed.&quot;; };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>template($file, @params)</h2>
+<h2 id="templatefileparams">template($file, @params)</h2>
 
 <p>Parse a template and return the content.</p>
 
@@ -183,7 +183,7 @@
 
 <p>Note: the appended environment mechanism is always applied, after the &#39;path_map&#39; mechanism, if that is configured.</p>
 
-<h2>file($file_name, %options)</h2>
+<h2 id="filefile_nameoptions">file($file_name, %options)</h2>
 
 <p>This function is the successor of <em>install file</em>. Please use this function to upload files to your server.</p>
 
@@ -255,7 +255,7 @@ This gets executed right after the file was written. Only with <em>content</em> 
 <p>after <br>
 This gets executed right before the file() function returns.</p>
 
-<h2>file_write($file_name)</h2>
+<h2 id="file_writefile_name">file_write($file_name)</h2>
 
 <p>This function opens a file for writing (it will truncate the file if it already exists). It returns a Rex::FS::File object on success.</p>
 
@@ -276,9 +276,9 @@ This gets executed right before the file() function returns.</p>
  $fh-&gt;close;
 </code></pre>
 
-<h2>file_append($file_name)</h2>
+<h2 id="file_appendfile_name">file_append($file_name)</h2>
 
-<h2>file_read($file_name)</h2>
+<h2 id="file_readfile_name">file_read($file_name)</h2>
 
 <p>This function opens a file for reading. It returns a Rex::FS::File object on success.</p>
 
@@ -299,14 +299,14 @@ This gets executed right before the file() function returns.</p>
  $fh-&gt;close;
 </code></pre>
 
-<h2>cat($file_name)</h2>
+<h2 id="catfile_name">cat($file_name)</h2>
 
 <p>This function returns the complete content of $file_name as a string.</p>
 
 <pre><code> print cat &quot;/etc/passwd&quot;;
 </code></pre>
 
-<h2>delete_lines_matching($file, $regexp)</h2>
+<h2 id="delete_lines_matchingfileregexp">delete_lines_matching($file, $regexp)</h2>
 
 <p>Delete lines that match $regexp in $file.</p>
 
@@ -315,7 +315,7 @@ This gets executed right before the file() function returns.</p>
  };
 </code></pre>
 
-<h2>delete_lines_according_to($search, $file, @options)</h2>
+<h2 id="delete_lines_according_tosearchfileoptions">delete_lines_according_to($search, $file, @options)</h2>
 
 <p>This is the successor of the delete_lines_matching() function. This function also allows the usage of an on_change hook.</p>
 
@@ -329,7 +329,7 @@ This gets executed right before the file() function returns.</p>
  };
 </code></pre>
 
-<h2>append_if_no_such_line($file, $new_line, @regexp)</h2>
+<h2 id="append_if_no_such_linefilenew_lineregexp">append_if_no_such_line($file, $new_line, @regexp)</h2>
 
 <p>Append $new_line to $file if none in @regexp is found. If no regexp is supplied, the line is appended unless there is already an identical line in $file.</p>
 
@@ -354,7 +354,7 @@ This gets executed right before the file() function returns.</p>
  };
 </code></pre>
 
-<h2>append_or_amend_line($file, $line, @regexp)</h2>
+<h2 id="append_or_amend_linefilelineregexp">append_or_amend_line($file, $line, @regexp)</h2>
 
 <p>Similar to <span>append_if_no_such_line</span>, but if the line in the regexp is found, it will be updated. Otherwise, it will be appended.</p>
 
@@ -368,7 +368,7 @@ This gets executed right before the file() function returns.</p>
  };
 </code></pre>
 
-<h2>extract($file [, %options])</h2>
+<h2 id="extractfileoptions">extract($file [, %options])</h2>
 
 <p>This function extracts a file. The target directory optionally specified with the `to` option will be created automatically.</p>
 
@@ -388,7 +388,7 @@ This gets executed right before the file() function returns.</p>
 
 <p>Can use the type=&gt; option if the file suffix has been changed. (types are tar, tgz, tbz, zip, gz, bz2)</p>
 
-<h2>sed($search, $replace, $file)</h2>
+<h2 id="sedsearchreplacefile">sed($search, $replace, $file)</h2>
 
 <p>Search some string in a file and replace it.</p>
 

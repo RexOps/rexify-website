@@ -121,15 +121,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Fs - Filesystem commands</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can do file system tasks like creating a directory, deleting files, moving files, and more.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> my @files = list_files &quot;/etc&quot;;
 
@@ -157,9 +157,9 @@
  chgrp &quot;group&quot;, &quot;/tmp&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>list_files(&quot;/path&quot;);</h2>
+<h2 id="list_filespath">list_files(&quot;/path&quot;);</h2>
 
 <p>This function list all entries (files, directories, ...) in a given directory and returns a array.</p>
 
@@ -170,11 +170,11 @@
 
 <p>This command will not be reported.</p>
 
-<h2>ls($path)</h2>
+<h2 id="lspath">ls($path)</h2>
 
 <p>Just an alias for <em>list_files</em></p>
 
-<h2>symlink($from, $to)</h2>
+<h2 id="symlinkfromto">symlink($from, $to)</h2>
 
 <p>This function will create a symlink from $from to $to.</p>
 
@@ -183,11 +183,11 @@
  };
 </code></pre>
 
-<h2>ln($from, $to)</h2>
+<h2 id="lnfromto">ln($from, $to)</h2>
 
 <p>ln is an alias for <em>symlink</em></p>
 
-<h2>unlink($file)</h2>
+<h2 id="unlinkfile">unlink($file)</h2>
 
 <p>This function will remove the given file.</p>
 
@@ -196,11 +196,11 @@
  };
 </code></pre>
 
-<h2>rm($file)</h2>
+<h2 id="rmfile">rm($file)</h2>
 
 <p>This is an alias for unlink.</p>
 
-<h2>rmdir($dir)</h2>
+<h2 id="rmdirdir">rmdir($dir)</h2>
 
 <p>This function will remove the given directory.</p>
 
@@ -217,7 +217,7 @@
  };
 </code></pre>
 
-<h2>mkdir($newdir)</h2>
+<h2 id="mkdirnewdir">mkdir($newdir)</h2>
 
 <p>This function will create a new directory.</p>
 
@@ -241,7 +241,7 @@
  };
 </code></pre>
 
-<h2>chown($owner, $file)</h2>
+<h2 id="chownownerfile">chown($owner, $file)</h2>
 
 <p>Change the owner of a file or a directory.</p>
 
@@ -255,7 +255,7 @@
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2>chgrp($group, $file)</h2>
+<h2 id="chgrpgroupfile">chgrp($group, $file)</h2>
 
 <p>Change the group of a file or a directory.</p>
 
@@ -269,7 +269,7 @@
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2>chmod($mode, $file)</h2>
+<h2 id="chmodmodefile">chmod($mode, $file)</h2>
 
 <p>Change the permissions of a file or a directory.</p>
 
@@ -283,7 +283,7 @@
 
 <p>If you want to use reports, please use the file() resource instead.</p>
 
-<h2>stat($file)</h2>
+<h2 id="statfile">stat($file)</h2>
 
 <p>This function will return a hash with the following information about a file or directory.</p>
 
@@ -308,7 +308,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_file($file)</h2>
+<h2 id="is_filefile">is_file($file)</h2>
 
 <p>This function tests if $file is a file. Returns 1 if true. 0 if false.</p>
 
@@ -324,7 +324,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_dir($dir)</h2>
+<h2 id="is_dirdir">is_dir($dir)</h2>
 
 <p>This function tests if $dir is a directory. Returns 1 if true. 0 if false.</p>
 
@@ -340,7 +340,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_symlink($file)</h2>
+<h2 id="is_symlinkfile">is_symlink($file)</h2>
 
 <p>This function tests if $file is a symlink. Returns 1 if true. 0 if false.</p>
 
@@ -356,7 +356,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_readable($file)</h2>
+<h2 id="is_readablefile">is_readable($file)</h2>
 
 <p>This function tests if $file is readable. It returns 1 if true. 0 if false.</p>
 
@@ -372,7 +372,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_writable($file)</h2>
+<h2 id="is_writablefile">is_writable($file)</h2>
 
 <p>This function tests if $file is writable. It returns 1 if true. 0 if false.</p>
 
@@ -388,13 +388,13 @@
 
 <p>This command will not be reported.</p>
 
-<h2>is_writeable($file)</h2>
+<h2 id="is_writeablefile">is_writeable($file)</h2>
 
 <p>This is only an alias for <em>is_writable</em>.</p>
 
 <p>This command will not be reported.</p>
 
-<h2>readlink($link)</h2>
+<h2 id="readlinklink">readlink($link)</h2>
 
 <p>This function returns the link endpoint if $link is a symlink. If $link is not a symlink it will die.</p>
 
@@ -410,7 +410,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>rename($old, $new)</h2>
+<h2 id="renameoldnew">rename($old, $new)</h2>
 
 <p>This function will rename $old to $new. Will return 1 on success and 0 on failure.</p>
 
@@ -419,11 +419,11 @@
  };
 </code></pre>
 
-<h2>mv($old, $new)</h2>
+<h2 id="mvoldnew">mv($old, $new)</h2>
 
 <p>mv is an alias for <em>rename</em>.</p>
 
-<h2>chdir($newdir)</h2>
+<h2 id="chdirnewdir">chdir($newdir)</h2>
 
 <p>This function will change the current workdirectory to $newdir. This function currently only works local.</p>
 
@@ -434,11 +434,11 @@
 
 <p>This command will not be reported.</p>
 
-<h2>cd($newdir)</h2>
+<h2 id="cdnewdir">cd($newdir)</h2>
 
 <p>This is an alias of <em>chdir</em>.</p>
 
-<h2>df([$device])</h2>
+<h2 id="dfdevice">df([$device])</h2>
 
 <p>This function returns a hashRef reflecting the output of <em>df</em></p>
 
@@ -450,7 +450,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>du($path)</h2>
+<h2 id="dupath">du($path)</h2>
 
 <p>Returns the disk usage of $path.</p>
 
@@ -461,7 +461,7 @@
 
 <p>This command will not be reported.</p>
 
-<h2>cp($source, $destination)</h2>
+<h2 id="cpsourcedestination">cp($source, $destination)</h2>
 
 <p>cp will copy $source to $destination (it is recursive)</p>
 
@@ -470,7 +470,7 @@
  };
 </code></pre>
 
-<h2>mount($device, $mount_point, @options)</h2>
+<h2 id="mountdevicemount_pointoptions">mount($device, $mount_point, @options)</h2>
 
 <p>Mount devices.</p>
 
@@ -499,7 +499,7 @@
 
 <p>In order to be more aligned with `mount` terminology, the previously used `fs` option has been deprecated in favor of the `type` option. The `fs` option is still supported and works as previously, but Rex prints a warning if it is being used. There&#39;s also a warning if both `fs` and `type` options are specified, and in this case `type` will be used.</p>
 
-<h2>umount($mount_point)</h2>
+<h2 id="umountmount_point">umount($mount_point)</h2>
 
 <p>Unmount device.</p>
 
@@ -508,7 +508,7 @@
  };
 </code></pre>
 
-<h2>glob($glob)</h2>
+<h2 id="globglob">glob($glob)</h2>
 
 <pre><code> task &quot;glob&quot;, &quot;server1&quot;, sub {
    my @files_with_p = grep { is_file($_) } glob(&quot;/etc/p*&quot;);

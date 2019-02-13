@@ -94,15 +94,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Service - Manage System Services</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manage Linux services.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Service
 
@@ -121,9 +121,9 @@
  service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>service($service, $action, [$option])</h2>
+<h2 id="serviceserviceactionoption">service($service, $action, [$option])</h2>
 
 <p>The service function accepts 2 parameters. The first is the service name and the second the action you want to perform.</p>
 
@@ -194,7 +194,7 @@ For example: after_start, after_stop, after_restart</p>
 
 <p>This gets executed right after the service action.</p>
 
-<h2>service_provider_for $os =&gt; $type;</h2>
+<h2 id="service_provider_forosgttype">service_provider_for $os =&gt; $type;</h2>
 
 <p>To set another service provider as the default, use this function.</p>
 

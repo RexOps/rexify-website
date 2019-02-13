@@ -83,9 +83,9 @@
          <div id="content_container">
             <div id="content">
               
-              <h1>Common</h1>
+              <h1 id="common">Common</h1>
 
-<h4>Net::OpenSSH connection mode - chenryn</h4>
+<h4 id="net::opensshconnectionmode-chenryn">Net::OpenSSH connection mode - chenryn</h4>
 
 <p>As of this release it is possible to use Net::OpenSSH for the connection. With this it is also possible to use kerberos authentication and all features OpenSSH has (like ProxyCommand, etc.).</p>
 
@@ -104,7 +104,7 @@ task &#39;yourtask&#39;, &#39;yourserver&#39;, sub {
 };
 </code></pre>
 
-<h4>Kerberos authentication - chenryn</h4>
+<h4 id="kerberosauthentication-chenryn">Kerberos authentication - chenryn</h4>
 
 <p>If you want to use kerberos authentication you have to use Net::OpenSSH.</p>
 
@@ -116,7 +116,7 @@ user &quot;youruser&quot;;
 krb5_auth;
 </code></pre>
 
-<h4>Custom user for sudo command</h4>
+<h4 id="customuserforsudocommand">Custom user for sudo command</h4>
 
 <p>It is now possible to use custom users for the sudo command.</p>
 
@@ -130,7 +130,7 @@ krb5_auth;
 };
 </code></pre>
 
-<h4>new function delete_lines_according_to - liedekef</h4>
+<h4 id="newfunctiondelete_lines_according_to-liedekef">new function delete_lines_according_to - liedekef</h4>
 
 <p>This function is similar to delete_lines_matching but with an other syntax and the possibility to use the on_change hook if the file was changed.</p>
 
@@ -144,9 +144,9 @@ krb5_auth;
 };
 </code></pre>
 
-<h4>new feature flag use_server_auth to enable auth properties in INI files</h4>
+<h4 id="newfeatureflaguse_server_authtoenableauthpropertiesininifiles">new feature flag use_server_auth to enable auth properties in INI files</h4>
 
-<h4>define server groups with special server properties in INI files</h4>
+<h4 id="defineservergroupswithspecialserverpropertiesininifiles">define server groups with special server properties in INI files</h4>
 
 <p>The INI file feature is improved to allow custom properties for servers and to allow inheritance of sections.</p>
 
@@ -211,7 +211,7 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 };
 </code></pre>
 
-<h4>cwd option for run command</h4>
+<h4 id="cwdoptionforruncommand">cwd option for run command</h4>
 
 <p>Copy to clipboard</p>
 
@@ -219,7 +219,7 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
    cwd =&gt; &quot;/home&quot;;
 </code></pre>
 
-<h3>Speed improvements</h3>
+<h3 id="speedimprovements">Speed improvements</h3>
 
 <ul>
 <li>#123 - File manipulation speed for sed - liedekef</li>
@@ -228,7 +228,7 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 <li>#143 - speed of append_if_no_such_line - liedekef</li>
 </ul>
 
-<h1>Bugfixes/cleanups/enhancements</h1>
+<h1 id="bugfixescleanupsenhancements">Bugfixes/cleanups/enhancements</h1>
 
 <ul>
 <li>#115 - fixed the most possible things (sudo_without_sh flag)</li>

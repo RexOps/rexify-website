@@ -93,24 +93,24 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Upload - Upload a local file to a remote server</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can upload a local file via sftp to a remote host.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> task &quot;upload&quot;, &quot;remoteserver&quot;, sub {
    upload &quot;localfile&quot;, &quot;/remote/file&quot;;
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>upload($local, $remote)</h2>
+<h2 id="uploadlocalremote">upload($local, $remote)</h2>
 
 <p>Perform an upload. If $remote is a directory the file will be uploaded to that directory.</p>
 

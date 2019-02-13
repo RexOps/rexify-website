@@ -146,7 +146,7 @@
 </div>
 </div>
 
-<h2>Uptime?</h2>
+<h2 id="uptime">Uptime?</h2>
 
 <p>This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)</p>
 
@@ -164,7 +164,7 @@ task &quot;uptime&quot;, sub {
 
 <pre><code class="bash">$ rex -H &quot;frontend[01..15] middleware[01..05] db[01..04]&quot; -u ssh-user -p ssh-password uptime</code></pre>
 
-<h2>Keep Your Configuration In Sync</h2>
+<h2 id="keepyourconfigurationinsync">Keep Your Configuration In Sync</h2>
 
 <p>This example will install the Apache webserver on 5 machines and keep their configuration in sync. If the deployed configuration file changes, it will automatically reload the service.</p>
 
@@ -193,7 +193,7 @@ task &quot;configure&quot;, group =&gt; &quot;frontend&quot;, sub {
     on_change =&gt; sub { service apache2 =&gt; &quot;reload&quot;; };
   };</code></pre>
 
-<h2>Running under sudo?</h2>
+<h2 id="runningundersudo">Running under sudo?</h2>
 
 <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
 

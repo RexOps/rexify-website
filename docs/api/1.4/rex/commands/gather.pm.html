@@ -117,24 +117,24 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Gather - Hardware and Information gathering</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can gather hardware and software information.</p>
 
 <p>All these functions will not be reported. These functions don&#39;t modify anything.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> operating_system_is(&quot;SuSE&quot;);
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>get_operating_system</h2>
+<h2 id="get_operating_system">get_operating_system</h2>
 
 <p>Will return the current operating system name.</p>
 
@@ -145,19 +145,19 @@
 
 <p>Aliased by operating_system().</p>
 
-<h2>operating_system</h2>
+<h2 id="operating_system">operating_system</h2>
 
 <p>Alias for get_operating_system()</p>
 
-<h2>get_system_information</h2>
+<h2 id="get_system_information">get_system_information</h2>
 
 <p>Will return a hash of all system information. These Information will be also used by the template function.</p>
 
-<h2>dump_system_information</h2>
+<h2 id="dump_system_information">dump_system_information</h2>
 
 <p>This function dumps all known system information on stdout.</p>
 
-<h2>operating_system_is($string)</h2>
+<h2 id="operating_system_isstring">operating_system_is($string)</h2>
 
 <p>Will return 1 if the operating system is $string.</p>
 
@@ -168,7 +168,7 @@
  };
 </code></pre>
 
-<h2>operating_system_version()</h2>
+<h2 id="operating_system_version">operating_system_version()</h2>
 
 <p>Will return the os release number as an integer. For example, it will convert 5.10 to 510, 10.04 to 1004 or 6.0.3 to 603.</p>
 
@@ -179,11 +179,11 @@
  };
 </code></pre>
 
-<h2>operating_system_release()</h2>
+<h2 id="operating_system_release">operating_system_release()</h2>
 
 <p>Will return the os release number as is.</p>
 
-<h2>network_interfaces</h2>
+<h2 id="network_interfaces">network_interfaces</h2>
 
 <p>Return an HashRef of all the networkinterfaces and their configuration.</p>
 
@@ -200,7 +200,7 @@
  }
 </code></pre>
 
-<h2>memory</h2>
+<h2 id="memory">memory</h2>
 
 <p>Return an HashRef of all memory information.</p>
 
@@ -215,7 +215,7 @@
  };
 </code></pre>
 
-<h2>is_freebsd</h2>
+<h2 id="is_freebsd">is_freebsd</h2>
 
 <p>Returns true if the target system is a FreeBSD.</p>
 
@@ -229,7 +229,7 @@
  };
 </code></pre>
 
-<h2>is_redhat</h2>
+<h2 id="is_redhat">is_redhat</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_redhat) {
@@ -238,7 +238,7 @@
  };
 </code></pre>
 
-<h2>is_fedora</h2>
+<h2 id="is_fedora">is_fedora</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_fedora) {
@@ -247,7 +247,7 @@
  };
 </code></pre>
 
-<h2>is_suse</h2>
+<h2 id="is_suse">is_suse</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_suse) {
@@ -256,7 +256,7 @@
  };
 </code></pre>
 
-<h2>is_mageia</h2>
+<h2 id="is_mageia">is_mageia</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_mageia) {
@@ -265,7 +265,7 @@
  };
 </code></pre>
 
-<h2>is_debian</h2>
+<h2 id="is_debian">is_debian</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_debian) {
@@ -274,7 +274,7 @@
  };
 </code></pre>
 
-<h2>is_alt</h2>
+<h2 id="is_alt">is_alt</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_alt) {
@@ -283,7 +283,7 @@
  };
 </code></pre>
 
-<h2>is_netbsd</h2>
+<h2 id="is_netbsd">is_netbsd</h2>
 
 <p>Returns true if the target system is a NetBSD.</p>
 
@@ -297,7 +297,7 @@
  };
 </code></pre>
 
-<h2>is_openbsd</h2>
+<h2 id="is_openbsd">is_openbsd</h2>
 
 <p>Returns true if the target system is an OpenBSD.</p>
 
@@ -311,7 +311,7 @@
  };
 </code></pre>
 
-<h2>is_linux</h2>
+<h2 id="is_linux">is_linux</h2>
 
 <p>Returns true if the target system is a Linux System.</p>
 
@@ -325,7 +325,7 @@
  };
 </code></pre>
 
-<h2>is_bsd</h2>
+<h2 id="is_bsd">is_bsd</h2>
 
 <p>Returns true if the target system is a BSD System.</p>
 
@@ -339,7 +339,7 @@
  };
 </code></pre>
 
-<h2>is_solaris</h2>
+<h2 id="is_solaris">is_solaris</h2>
 
 <p>Returns true if the target system is a Solaris System.</p>
 
@@ -353,19 +353,19 @@
  };
 </code></pre>
 
-<h2>is_windows</h2>
+<h2 id="is_windows">is_windows</h2>
 
 <p>Returns true if the target system is a Windows System.</p>
 
-<h2>is_openwrt</h2>
+<h2 id="is_openwrt">is_openwrt</h2>
 
 <p>Returns true if the target system is an OpenWrt System.</p>
 
-<h2>is_gentoo</h2>
+<h2 id="is_gentoo">is_gentoo</h2>
 
 <p>Returns true if the target system is a Gentoo System.</p>
 
-<h2>is_arch</h2>
+<h2 id="is_arch">is_arch</h2>
 
 <pre><code> task &quot;foo&quot;, &quot;server1&quot;, sub {
    if(is_arch) {

@@ -94,15 +94,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Cron - Simple Cron Management</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this Module you can manage your cronjobs.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Cron;
 
@@ -120,9 +120,9 @@
  cron delete =&gt; &quot;root&quot;, 3;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>cron_entry($name, %option)</h2>
+<h2 id="cron_entrynameoption">cron_entry($name, %option)</h2>
 
 <p>Manage cron entries.</p>
 
@@ -150,7 +150,7 @@
    on_change    =&gt; sub { say &quot;cron removed.&quot;; };
 </code></pre>
 
-<h2>cron($action =&gt; $user, ...)</h2>
+<h2 id="cronactiongtuser...">cron($action =&gt; $user, ...)</h2>
 
 <p>With this function you can manage cronjobs.</p>
 

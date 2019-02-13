@@ -87,9 +87,9 @@
 
 <p>If you have suggestions or wishes, please post a comment, tell us in our #rex channel on freenode, or just send a pull request against the GitHub repository.</p>
 
-<h2>Variables</h2>
+<h2 id="variables">Variables</h2>
 
-<h3>Scalar variables</h3>
+<h3 id="scalarvariables">Scalar variables</h3>
 
 <p>Scalars can contain single items, like strings, numbers, objects or references.</p>
 
@@ -99,7 +99,7 @@ my $float = 28.5;       # also a number, but a float
 my $car = Car-&gt;new();   # this is an object from the class Car
 </code></pre>
 
-<h3>Array variables</h3>
+<h3 id="arrayvariables">Array variables</h3>
 
 <p>Arrays are lists of scalars. Like a grocery list.</p>
 
@@ -133,7 +133,7 @@ my $string = join( &quot;,&quot;, @names );     # -&gt; John,Fred,Carl,Lewis
 }
 </code></pre>
 
-<h3>Hash variables</h3>
+<h3 id="hashvariables">Hash variables</h3>
 
 <p>Hashes are like arrays, but with named indexes, called keys.</p>
 
@@ -160,7 +160,7 @@ say &quot;City: &quot; . $person{&quot;city&quot;};
 
 <p>But remember an important note: hashes are always unsorted.</p>
 
-<h2>Conditional statements</h2>
+<h2 id="conditionalstatements">Conditional statements</h2>
 
 <pre><code>if ( $name eq &quot;John&quot; ) {
   say &quot;Hello, my name is John!&quot;;
@@ -183,7 +183,7 @@ if ( $age &lt; 30 ) {
 } 
 </code></pre>
 
-<h2>Loops</h2>
+<h2 id="loops">Loops</h2>
 
 <pre><code>for my $num (1..5) {
   say &quot;&gt; $num&quot;;
@@ -195,7 +195,7 @@ for my $item (@array) {
 } 
 </code></pre>
 
-<h2>Regular expressions</h2>
+<h2 id="regularexpressions">Regular expressions</h2>
 
 <pre><code>my $name = &quot;John&quot;;
 if ( $name =~ m/john/ ) {     # will not match, because the &quot;J&quot; in $name is uppercase
@@ -208,7 +208,7 @@ $name =~ s/john/Fred/i;       # this will replace the first match of &quot
 $name =~ s/john/Fred/ig;      # this will replace all matches of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;
 </code></pre>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 
 <pre><code>sub my_function {      # define the function called &quot;my_function&quot;
 }
@@ -230,7 +230,7 @@ my_function(&quot;john&quot;, 28);    # call &quot;my_function&quot; with 2 p
 my_function &quot;john&quot;, 28;     # also calls &quot;my_function&quot; with 2 parameters: the brackets are not needed
 </code></pre>
 
-<h2>Useful helpers</h2>
+<h2 id="usefulhelpers">Useful helpers</h2>
 
 <p>Dump the content of a scalar, array or hash</p>
 
@@ -243,7 +243,7 @@ say Dumper(@array);
 
 <p> </p>
 
-<h2>More Documentation</h2>
+<h2 id="moredocumentation">More Documentation</h2>
 
 <p>If you want to learn more Perl you can find a great online tutorial on <a href="http://perlmaven.com/perl-tutorial">Perl Maven</a>.</p>
 

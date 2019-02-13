@@ -100,11 +100,11 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Iptables - Iptable Management Commands</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this Module you can manage basic Iptables rules.</p>
 
@@ -112,7 +112,7 @@
 
 <p>Only <em>open_port</em> and <em>close_port</em> are idempotent.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Iptables;
 
@@ -155,9 +155,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>open_port($port, $option)</h2>
+<h2 id="open_portportoption">open_port($port, $option)</h2>
 
 <p>Open a port for inbound connections.</p>
 
@@ -175,7 +175,7 @@
 } ;
 </code></pre>
 
-<h2>close_port($port, $option)</h2>
+<h2 id="close_portportoption">close_port($port, $option)</h2>
 
 <p>Close a port for inbound connections.</p>
 
@@ -188,7 +188,7 @@
  };
 </code></pre>
 
-<h2>redirect_port($in_port, $option)</h2>
+<h2 id="redirect_portin_portoption">redirect_port($in_port, $option)</h2>
 
 <p>Redirect $in_port to another local port.</p>
 
@@ -201,7 +201,7 @@
  };
 </code></pre>
 
-<h2>iptables(@params)</h2>
+<h2 id="iptablesparams">iptables(@params)</h2>
 
 <p>Write standard iptable comands.</p>
 
@@ -234,7 +234,7 @@
  };
 </code></pre>
 
-<h2>is_nat_gateway</h2>
+<h2 id="is_nat_gateway">is_nat_gateway</h2>
 
 <p>This function creates a NAT gateway for the device the default route points to.</p>
 
@@ -243,7 +243,7 @@
  };
 </code></pre>
 
-<h2>default_state_rule(%option)</h2>
+<h2 id="default_state_ruleoption">default_state_rule(%option)</h2>
 
 <p>Set the default state rules for the given device.</p>
 
@@ -252,7 +252,7 @@
  };
 </code></pre>
 
-<h2>iptables_list</h2>
+<h2 id="iptables_list">iptables_list</h2>
 
 <p>List all iptables rules.</p>
 
@@ -261,7 +261,7 @@
  };
 </code></pre>
 
-<h2>iptables_clear</h2>
+<h2 id="iptables_clear">iptables_clear</h2>
 
 <p>Remove all iptables rules.</p>
 

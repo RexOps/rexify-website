@@ -97,17 +97,17 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Box - Functions / Class to manage Virtual Machines</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports Amazon, KVM and VirtualBox.</p>
 
 <p>Version &lt;= 1.0: All these functions will not be reported.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Box;
 
@@ -147,16 +147,16 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>new(name =&gt; $box_name)</h2>
+<h2 id="newnamegtbox_name">new(name =&gt; $box_name)</h2>
 
 <p>Constructor if used in OO mode.</p>
 
 <pre><code> my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);
 </code></pre>
 
-<h2>box(sub {})</h2>
+<h2 id="boxsub">box(sub {})</h2>
 
 <p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box.</p>
 
@@ -187,7 +187,7 @@
  };
 </code></pre>
 
-<h2>list_boxes</h2>
+<h2 id="list_boxes">list_boxes</h2>
 
 <p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn&#39;t start a Rex/Box.</p>
 
@@ -198,7 +198,7 @@
  };
 </code></pre>
 
-<h2>get_box($box_name)</h2>
+<h2 id="get_boxbox_name">get_box($box_name)</h2>
 
 <p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system.</p>
 
@@ -209,7 +209,7 @@
  };
 </code></pre>
 
-<h2>boxes($action, @data)</h2>
+<h2 id="boxesactiondata">boxes($action, @data)</h2>
 
 <p>With this function you can control your boxes. Currently there are 3 actions.</p>
 

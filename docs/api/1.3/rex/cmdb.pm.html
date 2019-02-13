@@ -94,15 +94,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::CMDB - Function to access the CMDB (configuration management database)</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>This module exports a function to access a CMDB via a common interface.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::CMDB;
 
@@ -121,9 +121,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>set cmdb</h2>
+<h2 id="setcmdb">set cmdb</h2>
 
 <p>CMDB is enabled by default, with Rex::CMDB::YAML as default provider.</p>
 
@@ -166,7 +166,7 @@
 
 <p>For full list of options, please see the documentation of Hash::Merge.</p>
 
-<h2>cmdb([$item, $server])</h2>
+<h2 id="cmdbitemserver">cmdb([$item, $server])</h2>
 
 <p>Function to query a CMDB. If this function is called without $item it should return a hash containing all the information for the requested server. If $item is given it should return only the value for $item.</p>
 

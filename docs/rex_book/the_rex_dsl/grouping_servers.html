@@ -121,7 +121,7 @@ group backends =&gt; &quot;backend[01..02]&quot;;
 };
 </code></pre>
 
-<h2>Using an INI file to define server groups</h2>
+<h2 id="usinganinifiletodefineservergroups">Using an INI file to define server groups</h2>
 
 <p>Rex offers a simple way to query ini files for group creation. To use ini files you have to use the Rex::Group::Lookup::INI module.</p>
 
@@ -169,7 +169,7 @@ backend02
 };
 </code></pre>
 
-<h2>Quering a database to define server groups</h2>
+<h2 id="queringadatabasetodefineservergroups">Quering a database to define server groups</h2>
 
 <p>If you want to get your server groups right out of an existing database you can use DBI to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
 
@@ -205,7 +205,7 @@ map {
 <li>server_name</li>
 </ul>
 
-<h2>Creating custom groups</h2>
+<h2 id="creatingcustomgroups">Creating custom groups</h2>
 
 <p>If there is no built-in function that fits your needs for group creation, you can do it all by yourself. Because the Rexfile is just a plain perl script and the group command is just a perl function that expects the group name as first parameter, and uses all other parameters for the servers, you can create your own function.</p>
 

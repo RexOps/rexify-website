@@ -101,21 +101,21 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Helper::SSH2::Expect - An Expect like module for Net::SSH2</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>This is a module to have expect like features for Net::SSH2. This is the first version of this module. Please report bugs at GitHub <a href="https://github.com/krimdomu/net-ssh2-expect">https://github.com/krimdomu/net-ssh2-expect</a></p>
 
-<h1>DEPENDENCIES</h1>
+<h1 id="dependencies">DEPENDENCIES</h1>
 
 <ul>
 <li><span>Net::SSH2</span></li>
 </ul>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Helper::SSH2::Expect;
 
@@ -141,37 +141,37 @@
                 ]);
 </code></pre>
 
-<h1>CLASS METHODS</h1>
+<h1 id="classmethods">CLASS METHODS</h1>
 
-<h2>new($ssh2)</h2>
+<h2 id="newssh2">new($ssh2)</h2>
 
 <p>Constructor: You need to parse an connected Net::SSH2 Object.</p>
 
-<h2>log_stdout(0|1)</h2>
+<h2 id="log_stdout01">log_stdout(0|1)</h2>
 
 <p>Log on STDOUT.</p>
 
-<h2>log_file($file)</h2>
+<h2 id="log_filefile">log_file($file)</h2>
 
 <p>Log everything to a file. $file can be a filename, a filehandle or a subRef.</p>
 
-<h2>spawn($command, @parameters)</h2>
+<h2 id="spawncommandparameters">spawn($command, @parameters)</h2>
 
 <p>Spawn $command with @parameters as parameters.</p>
 
-<h2>soft_close()</h2>
+<h2 id="soft_close">soft_close()</h2>
 
 <p>Currently only an alias to hard_close();</p>
 
-<h2>hard_close();</h2>
+<h2 id="hard_close">hard_close();</h2>
 
 <p>Stops the execution of the process.</p>
 
-<h2>expect($timeout, @match_patters)</h2>
+<h2 id="expecttimeoutmatch_patters">expect($timeout, @match_patters)</h2>
 
 <p>This method controls the execution of your process.</p>
 
-<h2>send($string)</h2>
+<h2 id="sendstring">send($string)</h2>
 
 <p>Send a string to the running command.</p>
 

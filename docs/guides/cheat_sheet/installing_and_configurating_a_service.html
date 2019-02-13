@@ -85,11 +85,11 @@
               
               <p>The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the file, pkg and service functions.</p>
 
-<h3>file($remote_file, %options)</h3>
+<h3 id="fileremote_fileoptions">file($remote_file, %options)</h3>
 
 <p>Manage files on remote systems.</p>
 
-<h4>Options</h4>
+<h4 id="options">Options</h4>
 
 <ul>
 <li>ensure - Defines the state of the file. Valid parameters are present, absent, directory.</li>
@@ -115,11 +115,11 @@
   };
 </code></pre>
 
-<h3>pkg($name, %options)</h3>
+<h3 id="pkgnameoptions">pkg($name, %options)</h3>
 
 <p>Install a package on the remote system.</p>
 
-<h4>Options</h4>
+<h4 id="options">Options</h4>
 
 <ul>
 <li>ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.</li>
@@ -135,13 +135,13 @@
   };
 </code></pre>
 
-<h3>service</h3>
+<h3 id="service">service</h3>
 
 <p>Manage the state of a service.</p>
 
 <p>This function can be called as a resource or as a normal function to directly stop/start/restart/... services.</p>
 
-<h4>Options (for calling as a resource)</h4>
+<h4 id="optionsforcallingasaresource">Options (for calling as a resource)</h4>
 
 <ul>
 <li>ensure - Defines the state of the service. Valid parameters are started, stopped.</li>
@@ -152,13 +152,13 @@
 <li>reload - Custom command to reload a service.</li>
 </ul>
 
-<h4>Example for calling as resource</h4>
+<h4 id="exampleforcallingasresource">Example for calling as resource</h4>
 
 <pre><code>service &quot;nptd&quot;,
   ensure =&gt; &quot;started&quot;;
 </code></pre>
 
-<h4>Example for calling as function</h4>
+<h4 id="exampleforcallingasfunction">Example for calling as function</h4>
 
 <p>service ntpd =&gt; &quot;restart&quot;;</p>
 

@@ -94,15 +94,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::PkgConf - Configure packages</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can configure packages. Currently it only supports Debian (using debconf), but it is designed to be extendable.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> my %options = get_pkgconf(&#39;postfix&#39;);
  say $options{&#39;postfix/relayhost&#39;}-&gt;{value};
@@ -124,9 +124,9 @@
  ], no_update =&gt; 1);
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>get_pkgconf($package, [$question])</h2>
+<h2 id="get_pkgconfpackagequestion">get_pkgconf($package, [$question])</h2>
 
 <p>Use this to query existing package configurations.</p>
 
@@ -143,7 +143,7 @@
  say $options{&#39;postfix/relayhost&#39;}-&gt;{already_set};
 </code></pre>
 
-<h2>set_pkgconf($package, $values, [%options])</h2>
+<h2 id="set_pkgconfpackagevaluesoptions">set_pkgconf($package, $values, [%options])</h2>
 
 <p>Use this to set package configurations.</p>
 

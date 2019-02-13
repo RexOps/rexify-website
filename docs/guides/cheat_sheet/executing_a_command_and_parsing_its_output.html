@@ -83,11 +83,11 @@
          <div id="content_container">
             <div id="content">
               
-              <h3>run($command, %options)</h3>
+              <h3 id="runcommandoptions">run($command, %options)</h3>
 
 <p>Run a remote command and returns its output.</p>
 
-<h4>Options</h4>
+<h4 id="options">Options</h4>
 
 <ul>
 <li>cwd - Work directory for the command.</li>
@@ -101,13 +101,13 @@
 <li>creates - If the file given with this option already exists, the command won&#39;t be executed.</li>
 </ul>
 
-<h4>Example to just run a command if a file doesn&#39;t exists</h4>
+<h4 id="exampletojustrunacommandifafiledoesntexists">Example to just run a command if a file doesn&#39;t exists</h4>
 
 <pre><code>run &quot;/tmp/install_service.sh&quot;,
   creates =&gt; &quot;/opt/myservice/conf.xml&quot;;
 </code></pre>
 
-<h4>Example to run a command and get its output</h4>
+<h4 id="exampletorunacommandandgetitsoutput">Example to run a command and get its output</h4>
 
 <p>my @output_lines = run &quot;df -h&quot;;</p>
 

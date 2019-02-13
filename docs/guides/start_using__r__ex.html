@@ -85,7 +85,7 @@
               
               <p>This is a small howto showing the first steps with Rex.</p>
 
-<h1>Basic Architecture</h1>
+<h1 id="basicarchitecture">Basic Architecture</h1>
 
 <p><img height="272" src="../../media/docs/archi.png" width="410">Rex is a server orchestration tool that doesn&#39;t need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
 To use Rex you don&#39;t need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.
@@ -93,11 +93,11 @@ In fact, if you know a little bit perl it won&#39;t hurt you.
 The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.
 A task is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create rollback scenarios if something went wrong during the execution.</p>
 
-<h1>Requirements</h1>
+<h1 id="requirements">Requirements</h1>
 
 <p>To run Rex you don&#39;t need much.</p>
 
-<h2>Central Master Host</h2>
+<h2 id="centralmasterhost">Central Master Host</h2>
 
 <p>You can run Rex from your workstation or on a central master host.
 For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.
@@ -111,7 +111,7 @@ On this host you also need some Perl modules installed. If you&#39;re using the 
 <p>This command will install Rex on your system.
 We recommend to use our packages from the repository.</p>
 
-<h2>Managed Hosts</h2>
+<h2 id="managedhosts">Managed Hosts</h2>
 
 <p>On the systems you want to manage you need only two things: a Perl 5 interpreter, and a valid SSH account.</p>
 
@@ -121,7 +121,7 @@ We recommend to use our packages from the repository.</p>
 
 <p>If you want to run administrative tasks on the remote machines, you obviously would need root or sudo access on them.</p>
 
-<h1>Creating a Rexfile</h1>
+<h1 id="creatingarexfile">Creating a Rexfile</h1>
 
 <p>First we need to create a new folder to store your Rexfile in it.</p>
 
@@ -153,7 +153,7 @@ Change into the directory where you just created the Rexfile (in a terminal).</p
 $ rex uptime
 </code></pre>
 
-<h2>Adding a second task</h2>
+<h2 id="addingasecondtask">Adding a second task</h2>
 
 <p>To add a second task, just add the next lines to your Rexfile.</p>
 
@@ -175,7 +175,7 @@ Server Groups
   myservers                       mywebserver, mymailserver, myfileserver
 </code></pre>
 
-<h2>Authentication</h2>
+<h2 id="authentication">Authentication</h2>
 
 <p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.
 To use key authentication just define your private and public key inside the Rexfile.</p>
@@ -197,7 +197,7 @@ key_auth;
 
 <p>If you don&#39;t want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line key_auth;.</p>
 
-<h2>Managing Services</h2>
+<h2 id="managingservices">Managing Services</h2>
 
 <p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.
 In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>

@@ -105,15 +105,15 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::User - Manipulate users and groups</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manage user and groups.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::User;
 
@@ -131,9 +131,9 @@
  };
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>account($name, %option)</h2>
+<h2 id="accountnameoption">account($name, %option)</h2>
 
 <p>Manage user account.</p>
 
@@ -157,23 +157,23 @@
 
 <p>The crypt_password option specifies the encrypted value as found in /etc/shadow; on Linux special values are &#39;*&#39; and &#39;!&#39; which mean &#39;disabled password&#39; and &#39;disabled login&#39; respectively.</p>
 
-<h2>create_user($user =&gt; {})</h2>
+<h2 id="create_userusergt">create_user($user =&gt; {})</h2>
 
 <p>Create or update a user.</p>
 
-<h2>get_uid($user)</h2>
+<h2 id="get_uiduser">get_uid($user)</h2>
 
 <p>Returns the uid of $user.</p>
 
-<h2>get_user($user)</h2>
+<h2 id="get_useruser">get_user($user)</h2>
 
 <p>Returns all information about $user.</p>
 
-<h2>user_groups($user)</h2>
+<h2 id="user_groupsuser">user_groups($user)</h2>
 
 <p>Returns group membership about $user.</p>
 
-<h2>user_list()</h2>
+<h2 id="user_list">user_list()</h2>
 
 <p>Returns user list via getent passwd.</p>
 
@@ -184,7 +184,7 @@
  };
 </code></pre>
 
-<h2>delete_user($user)</h2>
+<h2 id="delete_useruser">delete_user($user)</h2>
 
 <p>Delete a user from the system.</p>
 
@@ -194,15 +194,15 @@
  };
 </code></pre>
 
-<h2>lock_password($user)</h2>
+<h2 id="lock_passworduser">lock_password($user)</h2>
 
 <p>Lock the password of a user account. Currently this is only available on Linux (see passwd --lock).</p>
 
-<h2>unlock_password($user)</h2>
+<h2 id="unlock_passworduser">unlock_password($user)</h2>
 
 <p>Unlock the password of a user account. Currently this is only available on Linux (see passwd --unlock).</p>
 
-<h2>create_group($group, {})</h2>
+<h2 id="create_groupgroup">create_group($group, {})</h2>
 
 <p>Create or update a group.</p>
 
@@ -212,18 +212,18 @@
  };
 </code></pre>
 
-<h2>get_gid($group)</h2>
+<h2 id="get_gidgroup">get_gid($group)</h2>
 
 <p>Return the group id of $group.</p>
 
-<h2>get_group($group)</h2>
+<h2 id="get_groupgroup">get_group($group)</h2>
 
 <p>Return information of $group.</p>
 
 <pre><code> $info = get_group(&quot;wheel&quot;);
 </code></pre>
 
-<h2>delete_group($group)</h2>
+<h2 id="delete_groupgroup">delete_group($group)</h2>
 
 <p>Delete a group.</p>
 

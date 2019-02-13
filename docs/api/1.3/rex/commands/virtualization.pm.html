@@ -102,11 +102,11 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Virtualization - Virtualization module</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manage your virtualization.</p>
 
@@ -114,7 +114,7 @@
 
 <p>All these functions are not idempotent.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> use Rex::Commands::Virtualization;
 
@@ -154,15 +154,15 @@
  print Dumper vm hypervisor =&gt; &quot;capabilities&quot;;
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>vm($action =&gt; $name, %option)</h2>
+<h2 id="vmactiongtnameoption">vm($action =&gt; $name, %option)</h2>
 
 <p>This module only exports the <em>vm</em> function. You can manage everything with this function.</p>
 
-<h1>EXAMPLES</h1>
+<h1 id="examples">EXAMPLES</h1>
 
-<h2>Creating a Virtual Machine</h2>
+<h2 id="creatingavirtualmachine">Creating a Virtual Machine</h2>
 
 <p>Create a (VirtualBox) VM named &quot;vm01&quot; with 512 MB ram and 1 cpu. One harddrive, 10 GB in size beeing a file on disk. With a cdrom as an iso image and a natted network. The bootorder is set to &quot;dvd&quot;.</p>
 
@@ -365,7 +365,7 @@
     ];
 </code></pre>
 
-<h2>Start/Stop/Destroy</h2>
+<h2 id="startstopdestroy">Start/Stop/Destroy</h2>
 
 <p>Start a stopped vm</p>
 
@@ -382,12 +382,12 @@
 <pre><code> vm destroy =&gt; &quot;name&quot;;
 </code></pre>
 
-<h2>Delete</h2>
+<h2 id="delete">Delete</h2>
 
 <pre><code> vm delete =&gt; &quot;name&quot;;
 </code></pre>
 
-<h2>Modifying a VM</h2>
+<h2 id="modifyingavm">Modifying a VM</h2>
 
 <p>Currently you can only modify the memory.</p>
 
@@ -396,12 +396,12 @@
       memory    =&gt; 512*1024;
 </code></pre>
 
-<h2>Request information of a vm</h2>
+<h2 id="requestinformationofavm">Request information of a vm</h2>
 
 <pre><code> vm info =&gt; &quot;name&quot;;
 </code></pre>
 
-<h2>Request info from the underlying hypervisor</h2>
+<h2 id="requestinfofromtheunderlyinghypervisor">Request info from the underlying hypervisor</h2>
 
 <pre><code> vm hypervisor =&gt; &quot;capabilities&quot;;
 </code></pre>

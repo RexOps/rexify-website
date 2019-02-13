@@ -83,9 +83,9 @@
          <div id="content_container">
             <div id="content">
               
-              <h1>Common</h1>
+              <h1 id="common">Common</h1>
 
-<h2>Added basic CMDB interface.</h2>
+<h2 id="addedbasiccmdbinterface.">Added basic CMDB interface.</h2>
 
 <p>The first CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * &quot;default&quot;.</p>
 
@@ -115,7 +115,7 @@ task &quot;prepare&quot;, sub {
 
 <p>If it find the value for &quot;vhosts&quot; in one of these files, it will return that value and exit the search.</p>
 
-<h2>VirtualBox</h2>
+<h2 id="virtualbox">VirtualBox</h2>
 
 <p>It is now possible to use VirtualBox in headless mode on MacOSX and Linux.</p>
 
@@ -148,7 +148,7 @@ vms:
       setup: setup_frontend
 </code></pre>
 
-<h2>INI style group files</h2>
+<h2 id="inistylegroupfiles">INI style group files</h2>
 
 <p>From Franky Van Liedekerke.</p>
 
@@ -181,7 +181,7 @@ db[01..02]
 groups_file &quot;file.ini&quot;;
 </code></pre>
 
-<h2>Source global /etc/profile</h2>
+<h2 id="sourceglobaletcprofile">Source global /etc/profile</h2>
 
 <p>There is a new setting called source_global_profile. This will source /etc/profile before every run() command.</p>
 
@@ -192,7 +192,7 @@ groups_file &quot;file.ini&quot;;
 <pre><code>source_global_profile TRUE;
 </code></pre>
 
-<h2>Bugs</h2>
+<h2 id="bugs">Bugs</h2>
 
 <ul>
 <li>refactored sudo module for #98 - Dominik Schulz</li>

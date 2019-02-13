@@ -96,11 +96,11 @@
 </ul></li>
 </ul>
 
-<h1>NAME</h1>
+<h1 id="name">NAME</h1>
 
 <p>Rex::Commands::Process - Process management commands</p>
 
-<h1>DESCRIPTION</h1>
+<h1 id="description">DESCRIPTION</h1>
 
 <p>With this module you can manage processes. List, Kill, and so on.</p>
 
@@ -108,16 +108,16 @@
 
 <p>All these functions are not idempotent.</p>
 
-<h1>SYNOPSIS</h1>
+<h1 id="synopsis">SYNOPSIS</h1>
 
 <pre><code> kill $pid;
  killall &quot;apache2&quot;;
  nice($pid, $level);
 </code></pre>
 
-<h1>EXPORTED FUNCTIONS</h1>
+<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
 
-<h2>kill($pid, $sig)</h2>
+<h2 id="killpidsig">kill($pid, $sig)</h2>
 
 <p>Will kill the given process id. If $sig is specified it will kill with the given signal.</p>
 
@@ -127,7 +127,7 @@
  };
 </code></pre>
 
-<h2>killall($name, $sig)</h2>
+<h2 id="killallnamesig">killall($name, $sig)</h2>
 
 <p>Will kill the given process. If $sig is specified it will kill with the given signal.</p>
 
@@ -137,7 +137,7 @@
  };
 </code></pre>
 
-<h2>ps</h2>
+<h2 id="ps">ps</h2>
 
 <p>List all processes on a system. Will return all fields of a <em>ps aux</em>.</p>
 
@@ -159,7 +159,7 @@
 
 <p>This example would contain all processes with a nice of -5.</p>
 
-<h2>nice($pid, $level)</h2>
+<h2 id="nicepidlevel">nice($pid, $level)</h2>
 
 <p>Renice a process identified by $pid with the priority $level.</p>
 

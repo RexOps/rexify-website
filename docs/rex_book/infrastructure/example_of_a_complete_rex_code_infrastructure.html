@@ -93,7 +93,7 @@
 <li>An example ntp module</li>
 </ul>
 
-<h2>Building services out of blocks with Rex</h2>
+<h2 id="buildingservicesoutofblockswithrex">Building services out of blocks with Rex</h2>
 
 <p>If you have a large environment with multiple services and a complex architecture it is important to design your code in a way that you can reuse most parts of it. To achieve this you need to follow some simple rules.</p>
 
@@ -105,31 +105,31 @@
 <li>Use a CMDB to separate configuration from code.</li>
 </ul>
 
-<h3>Source Control System</h3>
+<h3 id="sourcecontrolsystem">Source Control System</h3>
 
 <p>Currently Rex supports only *git* for module and service repositories. So in this example i will use git.</p>
 
 <p>To manage your git repositories i suggest some tool like Gitprep or Gitlab</p>
 
-<h3>Modules</h3>
+<h3 id="modules">Modules</h3>
 
 <p>As mentioned above, you should separate your code. For better readability, usability and maintainability of your code this is important.</p>
 
 <p>Modules must be generic. The modules are a bit like lego blocks. You can use lego blocks to build houses, ships, airplanes and much more. But the blocks are always the same.</p>
 
-<h3>Services</h3>
+<h3 id="services">Services</h3>
 
 <p>Services are a collection of modules. A service describe the system you want to build out of your module blocks.</p>
 
-<h3>CMDB</h3>
+<h3 id="cmdb">CMDB</h3>
 
 <p>Rex has a default CMDB build upon YAML files. Store all the service relevant configuration options inside your YAML file. If you do this you can be sure that your code will work even if you change something in the CMDB.</p>
 
-<h2>Example frontend service</h2>
+<h2 id="examplefrontendservice">Example frontend service</h2>
 
 <p>This is an example rex service.</p>
 
-<h3>meta.yml - Define dependencies</h3>
+<h3 id="meta.yml-definedependencies">meta.yml - Define dependencies</h3>
 
 <p>In the <strong>meta.yml</strong> file you can define some service information. The most important ones are the dependencies.</p>
 
@@ -154,11 +154,11 @@ PerlRequire:
 
 <p>With this in mind it is easy to have multiple environments with the same service pointing to different development branches.</p>
 
-<h3>Rexfile - The code</h3>
+<h3 id="rexfile-thecode">Rexfile - The code</h3>
 
 <p>Every service has its own Rexfile.</p>
 
-<h4>Load all required modules</h4>
+<h4 id="loadallrequiredmodules">Load all required modules</h4>
 
 <pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
 use Rex::CMDB;
@@ -175,14 +175,14 @@ use Rex::Group::Lookup::INI;
 <li>Line 4: Load the function to read Rex groups from ini files.</li>
 </ul>
 
-<h4>Load the server groups</h4>
+<h4 id="loadtheservergroups">Load the server groups</h4>
 
 <pre><code>groups_file &quot;server.ini&quot;;
 </code></pre>
 
 <p>Load all server groups from the file <strong>server.ini</strong>.</p>
 
-<h4>Configure the CMDB</h4>
+<h4 id="configurethecmdb">Configure the CMDB</h4>
 
 <pre><code>set cmdb =&gt; {
   type =&gt; &quot;YAML&quot;,
@@ -228,7 +228,7 @@ use Rex::Group::Lookup::INI;
 <li>and some others, too.</li>
 </ul>
 
-<h4>Include all required Rex modules</h4>
+<h4 id="includeallrequiredrexmodules">Include all required Rex modules</h4>
 
 <pre><code>include qw/
   Rex::OS::Base
@@ -238,7 +238,7 @@ use Rex::Group::Lookup::INI;
 
 <p>Include all needed Rex modules. With <strong>include</strong> all the tasks inside these modules won&#39;t get displayed with <code>rex -T</code>.</p>
 
-<h4>The main task</h4>
+<h4 id="themaintask">The main task</h4>
 
 <pre><code>task &quot;setup&quot;,
 </code></pre>
@@ -261,7 +261,7 @@ use Rex::Group::Lookup::INI;
 
 <p>Inside the task we just call the tasks from the modules we have included above. All tasks can be called as a normal perl function, as long as the taskname doesn&#39;t conflict with other perl functions.</p>
 
-<h4>The last line</h4>
+<h4 id="thelastline">The last line</h4>
 
 <pre><code># the last line of a Rexfile
 1;
@@ -269,13 +269,13 @@ use Rex::Group::Lookup::INI;
 
 <p>The last line of a Rexfile is normaly a true value. This is not always needed, but it is safer to include it.</p>
 
-<h3>Test before ship</h3>
+<h3 id="testbeforeship">Test before ship</h3>
 
 <p>Since version 0.46 Rex comes with a integration test suite. It is based on Rex::Box and currently supports VirtualBox. With it you can spawn local Virtual Box VMs and test your tasks on it.</p>
 
 <p>The tests are stored in the t directory.</p>
 
-<h4>Example t/base.t test file</h4>
+<h4 id="exampletbase.ttestfile">Example t/base.t test file</h4>
 
 <pre><code>use Rex::Test::Base;
 use Rex -feature =&gt; [&#39;1.0&#39;];
@@ -326,7 +326,7 @@ use Rex -feature =&gt; [&#39;1.0&#39;];
 
 <p>You can now run the tests with <code>rex Test:run</code>.</p>
 
-<h3>Getting the code</h3>
+<h3 id="gettingthecode">Getting the code</h3>
 
 <p>Now, when you all have commit to your git repository you can use the rexify command to download them to (for example) a central deployment server.</p>
 
