@@ -2,6 +2,8 @@ site:
     class: Statocles::Site
     args:
         title: Rexify statocles
+        markdown:
+            $class: Text::MultiMarkdown
         base_url: https://rexops.github.io/rexify-website/
         theme:
             $ref: rexify
