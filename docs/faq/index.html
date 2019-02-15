@@ -83,13 +83,105 @@
          <div id="content_container">
             <div id="content">
               
-              <p>Here we will maintain a list of frequently asked questions with their answers.</p>
+              <h1 id="faq">FAQ</h1>
 
-<h1 id="headingagain">heading again</h1>
+<p>Here we will maintain a list of frequently asked questions with their answers.</p>
 
-<h2 id="headingheading">heading heading</h2>
+<ul>
+<li><a href="#whydoestheruncommandnotformattheoutput">Why does the run command not format the output?</a></li>
+<li><a href="#howcanigetthecurrentserverfromwithinatask">How can I get the current server from within a task?</a></li>
+<li><a href="#howcanipassparameterstoatask">How can I pass parameters to a task?</a></li>
+<li><a href="#howcanirunablockofcodewithonecommand">How can I run a block of code with one command?</a></li>
+<li><a href="#howcanirunalocalscriptontheremote">How can I run a local script on the remote?</a></li>
+<li><a href="#howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</a></li>
+<li><a href="#howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</a></li>
+<li><a href="#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</a></li>
+</ul>
 
-<h1 id="newheading">new heading</h1>
+<h2 id="whydoestheruncommandnotformattheoutput">Why does the run command not format the output?</h2>
+
+<p>The run command - called in array context - will return an array.</p>
+
+<p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
+
+<pre><code>my $output = run &quot;df -h&quot;;
+say $output;
+</code></pre>
+
+<h2 id="howcanigetthecurrentserverfromwithinatask">How can I get the current server from within a task?</h2>
+
+<pre><code>my $current_server = connection-&gt;server;
+</code></pre>
+
+<h2 id="howcanipassparameterstoatask">How can I pass parameters to a task?</h2>
+
+<pre><code>task &#39;mytask&#39;, sub {
+  my $parameters = shift;
+  my $parameter1_value = $parameters-&gt;{parameter1};
+  my $parameter2_value = $parameters-&gt;{parameter2};
+};
+</code></pre>
+
+<p>Then you can run mytask from CLI like this:</p>
+
+<pre><code>rex -H hostname mytask --parameter1=value1 --parameter2=value2
+</code></pre>
+
+<h2 id="howcanirunablockofcodewithonecommand">How can I run a block of code with one command?</h2>
+
+<p>You can use the ShellBlock module. This module can be installed by running:</p>
+
+<pre><code>$ rexify --use Rex::Misc::ShellBlock
+</code></pre>
+
+<p>Then, you can run your shell code remotely as:</p>
+
+<pre><code>use Rex::Misc::ShellBlock;
+
+task &quot;myexec&quot;, sub {
+  shell_block &lt;&lt;EOF;
+    echo &quot;hi&quot;
+EOF
+};
+</code></pre>
+
+<p>See the linked documentation page for how to use this module with Perl, Python, or other languages.</p>
+
+<h2 id="howcanirunalocalscriptontheremote">How can I run a local script on the remote?</h2>
+
+<p>If you have a local script &#39;files/script&#39;, you can run it on the remote using the ShellBlock module referred to in the FAQ above. After you install as pointed out above, you can run the script remotely with the command:</p>
+
+<pre><code>use Rex::Misc::ShellBlock;
+task &quot;myexec&quot;, sub {
+  shell_block template(&#39;files/script&#39;);
+};
+</code></pre>
+
+<h2 id="howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</h2>
+
+<p>Given the same scenario as above, but with the additional requirement to run the script as a different user, the solution looks like below:</p>
+
+<pre><code>use Rex::Misc::ShellBlock;
+task &quot;myexec&quot;, sub {
+  sudo {
+    command =&gt; sub {
+      shell_block template(&#39;files/script&#39;);
+    },
+    user    =&gt; &#39;root&#39;
+  };
+};
+</code></pre>
+
+<h2 id="howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</h2>
+
+<p>Rex assigns the exit code from the remote invocation of <code>run</code> or <code>shell_block</code> statements to the <code>$?</code> variable.</p>
+
+<h2 id="howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
+
+<pre><code>Rex::Logger::info(&quot;some message&quot;);           # for INFO  (green)
+Rex::Logger::info(&quot;some message&quot;, &quot;warn&quot;);   # for WARN  (yellow)
+Rex::Logger::info(&quot;some message&quot;, &quot;error&quot;);  # for ERROR (red)
+</code></pre>
 
 
 
