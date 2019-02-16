@@ -1,3 +1,7 @@
+---
+title: Installing Packages
+---
+
 Installing packages is easy. You can use the pkg function for this.
 
     use Rex -feature => ['1.0'];

@@ -1,3 +1,7 @@
+---
+title: Writing custom resources
+---
+
 Resoures are the units that are responsible to manage your configurations. 
 Resources have a state. Compared to remote execution functions, that means, 
 that a resource is only applied if the remote system is not in the specific

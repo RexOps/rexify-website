@@ -1,3 +1,7 @@
+---
+title: Manage your Amazon EC2 instances
+---
+
 ## Starting Point
 
 In this howto i will show you how to create and manage your Amazon EC2 instances.

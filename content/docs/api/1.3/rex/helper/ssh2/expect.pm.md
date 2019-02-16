@@ -1,3 +1,7 @@
+---
+title: Expect.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [DEPENDENCIES](#DEPENDENCIES)

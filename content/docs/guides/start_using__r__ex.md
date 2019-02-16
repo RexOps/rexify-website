@@ -1,3 +1,7 @@
+---
+title: Howto start using (R)?ex
+---
+
 This is a small howto showing the first steps with Rex.
 
 # Basic Architecture

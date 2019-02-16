@@ -1,3 +1,7 @@
+---
+title: Rsync.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [DEPENDENCIES](#DEPENDENCIES)

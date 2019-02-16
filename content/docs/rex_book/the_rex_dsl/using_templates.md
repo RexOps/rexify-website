@@ -1,3 +1,7 @@
+---
+title: Using templates
+---
+
 A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.
 
 The default template engine is a special Rex template engine. The syntax is a bit like php or erb. But you can use any template engine you want. Just browse cpan and find one you like.

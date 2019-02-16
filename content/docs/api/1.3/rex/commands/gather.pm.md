@@ -1,3 +1,7 @@
+---
+title: Gather.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [SYNOPSIS](#SYNOPSIS)

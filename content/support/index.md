@@ -1,3 +1,7 @@
+---
+title: Support for Rex
+---
+
 ## Community Support
 
 Rex is an opensource project driven and supported by its community. If you need help you're invited to join us on our [user group](https://groups.google.com/forum/#!forum/rex-users) or on irc / freenode.

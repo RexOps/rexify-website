@@ -1,3 +1,7 @@
+---
+title: Grouping servers
+---
+
 Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.
 
     group frontends => "frontend01", "frontend02", "frontend03";

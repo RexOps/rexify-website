@@ -1,3 +1,7 @@
+---
+title: Config.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [EXPORTED METHODS](#EXPORTED-METHODS)

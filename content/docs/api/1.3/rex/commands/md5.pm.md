@@ -1,3 +1,7 @@
+---
+title: MD5.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [SYNOPSIS](#SYNOPSIS)

@@ -1,3 +1,7 @@
+---
+title: Just enough Perl for Rex
+---
+
 Perl is a scripting language designed to keep easy things easy, and make hard things possible. In this tutorial you will learn just enough Perl to write your own Rex tasks.
 
 If you have suggestions or wishes, please post a comment, tell us in our \#rex channel on freenode, or just send a pull request against the GitHub repository.

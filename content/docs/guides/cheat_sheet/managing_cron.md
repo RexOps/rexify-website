@@ -1,3 +1,7 @@
+---
+title: Managing Cron
+---
+
 ### Manage cron jobs.
 
 cron\_entry($entry\_name, %options)

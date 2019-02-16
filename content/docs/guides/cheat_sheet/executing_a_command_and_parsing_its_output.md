@@ -1,3 +1,7 @@
+---
+title: Executing a command and parsing its output
+---
+
 ### run($command, %options)
 
 Run a remote command and returns its output.

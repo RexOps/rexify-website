@@ -1,3 +1,7 @@
+---
+title: Version Control with Git
+---
+
 We recommend you to use a version control system for your development. Especially if you're working in a team it will bring you many advantages. Also if you want to see the difference between two versions of the same file you can ask your vcs system.
 
 A working vcs is also the base to work in teams. So every teammate can be sure that he/she has the latest available version of the files.

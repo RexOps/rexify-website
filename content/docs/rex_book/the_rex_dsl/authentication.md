@@ -1,3 +1,7 @@
+---
+title: Authentication
+---
+
 Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.
 
 Those SSH implementations support many different authentication methods like passwords, key based or Kerberos authentication, or using and forwarding SSH agent. If you don't specify one of them explicitly, Rex will try to figure out which one to use, but that may or may not work for you, or be the one you expected. Rex also tries to use the current user's username for authentication if it's not specified with user.

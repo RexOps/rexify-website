@@ -1,3 +1,7 @@
+---
+title: Notify.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [SYNOPSIS](#SYNOPSIS)

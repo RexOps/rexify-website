@@ -1,3 +1,7 @@
+---
+title: Rex.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [GETTING HELP](#GETTING-HELP)

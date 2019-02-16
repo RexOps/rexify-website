@@ -1,3 +1,7 @@
+---
+title: Get Rex
+---
+
 ## Apple Mac OS X
 
 To install Rex on Mac OSX you have to install libssh2 first. You can do this with MacPorts or with Homebrew.

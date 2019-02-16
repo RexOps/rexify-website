@@ -1,3 +1,7 @@
+---
+title: Working with packages
+---
+
 If you want to install or remove packages on your server Rex gives you a few functions to do this. Rex tries to guess the right package provider based on the platform Rex connects to.
 If you want to use a special package provider (for example, if you're using SunOS and want to use OpenCSW) you can define the package provider with `package_provider_for $os => $provider_name`.
 

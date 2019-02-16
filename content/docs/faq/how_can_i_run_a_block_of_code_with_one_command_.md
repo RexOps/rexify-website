@@ -1,3 +1,7 @@
+---
+title: How can I run a block of code with one command?
+---
+
 You can use the ShellBlock module. This module can be installed by running:
 
     $ rexify --use Rex::Misc::ShellBlock

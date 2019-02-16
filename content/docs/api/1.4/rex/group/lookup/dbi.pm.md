@@ -1,3 +1,7 @@
+---
+title: DBI.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [SYNOPSIS](#SYNOPSIS)

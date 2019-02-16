@@ -1,3 +1,7 @@
+---
+title: Ferenc Erki - (R)?ex Core Developer
+---
+
 <table>
 <colgroup>
 <col width="50%" />

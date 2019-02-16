@@ -1,3 +1,7 @@
+---
+title: Getting information of the environment
+---
+
 Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.
 
 Rex comes with a hardware gathering module. To display all the things Rex knows about the environment your can create a test task that just dumps all the information.

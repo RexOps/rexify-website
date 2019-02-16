@@ -1,3 +1,7 @@
+---
+title: How can I pass parameters to a task?
+---
+
     task 'mytask', sub {
       my $parameters = shift;
       my $parameter1_value = $parameters->{parameter1};

@@ -1,3 +1,7 @@
+---
+title: ParamLookup.pm
+---
+
 -   [NAME](#NAME)
 -   [SYNOPSIS](#SYNOPSIS)
 -   [LOOKUP](#LOOKUP)

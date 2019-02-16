@@ -1,3 +1,7 @@
+---
+title: Amazon.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [EXAMPLES](#EXAMPLES)

@@ -1,3 +1,7 @@
+---
+title: Base.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [METHODS](#METHODS)

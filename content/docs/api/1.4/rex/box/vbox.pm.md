@@ -1,3 +1,7 @@
+---
+title: VBox.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [EXAMPLES](#EXAMPLES)

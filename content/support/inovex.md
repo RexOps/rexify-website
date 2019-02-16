@@ -1,3 +1,7 @@
+---
+title: inovex - Enabling Your Digital Future
+---
+
 <table>
 <colgroup>
 <col width="50%" />

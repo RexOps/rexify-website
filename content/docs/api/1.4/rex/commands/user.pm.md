@@ -1,3 +1,7 @@
+---
+title: User.pm
+---
+
 -   [NAME](#NAME)
 -   [DESCRIPTION](#DESCRIPTION)
 -   [SYNOPSIS](#SYNOPSIS)

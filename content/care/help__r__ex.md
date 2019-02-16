@@ -1,3 +1,7 @@
+---
+title: Contribute to (R)?ex
+---
+
 There is no company behind (R)?ex. Everything is developed by volunteers around the globe during their free time. (R)?ex is a free, open source project. Every contribution is welcome.
 
 ## Get in contact

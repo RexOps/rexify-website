@@ -1,3 +1,7 @@
+---
+title: Managing users and groups
+---
+
 Manage local user database.
 
 ### account($user\_name, %options)

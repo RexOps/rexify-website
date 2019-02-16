@@ -1,3 +1,7 @@
+---
+title: Installing and configuring a service
+---
+
 The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the file, pkg and service functions.
 
 ### file($remote\_file, %options)

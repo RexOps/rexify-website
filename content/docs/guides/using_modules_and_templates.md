@@ -1,3 +1,7 @@
+---
+title: Using Modules and Templates
+---
+
 Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.
 
 In this example you will learn how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.
