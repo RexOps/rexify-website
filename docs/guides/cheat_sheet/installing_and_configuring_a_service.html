@@ -5,7 +5,7 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Box.pm</title>
+      <title>Installing and configuring a service</title>
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
       <link href="/rexify-website/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
@@ -88,168 +88,93 @@
 <p>
 » <a href="/rexify-website/index.html">Home</a>
 » <a href="docs/index.html">Docs</a>
-» <a href="api/index.html">Api</a>
-» <a href="1.3/index.html">1.3</a>
-» <a href="rex/index.html">Rex</a>
-» <a href="commands/index.html">Commands</a>
-» <a href="/rexify-website/docs/api/1.3/rex/commands/box.pm.html">Box.pm</a>
+» <a href="guides/index.html">Guides</a>
+» <a href="cheat_sheet/index.html">Cheat_sheet</a>
+» <a href="/rexify-website/docs/guides/cheat_sheet/installing_and_configuring_a_service.html">Installing and configuring a service</a>
 </p>
 
               
-              <h1>Box.pm</h1>
-              <ul>
-<li><a href="#NAME">NAME</a></li>
-<li><a href="#DESCRIPTION">DESCRIPTION</a></li>
-<li><a href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a href="#EXPORTED-FUNCTIONS">EXPORTED FUNCTIONS</a>
+              <h1>Installing and configuring a service</h1>
+              <p>The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the file, pkg and service functions.</p>
+
+<h3 id="fileremote_fileoptions">file($remote_file, %options)</h3>
+
+<p>Manage files on remote systems.</p>
+
+<h4 id="options">Options</h4>
+
 <ul>
-<li><a href="#new-name-box_name-">new(name =&gt; $box_name)</a></li>
-<li><a href="#box-sub-">box(sub {})</a></li>
-<li><a href="#list_boxes">list_boxes</a></li>
-<li><a href="#get_box-box_name-">get_box($box_name)</a></li>
-<li><a href="#boxes-action-data-">boxes($action, @data)</a></li>
-</ul></li>
+<li>ensure - Defines the state of the file. Valid parameters are present, absent, directory.</li>
+<li>source - The local file that should be uploaded to the remote server.</li>
+<li>content - Set the content directly. Can be used together with the template() function.</li>
+<li>owner - The owner of the file.</li>
+<li>group - The group the file should belong to.</li>
+<li>mode - The file system privileges the file should have.</li>
+<li>no_overwrite - If set to TRUE the file won&#39;t be overwritten if the file already exists.</li>
+<li>on_change - A callback function that gets called when the file state changed. (For example if the file content was modified).</li>
 </ul>
 
-<h1 id="name">NAME</h1>
+<!-- -->
 
-<p>Rex::Commands::Box - Functions / Class to manage Virtual Machines</p>
-
-<h1 id="description">DESCRIPTION</h1>
-
-<p>This is a Module to manage Virtual Machines or Cloud Instances in a simple way. Currently it supports Amazon, KVM and VirtualBox.</p>
-
-<p>Version &lt;= 1.0: All these functions will not be reported.</p>
-
-<h1 id="synopsis">SYNOPSIS</h1>
-
-<pre><code> use Rex::Commands::Box;
-
- set box =&gt; &quot;VBox&quot;;
-
- group all_my_boxes =&gt; map { get_box($_-&gt;{name})-&gt;{ip} } list_boxes;
-
- task mytask =&gt; sub {
-
-   box {
-     my ($box) = @_;
-     $box-&gt;name(&quot;boxname&quot;);
-     $box-&gt;url(&quot;http://box.rexify.org/box/base-image.box&quot;);
-
-     $box-&gt;network(1 =&gt; {
-      type =&gt; &quot;nat&quot;,
-     });
-
-     $box-&gt;network(1 =&gt; {
-      type =&gt; &quot;bridged&quot;,
-      bridge =&gt; &quot;eth0&quot;,
-     });
-
-     $box-&gt;forward_port(ssh =&gt; [2222, 22]);
-
-     $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
-
-     $box-&gt;auth(
-      user =&gt; &quot;root&quot;,
-      password =&gt; &quot;box&quot;,
-     );
-
-     $box-&gt;setup(qw/task_to_customize_box/);
-
-   };
-
- };
+<pre><code>file &quot;/etc/ntpd.conf&quot;,
+  ensure =&gt; &quot;present&quot;,
+  source =&gt; &quot;files/ntpd.conf&quot;,
+  owner  =&gt; &quot;root&quot;,
+  group  =&gt; &quot;root&quot;,
+  mode   =&gt; 644,
+  on_change =&gt; sub {
+    service ntpd =&gt; &quot;restart&quot;;
+  };
 </code></pre>
 
-<h1 id="exportedfunctions">EXPORTED FUNCTIONS</h1>
+<h3 id="pkgnameoptions">pkg($name, %options)</h3>
 
-<h2 id="newnamegtbox_name">new(name =&gt; $box_name)</h2>
+<p>Install a package on the remote system.</p>
 
-<p>Constructor if used in OO mode.</p>
+<h4 id="options">Options</h4>
 
-<pre><code> my $box = Rex::Commands::Box-&gt;new(name =&gt; &quot;box_name&quot;);
+<ul>
+<li>ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.</li>
+<li>on_change - A called function that gets called when the package state changed. (For example when it was updated)</li>
+</ul>
+
+<!-- -->
+
+<pre><code>pkg &quot;ntpd&quot;,
+  ensure =&gt; &quot;latest&quot;,
+  on_change =&gt; sub {
+    service ntpd =&gt; &quot;restart&quot;;
+  };
 </code></pre>
 
-<h2 id="boxsub">box(sub {})</h2>
+<h3 id="service">service</h3>
 
-<p>With this function you can create a new Rex/Box. The first parameter of this function is the Box object. With this object you can define your box.</p>
+<p>Manage the state of a service.</p>
 
-<pre><code> box {
-   my ($box) = @_;
-   $box-&gt;name(&quot;boxname&quot;);
-   $box-&gt;url(&quot;http://box.rexify.org/box/base-image.box&quot;);
+<p>This function can be called as a resource or as a normal function to directly stop/start/restart/... services.</p>
 
-   $box-&gt;network(1 =&gt; {
-    type =&gt; &quot;nat&quot;,
-   });
+<h4 id="optionsforcallingasaresource">Options (for calling as a resource)</h4>
 
-   $box-&gt;network(1 =&gt; {
-    type =&gt; &quot;bridged&quot;,
-    bridge =&gt; &quot;eth0&quot;,
-   });
+<ul>
+<li>ensure - Defines the state of the service. Valid parameters are started, stopped.</li>
+<li>start - Custom command to start the service.</li>
+<li>stop - Custom command to stop the service.</li>
+<li>status - Custom command to get the status of a service.</li>
+<li>restart - Custom command to restart a service.</li>
+<li>reload - Custom command to reload a service.</li>
+</ul>
 
-   $box-&gt;forward_port(ssh =&gt; [2222, 22]);
+<h4 id="exampleforcallingasresource">Example for calling as resource</h4>
 
-   $box-&gt;share_folder(myhome =&gt; &quot;/home/myuser&quot;);
-
-   $box-&gt;auth(
-    user =&gt; &quot;root&quot;,
-    password =&gt; &quot;box&quot;,
-   );
-
-   $box-&gt;setup(qw/task_to_customize_box/);
- };
+<pre><code>service &quot;nptd&quot;,
+  ensure =&gt; &quot;started&quot;;
 </code></pre>
 
-<h2 id="list_boxes">list_boxes</h2>
+<h4 id="exampleforcallingasfunction">Example for calling as function</h4>
 
-<p>This function returns an array of hashes containing all information that can be gathered from the hypervisor about the Rex/Box. This function doesn&#39;t start a Rex/Box.</p>
+<p>service ntpd =&gt; &quot;restart&quot;;</p>
 
-<pre><code> use Data::Dumper;
- task &quot;get_infos&quot;, sub {
-   my @all_boxes = list_boxes;
-   print Dumper(\@all_boxes);
- };
-</code></pre>
-
-<h2 id="get_boxbox_name">get_box($box_name)</h2>
-
-<p>This function tries to gather all information of a Rex/Box. This function also starts a Rex/Box to gather all information of the running system.</p>
-
-<pre><code> use Data::Dumper;
- task &quot;get_box_info&quot;, sub {
-   my $data = get_box($box_name);
-   print Dumper($data);
- };
-</code></pre>
-
-<h2 id="boxesactiondata">boxes($action, @data)</h2>
-
-<p>With this function you can control your boxes. Currently there are 3 actions.</p>
-
-<p>init <br>
-This action can only be used if you&#39;re using a YAML file to describe your Rex/Boxes.</p>
-
-<pre><code> task &quot;prepare_boxes&quot;, sub {
-   boxes &quot;init&quot;;
- };
-</code></pre>
-
-<p>start <br>
-This action start one or more Rex/Boxes.</p>
-
-<pre><code> task &quot;start_boxes&quot;, sub {
-   boxes &quot;start&quot;, &quot;box1&quot;, &quot;box2&quot;;
- };
-</code></pre>
-
-<p>stop <br>
-This action stop one or more Rex/Boxes.</p>
-
-<pre><code> task &quot;stop_boxes&quot;, sub {
-   boxes &quot;stop&quot;, &quot;box1&quot;, &quot;box2&quot;;
- };
-</code></pre>
+<p> </p>
 
 
 
