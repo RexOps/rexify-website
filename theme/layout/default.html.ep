@@ -68,6 +68,7 @@
 
          <div id="content_container">
             <div id="content">
+              %= include 'skin/rexify.org/_breadcrumb';
               
               <h1><%= $page->title %></h1>
               <%= content %>
