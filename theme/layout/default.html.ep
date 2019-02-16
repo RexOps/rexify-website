@@ -69,6 +69,7 @@
          <div id="content_container">
             <div id="content">
               
+              <h1><%= $page->title %></h1>
               <%= content %>
 
             </div>
