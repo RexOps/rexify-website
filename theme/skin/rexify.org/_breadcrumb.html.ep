@@ -1,8 +1,18 @@
-% my @anc = $page->ancestors;
-<p>
-% for my $a_o (reverse @anc) {
-&raquo; <a href="<%= $a_o->generate_url %>"><%= $a_o->name %></a>
-% }
-&raquo; <%= $page->name %>
-</p>
+% my $basename = $page->basename;
+% my $dirname = $page->dirname;
+% my @levels = split '/', $dirname;
+% my $breadcrumb = [ { title => 'Home', link => '/index.html' } ];
 
+% for my $dir (@levels) {
+    % next if $dir eq '';
+    % next if lc($page->title) eq lc($dir);
+    % push @{$breadcrumb}, { title => ucfirst($dir), link => "$dir/index.html" } ;
+% }
+
+% push @{$breadcrumb}, { title => $page->title, link => $page->path } ;
+
+<p>
+% for my $level (@{$breadcrumb}) {
+&raquo; <a href="<%= $level->{link} %>"><%= $level->{title} %></a>
+% }
+</p>
