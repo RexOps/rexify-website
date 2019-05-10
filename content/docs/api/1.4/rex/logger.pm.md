@@ -36,14 +36,14 @@ If you set this variable to 1 nothing will be logged.
 $format  
 You can define the logging format with the following parameters.
 
-%D - Appends the current date yyyy-mm-dd HH:mm:ss
+%%D - Appends the current date yyyy-mm-dd HH:mm:ss
 
-%h - The target host
+%%h - The target host
 
-%p - The pid of the running process
+%%p - The pid of the running process
 
-%l - Loglevel (INFO or DEBUG)
+%%l - Loglevel (INFO or DEBUG)
 
-%s - The Logstring
+%%s - The Logstring
 
 Default is: \[%D\] %l - %s

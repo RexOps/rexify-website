@@ -25,4 +25,4 @@ This function will check if $variable is defined. If yes, it will return the val
 
 You can use this function inside your templates.
 
-     ServerTokens <%= is_defined($::server_tokens, "Prod") %>
+     ServerTokens <%%= is_defined($::server_tokens, "Prod") %>

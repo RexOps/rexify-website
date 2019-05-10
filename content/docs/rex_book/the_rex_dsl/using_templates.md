@@ -4,7 +4,7 @@ The default template engine is a special Rex template engine. The syntax is a bi
 
 For example:
 
-    Hello <%= $name %>!
+    Hello <%%= $name %>!
 
 If $name contains "World" this template would result in the string Hello World!. This is very usefull if you have to maintain a large set of nearly identical configuration files.
 
@@ -26,11 +26,11 @@ First you have to create it
     skip-external-locking
     max_allowed_packet      = 64M
     thread_stack            = 192K
-    max_connections         = <%= exists $conf->{"max_connections"} ? $conf->{"max_connections"} : "1000" %>
+    max_connections         = <%%= exists $conf->{"max_connections"} ? $conf->{"max_connections"} : "1000" %>
 
     max_connect_errors      = 1000
-    table_cache             = <%= exists $conf->{"table_cache"} ? $conf->{"table_cache"} : "5000" %>
-    table_open_cache        = <%= exists $conf->{"table_open_cache"} ? $conf->{"table_open_cache"} : "5000" %>
+    table_cache             = <%%= exists $conf->{"table_cache"} ? $conf->{"table_cache"} : "5000" %>
+    table_open_cache        = <%%= exists $conf->{"table_open_cache"} ? $conf->{"table_open_cache"} : "5000" %>
     thread_concurrency      = 10
 
     #
@@ -80,8 +80,8 @@ When you want to deliver a rexfile that includes the templates, you can use inli
 
     __DATA__
     @test
-    This is a test written by <%= $test->{author} %>
-    for a project called <%= $test->{target} %>
+    This is a test written by <%%= $test->{author} %>
+    for a project called <%%= $test->{target} %>
     @end
 
 The `__DATA__` section is the last section of the Rexfile. The first parameter of the template method call gets the name of the inline template. Note that names of inline templates begin with `@`.
@@ -117,13 +117,13 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
 
     __DATA__
     @test
-    This is a test written by <%= $test->{author} %>
-    for a project called <%= $test->{target} %>
+    This is a test written by <%%= $test->{author} %>
+    for a project called <%%= $test->{target} %>
     @end
 
     @rex
-    Contribution by <%= $test->{author} %>
-    for a project called <%= $test->{target} %>
+    Contribution by <%%= $test->{author} %>
+    for a project called <%%= $test->{target} %>
     @end
 
 Now we just look at the `__DATA__` section: You notice the token `@end`. This is used to separate the templates. At the end of each template (except for the last one) this token is needed. Otherwise Rex will use everything up to the first `@end` as the template which is most likely too much.

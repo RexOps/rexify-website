@@ -598,7 +598,7 @@ Set a configuration parameter. These variables can be used in templates as well.
 
 Or in a template
 
-     DB: <%= $::database %>
+     DB: <%%= $::database %>
 
 The following list of configuration parameters are Rex specific:
 
@@ -614,7 +614,7 @@ Get a configuration parameter.
 
 Or in a template
 
-     DB: <%= $::database %>
+     DB: <%%= $::database %>
 
 ## before($task =&gt; sub {})
 
@@ -685,15 +685,15 @@ Note: must come after the definition of the specified task
 
 You can define the logging format with the following parameters.
 
-%D - Appends the current date yyyy-mm-dd HH:mm:ss
+%%D - Appends the current date yyyy-mm-dd HH:mm:ss
 
-%h - The target host
+%%h - The target host
 
-%p - The pid of the running process
+%%p - The pid of the running process
 
-%l - Loglevel (INFO or DEBUG)
+%%l - Loglevel (INFO or DEBUG)
 
-%s - The Logstring
+%%s - The Logstring
 
 Default is: \[%D\] %l - %s
 
@@ -778,13 +778,13 @@ task "mytask", "myserver", sub { my $myvar = { name =&gt; "foo", sys =&gt; "bar"
 
 You can define the format of the say() function.
 
-%D - The current date yyyy-mm-dd HH:mm:ss
+%%D - The current date yyyy-mm-dd HH:mm:ss
 
-%h - The target host
+%%h - The target host
 
-%p - The pid of the running process
+%%p - The pid of the running process
 
-%s - The Logstring
+%%s - The Logstring
 
 You can also define the following values:
 

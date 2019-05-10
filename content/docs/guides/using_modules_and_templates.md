@@ -119,9 +119,9 @@ Now we can create our template. The default template of Rex looks similar to oth
     filegen peerstats file peerstats type day enable
     filegen clockstats file clockstats type day enable
 
-    <% for my $server (@{ $ntp_servers }) { %>
-    server <%= $server %>
-    <% } %>
+    <%% for my $server (@{ $ntp_servers }) { %>
+    server <%%= $server %>
+    <%% } %>
 
 ## Predefined Variables
 
@@ -203,7 +203,7 @@ For example this is the output of a CentOS VM
 
 You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.
 
-    Listen <%= $eth1_ip %>:80
+    Listen <%%= $eth1_ip %>:80
 
 ## Using the Module
 

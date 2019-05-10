@@ -26,13 +26,13 @@ This module is the base class for hardware/information gathering.
 Returns a hash with the wanted information.
 
      task "get-info", "server1", sub {
-       %hw_info = Rex::Hardware->get(qw/ Host Network /);
+       %%hw_info = Rex::Hardware->get(qw/ Host Network /);
      };
 
 Or if you want to get all information
 
      task "get-all-info", "server1", sub {
-       %hw_info = Rex::Hardware->get(qw/ All /);
+       %%hw_info = Rex::Hardware->get(qw/ All /);
      };
 
 Available modules:
