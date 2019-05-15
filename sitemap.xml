@@ -937,30 +937,6 @@
         <lastmod>2019-05-15</lastmod>
     </url>
     <url>
-        <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/executing_a_command_and_parsing_its_output.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-05-15</lastmod>
-    </url>
-    <url>
-        <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/installing_and_configuring_a_service.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-05-15</lastmod>
-    </url>
-    <url>
-        <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/managing_cron.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-05-15</lastmod>
-    </url>
-    <url>
-        <loc>https://rexops.github.io/rexify-website/docs/guides/cheat_sheet/managing_users_and_groups.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-05-15</lastmod>
-    </url>
-    <url>
         <loc>https://rexops.github.io/rexify-website/docs/guides/cloud_management/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>

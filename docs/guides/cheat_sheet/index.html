@@ -96,7 +96,192 @@
 
               
               <h1>Cheat Sheet</h1>
-              
+              <h2 id="executingacommandandparsingitsoutput">Executing a command and parsing its output</h2>
+
+<h3 id="runcommandoptions">run($command, %options)</h3>
+
+<p>Run a remote command and returns its output.</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>cwd - Work directory for the command.</li>
+<li>only_if - Executes the command only if the condition completes successfully.</li>
+<li>unless - Executes the command only unless the condition completes successfully.</li>
+<li>only_notified - queues the command, to be executed upon notification.</li>
+<li>env - sets environment variables for the command.</li>
+<li>timeout - try to terminate the command after the given amount of seconds.</li>
+<li>auto_die - die if the command returns with a non-zero exit code.</li>
+<li>command - the command that should be executed.</li>
+<li>creates - If the file given with this option already exists, the command won&#39;t be executed.</li>
+</ul>
+
+<h4 id="exampletojustrunacommandifafiledoesntexists">Example to just run a command if a file doesn&#39;t exists</h4>
+
+<pre><code>run &quot;/tmp/install_service.sh&quot;,
+  creates =&gt; &quot;/opt/myservice/conf.xml&quot;;
+</code></pre>
+
+<h4 id="exampletorunacommandandgetitsoutput">Example to run a command and get its output</h4>
+
+<pre><code>my @output_lines = run &quot;df -h&quot;;
+</code></pre>
+
+<h2 id="installingandconfiguringaservice">Installing and configuring a service</h2>
+
+<p>The most used functions in configuration management is installing/managing services and managing configuration files. In Rex you can do this with the file, pkg and service functions.</p>
+
+<h3 id="fileremote_fileoptions">file($remote_file, %options)</h3>
+
+<p>Manage files on remote systems.</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>ensure - Defines the state of the file. Valid parameters are present, absent, directory.</li>
+<li>source - The local file that should be uploaded to the remote server.</li>
+<li>content - Set the content directly. Can be used together with the template() function.</li>
+<li>owner - The owner of the file.</li>
+<li>group - The group the file should belong to.</li>
+<li>mode - The file system privileges the file should have.</li>
+<li>no_overwrite - If set to TRUE the file won&#39;t be overwritten if the file already exists.</li>
+<li><p>on_change - A callback function that gets called when the file state changed. (For example if the file content was modified).</p>
+
+<pre><code>file &quot;/etc/ntpd.conf&quot;,
+  ensure =&gt; &quot;present&quot;,
+  source =&gt; &quot;files/ntpd.conf&quot;,
+  owner  =&gt; &quot;root&quot;,
+  group  =&gt; &quot;root&quot;,
+  mode   =&gt; 644,
+  on_change =&gt; sub {
+    service ntpd =&gt; &quot;restart&quot;;
+  };
+</code></pre></li>
+</ul>
+
+<h3 id="pkgnameoptions">pkg($name, %options)</h3>
+
+<p>Install a package on the remote system.</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.</li>
+<li><p>on_change - A called function that gets called when the package state changed. (For example when it was updated)</p>
+
+<pre><code>pkg &quot;ntpd&quot;,
+  ensure =&gt; &quot;latest&quot;,
+  on_change =&gt; sub {
+    service ntpd =&gt; &quot;restart&quot;;
+  };
+</code></pre></li>
+</ul>
+
+<h3 id="service">service</h3>
+
+<p>Manage the state of a service.</p>
+
+<p>This function can be called as a resource or as a normal function to directly stop/start/restart/... services.</p>
+
+<h4 id="optionsforcallingasaresource">Options (for calling as a resource)</h4>
+
+<ul>
+<li>ensure - Defines the state of the service. Valid parameters are started, stopped.</li>
+<li>start - Custom command to start the service.</li>
+<li>stop - Custom command to stop the service.</li>
+<li>status - Custom command to get the status of a service.</li>
+<li>restart - Custom command to restart a service.</li>
+<li>reload - Custom command to reload a service.</li>
+</ul>
+
+<h4 id="exampleforcallingasresource">Example for calling as resource</h4>
+
+<pre><code>service &quot;nptd&quot;,
+  ensure =&gt; &quot;started&quot;;
+</code></pre>
+
+<h4 id="exampleforcallingasfunction">Example for calling as function</h4>
+
+<pre><code>service ntpd =&gt; &quot;restart&quot;;
+</code></pre>
+
+<h2 id="managingcron">Managing Cron</h2>
+
+<h3 id="managecronjobs.">Manage cron jobs.</h3>
+
+<p>cron_entry($entry_name, %options)</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>ensure - Defines the state of the cron entry. Valid parameters are present, absent.</li>
+<li>command - The command to run.</li>
+<li>minute - The minute when to run the job.</li>
+<li>hour - The hour when to run the job.</li>
+<li>month - The month when to run the job.</li>
+<li>day_of_week</li>
+<li>day_of_month</li>
+<li>user - The user for the cron job.</li>
+<li><p>on_change - A callback function that gets called when the cron entry state changed.</p>
+
+<pre><code>cron_entry &quot;run-rkhunter&quot;,
+  command =&gt; &quot;rkhunter --cronjob&quot;,
+  minute  =&gt; 5,
+  hour    =&gt; 1;
+</code></pre></li>
+</ul>
+
+<h2 id="managingusersandgroups">Managing users and groups</h2>
+
+<p>Manage local user database.</p>
+
+<h3 id="accountuser_nameoptions">account($user_name, %options)</h3>
+
+<p>Manage user accounts.</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>ensure - Defines the state of the account. Valid parameters are present, absent.</li>
+<li>uid - The user id.</li>
+<li>groups - The groups the user should be member of. The first group is the primary.</li>
+<li>home - The home directory.</li>
+<li>expire - Date when the account will expire. Format: YYYY-MM-DD</li>
+<li>password - Cleartext password for the user.</li>
+<li>crypt_password - Crypted password for the user. Available on Linux, OpenBSD and NetBSD.</li>
+<li>system - Create a system user.</li>
+<li>create_home - If the home directory should be created. Valid parameters are TRUE, FALSE.</li>
+<li>ssh_key - Add ssh key to authorized_keys.</li>
+<li><p>comment</p>
+
+<pre><code>account &quot;krimdomu&quot;,
+   ensure         =&gt; &quot;present&quot;,  # default
+   uid            =&gt; 509,
+   home           =&gt; &#39;/home/krimdomu&#39;,
+   comment        =&gt; &#39;User Account&#39;,
+   expire         =&gt; &#39;2011-05-30&#39;,
+   groups         =&gt; [ &#39;users&#39;, &#39;wheel&#39; ],
+   password       =&gt; &#39;blahblah&#39;,
+   create_home    =&gt; TRUE,
+   ssh_key        =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
+</code></pre></li>
+</ul>
+
+<h3 id="groupgroup_nameoptions">group($group_name, %options)</h3>
+
+<p>Manage groups.</p>
+
+<h4 id="options">Options</h4>
+
+<ul>
+<li>ensure - Defines the state of the group. Valid parameters are present, absent.</li>
+<li>gid - The group id.</li>
+<li><p>system - Create a system group.</p>
+
+<pre><code>group &quot;users&quot;,
+  ensure =&gt; &quot;present&quot;;
+</code></pre></li>
+</ul>
 
 
 
