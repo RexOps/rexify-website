@@ -100,11 +100,17 @@
 
 <h1 id="basicarchitecture">Basic Architecture</h1>
 
-<p><img height="272" src="../../media/docs/archi.png" width="410">Rex is a server orchestration tool that doesn&#39;t need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
-To use Rex you don&#39;t need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.
-In fact, if you know a little bit perl it won&#39;t hurt you.
-The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.
-A task is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create rollback scenarios if something went wrong during the execution.</p>
+<p><img height="272" src="/rexify-website/rexify-website/public/images/skin/rexify.org/archi.png" style="float: right;" width="410"></p>
+
+<p>Rex is a server orchestration tool that doesn&#39;t need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.</p>
+
+<p>To use Rex you don&#39;t need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.</p>
+
+<p>In fact, if you know a little bit perl it won&#39;t hurt you.</p>
+
+<p>The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.</p>
+
+<p>A task is a bunch of related commands. For example installing a package, uploading the configuration file and starting the service. You can also call tasks from other tasks or create rollback scenarios if something went wrong during the execution.</p>
 
 <h1 id="requirements">Requirements</h1>
 
@@ -112,17 +118,20 @@ A task is a bunch of related commands. For example installing a package, uploadi
 
 <h2 id="centralmasterhost">Central Master Host</h2>
 
-<p>You can run Rex from your workstation or on a central master host.
-For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.
-On this host you also need some Perl modules installed. If you&#39;re using the provided packages or install Rex via cpanm the dependencies will be installed automatically.</p>
+<p>You can run Rex from your workstation or on a central master host.</p>
+
+<p>For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.</p>
+
+<p>On this host you also need some Perl modules installed. If you&#39;re using the provided packages or install Rex via cpanm the dependencies will be installed automatically.</p>
 
 <p>You can install Rex on a Linux host via a simple one-liner. For other systems please read the instructions on the Get Rex page.</p>
 
 <pre><code>$ curl -L https://get.rexify.org | perl - --sudo -n Rex
 </code></pre>
 
-<p>This command will install Rex on your system.
-We recommend to use our packages from the repository.</p>
+<p>This command will install Rex on your system.</p>
+
+<p>We recommend to use our packages from the repository.</p>
 
 <h2 id="managedhosts">Managed Hosts</h2>
 
@@ -143,24 +152,25 @@ We recommend to use our packages from the repository.</p>
 
 <p>Now change into this directory and create a file called Rexfile with the following contents:</p>
 
-<p>``` perl
-use Rex -feature =&gt; [&#39;1.3&#39;];</p>
+<pre><code>use Rex -feature =&gt; [&#39;1.3&#39;];
 
-<p>user &quot;my-user&quot;;
-password &quot;my-password&quot;;</p>
+user &quot;my-user&quot;;
+password &quot;my-password&quot;;
 
-<p>group myservers =&gt; &quot;mywebserver&quot;, &quot;mymailserver&quot;, &quot;myfileserver&quot;;</p>
+group myservers =&gt; &quot;mywebserver&quot;, &quot;mymailserver&quot;, &quot;myfileserver&quot;;
 
-<p>desc &quot;Get the uptime of all servers&quot;;
+desc &quot;Get the uptime of all servers&quot;;
 task &quot;uptime&quot;, group =&gt; &quot;myservers&quot;, sub {
    my $output = run &quot;uptime&quot;;
    say $output;
 };
-```</p>
+</code></pre>
 
-<p>This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command &quot;uptime&quot;.
-The special first line <code>use Rex -feature =&gt; [&#39;1.3&#39;];</code> enables all features that are available for version 1.3. If you want to know more about feature flags, please read this page.
-Change into the directory where you just created the Rexfile (in a terminal).</p>
+<p>This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command &quot;uptime&quot;.</p>
+
+<p>The special first line <code>use Rex -feature =&gt; [&#39;1.3&#39;];</code> enables all features that are available for version 1.3. If you want to know more about feature flags, please read this page.</p>
+
+<p>Change into the directory where you just created the Rexfile (in a terminal).</p>
 
 <pre><code>$ cd projects/my-first-rex-project
 $ rex uptime
@@ -177,8 +187,9 @@ task &quot;start_apache&quot;, group =&gt; &quot;myservers&quot;, sub {
 </code></pre>
 
 <p>This task will start the service apache2 on all the servers in the myservers group.
-Display all tasks in a Rexfile
-If you want to display all tasks in your Rexfile use the following command.</p>
+Display all tasks in a Rexfile</p>
+
+<p>If you want to display all tasks in your Rexfile use the following command.</p>
 
 <pre><code>$ rex -T
 Tasks
@@ -190,8 +201,9 @@ Server Groups
 
 <h2 id="authentication">Authentication</h2>
 
-<p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.
-To use key authentication just define your private and public key inside the Rexfile.</p>
+<p>In the previous example we showed you how you can login with a user and a password. But it is also possible to use key authentication.</p>
+
+<p>To use key authentication just define your private and public key inside the Rexfile.</p>
 
 <pre><code>user &quot;my-user&quot;;
 private_key &quot;/home/user/.ssh/id_rsa&quot;;
@@ -212,8 +224,9 @@ key_auth;
 
 <h2 id="managingservices">Managing Services</h2>
 
-<p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.
-In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
+<p>If you want to manage services you often need to upload a configuration file and to register the service to start at boot time.</p>
+
+<p>In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.</p>
 
 <pre><code># Rexfile
 use Rex -feature =&gt; [&#39;1.3&#39;];
@@ -244,10 +257,13 @@ task &quot;setup_ntp&quot;, group =&gt; &quot;all_servers&quot;, sub {
 };
 </code></pre>
 
-<p>That&#39;s all.
-This task will now install ntpd on your servers, upload a configuration file and start the service.
-You don&#39;t need to worry about the order of your commands. Rex will always executes your commands from top to bottom.
-To read more about <a href="../../docs/guides/using_modules_and_templates.html">using modules and templates please read this howto</a>.</p>
+<p>That&#39;s all.</p>
+
+<p>This task will now install ntpd on your servers, upload a configuration file and start the service.</p>
+
+<p>You don&#39;t need to worry about the order of your commands. Rex will always executes your commands from top to bottom.</p>
+
+<p>To read more about <a href="../../docs/guides/using_modules_and_templates.html">using modules and templates please read this howto</a>.</p>
 
 
 
