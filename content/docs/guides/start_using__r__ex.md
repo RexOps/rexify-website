@@ -6,7 +6,7 @@ This is a small howto showing the first steps with Rex.
 
 # Basic Architecture
 
-<img src="../../media/docs/archi.png" width="410" height="272" />Rex is a server orchestration tool that doesn't need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
+<img src="/public/images/skin/rexify.org/archi.png" width="410" height="272" />Rex is a server orchestration tool that doesn't need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
 To use Rex you don't need Perl knowledge at first. Rex uses a simple DSL to describe your servers. Indeed, it is also possible to use Rex from within your shell scripts without using perl at all.
 In fact, if you know a little bit perl it won't hurt you.
 The starting point of every Rex project is the so called Rexfile. You can think of this file like a Makefile. You can define tasks in this file.
