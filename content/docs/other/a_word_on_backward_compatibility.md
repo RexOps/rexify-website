@@ -50,8 +50,6 @@ This is the current list of feature flags:
 | 0.35                                   | 0.35      | This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters. |
 | 0.31                                   | 0.31      | To enable special authentication options for a server group. This will overwrite the default authentication options for a task. |
 
- 
-
 ## Howto enable Feature Flags
 
 You can enable feature flags in your Rexfile with the following code:
@@ -63,7 +61,3 @@ or even multiple ones like this:
 
     # Rexfile
     use Rex -feature => [qw(exec_autodie source_profile)];
-
- 
-
- 
