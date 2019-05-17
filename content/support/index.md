@@ -27,9 +27,9 @@ Get consulting, training and custom implementation services directly from a core
 
 <img style="float:left; padding-right: 50px; padding-bottom: 20px;" src="/public/images/skin/rexify.org/inovex_logo.png" width="80" />
 
-inovex, the IT project company specialising in data center engineering, is the first company which offers professionel support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centers.
+inovex, the IT project company specialising in data center engineering, is the first company which offers professional support for Rex, thereby emphasising the key importance of open source technologies in setting up and operating modern, cost-optimised data centers.
 
-With Rex as their software deployment, configuration management and automation solution, inovex experts can automize infrastructures very quickly and operate them efficiently.
+With Rex as their software deployment, configuration management and automation solution, inovex experts can automate infrastructures very quickly and operate them efficiently.
 
 So, if you're looking for professional Rex support, please contact us.
 
