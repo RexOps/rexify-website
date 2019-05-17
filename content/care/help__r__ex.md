@@ -34,4 +34,4 @@ One special case is hardware. There can't be enough hardware/environments where 
 
 We want to give a special thanks to the listed companies.
 
-[<img src="../../media/sponsors/adjust_transparent.png" width="278" height="86" />](https://www.adjust.com/) 
+[<img src="/public/images/skin/rexify.org/adjust_transparent.png" width="278" height="86" />](https://www.adjust.com/) 

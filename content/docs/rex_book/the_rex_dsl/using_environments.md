@@ -8,7 +8,7 @@ You can create environments for dev, staging and production machines. There is n
 
 The classic way is to have 3 environments. The development environment for integration tests, mostly with fewest machines. The staging environment, mostly with the same resource layers as production. And the production environment.
 
-<img src="../../media/book/book_env.png" width="619" height="464" />
+<img src="/public/images/skin/rexify.org/book_env.png" width="619" height="464" />
 
 ## Creating Environments
 
