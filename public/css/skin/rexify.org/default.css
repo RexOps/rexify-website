@@ -472,3 +472,26 @@ li.divider {
 
 .support_entry {
 }
+
+table thead {
+  background-color: #efefef;
+  margin: 5px;
+  padding: 5px;
+}
+
+table th {
+  background-color: #efefef;
+  margin: 5px;
+  padding: 5px;
+}
+
+table tr {
+  border-bottom: 1px dotted #e5e5e5;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+table td {
+  padding-bottom: 2px;
+  padding-top: 2px;
+}

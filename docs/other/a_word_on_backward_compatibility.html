@@ -113,19 +113,15 @@
 <table>
 <col>
 <col>
+<col>
 <thead>
+<tr>
+	<th><strong>Flag</strong></th>
+	<th><strong>Since</strong></th>
+	<th><strong>Description</strong></th>
+</tr>
 </thead>
 <tbody>
-<tr>
-	<td>----------------------------------------</td>
-	<td>-----------</td>
-	<td>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>
-</tr>
-<tr>
-	<td><strong>Flag</strong></td>
-	<td><strong>Since</strong></td>
-	<td><strong>Description</strong></td>
-</tr>
 <tr>
 	<td>1.3</td>
 	<td>1.3</td>
@@ -284,8 +280,6 @@
 </tbody>
 </table>
 
-<p> </p>
-
 <h2 id="howtoenablefeatureflags">Howto enable Feature Flags</h2>
 
 <p>You can enable feature flags in your Rexfile with the following code:</p>
@@ -297,13 +291,8 @@ use Rex -feature =&gt; [&#39;0.31&#39;];
 <p>or even multiple ones like this:</p>
 
 <pre><code># Rexfile
+use Rex -feature =&gt; [qw(exec_autodie source_profile)];
 </code></pre>
-
-<p>use Rex -feature =&gt; [qw(exec_autodie source_profile)];</p>
-
-<p> </p>
-
-<p> </p>
 
 
 
