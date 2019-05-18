@@ -119,7 +119,3 @@ If there is no built-in function that fits your needs for group creation, you ca
     my @list = ("some", "list", "entries");
     group mygroup => grep { /list/ } @list;
     group myserver => map {"s$_.domain.com"} qw(1 3 7);
-
- 
-
- 

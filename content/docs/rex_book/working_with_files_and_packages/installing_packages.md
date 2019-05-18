@@ -41,5 +41,3 @@ If you need to write a distribution independent module you can also use the case
        pkg $packages,
          ensure => "present";
     };
-
- 
