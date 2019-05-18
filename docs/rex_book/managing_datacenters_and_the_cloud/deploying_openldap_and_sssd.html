@@ -167,7 +167,7 @@ group client =&gt; &quot;auth01&quot;, &quot;fe[01..10]&quot;;
 
 <p>The default installation of OpenLDAP is not able to manage SSH Keys inside it. But there is a schema we will add to it later so that this is possible, too.</p>
 
-<p>If you consider to put your OpenLDAP installation to production i recommend you to read<a href="http://www.openldap.org/doc/admin24/replication.html">http://www.openldap.org/doc/admin24/replication.html</a> how to setup replication.</p>
+<p>If you consider to put your OpenLDAP installation to production i recommend you to read <a href="http://www.openldap.org/doc/admin24/replication.html">http://www.openldap.org/doc/admin24/replication.html</a> how to setup replication.</p>
 
 <p>This tutorial also do not cover the access control management. Please read <a href="http://www.openldap.org/doc/admin24/access-control.html">http://www.openldap.org/doc/admin24/access-control.html</a> for more information on this topic.</p>
 
@@ -262,7 +262,7 @@ ldap_account &quot;sampleuser&quot;,
   groups =&gt; [&#39;cn=ldapusers,ou=Groups,dc=rexify,dc=org&#39;];
 </code></pre>
 
-<p>This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd.
+<p>This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd. <br>
 Setup SSSD</p>
 
 <p>Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a task setup_client inside the Rexfile.</p>
@@ -308,13 +308,8 @@ base_dn: &#39;dc=rexify,dc=org&#39;
 filter: (&amp;(uid={{LOGIN_NAME}})(objectClass=posixAccount))
 #tls:
 #        verify: optional
+#        cafile: /etc/openldap/certs/cacert.pem
 </code></pre>
-
-<p>#        cafile: /etc/openldap/certs/cacert.pem</p>
-
-<p> </p>
-
-<p> </p>
 
 
 

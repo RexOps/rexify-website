@@ -225,13 +225,8 @@ map {
 
 <pre><code>my @list = (&quot;some&quot;, &quot;list&quot;, &quot;entries&quot;);
 group mygroup =&gt; grep { /list/ } @list;
+group myserver =&gt; map {&quot;s$_.domain.com&quot;} qw(1 3 7);
 </code></pre>
-
-<p>group myserver =&gt; map {&quot;s$_.domain.com&quot;} qw(1 3 7);</p>
-
-<p> </p>
-
-<p> </p>
 
 
 

@@ -95,7 +95,52 @@
 
               
               <h1>Rex Book (work in progress)</h1>
-              
+              <ul>
+<li><p><a href="/rexify-website/docs/rex_book/infrastructure/index.html">Infrastructure</a>  </p>
+
+<ul>
+<li><p><a href="/rexify-website/docs/rex_book/infrastructure/ssh_as_an_agent.html">SSH as an agent</a> <br>
+To setup an environment to work with Rex you don&#39;t have to do much. You have to install Rex on your workstation or a central administration server. For most distributions you&#39;ll find packages on the package server.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/infrastructure/version_control_with_git.html">Version Control with Git</a> <br>
+We recommend you to use a version control system for your development. Especially if you&#39;re working in a team it will bring you many advantages.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/infrastructure/example_of_a_complete_rex_code_infrastructure.html">Example of a complete Rex code infrastructure</a> <br>
+For maintainable and reusable code it is important to start with the right infrastructure choices and tools. In this chapter you will learn how to setup and design your project to achieve this.</p></li>
+</ul></li>
+<li><p><a href="/rexify-website/docs/rex_book/the_rex_dsl/index.html">The Rex DSL</a>  </p>
+
+<ul>
+<li><p><a href="/rexify-website/docs/rex_book/the_rex_dsl/authentication.html">Authentication</a> <br>
+Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/the_rex_dsl/grouping_servers.html">Grouping servers</a> <br>
+Rex offers you a powerfull way to group your servers. In this chapter you will learn the basics and also learn how to use databases to generate groups.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/the_rex_dsl/using_environments.html">Using Environments</a> <br>
+With environments it is easy to group your servers depending on the maturity of your configuration or your code. You can create environments for dev, staging and production machines. There is no limit for environments, so you can create as much as you need.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/the_rex_dsl/using_templates.html">Using templates</a> <br>
+A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.</p></li>
+</ul></li>
+<li><p><a href="/rexify-website/docs/rex_book/writing_modules/index.html">Writing Modules</a>  </p>
+
+<ul>
+<li><p><a href="/rexify-website/docs/rex_book/writing_modules/getting_information_of_the_environment.html">Getting information of the environment</a> <br>
+Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/writing_modules/writing_custom_resources.html">Writing custom resources</a> <br>
+Resoures are the units that are responsible to manage your configurations.</p></li>
+</ul></li>
+<li><p><a href="/rexify-website/docs/rex_book/working_with_files_and_packages/index.html">Working with Files and Packages</a>  </p>
+
+<ul>
+<li><p><a href="/rexify-website/docs/rex_book/working_with_files_and_packages/working_with_files.html">Working with Files</a> <br>
+One task in configuration management is managing files and keeping them in a consistant state. Rex gives you some easy to use functions to work with files.</p></li>
+<li><p><a href="/rexify-website/docs/rex_book/working_with_files_and_packages/installing_packages.html">Installing Packages</a> <br>
+Installing packages is easy. You can use the pkg function for this.</p></li>
+</ul></li>
+<li><p><a href="/rexify-website/docs/rex_book/managing_datacenters_and_the_cloud/index.html">Managing Datacenters and the Cloud</a>  </p>
+
+<ul>
+<li><a href="/rexify-website/docs/rex_book/managing_datacenters_and_the_cloud/deploying_openldap_and_sssd.html">Deploying OpenLDAP and SSSD</a> <br>
+OpenLDAP (http://www.openldap.org/) is an open source directory server widely used for account management. It is easy to setup and administrate. There are also some Webfrontends like http://phpldapadmin.sourceforge.net/ and https://www.ldap-account-manager.org/lamcms/. SSSD (https://fedorahosted.org/sssd/) is the acronym for System Security Services Daemon. With its help it is possible to to authenticate your linux users against an OpenLDAP directory server with some nifty additions like offline support.</li>
+</ul></li>
+</ul>
 
 
 
