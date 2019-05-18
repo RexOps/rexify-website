@@ -106,5 +106,3 @@ To use these information inside the Rexfile you can query them with the get\_sys
 You can also use these information inside your template. For example if you want to add the ip address of eth0 or the hostname into a file or change settings of an application based on memory size.
 
     Listen <%= $eth0_ip %>:80
-
- 

@@ -81,7 +81,3 @@ As of version 0.42.0, Rex supports Kerberos authentication through Net::OpenSSH:
 
     user 'root';
     krb5_auth;
-
- 
-
- 

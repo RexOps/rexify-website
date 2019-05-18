@@ -66,7 +66,7 @@ With Rex you can use ldap\_entry resource to manage these entries.
 
 The default installation of OpenLDAP is not able to manage SSH Keys inside it. But there is a schema we will add to it later so that this is possible, too.
 
-If you consider to put your OpenLDAP installation to production i recommend you to read<http://www.openldap.org/doc/admin24/replication.html> how to setup replication.
+If you consider to put your OpenLDAP installation to production i recommend you to read <http://www.openldap.org/doc/admin24/replication.html> how to setup replication.
 
 This tutorial also do not cover the access control management. Please read <http://www.openldap.org/doc/admin24/access-control.html> for more information on this topic.
 
@@ -154,7 +154,7 @@ Now lets create a sample group and user.
       sshPublicKey  => 'ssh-rsa AAAAB3NzaC1y...',
       groups => ['cn=ldapusers,ou=Groups,dc=rexify,dc=org'];
 
-This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd.
+This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd.  
 Setup SSSD
 
 Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a task setup\_client inside the Rexfile.
@@ -197,7 +197,3 @@ The configuration of this script can be done in the file /etc/ssh/pubkey.yaml. T
     #tls:
     #        verify: optional
     #        cafile: /etc/openldap/certs/cacert.pem
-
- 
-
- 

@@ -142,5 +142,3 @@ It is also possible to just supervise files if they are present or have special 
         group  => "root",
         mode   => 600;
     };
-
- 
