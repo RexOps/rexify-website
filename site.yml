@@ -4,7 +4,7 @@ site:
         title: Rexify statocles
         markdown:
             $class: Text::MultiMarkdown
-        base_url: https://rexops.github.io/rexify-website/
+        base_url: https://rexify.org
         theme:
             $ref: rexify
         apps:
@@ -72,7 +72,7 @@ gh_pages:
     class: Statocles::Deploy::Git
     args:
         branch: gh-pages
-        base_url: https://rexops.github.io/rexify-website/
+        base_url: https://rexify.org
 rexify:
     class: Statocles::Theme
     args:
