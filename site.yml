@@ -54,7 +54,7 @@ site:
                       - url: /docs/release_notes/index.html
                         title: release_notes
                         name: Release notes
-                      - url: /docs/api/index.html
+                      - url: https://metacpan.org/release/Rex
                         title: api
                         name: API
 basic_app:
