@@ -1,4 +1,4 @@
-Sitemap: https://rexops.github.io/rexify-website/sitemap.xml
+Sitemap: https://rexify.org/sitemap.xml
 User-Agent: *
 Disallow:
 
