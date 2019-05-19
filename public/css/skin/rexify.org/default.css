@@ -1,5 +1,5 @@
 body {
-   background-image: url(/public/images/skin/rexify.org/bg.gif);
+   background-image: url(/rexify-website/public/images/skin/rexify.org/bg.gif);
    background-repeat: no-repeat;
    background-color: #faf9f8;
 }
@@ -25,7 +25,7 @@ h1 {
 
 .top_div {
    background-color: #181818;
-   background-image: url(/public/images/skin/rexify.org/top_logo.png);
+   background-image: url(/rexify-website/public/images/skin/rexify.org/top_logo.png);
    background-repeat: no-repeat;
    background-position: 35px 0px;
    height: 70px;
@@ -52,13 +52,13 @@ h1 {
 
 #head-div {
    height: 381px;
-   background-image: url(/public/images/skin/rexify.org/head_bg.png);
+   background-image: url(/rexify-website/public/images/skin/rexify.org/head_bg.png);
    background-repeat: repeat-x;
 }
 
 #index-nav-div {
    height: 79px;
-   background-image: url(/public/images/skin/rexify.org/nav_bg.png);
+   background-image: url(/rexify-website/public/images/skin/rexify.org/nav_bg.png);
    background-repeat: no-repeat;
 }
 
@@ -164,7 +164,7 @@ h1 {
 .head_container {
    padding-left: 35px;
    padding-top: 20px;
-   background-image: url(/public/images/skin/rexify.org/header_pic1.png);
+   background-image: url(/rexify-website/public/images/skin/rexify.org/header_pic1.png);
    background-repeat: no-repeat;
    background-position: 500px 15px;
    height: 381px;
