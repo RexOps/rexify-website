@@ -1,0 +1,44 @@
+.tabs {
+  position: relative;
+  min-height: 880px; /* This part sucks */
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+.tab {
+    height: 77px;
+ /*  float: left; */
+}
+.tab label {
+  background: #eee; 
+  padding: 5px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px;
+  width: 75px;
+  display: block;
+}
+.tab input[type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 85px;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  height: 838px; /* container = 880; 880 - 2*padding - 2*border = 928 */
+  border: 1px solid #ccc; 
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-right: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+
