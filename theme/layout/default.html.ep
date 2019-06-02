@@ -49,6 +49,17 @@
 
          <div id="widgets_container">
             <div id="widgets">
+               % my $blog = $site->app('blog');
+               % my @posts = $blog->recent_posts(5, tags => 'news' );
+               % if ( @posts > 0 ) {
+               <h2>News</h2>
+                 % for my $page ( @posts ) {
+                   <p><b><%= $page->date->ymd %></b><br />
+                     <a href="<%= $blog->page_url($page) %>"><%= $page->title %></a><p>
+                   <p><%= $page->sections(0) %></p>
+                 % }
+               % }
+
                <h2>Conferences</h2>
                  <div class="news_widget">
                     <div class="news_date">2016-06-21</div>
