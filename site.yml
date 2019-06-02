@@ -10,6 +10,8 @@ site:
         apps:
             basic:
                 $ref: basic_app
+            blog:
+                $ref: blog
             public:
                 $ref: public
         deploy:
@@ -63,6 +65,11 @@ basic_app:
         store: 'content'
         url_root: '/'
         disable_content_template: 1
+blog:
+    class: Statocles::App::Blog
+    args:
+        store: 'blog'
+        url_root: '/blog'
 public:
     class: Statocles::App::Basic
     args:
