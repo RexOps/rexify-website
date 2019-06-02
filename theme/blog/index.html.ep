@@ -1,0 +1,9 @@
+<p>This is the blog</p>
+
+<p>And these are the posts:</p>
+
+<ul>
+% for my $page ( @$pages ) {
+    <li><a href="<%= $app->page_url($page) %>"><%= $page->title %></a></li>
+% }
+</ul>
