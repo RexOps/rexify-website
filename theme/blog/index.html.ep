@@ -1,0 +1,31 @@
+<h1>Blog</h1>
+
+% if ( $self->next || $self->prev ) {
+<div class="pagination pagination-centered pagination-small">
+  % my $prev_link = $self->prev // '#';
+  % my $next_link = $self->next // '#';
+  <ul>
+    <li><a href="<%= $prev_link %>">Previous</a></li>
+    <li><a href="<%= $next_link %>">Next</a></li>
+  </ul>
+</div>
+% }
+
+% for my $page ( @$pages ) {
+  % my @sections = $page->sections;
+<section>
+  <h2><a href="<%= $app->page_url($page) %>"><%= $page->title %></a></h2>
+  <div class="metadata">
+    <span class="date"><%= $page->date->ymd() %><% if ($page->author) { %></span>&nbsp;-&nbsp;<span class="author"><%= $page->author %></span><% } %>
+  </div>
+
+  <%= $sections[0] %>
+
+% if (@sections > 1) {
+  <div class="read-more">
+    <p><a href="<%= $app->page_url($page) %>">Read more...</a></p>
+  </div>
+% }
+</section>
+
+% }
