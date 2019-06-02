@@ -495,3 +495,22 @@ table td {
   padding-bottom: 2px;
   padding-top: 2px;
 }
+
+section h2 {
+    line-height: initial;
+    margin-bottom: 0;
+}
+
+section .metadata {
+    margin-top: 0;
+    font-size: smaller;
+    color: grey;
+}
+
+section p {
+    margin-top: 1ex;
+}
+
+#content section .read-more a {
+    font-size: smaller;
+}

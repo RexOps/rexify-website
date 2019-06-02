@@ -1,9 +1,20 @@
-<p>This is the blog</p>
+<h1>News</h1>
 
-<p>And these are the posts:</p>
 
-<ul>
 % for my $page ( @$pages ) {
-    <li><a href="<%= $app->page_url($page) %>"><%= $page->title %></a></li>
+%   my @sections = $page->sections;
+<section>
+  <h2><a href="<%= $app->page_url($page) %>"><%= $page->title %></a></h2>
+  <div class="metadata">
+    <span class="date"><%= $page->date->ymd() %><% if ($page->author) { %></span>&nbsp;-&nbsp;<span class="author"><%= $page->author %></span><% } %>
+  </div>
+
+  <%= $sections[0] %>
+
+% if (@sections > 1) {
+  <div class="read-more">
+    <p><a href="<%= $app->page_url($page) %>">Read more...</a></p>
+  </div>
 % }
-</ul>
+</section>
+% }
