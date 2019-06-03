@@ -1,0 +1,8 @@
+language: perl
+perl:
+  - "5.30"
+cache:
+  directories:
+    - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/lib
+    - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/bin
+script: statocles build
