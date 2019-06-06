@@ -514,3 +514,13 @@ section p {
 #content section .read-more a {
     font-size: smaller;
 }
+
+.blog.next-button {
+    display: block;
+    float: right;
+}
+
+.blog.prev-button {
+    display: block;
+    float: left;
+}

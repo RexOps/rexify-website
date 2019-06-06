@@ -17,4 +17,18 @@
   </div>
 % }
 </section>
+
+% }
+
+
+% if ($self->prev) {
+
+<p class="blog prev-button"><a href="<%= $self->prev %>">Previous</a></p>
+
+% }
+
+% if ($self->next) {
+
+<p class="blog next-button"><a href="<%= $self->next %>">Next</a></p>
+
 % }
