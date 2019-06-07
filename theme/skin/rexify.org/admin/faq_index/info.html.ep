@@ -1,6 +1,0 @@
-
-<script type="text/javascript" charset="utf-8">
-  function onpage_data_load() {
-    page_set("child_type", "faq_item");
-  }
-</script>
