@@ -90,7 +90,6 @@
 
    <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/bootstrap.min.js"></script>
 
-<script src="/public/js/skin/rexify.org/browser.js"></script>
 <script>
   hljs.tabReplace = '    ';
 //  hljs.initHighlighting();
