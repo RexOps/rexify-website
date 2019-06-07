@@ -90,7 +90,6 @@
 
    <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/jquery.js"></script>
    <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/bootstrap.min.js"></script>
-   <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/menu.js"></script>
    <script type="text/javascript" charset="utf-8" src="/public/js/skin/rexify.org/ZeroClipboard.min.js"></script>
 
    <script>
