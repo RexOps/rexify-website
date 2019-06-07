@@ -156,6 +156,10 @@ h1 {
    border-bottom: 6px solid #7b4d29;
 }
 
+.nav_links > ul li:hover ul.dropdown_menu {
+    display: block;
+}
+
 .nav_links > ul li a:hover {
    background-color: #080e0f;
 }
