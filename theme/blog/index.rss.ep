@@ -1,0 +1,9 @@
+% use HTML::Entities;
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title><%= encode_entities( $site->title ) %></title>
+    <link><%= $site->base_url . $app->url_root %></link>
+    <description>Placeholder RSS feed for rexify.org</description>
+  </channel>
+</rss>
