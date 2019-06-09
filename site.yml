@@ -1,7 +1,7 @@
 site:
     class: Statocles::Site
     args:
-        title: Rexify statocles
+        title: (R)?ex Deployment & Configuration Management
         markdown:
             $class: Text::MultiMarkdown
         base_url: https://rexify.org
