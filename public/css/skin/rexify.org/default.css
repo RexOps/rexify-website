@@ -302,7 +302,7 @@ h1 {
 .feature-table {
    width: 100%;
    border-collapse: collapse;
-	border-spacing: 0;
+   border-spacing: 0;
 }
 .feature-table tr.head {
 
@@ -432,27 +432,27 @@ ul.dropdown_menu > li a:hover {
 }
 
 .arrow_box {
-	position: relative;
-	background: #1A3F43;
+   position: relative;
+   background: #1A3F43;
    top: 38px;
    left: 33px;
 }
 .arrow_box:after {
-	top: 100%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+   top: 100%;
+   border: solid transparent;
+   content: " ";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
 }
 
 .arrow_box:after {
-	border-color: rgba(26, 63, 67, 0);
-	border-top-color: #1A3F43;
-	border-width: 5px;
-	left: 50%;
-	margin-left: -5px;
+   border-color: rgba(26, 63, 67, 0);
+   border-top-color: #1A3F43;
+   border-width: 5px;
+   left: 50%;
+   margin-left: -5px;
 }
 
 li.divider {
@@ -498,4 +498,23 @@ table tr {
 table td {
   padding-bottom: 2px;
   padding-top: 2px;
+}
+
+section h2 {
+    line-height: initial;
+    margin-bottom: 0;
+}
+
+section .metadata {
+    margin-top: 0;
+    font-size: smaller;
+    color: grey;
+}
+
+section p {
+    margin-top: 1ex;
+}
+
+#content section .read-more a {
+    font-size: smaller;
 }
