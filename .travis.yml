@@ -6,3 +6,12 @@ cache:
     - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/lib
     - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/bin
 script: statocles build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  github_token: $GITHUB_TOKEN
+  local_dir: .statocles/build
+  target_branch: gh-pages
+  on:
+    branch: master
