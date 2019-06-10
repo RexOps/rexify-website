@@ -9,7 +9,7 @@
       <a href="<%= $menu->{url} %>" class="dropdown_link"><%= $menu->{title} %></a>
       <ul class="dropdown_menu dropdown_<%= lc( $menu->{title} ) %>">
         % for my $submenu ( @{ $menu->{children} } ) {
-          % if ( $submenu->{title} eq 'API' ) {
+          % if ( $submenu->{divider} ) {
             <li class="divider"></li>
           % }
           <li><a href="<%= $submenu->{url} %>"><%= $submenu->{title} %></a></li>

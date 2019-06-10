@@ -46,6 +46,7 @@ site:
                         title: Release notes
                       - url: https://metacpan.org/release/Rex
                         title: API
+                        divider: 1
 basic_app:
     class: Statocles::App::Basic
     args:
