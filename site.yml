@@ -18,47 +18,34 @@ site:
             $ref: gh_pages
         data:
             nav:
-                - name: Home
+                - title: Home
                   url: /
-                  title: home
                 - url: /get/index.html
-                  title: get
-                  name: Get Rex
+                  title: Get Rex
                 - url: /care/index.html
-                  title: care
-                  name: Care
+                  title: Care
                   children:
                       - url: /care/help__r__ex.html
-                        title: rex
-                        name: Help (R)?ex
+                        title: Help (R)?ex
                       - url: /care/help_people_in_need.html
-                        title: people
-                        name: Help people
+                        title: Help people
                 - url: /support/index.html
-                  title: support
-                  name: Support
+                  title: Support
                 - url: /docs/index.html
-                  title: docs
-                  name: Docs
+                  title: Docs
                   children:
                       - url: /docs/faq/index.html
-                        title: faq
-                        name: FAQ
+                        title: FAQ
                       - url: /docs/guides/index.html
-                        title: guides
-                        name: Guides
+                        title: Guides
                       - url: /docs/rex_book/index.html
-                        title: rex_book
-                        name: Rex Book (work in progress)
+                        title: Rex Book (work in progress)
                       - url: /docs/other/index.html
-                        title: other
-                        name: Other
+                        title: Other
                       - url: /docs/release_notes/index.html
-                        title: release_notes
-                        name: Release notes
+                        title: Release notes
                       - url: https://metacpan.org/release/Rex
-                        title: api
-                        name: API
+                        title: API
 basic_app:
     class: Statocles::App::Basic
     args:
