@@ -1,4 +1,4 @@
-# Website content and code for rexify.org
+# Website content and code for rexify.org [![Build Status](https://travis-ci.org/RexOps/rexify-website.svg?branch=master)](https://travis-ci.org/RexOps/rexify-website)
 
 The rexify website is powered by [Statocles](http://preaction.me/statocles/), and deployed to GitHub Pages. See below for instructions about how to work with it.
 
