@@ -24,7 +24,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Xenial (16.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/ubuntu/ xenial rex' >> /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/ubuntu/ xenial rex' >> /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -33,7 +33,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Trusty (14.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/ubuntu/ trusty rex' &lt;&lt; /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/ubuntu/ trusty rex' &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -42,7 +42,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Precise (12.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/ubuntu/ precise rex' &lt;&lt; /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/ubuntu/ precise rex' &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -60,7 +60,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Jessie</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/debian/ jessie rex' &lt;&lt; /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/debian/ jessie rex' &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -69,7 +69,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Wheezy</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/debian/ wheezy rex' &lt;&lt; /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/debian/ wheezy rex' &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -78,7 +78,7 @@ Rex is also available as a package for many major distributions. Just choose you
 <h2>For Squeeze</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo 'deb https://rex.linux-files.org/debian/ squeeze rex' &lt;&lt; /etc/apt/sources.list
+    $ echo 'deb https://rex.linux-files.org/debian/ squeeze rex' &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
