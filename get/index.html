@@ -115,7 +115,7 @@
 <h2>For Xenial (16.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ xenial rex&#39; &gt;&gt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ xenial rex&#39; &gt;&gt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -124,7 +124,7 @@
 <h2>For Trusty (14.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ trusty rex&#39; &lt;&lt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ trusty rex&#39; &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -133,7 +133,7 @@
 <h2>For Precise (12.04)</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ precise rex&#39; &lt;&lt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/ubuntu/ precise rex&#39; &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -151,7 +151,7 @@
 <h2>For Jessie</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/debian/ jessie rex&#39; &lt;&lt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/debian/ jessie rex&#39; &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -160,7 +160,7 @@
 <h2>For Wheezy</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/debian/ wheezy rex&#39; &lt;&lt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/debian/ wheezy rex&#39; &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
@@ -169,7 +169,7 @@
 <h2>For Squeeze</h2>
 
 <pre><code class="bash">    $ apt-get install apt-transport-https
-    $ echo &#39;deb https://rex.linux-files.org/debian/ squeeze rex&#39; &lt;&lt; /etc/apt/sources.list
+    $ echo &#39;deb https://rex.linux-files.org/debian/ squeeze rex&#39; &lt;&lt; /etc/apt/sources.list.d/rex.list
     $ wget -O - https://rex.linux-files.org/DPKG-GPG-KEY-REXIFY-REPO | apt-key add -
     $ apt-get update
     $ apt-get install rex
