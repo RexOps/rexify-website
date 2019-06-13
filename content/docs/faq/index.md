@@ -19,20 +19,26 @@ The run command - called in array context - will return an array.
 
 If you want to print the output to your terminal you have to call it in a scalar context.
 
+    ```perl
     my $output = run "df -h";
     say $output;
+    ```
 
 ## How can I get the current server from within a task?
 
+    ```perl
     my $current_server = connection->server;
+    ```
 
 ## How can I pass parameters to a task?
 
+    ```perl
     task 'mytask', sub {
       my $parameters = shift;
       my $parameter1_value = $parameters->{parameter1};
       my $parameter2_value = $parameters->{parameter2};
     };
+    ```
 
 Then you can run mytask from CLI like this:
 
@@ -46,6 +52,7 @@ You can use the ShellBlock module. This module can be installed by running:
 
 Then, you can run your shell code remotely as:
 
+    ```perl
     use Rex::Misc::ShellBlock;
 
     task "myexec", sub {
@@ -53,6 +60,7 @@ Then, you can run your shell code remotely as:
         echo "hi"
     EOF
     };
+    ```
 
 See the linked documentation page for how to use this module with Perl, Python, or other languages.
 
@@ -60,15 +68,18 @@ See the linked documentation page for how to use this module with Perl, Python, 
 
 If you have a local script 'files/script', you can run it on the remote using the ShellBlock module referred to in the FAQ above. After you install as pointed out above, you can run the script remotely with the command:
 
+    ```perl
     use Rex::Misc::ShellBlock;
     task "myexec", sub {
       shell_block template('files/script');
     };
+    ```
 
 ## How do I run a local script on the remote under a different user?
 
 Given the same scenario as above, but with the additional requirement to run the script as a different user, the solution looks like below:
 
+    ```perl
     use Rex::Misc::ShellBlock;
     task "myexec", sub {
       sudo {
@@ -78,6 +89,7 @@ Given the same scenario as above, but with the additional requirement to run the
         user    => 'root'
       };
     };
+    ```
 
 ## How do I check the exit status of a remotely run command?
 
@@ -85,6 +97,8 @@ Rex assigns the exit code from the remote invocation of `run` or `shell_block` s
 
 ## How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?
 
+    ```perl
     Rex::Logger::info("some message");           # for INFO  (green)
     Rex::Logger::info("some message", "warn");   # for WARN  (yellow)
     Rex::Logger::info("some message", "error");  # for ERROR (red)
+    ```

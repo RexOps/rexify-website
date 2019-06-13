@@ -56,6 +56,7 @@ First we need to create a new folder to store your Rexfile in it.
 
 Now change into this directory and create a file called Rexfile with the following contents:
 
+    ```perl
     use Rex -feature => ['1.3'];
     
     user "my-user";
@@ -68,6 +69,7 @@ Now change into this directory and create a file called Rexfile with the followi
        my $output = run "uptime";
        say $output;
     };
+    ```
 
 This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command "uptime".
 
@@ -82,10 +84,12 @@ Change into the directory where you just created the Rexfile (in a terminal).
 
 To add a second task, just add the next lines to your Rexfile.
 
+    ```perl
     desc "Start Apache Service";
     task "start_apache", group => "myservers", sub {
         service "apache2" => "start";
     };
+    ```
 
 This task will start the service apache2 on all the servers in the myservers group.
 Display all tasks in a Rexfile
@@ -105,18 +109,22 @@ In the previous example we showed you how you can login with a user and a passwo
 
 To use key authentication just define your private and public key inside the Rexfile.
 
+    ```perl
     user "my-user";
     private_key "/home/user/.ssh/id_rsa";
     public_key "/home/user/.ssh/id_rsa.pub";
     key_auth;
+    ```
 
 It is also possible to use your keys with a passphrase. Just add it to your Rexfile.
 
+    ```perl
     user "my-user";
     private_key "/home/user/.ssh/id_rsa";
     public_key "/home/user/.ssh/id_rsa.pub";
     password "key-passphrase";
     key_auth;
+    ```
 
 If you don't want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line key\_auth;.
 
@@ -126,6 +134,7 @@ If you want to manage services you often need to upload a configuration file and
 
 In this example you will learn how to install and configure ntp. You can adapt this example to every other service easily.
 
+    ```perl
     # Rexfile
     use Rex -feature => ['1.3'];
 
@@ -153,6 +162,7 @@ In this example you will learn how to install and configure ntp. You can adapt t
        service "ntpd",
          ensure => "started";
     };
+    ```
 
 That's all.
 

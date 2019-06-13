@@ -25,6 +25,7 @@ The meta.yml file can be ignored. This file is only important if you want to sha
 The important file is \_\_module\_\_.pm. Open this file in an editor.
 This file is a normal Perl module. The only special thing is the filename, but don't think too much for it at first.
 
+    ```perl
     package Service::NTP;
     use Rex -feature => ['1.3'];
 
@@ -47,10 +48,12 @@ This file is a normal Perl module. The only special thing is the filename, but d
     };
 
     1;
+    ```
 
 First the module checks if the OS is a debian (or ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the on\_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
 Now it is time to create a basic ntp.conf file. Create the directory lib/Service/NTP/files/etc and place the ntp.conf file in there.
 
+    ```
     # /etc/ntp.conf, managed by Rex
 
     driftfile /var/run/ntp.drift
@@ -62,9 +65,11 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
 
     server ntp01.company.tld
     server ntp02.company.tld
+    ```
 
 If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it fallback to ntp.conf.
 
+    ```
     .
     ├── Rexfile
     └── lib
@@ -78,9 +83,11 @@ If you now want to distribute different ntp.conf files per environment you can a
                 │       ├── ntp.conf.prod
                 │       └── ntp.conf.test
                 └── meta.yml
+    ```
 
 But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.
 
+    ```perl
     package Service::NTP;
     use Rex -feature => ['1.0'];
 
@@ -111,6 +118,7 @@ But if you want to change a parameter in your ntp.conf file you have to edit 4 f
     };
 
     1;
+    ```
 
 Now we can create our template. The default template of Rex looks similar to other templating engines. But you can also use other template engines like Template::Toolkit.
 
@@ -131,9 +139,11 @@ Now we can create our template. The default template of Rex looks similar to oth
 
 There are also some predefined variables you can use in your templates. For example the ip address of a network device if you want to bind a service on a specific ip. You can dump all predefined variable of a system with the following code.
 
+    ```perl
     task "get_infos", "server01", sub {
        dump_system_information;
     };
+    ```
 
 For example this is the output of a CentOS VM
 
@@ -213,6 +223,7 @@ You can use such predefined variable right in your template. Lets assume you wan
 
 To use your module you have to add it to your Rexfile. This can be simply achieved with one line.
 
+    ```perl
     use Rex -feature => ['1.3'];
     user "root";
     password "foo";
@@ -220,6 +231,7 @@ To use your module you have to add it to your Rexfile. This can be simply achiev
     require Service::NTP;
 
     1;
+    ```
 
 Than you can list your Tasks and execute them.
 

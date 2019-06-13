@@ -74,10 +74,12 @@ Every service has its own Rexfile.
 
 #### Load all required modules
 
+    ```perl
     use Rex -feature => ['1.0'];
     use Rex::CMDB;
     use Rex::Test;
     use Rex::Group::Lookup::INI;
+    ```
 
 These lines loads all required modules.
 
@@ -88,12 +90,15 @@ These lines loads all required modules.
 
 #### Load the server groups
 
+    ```perl
     groups_file "server.ini";
+    ```
 
 Load all server groups from the file **server.ini**.
 
 #### Configure the CMDB
 
+    ```perl
     set cmdb => {
       type => "YAML",
       path => [
@@ -105,6 +110,7 @@ Load all server groups from the file **server.ini**.
         "cmdb/default.yml",
       ],
     };
+    ```
 
 Configure the CMDB. Here we define a custom search path. This will tell the CMDB to lookup the keys in the following order:
 
@@ -135,23 +141,30 @@ It is possible to use every Rex::Hardware variable inside the path.
 
 #### Include all required Rex modules
 
+    ```perl
     include qw/
       Rex::OS::Base
       Rex::NTP::Base
       /;
+    ```
 
 Include all needed Rex modules. With **include** all the tasks inside these modules won't get displayed with `rex -T`.
 
 #### The main task
 
+    ```perl
     task "setup",
+    ```
 
 The main task. If you don't define the servers (or groups) in the task definition you can use the cli paramter -G or -H.
 
+    ```perl
     task "setup", group => "frontend",
+    ```
 
 It is also possible to define the server or group to connect to.
 
+    ```perl
     make {
       # run setup() task of Rex::OS::Base module
       Rex::OS::Base::setup();
@@ -159,13 +172,16 @@ It is also possible to define the server or group to connect to.
       # run setup() task of Rex::NTP::Base module
       Rex::NTP::Base::setup();
     };
+    ```
 
 Inside the task we just call the tasks from the modules we have included above. All tasks can be called as a normal perl function, as long as the taskname doesn't conflict with other perl functions.
 
 #### The last line
 
+    ```perl
     # the last line of a Rexfile
     1;
+    ```
 
 The last line of a Rexfile is normaly a true value. This is not always needed, but it is safer to include it.
 
@@ -177,26 +193,35 @@ The tests are stored in the t directory.
 
 #### Example t/base.t test file
 
+    ```perl
     use Rex::Test::Base;
     use Rex -feature => ['1.0'];
+    ```
 
 Load the **Rex::Test::Base** framework and the Rex basic commands.
 
+    ```perl
     test {
       my $t = shift;
       $t->name("ubuntu test");
+    ```
 
 Create a new test named **ubuntu test**. For every test Rex will create a new vm.
 
+    ```perl
       $t->base_vm("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
       $t->vm_auth(user => "root", password => "box");
+    ```
 
 Define the url where to download the base VM image and the authentication.
 
+    ```perl
       $t->run_task("setup");
+    ```
 
 Define which task to run on the VM.
 
+    ```perl
       $t->has_package("vim");
       $t->has_package("ntp");
       $t->has_package("unzip");
@@ -209,14 +234,17 @@ Define which task to run on the VM.
 
       run "ls -l";
       $t->ok($? == 0, "ls -l returns success.");
+    ```
 
 Run the tests. You can also use normal rex functions here.
 
 At the end finish the tests with:
 
+    ```perl
       $t->finish;
     };
     1;
+    ```
 
 You can now run the tests with `rex Test:run`.
 

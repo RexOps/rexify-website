@@ -14,6 +14,7 @@ The classic way is to have 3 environments. The development environment for integ
 
 Creating environments is as easy as creating groups. To create environments you can use the environment function. Inside an environment you can place everything that is specific for this environment (like authentication, server groups, tasks, ...).
 
+    ```perl
     # Rexfile
     use Rex -feature => ['1.0'];
 
@@ -49,6 +50,7 @@ Creating environments is as easy as creating groups. To create environments you 
       group dbread       => "dbs[01..02].live";
       group dbwrite      => "dbm01.live";
     };
+    ```
 
 ## Running tasks
 
@@ -58,6 +60,7 @@ To run the task inside a special environment you have to use the cli option -E
 
 If you need to configure systems depending on the environment you can get the current environment inside a task with the environment function.
 
+    ```perl
     # Rexfile
     task "prepare", group => "frontend", make {
       # configure ntp.conf depending on the environment
@@ -75,6 +78,7 @@ If you need to configure systems depending on the environment you can get the cu
         mode      => 644,
         on_change => make { service ntpd => "restart"; };
     };
+    ```
 
 ## Environments and the CMDB
 
@@ -110,6 +114,7 @@ The lookup path for the default YAML CMDB is as follow:
 
 To use the CMDB you have to require and configure the Rex::CMDB module first.
 
+    ```perl
     # Rexfile
     use Rex -feature => ['1.0'];
     use Rex::CMDB;
@@ -130,5 +135,6 @@ To use the CMDB you have to require and configure the Rex::CMDB module first.
         mode      => 644,
         on_change => make { service ntpd => "restart"; };
     };
+    ```
 
 Now you can run the task with `rex -E test prepare`.

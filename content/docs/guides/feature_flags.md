@@ -57,10 +57,14 @@ This is the current list of feature flags:
 
 You can enable feature flags in your Rexfile with the following code:
 
+    ```perl
     # Rexfile
     use Rex -feature => ['0.31'];
+    ```
 
 or even multiple ones like this:
 
+    ```perl
     # Rexfile
     use Rex -feature => [qw(exec_autodie source_profile)];
+    ```

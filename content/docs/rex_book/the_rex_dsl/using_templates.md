@@ -43,6 +43,7 @@ First you have to create it
 
 Than you can reference on it from within your Rexfile.
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     user "root";
@@ -60,6 +61,7 @@ Than you can reference on it from within your Rexfile.
                                  table_cache     => "2500",
                               });
     };
+    ```
 
 ## Inline Templates
 
@@ -67,6 +69,7 @@ When you want to deliver a rexfile that includes the templates, you can use inli
 
 ### Using a single inline template
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     task tempfiles => sub {
@@ -87,6 +90,7 @@ When you want to deliver a rexfile that includes the templates, you can use inli
     This is a test written by <%= $test->{author} %>
     for a project called <%= $test->{target} %>
     @end
+    ```
 
 The `__DATA__` section is the last section of the Rexfile. The first parameter of the template method call gets the name of the inline template. Note that names of inline templates begin with `@`.
 
@@ -94,6 +98,7 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
 
 ### Using multiple inline templates
 
+    ```perl
     use Rex -feature => ['1.0'];
     task tempfiles => sub {
         file '/tmp/test.txt' =>
@@ -129,5 +134,6 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
     Contribution by <%= $test->{author} %>
     for a project called <%= $test->{target} %>
     @end
+    ```
 
 Now we just look at the `__DATA__` section: You notice the token `@end`. This is used to separate the templates. At the end of each template (except for the last one) this token is needed. Otherwise Rex will use everything up to the first `@end` as the template which is most likely too much.

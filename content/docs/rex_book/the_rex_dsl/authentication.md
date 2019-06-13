@@ -14,9 +14,11 @@ You can find examples on how to configure them below.
 
 The simplest way to authenticate against your servers is to use password authentication. For this you need a valid user and a password on the remote host.
 
+    ```perl
     user 'root';
     password 'my_password';
     pass_auth;
+    ```
 
 Specifying `pass_auth` is optional.
 
@@ -30,31 +32,39 @@ Due to the differences of their implementations, the key here (pun intended) is 
 
 ### Net::SSH2
 
+    ```perl
     user 'root';
     private_key '/path/to/your/private.key';
     public_key '/path/to/your/public.key';
     key_auth;
+    ```
 
 ### Net::OpenSSH
 
+    ```perl
     user 'root';
     key_auth;
+    ```
 
 If you use a passphrase with your private key, you can specify it simply as if it was a password:
 
 ### Net::SSH2
 
+    ```perl
     user 'root';
     private_key '/path/to/your/private.key';
     public_key '/path/to/your/public.key';
     password 'my_password';
     key_auth;
+    ```
 
 ### Net::OpenSSH
 
+    ```perl
     user 'root';
     password 'my_password';
     key_auth;
+    ```
 
 ## Using an SSH agent
 
@@ -62,13 +72,17 @@ If you can't or don't want to use any of the above methods, you can use agent au
 
 ### Net::SSH2
 
+    ```perl
     user 'root';
     private_key '/path/to/your/private.key';
     public_key '/path/to/your/public.key';
+    ```
 
 ### Net::OpenSSH
 
+    ```perl
     user 'root';
+    ```
 
 Important notes:
 
@@ -79,5 +93,7 @@ Important notes:
 
 As of version 0.42.0, Rex supports Kerberos authentication through Net::OpenSSH:
 
+    ```perl
     user 'root';
     krb5_auth;
+    ```

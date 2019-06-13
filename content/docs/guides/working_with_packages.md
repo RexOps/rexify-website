@@ -9,33 +9,41 @@ If you want to use a special package provider (for example, if you're using SunO
 
 To install a package you can use the `pkg` function.
 
+    ```perl
     task "prepare", "server1", sub {
       pkg "apache2",
         ensure => "present";
     };
+    ```
 
 If you want to install multiple packages you can do it by providing an array reference.
 
+    ```perl
     task "prepare", "server1", sub {
       pkg [ qw/apache2 vim php5/ ],
         ensure => "present";
     };
+    ```
 
 If you want to install a special version of a package you just need to specify the version option.
 
+    ```perl
     task "prepare", "server1", sub {
       pkg "apache2",
         ensure => "2.2.4";
     };
+    ```
 
 ## Removing a Package
 
 If you don't need a package anymore you can remove it with the remove function.
 
+    ```perl
     task "prepare", "server1", sub {
       pkg "apache2",
         ensure => "absent";
     };
+    ```
 
 ## Adding a Package Repository
 
@@ -43,6 +51,7 @@ Sometimes you have to add custom repositories to your Server. This can be done w
 
 ### Debian
 
+    ```perl
     task "prepare", "server2", sub {
        # add a repository for debian/ubuntu
        repository add => "myrepo",
@@ -50,17 +59,21 @@ Sometimes you have to add custom repositories to your Server. This can be done w
           distro => "squeeze",
           repository => "stable";
     };
+    ```
 
 ### CentOS
 
+    ```perl
     task "prepare", "server2", sub {
        # add a repository for redhat/centos
        repository add => "myrepo",
           url => "http://foo.bar/repo";
     };
+    ```
 
 After you've added a new repository you need to run update\_package\_db to update the package database so that you can install packages from these repositories.
 
+    ```perl
     task "prepare", "server2", sub {
        # add a repository for redhat/centos
        repository add => "myrepo",
@@ -69,6 +82,7 @@ After you've added a new repository you need to run update\_package\_db to updat
        # update package database
        update_package_db;
     };
+    ```
 
 ## Supported Package Providers
 

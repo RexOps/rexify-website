@@ -6,11 +6,13 @@ Often you need to know some things of the environment where you are currently co
 
 Rex comes with a hardware gathering module. To display all the things Rex knows about the environment your can create a test task that just dumps all the information.
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     task "dump-info", sub {
        dump_system_information;
     };
+    ```
 
 This will print out everything Rex knows about the remote system. You can use these information inside your Rexfile or a template.
 
@@ -86,6 +88,7 @@ A sample output (CentOS 5.9 running inside KVM)
 
 To use these information inside the Rexfile you can query them with the get\_system\_information function or use the methods from the connection object
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     task "get_hostname", sub {
@@ -100,6 +103,7 @@ To use these information inside the Rexfile you can query them with the get\_sys
                          "i386"   => "/usr/lib",
                          "x86_64" => "/usr/lib64";
     };
+    ```
 
 ## Using environment information inside templates
 

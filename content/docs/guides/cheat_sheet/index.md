@@ -22,12 +22,16 @@ Run a remote command and returns its output.
 
 #### Example to just run a command if a file doesn't exists
 
+    ```perl
     run "/tmp/install_service.sh",
       creates => "/opt/myservice/conf.xml";
+    ```
 
 #### Example to run a command and get its output
 
+    ```perl
     my @output_lines = run "df -h";
+    ```
 
 ## Installing and configuring a service
 
@@ -48,6 +52,7 @@ Manage files on remote systems.
 - no\_overwrite - If set to TRUE the file won't be overwritten if the file already exists.
 - on\_change - A callback function that gets called when the file state changed. (For example if the file content was modified).
 
+        ```perl
         file "/etc/ntpd.conf",
           ensure => "present",
           source => "files/ntpd.conf",
@@ -57,6 +62,7 @@ Manage files on remote systems.
           on_change => sub {
             service ntpd => "restart";
           };
+        ```
 
 ### pkg($name, %options)
 
@@ -67,11 +73,13 @@ Install a package on the remote system.
 - ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.
 - on\_change - A called function that gets called when the package state changed. (For example when it was updated)
 
+        ```perl
         pkg "ntpd",
           ensure => "latest",
           on_change => sub {
             service ntpd => "restart";
           };
+        ```
 
 ### service
 
@@ -90,12 +98,16 @@ This function can be called as a resource or as a normal function to directly st
 
 #### Example for calling as resource
 
+    ```perl
     service "nptd",
       ensure => "started";
+    ```
 
 #### Example for calling as function
 
+    ```perl
     service ntpd => "restart";
+    ```
 
 ## Managing Cron
 
@@ -115,10 +127,12 @@ cron\_entry($entry\_name, %options)
 - user - The user for the cron job.
 - on\_change - A callback function that gets called when the cron entry state changed.
 
+        ```perl
         cron_entry "run-rkhunter",
           command => "rkhunter --cronjob",
           minute  => 5,
           hour    => 1;
+        ```
 
 ## Managing users and groups
 
@@ -142,6 +156,7 @@ Manage user accounts.
 - ssh\_key - Add ssh key to authorized\_keys.
 - comment
 
+        ```perl
         account "krimdomu",
            ensure         => "present",  # default
            uid            => 509,
@@ -152,6 +167,7 @@ Manage user accounts.
            password       => 'blahblah',
            create_home    => TRUE,
            ssh_key        => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
+        ```
 
 ### group($group\_name, %options)
 
@@ -163,5 +179,7 @@ Manage groups.
 - gid - The group id.
 - system - Create a system group.
 
+        ```perl
         group "users",
           ensure => "present";
+        ```

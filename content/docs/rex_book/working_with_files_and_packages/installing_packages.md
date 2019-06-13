@@ -4,6 +4,7 @@ title: Installing Packages
 
 Installing packages is easy. You can use the pkg function for this.
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     user "root";
@@ -13,9 +14,11 @@ Installing packages is easy. You can use the pkg function for this.
        pkg "apache2",
          ensure => "present";
     };
+    ```
 
 If you have to install multiple packages you can use an array so that you don't have to write that much.
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     user "root";
@@ -25,9 +28,11 @@ If you have to install multiple packages you can use an array so that you don't 
        pkg ["apache2", "libphp5-apache2", "mysql-server"],
          ensure => "present";
     };
+    ```
 
 If you need to write a distribution independent module you can also use the case statement.
 
+    ```perl
     user Rex -base;
 
     user "root";
@@ -41,3 +46,4 @@ If you need to write a distribution independent module you can also use the case
        pkg $packages,
          ensure => "present";
     };
+    ```

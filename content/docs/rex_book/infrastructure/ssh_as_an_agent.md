@@ -27,6 +27,7 @@ Rex will connect to your servers via SSH and execute the commands you've defined
 
 If you have many servers you want to connect to, you ususally don't want to connect sequentially. You can define the number of parallel connections Rex should use.
 
+    ```perl
     use Rex -feature => ['1.0'];
 
     user "root";
@@ -39,5 +40,6 @@ If you have many servers you want to connect to, you ususally don't want to conn
     task "prepare", group => "frontends", sub {
        # do something
     };
+    ```
 
 This will connect to 15 servers in parallel and executes the task.
