@@ -41,19 +41,21 @@ data:
 
 This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)
 
-<pre><code class="bash">$ rex -H "frontend[01..15]" -e "say run 'uptime'"</code></pre>
+    $ rex -H "frontend[01..15]" -e "say run 'uptime'"
 
 The same, but with a Rexfile
 
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
-desc "Get Uptime";
-task "uptime", sub {
-  say run "uptime";
-};</code></pre>
+    ```perl
+    use Rex -feature => ['1.0'];
+    desc "Get Uptime";
+    task "uptime", sub {
+      say run "uptime";
+    };
+    ```
 
 Now you can run your task with this command:
 
-<pre><code class="bash">$ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password uptime</code></pre>
+    $ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password uptime
 
 ## Keep Your Configuration In Sync
 
@@ -61,55 +63,58 @@ This example will install the Apache webserver on 5 machines and keep their conf
 
 If this task gets executed against a "virgin" host (where no Apache is installed yet), it will first install it.
 
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
-
-user "root";
-group frontend =&gt; "frontend[01..05]";
-
-desc "Prepare Frontend Server";
-task "prepare", group =&gt; "frontend", sub {
-  pkg "apache2",
-    ensure =&gt; "latest";
-
-  service "apache2",
-    ensure =&gt; "started";
-};
-
-desc "Keep Configuration in sync";
-task "configure", group =&gt; "frontend", sub {
-  prepare();
-
-  file "/etc/apache2/apache2.conf",
-    source    =&gt; "files/etc/apache2/apache2.conf",
-    on_change =&gt; sub { service apache2 =&gt; "reload"; };
-  };</code></pre>
+    ```perl
+    use Rex -feature => ['1.0'];
+    
+    user "root";
+    group frontend => "frontend[01..05]";
+    
+    desc "Prepare Frontend Server";
+    task "prepare", group => "frontend", sub {
+      pkg "apache2",
+        ensure => "latest";
+    
+      service "apache2",
+        ensure => "started";
+    };
+    
+    desc "Keep Configuration in sync";
+    task "configure", group => "frontend", sub {
+      prepare();
+    
+      file "/etc/apache2/apache2.conf",
+        source    => "files/etc/apache2/apache2.conf",
+        on_change => sub { service apache2 => "reload"; };
+      };
+    ```
 
 ## Running under sudo?
 
 You can also run everything with sudo. Just define the sudo password and activate sudo.
 
-<pre><code class="perl">use Rex -feature =&gt; ['1.0'];
-
-user "ubuntu";
-group frontend =&gt; "frontend[01..05]";
-sudo TRUE;
-sudo_password "mysudopw";
-
-desc "Prepare Frontend Server";
-task "prepare", group =&gt; "frontend", sub {
-  pkg "apache2",
-    ensure =&gt; "latest";
-
-  service "apache2",
-    ensure =&gt; "started";
-};
-
-desc "Keep Configuration in sync";
-task "configure", group =&gt; "frontend", sub {
-  prepare();
-
-  file "/etc/apache2/apache2.conf",
-    source    =&gt; "files/etc/apache2/apache2.conf",
-    on_change =&gt; sub { service apache2 =&gt; "reload"; };
-};</code></pre>
-
+    ```perl
+    use Rex -feature => ['1.0'];
+    
+    user "ubuntu";
+    group frontend => "frontend[01..05]";
+    sudo TRUE;
+    sudo_password "mysudopw";
+    
+    desc "Prepare Frontend Server";
+    task "prepare", group => "frontend", sub {
+      pkg "apache2",
+        ensure => "latest";
+    
+      service "apache2",
+        ensure => "started";
+    };
+    
+    desc "Keep Configuration in sync";
+    task "configure", group => "frontend", sub {
+      prepare();
+    
+      file "/etc/apache2/apache2.conf",
+        source    => "files/etc/apache2/apache2.conf",
+        on_change => sub { service apache2 => "reload"; };
+    };
+    ```

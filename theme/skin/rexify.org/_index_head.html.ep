@@ -12,10 +12,11 @@
                   </div> <!-- slogan_list -->
 
                   <div class="source">
-                     <pre><code class="perl">task prepare => sub {
-   pkg "apache2", ensure =&gt; "latest";
-   service "apache2", ensure => "started";
-};</code></pre>
+<pre><code class="hljs">task prepare =&gt; <span class="hljs-keyword">sub </span>{
+  pkg "<span class="hljs-string">apache2</span>",     ensure =&gt; "<span class="hljs-string">latest</span>";
+  service "<span class="hljs-string">apache2</span>", ensure =&gt; "<span class="hljs-string">started</span>";
+};
+</code></pre>
                   </div> <!-- source -->
                   <a class="headlink" href="/docs/guides/start_using__r__ex.html">Read the Getting Started Guide</a>
                </div> <!-- slogan -->
