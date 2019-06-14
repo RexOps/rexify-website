@@ -97,6 +97,12 @@
         <lastmod>2019-06-14</lastmod>
     </url>
     <url>
+        <loc>https://rexify.org/docs/guides/feature_flags.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2019-06-14</lastmod>
+    </url>
+    <url>
         <loc>https://rexify.org/docs/guides/just_enough_perl_for_rex.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
@@ -140,18 +146,6 @@
     </url>
     <url>
         <loc>https://rexify.org/docs/guides/working_with_packages.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-06-14</lastmod>
-    </url>
-    <url>
-        <loc>https://rexify.org/docs/other/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <lastmod>2019-06-14</lastmod>
-    </url>
-    <url>
-        <loc>https://rexify.org/docs/other/a_word_on_backward_compatibility.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
         <lastmod>2019-06-14</lastmod>
