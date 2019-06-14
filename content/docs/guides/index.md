@@ -5,6 +5,10 @@ title: Guides
 * [Howto start using (R)?ex](start_using__r__ex.html)  
   This is a small howto showing the first steps with Rex.
 
+* [How to enable or disable features](feature_flags.html)  
+  This page lists available feature flags which determine various
+  ways Rex behaves.
+
 * [Using Modules and Templates](using_modules_and_templates.html)  
   In this example you will learn how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.
 
