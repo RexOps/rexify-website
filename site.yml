@@ -40,8 +40,6 @@ site:
                         title: Guides
                       - url: /docs/rex_book/index.html
                         title: Rex Book (work in progress)
-                      - url: /docs/other/index.html
-                        title: Other
                       - url: /docs/release_notes/index.html
                         title: Release notes
                       - url: https://metacpan.org/release/Rex
