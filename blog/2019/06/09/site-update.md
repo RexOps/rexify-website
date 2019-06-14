@@ -18,4 +18,4 @@ done, reaping the benefits provided by our new
   * Moved the 'Get Rex' page to CSS+HTML (pre-migration)
   * browserJS not used in recent versions of the site
   * jQuery used to be used by now-removed administrative part of the old site
-  * bootstrap didn't make any difference on simulated mobile devices
+  * Removed all bootstrap plugins; they were unused
