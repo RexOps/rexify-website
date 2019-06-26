@@ -115,7 +115,7 @@ Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repos
 
     $ cat &lt;/etc/yum.repos.d/rex.repo &gt;&gt;EOF
     [rex]
-    name=Fedora \$releasever - \$basearch - Rex Repository
+    name=CentOS \$releasever - \$basearch - Rex Repository
     baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
     enabled=1
     EOF
@@ -129,7 +129,7 @@ Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repos
 
     $ cat &lt;/etc/yum.repos.d/rex.repo &gt;&gt;EOF
     [rex]
-    name=Fedora \$releasever - \$basearch - Rex Repository
+    name=CentOS \$releasever - \$basearch - Rex Repository
     baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
     enabled=1
     EOF
@@ -143,7 +143,7 @@ Thanks to Bonsaikitten Rex is now available in the official Gentoo Portage Repos
 
     $ cat &lt;/etc/yum.repos.d/rex.repo &gt;&gt;EOF
     [rex]
-    name=Fedora \$releasever - \$basearch - Rex Repository
+    name=CentOS \$releasever - \$basearch - Rex Repository
     baseurl=https://rex.linux-files.org/CentOS/\$releasever/rex/\$basearch/
     enabled=1
     EOF
