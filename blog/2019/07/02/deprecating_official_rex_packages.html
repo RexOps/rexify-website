@@ -5,7 +5,7 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Care</title>
+      <title>Deprecating official Rex packages</title>
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
       <link href="/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
@@ -106,17 +106,42 @@ maintained using the static site generator
 
 <p>
 » <a href="/index.html">Home</a>
-» <a href="/care/index.html">Care</a>
+» <a href="/blog/index.html">Blog</a>
+» <a href="/blog/2019/index.html">2019</a>
+» <a href="/blog/2019/07/index.html">07</a>
+» <a href="/blog/2019/07/02/index.html">02</a>
+» <a href="/blog/2019/07/02/deprecating_official_rex_packages.html">Deprecating official Rex packages</a>
 </p>
 
               
-              <h1>Care</h1>
-              <ul>
-<li><p><a href="/care/help__r__ex.html">Help (R)?ex</a> <br>
-Contribute to (R)?ex</p></li>
-<li><p><a href="/care/help_people_in_need.html">Help people</a> <br>
-Help people in need</p></li>
-</ul>
+              <h1>Deprecating official Rex packages</h1>
+              <p>As part of our efforts to simplify maintenance around RexOps projects, we have decided to stop building Rex packages on our side. We recommend relying on OS packages maintained by the various distributions in their respective upstream repositories, or to install Rex from CPAN.</p>
+
+<hr>
+
+<p>There are multiple reasons behind this decision, and I&#39;d like to mention some of the bigger ones below.</p>
+
+<h2 id="existingupstreampackagesinvariousdistributions">Existing upstream packages in various distributions</h2>
+
+<p>Many operating systems are already packaging and shipping Rex in their own respective repositories, so building our own packages feels like a duplicate effort.</p>
+
+<p>We believe the OS-specific packages in general are also much better in quality than what we could achieve on our own. They are maintained by their upstreams who are in much better position to follow changes of the packaging guidelines for the given distribution.</p>
+
+<p>We would like to continue working together with the package maintainers, while we also encourage you to help them out for your own favorite distributions.</p>
+
+<h2 id="collateralpackagingburdenofdependencies">Collateral packaging burden of dependencies</h2>
+
+<p>Packaging Rex also often involves packaging all its dependencies if they are not available in a given distribution. This multiplies the effort needed on our side to provide a proper Rex package not just by having to build all those dependencies, but also tracking each of their own new releases.</p>
+
+<p>We felt this is too far outside the scope of the Rex project, and we wished we could spend the same amount of effort on Rex itself instead.</p>
+
+<h2 id="releasesaremuchsimplerwithcpan">Releases are much simpler with CPAN</h2>
+
+<p>Rex is a Perl project available on CPAN, and as such, it&#39;s straightforward to install it with standard Perl tools, even if you don&#39;t have superuser access on your machine.</p>
+
+<p>At the same time, maintaining a multi-user package building pipeline for multiple distributions is much bigger effort than granting co-maintainer permissions on PAUSE and then using standard Perl tools for releases.</p>
+
+<p>On top of that CPAN provides us with increased reliability via its mirrors and secure downloads via encrypted connections, among many other benefits.</p>
 
 
 
