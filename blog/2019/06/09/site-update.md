@@ -6,7 +6,7 @@ author: Erik Huelsmann
 
 Over the course of the past weeks many clean-ups have been
 done, reaping the benefits provided by our new
-[Statocles](https://preaction.me/statocles)-based site:
+[Statocles](http://preaction.me/statocles)-based site:
 
 ---
 
