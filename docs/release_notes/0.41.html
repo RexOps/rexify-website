@@ -235,37 +235,32 @@ print Dumper( \%hw_info );
 <ul>
 <li><p>Creation order of VMs can now be defined in YAML file</p>
 
-<p>type: VBox</p>
-
-<h1 id="vbox:">vbox:</h1>
-
-<h1 id="headless:1">headless: 1</h1>
-
-<p>vms:</p>
-
-<ul>
-<li>name: mem01
-  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-  network:
-     1:
-        type: bridged
-        bridge: &quot;en0: Ethernet&quot;
-  setup: setup_memcache</li>
-<li>name: db01
-  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-  network:
-     1:
-        type: bridged
-        bridge: &quot;en0: Ethernet&quot;
-  setup: setup_db</li>
-<li>name: www01
-  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-  network:
-     1:
-        type: bridged
-        bridge: &quot;en0: Ethernet&quot;
-  setup: setup_frontend</li>
-</ul></li>
+<pre><code>type: VBox
+#vbox:
+#   headless: 1
+vms:
+   -  name: mem01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: &quot;en0: Ethernet&quot;
+      setup: setup_memcache
+   -  name: db01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: &quot;en0: Ethernet&quot;
+      setup: setup_db
+   -  name: www01
+      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+      network:
+         1:
+            type: bridged
+            bridge: &quot;en0: Ethernet&quot;
+      setup: setup_frontend
+</code></pre></li>
 </ul>
 
 
