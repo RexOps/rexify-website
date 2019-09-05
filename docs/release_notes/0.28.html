@@ -118,27 +118,22 @@ maintained using the static site generator
 <ul>
 <li><p>Added a new CLI parameter &quot;-Tv&quot; to display more information of tasks.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> jan@pitahaya ~/temp $ rex -Tv
- Tasks
-   foo                            
-       Servers: 
-   test                           
-       Servers: server01, server02, server03
-   test2                          
-       Servers: wks01, wks02
+<pre><code>jan@pitahaya ~/temp $ rex -Tv
+Tasks
+  foo                            
+      Servers: 
+  test                           
+      Servers: server01, server02, server03
+  test2                          
+      Servers: wks01, wks02
 </code></pre></li>
 <li><p>Fixed a bug with relative source file names inside external modules</p></li>
 <li><p>allow additional parameters for rsync</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;syncr&quot;, &quot;server1&quot;, sub {
-    sync &quot;/packages/www&quot;, &quot;/var/www/html&quot;, {
-        parameters =&gt; &quot;--backup --delete ...&quot;,   
-    };
- };
+<pre><code>task &quot;syncr&quot;, &quot;server1&quot;, sub {
+  sync &quot;/packages/www&quot;, &quot;/var/www/html&quot;,
+    { parameters =&gt; &quot;--backup --delete ...&quot;, };
+};
 </code></pre></li>
 <li><p>fixed a bug in the libvirt module if only one guest-type is available.</p></li>
 <li><p>more code refactoring</p></li>

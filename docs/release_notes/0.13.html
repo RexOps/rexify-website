@@ -120,68 +120,66 @@ maintained using the static site generator
 <li><p>Rex is now running under Windows. Tested with ActiveState Perl 5.12 and Windows 7. See the <a href="/get">Get Rex</a> page for installation instructions.</p></li>
 <li><p>Added support for JiffyBox, a German cloud service of <a href="http://www.df.eu">domainfactory</a>.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Cloud;
+<pre><code>use Rex::Commands::Cloud;
 
 
- user &quot;root&quot;;
- password &quot;f00b4r&quot;;
- pass_auth;
+user &quot;root&quot;;
+password &quot;f00b4r&quot;;
+pass_auth;
 
 
- cloud_service &quot;Jiffybox&quot;;
- cloud_auth &quot;yourkey&quot;;
+cloud_service &quot;Jiffybox&quot;;
+cloud_auth &quot;yourkey&quot;;
 
 
- group jiffybox =&gt; get_cloud_instances_as_group();
+group jiffybox =&gt; get_cloud_instances_as_group();
 
 
- task &quot;create&quot;, sub {
-    cloud_instance create =&gt; {
-       image_id     =&gt; &quot;debian_squeeze_64bit&quot;,
-       name         =&gt; &quot;test01&quot;,
-       plan_id      =&gt; 10,
-       password     =&gt; &quot;f00b4r&quot;,
-    };
- };
+task &quot;create&quot;, sub {
+  cloud_instance create =&gt; {
+    image_id =&gt; &quot;debian_squeeze_64bit&quot;,
+    name     =&gt; &quot;test01&quot;,
+    plan_id  =&gt; 10,
+    password =&gt; &quot;f00b4r&quot;,
+  };
+};
 
 
- task &quot;prepare&quot;, group =&gt; &quot;jiffybox&quot;, sub {
-    update_package_db;
-    install package =&gt; &quot;apache2&quot;;
- };
+task &quot;prepare&quot;,
+  group =&gt; &quot;jiffybox&quot;,
+  sub {
+  update_package_db;
+  install package =&gt; &quot;apache2&quot;;
+  };
 
 
- $&gt; rex create preare
+$&gt; rex create preare
 </code></pre></li>
 <li><p>Added function to update package database.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;update&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    update_package_db;
- };
+<pre><code>task &quot;update&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  update_package_db;
+};
 </code></pre></li>
 <li><p>Revised error handling. Now every function throws an exception on failure.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;test&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    unlink &quot;/tmp/doesntexists&quot;;  # this will terminate the whole execution because it will fail.
+<pre><code>task &quot;test&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  unlink &quot;/tmp/doesntexists&quot;; # this will terminate the whole execution because it will fail.
 
 
-<pre><code># this will catch the exception and store it in $@
-eval {
-   unlink &quot;/tmp/doesntexists&quot;;
-   # and more stuff
-} or do {
-   say &quot;Tried to unlink /tmp/doesntexists but it failed.&quot;;
-   say &quot;Error: $@&quot;;
-};
+  # this will catch the exception and store it in $@
+  eval {
+    unlink &quot;/tmp/doesntexists&quot;;
+
+
+<pre><code># and more stuff
 </code></pre>
 
- };
+  } or do {
+    say &quot;Tried to unlink /tmp/doesntexists but it failed.&quot;;
+    say &quot;Error: $@&quot;;
+  };
+};
 </code></pre></li>
 <li><p>added <em>rm</em> as an alias function for unlink</p></li>
 <li><p>Added cache for the sftp object. This should speed up the execution.</p></li>

@@ -118,58 +118,54 @@ maintained using the static site generator
 <ul>
 <li><p>Added a network module</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Network;
+<pre><code>use Rex::Commands::Network;
 
 
- my @routes = route;
- print Dumper(\@routes);
+my @routes = route;
+print Dumper( \@routes );
 
 
- my $default_gw = default_gateway;
- default_gateway &quot;192.168.2.1&quot;;
+my $default_gw = default_gateway;
+default_gateway &quot;192.168.2.1&quot;;
 
 
- my @netstat = netstat;
- my @tcp_connections = grep { $_-&gt;{&quot;proto&quot;} eq &quot;tcp&quot; } netstat;
+my @netstat         = netstat;
+my @tcp_connections = grep { $_-&gt;{&quot;proto&quot;} eq &quot;tcp&quot; } netstat;
 </code></pre></li>
 <li><p>Added mount and umount functions to the Fs module</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;mount&quot;, &quot;server01&quot;, sub {
-    mount &quot;/dev/sda5&quot;, &quot;/tmp&quot;;
-    mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
-               fs =&gt; &quot;ext3&quot;,
-               options =&gt; [qw/noatime async/];
- };
+<pre><code>task &quot;mount&quot;, &quot;server01&quot;, sub {
+  mount &quot;/dev/sda5&quot;, &quot;/tmp&quot;;
+  mount &quot;/dev/sda6&quot;, &quot;/mnt/sda6&quot;,
+    fs      =&gt; &quot;ext3&quot;,
+    options =&gt; [qw/noatime async/];
+};
 
 
- task &quot;umount&quot;, &quot;server01&quot;, sub {
-    umount &quot;/tmp&quot;;
- };
+task &quot;umount&quot;, &quot;server01&quot;, sub {
+  umount &quot;/tmp&quot;;
+};
 </code></pre></li>
 <li><p>Added a cron module</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Cron;
+<pre><code>use Rex::Commands::Cron;
 
 
- cron add =&gt; &quot;root&quot;, {
-            minute =&gt; &#39;5&#39;,
-            hour   =&gt; &#39;*&#39;,
-            day_of_month    =&gt; &#39;*&#39;,
-            month =&gt; &#39;*&#39;,
-            day_of_week =&gt; &#39;*&#39;,
-         };
+cron
+  add =&gt; &quot;root&quot;,
+  {
+  minute       =&gt; &#39;5&#39;,
+  hour         =&gt; &#39;*&#39;,
+  day_of_month =&gt; &#39;*&#39;,
+  month        =&gt; &#39;*&#39;,
+  day_of_week  =&gt; &#39;*&#39;,
+  };
 
 
- cron list =&gt; &quot;root&quot;;
+cron list =&gt; &quot;root&quot;;
 
 
- cron delete =&gt; &quot;root&quot;, 3;
+cron delete =&gt; &quot;root&quot;, 3;
 </code></pre></li>
 <li><p>Inventory module</p>
 
@@ -178,18 +174,16 @@ maintained using the static site generator
 
 <p>Added a new function <em>installed_packages</em> to get information of all installed packages.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;get-installed&quot;, &quot;server1&quot;, sub {
+<pre><code>task &quot;get-installed&quot;, &quot;server1&quot;, sub {
 
 
-<pre><code> for my $pkg (installed_packages()) {
-    say &quot;name     : &quot; . $pkg-&amp;gt;{&quot;name&quot;};
-    say &quot;  version: &quot; . $pkg-&amp;gt;{&quot;version&quot;};
- }
-</code></pre>
+  for my $pkg ( installed_packages() ) {
+    say &quot;name     : &quot; . $pkg-&gt;{&quot;name&quot;};
+    say &quot;  version: &quot; . $pkg-&gt;{&quot;version&quot;};
+  }
 
- };
+
+};
 </code></pre></li>
 </ul>
 

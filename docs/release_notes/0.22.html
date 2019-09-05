@@ -118,44 +118,44 @@ maintained using the static site generator
 <ul>
 <li><p>Before and after hooks</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>   task prepare =&gt; &quot;server1&quot;, &quot;server2&quot;, sub {
-      # do something
-   };
+<pre><code>  task
+    prepare =&gt; &quot;server1&quot;,
+    &quot;server2&quot;, sub {
 
 
-   before prepare =&gt; sub {
-      my ($server) = @_;
-      say &quot;Starting virtual machine...&quot;;
-      run &quot;xm start $server&quot;;
-   };
+<pre><code># do something
+};
+</code></pre>
+
+  before prepare =&gt; sub {
+    my ($server) = @_;
+    say &quot;Starting virtual machine...&quot;;
+    run &quot;xm start $server&quot;;
+  };
 
 
-   after prepare =&gt; sub {
-      my ($server, $failed_connection) = @_;
-      say &quot;Stopping virtual machine...&quot;;
-      run &quot;xm stop $server&quot;;
-   };
+  after prepare =&gt; sub {
+    my ( $server, $failed_connection ) = @_;
+    say &quot;Stopping virtual machine...&quot;;
+    run &quot;xm stop $server&quot;;
+  };
 </code></pre></li>
 <li><p>Systemd service provider for RedHat and SuSE.</p></li>
 <li><p>Added <a href="http://fusioninventory.org/">FusionInventory</a> support. If the agent is installed on the target maschine rex will use it for inventory.</p></li>
 <li><p>It&#39;s now possible to set crypted passwords.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>   task prepare_user =&gt; sub {
+<pre><code>  task prepare_user =&gt; sub {
 
 
-<pre><code>  create_user &quot;foo&quot; =&amp;gt; {
-     home =&amp;gt; &#39;/home/foo&#39;,
-     groups  =&amp;gt; [&#39;users&#39;, &#39;...&#39;],
-     crypt_password =&amp;gt; &#39;$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/&#39;,
-     ssh_key =&amp;gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;,
-  };
+<pre><code>create_user &quot;foo&quot; =&amp;gt; {
+  home           =&amp;gt; &#39;/home/foo&#39;,
+  groups         =&amp;gt; [ &#39;users&#39;, &#39;...&#39; ],
+  crypt_password =&amp;gt; &#39;$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/&#39;,
+  ssh_key        =&amp;gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;,
+};
 </code></pre>
 
-   };
+  };
 </code></pre></li>
 <li><p>Bugs were fixed.</p></li>
 </ul>

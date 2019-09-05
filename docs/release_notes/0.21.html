@@ -120,91 +120,87 @@ maintained using the static site generator
 
 <p>Now you can checkout subversion and git repositories with Rex.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>set
+  repository =&gt; &quot;myrepo&quot;,
+  url        =&gt; &quot;git@foo.bar:myrepo.git&quot;;
 
-<pre><code> set repository =&gt; &quot;myrepo&quot;,
-      url =&gt; &quot;git@foo.bar:myrepo.git&quot;;
 
-
- task &quot;checkout&quot;, sub {
-    checkout &quot;myrepo&quot;;
- };
+task &quot;checkout&quot;, sub {
+  checkout &quot;myrepo&quot;;
+};
 </code></pre>
 
 <p>See <a href="/api/Rex/Commands/SCM.pm.html">Rex::Commands::SCM</a> for more information.</p></li>
 <li><p>allow multiple groups for a task</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> group &quot;frontend&quot; =&gt; &quot;fe01&quot;, &quot;fe02&quot;;
- group &quot;backend&quot;  =&gt; &quot;be01&quot;, &quot;be02&quot;;
+<pre><code>group &quot;frontend&quot; =&gt; &quot;fe01&quot;, &quot;fe02&quot;;
+group &quot;backend&quot;  =&gt; &quot;be01&quot;, &quot;be02&quot;;
 
 
- task &quot;prepare&quot;, group =&gt; [ &quot;frontend&quot;, &quot;backend&quot; ], sub {
-    say run &quot;uptime&quot;;
- };
+task &quot;prepare&quot;,
+  group =&gt; [ &quot;frontend&quot;, &quot;backend&quot; ],
+  sub {
+  say run &quot;uptime&quot;;
+  };
 </code></pre></li>
 <li><p>every task can have its own auth information</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> user &quot;root&quot;;
- password &quot;test&quot;;
+<pre><code>user &quot;root&quot;;
+password &quot;test&quot;;
 
 
- task &quot;prepare&quot;, &quot;server1&quot;, sub {
-     # will authenticate as root/test
- };
+task &quot;prepare&quot;, &quot;server1&quot;, sub {
 
 
- task &quot;prepare2&quot;, &quot;server1&quot;, sub {
-     # will also authenticate as root/test
- };
+  # will authenticate as root/test
+};
 
 
- # all tasks from here down will authenticate as deploy/testdeploy
- user &quot;deploy&quot;;
- password &quot;testdeploy&quot;;
- task &quot;deploy&quot;, &quot;server1&quot;, sub {
-     # will authenticate as deploy/testdeploy
- };
+task &quot;prepare2&quot;, &quot;server1&quot;, sub {
+
+
+  # will also authenticate as root/test
+};
+
+
+# all tasks from here down will authenticate as deploy/testdeploy
+user &quot;deploy&quot;;
+password &quot;testdeploy&quot;;
+task &quot;deploy&quot;, &quot;server1&quot;, sub {
+
+
+  # will authenticate as deploy/testdeploy
+};
 </code></pre></li>
 <li><p>fixed running of multiple tasks by do_task</p></li>
 <li><p>user module: add ssh key</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;createuser&quot;, &quot;server1&quot;, sub {
-    create_user &quot;foo&quot;,
-        home =&gt; &quot;/home/foo&quot;,
-        ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...&quot;;
- };
+<pre><code>task &quot;createuser&quot;, &quot;server1&quot;, sub {
+  create_user &quot;foo&quot;,
+    home    =&gt; &quot;/home/foo&quot;,
+    ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...&quot;;
+};
 </code></pre></li>
 <li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p></li>
 <li><p>ssh port isn&#39;t fix anymore (patch from Jose Luis Martinez)</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> group &quot;frontend&quot;, &quot;fe01:2222&quot;, &quot;fe02&quot;;
+<pre><code>group &quot;frontend&quot;, &quot;fe01:2222&quot;, &quot;fe02&quot;;
 </code></pre>
 
 <p>Rex will now connect to fe01 on port 2222 and to fe02 on port 22.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>port 2222;
+task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
 
-<pre><code> port 2222;
- task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    # will always connect to port 2222
- };
+
+  # will always connect to port 2222
+};
 </code></pre></li>
 <li><p>file and upload now scans for environment specific files first</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;upload&quot;, &quot;server1&quot;, sub {
-    file &quot;/etc/passwd&quot;,
-       source =&gt; &quot;files/etc/passwd&quot;;
- };
+<pre><code>task &quot;upload&quot;, &quot;server1&quot;, sub {
+  file &quot;/etc/passwd&quot;, source =&gt; &quot;files/etc/passwd&quot;;
+};
 </code></pre>
 
 <p>If called with <em>rex -E stage</em> it will first try to upload &quot;files/etc/passwd.stage&quot; and if not found &quot;files/etc/passwd&quot;</p></li>
@@ -212,9 +208,7 @@ maintained using the static site generator
 <li><p>added -nolog parameter to logging function to disable logging at all</p></li>
 <li><p>added possibility to evaluate perl code within the -H CLI parameter</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> bash# rex -H &#39;perl:map { &quot;server-$_&quot;; } (1,2,3)&#39; task
+<pre><code>bash# rex -H &#39;perl:map { &quot;server-$_&quot;; } (1,2,3)&#39; task
 </code></pre></li>
 </ul>
 

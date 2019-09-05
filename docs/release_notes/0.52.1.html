@@ -128,20 +128,18 @@ maintained using the static site generator
 <ul>
 <li><p><strong>on_change</strong> hook for update_system</p>
 
-<pre><code>update_system
-  on_change =&gt; sub {
-    my (@modified_packates) = @_;
-      for my $pkg (@modified_packages) {
-        say &quot;Name: $pkg-&gt;{name}&quot;;
-        say &quot;Version: $pkg-&gt;{version}&quot;;
-        say &quot;Action: $pkg-&gt;{action}&quot;;   # some of updated, installed or removed
-      }
-  };
+<pre><code>update_system on_change =&gt; sub {
+  my (@modified_packates) = @_;
+  for my $pkg (@modified_packages) {
+    say &quot;Name: $pkg-&gt;{name}&quot;;
+    say &quot;Version: $pkg-&gt;{version}&quot;;
+    say &quot;Action: $pkg-&gt;{action}&quot;; # some of updated, installed or removed
+  }
+};
 </code></pre></li>
 <li><p>Added support for <strong>end_if_matched</strong> option to run command - nathanIL</p>
 
-<pre><code>run &quot;my_command&quot;,
-   end_if_matched =&gt; qr/PATTERN/;
+<pre><code>run &quot;my_command&quot;, end_if_matched =&gt; qr/PATTERN/;
 </code></pre></li>
 <li><p>Tie server.ini to specified -E environment (server.$environment.ini). - ehu</p></li>
 <li><p>Added <strong>before_task_start</strong> and <strong>after_task_finished</strong> hooks</p>
@@ -149,28 +147,34 @@ maintained using the static site generator
 <p>The before_task_start hook will be executed before the fork for the task is made. The after_task_finished hook will be executed after all servers has finished the task.</p>
 
 <pre><code>before_task_start mytask =&gt; sub {
-   # do some things
+
+
+  # do some things
 };
 after_task_finished mytask =&gt; sub {
-   # do some things
+
+
+  # do some things
 };
 </code></pre></li>
 <li><p>Added <strong>fallback authentication</strong> support.</p>
 
 <p>Sometimes you have different authentications on different hosts and you don&#39;t know beforehand which one you have to use. For these cases you can now define multiple authentication options. Rex will try all of them.</p>
 
-<pre><code>auth fallback =&gt; {
-   user        =&gt; &quot;fallback_user1&quot;,
-   password    =&gt; &quot;fallback_pw1&quot;,
-   public_key  =&gt; &quot;&quot;,
-   private_key =&gt; &quot;&quot;,
-}, {
-   user        =&gt; &quot;fallback_user2&quot;,
-   password    =&gt; &quot;fallback_pw2&quot;,
-   public_key  =&gt; &quot;keys/public.key&quot;,
-   private_key =&gt; &quot;keys/private.key&quot;,
-   sudo        =&gt; TRUE,
-};
+<pre><code>auth
+  fallback =&gt; {
+  user        =&gt; &quot;fallback_user1&quot;,
+  password    =&gt; &quot;fallback_pw1&quot;,
+  public_key  =&gt; &quot;&quot;,
+  private_key =&gt; &quot;&quot;,
+  },
+  {
+  user        =&gt; &quot;fallback_user2&quot;,
+  password    =&gt; &quot;fallback_pw2&quot;,
+  public_key  =&gt; &quot;keys/public.key&quot;,
+  private_key =&gt; &quot;keys/private.key&quot;,
+  sudo        =&gt; TRUE,
+  };
 </code></pre></li>
 </ul>
 

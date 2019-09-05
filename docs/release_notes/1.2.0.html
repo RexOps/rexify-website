@@ -130,8 +130,8 @@ maintained using the static site generator
 <!-- -->
 
 <pre><code>set cmdb {
-  type =&gt; &#39;YAML&#39;,
-  path =&gt; &#39;cmdb&#39;,
+  type           =&gt; &#39;YAML&#39;,
+  path           =&gt; &#39;cmdb&#39;,
   merge_behavior =&gt; &#39;LEFT_PRECEDENT&#39;,
 };
 </code></pre>
@@ -143,13 +143,13 @@ maintained using the static site generator
 <!-- -->
 
 <pre><code>set cmdb {
-  type =&gt; &#39;YAML&#39;,
-  path =&gt; &#39;cmdb&#39;,
+  type           =&gt; &#39;YAML&#39;,
+  path           =&gt; &#39;cmdb&#39;,
   merge_behavior =&gt; {
-    SCALAR =&gt; { ... },
-    ARRAY  =&gt; { ... },
-    HASH   =&gt; { ... }
-  }, 
+    SCALAR =&gt; {...},
+    ARRAY  =&gt; {...},
+    HASH   =&gt; {...}
+  },
 };
 </code></pre>
 

@@ -120,24 +120,20 @@ maintained using the static site generator
 
 <p>A simple rsync interface is now available. To use it, you need the Perl module <span>Expect</span>.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Rsync;
+<pre><code>use Rex::Commands::Rsync;
 
 
- desc &quot;Sync /etc&quot;;
- task &quot;etc&quot;, &quot;server1&quot;, &quot;server2&quot;, &quot;server3&quot;, sub {
-    sync &quot;/filestore/public/etc&quot;, &quot;/etc&quot;;
- };
+desc &quot;Sync /etc&quot;;
+task &quot;etc&quot;, &quot;server1&quot;, &quot;server2&quot;, &quot;server3&quot;, sub {
+  sync &quot;/filestore/public/etc&quot;, &quot;/etc&quot;;
+};
 </code></pre>
 
 <p>Or, if you want to sync a remote directory to a local one</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;get-logs&quot;, &quot;server&quot;, sub {
-     sync &quot;/var/log&quot;, &quot;/tmp/logs&quot;, { download =&gt; 1 };
- };
+<pre><code>task &quot;get-logs&quot;, &quot;server&quot;, sub {
+  sync &quot;/var/log&quot;, &quot;/tmp/logs&quot;, { download =&gt; 1 };
+};
 </code></pre></li>
 <li><p><strong>Debug mode</strong></p>
 
@@ -148,58 +144,46 @@ maintained using the static site generator
 
 <p>Log to a file:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> logging to_file =&gt; &#39;rex.log&#39;;
+<pre><code>logging to_file =&gt; &#39;rex.log&#39;;
 </code></pre>
 
 <p>Log to syslog:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> logging to_syslog =&gt; &#39;local0&#39;;
+<pre><code>logging to_syslog =&gt; &#39;local0&#39;;
 </code></pre></li>
 <li><p><strong>Server ranges</strong></p>
 
 <p>Now you can define server ranges like &quot;www[1..10]&quot; or &quot;www[01..10]&quot;.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;uname&quot;, &quot;www[1..10]&quot;, sub {
-    run &quot;uname -a&quot;;
- };
+<pre><code>task &quot;uname&quot;, &quot;www[1..10]&quot;, sub {
+  run &quot;uname -a&quot;;
+};
 </code></pre>
 
 <p>or</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> group &quot;webserver&quot; =&gt; &quot;www[01..15]&quot;, &quot;web[1..3]&quot;;
- task &quot;uname&quot;, group =&gt; &quot;webserver&quot;, sub {
-    run &quot;uname -a&quot;;
- };
+<pre><code>group &quot;webserver&quot; =&gt; &quot;www[01..15]&quot;, &quot;web[1..3]&quot;;
+task &quot;uname&quot;,
+  group =&gt; &quot;webserver&quot;,
+  sub {
+  run &quot;uname -a&quot;;
+  };
 </code></pre></li>
 <li><p><strong>Run command from commandline</strong></p>
 
 <p>Example:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www01 www02 www03&quot; -u root -p password
+<pre><code>rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www01 www02 www03&quot; -u root -p password
 </code></pre>
 
 <p>or with server ranges</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www[01..10]&quot; -u root -p password
+<pre><code>rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www[01..10]&quot; -u root -p password
 </code></pre>
 
 <p>or if you only want to get the hostname from every 3rd server</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www[01..10/3]&quot; -u root -p password
+<pre><code>rex -e &quot;run &#39;hostname&#39;&quot; -H &quot;www[01..10/3]&quot; -u root -p password
 </code></pre></li>
 <li><p><strong>Call tasks from other tasks</strong></p>
 
@@ -207,17 +191,15 @@ maintained using the static site generator
 
 <p>Example:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;hostname&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    run &quot;hostname&quot;;
-    do_task &quot;uname&quot;;
- };
+<pre><code>task &quot;hostname&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  run &quot;hostname&quot;;
+  do_task &quot;uname&quot;;
+};
 
 
- task &quot;uname&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    run &quot;uname -a&quot;;
- };
+task &quot;uname&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  run &quot;uname -a&quot;;
+};
 </code></pre></li>
 </ul>
 
@@ -226,9 +208,7 @@ maintained using the static site generator
 <ul>
 <li><p>A simple command to create a Rexfile skeleton.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> rexify ProjectName
+<pre><code>rexify ProjectName
 </code></pre>
 
 <p>This will create a <em>Rexfile</em> and file <em>lib/Rex/ProjectName.pm</em> where you can define your tasks.</p></li>

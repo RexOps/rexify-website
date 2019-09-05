@@ -125,77 +125,71 @@ maintained using the static site generator
 
 <p>For example with Solaris you can use Blastwave, OpenCSW or the standard utilities for package management.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # in the base section of your Rexfile
- package_provider_for SunOS =&gt; &quot;Blastwave&quot;;
+<pre><code># in the base section of your Rexfile
+package_provider_for SunOS =&gt; &quot;Blastwave&quot;;
 
 
- task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    # if solaris, install apache-22 from Blastwave
-    install package =&gt; &quot;apache-22&quot;;
- }; 
+task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+
+
+  # if solaris, install apache-22 from Blastwave
+  install package =&gt; &quot;apache-22&quot;;
+};
 </code></pre>
 
 <p>Or, if you want to use OpenCSW</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # in the base section of your Rexfile
- package_provider_for SunOS =&gt; &quot;OpenCSW&quot;;
+<pre><code># in the base section of your Rexfile
+package_provider_for SunOS =&gt; &quot;OpenCSW&quot;;
 
 
- task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    # if solaris, install apache-22 from OpenCSW
-    install package =&gt; &quot;apache-22&quot;;
- }; 
+task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+
+
+  # if solaris, install apache-22 from OpenCSW
+  install package =&gt; &quot;apache-22&quot;;
+};
 </code></pre>
 
 <p>Or, for Solaris 11, use the built-in &quot;pkg&quot; Package Management:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # in the base section of your Rexfile
- package_provider_for SunOS =&gt; &quot;pkg&quot;;
+<pre><code># in the base section of your Rexfile
+package_provider_for SunOS =&gt; &quot;pkg&quot;;
 
 
- task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    # if solaris, install apache-22 from built-in pkg
-    install package =&gt; &quot;apache-22&quot;;
- }; 
+task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+
+
+  # if solaris, install apache-22 from built-in pkg
+  install package =&gt; &quot;apache-22&quot;;
+};
 </code></pre></li>
 <li><p>Custom providers for service management</p>
 
 <p>For example with Solaris, if you want to use the old init-style service management you don&#39;t need to specify anything.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    service ssh =&gt; &quot;restart&quot;;
- };
+<pre><code>task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  service ssh =&gt; &quot;restart&quot;;
+};
 </code></pre>
 
 <p>But, if you want to use the newer SVCADM management use this:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # in the base section of your Rexfile
- service_provider_for SunOS =&gt; &quot;svcadm&quot;;
+<pre><code># in the base section of your Rexfile
+service_provider_for SunOS =&gt; &quot;svcadm&quot;;
 
 
- task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    service ssh =&gt; &quot;restart&quot;;
- };
+task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  service ssh =&gt; &quot;restart&quot;;
+};
 </code></pre></li>
 <li><p>Added <em>operating_system_version()</em> to get the OS version.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    if(operating_system_version() &lt; 10) {
-       say &quot;too old...&quot;;
-    }
- };
+<pre><code>task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  if ( operating_system_version() &lt; 10 ) {
+    say &quot;too old...&quot;;
+  }
+};
 </code></pre></li>
 <li><p>fixed local copy error handling</p></li>
 </ul>

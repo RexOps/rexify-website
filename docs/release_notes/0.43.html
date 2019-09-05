@@ -119,16 +119,12 @@ maintained using the static site generator
 
 <p>If you want to cache the inventory and to use this cache for subsequent rex calls, you can use the <em>REX_CACHE_TYPE</em> environment variable.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>REX_CACHE_TYPE=YAML rex $task
 </code></pre>
 
 <p>This will create a folder &quot;.cache&quot; and creates a separate cache file for each host. If you want to use a different folder you can set it in the <em>REX_CACHE_PATH</em> environment variable.</p>
 
 <p>You can also set the cache type inside your <em>Rexfile</em></p>
-
-<p>Copy to clipboard</p>
 
 <pre><code># Rexfile
 
@@ -147,14 +143,10 @@ cache &quot;YAML&quot;;
 
 <p>To activate the reporting you can use the <em>REX_REPORT_TYPE</em> environment variable or use the <em>reporting</em> feature inside your <em>Rexfile</em>.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>REX_REPORT_TYPE=YAML rex the-task
 </code></pre>
 
 <p>Or, within the <em>Rexfile</em></p>
-
-<p>Copy to clipboard</p>
 
 <pre><code># Rexfile
 use Rex -base;
@@ -163,10 +155,8 @@ report -on =&gt; &quot;YAML&quot;;
 
 <p>The YAML report will be created inside a directory called <em>report</em>. If you want to use a different directory you can set it with a special variable.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>use Rex -base;
-report -on =&gt; &quot;YAML&quot;;
+report -on      =&gt; &quot;YAML&quot;;
 set report_path =&gt; &quot;/path/to/&quot;;
 </code></pre>
 
@@ -180,8 +170,6 @@ set report_path =&gt; &quot;/path/to/&quot;;
 
 <p>Login to fe01.my.lan and execute uptime</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>#!/bin/bash
 export REX_REMOTE_HOST=&quot;fe01.my.lan&quot;
 GROUPS=$(rex-run &quot;id -Gn www-data&quot;)
@@ -191,8 +179,6 @@ done
 </code></pre>
 
 <p>Login to fe01.my.lan, testing if /etc/sudoers is there, and if not, install package and upload a template sudoers file</p>
-
-<p>Copy to clipboard</p>
 
 <pre><code>#!/bin/bash
 export REX_REMOTE_HOST=&quot;fe01.my.lan&quot;
@@ -216,29 +202,20 @@ fi
 <p>rex will now only upload a file if it really changes and it will upload the file into a temporary file and rename it after the upload.</p>
 
 <ul>
-<li>setting options for OpenSSH connection mode</li>
-</ul>
+<li><p>setting options for OpenSSH connection mode</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>Rex::Config-&gt;set_openssh_opt(StrictHostKeyChecking =&gt; &quot;no&quot;);
-</code></pre>
-
-<ul>
-<li>set temporary directory - #166</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<pre><code>Rex::Config-&gt;set_openssh_opt( StrictHostKeyChecking =&gt; &quot;no&quot; );
+</code></pre></li>
+<li><p>set temporary directory - #166</p>
 
 <pre><code>user &quot;foo&quot;;
 password &quot;b4r&quot;;
 tmp_dir &quot;/home/foo/tmp&quot;;
 
+
 task &quot;mytask&quot;, &quot;myserver&quot;, sub {
 };
-</code></pre>
-
-<ul>
+</code></pre></li>
 <li><p>if a given feature flag isn&#39;t supported, Rex will now die() - #177</p></li>
 <li><p>Rex now has an interface to support other shells than bash in a pluggable way. (Gnouc) - #180</p></li>
 <li><p>Prefer ip command over ifconfig (ferki) - #194</p></li>

@@ -194,14 +194,14 @@ redis02 user=toor password=foob4r sudo=true services=redis
 <p>In your <strong>Rexfile</strong> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <strong>services</strong> which you can access within a task.</p>
 
 <pre><code>use Rex -feature =&gt; [&#39;0.51&#39;];
-
-
-task &quot;restart_services&quot;, group =&gt; &quot;redis&quot;, make {
-  my @services = split /,/, connection-&gt;server-&gt;services;
-  service [ @services ]  =&gt; &quot;restart&quot;;
 </code></pre>
 
-<p>};</p>
+<p>task &quot;restart_services&quot;,
+      group =&gt; &quot;redis&quot;,
+      make {
+      my @services = split /,/, connection-&gt;server-&gt;services;
+      service [@services] =&gt; &quot;restart&quot;;
+      };</p>
 
 <p> </p></li>
 </ul>

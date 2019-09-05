@@ -119,87 +119,72 @@ maintained using the static site generator
 <li><p>License was changed to Apache 2.0 License. See LICENSE file.</p></li>
 <li><p>Added sudo compatibility. Now it is possible to use rex within a sudo environment.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> user &quot;unprivuser&quot;;
- sudo_password &quot;f00b4r&quot;;
- sudo -on;   # turn sudo globally on
+<pre><code>user &quot;unprivuser&quot;;
+sudo_password &quot;f00b4r&quot;;
+sudo -on; # turn sudo globally on
 
 
- task prepare =&gt; sub {
-    install &quot;apache2&quot;;
-    file &quot;/etc/ntp.conf&quot;,
-       source =&gt; &quot;files/etc/ntp.conf&quot;,
-       owner  =&gt; &quot;root&quot;,
-       mode   =&gt; 640;
- };
+task prepare =&gt; sub {
+  install &quot;apache2&quot;;
+  file &quot;/etc/ntp.conf&quot;,
+    source =&gt; &quot;files/etc/ntp.conf&quot;,
+    owner  =&gt; &quot;root&quot;,
+    mode   =&gt; 640;
+};
 </code></pre>
 
 <p>Or, if you don&#39;t want to turn sudo globally on.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task prepare =&gt; sub {
-    file &quot;/tmp/foo.txt&quot;,
-       content =&gt; &quot;this file was written without sudo privileges\n&quot;;
+<pre><code>task prepare =&gt; sub {
+  file &quot;/tmp/foo.txt&quot;,
+    content =&gt; &quot;this file was written without sudo privileges\n&quot;;
 
 
-<pre><code># everything in this section will be executed with sudo privileges
-sudo sub {
-   install &quot;apache2&quot;;
-   file &quot;/tmp/foo2.txt&quot;,
-      content =&amp;gt; &quot;this file was written with sudo privileges\n&quot;;
+  # everything in this section will be executed with sudo privileges
+  sudo sub {
+    install &quot;apache2&quot;;
+    file &quot;/tmp/foo2.txt&quot;,
+      content =&gt; &quot;this file was written with sudo privileges\n&quot;;
+  };
 };
-</code></pre>
-
- };
 </code></pre></li>
 <li><p>Added a new function <em>include</em> to include Rex recipes without registering the tasks.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> include qw/Webserver::Apache Database::MySQL/;
+<pre><code>include qw/Webserver::Apache Database::MySQL/;
 
 
- task prepare =&gt; sub {
-    Webserver::Apache::setup();
- };
+task prepare =&gt; sub {
+  Webserver::Apache::setup();
+};
 </code></pre></li>
 <li><p>Added a sed-like function.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task foo =&gt; sub {
-    sed qr{search}, &quot;replace&quot;, &quot;/path/to/file&quot;;
- };
+<pre><code>task foo =&gt; sub {
+  sed qr{search}, &quot;replace&quot;, &quot;/path/to/file&quot;;
+};
 </code></pre></li>
 <li><p>Package installation now possible with <em>install $pkg</em>.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>task prepare =&gt; sub {
+  install &quot;foo&quot;;
 
-<pre><code> task prepare =&gt; sub {
-    install &quot;foo&quot;;
-    # old way
-    install package =&gt; &quot;foo&quot;;
- };
+
+  # old way
+  install package =&gt; &quot;foo&quot;;
+};
 </code></pre></li>
 <li><p>Added <em>chdir</em> parameter to <em>extract</em> function.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task prepare =&gt; sub {
-    extract &quot;/tmp/myfile.tar.gz&quot;,
-      chdir =&gt; &quot;/etc&quot;;
- };
+<pre><code>task prepare =&gt; sub {
+  extract &quot;/tmp/myfile.tar.gz&quot;, chdir =&gt; &quot;/etc&quot;;
+};
 </code></pre></li>
 <li><p><em>sync</em> exclude option now accepts a string or an array of strings. Thanks to Hiroaki Nakamura.</p></li>
 <li><p>Added support for custom init commands.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task graceful_apache =&gt; sub {
-    service httpd =&gt; &quot;graceful&quot;;
- };
+<pre><code>task graceful_apache =&gt; sub {
+  service httpd =&gt; &quot;graceful&quot;;
+};
 </code></pre></li>
 </ul>
 

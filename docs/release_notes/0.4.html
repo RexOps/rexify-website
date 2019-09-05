@@ -120,75 +120,66 @@ maintained using the static site generator
 
 <p>Now you can get information of the servers hardware and configuration.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Hardware;
- use Data::Dumper;
+<pre><code>use Rex::Hardware;
+use Data::Dumper;
 
 
- desc &quot;Get Hardware Information&quot;;
- task &quot;hw-info&quot;, &quot;testsystem&quot;, sub {
-     my %hw = Rex::Hardware-&gt;get( qw/ Host Kernel Memory Network Swap / );
+desc &quot;Get Hardware Information&quot;;
+task &quot;hw-info&quot;, &quot;testsystem&quot;, sub {
+  my %hw = Rex::Hardware-&gt;get(qw/ Host Kernel Memory Network Swap /);
 
 
-<pre><code> print Dumper(\%hw);
-</code></pre>
-
- };
+  print Dumper( \%hw );
+};
 </code></pre>
 
 <p>Will produce the following example output:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> $VAR1 = {
-          &#39;Network&#39; =&gt; {
-                         &#39;networkdevices&#39; =&gt; [
-                                               &#39;eth0&#39;,
-                                               &#39;wlan0&#39;
-                                             ],
-                         &#39;networkconfiguration&#39; =&gt; {
-                                                     &#39;wlan0&#39; =&gt; {
-                                                                  &#39;broadcast&#39; =&gt; &#39;192.168.2.255&#39;,
-                                                                  &#39;ip&#39; =&gt; &#39;192.168.2.229&#39;,
-                                                                  &#39;netmask&#39; =&gt; &#39;255.255.255.0&#39;,
-                                                                  &#39;mac&#39; =&gt; &#39;00:21:5C:5C:1E:5F&#39;
-                                                                },
-                                                     &#39;eth0&#39; =&gt; {
-                                                                 &#39;broadcast&#39; =&gt; undef,
-                                                                 &#39;ip&#39; =&gt; undef,
-                                                                 &#39;netmask&#39; =&gt; undef,
-                                                                 &#39;mac&#39; =&gt; &#39;00:1C:25:94:B0:85&#39;
-                                                               }
-                                                   }
-                       },
-          &#39;Memory&#39; =&gt; {
-                        &#39;shared&#39; =&gt; &#39;0&#39;,
-                        &#39;buffers&#39; =&gt; &#39;36&#39;,
-                        &#39;free&#39; =&gt; &#39;3168&#39;,
-                        &#39;used&#39; =&gt; &#39;792&#39;,
-                        &#39;total&#39; =&gt; &#39;3961&#39;,
-                        &#39;cached&#39; =&gt; &#39;407&#39;
-                      },
-          &#39;Kernel&#39; =&gt; {
-                        &#39;kernelversion&#39; =&gt; &#39;#1 SMP PREEMPT 2011-02-21 10:34:10 +0100&#39;,
-                        &#39;architecture&#39; =&gt; &#39;x86_64&#39;,
-                        &#39;kernel&#39; =&gt; &#39;Linux&#39;,
-                        &#39;kernelrelease&#39; =&gt; &#39;2.6.37.1-1.2-desktop&#39;
-                      },
-          &#39;Swap&#39; =&gt; {
-                      &#39;free&#39; =&gt; &#39;3812&#39;,
-                      &#39;used&#39; =&gt; &#39;0&#39;,
-                      &#39;total&#39; =&gt; &#39;3812&#39;
-                    },
-          &#39;Host&#39; =&gt; {
-                      &#39;domain&#39; =&gt; &#39;site&#39;,
-                      &#39;manufacturer&#39; =&gt; &#39;LENOVO&#39;,
-                      &#39;hostname&#39; =&gt; &#39;linux-ymf0.site&#39;,
-                      &#39;operatingsystemrelease&#39; =&gt; &#39;11.4&#39;,
-                      &#39;operatingsystem&#39; =&gt; &#39;SuSE&#39;
-                    }
-        };
+<pre><code>$VAR1 = {
+  &#39;Network&#39; =&gt; {
+    &#39;networkdevices&#39;       =&gt; [ &#39;eth0&#39;, &#39;wlan0&#39; ],
+    &#39;networkconfiguration&#39; =&gt; {
+      &#39;wlan0&#39; =&gt; {
+        &#39;broadcast&#39; =&gt; &#39;192.168.2.255&#39;,
+        &#39;ip&#39;        =&gt; &#39;192.168.2.229&#39;,
+        &#39;netmask&#39;   =&gt; &#39;255.255.255.0&#39;,
+        &#39;mac&#39;       =&gt; &#39;00:21:5C:5C:1E:5F&#39;
+      },
+      &#39;eth0&#39; =&gt; {
+        &#39;broadcast&#39; =&gt; undef,
+        &#39;ip&#39;        =&gt; undef,
+        &#39;netmask&#39;   =&gt; undef,
+        &#39;mac&#39;       =&gt; &#39;00:1C:25:94:B0:85&#39;
+      }
+    }
+  },
+  &#39;Memory&#39; =&gt; {
+    &#39;shared&#39;  =&gt; &#39;0&#39;,
+    &#39;buffers&#39; =&gt; &#39;36&#39;,
+    &#39;free&#39;    =&gt; &#39;3168&#39;,
+    &#39;used&#39;    =&gt; &#39;792&#39;,
+    &#39;total&#39;   =&gt; &#39;3961&#39;,
+    &#39;cached&#39;  =&gt; &#39;407&#39;
+  },
+  &#39;Kernel&#39; =&gt; {
+    &#39;kernelversion&#39; =&gt; &#39;#1 SMP PREEMPT 2011-02-21 10:34:10 +0100&#39;,
+    &#39;architecture&#39;  =&gt; &#39;x86_64&#39;,
+    &#39;kernel&#39;        =&gt; &#39;Linux&#39;,
+    &#39;kernelrelease&#39; =&gt; &#39;2.6.37.1-1.2-desktop&#39;
+  },
+  &#39;Swap&#39; =&gt; {
+    &#39;free&#39;  =&gt; &#39;3812&#39;,
+    &#39;used&#39;  =&gt; &#39;0&#39;,
+    &#39;total&#39; =&gt; &#39;3812&#39;
+  },
+  &#39;Host&#39; =&gt; {
+    &#39;domain&#39;                 =&gt; &#39;site&#39;,
+    &#39;manufacturer&#39;           =&gt; &#39;LENOVO&#39;,
+    &#39;hostname&#39;               =&gt; &#39;linux-ymf0.site&#39;,
+    &#39;operatingsystemrelease&#39; =&gt; &#39;11.4&#39;,
+    &#39;operatingsystem&#39;        =&gt; &#39;SuSE&#39;
+  }
+};
 </code></pre></li>
 <li><p><strong>Install Packages</strong></p>
 
@@ -196,49 +187,49 @@ maintained using the static site generator
 
 <p>Example:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # include for ,,install&#39;&#39; Function
- use Rex::Commands::Pkg;
+<pre><code># include for ,,install&#39;&#39; Function
+use Rex::Commands::Pkg;
 
 
- # include for ,,operating_system_is&#39;&#39; Function
- use Rex::Commands::Gather;
+# include for ,,operating_system_is&#39;&#39; Function
+use Rex::Commands::Gather;
 
 
- user &quot;root&quot;;
+user &quot;root&quot;;
 
 
- private_key &quot;/Users/jan/.ssh/id_rsa&quot;;
- public_key  &quot;/Users/jan/.ssh/is_rsa.pub&quot;;
+private_key &quot;/Users/jan/.ssh/id_rsa&quot;;
+public_key &quot;/Users/jan/.ssh/is_rsa.pub&quot;;
 
 
- # group servers
- group &quot;test&quot; =&gt; &quot;debian01&quot;, &quot;centos01&quot;, &quot;suse01&quot;;
+# group servers
+group &quot;test&quot; =&gt; &quot;debian01&quot;, &quot;centos01&quot;, &quot;suse01&quot;;
 
 
- # run tasks in parallel
- parallelism 2;
+# run tasks in parallel
+parallelism 2;
 
 
- desc &quot;Prepare System&quot;;
- task &quot;prepare&quot;, group =&gt; &quot;test&quot;, sub {
+desc &quot;Prepare System&quot;;
+task &quot;prepare&quot;,
+  group =&gt; &quot;test&quot;,
+  sub {
 
 
-<pre><code># check if operating system is CentOS, because on CentOS vim is 
-# available through the package &quot;vim-enhanced&quot;.
-if (operating_system_is(&quot;CentOS&quot;)) {
-    install package =&amp;gt; &quot;vim-enhanced&quot;;
-}
-else {
-    install package =&amp;gt; &quot;vim&quot;;
-}
+  # check if operating system is CentOS, because on CentOS vim is
+  # available through the package &quot;vim-enhanced&quot;.
+  if ( operating_system_is(&quot;CentOS&quot;) ) {
+    install package =&gt; &quot;vim-enhanced&quot;;
+  }
+  else {
+    install package =&gt; &quot;vim&quot;;
+  }
 
 
-install package =&amp;gt; &quot;mc&quot;;
-</code></pre>
+  install package =&gt; &quot;mc&quot;;
 
- };
+
+  };
 </code></pre>
 
 <p>This task will install <em>vim</em> and <em>mc</em> on all the 3 systems.</p></li>

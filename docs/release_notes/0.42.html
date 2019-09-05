@@ -123,22 +123,18 @@ maintained using the static site generator
 
 <p>This fixes long standing pull request #70.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>use Rex -feature =&gt; &#39;0.42&#39;;
 
 set connection =&gt; &#39;OpenSSH&#39;;
 
 task &#39;yourtask&#39;, &#39;yourserver&#39;, sub {
-   say run &#39;uptime&#39;;
+  say run &#39;uptime&#39;;
 };
 </code></pre>
 
 <h4 id="kerberosauthentication-chenryn">Kerberos authentication - chenryn</h4>
 
 <p>If you want to use kerberos authentication you have to use Net::OpenSSH.</p>
-
-<p>Copy to clipboard</p>
 
 <pre><code>set connection =&gt; &quot;OpenSSH&quot;;
 
@@ -150,13 +146,11 @@ krb5_auth;
 
 <p>It is now possible to use custom users for the sudo command.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>task &quot;mytask&quot;, &quot;server1&quot;, sub {
-    sudo {
-         user =&gt; &quot;foo&quot;,
-         command =&gt; &quot;id&quot;,
-    };
+  sudo {
+    user    =&gt; &quot;foo&quot;,
+    command =&gt; &quot;id&quot;,
+  };
 };
 </code></pre>
 
@@ -164,13 +158,10 @@ krb5_auth;
 
 <p>This function is similar to delete_lines_matching but with an other syntax and the possibility to use the on_change hook if the file was changed.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>task &quot;cleanup&quot;, &quot;server1&quot;, sub {
-   delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;,
-      on_change =&gt; sub {
-         say &quot;removed user foo.&quot;;
-      };
+  delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;, on_change =&gt; sub {
+    say &quot;removed user foo.&quot;;
+  };
 };
 </code></pre>
 
@@ -182,17 +173,12 @@ krb5_auth;
 
 <p>You have to use use_server_auth feature flag for this.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code># Rexfile
 use Rex -feature =&gt; [qw/use_server_auth/];
 use Rex::Group::Lookup::INI;
 groups_file(&#39;servergroups.ini&#39;);
-</code></pre>
 
-<p>Copy to clipboard</p>
-
-<pre><code>; my group file
+; my group file
 [frontends]
 fe01
 fe02
@@ -223,8 +209,6 @@ memcache02 user=root password=foob4r sudo=true services=apache,memcache
 
 <p>This will create the following groups:</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>frontends: fe01, fe02, fe03, fe04, fe05
 backends: be01, be02, be04
 db: db01, db02
@@ -234,19 +218,16 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 
 <p>memcache02 will use custom authentication and there will be a special option &quot;services&quot; for this server that can be queried like this:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>task &quot;mytask&quot;, group =&gt; &quot;memcache&quot;, sub {
-    say connection-&gt;server-&gt;option(&quot;services&quot;);
-};
+<pre><code>task &quot;mytask&quot;,
+  group =&gt; &quot;memcache&quot;,
+  sub {
+  say connection-&gt;server-&gt;option(&quot;services&quot;);
+  };
 </code></pre>
 
 <h4 id="cwdoptionforruncommand">cwd option for run command</h4>
 
-<p>Copy to clipboard</p>
-
-<pre><code>run &quot;ls -l&quot;,
-   cwd =&gt; &quot;/home&quot;;
+<pre><code>run &quot;ls -l&quot;, cwd =&gt; &quot;/home&quot;;
 </code></pre>
 
 <h3 id="speedimprovements">Speed improvements</h3>

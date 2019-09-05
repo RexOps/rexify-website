@@ -118,30 +118,26 @@ maintained using the static site generator
 <ul>
 <li><p>Added LVM module and added LVM data to inventory.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::LVM;
+<pre><code>use Rex::Commands::LVM;
 
 
- task &quot;lvm&quot;, sub {
-    my @physical_devices = pvs;
-    my @volume_groups = vgs;
-    my @logical_volumes = lvs;
- };
+task &quot;lvm&quot;, sub {
+  my @physical_devices = pvs;
+  my @volume_groups    = vgs;
+  my @logical_volumes  = lvs;
+};
 </code></pre></li>
 <li><p>Added hpacucli support to inventory</p></li>
 <li><p>Added CentOS 6 packages and support</p></li>
 <li><p>added order option to <em>db select</em></p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;db&quot;, sub {
-    my @data = db select =&gt; {
-       fields =&gt; &quot;*&quot;,
-       from =&gt; &quot;table&quot;,
-       order =&gt; &quot;updated DESC&quot;,
-    };
- };
+<pre><code>task &quot;db&quot;, sub {
+  my @data = db select =&gt; {
+    fields =&gt; &quot;*&quot;,
+    from   =&gt; &quot;table&quot;,
+    order  =&gt; &quot;updated DESC&quot;,
+  };
+};
 </code></pre></li>
 <li><p>Fixed some bugs</p>
 

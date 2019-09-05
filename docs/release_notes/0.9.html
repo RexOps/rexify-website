@@ -123,53 +123,49 @@ maintained using the static site generator
 
 <p>Added Transaction and the possibility to rollback on transaction failures.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Transaction;
- task &quot;do_something&quot;, sub {
-    on_rollback {
-        unlink &quot;/tmp/test&quot;;
-    };
+<pre><code>use Rex::Transaction;
+task &quot;do_something&quot;, sub {
+  on_rollback {
+    unlink &quot;/tmp/test&quot;;
+  };
 
 
-<pre><code>touch &quot;/tmp/test&quot;;
-die;
-</code></pre>
-
- };
+  touch &quot;/tmp/test&quot;;
+  die;
+};
 
 
- task &quot;make&quot;, sub {
-    transaction {
-       do_task &quot;do_something&quot;;
-    };
- };
+task &quot;make&quot;, sub {
+  transaction {
+    do_task &quot;do_something&quot;;
+  };
+};
 </code></pre></li>
 <li><p><strong>Inventory</strong></p>
 
 <p>Now it&#39;s possible to make an inventory of your hardware.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Data::Dumper;
- use Rex::Commands::Inventory;
- task &quot;inventory&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    my $inventory = inventor();
-    print Dumper($inventory);
- };
+<pre><code>use Data::Dumper;
+use Rex::Commands::Inventory;
+task &quot;inventory&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  my $inventory = inventor();
+  print Dumper($inventory);
+};
 </code></pre></li>
 <li><p>New function <strong>file</strong></p>
 
 <p>Use this function to upload a file to your servers.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>task &quot;upload&quot;, &quot;server1&quot;, sub {
+  file &quot;$path/vhost.conf&quot;,
+    content =&gt; template(&quot;../../templates/vhost.conf.tpl&quot;),
 
-<pre><code> task &quot;upload&quot;, &quot;server1&quot;, sub {
-    file &quot;$path/vhost.conf&quot;,
-       content   =&gt; template(&quot;../../templates/vhost.conf.tpl&quot;),
-       # on change of the file, do something
-       on_change =&gt; sub { say &quot;file was modified&quot;; };
- };
+
+<pre><code># on change of the file, do something
+on_change =&amp;gt; sub { say &quot;file was modified&quot;; };
+</code></pre>
+
+};
 </code></pre></li>
 </ul>
 

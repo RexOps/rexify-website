@@ -120,83 +120,77 @@ maintained using the static site generator
 
 <p>Added chown, chgrp and chmod functions to work transparently over ssh.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;change&quot;, sub {
-     chown &quot;jan&quot;, &quot;/home/jan&quot;, 
-                       recursive =&gt; 1;
+<pre><code>task &quot;change&quot;, sub {
+  chown &quot;jan&quot;, &quot;/home/jan&quot;, recursive =&gt; 1;
 
 
-<pre><code> chgrp &quot;user&quot;, &quot;/home/jan&quot;, 
-                   recursive =&amp;gt; 1;
+  chgrp &quot;user&quot;, &quot;/home/jan&quot;, recursive =&gt; 1;
 
 
-chmod 644, &quot;/etc/passwd&quot;;
-</code></pre>
+  chmod 644, &quot;/etc/passwd&quot;;
 
- };
+
+};
 </code></pre></li>
 <li><p><strong>File Manipulation Functions</strong></p>
 
 <p>Added two functions to manipulate files: delete_lines_matching and append_if_no_such_line.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;manip&quot;, sub {
-    delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; &quot;root&quot;;
-    delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; qr{Failed};
+<pre><code>task &quot;manip&quot;, sub {
+  delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; &quot;root&quot;;
+  delete_lines_matching &quot;/var/log/auth.log&quot;, matching =&gt; qr{Failed};
 
 
-<pre><code>append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, &quot;mygroup&quot;;
-append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;, qr{^mygroup};
-</code></pre>
-
- };
+  append_if_no_such_line &quot;/etc/groups&quot;,
+    &quot;mygroup:*:100:myuser1,myuser2&quot;, &quot;mygroup&quot;;
+  append_if_no_such_line &quot;/etc/groups&quot;,
+    &quot;mygroup:*:100:myuser1,myuser2&quot;, qr{^mygroup};
+};
 </code></pre></li>
 <li><p><strong>Services</strong></p>
 
 <p>Added reload function.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;reload-apache&quot;, sub {
-     service apache2 =&gt; &quot;reload&quot;;
- };
+<pre><code>task &quot;reload-apache&quot;, sub {
+  service apache2 =&gt; &quot;reload&quot;;
+};
 </code></pre></li>
 <li><p><strong>Database Functions</strong></p>
 
 <p>Extended the Database module to support inserts, deletes and updates.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;db&quot;, sub {
-   my @data = db select =&gt; {
-                  fields =&gt; &quot;*&quot;,
-                  from   =&gt; &quot;table&quot;,
-                  where  =&gt; &quot;enabled=1&quot;,
-               };
+<pre><code>task &quot;db&quot;, sub {
+  my @data = db select =&gt; {
+    fields =&gt; &quot;*&quot;,
+    from   =&gt; &quot;table&quot;,
+    where  =&gt; &quot;enabled=1&quot;,
+  };
 
 
-   db insert =&gt; &quot;table&quot;, {
-                field1 =&gt; &quot;value1&quot;,
-                 field2 =&gt; &quot;value2&quot;,
-                 field3 =&gt; 5,
-               };
+  db
+    insert =&gt; &quot;table&quot;,
+    {
+    field1 =&gt; &quot;value1&quot;,
+    field2 =&gt; &quot;value2&quot;,
+    field3 =&gt; 5,
+    };
 
 
-   db update =&gt; &quot;table&quot;, {
-                    set =&gt; {
-                       field1 =&gt; &quot;newvalue&quot;,
-                       field2 =&gt; &quot;newvalue2&quot;,
-                    },
-                    where =&gt; &quot;id=5&quot;,
-                };
+  db
+    update =&gt; &quot;table&quot;,
+    {
+    set =&gt; {
+      field1 =&gt; &quot;newvalue&quot;,
+      field2 =&gt; &quot;newvalue2&quot;,
+    },
+    where =&gt; &quot;id=5&quot;,
+    };
 
 
-   db delete =&gt; &quot;table&quot;, {
-                 where =&gt; &quot;id &lt; 5&quot;,
-              };
- };
+  db
+    delete =&gt; &quot;table&quot;,
+    { where =&gt; &quot;id &lt; 5&quot;, };
+};
 </code></pre></li>
 <li><p><strong>Distribution Support</strong></p>
 

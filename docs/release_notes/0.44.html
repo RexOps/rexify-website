@@ -117,17 +117,16 @@ maintained using the static site generator
 
 <ul>
 <li><p>Docker support (experimental) - #278 - chenryn</p></li>
-<li><p>Format the output of say() - #155</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>Format the output of say() - #155</p>
 
 <pre><code>sayformat &#39;%h: %s&#39;;
 
+
 task &quot;test&quot;, sub {
-   say &quot;hello world&quot;;
+  say &quot;hello world&quot;;
 };
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>Possible formatting options:</p>
 
@@ -136,29 +135,19 @@ task &quot;test&quot;, sub {
 <li>%h - the target host</li>
 <li>%p - the pid</li>
 <li><p>%s - the string to output</p></li>
-<li><p>user-defined columns for ps() command - #175 - dirkcjelli</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>user-defined columns for ps() command - #175 - dirkcjelli</p>
 
 <pre><code>task &quot;ps&quot;, &quot;server01&quot;, sub {
-   my @list = grep { $_-&gt;{&quot;ni&quot;} == -5 } ps(&quot;command&quot;,&quot;ni&quot;);
+  my @list = grep { $_-&gt;{&quot;ni&quot;} == -5 } ps( &quot;command&quot;, &quot;ni&quot; );
 };
-</code></pre>
-
-<ul>
+</code></pre></li>
 <li><p>using tilde (~) sign for directories - #198 - Gnouc, Krimdomu</p></li>
 <li><p>Rex::SCM::Git now uses cwd option of run() command, so it also works remotely. - #211 - atrodo</p></li>
 <li><p>Box default pkg update - #217 - endyman</p></li>
-<li><p>run_batch() command to run batches on demand - #222 - jorisd</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>run_batch() command to run batches on demand - #222 - jorisd</p>
 
 <pre><code>my @return = run_batch &quot;batchname&quot;, on =&gt; &quot;192.168.3.56&quot;;
-</code></pre>
-
-<ul>
+</code></pre></li>
 <li><p>Allow &quot;sed&quot; function to work on multiple lines. - #227 - davidolrik, krimdomu</p></li>
 <li><p>Added bulk_install() method for packages installing - #229 - jorisd</p></li>
 <li><p>Enable bulk_install for Gentoo and OpenWrt - #231 - ferki</p></li>
@@ -167,114 +156,87 @@ task &quot;test&quot;, sub {
 
 <p>For example:</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>use Rex::Hook;
 use Data::Dumper;
 
 register_function_hooks {
-   before =&gt; {
-      file =&gt; sub {
-         print Dumper(\@_);
-         print &quot;before file\n&quot;;
-         return;
-      },
-      create_user =&gt; sub {
-         print &quot;before create_user\n&quot;;
-         die;
-      },
-   },
-   after =&gt; {
-      file =&gt; sub {
-         print &quot;after file\n&quot;;
-      },
-      create_user =&gt; sub {
-         print &quot;after create_user\n&quot;;
-      },
-   }
+  before =&gt; {
+    file =&gt; sub {
+      print Dumper( \@_ );
+      print &quot;before file\n&quot;;
+      return;
+    },
+    create_user =&gt; sub {
+      print &quot;before create_user\n&quot;;
+      die;
+    },
+  },
+  after =&gt; {
+    file =&gt; sub {
+      print &quot;after file\n&quot;;
+    },
+    create_user =&gt; sub {
+      print &quot;after create_user\n&quot;;
+    },
+  }
 };
 </code></pre>
 
 <ul>
-<li>added on_change hook for sync_up and sync_down - #232</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>added on_change hook for sync_up and sync_down - #232</p>
 
 <pre><code>sync_up &quot;files/&quot;, &quot;/remote/folder&quot;, {
-   on_change =&gt; sub {
-      my (@changed_files) = @_;
-     # do something
-   };
+  on_change =&gt; sub {
+    my (@changed_files) = @_;
+
+
+<pre><code># do something
+</code></pre>
+
+  };
 };
-</code></pre>
+</code></pre></li>
+<li><p>Rex::Group::Lookup::Command - read hostnames from a command. - #233 - fanyeren</p>
 
-<ul>
-<li>Rex::Group::Lookup::Command - read hostnames from a command. - #233 - fanyeren</li>
-</ul>
-
-<p>Copy to clipboard</p>
-
-<pre><code>group &quot;dbserver&quot;   =&gt; lookup_command(&quot;cat ip.list | grep -v -E &#39;^#&#39;&quot;);
-</code></pre>
-
-<ul>
+<pre><code>group &quot;dbserver&quot; =&gt; lookup_command(&quot;cat ip.list | grep -v -E &#39;^#&#39;&quot;);
+</code></pre></li>
 <li><p>Improve user and group management on OpenWrt - #242 - ferki</p></li>
 <li><p>Add kernel module (un)loading support for OpenWrt - #243 - ferki</p></li>
 <li><p>Add service status support for OpenWrt - #246 - ferki</p></li>
-<li><p>Make ssh read buffer configurable (for Net::SSH2 connections) - #247. This will speedup the connection, but may break on older systems!</p></li>
-</ul>
+<li><p>Make ssh read buffer configurable (for Net::SSH2 connections) - #247. This will speedup the connection, but may break on older systems!</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>set rex_internals =&gt; {
-   read_buffer_size =&gt; 2000,
-};
-</code></pre>
-
-<ul>
+<pre><code>set rex_internals =&gt; { read_buffer_size =&gt; 2000, };
+</code></pre></li>
 <li><p>Add systemd service provider support for Gentoo - #250 - ferki</p></li>
 <li><p>Add systemd service provider support for Mageia - #282</p></li>
-<li><p>feature flag to deactivate path cleanup - #261</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>feature flag to deactivate path cleanup - #261</p>
 
 <pre><code># Rexfile
 use Rex -feature =&gt; [&#39;no_path_cleanup&#39;];
 
-task prepare =&gt; sub {};
-</code></pre>
 
-<ul>
-<li>feature flag to parse $HOME/.profile - #262</li>
-</ul>
-
-<p>Copy to clipboard</p>
+task prepare =&gt; sub { };
+</code></pre></li>
+<li><p>feature flag to parse $HOME/.profile - #262</p>
 
 <pre><code># Rexfile
 use Rex -feature =&gt; [&#39;source_profile&#39;];
 
-task prepare =&gt; sub {};
-</code></pre>
 
-<ul>
+task prepare =&gt; sub { };
+</code></pre></li>
 <li><p>Cloud::Amazon: check to make sure it is HASH before key look up - #263 - oneness</p></li>
-<li><p>autodie feature if run() fail - #265</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>autodie feature if run() fail - #265</p>
 
 <pre><code># Rexfile
 use Rex -feature =&gt; [&#39;exec_autodie&#39;];
 
-task &quot;prepare&quot;, sub {
-   run &quot;this-command-fails&quot;;
-};
-</code></pre>
 
-<ul>
-<li>added support for tcsh shell - #284</li>
+task &quot;prepare&quot;, sub {
+  run &quot;this-command-fails&quot;;
+};
+</code></pre></li>
+<li><p>added support for tcsh shell - #284</p></li>
 </ul>
 
 <h1 id="bugfixes">Bugfixes</h1>
@@ -298,22 +260,19 @@ task &quot;prepare&quot;, sub {
 
 <ul>
 <li><p>Rex::Ext::Crypt - encrypt strings inside a Rexfile.</p></li>
-<li><p>Rex::Ext::Backup - a simple backup module. This module creates a backup of a file before rex changes it.</p></li>
-</ul>
+<li><p>Rex::Ext::Backup - a simple backup module. This module creates a backup of a file before rex changes it.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>include qw/Rex::Ext::Backup/;
 
-<pre><code> include qw/Rex::Ext::Backup/;
 
- set backup_location =&gt; &quot;backup/%h&quot;;
+set backup_location =&gt; &quot;backup/%h&quot;;
 
- task yourtask =&gt; sub {
-    file &quot;/etc/foo.conf&quot;, content =&gt; &quot;new content\n&quot;;
- };
-</code></pre>
 
-<ul>
-<li>Rex::Commands::Pstree - module to run pstree - fanyeren</li>
+task yourtask =&gt; sub {
+  file &quot;/etc/foo.conf&quot;, content =&gt; &quot;new content\n&quot;;
+};
+</code></pre></li>
+<li><p>Rex::Commands::Pstree - module to run pstree - fanyeren</p></li>
 </ul>
 
 <h1 id="packagerepository">Package repository</h1>

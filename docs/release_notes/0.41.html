@@ -116,61 +116,50 @@ maintained using the static site generator
               <h1 id="common">Common</h1>
 
 <ul>
-<li>Function to get the last output of a command that uses run() #104</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>Function to get the last output of a command that uses run() #104</p>
 
 <pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
-    install &quot;ntp&quot;;
-    say last_command_output;
+  install &quot;ntp&quot;;
+  say last_command_output;
 };
-</code></pre>
-
-<ul>
-<li>Refactored Cron module, added environment variable support to cron</li>
-</ul>
-
-<p>Copy to clipboard</p>
+</code></pre></li>
+<li><p>Refactored Cron module, added environment variable support to cron</p>
 
 <pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
-   my @env = cron env =&gt; user =&gt; list;
-   cron env =&gt; user =&gt; add =&gt; {
-      MYVAR =&gt; &quot;foo&quot;,
-   };
-   cron env =&gt; user =&gt; delete =&gt; &quot;MYVAR&quot;;
+  my @env = cron env =&gt; user =&gt; list;
+  cron env =&gt; user =&gt; add    =&gt; { MYVAR =&gt; &quot;foo&quot;, };
+  cron env =&gt; user =&gt; delete =&gt; &quot;MYVAR&quot;;
 };
-</code></pre>
-
-<ul>
-<li>New sync module</li>
+</code></pre></li>
+<li><p>New sync module</p></li>
 </ul>
 
 <p>This module doesn&#39;t use rsync, so it works with sudo and Windows, too. And it is also possible to use it with templates. If a file should be used as a template, you have to name it somefile.ext.tpl.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>task &quot;prepare&quot;, &quot;mysystem01&quot;, sub {
-   # upload directory recursively to remote system. 
-   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;;
 
-   sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;, {
-      # setting custom file permissions for every file
-      files =&gt; {
-         owner =&gt; &quot;foo&quot;,
-         group =&gt; &quot;bar&quot;,
-         mode  =&gt; 600,
-      },
-      # setting custom directory permissions for every directory
-      directories =&gt; {
-         owner =&gt; &quot;foo&quot;,
-         group =&gt; &quot;bar&quot;,
-         mode  =&gt; 700,
-      },
-   };
+  # upload directory recursively to remote system.
+  sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;;
 
-   # download a directory recursively from the remote system to the local machine
-   sync_down &quot;/remote/directory&quot;, &quot;/local/directory&quot;;
+  sync_up &quot;/local/directory&quot;, &quot;/remote/directory&quot;, {
+
+    # setting custom file permissions for every file
+    files =&gt; {
+      owner =&gt; &quot;foo&quot;,
+      group =&gt; &quot;bar&quot;,
+      mode  =&gt; 600,
+    },
+
+    # setting custom directory permissions for every directory
+    directories =&gt; {
+      owner =&gt; &quot;foo&quot;,
+      group =&gt; &quot;bar&quot;,
+      mode  =&gt; 700,
+    },
+  };
+
+  # download a directory recursively from the remote system to the local machine
+  sync_down &quot;/remote/directory&quot;, &quot;/local/directory&quot;;
 };
 </code></pre>
 
@@ -180,43 +169,35 @@ maintained using the static site generator
 
 <p>To get a list of all returned information:</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>use Data::Dumper;
 my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
-print Dumper(\%hw_info);
+print Dumper( \%hw_info );
 </code></pre>
 
 <p>To get the hypervisor:</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>task &quot;info&quot;, &quot;mysystem01&quot;, sub {
-   my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
+  my %hw_info = Rex::Hardware-&gt;get(qw/VirtInfo/);
 
-   say &quot;Role: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_role};
-   say &quot;Type: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_type};
+  say &quot;Role: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_role};
+  say &quot;Type: &quot; . $hw_info{VirtInfo}-&gt;{virtualization_type};
 };
 </code></pre>
 
 <ul>
-<li>new keyword &quot;case&quot;</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>new keyword &quot;case&quot;</p>
 
 <pre><code>task &quot;prepare&quot;, &quot;myserver01&quot;, sub {
-   my $package = case operating_system, {
-                     Debian =&gt; &quot;vim&quot;,
-                     CentOS =&gt; &quot;vim-enhanced&quot;,
-                     default =&gt; &quot;vim&quot;,
-                 };
+  my $package = case operating_system, {
+    Debian    =&gt; &quot;vim&quot;,
+      CentOS  =&gt; &quot;vim-enhanced&quot;,
+      default =&gt; &quot;vim&quot;,
+  };
 
-   install $package;
+
+  install $package;
 };
-</code></pre>
-
-<ul>
+</code></pre></li>
 <li><p>Refactored net_ssh2_exec() function - Peter H. Ezetta</p></li>
 <li><p>Refactored local command execution to use IPC::Open3</p></li>
 <li><p>Changed the is_installed() function for Debian to use the more accurate get_installed function. - Samuele Tognini</p></li>
@@ -224,20 +205,18 @@ print Dumper(\%hw_info);
 <li><p>Fixed loading of modules in $HOME/.rex/recipes</p></li>
 <li><p>Don&#39;t calculate MD5 sums if there is no on_change hook for file() function - Franky Van Liedekerke</p></li>
 <li><p>More specific error messages for authentication - Franky Van Liedekerke</p></li>
-<li><p>Cloud/Amazon: support multiple security groups - RenatoCRON</p></li>
+<li><p>Cloud/Amazon: support multiple security groups - RenatoCRON</p>
+
+<pre><code>  $instance = cloud_instance create =&gt; {
+    image_id        =&gt; &quot;ami-5187bb25&quot;,
+    name            =&gt; &quot;test01&quot;,
+    key             =&gt; &quot;thekey&quot;,
+    zone            =&gt; &quot;eu-west-1a&quot;,
+    type            =&gt; &quot;m1.large&quot;,
+    security_groups =&gt; [ &quot;alltcpfoo&quot;, &quot;default&quot; ],
+  };
+</code></pre></li>
 </ul>
-
-<p>Copy to clipboard</p>
-
-<pre><code>   $instance = cloud_instance create =&gt; {
-             image_id =&gt; &quot;ami-5187bb25&quot;,
-             name     =&gt; &quot;test01&quot;,
-             key      =&gt; &quot;thekey&quot;,
-             zone     =&gt; &quot;eu-west-1a&quot;,
-             type     =&gt; &quot;m1.large&quot;,
-             security_groups =&gt; [&quot;alltcpfoo&quot;, &quot;default&quot;],
-          };
-</code></pre>
 
 <h1 id="documentation">Documentation</h1>
 
@@ -254,37 +233,40 @@ print Dumper(\%hw_info);
 <h1 id="rexboxes">Rex/Boxes</h1>
 
 <ul>
-<li>Creation order of VMs can now be defined in YAML file</li>
+<li><p>Creation order of VMs can now be defined in YAML file</p>
+
+<p>type: VBox</p>
+
+<h1 id="vbox:">vbox:</h1>
+
+<h1 id="headless:1">headless: 1</h1>
+
+<p>vms:</p>
+
+<ul>
+<li>name: mem01
+  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+  network:
+     1:
+        type: bridged
+        bridge: &quot;en0: Ethernet&quot;
+  setup: setup_memcache</li>
+<li>name: db01
+  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+  network:
+     1:
+        type: bridged
+        bridge: &quot;en0: Ethernet&quot;
+  setup: setup_db</li>
+<li>name: www01
+  url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
+  network:
+     1:
+        type: bridged
+        bridge: &quot;en0: Ethernet&quot;
+  setup: setup_frontend</li>
+</ul></li>
 </ul>
-
-<p>Copy to clipboard</p>
-
-<pre><code>type: VBox
-#vbox:
-#   headless: 1
-vms:
-   -  name: mem01
-      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-      network:
-         1:
-            type: bridged
-            bridge: &quot;en0: Ethernet&quot;
-      setup: setup_memcache
-   -  name: db01
-      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-      network:
-         1:
-            type: bridged
-            bridge: &quot;en0: Ethernet&quot;
-      setup: setup_db
-   -  name: www01
-      url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
-      network:
-         1:
-            type: bridged
-            bridge: &quot;en0: Ethernet&quot;
-      setup: setup_frontend
-</code></pre>
 
 
 

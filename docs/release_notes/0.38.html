@@ -116,15 +116,9 @@ maintained using the static site generator
               <h1 id="common">Common</h1>
 
 <ul>
-<li>added possibility to use local files as templates for rexify command</li>
-</ul>
+<li><p>added possibility to use local files as templates for rexify command</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>bash# rexify MyProject --template=/mytemplates/foo.tpl
-</code></pre>
-
-<ul>
+<p>bash# rexify MyProject --template=/mytemplates/foo.tpl</p></li>
 <li><p>jorisd updated and fixed documentation</p></li>
 <li><p>fixed a problem with do_task() and lost ssh connections</p></li>
 </ul>
@@ -133,41 +127,29 @@ maintained using the static site generator
 
 <ul>
 <li><p>Debian: Daniel Baeurer added the possibility to add the architecture and an apt key.</p></li>
-<li><p>Added update_system command to update a complete system.</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>Added update_system command to update a complete system.</p>
 
 <pre><code>task &quot;update_all&quot;, &quot;server1&quot;, sub {
-    update_package_db;
-    update_system;
+  update_package_db;
+  update_system;
 };
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h1 id="boxes">Boxes</h1>
 
 <ul>
-<li>new function to get a server group out of box names</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>new function to get a server group out of box names</p>
 
 <pre><code>group foo =&gt; map { $_-&gt;{name} } list_boxes;
-</code></pre>
-
-<ul>
+</code></pre></li>
 <li><p>Amazon support for Rex/Boxes</p></li>
-<li><p>Possibility to describe your Rex/Boxes via a YAML file. So that you don&#39;t need to alter your Rexfile if you want to change the Box provider (for example to switch from VirtualBox to Amazon).</p></li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>Possibility to describe your Rex/Boxes via a YAML file. So that you don&#39;t need to alter your Rexfile if you want to change the Box provider (for example to switch from VirtualBox to Amazon).</p>
 
 <pre><code>use Rex::Commands::Box init_file =&gt; &quot;file.yml&quot;;
-</code></pre>
 
-<p>Copy to clipboard</p>
 
-<pre><code>type: VBox
+type: VBox
 vms:
    fe01:
       url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
@@ -183,11 +165,9 @@ vms:
             type: bridged
             bridge: en1: Wi-Fi (AirPort)
       setup: setup_db
-</code></pre>
 
-<p>Copy to clipboard</p>
 
-<pre><code>type: amazon
+type: amazon
 amazon:
    access_key: {{access-key}}
    private_access_key: {{private-access-key}}
@@ -205,27 +185,27 @@ vms:
       type: m1.large
       security_group: default
       setup: setup_db
-</code></pre>
-
-<ul>
-<li>A new function to control boxes.</li>
-</ul>
-
-<p>Copy to clipboard</p>
+</code></pre></li>
+<li><p>A new function to control boxes.</p>
 
 <pre><code>task &quot;prepare_boxes&quot;, sub {
-   # this will create a defined boxes from the YAML file.
-   boxes &quot;init&quot;;
+
+
+  # this will create a defined boxes from the YAML file.
+  boxes &quot;init&quot;;
 };
+
 
 task &quot;stop_boxes&quot;, sub {
-   boxes stop =&gt; qw/box1 box2/;
+  boxes stop =&gt; qw/box1 box2/;
 };
 
+
 task &quot;start_boxes&quot;, sub {
-   boxes start =&gt; qw/box1 box2/;
+  boxes start =&gt; qw/box1 box2/;
 };
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h1 id="cloud">Cloud</h1>
 

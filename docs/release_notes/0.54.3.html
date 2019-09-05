@@ -127,18 +127,18 @@ maintained using the static site generator
 
 set path_map =&gt; {
   &quot;files/&quot; =&gt; [
-    &quot;files/{environment}/{hostname}/&quot;,
-    &quot;files/{environment}/&quot;,
+    &quot;files/{environment}/{hostname}/&quot;, &quot;files/{environment}/&quot;,
     &quot;files/{hostname}/&quot;,
   ],
   &quot;templates/&quot; =&gt; [
-    &quot;templates/{environment}/{hostname}/&quot;,
-    &quot;templates/{environment}/&quot;,
+    &quot;templates/{environment}/{hostname}/&quot;, &quot;templates/{environment}/&quot;,
     &quot;templates/{hostname}/&quot;,
   ],
 };
 
-task &quot;setup&quot;, group =&gt; &quot;frontends&quot;, sub {
+task &quot;setup&quot;,
+  group =&gt; &quot;frontends&quot;,
+  sub {
   file &quot;/etc/security/access.conf&quot;,
     source =&gt; &quot;files/etc/security/access.conf&quot;,
     owner  =&gt; &quot;root&quot;,
@@ -150,7 +150,7 @@ task &quot;setup&quot;, group =&gt; &quot;frontends&quot;, sub {
     owner   =&gt; &quot;root&quot;,
     group   =&gt; &quot;root&quot;,
     mode    =&gt; 644;
-};
+  };
 </code></pre>
 
 <p>This example will search for the files it should upload or process as templates in the following direction:</p>

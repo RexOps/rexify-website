@@ -143,7 +143,7 @@ test {
   $t-&gt;name(&quot;ubuntu test&quot;);
 
   $t-&gt;base_vm(&quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&quot;);
-  $t-&gt;vm_auth(user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot;);
+  $t-&gt;vm_auth( user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot; );
 
   $t-&gt;run_task(&quot;setup&quot;);
 
@@ -152,10 +152,10 @@ test {
   $t-&gt;has_package(&quot;unzip&quot;);
   $t-&gt;has_file(&quot;/etc/ntp.conf&quot;);
   $t-&gt;has_service_running(&quot;ntp&quot;);
-  $t-&gt;has_content(&quot;/etc/passwd&quot;, qr{root:x:0:}ms);
+  $t-&gt;has_content( &quot;/etc/passwd&quot;, qr{root:x:0:}ms );
 
   run &quot;ls -l&quot;;
-  $t-&gt;ok($? == 0, &quot;ls -l returns success.&quot;);
+  $t-&gt;ok( $? == 0, &quot;ls -l returns success.&quot; );
 
   $t-&gt;finish;
 };
@@ -179,7 +179,8 @@ set box =&gt; &quot;KVM&quot;;
 #
 # CALL:
 # rex init --name=gpw --url=http://domain.tld/ubuntu-server-12.10-amd64.qcow2
-desc &quot;Initialize and start the VM: rex init --name=vmname [--url=http://...]&quot;;
+desc
+  &quot;Initialize and start the VM: rex init --name=vmname [--url=http://...]&quot;;
 task &quot;init&quot;, make {
   my $param = shift;
 
@@ -248,17 +249,18 @@ my $instance = cloud_instance create =&gt; {
   image_id =&gt; &quot;80fbcb55-b206-41f9-9bc2-2dd7aac6c061&quot;,
   name     =&gt; &quot;myvm01&quot;,
   flavor   =&gt; &quot;performance1-1&quot;,
-  networks =&gt; [&quot;a733f9d7-098e-4bf1-881d-5a91e84b44bb&quot;];  # networks is optional
+  networks =&gt; [&quot;a733f9d7-098e-4bf1-881d-5a91e84b44bb&quot;]; # networks is optional
 };
 
 
-cloud_volume attach =&gt; $vol_id,
-    to =&gt; $instance&gt;{id};
+cloud_volume
+  attach =&gt; $vol_id,
+  to     =&gt; $instance &gt; {id};
 </code></pre></li>
 <li><p>Terminating an instance and removing the volume.</p>
 
-<pre><code>cloud_instance terminate =&gt; $instance&gt;{id};
-cloud_volume delete =&gt; $vol_id;
+<pre><code>cloud_instance terminate =&gt; $instance &gt; {id};
+cloud_volume delete      =&gt; $vol_id;
 </code></pre></li>
 </ul></li>
 <li><p>fixed a case where amazon returns instance item in an array - Kasim Tuman</p></li>
@@ -278,7 +280,7 @@ cloud_volume delete =&gt; $vol_id;
 <li><p>Allow passing template content to template command - #345 - reneeb</p>
 
 <pre><code>file &quot;/etc/file.cnf&quot;,
-  content =&gt; template(\&#39;&lt;%= $name %&gt; is cool!&#39;, name =&gt; &#39;Rex&#39;);
+  content =&gt; template( \&#39;&lt;%= $name %&gt; is cool!&#39;, name =&gt; &#39;Rex&#39; );
 </code></pre></li>
 <li><p>Added &#39;no_cache&#39; feature. If you need to disable the cache, use this.</p>
 
@@ -309,7 +311,7 @@ set cmdb =&gt; {
 
 <pre><code># Rexfile
 desc &quot;The live environment&quot;;
-environment live =&gt; sub {};
+environment live =&gt; sub { };
 </code></pre></li>
 <li><p>Added <code>groups_dbi()</code> function to generate server groups from sql - #346 - Jean-Marie RENOUARD</p></li>
 <li><p>Added <code>groups_yaml()</code> function to generate server groups from yaml file - Jean-Marie RENOUARD</p></li>
@@ -317,7 +319,7 @@ environment live =&gt; sub {};
 <li><p>Added authentication to download() function. - #340</p>
 
 <pre><code>download &quot;http://secured.location.tld/foo.tgz&quot;, &quot;foo.tgz&quot;,
-  user =&gt; &quot;httpuser&quot;,
+  user     =&gt; &quot;httpuser&quot;,
   password =&gt; &quot;password&quot;;
 </code></pre></li>
 <li><p>Refactored tmp dir generation - FErki</p></li>

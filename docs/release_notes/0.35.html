@@ -130,177 +130,180 @@ maintained using the static site generator
 <h1 id="general">General</h1>
 
 <ul>
-<li>VirtualBox support for Rex::Commands::Virtualization</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>VirtualBox support for Rex::Commands::Virtualization</p>
 
 <pre><code>use Rex::Commands::Virtualization;
 
+
 set virtualization =&gt; &quot;VBox&quot;;
 
-use Data::Dumper;   
+
+use Data::Dumper;
+
 
 print Dumper vm list =&gt; &quot;all&quot;;
 print Dumper vm list =&gt; &quot;running&quot;;
 
+
 vm destroy =&gt; &quot;vm01&quot;;
 
-vm delete =&gt; &quot;vm01&quot;; 
+
+vm delete =&gt; &quot;vm01&quot;;
+
 
 vm start =&gt; &quot;vm01&quot;;
 
+
 vm shutdown =&gt; &quot;vm01&quot;;
+
 
 vm reboot =&gt; &quot;vm01&quot;;
 
-vm option =&gt; &quot;vm01&quot;,
-         memory     =&gt; 512;
+
+vm
+  option =&gt; &quot;vm01&quot;,
+  memory =&gt; 512;
+
 
 print Dumper vm info =&gt; &quot;vm01&quot;;
 
-# creating a vm 
-vm create =&gt; &quot;vm01&quot;,
-      storage     =&gt; [
-         {   
-            file   =&gt; &quot;/mnt/data/vbox/vm01.img&quot;,
-         }
-      ],
-      memory =&gt; 512,
-      type =&gt; &quot;Linux26&quot;, 
-      cpus =&gt; 1,
-      boot =&gt; &quot;cdrom&quot;;
-</code></pre>
 
-<ul>
-<li>Rex::Commands::Box</li>
+# creating a vm
+vm
+  create  =&gt; &quot;vm01&quot;,
+  storage =&gt; [
+  {
+    file =&gt; &quot;/mnt/data/vbox/vm01.img&quot;,
+  }
+  ],
+  memory =&gt; 512,
+  type   =&gt; &quot;Linux26&quot;,
+  cpus   =&gt; 1,
+  boot   =&gt; &quot;cdrom&quot;;
+</code></pre></li>
+<li><p>Rex::Commands::Box</p></li>
 </ul>
 
 <p>Functions to easily work with VirtualBox images.</p>
 
-<p>Copy to clipboard</p>
+<pre><code>use Rex::Commands::Box;
 
-<pre><code> use Rex::Commands::Box;
+task &quot;init&quot;, sub {
 
- task &quot;init&quot;, sub {
+  my $param = shift;
 
-   my $param = shift;
+  box {
+    my ($box) = @_;
+    $box-&gt;name( $param-&gt;{name} );
+    $box-&gt;url( $param-&gt;{url} );
+    $box-&gt;network(
+      1 =&gt; {
+        type =&gt; &quot;nat&quot;,
+      }
+    );
 
-   box {
-      my ($box) = @_;
-      $box-&gt;name($param-&gt;{name});
-      $box-&gt;url($param-&gt;{url});
-      $box-&gt;network(1 =&gt; {
-         type =&gt; &quot;nat&quot;,
-      });
+    # only works with network type = nat
+    # if an ssh key is present, rex will use this to log into the vm
+    # you need this if you don&#39;t run VirtualBox on your local host.
+    $box-&gt;forward_port( ssh =&gt; [ 2222 =&gt; 22 ] );
 
-      # only works with network type = nat
-      # if an ssh key is present, rex will use this to log into the vm
-      # you need this if you don&#39;t run VirtualBox on your local host.
-      $box-&gt;forward_port(ssh =&gt; [2222 =&gt; 22]);
+    $box-&gt;share_folder( &quot;myhome&quot; =&gt; &quot;/home/jan&quot; );
 
-      $box-&gt;share_folder(&quot;myhome&quot; =&gt; &quot;/home/jan&quot;);
+    $box-&gt;auth(
+      user     =&gt; &quot;root&quot;,
+      password =&gt; &quot;box&quot;,
+    );
 
-      $box-&gt;auth(
-         user =&gt; &quot;root&quot;,
-         password =&gt; &quot;box&quot;,
-      );
+    $box-&gt;setup(qw/install_webserver/);
+  };
 
-      $box-&gt;setup(qw/install_webserver/);
-   };
+};
 
- };
+task &quot;down&quot;, sub {
 
- task &quot;down&quot;, sub {
+  my $param = shift;
 
-   my $param = shift;
+  my $box = Rex::Commands::Box-&gt;new( name =&gt; $param-&gt;{name} );
+  $box-&gt;stop;
+};
 
-   my $box = Rex::Commands::Box-&gt;new(name =&gt; $param-&gt;{name});
-   $box-&gt;stop;
- };
-
- task &quot;install_webserver&quot;, sub {
-   install &quot;apache2&quot;;
- };
+task &quot;install_webserver&quot;, sub {
+  install &quot;apache2&quot;;
+};
 </code></pre>
 
 <ul>
-<li><strong>auth for</strong> now works with regular expresions.</li>
+<li><p><strong>auth for</strong> now works with regular expresions.</p>
+
+<pre><code># Rexfile
+
+
+task foo =&gt; sub {
+};
+task example =&gt; sub {
+};
+task example2 =&gt; sub {
+};
+
+
+set auth for qr{^example\d$} =&gt; user =&gt; &quot;example&quot;,
+  password =&gt; &quot;foob4r&quot;;
+</code></pre></li>
+<li><p>It is now possible to use the <strong>repository</strong> function for multiple distributions.</p>
+
+<pre><code>task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  repository add =&gt; myrepo =&gt; {
+    Ubuntu =&gt; {
+      url        =&gt; &quot;http://foo.bar/repo&quot;,
+      distro     =&gt; &quot;precise&quot;,
+      repository =&gt; &quot;foo&quot;,
+    },
+    Debian =&gt; {
+      url        =&gt; &quot;http://foo.bar/repo&quot;,
+      distro     =&gt; &quot;squeeze&quot;,
+      repository =&gt; &quot;foo&quot;,
+    },
+    CentOS =&gt; {
+      url =&gt; &quot;http://foo.bar/repo&quot;,
+    },
+  };
+};
+</code></pre></li>
 </ul>
-
-<p>Copy to clipboard</p>
-
-<pre><code> # Rexfile
-
- task foo =&gt; sub {
- };
- task example =&gt; sub {
- };
- task example2 =&gt; sub {
- };
-
-  set auth for qr{^example\d$} =&gt;
-     user =&gt; &quot;example&quot;,
-     password =&gt; &quot;foob4r&quot;;
-</code></pre>
-
-<ul>
-<li>It is now possible to use the <strong>repository</strong> function for multiple distributions.</li>
-</ul>
-
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-   repository add =&gt; myrepo =&gt; {
-      Ubuntu =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-         distro =&gt; &quot;precise&quot;,
-         repository =&gt; &quot;foo&quot;,
-      },
-      Debian =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-         distro =&gt; &quot;squeeze&quot;,
-         repository =&gt; &quot;foo&quot;,
-      },
-      CentOS =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-      },
-   };
- };
-</code></pre>
 
 <p>The key that is used is the return value of <strong>get_operating_system()</strong>.</p>
 
 <p>It is also possible to add an <strong>after</strong> hook like this:</p>
 
-<p>Copy to clipboard</p>
+<pre><code>task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+  repository add =&gt; myrepo =&gt; {
+    Ubuntu =&gt; {
+      url        =&gt; &quot;http://foo.bar/repo&quot;,
+      distro     =&gt; &quot;precise&quot;,
+      repository =&gt; &quot;foo&quot;,
+      after      =&gt; sub {
 
-<pre><code> task &quot;add-repo&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-   repository add =&gt; myrepo =&gt; {
-      Ubuntu =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-         distro =&gt; &quot;precise&quot;,
-         repository =&gt; &quot;foo&quot;,
-         after =&gt; sub {
-              # import gpg key
-         },
+        # import gpg key
       },
-      Debian =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-         distro =&gt; &quot;squeeze&quot;,
-         repository =&gt; &quot;foo&quot;,
-         after =&gt; sub {
-              # import gpg key
-         },
+    },
+    Debian =&gt; {
+      url        =&gt; &quot;http://foo.bar/repo&quot;,
+      distro     =&gt; &quot;squeeze&quot;,
+      repository =&gt; &quot;foo&quot;,
+      after      =&gt; sub {
+
+        # import gpg key
       },
-      CentOS =&gt; {
-         url =&gt; &quot;http://foo.bar/repo&quot;,
-         after =&gt; sub {
-              # import gpg key
-         },
+    },
+    CentOS =&gt; {
+      url   =&gt; &quot;http://foo.bar/repo&quot;,
+      after =&gt; sub {
+
+        # import gpg key
       },
-   };
- };
+    },
+  };
+};
 </code></pre>
 
 <ul>

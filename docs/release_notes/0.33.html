@@ -125,72 +125,69 @@ maintained using the static site generator
 
 <p>If you want to generate a profiling output you can do this with:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> rex -dd $yourtask
+<pre><code>rex -dd $yourtask
 </code></pre></li>
 <li><p>Mounting (thanks to Laird Liu)</p>
 
 <p>It is now possible to write mount entries to /etc/fstab with the <em>persistent</em> option.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> mount &quot;/dev/sda5&quot;, &quot;/mnt/sda5&quot;,
-    persistent =&gt; TRUE;
+<pre><code>mount &quot;/dev/sda5&quot;, &quot;/mnt/sda5&quot;, persistent =&gt; TRUE;
 </code></pre></li>
 <li><p>Partitioning</p>
 
 <p>It is now possible to mount the new created partition.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> partition &quot;/&quot;,
-    fstype =&gt; &quot;ext3&quot;,
-    size   =&gt; 15000,
-    ondisk =&gt; &quot;sda&quot;,
-    type   =&gt; &quot;primary&quot;,
-    mount  =&gt; TRUE;
+<pre><code>partition &quot;/&quot;,
+  fstype =&gt; &quot;ext3&quot;,
+  size   =&gt; 15000,
+  ondisk =&gt; &quot;sda&quot;,
+  type   =&gt; &quot;primary&quot;,
+  mount  =&gt; TRUE;
 </code></pre>
 
 <p>And if you want to write fstab entries directly.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> partition &quot;/&quot;,
-    fstype =&gt; &quot;ext3&quot;,
-    size   =&gt; 15000,
-    ondisk =&gt; &quot;sda&quot;,
-    type   =&gt; &quot;primary&quot;,
-    mount_persistent  =&gt; TRUE;
+<pre><code>partition &quot;/&quot;,
+  fstype           =&gt; &quot;ext3&quot;,
+  size             =&gt; 15000,
+  ondisk           =&gt; &quot;sda&quot;,
+  type             =&gt; &quot;primary&quot;,
+  mount_persistent =&gt; TRUE;
 </code></pre></li>
 <li><p>New keyword <em>make</em>.</p>
 
 <p>This is just a cosmetic one. It is now possible to write tasks this way:</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # old
- task prepare =&gt; sub {
-    # do something
- };
+<pre><code># old
+task prepare =&gt; sub {
 
 
- # new
- task prepare =&gt; make {
-     # do something
- };
+  # do something
+};
 
 
- # old
- task &quot;prepare&quot;, group =&gt; &quot;foo&quot;, sub {
-     # do something
- };
+# new
+task prepare =&gt; make {
 
 
- # new
- task &quot;prepare&quot;, group =&gt; &quot;foo&quot;, make {
-    # do something
- };
+  # do something
+};
+
+
+# old
+task &quot;prepare&quot;,
+  group =&gt; &quot;foo&quot;,
+  sub {
+  # do something
+  };
+
+
+# new
+task &quot;prepare&quot;,
+  group =&gt; &quot;foo&quot;,
+  make {
+  # do something
+  };
 </code></pre></li>
 <li><p>Usability improvements, thanks to Anders Ossowicki</p></li>
 </ul>
@@ -204,11 +201,9 @@ maintained using the static site generator
 
 <p>If the <em>ssh_key</em> option is set it will only create the .ssh directory if the home directory exists.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> create_user &quot;foo&quot;,
-     home =&gt; &quot;/data/homes/foo&quot;,
-     no_create_home =&gt; TRUE;
+<pre><code>create_user &quot;foo&quot;,
+  home           =&gt; &quot;/data/homes/foo&quot;,
+  no_create_home =&gt; TRUE;
 </code></pre></li>
 <li><p>Fixed <em>expire</em> bug for create_user</p></li>
 </ul>
@@ -220,32 +215,31 @@ maintained using the static site generator
 
 <p>If you want to use another Template class (for example Template::Toolkit) you can use it now.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> # Rexfile
- use strict;
- use warnings;
+<pre><code># Rexfile
+use strict;
+use warnings;
 
 
- use Template;
+use Template;
 
 
- set template_function =&gt; sub {
-    my ($content, $vars) = @_;
-    my $t = Template-&gt;new;
-    my $out;
-    $t-&gt;process(\$content, $vars, \$out);
-    return $out;
- };
+set template_function =&gt; sub {
+  my ( $content, $vars ) = @_;
+  my $t = Template-&gt;new;
+  my $out;
+  $t-&gt;process( \$content, $vars, \$out );
+  return $out;
+};
 
 
- task foo =&gt; sub {
-    file &quot;/etc/foo/service.conf&quot;,
-       content =&gt; template(&quot;service.conf.tpl&quot;, 
-                               name =&gt; &quot;foo&quot;,
-                               port =&gt; 1903
-                  );
- };
+task foo =&gt; sub {
+  file &quot;/etc/foo/service.conf&quot;,
+    content =&gt; template(
+    &quot;service.conf.tpl&quot;,
+    name =&gt; &quot;foo&quot;,
+    port =&gt; 1903
+    );
+};
 </code></pre></li>
 </ul>
 

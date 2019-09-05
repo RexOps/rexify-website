@@ -118,48 +118,42 @@ maintained using the static site generator
 <ul>
 <li><p>use Rex as a library for your own project.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex;
- use Rex::Commands::Run;
- use Rex::Commands::Fs;
- use Rex::Commands::Pkg;
+<pre><code>use Rex;
+use Rex::Commands::Run;
+use Rex::Commands::Fs;
+use Rex::Commands::Pkg;
 
 
- Rex::connect(
-    server =&gt; &quot;remotehost&quot;,
-    user   =&gt; &quot;root&quot;,
-    private_key =&gt; &quot;/home/jan/.ssh/id_rsa&quot;,
-    public_key  =&gt; &quot;/home/jan/.ssh/id_rsa.pub&quot;,
- );
+Rex::connect(
+  server      =&gt; &quot;remotehost&quot;,
+  user        =&gt; &quot;root&quot;,
+  private_key =&gt; &quot;/home/jan/.ssh/id_rsa&quot;,
+  public_key  =&gt; &quot;/home/jan/.ssh/id_rsa.pub&quot;,
+);
 
 
- if(is_file(&quot;/etc/sudoers&quot;)) {
-     # do something
- }
+if ( is_file(&quot;/etc/sudoers&quot;) ) {
 
 
- install package =&gt; &quot;apache2&quot;;
+  # do something
+}
+
+
+install package =&gt; &quot;apache2&quot;;
 </code></pre></li>
 <li><p>Extended Iptables module with a flush command</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Iptables;
- iptables -F;
+<pre><code>use Rex::Commands::Iptables;
+iptables -F;
 </code></pre></li>
 <li><p>Inline templates</p>
 
 <p>It is now possible to write templates inside your Rexfile.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;foo&quot;, sub {
-     file &quot;/etc/foo&quot;,
-        content =&gt; template(&quot;@mytemplate.conf&quot;,
-            user =&gt; &#39;bar&#39;,
-        );
- };
+<pre><code>task &quot;foo&quot;, sub {
+  file &quot;/etc/foo&quot;,
+    content =&gt; template( &quot;@mytemplate.conf&quot;, user =&gt; &#39;bar&#39;, );
+};
 
 
  __DATA__
@@ -171,29 +165,29 @@ maintained using the static site generator
 <li><p>cloud_instance command now returns instance info after create</p></li>
 <li><p>added CLI parameters to before/around hooks</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;foo&quot;, sub {
-    my ($param) = shift;
-    # ...
- };
+<pre><code>task &quot;foo&quot;, sub {
+  my ($param) = shift;
 
 
- before foo =&gt; sub {
-    my ($server, $server_ref, $param) = @_;
-    # do something before &quot;foo&quot;
- };
+  # ...
+};
+
+
+before foo =&gt; sub {
+  my ( $server, $server_ref, $param ) = @_;
+
+
+  # do something before &quot;foo&quot;
+};
 </code></pre></li>
 <li><p>added LVM create functions</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> pvcreate &quot;/dev/sda1&quot;;
- vgcreate vg0 =&gt; &quot;/dev/sda1&quot;, &quot;/dev/sda2&quot;;
- lvcreate &quot;lv0&quot;,
-    size =&gt; &quot;20G&quot;,
-    onvg =&gt; &quot;vg0&quot;,
-    fstype =&gt; &quot;ext3&quot;;
+<pre><code>pvcreate &quot;/dev/sda1&quot;;
+vgcreate vg0 =&gt; &quot;/dev/sda1&quot;, &quot;/dev/sda2&quot;;
+lvcreate &quot;lv0&quot;,
+  size   =&gt; &quot;20G&quot;,
+  onvg   =&gt; &quot;vg0&quot;,
+  fstype =&gt; &quot;ext3&quot;;
 </code></pre></li>
 <li><p>fixed bugs</p></li>
 </ul>

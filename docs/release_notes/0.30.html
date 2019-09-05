@@ -118,12 +118,12 @@ maintained using the static site generator
 <ul>
 <li><p>2 functions to get more details of users.</p>
 
-<p>Copy to clipboard</p>
+<pre><code># to get a list of all users
+my @users = user_list();
 
-<pre><code> # to get a list of all users
- my @users = user_list();
- # to get the groups of user &quot;foo&quot;
- my @groups = user_groups(&quot;foo&quot;);
+
+# to get the groups of user &quot;foo&quot;
+my @groups = user_groups(&quot;foo&quot;);
 </code></pre></li>
 <li><p>New option &quot;type&quot; for the extract function to force the archive type.</p></li>
 <li><p>New option &quot;mode&quot; for the extract function.</p></li>
@@ -131,21 +131,21 @@ maintained using the static site generator
 <li><p>Better error messages for compile failures in modules</p></li>
 <li><p>Added support for task specific parallelism</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;foo&quot;, group =&gt; &quot;myservers&quot;, sub {
-    # print do something
- };
- Rex::TaskList-&gt;get_task(&quot;foo&quot;)-&gt;set_parallelism(10);
+<pre><code>task &quot;foo&quot;,
+  group =&gt; &quot;myservers&quot;,
+  sub {
+  # print do something
+  };
+Rex::TaskList-&gt;get_task(&quot;foo&quot;)-&gt;set_parallelism(10);
 </code></pre></li>
 <li><p>Added on_change support to the append_if_no_such_line function.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;foo&quot;, group =&gt; &quot;myservers&quot;, sub {
-     append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;,
-           on_change =&gt; sub { print &quot;/etc/groups was changed...\n&quot;; };
- };
+<pre><code>task &quot;foo&quot;,
+  group =&gt; &quot;myservers&quot;,
+  sub {
+  append_if_no_such_line &quot;/etc/groups&quot;, &quot;mygroup:*:100:myuser1,myuser2&quot;,
+    on_change =&gt; sub { print &quot;/etc/groups was changed...\n&quot;; };
+  };
 </code></pre></li>
 </ul>
 

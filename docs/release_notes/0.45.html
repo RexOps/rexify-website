@@ -128,9 +128,10 @@ maintained using the static site generator
 <li><p>Authentication and endpoint.</p>
 
 <pre><code>cloud_service &quot;OpenStack&quot;;
-cloud_auth tenant_name =&gt; &quot;tenant&quot;,
-           username    =&gt; &quot;user&quot;,
-           password    =&gt; &quot;password&quot;;
+cloud_auth
+  tenant_name =&gt; &quot;tenant&quot;,
+  username    =&gt; &quot;user&quot;,
+  password    =&gt; &quot;password&quot;;
 cloud_region &quot;http://openstack.domain.tld:5000/v2.0&quot;;
 </code></pre></li>
 <li><p>Creating volumes and vms.</p>
@@ -148,7 +149,7 @@ my $instance = cloud_instance create =&gt; {
 <li><p>Terminating an instance and removing the volume.</p>
 
 <pre><code>cloud_instance terminate =&gt; $instance-&gt;{id};
-cloud_volume delete =&gt; $vol_id;
+cloud_volume delete      =&gt; $vol_id;
 </code></pre></li>
 </ul></li>
 <li><p>added cloud_image_list() function</p></li>
@@ -168,9 +169,9 @@ cloud_volume delete =&gt; $vol_id;
 <p>If this option is set, the file will never be overwritten.</p>
 
 <pre><code>file &quot;/var/named/$zone-&gt;{name}.zone&quot;,
-  content      =&gt; template( &#39;@zone-file.tpl&#39;, conf =&gt; $conf, %{$zone} ),
-  owner        =&gt; &quot;named&quot;,
-  group        =&gt; &quot;named&quot;,
+  content =&gt; template( &#39;@zone-file.tpl&#39;, conf =&gt; $conf, %{$zone} ),
+  owner   =&gt; &quot;named&quot;,
+  group   =&gt; &quot;named&quot;,
   no_overwrite =&gt; TRUE;
 </code></pre></li>
 <li><p>ensure directory option for file().</p>
@@ -187,8 +188,10 @@ cloud_volume delete =&gt; $vol_id;
 <p>This allow operations on multiple files without duplicating the code.</p>
 
 <pre><code>file [
-    &quot;/etc/rex/io/inventory/bootdevice&quot;, &quot;/etc/rex/io/inventory/bridge&quot;,
-    &quot;/etc/rex/io/inventory/sysinfo&quot;, &quot;/etc/rex/io/inventory/os&quot;
+  &quot;/etc/rex/io/inventory/bootdevice&quot;,
+  &quot;/etc/rex/io/inventory/bridge&quot;,
+  &quot;/etc/rex/io/inventory/sysinfo&quot;,
+  &quot;/etc/rex/io/inventory/os&quot;
   ],
   owner =&gt; &quot;root&quot;,
   group =&gt; &quot;root&quot;,
@@ -215,7 +218,8 @@ notify run =&gt; &quot;kill-process-httpd&quot;;
 <p>This tell Rex that this command creates a special file. If this file is found, the command won&#39;t get executed anymore.</p>
 
 <pre><code>run &quot;download-ipxe&quot;,
-  command =&gt; &quot;wget -O /var/lib/tftpboot/undionly.ipxe http://boot.ipxe.org/undionly.kpxe&quot;,
+  command =&gt;
+  &quot;wget -O /var/lib/tftpboot/undionly.ipxe http://boot.ipxe.org/undionly.kpxe&quot;,
   creates =&gt; &quot;/var/lib/tftpboot/undionly.ipxe&quot;;
 </code></pre></li>
 <li><p><em>only_if</em> and <em>unless</em> option for run() resource.</p>
@@ -223,8 +227,9 @@ notify run =&gt; &quot;kill-process-httpd&quot;;
 <p>This will execute the command only if the command given will execute successfully (or terminate unsuccessfull).</p>
 
 <pre><code>run &quot;add-service-os&quot;,
-    command =&gt; &quot;mysql -uroot &lt; /tmp/data.sql&quot;,
-    unless  =&gt; &quot;mysql -uroot dbschema -e &#39;SELECT id FROM os_template WHERE id=2&#39; | grep -q 2&quot;;
+  command =&gt; &quot;mysql -uroot &lt; /tmp/data.sql&quot;,
+  unless =&gt;
+  &quot;mysql -uroot dbschema -e &#39;SELECT id FROM os_template WHERE id=2&#39; | grep -q 2&quot;;
 </code></pre></li>
 <li><p>support for customized environments. - #316 - andrejzverev</p>
 
@@ -232,8 +237,8 @@ notify run =&gt; &quot;kill-process-httpd&quot;;
 
 <pre><code>run &quot;my_command&quot;,
   env =&gt; {
-    env_var_1 =&gt; &quot;the value for 1&quot;,
-    env_var_2 =&gt; &quot;the value for 2&quot;,
+  env_var_1 =&gt; &quot;the value for 1&quot;,
+  env_var_2 =&gt; &quot;the value for 2&quot;,
   };
 </code></pre></li>
 </ul></li>
@@ -247,28 +252,28 @@ notify run =&gt; &quot;kill-process-httpd&quot;;
 
 # somewhere else in the code
 file &quot;/etc/httpd/httpd.conf&quot;,
-  content   =&gt; template(&quot;templates/httpd.conf.tpl&quot;, %vars),
+  content   =&gt; template( &quot;templates/httpd.conf.tpl&quot;, %vars ),
   on_change =&gt; sub { notify service =&gt; &quot;httpd&quot;; };
 </code></pre></li>
 </ul></li>
 <li><p><em>pkg</em> resource (replacement for install function).</p>
 
-<pre><code>pkg &quot;vim&quot;, ensure =&gt; &quot;present&quot;;
-pkg &quot;httpd&quot;, ensure =&gt; &quot;2.4.6&quot;;
+<pre><code>pkg &quot;vim&quot;,      ensure =&gt; &quot;present&quot;;
+pkg &quot;httpd&quot;,    ensure =&gt; &quot;2.4.6&quot;;
 pkg &quot;vim-tiny&quot;, ensure =&gt; &quot;absent&quot;;
-pkg [&quot;tftp-server&quot;, &quot;wget&quot;], ensure =&gt; &quot;latest&quot;;
+pkg [ &quot;tftp-server&quot;, &quot;wget&quot; ], ensure =&gt; &quot;latest&quot;;
 </code></pre></li>
 <li><p>Added account() resource (as replacement for create_user).</p>
 
 <pre><code>account &quot;krimdomu&quot;,
-  ensure   =&gt; &quot;present&quot;,
-  uid      =&gt; 509,
-  home     =&gt; &#39;/root&#39;,
-  comment  =&gt; &#39;User Account&#39;,
-  expire   =&gt; &#39;2011-05-30&#39;,
-  groups   =&gt; [&#39;root&#39;, &#39;...&#39;],
-  password =&gt; &#39;blahblah&#39;,
-  system   =&gt; 1,
+  ensure         =&gt; &quot;present&quot;,
+  uid            =&gt; 509,
+  home           =&gt; &#39;/root&#39;,
+  comment        =&gt; &#39;User Account&#39;,
+  expire         =&gt; &#39;2011-05-30&#39;,
+  groups         =&gt; [ &#39;root&#39;, &#39;...&#39; ],
+  password       =&gt; &#39;blahblah&#39;,
+  system         =&gt; 1,
   no_create_home =&gt; TRUE,
   ssh_key        =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
 </code></pre></li>

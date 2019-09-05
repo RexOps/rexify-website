@@ -127,61 +127,54 @@ maintained using the static site generator
 
 <p>You can use thise module by installing it via <em>rexify</em>.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code># From within a project
 bash# rexify --use=Rex::DNS:Bind
 
 # To create a new project
 bash# rexify mynewproject --use=Rex::DNS::Bind
-</code></pre>
 
-<p>Copy to clipboard</p>
-
-<pre><code>set dns =&gt; {
-      server =&gt; &quot;127.0.0.1&quot;,
-      key_name =&gt; &quot;mysuperkey&quot;,
-      key =&gt; &quot;/foobar==&quot;,
+set dns =&gt; {
+  server   =&gt; &quot;127.0.0.1&quot;,
+  key_name =&gt; &quot;mysuperkey&quot;,
+  key      =&gt; &quot;/foobar==&quot;,
 };
 
 task sometask =&gt; sub {
-    Rex::DNS::Bind::add_record(
-      domain =&gt; &quot;rexify.org&quot;,
-      host   =&gt; &quot;foobar01&quot;,
-      data   =&gt; &quot;127.0.0.4&quot;,
-    );
+  Rex::DNS::Bind::add_record(
+    domain =&gt; &quot;rexify.org&quot;,
+    host   =&gt; &quot;foobar01&quot;,
+    data   =&gt; &quot;127.0.0.4&quot;,
+  );
 
-    Rex::DNS::Bind::delete_record(
-      domain =&gt; &quot;rexify.org&quot;,
-      host   =&gt; &quot;foobar01&quot;,
-      type   =&gt; &quot;A&quot;,
-    );
+  Rex::DNS::Bind::delete_record(
+    domain =&gt; &quot;rexify.org&quot;,
+    host   =&gt; &quot;foobar01&quot;,
+    type   =&gt; &quot;A&quot;,
+  );
 
-    my @entries = Rex::DNS::Bind::list_entries(domain =&gt; &quot;rexify.org&quot;);
-    print Dumper(\@entries);
+  my @entries = Rex::DNS::Bind::list_entries( domain =&gt; &quot;rexify.org&quot; );
+  print Dumper( \@entries );
 };
 </code></pre>
 
 <p>See <a href="http://modules.rexify.org/module/Rex::DNS::Bind">Rex::DNS::Bind</a> for the API documentation.</p>
 
 <ul>
-<li>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</p>
 
 <pre><code>task &quot;taskone&quot;, sub {
-   run_task &quot;tasktwo&quot;, on =&gt; &quot;foo&quot;, params =&gt; { key1 =&gt; &quot;value1&quot;, key2 =&gt; &quot;value2&quot; };
+  run_task &quot;tasktwo&quot;,
+    on     =&gt; &quot;foo&quot;,
+    params =&gt; { key1 =&gt; &quot;value1&quot;, key2 =&gt; &quot;value2&quot; };
 };
+
 
 task &quot;tasktwo&quot;, sub {
-   my $param = shift;
-   print Dumper($param);
+  my $param = shift;
+  print Dumper($param);
 };
-</code></pre>
-
-<ul>
-<li>Code changes for better extendability of core functions.</li>
+</code></pre></li>
+<li><p>Code changes for better extendability of core functions.</p></li>
 <li>Hardware module is now pluggable</li>
 <li>Virtualization module detection is now pluggable</li>
 <li>Box module is now pluggable</li>

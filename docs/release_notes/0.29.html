@@ -134,12 +134,10 @@ maintained using the static site generator
 <li><p>Refactored Task module</p></li>
 <li><p>Added experimental feature: shared variables</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> BEGIN {
-    use Rex::Shared::Var;
-    share(qw($scalar @array %hash));
- }
+<pre><code>BEGIN {
+  use Rex::Shared::Var;
+  share(qw($scalar @array %hash));
+}
 </code></pre>
 
 <p>These variables get shared across the tasks.</p></li>

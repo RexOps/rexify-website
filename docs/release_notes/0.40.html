@@ -119,18 +119,16 @@ maintained using the static site generator
 
 <p>The first CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * &quot;default&quot;.</p>
 
-<p>Copy to clipboard</p>
-
 <pre><code>use Cwd &#39;getcwd&#39;;
 use Rex::CMDB;
 
 set cmdb =&gt; {
-   type =&gt; &quot;YAML&quot;,
-   path =&gt; getcwd() . &quot;/cmdb&quot;,
+  type =&gt; &quot;YAML&quot;,
+  path =&gt; getcwd() . &quot;/cmdb&quot;,
 };
 
 task &quot;prepare&quot;, sub {
-   my $vhosts = get cmdb &quot;vhosts&quot;;
+  my $vhosts = get cmdb &quot;vhosts&quot;;
 };
 </code></pre>
 
@@ -149,21 +147,17 @@ task &quot;prepare&quot;, sub {
 
 <p>It is now possible to use VirtualBox in headless mode on MacOSX and Linux.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>set  virtualization =&gt; { 
-   type =&gt; &quot;VBox&quot;,
-   headless =&gt; TRUE
+<pre><code>set virtualization =&gt; {
+  type     =&gt; &quot;VBox&quot;,
+  headless =&gt; TRUE
 };
 
 task &quot;foo&quot;, sub {
-    vm start =&gt; &quot;myvm&quot;;
+  vm start =&gt; &quot;myvm&quot;;
 };
 </code></pre>
 
 <p>If you&#39;re using Rex/Boxes you can set this option in your YAML file.</p>
-
-<p>Copy to clipboard</p>
 
 <pre><code>type: VBox
 vbox:
@@ -181,8 +175,6 @@ vms:
 <h2 id="inistylegroupfiles">INI style group files</h2>
 
 <p>From Franky Van Liedekerke.</p>
-
-<p>Copy to clipboard</p>
 
 <pre><code>; my group file
 [frontends]
@@ -202,11 +194,8 @@ be04
 
 [db]
 db[01..02]
-</code></pre>
 
-<p>Copy to clipboard</p>
-
-<pre><code>use Rex::Group::Lookup::INI;
+use Rex::Group::Lookup::INI;
 
 groups_file &quot;file.ini&quot;;
 </code></pre>
@@ -216,8 +205,6 @@ groups_file &quot;file.ini&quot;;
 <p>There is a new setting called source_global_profile. This will source /etc/profile before every run() command.</p>
 
 <p>On some systems this is needed because the user&#39;s profile (.bashrc, .bash_profile) doesn&#39;t source the global file. Before you use this function consider changing your .bashrc.</p>
-
-<p>Copy to clipboard</p>
 
 <pre><code>source_global_profile TRUE;
 </code></pre>

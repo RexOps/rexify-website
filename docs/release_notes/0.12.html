@@ -118,163 +118,150 @@ maintained using the static site generator
 <ul>
 <li><p>Added <em>sudo</em> command</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> sudo_password &quot;mypassword&quot;;
+<pre><code>sudo_password &quot;mypassword&quot;;
 
 
- task &quot;dosomething&quot;, sub {
-    say sudo &quot;id&quot;;
- };
+task &quot;dosomething&quot;, sub {
+  say sudo &quot;id&quot;;
+};
 </code></pre></li>
 <li><p>Allow to manage multiple services at once.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;start&quot;, sub {
-    service [qw/apache2 rsyslog ftp/] =&gt; &quot;start&quot;;
- };
+<pre><code>task &quot;start&quot;, sub {
+  service [qw/apache2 rsyslog ftp/] =&gt; &quot;start&quot;;
+};
 </code></pre></li>
 <li><p>Added possibility to add and remove services from runlevels</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Rex::Commands::Iptables;
- task &quot;prepare&quot;, sub {
-    service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
-    service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
- };
+<pre><code>use Rex::Commands::Iptables;
+task &quot;prepare&quot;, sub {
+  service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
+  service apache2 =&gt; &quot;ensure&quot;, &quot;stopped&quot;;
+};
 </code></pre></li>
 <li><p>Added an iptables module to manage basic iptables rules.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> task &quot;firewall&quot;, sub {
-    # clear all rules
-    iptables_clear;
+<pre><code>task &quot;firewall&quot;, sub {
 
 
-<pre><code># open port 22 on all devices
-open_port 22;
+  # clear all rules
+  iptables_clear;
 
 
-# open port 22 and 80 on eth0
-open_port [22, 80] =&amp;gt; {
-   dev =&amp;gt; &quot;eth0&quot;,
-};
+  # open port 22 on all devices
+  open_port 22;
 
 
-# close all ports on all devices
-close_port &quot;all&quot;;
+  # open port 22 and 80 on eth0
+  open_port [ 22, 80 ] =&gt; { dev =&gt; &quot;eth0&quot;, };
 
 
-# close port 22 on dev eth0
-close_port 22 =&amp;gt; {
-   dev =&amp;gt; &quot;eth0&quot;,
-};
+  # close all ports on all devices
+  close_port &quot;all&quot;;
 
 
-# redirect port 80 to 10080
-redirect_port 80 =&amp;gt; 10080;
+  # close port 22 on dev eth0
+  close_port 22 =&gt; { dev =&gt; &quot;eth0&quot;, };
 
 
-# redirect port 80 to 10080 on eth0
-redirect_port 80 =&amp;gt; {
-   dev =&amp;gt; &quot;eth0&quot;,
-   to  =&amp;gt; 10080,
-};
+  # redirect port 80 to 10080
+  redirect_port 80 =&gt; 10080;
+
+
+  # redirect port 80 to 10080 on eth0
+  redirect_port 80 =&gt; {
+    dev =&gt; &quot;eth0&quot;,
+    to  =&gt; 10080,
+  };
 
 
 # set default state rules (RELATED,ESTABLISHED) to accept on all devices
-default_state_rule;
+  default_state_rule;
 
 
-# set default state rules (RELATED,ESTABLISHED) to accept on eth0
-default_state_rule dev =&amp;gt; &quot;eth0&quot;;
+  # set default state rules (RELATED,ESTABLISHED) to accept on eth0
+  default_state_rule dev =&gt; &quot;eth0&quot;;
 
 
-# make the system a nat gateway for its default route
-# this will set the sysctl entry net.ipv4.ip_forward to 1, too.
-is_nat_gateway;
+  # make the system a nat gateway for its default route
+  # this will set the sysctl entry net.ipv4.ip_forward to 1, too.
+  is_nat_gateway;
 
 
-# define a custom iptables rule
-iptables t =&amp;gt; &quot;filter&quot;, A =&amp;gt; &quot;INPUT&quot;, i =&amp;gt; &quot;eth0&quot;, ...;
-</code></pre>
-
- };
+  # define a custom iptables rule
+  iptables t =&gt; &quot;filter&quot;, A =&gt; &quot;INPUT&quot;, i =&gt; &quot;eth0&quot;, ...;
+};
 </code></pre></li>
 <li><p>Added Amazon EC2 Support</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code> use Data::Dumper;
- use Rex::Commands::Cloud;
+<pre><code>use Data::Dumper;
+use Rex::Commands::Cloud;
 
 
- user &quot;root&quot;;
- public_key &quot;/path/to/your/ec2-public.key&quot;;
- private_key &quot;/path/to/your/ec2-private.key.pem&quot;;
+user &quot;root&quot;;
+public_key &quot;/path/to/your/ec2-public.key&quot;;
+private_key &quot;/path/to/your/ec2-private.key.pem&quot;;
 
 
- # set the cloud service provider to &quot;Amazon&quot;
- cloud_service &quot;Amazon&quot;;
+# set the cloud service provider to &quot;Amazon&quot;
+cloud_service &quot;Amazon&quot;;
 
 
- # set cloud auth
- cloud_auth &quot;$access_key&quot;, &quot;$secret_access_key&quot;;
+# set cloud auth
+cloud_auth &quot;$access_key&quot;, &quot;$secret_access_key&quot;;
 
 
- # set cloud region
- cloud_region &quot;ec2.eu-west-1.amazonaws.com&quot;;
+# set cloud region
+cloud_region &quot;ec2.eu-west-1.amazonaws.com&quot;;
 
 
- # define a group with all running ec2 instances
- group ec2 =&gt; get_cloud_instances_as_group();
+# define a group with all running ec2 instances
+group ec2 =&gt; get_cloud_instances_as_group();
 
 
- task &quot;list&quot;, sub {
-    print Dumper cloud_instances_list;
-    print Dumper cloud_volume_list;
+task &quot;list&quot;, sub {
+  print Dumper cloud_instances_list;
+  print Dumper cloud_volume_list;
 
 
-<pre><code>print Dumper get_cloud_regions;
-print Dumper get_cloud_availability_zones;
-</code></pre>
-
- };
-
-
- task &quot;create&quot;, sub {
-    # if you want an ebs volume, create it. if not, you don&#39;t need this.
-    my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;; };
-
-
-<pre><code># create the cloud instances and attach the just created ebs volume.
-cloud_instance create =&amp;gt; {
-   image_id =&amp;gt; &quot;ami-02103876&quot;,
-   name     =&amp;gt; &quot;test-ec2&quot;,
-   key      =&amp;gt; &quot;my-test-key&quot;,
-   volume   =&amp;gt; $vol_id,        # if you don&#39;t have a volume, skip this
-   zone     =&amp;gt; &quot;eu-west-1a&quot;,   # the volume and the instance must be in the same zone. skip this if you don&#39;t have a volume.
+  print Dumper get_cloud_regions;
+  print Dumper get_cloud_availability_zones;
 };
-</code></pre>
-
- };
 
 
- task &quot;destroy&quot;, sub {
-    cloud_volume detach =&gt; &quot;vol-xxaabb&quot;;
-    cloud_instance terminate =&gt; &quot;i-ffgghhjj&quot;;
-    cloud_colume delete =&gt; &quot;vol-xxaabb&quot;;
- };
+task &quot;create&quot;, sub {
 
 
- task &quot;prepare&quot;, group =&gt; &quot;ec2&quot;, sub {
-    run &quot;apt-get update&quot;;
-    install package =&gt; &quot;apache2&quot;;
-    service apache2 =&gt; &quot;start&quot;;
- };
+  # if you want an ebs volume, create it. if not, you don&#39;t need this.
+  my $vol_id =
+    cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;; };
+
+
+  # create the cloud instances and attach the just created ebs volume.
+  cloud_instance create =&gt; {
+    image_id =&gt; &quot;ami-02103876&quot;,
+    name     =&gt; &quot;test-ec2&quot;,
+    key      =&gt; &quot;my-test-key&quot;,
+    volume   =&gt; $vol_id,       # if you don&#39;t have a volume, skip this
+    zone =&gt; &quot;eu-west-1a&quot;, # the volume and the instance must be in the same zone. skip this if you don&#39;t have a volume.
+  };
+};
+
+
+task &quot;destroy&quot;, sub {
+  cloud_volume detach      =&gt; &quot;vol-xxaabb&quot;;
+  cloud_instance terminate =&gt; &quot;i-ffgghhjj&quot;;
+  cloud_colume delete      =&gt; &quot;vol-xxaabb&quot;;
+};
+
+
+task &quot;prepare&quot;,
+  group =&gt; &quot;ec2&quot;,
+  sub {
+  run &quot;apt-get update&quot;;
+  install package =&gt; &quot;apache2&quot;;
+  service apache2 =&gt; &quot;start&quot;;
+  };
 </code></pre></li>
 <li><p>Some improvements and bug fixes</p></li>
 </ul>

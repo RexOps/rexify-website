@@ -116,19 +116,10 @@ maintained using the static site generator
               <h1 id="common">Common</h1>
 
 <ul>
-<li>New feature flag: <strong>exit_status</strong>. This will return a non-zero value on exit of rex if a task failed.</li>
-</ul>
+<li><p>New feature flag: <strong>exit_status</strong>. This will return a non-zero value on exit of rex if a task failed.</p>
 
-<p>Copy to clipboard</p>
-
-<pre><code>use Rex -feature =&gt; qw/exit_status/;
-</code></pre>
-
-<ul>
-<li>rexify command now supports private module servers via a configuration file in $HOME/.rex/config.yml</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<p>use Rex -feature =&gt; qw/exit_status/;</p></li>
+<li><p>rexify command now supports private module servers via a configuration file in $HOME/.rex/config.yml</p>
 
 <pre><code>module_server:
    search: http://modules.rexify.org/api/0.39/get/recipes
@@ -138,25 +129,21 @@ maintained using the static site generator
    username: user
    password: password
    realm: authentication-realm
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>It supports basic authentication. If you don&#39;t need authentication you can omit username, password and realm.</p>
 
 <ul>
-<li>Added new function is_installed() to check if a package is already installed on a system.</li>
-</ul>
-
-<p>Copy to clipboard</p>
+<li><p>Added new function is_installed() to check if a package is already installed on a system.</p>
 
 <pre><code>task &quot;checkit&quot;, &quot;server1&quot;, sub {
-   if(is_installed(&quot;vim&quot;)) {
-       say &quot;vim is already installed.&quot;;
-   }
+  if ( is_installed(&quot;vim&quot;) ) {
+    say &quot;vim is already installed.&quot;;
+  }
 };
-</code></pre>
-
-<ul>
-<li>fixed bugs</li>
+</code></pre></li>
+<li><p>fixed bugs</p></li>
 </ul>
 
 <h1 id="manythankstothecontributorsofthisversion">Many thanks to the contributors of this version</h1>

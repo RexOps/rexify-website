@@ -150,16 +150,17 @@ maintained using the static site generator
 <pre><code>use Rex::Commands::Augeas;
 
 task &quot;prepare&quot;, sub {
-  augeas insert =&gt; &quot;/files/etc/hosts&quot;,
+  augeas
+    insert    =&gt; &quot;/files/etc/hosts&quot;,
     label     =&gt; &quot;01&quot;,
     after     =&gt; &quot;/7&quot;,
     ipaddr    =&gt; &quot;192.168.2.23&quot;,
     canonical =&gt; &quot;frontend01&quot;;
 
-  augeas modify =&gt; 
+  augeas modify =&gt;
     &quot;/files/etc/ssh/sshd_config/PermitRootLogin&quot; =&gt; &quot;without-password&quot;,
-    on_change =&gt; sub {
-      service sshd =&gt; &quot;restart&quot;;
+    on_change                                    =&gt; sub {
+    service sshd =&gt; &quot;restart&quot;;
     };
 };
 </code></pre>
@@ -177,10 +178,21 @@ task &quot;prepare&quot;, sub {
 <pre><code>use Rex::Commands::PkgConf;
 
 task &quot;prepare&quot;, sub {
-  set_pkgconf(&quot;mysql-server-5.5&quot;, [
-    { question =&gt; &#39;mysql-server/root_password&#39;,       type =&gt; &#39;string&#39;, value =&gt; &#39;mysecret&#39; },
-    { question =&gt; &#39;mysql-server/root_password_again&#39;, type =&gt; &#39;string&#39;, value =&gt; &#39;mysecret&#39; },
-  ]);
+  set_pkgconf(
+    &quot;mysql-server-5.5&quot;,
+    [
+      {
+        question =&gt; &#39;mysql-server/root_password&#39;,
+        type     =&gt; &#39;string&#39;,
+        value    =&gt; &#39;mysecret&#39;
+      },
+      {
+        question =&gt; &#39;mysql-server/root_password_again&#39;,
+        type     =&gt; &#39;string&#39;,
+        value    =&gt; &#39;mysecret&#39;
+      },
+    ]
+  );
 };
 </code></pre>
 
@@ -193,7 +205,7 @@ task &quot;prepare&quot;, sub {
 
 <p>If you can&#39;t change this behaviour you can always use the <em>tty</em> feature to tell Rex to spawn a tty.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;, &#39;tty&#39;];
+<pre><code>use Rex -feature =&gt; [ &#39;1.0&#39;, &#39;tty&#39; ];
 </code></pre>
 
 <h4 id="base">base</h4>

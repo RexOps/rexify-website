@@ -131,46 +131,45 @@ maintained using the static site generator
 <li><p>Rex::Box now also works with KVM</p>
 
 <pre><code>use Rex::Test::Base;
-    use Data::Dumper;
-    use Rex -base;
+use Data::Dumper;
+use Rex -base;
 
 
-<pre><code>set box =&amp;gt; &quot;KVM&quot;;
+set box =&gt; &quot;KVM&quot;;
 
 
 test {
   my $t = shift;
 
 
-  $t-&amp;gt;name(&quot;ubuntu test&quot;);
+  $t-&gt;name(&quot;ubuntu test&quot;);
 
 
-  $t-&amp;gt;base_vm(&quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.img&quot;);
-  $t-&amp;gt;vm_auth(user =&amp;gt; &quot;root&quot;, password =&amp;gt; &quot;box&quot;);
+  $t-&gt;base_vm(
+    &quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.img&quot;);
+  $t-&gt;vm_auth( user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot; );
 
 
-  $t-&amp;gt;run_task(&quot;setup&quot;);
+  $t-&gt;run_task(&quot;setup&quot;);
 
 
-  $t-&amp;gt;has_package(&quot;vim&quot;);
-  $t-&amp;gt;has_package(&quot;ntp&quot;);
-  $t-&amp;gt;has_package(&quot;unzip&quot;);
-  $t-&amp;gt;has_file(&quot;/etc/ntp.conf&quot;);
-  $t-&amp;gt;has_service_running(&quot;ntp&quot;);
-  $t-&amp;gt;has_content(&quot;/etc/passwd&quot;, qr{root:x:0:}ms);
+  $t-&gt;has_package(&quot;vim&quot;);
+  $t-&gt;has_package(&quot;ntp&quot;);
+  $t-&gt;has_package(&quot;unzip&quot;);
+  $t-&gt;has_file(&quot;/etc/ntp.conf&quot;);
+  $t-&gt;has_service_running(&quot;ntp&quot;);
+  $t-&gt;has_content( &quot;/etc/passwd&quot;, qr{root:x:0:}ms );
 
 
   run &quot;ls -l&quot;;
-  $t-&amp;gt;ok($? == 0, &quot;ls -l returns success.&quot;);
+  $t-&gt;ok( $? == 0, &quot;ls -l returns success.&quot; );
 
 
-  $t-&amp;gt;finish;
+  $t-&gt;finish;
 };
 
 
 1;
-</code></pre>
-
 </code></pre></li>
 </ul>
 
@@ -198,23 +197,27 @@ group_xml &quot;file.xml&quot;;
 </code></pre></li>
 <li><p>It is now possible to define <strong>before</strong>, <strong>around</strong> and <strong>after</strong> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
 
-<pre><code>before ALL =&gt; sub {}
+<pre><code>before ALL =&gt; sub { }
 </code></pre></li>
 <li><p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
 
 <pre><code>task &quot;prepare&quot;, sub {
-   service &quot;apache2&quot;,
-     ensure  =&gt; &quot;started&quot;,
-     start   =&gt; &quot;/usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
-     stop    =&gt; &quot;killall httpd&quot;,
-     status  =&gt; &quot;ps -efww | grep httpd&quot;,
-     restart =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
-     reload  =&gt; &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;;
- };
+  service &quot;apache2&quot;,
+    ensure =&gt; &quot;started&quot;,
+    start  =&gt; &quot;/usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+    stop   =&gt; &quot;killall httpd&quot;,
+    status =&gt; &quot;ps -efww | grep httpd&quot;,
+    restart =&gt;
+    &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
+    reload =&gt;
+    &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;;
+};
 </code></pre></li>
 <li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
 
-<pre><code>group &quot;g1&quot;, &quot;srv1&quot; =&gt; { user =&gt; &quot;other&quot; }, &quot;srv2&quot;;
+<pre><code>group &quot;g1&quot;,
+  &quot;srv1&quot; =&gt; { user =&gt; &quot;other&quot; },
+  &quot;srv2&quot;;
 </code></pre></li>
 <li><p>Package-Management with pkgng on FreeBSD 10</p></li>
 <li><p>Amazon Linux is now detected properly.</p></li>
