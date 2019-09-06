@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -131,64 +130,55 @@ maintained using the static site generator
 
 <p>It is now possible to write mount entries to /etc/fstab with the <em>persistent</em> option.</p>
 
-<pre><code>mount &quot;/dev/sda5&quot;, &quot;/mnt/sda5&quot;, persistent =&gt; TRUE;
-</code></pre></li>
+<pre><code class="hljs">⁠mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/mnt/sda5</span>&quot;, persistent =&gt; TRUE;    </code></pre></li>
 <li><p>Partitioning</p>
 
 <p>It is now possible to mount the new created partition.</p>
 
-<pre><code>partition &quot;/&quot;,
-  fstype =&gt; &quot;ext3&quot;,
-  size   =&gt; 15000,
-  ondisk =&gt; &quot;sda&quot;,
-  type   =&gt; &quot;primary&quot;,
-  mount  =&gt; TRUE;
-</code></pre>
+<pre><code class="hljs">⁠partition &quot;<span class="hljs-string">/</span>&quot;,
+⁠  fstype =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+⁠  size   =&gt; <span class="hljs-number">15000</span>,
+⁠  ondisk =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
+⁠  type   =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
+⁠  mount  =&gt; TRUE;    </code></pre>
 
 <p>And if you want to write fstab entries directly.</p>
 
-<pre><code>partition &quot;/&quot;,
-  fstype           =&gt; &quot;ext3&quot;,
-  size             =&gt; 15000,
-  ondisk           =&gt; &quot;sda&quot;,
-  type             =&gt; &quot;primary&quot;,
-  mount_persistent =&gt; TRUE;
-</code></pre></li>
+<pre><code class="hljs">⁠partition &quot;<span class="hljs-string">/</span>&quot;,
+⁠  fstype           =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+⁠  size             =&gt; <span class="hljs-number">15000</span>,
+⁠  ondisk           =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
+⁠  type             =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
+⁠  mount_persistent =&gt; TRUE;    </code></pre></li>
 <li><p>New keyword <em>make</em>.</p>
 
 <p>This is just a cosmetic one. It is now possible to write tasks this way:</p>
 
-<pre><code># old
-task prepare =&gt; sub {
-
-
-  # do something
-};
-
-
-# new
-task prepare =&gt; make {
-
-
-  # do something
-};
-
-
-# old
-task &quot;prepare&quot;,
-  group =&gt; &quot;foo&quot;,
-  sub {
-  # do something
-  };
-
-
-# new
-task &quot;prepare&quot;,
-  group =&gt; &quot;foo&quot;,
-  make {
-  # do something
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
+⁠</span>task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>};
+⁠
+⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
+⁠</span>task prepare =&gt; make {
+⁠
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>};
+⁠
+⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  };
+⁠
+⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠  make {
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  };    </code></pre></li>
 <li><p>Usability improvements, thanks to Anders Ossowicki</p></li>
 </ul>
 
@@ -201,10 +191,9 @@ task &quot;prepare&quot;,
 
 <p>If the <em>ssh_key</em> option is set it will only create the .ssh directory if the home directory exists.</p>
 
-<pre><code>create_user &quot;foo&quot;,
-  home           =&gt; &quot;/data/homes/foo&quot;,
-  no_create_home =&gt; TRUE;
-</code></pre></li>
+<pre><code class="hljs">⁠create_user &quot;<span class="hljs-string">foo</span>&quot;,
+⁠  home           =&gt; &quot;<span class="hljs-string">/data/homes/foo</span>&quot;,
+⁠  no_create_home =&gt; TRUE;    </code></pre></li>
 <li><p>Fixed <em>expire</em> bug for create_user</p></li>
 </ul>
 
@@ -215,32 +204,28 @@ task &quot;prepare&quot;,
 
 <p>If you want to use another Template class (for example Template::Toolkit) you can use it now.</p>
 
-<pre><code># Rexfile
-use strict;
-use warnings;
-
-
-use Template;
-
-
-set template_function =&gt; sub {
-  my ( $content, $vars ) = @_;
-  my $t = Template-&gt;new;
-  my $out;
-  $t-&gt;process( \$content, $vars, \$out );
-  return $out;
-};
-
-
-task foo =&gt; sub {
-  file &quot;/etc/foo/service.conf&quot;,
-    content =&gt; template(
-    &quot;service.conf.tpl&quot;,
-    name =&gt; &quot;foo&quot;,
-    port =&gt; 1903
-    );
-};
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> Template;
+⁠
+⁠set template_function =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span> ) = <span class="hljs-type">@_</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = Template-&gt;new;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$out</span>;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">process</span>( \<span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span>, \<span class="hljs-type">$out</span> );
+⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$out</span>;
+⁠};
+⁠
+⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/foo/service.conf</span>&quot;,
+⁠    content =&gt; template(
+⁠    &quot;<span class="hljs-string">service.conf.tpl</span>&quot;,
+⁠    name =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠    port =&gt; <span class="hljs-number">1903</span>
+⁠    );
+⁠};    </code></pre></li>
 </ul>
 
 <h1 id="modules">Modules</h1>
@@ -277,14 +262,8 @@ task foo =&gt; sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

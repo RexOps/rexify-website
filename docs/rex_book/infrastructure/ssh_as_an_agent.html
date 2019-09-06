@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -141,19 +140,18 @@ maintained using the static site generator
 
 <p>If you have many servers you want to connect to, you ususally don&#39;t want to connect sequentially. You can define the number of parallel connections Rex should use.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-
-user &quot;root&quot;;
-password &quot;foob4r&quot;;
-
-group frontends =&gt; &quot;frontend[01..50]&quot;;
-
-parallelism 15;
-
-task &quot;prepare&quot;, group =&gt; &quot;frontends&quot;, sub {
-   # do something
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠password &quot;<span class="hljs-string">foob4r</span>&quot;;
+⁠
+⁠group frontends =&gt; &quot;<span class="hljs-string">frontend[01..50]</span>&quot;;
+⁠
+⁠parallelism <span class="hljs-number">15</span>;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>};</code></pre>
 
 <p>This will connect to 15 servers in parallel and executes the task.</p>
 
@@ -167,14 +165,8 @@ task &quot;prepare&quot;, group =&gt; &quot;frontends&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

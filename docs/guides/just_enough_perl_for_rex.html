@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -123,153 +122,138 @@ maintained using the static site generator
 
 <p>Scalars can contain single items, like strings, numbers, objects or references.</p>
 
-<pre><code>my $name = &quot;John&quot;;      # this is a string
-my $age = 28;           # this is a number (integer)
-my $float = 28.5;       # also a number, but a float
-my $car = Car-&gt;new();   # this is an object from the class Car
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> = &quot;<span class="hljs-string">John</span>&quot;;      <span class="hljs-comment"># this is a string</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">my</span> <span class="hljs-type">$age</span> = <span class="hljs-number">28</span>;           <span class="hljs-comment"># this is a number (integer)</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">my</span> <span class="hljs-type">$float</span> = <span class="hljs-number">28.5</span>;       <span class="hljs-comment"># also a number, but a float</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">my</span> <span class="hljs-type">$car</span> = Car-&gt;new();   <span class="hljs-comment"># this is an object from the class Car</span></code></pre>
 
 <h3 id="arrayvariables">Array variables</h3>
 
 <p>Arrays are lists of scalars. Like a grocery list.</p>
 
-<pre><code>my @names = ( &quot;John&quot;, &quot;Fred&quot;, &quot;Charley&quot; );
-my @to_buy = qw( Cheese Butter Salt Lemons Oranges Apples );
-</code></pre>
+<pre><code class="hljs">⁠my <span class="hljs-type">@names</span> = ( &quot;<span class="hljs-string">John</span>&quot;, &quot;<span class="hljs-string">Fred</span>&quot;, &quot;<span class="hljs-string">Charley</span>&quot; );
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@to_buy</span> = qw( Cheese Butter Salt Lemons Oranges Apples );</code></pre>
 
 <p>To access an array element you have to use its index, which starts at zero:</p>
 
-<pre><code>say &quot;First name: &quot; . $names[0];
-say &quot;Last name: &quot; . $name[2];
-say &quot;Also last name: &quot; . $name[-1];
-</code></pre>
+<pre><code class="hljs">⁠say &quot;<span class="hljs-string">First name: </span>&quot; . <span class="hljs-type">$names</span>[0];
+⁠say &quot;<span class="hljs-string">Last name: </span>&quot; . <span class="hljs-type">$name</span>[<span class="hljs-number">2</span>];
+⁠say &quot;<span class="hljs-string">Also last name: </span>&quot; . <span class="hljs-type">$name</span>[<span class="hljs-number">-1</span>];</code></pre>
 
 <p>Split a string into an array:</p>
 
-<pre><code>my $string = &quot;John,Fred,Carl,Lewis&quot;;
-my @names = split( /,/, $string );
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$string</span> = &quot;<span class="hljs-string">John,Fred,Carl,Lewis</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@names</span> = <span class="hljs-function">split</span>( /,/, <span class="hljs-type">$string</span> );</code></pre>
 
 <p>Join the items of an array into a string:</p>
 
-<pre><code>my @names = ( &quot;John&quot;, &quot;Fred&quot;, &quot;Carl&quot;, &quot;Lewis&quot; );
-my $string = join( &quot;,&quot;, @names );     # -&gt; John,Fred,Carl,Lewis
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@names</span> = ( &quot;<span class="hljs-string">John</span>&quot;, &quot;<span class="hljs-string">Fred</span>&quot;, &quot;<span class="hljs-string">Carl</span>&quot;, &quot;<span class="hljs-string">Lewis</span>&quot; );
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$string</span> = <span class="hljs-function">join</span>( &quot;<span class="hljs-string">,</span>&quot;, <span class="hljs-type">@names</span> );     <span class="hljs-comment"># -&gt; John,Fred,Carl,Lewis</span></code></pre>
 
 <p>If you want to iterate over an array, do it like this:</p>
 
-<pre><code>for my $name (@names) {
-  say &quot;Current name: $name&quot;;
-}
-</code></pre>
+<pre><code class="hljs">⁠for <span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> (<span class="hljs-type">@names</span>) {
+⁠  say &quot;<span class="hljs-string">Current name: </span><span class="hljs-type">$name</span>&quot;;
+⁠}</code></pre>
 
 <h3 id="hashvariables">Hash variables</h3>
 
 <p>Hashes are like arrays, but with named indexes, called keys.</p>
 
-<pre><code>my %person = (
-  name =&gt; &quot;John&quot;,
-  age  =&gt; 28,
-  city =&gt; &quot;New York&quot;
-);
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%person</span> = (
+⁠  name =&gt; &quot;<span class="hljs-string">John</span>&quot;,
+⁠  age  =&gt; <span class="hljs-number">28</span>,
+⁠  city =&gt; &quot;<span class="hljs-string">New York</span>&quot;
+⁠);</code></pre>
 
 <p>To access a hash element you have to use its key:</p>
 
-<pre><code>say &quot;Name: &quot; . $person{&quot;name&quot;};
-say &quot;Age: &quot; . $person{&quot;age&quot;};
-say &quot;City: &quot; . $person{&quot;city&quot;};
-</code></pre>
+<pre><code class="hljs">⁠say &quot;<span class="hljs-string">Name: </span>&quot; . <span class="hljs-type">$person</span>{&quot;<span class="hljs-string">name</span>&quot;};
+⁠say &quot;<span class="hljs-string">Age: </span>&quot; . <span class="hljs-type">$person</span>{&quot;<span class="hljs-string">age</span>&quot;};
+⁠say &quot;<span class="hljs-string">City: </span>&quot; . <span class="hljs-type">$person</span>{&quot;<span class="hljs-string">city</span>&quot;};</code></pre>
 
 <p>If you want to iterate over a hash, do it like this:</p>
 
-<pre><code>for my $key ( keys %person ) {
-  say &quot;key: $key -&gt; value: &quot; . $person{$key};
-}
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$key</span> ( <span class="hljs-function">keys</span> <span class="hljs-type">%person</span> ) {
+⁠  say &quot;<span class="hljs-string">key: </span><span class="hljs-type">$key</span><span class="hljs-string"> -&gt; value: </span>&quot; . <span class="hljs-type">$person</span>{<span class="hljs-type">$key</span>};
+⁠}</code></pre>
 
 <p>But remember an important note: hashes are always unsorted.</p>
 
 <h2 id="conditionalstatements">Conditional statements</h2>
 
-<pre><code>if ( $name eq &quot;John&quot; ) {
-  say &quot;Hello, my name is John!&quot;;
-} else {
-  say &quot;Well, my name is not John...&quot;;
-}
-
-if ( $name ne &quot;John&quot; ) {
-  say &quot;Yes, my name is NOT John...&quot;;
-} else {
-  say &quot;Hello, my name is John!&quot;;
-}
-
-if ( $age &lt; 30 ) {
-  say &quot;I&#39;m younger than 30.&quot;;
-} elsif ( $age &gt;= 30 &amp;&amp; $age &lt;= 50 ) {
-  say &quot;Well, I&#39;m between 30 and 50.&quot;;
-} else {
-  say &quot;I&#39;m older than 50.&quot;;
-} 
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> eq &quot;<span class="hljs-string">John</span>&quot; ) {
+⁠  say &quot;<span class="hljs-string">Hello, my name is John!</span>&quot;;
+⁠} <span class="hljs-keyword">else</span> {
+⁠  say &quot;<span class="hljs-string">Well, my name is not John...</span>&quot;;
+⁠}
+⁠
+⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> ne &quot;<span class="hljs-string">John</span>&quot; ) {
+⁠  say &quot;<span class="hljs-string">Yes, my name is NOT John...</span>&quot;;
+⁠} <span class="hljs-keyword">else</span> {
+⁠  say &quot;<span class="hljs-string">Hello, my name is John!</span>&quot;;
+⁠}
+⁠
+⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$age</span> &lt; <span class="hljs-number">30</span> ) {
+⁠  say &quot;<span class="hljs-string">I&#39;m younger than 30.</span>&quot;;
+⁠} <span class="hljs-keyword">elsif</span> ( <span class="hljs-type">$age</span> &gt;= <span class="hljs-number">30</span> &amp;&amp; <span class="hljs-type">$age</span> &lt;= <span class="hljs-number">50</span> ) {
+⁠  say &quot;<span class="hljs-string">Well, I&#39;m between 30 and 50.</span>&quot;;
+⁠} <span class="hljs-keyword">else</span> {
+⁠  say &quot;<span class="hljs-string">I&#39;m older than 50.</span>&quot;;
+⁠} </code></pre>
 
 <h2 id="loops">Loops</h2>
 
-<pre><code>for my $num (1..5) {
-  say &quot;&gt; $num&quot;;
-}
-
-# looping over an array
-for my $item (@array) {
-  say &quot;&gt; $item&quot;;
-} 
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$num</span> (<span class="hljs-number">1..5</span>) {
+⁠  say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$num</span>&quot;;
+⁠}
+⁠
+⁠<span class="hljs-comment"># looping over an array</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$item</span> (<span class="hljs-type">@array</span>) {
+⁠  say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$item</span>&quot;;
+⁠} </code></pre>
 
 <h2 id="regularexpressions">Regular expressions</h2>
 
-<pre><code>my $name = &quot;John&quot;;
-if ( $name =~ m/john/ ) {     # will not match, because the &quot;J&quot; in $name is uppercase
-}
-
-if ( $name =~ m/john/i ) {    # _will_ match, because we use the &quot;i&quot; modifier for case-insensitive matching
-}
-
-$name =~ s/john/Fred/i;       # this will replace the first match of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;
-$name =~ s/john/Fred/ig;      # this will replace all matches of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> = &quot;<span class="hljs-string">John</span>&quot;;
+⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> =~ m/john/ ) {     <span class="hljs-comment"># will not match, because the &quot;J&quot; in $name is uppercase</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> =~ m/john/i ) {    <span class="hljs-comment"># _will_ match, because we use the &quot;i&quot; modifier for case-insensitive matching</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠<span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/i;       <span class="hljs-comment"># this will replace the first match of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;</span><span class="hljs-comment">
+⁠</span><span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/ig;      <span class="hljs-comment"># this will replace all matches of &quot;john&quot; (regardless of its case) with &quot;Fred&quot;</span></code></pre>
 
 <h2 id="functions">Functions</h2>
 
-<pre><code>sub my_function {      # define the function called &quot;my_function&quot;
-}
-
-sub my_function {      # define the function called &quot;my_function&quot; 
-  my $param1 = $_[0]; # get the 1st parameter and save it in $param1
-  my $param2 = $_[1]; # get the 2nd parameter and save it in $param2
-  my $param3 = $_[2]; # get the 3rd parameter and save it in $param3
-}
-
-sub my_function {
-  my ($param1, $param2, $param3) = @_; # the same as above
-}
-
-my_function();     # call the function &quot;my_function&quot;
-my_function;       # also calls &quot;my_function&quot;
-&amp;my_function;      # also calls &quot;my_function&quot;
-my_function(&quot;john&quot;, 28);    # call &quot;my_function&quot; with 2 parameters
-my_function &quot;john&quot;, 28;     # also calls &quot;my_function&quot; with 2 parameters: the brackets are not needed
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">sub </span><span class="hljs-function">my_function</span> {      <span class="hljs-comment"># define the function called &quot;my_function&quot;</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠<span class="hljs-keyword">sub </span><span class="hljs-function">my_function</span> {      <span class="hljs-comment"># define the function called &quot;my_function&quot; </span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$param1</span> = <span class="hljs-variable">$_</span>[0]; <span class="hljs-comment"># get the 1st parameter and save it in $param1</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$param2</span> = <span class="hljs-variable">$_</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment"># get the 2nd parameter and save it in $param2</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$param3</span> = <span class="hljs-variable">$_</span>[<span class="hljs-number">2</span>]; <span class="hljs-comment"># get the 3rd parameter and save it in $param3</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠<span class="hljs-keyword">sub </span><span class="hljs-function">my_function</span> {
+⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">$param1</span>, <span class="hljs-type">$param2</span>, <span class="hljs-type">$param3</span>) = <span class="hljs-type">@_</span>; <span class="hljs-comment"># the same as above</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠my_function();     <span class="hljs-comment"># call the function &quot;my_function&quot;</span><span class="hljs-comment">
+⁠</span>my_function;       <span class="hljs-comment"># also calls &quot;my_function&quot;</span><span class="hljs-comment">
+⁠</span>&amp;my_function;      <span class="hljs-comment"># also calls &quot;my_function&quot;</span><span class="hljs-comment">
+⁠</span>my_function(&quot;<span class="hljs-string">john</span>&quot;, <span class="hljs-number">28</span>);    <span class="hljs-comment"># call &quot;my_function&quot; with 2 parameters</span><span class="hljs-comment">
+⁠</span>my_function &quot;<span class="hljs-string">john</span>&quot;, <span class="hljs-number">28</span>;     <span class="hljs-comment"># also calls &quot;my_function&quot; with 2 parameters: the brackets are not needed</span></code></pre>
 
 <h2 id="usefulhelpers">Useful helpers</h2>
 
 <p>Dump the content of a scalar, array or hash</p>
 
-<pre><code>use Data::Dumper;
-say Dumper($scalar);
-say Dumper(@array);
-</code></pre>
-
-<p>say Dumper(%hash);</p>
+<pre><code class="hljs">⁠use <span class="hljs-function">Data::Dumper</span>;
+⁠say Dumper(<span class="hljs-type">$scalar</span>);
+⁠say Dumper(<span class="hljs-type">@array</span>);
+⁠say Dumper(<span class="hljs-type">%hash</span>);</code></pre>
 
 <p> </p>
 
@@ -289,14 +273,8 @@ say Dumper(@array);
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

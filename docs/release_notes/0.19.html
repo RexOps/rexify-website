@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -126,41 +125,35 @@ maintained using the static site generator
 
 <p>With environments one can use the same task for different hosts and/or with different credentials. For example if you want to use the same task on your integration, test and production servers.</p>
 
-<pre><code># define default user/password
-user &quot;root&quot;;
-password &quot;foobar&quot;;
-pass_auth;
-
-
-# define default frontend group containing only testwww01
-group frontend =&gt; &quot;testwww01&quot;;
-
-
-# define live environment, with different user/password
-# and a frontend server group containing www01, www02 and www03
-environment live =&gt; sub {
-  user &quot;root&quot;;
-  password &quot;livefoo&quot;;
-  pass_auth;
-
-
-  group frontend =&gt; &quot;www01&quot;, &quot;www02&quot;, &quot;www03&quot;;
-};
-
-
-# define stage environment with default user and password, but with
-# an own frontend group containing only stagewww01
-environment stage =&gt; sub {
-  group frontend =&gt; &quot;stagewww01&quot;;
-};
-
-
-task &quot;prepare&quot;,
-  group =&gt; &quot;frontend&quot;,
-  sub {
-  say run &quot;hostname&quot;;
-  };
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># define default user/password</span><span class="hljs-comment">
+⁠</span>user &quot;<span class="hljs-string">root</span>&quot;;
+⁠password &quot;<span class="hljs-string">foobar</span>&quot;;
+⁠pass_auth;
+⁠
+⁠<span class="hljs-comment"># define default frontend group containing only testwww01</span><span class="hljs-comment">
+⁠</span>group frontend =&gt; &quot;<span class="hljs-string">testwww01</span>&quot;;
+⁠
+⁠<span class="hljs-comment"># define live environment, with different user/password</span><span class="hljs-comment">
+⁠</span><span class="hljs-comment"># and a frontend server group containing www01, www02 and www03</span><span class="hljs-comment">
+⁠</span>environment live =&gt; <span class="hljs-keyword">sub </span>{
+⁠  user &quot;<span class="hljs-string">root</span>&quot;;
+⁠  password &quot;<span class="hljs-string">livefoo</span>&quot;;
+⁠  pass_auth;
+⁠
+⁠  group frontend =&gt; &quot;<span class="hljs-string">www01</span>&quot;, &quot;<span class="hljs-string">www02</span>&quot;, &quot;<span class="hljs-string">www03</span>&quot;;
+⁠};
+⁠
+⁠<span class="hljs-comment"># define stage environment with default user and password, but with</span><span class="hljs-comment">
+⁠</span><span class="hljs-comment"># an own frontend group containing only stagewww01</span><span class="hljs-comment">
+⁠</span>environment stage =&gt; <span class="hljs-keyword">sub </span>{
+⁠  group frontend =&gt; &quot;<span class="hljs-string">stagewww01</span>&quot;;
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  say run &quot;<span class="hljs-string">hostname</span>&quot;;
+⁠  };    </code></pre>
 
 <ul>
 <li>Calling <em>rex prepare</em> will execute on testwww01 with root/foobar credentials</li>
@@ -180,14 +173,8 @@ task &quot;prepare&quot;,
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

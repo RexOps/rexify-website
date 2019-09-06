@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -140,28 +139,27 @@ $ touch Rexfile
 
 <p>Insert the following code in your new Rexfile.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-use Rex::Commands::Cloud;
-
-user &quot;root&quot;;
-public_key &quot;/path/to/your/just/created/amazon-public.key&quot;;
-private_key &quot;/path/to/your/just/downloaded/amazon-private-key.pem&quot;;
-
-my $access_key = &quot;your-access-key&quot;;
-my $secret_access_key = &quot;your-secret-key&quot;;
-
-cloud_service &quot;Amazon&quot;;
-cloud_auth &quot;$access_key&quot;, &quot;$secret_access_key&quot;;
-cloud_region &quot;ec2.eu-west-1.amazonaws.com&quot;;
-
-task &quot;create&quot;, sub {
-   cloud_instance create =&gt; { 
-            image_id =&gt; &quot;ami-02103876&quot;,
-            name     =&gt; &quot;static01&quot;,
-            key      =&gt; &quot;dev-test&quot;,
-         };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Cloud</span>;
+⁠
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠public_key &quot;<span class="hljs-string">/path/to/your/just/created/amazon-public.key</span>&quot;;
+⁠private_key &quot;<span class="hljs-string">/path/to/your/just/downloaded/amazon-private-key.pem</span>&quot;;
+⁠
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$access_key</span> = &quot;<span class="hljs-string">your-access-key</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$secret_access_key</span> = &quot;<span class="hljs-string">your-secret-key</span>&quot;;
+⁠
+⁠cloud_service &quot;<span class="hljs-string">Amazon</span>&quot;;
+⁠cloud_auth &quot;<span class="hljs-type">$access_key</span>&quot;, &quot;<span class="hljs-type">$secret_access_key</span>&quot;;
+⁠cloud_region &quot;<span class="hljs-string">ec2.eu-west-1.amazonaws.com</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   cloud_instance create =&gt; { 
+⁠            image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
+⁠            name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
+⁠            key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
+⁠         };
+⁠};</code></pre>
 
 <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
 
@@ -169,77 +167,71 @@ task &quot;create&quot;, sub {
 
 <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
 
-<pre><code>task &quot;create&quot;, sub {
-   my $vol_id = cloud_volume create =&gt; { size =&gt; 1, zone =&gt; &quot;eu-west-1a&quot;, };
-   cloud_instance create =&gt; { 
-            image_id =&gt; &quot;ami-02103876&quot;,
-            name     =&gt; &quot;static01&quot;,
-            key      =&gt; &quot;dev-test&quot;,
-            volume   =&gt; $vol_id,
-            zone     =&gt; &quot;eu-west-1a&quot;,
-         };
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> = cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, zone =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;, };
+⁠   cloud_instance create =&gt; { 
+⁠            image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
+⁠            name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
+⁠            key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
+⁠            volume   =&gt; <span class="hljs-type">$vol_id</span>,
+⁠            zone     =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;,
+⁠         };
+⁠};</code></pre>
 
 <h3 id="listingregionsandzones">Listing Regions and zones</h3>
 
 <p>To get a list of all regions and zone you can use the following functions.</p>
 
-<pre><code>task &quot;list&quot;, sub {
-   print Dumper get_cloud_regions;
-   print Dumper get_cloud_availability_zones;
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-function">print</span> Dumper get_cloud_regions;
+⁠   <span class="hljs-function">print</span> Dumper get_cloud_availability_zones;
+⁠};</code></pre>
 
 <h3 id="listyourinstances">List your instances</h3>
 
 <p>To get a list of all your instances and volumes you can use these functions.</p>
 
-<pre><code>task &quot;list&quot;, sub {
-   print Dumper cloud_instance_list;
-   print Dumper cloud_volume_list;
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-function">print</span> Dumper cloud_instance_list;
+⁠   <span class="hljs-function">print</span> Dumper cloud_volume_list;
+⁠};</code></pre>
 
 <h3 id="destroyyourinstancesvolumes">Destroy your instances / volumes</h3>
 
 <p>If you don&#39;t need your instances or volumes anymore, you can just destroy them.</p>
 
-<pre><code>task &quot;destroy&quot;, sub {
-   cloud_volume delete =&gt; &quot;$volume_id&quot;;
-   cloud_instance terminate =&gt; &quot;$instance_id&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">destroy</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   cloud_volume <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-type">$volume_id</span>&quot;;
+⁠   cloud_instance terminate =&gt; &quot;<span class="hljs-type">$instance_id</span>&quot;;
+⁠};</code></pre>
 
 <h3 id="putallyourec2instancesinahostgroup">Put all your EC2 instances in a host group</h3>
 
 <p>If you have many instances you can easily add them all into a hostgroup.</p>
 
-<pre><code>group ec2 =&gt; get_cloud_instances_as_group();
-</code></pre>
+<pre><code class="hljs">⁠group ec2 =&gt; get_cloud_instances_as_group();</code></pre>
 
 <h3 id="installingsomesoftwareandrunrex">Installing some Software and run Rex</h3>
 
 <p>Now we need to add some software to our fresh EC2 instance.</p>
 
-<pre><code>task &quot;prepare&quot;, group =&gt; &quot;ec2&quot;, sub {
-   run &quot;apt-get update&quot;;
-   install package =&gt; &quot;apache2&quot;;
-
-   service apache2 =&gt; &quot;ensure&quot;, &quot;started&quot;;
-
-   # deploy your webapp, see Rex::Apache::Deploy for more information.
-   deploy &quot;my-site.tar.gz&quot;;
-
-   # or upload some files
-   file &quot;/etc/passwd&quot;,
-      source =&gt; &quot;/etc/passwd&quot;;
-
-   # do what ever you want
-   use Rex::Commands::Iptables;
-   close_port &quot;all&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">ec2</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   run &quot;<span class="hljs-string">apt-get update</span>&quot;;
+⁠   install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠
+⁠   service apache2 =&gt; &quot;<span class="hljs-string">ensure</span>&quot;, &quot;<span class="hljs-string">started</span>&quot;;
+⁠
+⁠   <span class="hljs-comment"># deploy your webapp, see Rex::Apache::Deploy for more information.</span><span class="hljs-comment">
+⁠</span>   deploy &quot;<span class="hljs-string">my-site.tar.gz</span>&quot;;
+⁠
+⁠   <span class="hljs-comment"># or upload some files</span><span class="hljs-comment">
+⁠</span>   file &quot;<span class="hljs-string">/etc/passwd</span>&quot;,
+⁠      source =&gt; &quot;<span class="hljs-string">/etc/passwd</span>&quot;;
+⁠
+⁠   <span class="hljs-comment"># do what ever you want</span><span class="hljs-comment">
+⁠</span>   <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Iptables</span>;
+⁠   close_port &quot;<span class="hljs-string">all</span>&quot;;
+⁠};</code></pre>
 
 <p>Now you can run Rex to create the instance and prepare the system for use.</p>
 
@@ -261,14 +253,8 @@ task &quot;create&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

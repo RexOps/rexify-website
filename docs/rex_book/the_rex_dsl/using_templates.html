@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -157,24 +156,23 @@ thread_concurrency      = 10
 
 <p>Than you can reference on it from within your Rexfile.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-
-user &quot;root&quot;;
-key_auth;
-
-group databases=&gt; &quot;mydb01&quot;, &quot;mydb02&quot;;
-
-task &quot;prepare_databases&quot;, group =&gt; &quot;databases&quot;, sub {
-   file &quot;/etc/my.cnf&quot;,
-      owner   =&gt; &quot;root&quot;,
-      group   =&gt; &quot;root&quot;,
-      mode    =&gt; &quot;644&quot;,
-      content =&gt; template(&quot;files/my.cnf.tpl&quot;, conf =&gt; {
-                             max_connections =&gt; &quot;500&quot;,
-                             table_cache     =&gt; &quot;2500&quot;,
-                          });
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠key_auth;
+⁠
+⁠group databases=&gt; &quot;<span class="hljs-string">mydb01</span>&quot;, &quot;<span class="hljs-string">mydb02</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare_databases</span>&quot;, group =&gt; &quot;<span class="hljs-string">databases</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   file &quot;<span class="hljs-string">/etc/my.cnf</span>&quot;,
+⁠      owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode    =&gt; &quot;<span class="hljs-string">644</span>&quot;,
+⁠      content =&gt; template(&quot;<span class="hljs-string">files/my.cnf.tpl</span>&quot;, conf =&gt; {
+⁠                             max_connections =&gt; &quot;<span class="hljs-string">500</span>&quot;,
+⁠                             table_cache     =&gt; &quot;<span class="hljs-string">2500</span>&quot;,
+⁠                          });
+⁠};</code></pre>
 
 <h2 id="inlinetemplates">Inline Templates</h2>
 
@@ -182,27 +180,26 @@ task &quot;prepare_databases&quot;, group =&gt; &quot;databases&quot;, sub {
 
 <h3 id="usingasingleinlinetemplate">Using a single inline template</h3>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task tempfiles =&gt; sub {
-    file &#39;/tmp/test.txt&#39; =&gt;
-        content =&gt; template(
-            &#39;@test&#39;,
-            test =&gt; {
-                author =&gt; &#39;reneeb&#39;,
-                target =&gt; &#39;rex&#39;,
-            },
-        ),
-        chmod =&gt; 644,
-    ;
-};
-
-__DATA__
-@test
-This is a test written by &lt;%= $test-&gt;{author} %&gt;
-for a project called &lt;%= $test-&gt;{target} %&gt;
-@end
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task tempfiles =&gt; <span class="hljs-keyword">sub </span>{
+⁠    file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt;
+⁠        content =&gt; template(
+⁠            &#39;<span class="hljs-string">@test</span>&#39;,
+⁠            test =&gt; {
+⁠                author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
+⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠            },
+⁠        ),
+⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
+⁠};
+⁠
+⁠<span class="hljs-keyword">__DATA__</span>
+⁠@test
+⁠This is a test written by &lt;%= $test-&gt;{author} %&gt;
+⁠for a project called &lt;%= $test-&gt;{target} %&gt;
+⁠@end</code></pre>
 
 <p>The <code>__DATA__</code> section is the last section of the Rexfile. The first parameter of the template method call gets the name of the inline template. Note that names of inline templates begin with <code>@</code>.</p>
 
@@ -210,42 +207,41 @@ for a project called &lt;%= $test-&gt;{target} %&gt;
 
 <h3 id="usingmultipleinlinetemplates">Using multiple inline templates</h3>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-task tempfiles =&gt; sub {
-    file &#39;/tmp/test.txt&#39; =&gt;
-        content =&gt; template(
-            &#39;@test&#39;,
-            test =&gt; {
-                author =&gt; &#39;reneeb&#39;,
-                target =&gt; &#39;rex&#39;,
-            },
-        ),
-        chmod =&gt; 644,
-    ;
-
-    file &#39;/tmp/rex.txt&#39; =&gt;
-        content =&gt; template(&gt;
-            &#39;@rex&#39;,
-            test =&gt; {
-                author =&gt; &#39;krimdomu&#39;,
-                target =&gt; &#39;rex&#39;,
-            },
-        ),
-        chmod =&gt; 644,
-    ;
-};
-
-__DATA__
-@test
-This is a test written by &lt;%= $test-&gt;{author} %&gt;
-for a project called &lt;%= $test-&gt;{target} %&gt;
-@end
-
-@rex
-Contribution by &lt;%= $test-&gt;{author} %&gt;
-for a project called &lt;%= $test-&gt;{target} %&gt;
-@end
-</code></pre>
+<pre><code class="hljs">⁠use Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠task tempfiles =&gt; <span class="hljs-keyword">sub </span>{
+⁠    file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt;
+⁠        content =&gt; template(
+⁠            &#39;<span class="hljs-string">@test</span>&#39;,
+⁠            test =&gt; {
+⁠                author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
+⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠            },
+⁠        ),
+⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
+⁠
+⁠    file &#39;<span class="hljs-string">/tmp/rex.txt</span>&#39; =&gt;
+⁠        content =&gt; template(&gt;
+⁠            &#39;<span class="hljs-string">@rex</span>&#39;,
+⁠            test =&gt; {
+⁠                author =&gt; &#39;<span class="hljs-string">krimdomu</span>&#39;,
+⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠            },
+⁠        ),
+⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
+⁠};
+⁠
+⁠<span class="hljs-keyword">__DATA__</span>
+⁠@test
+⁠This is a test written by &lt;%= $test-&gt;{author} %&gt;
+⁠for a project called &lt;%= $test-&gt;{target} %&gt;
+⁠@end
+⁠
+⁠@rex
+⁠Contribution by &lt;%= $test-&gt;{author} %&gt;
+⁠for a project called &lt;%= $test-&gt;{target} %&gt;
+⁠@end</code></pre>
 
 <p>Now we just look at the <code>__DATA__</code> section: You notice the token <code>@end</code>. This is used to separate the templates. At the end of each template (except for the last one) this token is needed. Otherwise Rex will use everything up to the first <code>@end</code> as the template which is most likely too much.</p>
 
@@ -259,14 +255,8 @@ for a project called &lt;%= $test-&gt;{target} %&gt;
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

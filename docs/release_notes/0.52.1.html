@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -128,54 +127,48 @@ maintained using the static site generator
 <ul>
 <li><p><strong>on_change</strong> hook for update_system</p>
 
-<pre><code>update_system on_change =&gt; sub {
-  my (@modified_packates) = @_;
-  for my $pkg (@modified_packages) {
-    say &quot;Name: $pkg-&gt;{name}&quot;;
-    say &quot;Version: $pkg-&gt;{version}&quot;;
-    say &quot;Action: $pkg-&gt;{action}&quot;; # some of updated, installed or removed
-  }
-};
-</code></pre></li>
+<pre><code class="hljs">⁠update_system on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">@modified_packates</span>) = <span class="hljs-type">@_</span>;
+⁠  <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> (<span class="hljs-type">@modified_packages</span>) {
+⁠    say &quot;<span class="hljs-string">Name: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{name}</span>&quot;;
+⁠    say &quot;<span class="hljs-string">Version: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{version}</span>&quot;;
+⁠    say &quot;<span class="hljs-string">Action: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{action}</span>&quot;; <span class="hljs-comment"># some of updated, installed or removed</span><span class="hljs-comment">
+⁠</span>  }
+⁠};    </code></pre></li>
 <li><p>Added support for <strong>end_if_matched</strong> option to run command - nathanIL</p>
 
-<pre><code>run &quot;my_command&quot;, end_if_matched =&gt; qr/PATTERN/;
-</code></pre></li>
+<pre><code class="hljs">⁠run &quot;<span class="hljs-string">my_command</span>&quot;, end_if_matched =&gt; qr/PATTERN/;    </code></pre></li>
 <li><p>Tie server.ini to specified -E environment (server.$environment.ini). - ehu</p></li>
 <li><p>Added <strong>before_task_start</strong> and <strong>after_task_finished</strong> hooks</p>
 
 <p>The before_task_start hook will be executed before the fork for the task is made. The after_task_finished hook will be executed after all servers has finished the task.</p>
 
-<pre><code>before_task_start mytask =&gt; sub {
-
-
-  # do some things
-};
-after_task_finished mytask =&gt; sub {
-
-
-  # do some things
-};
-</code></pre></li>
+<pre><code class="hljs">⁠before_task_start mytask =&gt; <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># do some things</span><span class="hljs-comment">
+⁠</span>};
+⁠after_task_finished mytask =&gt; <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># do some things</span><span class="hljs-comment">
+⁠</span>};    </code></pre></li>
 <li><p>Added <strong>fallback authentication</strong> support.</p>
 
 <p>Sometimes you have different authentications on different hosts and you don&#39;t know beforehand which one you have to use. For these cases you can now define multiple authentication options. Rex will try all of them.</p>
 
-<pre><code>auth
-  fallback =&gt; {
-  user        =&gt; &quot;fallback_user1&quot;,
-  password    =&gt; &quot;fallback_pw1&quot;,
-  public_key  =&gt; &quot;&quot;,
-  private_key =&gt; &quot;&quot;,
-  },
-  {
-  user        =&gt; &quot;fallback_user2&quot;,
-  password    =&gt; &quot;fallback_pw2&quot;,
-  public_key  =&gt; &quot;keys/public.key&quot;,
-  private_key =&gt; &quot;keys/private.key&quot;,
-  sudo        =&gt; TRUE,
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠auth
+⁠  fallback =&gt; {
+⁠  user        =&gt; &quot;<span class="hljs-string">fallback_user1</span>&quot;,
+⁠  password    =&gt; &quot;<span class="hljs-string">fallback_pw1</span>&quot;,
+⁠  public_key  =&gt; &quot;&quot;,
+⁠  private_key =&gt; &quot;&quot;,
+⁠  },
+⁠  {
+⁠  user        =&gt; &quot;<span class="hljs-string">fallback_user2</span>&quot;,
+⁠  password    =&gt; &quot;<span class="hljs-string">fallback_pw2</span>&quot;,
+⁠  public_key  =&gt; &quot;<span class="hljs-string">keys/public.key</span>&quot;,
+⁠  private_key =&gt; &quot;<span class="hljs-string">keys/private.key</span>&quot;,
+⁠  sudo        =&gt; TRUE,
+⁠  };    </code></pre></li>
 </ul>
 
 <h2 id="cloud">Cloud</h2>
@@ -204,14 +197,8 @@ after_task_finished mytask =&gt; sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

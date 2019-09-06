@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -118,45 +117,38 @@ maintained using the static site generator
 <ul>
 <li><p>Before and after hooks</p>
 
-<pre><code>  task
-    prepare =&gt; &quot;server1&quot;,
-    &quot;server2&quot;, sub {
-
-
-<pre><code># do something
-};
-</code></pre>
-
-  before prepare =&gt; sub {
-    my ($server) = @_;
-    say &quot;Starting virtual machine...&quot;;
-    run &quot;xm start $server&quot;;
-  };
-
-
-  after prepare =&gt; sub {
-    my ( $server, $failed_connection ) = @_;
-    say &quot;Stopping virtual machine...&quot;;
-    run &quot;xm stop $server&quot;;
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠task
+⁠  prepare =&gt; &quot;<span class="hljs-string">server1</span>&quot;,
+⁠  &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  };
+⁠
+⁠before prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">$server</span>) = <span class="hljs-type">@_</span>;
+⁠  say &quot;<span class="hljs-string">Starting virtual machine...</span>&quot;;
+⁠  run &quot;<span class="hljs-string">xm start </span><span class="hljs-type">$server</span>&quot;;
+⁠};
+⁠
+⁠after prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$failed_connection</span> ) = <span class="hljs-type">@_</span>;
+⁠  say &quot;<span class="hljs-string">Stopping virtual machine...</span>&quot;;
+⁠  run &quot;<span class="hljs-string">xm stop </span><span class="hljs-type">$server</span>&quot;;
+⁠};      </code></pre></li>
 <li><p>Systemd service provider for RedHat and SuSE.</p></li>
 <li><p>Added <a href="http://fusioninventory.org/">FusionInventory</a> support. If the agent is installed on the target maschine rex will use it for inventory.</p></li>
 <li><p>It&#39;s now possible to set crypted passwords.</p>
 
-<pre><code>  task prepare_user =&gt; sub {
-
-
-<pre><code>create_user &quot;foo&quot; =&amp;gt; {
-  home           =&amp;gt; &#39;/home/foo&#39;,
-  groups         =&amp;gt; [ &#39;users&#39;, &#39;...&#39; ],
-  crypt_password =&amp;gt; &#39;$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/&#39;,
-  ssh_key        =&amp;gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;,
-};
-</code></pre>
-
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠task prepare_user =&gt; <span class="hljs-keyword">sub </span>{
+⁠
+⁠  create_user &quot;<span class="hljs-string">foo</span>&quot; =&gt; {
+⁠    home           =&gt; &#39;<span class="hljs-string">/home/foo</span>&#39;,
+⁠    groups         =&gt; [ &#39;<span class="hljs-string">users</span>&#39;, &#39;<span class="hljs-string">...</span>&#39; ],
+⁠    crypt_password =&gt; &#39;<span class="hljs-string">$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/</span>&#39;,
+⁠    ssh_key        =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...</span>&quot;,
+⁠  };
+⁠
+⁠};      </code></pre></li>
 <li><p>Bugs were fixed.</p></li>
 </ul>
 
@@ -170,14 +162,8 @@ maintained using the static site generator
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

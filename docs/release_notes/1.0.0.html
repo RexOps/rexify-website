@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -131,8 +130,7 @@ maintained using the static site generator
 
 <p>But you can always use the old communication with the following command:</p>
 
-<pre><code>set connection =&gt; &#39;SSH&#39;;
-</code></pre>
+<pre><code class="hljs">⁠set connection =&gt; &#39;<span class="hljs-string">SSH</span>&#39;;</code></pre>
 
 <h4 id="augeas">augeas</h4>
 
@@ -147,23 +145,22 @@ maintained using the static site generator
 
 <!-- -->
 
-<pre><code>use Rex::Commands::Augeas;
-
-task &quot;prepare&quot;, sub {
-  augeas
-    insert    =&gt; &quot;/files/etc/hosts&quot;,
-    label     =&gt; &quot;01&quot;,
-    after     =&gt; &quot;/7&quot;,
-    ipaddr    =&gt; &quot;192.168.2.23&quot;,
-    canonical =&gt; &quot;frontend01&quot;;
-
-  augeas modify =&gt;
-    &quot;/files/etc/ssh/sshd_config/PermitRootLogin&quot; =&gt; &quot;without-password&quot;,
-    on_change                                    =&gt; sub {
-    service sshd =&gt; &quot;restart&quot;;
-    };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Augeas</span>;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  augeas
+⁠    insert    =&gt; &quot;<span class="hljs-string">/files/etc/hosts</span>&quot;,
+⁠    label     =&gt; &quot;<span class="hljs-string">01</span>&quot;,
+⁠    after     =&gt; &quot;<span class="hljs-string">/7</span>&quot;,
+⁠    ipaddr    =&gt; &quot;<span class="hljs-string">192.168.2.23</span>&quot;,
+⁠    canonical =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;;
+⁠
+⁠  augeas modify =&gt;
+⁠    &quot;<span class="hljs-string">/files/etc/ssh/sshd_config/PermitRootLogin</span>&quot; =&gt; &quot;<span class="hljs-string">without-password</span>&quot;,
+⁠    on_change                                    =&gt; <span class="hljs-keyword">sub </span>{
+⁠    service sshd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠    };
+⁠};</code></pre>
 
 <h4 id="pkgconf">PkgConf</h4>
 
@@ -175,26 +172,25 @@ task &quot;prepare&quot;, sub {
 
 <!-- -->
 
-<pre><code>use Rex::Commands::PkgConf;
-
-task &quot;prepare&quot;, sub {
-  set_pkgconf(
-    &quot;mysql-server-5.5&quot;,
-    [
-      {
-        question =&gt; &#39;mysql-server/root_password&#39;,
-        type     =&gt; &#39;string&#39;,
-        value    =&gt; &#39;mysecret&#39;
-      },
-      {
-        question =&gt; &#39;mysql-server/root_password_again&#39;,
-        type     =&gt; &#39;string&#39;,
-        value    =&gt; &#39;mysecret&#39;
-      },
-    ]
-  );
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">PkgConf</span>;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  set_pkgconf(
+⁠    &quot;<span class="hljs-string">mysql-server-5.5</span>&quot;,
+⁠    [
+⁠      {
+⁠        question =&gt; &#39;<span class="hljs-string">mysql-server/root_password</span>&#39;,
+⁠        type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
+⁠        value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
+⁠      },
+⁠      {
+⁠        question =&gt; &#39;<span class="hljs-string">mysql-server/root_password_again</span>&#39;,
+⁠        type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
+⁠        value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
+⁠      },
+⁠    ]
+⁠  );
+⁠};</code></pre>
 
 <h4 id="ttyusage">tty usage</h4>
 
@@ -205,8 +201,7 @@ task &quot;prepare&quot;, sub {
 
 <p>If you can&#39;t change this behaviour you can always use the <em>tty</em> feature to tell Rex to spawn a tty.</p>
 
-<pre><code>use Rex -feature =&gt; [ &#39;1.0&#39;, &#39;tty&#39; ];
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [ &#39;<span class="hljs-string">1.0</span>&#39;, &#39;<span class="hljs-string">tty</span>&#39; ];</code></pre>
 
 <h4 id="base">base</h4>
 
@@ -279,14 +274,8 @@ task &quot;prepare&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -127,53 +126,50 @@ maintained using the static site generator
 
 <p>You can use thise module by installing it via <em>rexify</em>.</p>
 
-<pre><code># From within a project
-bash# rexify --use=Rex::DNS:Bind
-
-# To create a new project
-bash# rexify mynewproject --use=Rex::DNS::Bind
-
-set dns =&gt; {
-  server   =&gt; &quot;127.0.0.1&quot;,
-  key_name =&gt; &quot;mysuperkey&quot;,
-  key      =&gt; &quot;/foobar==&quot;,
-};
-
-task sometask =&gt; sub {
-  Rex::DNS::Bind::add_record(
-    domain =&gt; &quot;rexify.org&quot;,
-    host   =&gt; &quot;foobar01&quot;,
-    data   =&gt; &quot;127.0.0.4&quot;,
-  );
-
-  Rex::DNS::Bind::delete_record(
-    domain =&gt; &quot;rexify.org&quot;,
-    host   =&gt; &quot;foobar01&quot;,
-    type   =&gt; &quot;A&quot;,
-  );
-
-  my @entries = Rex::DNS::Bind::list_entries( domain =&gt; &quot;rexify.org&quot; );
-  print Dumper( \@entries );
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># From within a project</span><span class="hljs-comment">
+⁠</span>bash<span class="hljs-comment"># rexify --use=Rex::DNS:Bind</span><span class="hljs-comment">
+⁠</span>
+⁠<span class="hljs-comment"># To create a new project</span><span class="hljs-comment">
+⁠</span>bash<span class="hljs-comment"># rexify mynewproject --use=Rex::DNS::Bind</span><span class="hljs-comment">
+⁠</span>
+⁠set dns =&gt; {
+⁠  server   =&gt; &quot;<span class="hljs-string">127.0.0.1</span>&quot;,
+⁠  key_name =&gt; &quot;<span class="hljs-string">mysuperkey</span>&quot;,
+⁠  key      =&gt; &quot;<span class="hljs-string">/foobar==</span>&quot;,
+⁠};
+⁠
+⁠task sometask =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">add_record</span>(
+⁠    domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
+⁠    host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
+⁠    data   =&gt; &quot;<span class="hljs-string">127.0.0.4</span>&quot;,
+⁠  );
+⁠
+⁠  <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">delete_record</span>(
+⁠    domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
+⁠    host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
+⁠    type   =&gt; &quot;<span class="hljs-string">A</span>&quot;,
+⁠  );
+⁠
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">@entries</span> = <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">list_entries</span>( domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot; );
+⁠  <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@entries</span> );
+⁠};</code></pre>
 
 <p>See <a href="http://modules.rexify.org/module/Rex::DNS::Bind">Rex::DNS::Bind</a> for the API documentation.</p>
 
 <ul>
 <li><p>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</p>
 
-<pre><code>task &quot;taskone&quot;, sub {
-  run_task &quot;tasktwo&quot;,
-    on     =&gt; &quot;foo&quot;,
-    params =&gt; { key1 =&gt; &quot;value1&quot;, key2 =&gt; &quot;value2&quot; };
-};
-
-
-task &quot;tasktwo&quot;, sub {
-  my $param = shift;
-  print Dumper($param);
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">taskone</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  run_task &quot;<span class="hljs-string">tasktwo</span>&quot;,
+⁠    on     =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠    params =&gt; { key1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;, key2 =&gt; &quot;<span class="hljs-string">value2</span>&quot; };
+⁠};
+⁠    
+⁠task &quot;<span class="hljs-string">tasktwo</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$param</span>);
+⁠};    </code></pre></li>
 <li><p>Code changes for better extendability of core functions.</p></li>
 <li>Hardware module is now pluggable</li>
 <li>Virtualization module detection is now pluggable</li>
@@ -193,14 +189,8 @@ task &quot;tasktwo&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

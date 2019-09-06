@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -130,47 +129,37 @@ maintained using the static site generator
 <ul>
 <li><p>Rex::Box now also works with KVM</p>
 
-<pre><code>use Rex::Test::Base;
-use Data::Dumper;
-use Rex -base;
-
-
-set box =&gt; &quot;KVM&quot;;
-
-
-test {
-  my $t = shift;
-
-
-  $t-&gt;name(&quot;ubuntu test&quot;);
-
-
-  $t-&gt;base_vm(
-    &quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.img&quot;);
-  $t-&gt;vm_auth( user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot; );
-
-
-  $t-&gt;run_task(&quot;setup&quot;);
-
-
-  $t-&gt;has_package(&quot;vim&quot;);
-  $t-&gt;has_package(&quot;ntp&quot;);
-  $t-&gt;has_package(&quot;unzip&quot;);
-  $t-&gt;has_file(&quot;/etc/ntp.conf&quot;);
-  $t-&gt;has_service_running(&quot;ntp&quot;);
-  $t-&gt;has_content( &quot;/etc/passwd&quot;, qr{root:x:0:}ms );
-
-
-  run &quot;ls -l&quot;;
-  $t-&gt;ok( $? == 0, &quot;ls -l returns success.&quot; );
-
-
-  $t-&gt;finish;
-};
-
-
-1;
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Test</span>::<span class="hljs-function">Base</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
+⁠<span class="hljs-keyword">use</span> Rex -base;
+⁠
+⁠set box =&gt; &quot;<span class="hljs-string">KVM</span>&quot;;
+⁠
+⁠test {
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(
+⁠    &quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
+⁠
+⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
+⁠};
+⁠
+⁠<span class="hljs-number">1</span>;    </code></pre></li>
 </ul>
 
 <h2 id="base">Base</h2>
@@ -178,11 +167,10 @@ test {
 <ul>
 <li><p>Read server groups from xml file - nathanIL</p>
 
-<pre><code>use Rex::Group::Lookup::XML;
-group_xml &quot;file.xml&quot;;
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">XML</span>;
+⁠group_xml &quot;<span class="hljs-string">file.xml</span>&quot;;    </code></pre>
 
-
-&lt;configuration&gt;
+<pre><code>&lt;configuration&gt;
    &lt;group name=&quot;database&quot;&gt;
         &lt;server name=&quot;machine01&quot; user=&quot;root&quot; password=&quot;foob4r&quot; sudo=&quot;true&quot; hdd=&quot;300&quot; loc=&quot;/opt&quot; /&gt;
    &lt;/group&gt;
@@ -197,28 +185,25 @@ group_xml &quot;file.xml&quot;;
 </code></pre></li>
 <li><p>It is now possible to define <strong>before</strong>, <strong>around</strong> and <strong>after</strong> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
 
-<pre><code>before ALL =&gt; sub { }
-</code></pre></li>
+<pre><code class="hljs">⁠before ALL =&gt; <span class="hljs-keyword">sub </span>{ }    </code></pre></li>
 <li><p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
 
-<pre><code>task &quot;prepare&quot;, sub {
-  service &quot;apache2&quot;,
-    ensure =&gt; &quot;started&quot;,
-    start  =&gt; &quot;/usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
-    stop   =&gt; &quot;killall httpd&quot;,
-    status =&gt; &quot;ps -efww | grep httpd&quot;,
-    restart =&gt;
-    &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;,
-    reload =&gt;
-    &quot;killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;,
+⁠    start  =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠    stop   =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
+⁠    status =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
+⁠    restart =&gt;
+⁠    &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠    reload =&gt;
+⁠    &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
+⁠};    </code></pre></li>
 <li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
 
-<pre><code>group &quot;g1&quot;,
-  &quot;srv1&quot; =&gt; { user =&gt; &quot;other&quot; },
-  &quot;srv2&quot;;
-</code></pre></li>
+<pre><code class="hljs">⁠group &quot;<span class="hljs-string">g1</span>&quot;,
+⁠  &quot;<span class="hljs-string">srv1</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">other</span>&quot; },
+⁠  &quot;<span class="hljs-string">srv2</span>&quot;;    </code></pre></li>
 <li><p>Package-Management with pkgng on FreeBSD 10</p></li>
 <li><p>Amazon Linux is now detected properly.</p></li>
 <li><p>Added MacOSX (Darwin) Network inventory module</p></li>
@@ -249,14 +234,8 @@ group_xml &quot;file.xml&quot;;
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

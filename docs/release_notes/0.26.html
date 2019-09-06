@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -119,73 +118,62 @@ maintained using the static site generator
 <li><p>License was changed to Apache 2.0 License. See LICENSE file.</p></li>
 <li><p>Added sudo compatibility. Now it is possible to use rex within a sudo environment.</p>
 
-<pre><code>user &quot;unprivuser&quot;;
-sudo_password &quot;f00b4r&quot;;
-sudo -on; # turn sudo globally on
-
-
-task prepare =&gt; sub {
-  install &quot;apache2&quot;;
-  file &quot;/etc/ntp.conf&quot;,
-    source =&gt; &quot;files/etc/ntp.conf&quot;,
-    owner  =&gt; &quot;root&quot;,
-    mode   =&gt; 640;
-};
-</code></pre>
+<pre><code class="hljs">⁠user &quot;<span class="hljs-string">unprivuser</span>&quot;;
+⁠sudo_password &quot;<span class="hljs-string">f00b4r</span>&quot;;
+⁠sudo -on; <span class="hljs-comment"># turn sudo globally on</span><span class="hljs-comment">
+⁠</span>
+⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  install &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠    source =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
+⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode   =&gt; <span class="hljs-number">640</span>;
+⁠};    </code></pre>
 
 <p>Or, if you don&#39;t want to turn sudo globally on.</p>
 
-<pre><code>task prepare =&gt; sub {
-  file &quot;/tmp/foo.txt&quot;,
-    content =&gt; &quot;this file was written without sudo privileges\n&quot;;
-
-
-  # everything in this section will be executed with sudo privileges
-  sudo sub {
-    install &quot;apache2&quot;;
-    file &quot;/tmp/foo2.txt&quot;,
-      content =&gt; &quot;this file was written with sudo privileges\n&quot;;
-  };
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/tmp/foo.txt</span>&quot;,
+⁠    content =&gt; &quot;<span class="hljs-string">this file was written without sudo privileges</span><span class="hljs-string">\n</span>&quot;;
+⁠
+⁠  <span class="hljs-comment"># everything in this section will be executed with sudo privileges</span><span class="hljs-comment">
+⁠</span>  sudo <span class="hljs-keyword">sub </span>{
+⁠    install &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/tmp/foo2.txt</span>&quot;,
+⁠      content =&gt; &quot;<span class="hljs-string">this file was written with sudo privileges</span><span class="hljs-string">\n</span>&quot;;
+⁠  };
+⁠};    </code></pre></li>
 <li><p>Added a new function <em>include</em> to include Rex recipes without registering the tasks.</p>
 
-<pre><code>include qw/Webserver::Apache Database::MySQL/;
-
-
-task prepare =&gt; sub {
-  Webserver::Apache::setup();
-};
-</code></pre></li>
+<pre><code class="hljs">⁠include qw/Webserver::Apache Database::MySQL/;
+⁠
+⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-function">Webserver::Apache</span>::<span class="hljs-function">setup</span>();
+⁠};    </code></pre></li>
 <li><p>Added a sed-like function.</p>
 
-<pre><code>task foo =&gt; sub {
-  sed qr{search}, &quot;replace&quot;, &quot;/path/to/file&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
+⁠  sed qr{search}, &quot;<span class="hljs-string">replace</span>&quot;, &quot;<span class="hljs-string">/path/to/file</span>&quot;;
+⁠};    </code></pre></li>
 <li><p>Package installation now possible with <em>install $pkg</em>.</p>
 
-<pre><code>task prepare =&gt; sub {
-  install &quot;foo&quot;;
-
-
-  # old way
-  install package =&gt; &quot;foo&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  install &quot;<span class="hljs-string">foo</span>&quot;;
+⁠
+⁠  <span class="hljs-comment"># old way</span><span class="hljs-comment">
+⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">foo</span>&quot;;
+⁠};    </code></pre></li>
 <li><p>Added <em>chdir</em> parameter to <em>extract</em> function.</p>
 
-<pre><code>task prepare =&gt; sub {
-  extract &quot;/tmp/myfile.tar.gz&quot;, chdir =&gt; &quot;/etc&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
+⁠  extract &quot;<span class="hljs-string">/tmp/myfile.tar.gz</span>&quot;, <span class="hljs-function">chdir</span> =&gt; &quot;<span class="hljs-string">/etc</span>&quot;;
+⁠};    </code></pre></li>
 <li><p><em>sync</em> exclude option now accepts a string or an array of strings. Thanks to Hiroaki Nakamura.</p></li>
 <li><p>Added support for custom init commands.</p>
 
-<pre><code>task graceful_apache =&gt; sub {
-  service httpd =&gt; &quot;graceful&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task graceful_apache =&gt; <span class="hljs-keyword">sub </span>{
+⁠  service httpd =&gt; &quot;<span class="hljs-string">graceful</span>&quot;;
+⁠};    </code></pre></li>
 </ul>
 
 
@@ -198,14 +186,8 @@ task prepare =&gt; sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

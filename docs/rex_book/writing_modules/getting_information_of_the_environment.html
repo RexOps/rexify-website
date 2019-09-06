@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -118,12 +117,11 @@ maintained using the static site generator
 
 <p>Rex comes with a hardware gathering module. To display all the things Rex knows about the environment your can create a test task that just dumps all the information.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;dump-info&quot;, sub {
-   dump_system_information;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">dump-info</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   dump_system_information;
+⁠};</code></pre>
 
 <p>This will print out everything Rex knows about the remote system. You can use these information inside your Rexfile or a template.</p>
 
@@ -200,21 +198,20 @@ $Host = {
 
 <p>To use these information inside the Rexfile you can query them with the get_system_information function or use the methods from the connection object</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;get_hostname&quot;, sub {
-   my %info = get_system_information;
-   say $info{hostname} . &quot;.&quot; . $info{domain};
-};
-
-use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;prepare&quot;, sub {
-   my $libpath = case connection-&gt;server-&gt;architecture,
-                     &quot;i386&quot;   =&gt; &quot;/usr/lib&quot;,
-                     &quot;x86_64&quot; =&gt; &quot;/usr/lib64&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">get_hostname</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">%info</span> = get_system_information;
+⁠   say <span class="hljs-type">$info</span>{hostname} . &quot;<span class="hljs-string">.</span>&quot; . <span class="hljs-type">$info</span>{domain};
+⁠};
+⁠
+⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$libpath</span> = case connection-&gt;server-&gt;architecture,
+⁠                     &quot;<span class="hljs-string">i386</span>&quot;   =&gt; &quot;<span class="hljs-string">/usr/lib</span>&quot;,
+⁠                     &quot;<span class="hljs-string">x86_64</span>&quot; =&gt; &quot;<span class="hljs-string">/usr/lib64</span>&quot;;
+⁠};</code></pre>
 
 <h2 id="usingenvironmentinformationinsidetemplates">Using environment information inside templates</h2>
 
@@ -233,14 +230,8 @@ task &quot;prepare&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

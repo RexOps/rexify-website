@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -135,14 +134,12 @@ maintained using the static site generator
 
 <h4 id="exampletojustrunacommandifafiledoesntexists">Example to just run a command if a file doesn&#39;t exists</h4>
 
-<pre><code>run &quot;/tmp/install_service.sh&quot;,
-  creates =&gt; &quot;/opt/myservice/conf.xml&quot;;
-</code></pre>
+<pre><code class="hljs">⁠run &quot;<span class="hljs-string">/tmp/install_service.sh</span>&quot;,
+⁠  creates =&gt; &quot;<span class="hljs-string">/opt/myservice/conf.xml</span>&quot;;</code></pre>
 
 <h4 id="exampletorunacommandandgetitsoutput">Example to run a command and get its output</h4>
 
-<pre><code>my @output_lines = run &quot;df -h&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@output_lines</span> = run &quot;<span class="hljs-string">df -h</span>&quot;;</code></pre>
 
 <h2 id="installingandconfiguringaservice">Installing and configuring a service</h2>
 
@@ -164,16 +161,15 @@ maintained using the static site generator
 <li>no_overwrite - If set to TRUE the file won&#39;t be overwritten if the file already exists.</li>
 <li><p>on_change - A callback function that gets called when the file state changed. (For example if the file content was modified).</p>
 
-<pre><code>file &quot;/etc/ntpd.conf&quot;,
-  ensure =&gt; &quot;present&quot;,
-  source =&gt; &quot;files/ntpd.conf&quot;,
-  owner  =&gt; &quot;root&quot;,
-  group  =&gt; &quot;root&quot;,
-  mode   =&gt; 644,
-  on_change =&gt; sub {
-    service ntpd =&gt; &quot;restart&quot;;
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠file &quot;<span class="hljs-string">/etc/ntpd.conf</span>&quot;,
+⁠  ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠  source =&gt; &quot;<span class="hljs-string">files/ntpd.conf</span>&quot;,
+⁠  owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠  group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠  mode   =&gt; <span class="hljs-number">644</span>,
+⁠  on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠    service ntpd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠  };    </code></pre></li>
 </ul>
 
 <h3 id="pkgnameoptions">pkg($name, %options)</h3>
@@ -186,12 +182,11 @@ maintained using the static site generator
 <li>ensure - Defines the state of the package. Valid parameters are latest, present, absent or the version that should be enforced.</li>
 <li><p>on_change - A called function that gets called when the package state changed. (For example when it was updated)</p>
 
-<pre><code>pkg &quot;ntpd&quot;,
-  ensure =&gt; &quot;latest&quot;,
-  on_change =&gt; sub {
-    service ntpd =&gt; &quot;restart&quot;;
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠pkg &quot;<span class="hljs-string">ntpd</span>&quot;,
+⁠  ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;,
+⁠  on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠    service ntpd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠  };    </code></pre></li>
 </ul>
 
 <h3 id="service">service</h3>
@@ -213,14 +208,12 @@ maintained using the static site generator
 
 <h4 id="exampleforcallingasresource">Example for calling as resource</h4>
 
-<pre><code>service &quot;nptd&quot;,
-  ensure =&gt; &quot;started&quot;;
-</code></pre>
+<pre><code class="hljs">⁠service &quot;<span class="hljs-string">nptd</span>&quot;,
+⁠  ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;</code></pre>
 
 <h4 id="exampleforcallingasfunction">Example for calling as function</h4>
 
-<pre><code>service ntpd =&gt; &quot;restart&quot;;
-</code></pre>
+<pre><code class="hljs">⁠service ntpd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;</code></pre>
 
 <h2 id="managingcron">Managing Cron</h2>
 
@@ -241,11 +234,10 @@ maintained using the static site generator
 <li>user - The user for the cron job.</li>
 <li><p>on_change - A callback function that gets called when the cron entry state changed.</p>
 
-<pre><code>cron_entry &quot;run-rkhunter&quot;,
-  command =&gt; &quot;rkhunter --cronjob&quot;,
-  minute  =&gt; 5,
-  hour    =&gt; 1;
-</code></pre></li>
+<pre><code class="hljs">⁠cron_entry &quot;<span class="hljs-string">run-rkhunter</span>&quot;,
+⁠  command =&gt; &quot;<span class="hljs-string">rkhunter --cronjob</span>&quot;,
+⁠  minute  =&gt; <span class="hljs-number">5</span>,
+⁠  hour    =&gt; <span class="hljs-number">1</span>;    </code></pre></li>
 </ul>
 
 <h2 id="managingusersandgroups">Managing users and groups</h2>
@@ -271,17 +263,16 @@ maintained using the static site generator
 <li>ssh_key - Add ssh key to authorized_keys.</li>
 <li><p>comment</p>
 
-<pre><code>account &quot;krimdomu&quot;,
-   ensure         =&gt; &quot;present&quot;,  # default
-   uid            =&gt; 509,
-   home           =&gt; &#39;/home/krimdomu&#39;,
-   comment        =&gt; &#39;User Account&#39;,
-   expire         =&gt; &#39;2011-05-30&#39;,
-   groups         =&gt; [ &#39;users&#39;, &#39;wheel&#39; ],
-   password       =&gt; &#39;blahblah&#39;,
-   create_home    =&gt; TRUE,
-   ssh_key        =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...&quot;;
-</code></pre></li>
+<pre><code class="hljs">⁠account &quot;<span class="hljs-string">krimdomu</span>&quot;,
+⁠   ensure         =&gt; &quot;<span class="hljs-string">present</span>&quot;,  <span class="hljs-comment"># default</span><span class="hljs-comment">
+⁠</span>   uid            =&gt; <span class="hljs-number">509</span>,
+⁠   home           =&gt; &#39;<span class="hljs-string">/home/krimdomu</span>&#39;,
+⁠   comment        =&gt; &#39;<span class="hljs-string">User Account</span>&#39;,
+⁠   expire         =&gt; &#39;<span class="hljs-string">2011-05-30</span>&#39;,
+⁠   groups         =&gt; [ &#39;<span class="hljs-string">users</span>&#39;, &#39;<span class="hljs-string">wheel</span>&#39; ],
+⁠   password       =&gt; &#39;<span class="hljs-string">blahblah</span>&#39;,
+⁠   create_home    =&gt; TRUE,
+⁠   ssh_key        =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...</span>&quot;;    </code></pre></li>
 </ul>
 
 <h3 id="groupgroup_nameoptions">group($group_name, %options)</h3>
@@ -295,9 +286,8 @@ maintained using the static site generator
 <li>gid - The group id.</li>
 <li><p>system - Create a system group.</p>
 
-<pre><code>group &quot;users&quot;,
-  ensure =&gt; &quot;present&quot;;
-</code></pre></li>
+<pre><code class="hljs">⁠group &quot;<span class="hljs-string">users</span>&quot;,
+⁠  ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;    </code></pre></li>
 </ul>
 
 
@@ -310,14 +300,8 @@ maintained using the static site generator
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

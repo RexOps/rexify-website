@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -39,10 +38,11 @@
                   </div> <!-- slogan_list -->
 
                   <div class="source">
-                     <pre><code class="perl">task prepare =&gt; sub {
-   pkg &quot;apache2&quot;, ensure =&gt; &quot;latest&quot;;
-   service &quot;apache2&quot;, ensure =&gt; &quot;started&quot;;
-};</code></pre>
+<pre><code class="hljs">task prepare =&gt; <span class="hljs-keyword">sub </span>{
+  pkg &quot;<span class="hljs-string">apache2</span>&quot;,     ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
+  service &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+};
+</code></pre>
                   </div> <!-- source -->
                   <a class="headlink" href="/docs/guides/start_using__r__ex.html">Read the Getting Started Guide</a>
                </div> <!-- slogan -->
@@ -177,19 +177,21 @@ maintained using the static site generator
 
 <p>This command line example will execute <code>uptime</code> on all the given hosts (<code>frontend01</code>, <code>frontend02</code>, ...)</p>
 
-<pre><code class="bash">$ rex -H &quot;frontend[01..15]&quot; -e &quot;say run &#39;uptime&#39;&quot;</code></pre>
+<pre><code>$ rex -H &quot;frontend[01..15]&quot; -e &quot;say run &#39;uptime&#39;&quot;
+</code></pre>
 
 <p>The same, but with a Rexfile</p>
 
-<pre><code class="perl">use Rex -feature =&gt; [&#39;1.0&#39;];
-desc &quot;Get Uptime&quot;;
-task &quot;uptime&quot;, sub {
-  say run &quot;uptime&quot;;
-};</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠desc &quot;<span class="hljs-string">Get Uptime</span>&quot;;
+⁠task &quot;<span class="hljs-string">uptime</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  say run &quot;<span class="hljs-string">uptime</span>&quot;;
+⁠};</code></pre>
 
 <p>Now you can run your task with this command:</p>
 
-<pre><code class="bash">$ rex -H &quot;frontend[01..15] middleware[01..05] db[01..04]&quot; -u ssh-user -p ssh-password uptime</code></pre>
+<pre><code>$ rex -H &quot;frontend[01..15] middleware[01..05] db[01..04]&quot; -u ssh-user -p ssh-password uptime
+</code></pre>
 
 <h2 id="keepyourconfigurationinsync">Keep Your Configuration In Sync</h2>
 
@@ -197,57 +199,57 @@ task &quot;uptime&quot;, sub {
 
 <p>If this task gets executed against a &quot;virgin&quot; host (where no Apache is installed yet), it will first install it.</p>
 
-<pre><code class="perl">use Rex -feature =&gt; [&#39;1.0&#39;];
-
-user &quot;root&quot;;
-group frontend =&gt; &quot;frontend[01..05]&quot;;
-
-desc &quot;Prepare Frontend Server&quot;;
-task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, sub {
-  pkg &quot;apache2&quot;,
-    ensure =&gt; &quot;latest&quot;;
-
-  service &quot;apache2&quot;,
-    ensure =&gt; &quot;started&quot;;
-};
-
-desc &quot;Keep Configuration in sync&quot;;
-task &quot;configure&quot;, group =&gt; &quot;frontend&quot;, sub {
-  prepare();
-
-  file &quot;/etc/apache2/apache2.conf&quot;,
-    source    =&gt; &quot;files/etc/apache2/apache2.conf&quot;,
-    on_change =&gt; sub { service apache2 =&gt; &quot;reload&quot;; };
-  };</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠group frontend =&gt; &quot;<span class="hljs-string">frontend[01..05]</span>&quot;;
+⁠
+⁠desc &quot;<span class="hljs-string">Prepare Frontend Server</span>&quot;;
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
+⁠
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠};
+⁠
+⁠desc &quot;<span class="hljs-string">Keep Configuration in sync</span>&quot;;
+⁠task &quot;<span class="hljs-string">configure</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  prepare();
+⁠
+⁠  file &quot;<span class="hljs-string">/etc/apache2/apache2.conf</span>&quot;,
+⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/apache2/apache2.conf</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service apache2 =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
+⁠  };</code></pre>
 
 <h2 id="runningundersudo">Running under sudo?</h2>
 
 <p>You can also run everything with sudo. Just define the sudo password and activate sudo.</p>
 
-<pre><code class="perl">use Rex -feature =&gt; [&#39;1.0&#39;];
-
-user &quot;ubuntu&quot;;
-group frontend =&gt; &quot;frontend[01..05]&quot;;
-sudo TRUE;
-sudo_password &quot;mysudopw&quot;;
-
-desc &quot;Prepare Frontend Server&quot;;
-task &quot;prepare&quot;, group =&gt; &quot;frontend&quot;, sub {
-  pkg &quot;apache2&quot;,
-    ensure =&gt; &quot;latest&quot;;
-
-  service &quot;apache2&quot;,
-    ensure =&gt; &quot;started&quot;;
-};
-
-desc &quot;Keep Configuration in sync&quot;;
-task &quot;configure&quot;, group =&gt; &quot;frontend&quot;, sub {
-  prepare();
-
-  file &quot;/etc/apache2/apache2.conf&quot;,
-    source    =&gt; &quot;files/etc/apache2/apache2.conf&quot;,
-    on_change =&gt; sub { service apache2 =&gt; &quot;reload&quot;; };
-};</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠user &quot;<span class="hljs-string">ubuntu</span>&quot;;
+⁠group frontend =&gt; &quot;<span class="hljs-string">frontend[01..05]</span>&quot;;
+⁠sudo TRUE;
+⁠sudo_password &quot;<span class="hljs-string">mysudopw</span>&quot;;
+⁠
+⁠desc &quot;<span class="hljs-string">Prepare Frontend Server</span>&quot;;
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
+⁠
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠};
+⁠
+⁠desc &quot;<span class="hljs-string">Keep Configuration in sync</span>&quot;;
+⁠task &quot;<span class="hljs-string">configure</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  prepare();
+⁠
+⁠  file &quot;<span class="hljs-string">/etc/apache2/apache2.conf</span>&quot;,
+⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/apache2/apache2.conf</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service apache2 =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
+⁠};</code></pre>
 
 
 
@@ -259,14 +261,8 @@ task &quot;configure&quot;, group =&gt; &quot;frontend&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

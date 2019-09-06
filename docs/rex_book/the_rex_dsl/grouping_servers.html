@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -116,51 +115,45 @@ maintained using the static site generator
               <h1>Grouping servers</h1>
               <p>Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
 
-<pre><code>group frontends =&gt; &quot;frontend01&quot;, &quot;frontend02&quot;, &quot;frontend03&quot;;
-group backends =&gt; &quot;backend01&quot;, &quot;backend02&quot;;
-</code></pre>
+<pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;, &quot;<span class="hljs-string">frontend02</span>&quot;, &quot;<span class="hljs-string">frontend03</span>&quot;;
+⁠group backends =&gt; &quot;<span class="hljs-string">backend01</span>&quot;, &quot;<span class="hljs-string">backend02</span>&quot;;</code></pre>
 
 <p>Rex offers also a simple notation to define server ranges, so that you don&#39;t need to type so much.</p>
 
-<pre><code>group frontends =&gt; &quot;frontend[01..03]&quot;;
-group backends =&gt; &quot;backend[01..02]&quot;;
-</code></pre>
+<pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend[01..03]</span>&quot;;
+⁠group backends =&gt; &quot;<span class="hljs-string">backend[01..02]</span>&quot;;</code></pre>
 
 <p>This notation will just expand to frontend01, frontend02 and frontend03 for the frontends group and to backend01 and backend02 for the backends group.</p>
 
 <p>Custom parameters for servers are possible with a slightly enhanced syntax since version 0.47:</p>
 
-<pre><code>group frontends =&gt;
-   &quot;frontend01&quot; =&gt; { user =&gt; &quot;bob&quot; },
-   &quot;frontend02&quot; =&gt; { user =&gt; &quot;alice&quot; },
-   &quot;frontend03&quot;;
-</code></pre>
+<pre><code class="hljs">⁠group frontends =&gt;
+⁠   &quot;<span class="hljs-string">frontend01</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">bob</span>&quot; },
+⁠   &quot;<span class="hljs-string">frontend02</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">alice</span>&quot; },
+⁠   &quot;<span class="hljs-string">frontend03</span>&quot;;</code></pre>
 
 <p>Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
 
 <p>To add your groups to the tasks you have to use the group option within the task generation.</p>
 
-<pre><code>task &quot;mytask&quot;, group =&gt; &quot;mygroup&quot;, sub {
-   # do something
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, group =&gt; &quot;<span class="hljs-string">mygroup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>};</code></pre>
 
 <p>If you need to define multiple groups for a task, you can just use an array.</p>
 
-<pre><code>task &quot;mytask&quot;, group =&gt; [&quot;mygroup&quot;, &quot;mygroup2&quot;], sub {
-   # do something
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, group =&gt; [&quot;<span class="hljs-string">mygroup</span>&quot;, &quot;<span class="hljs-string">mygroup2</span>&quot;], <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>};</code></pre>
 
 <h2 id="usinganinifiletodefineservergroups">Using an INI file to define server groups</h2>
 
 <p>Rex offers a simple way to query ini files for group creation. To use ini files you have to use the Rex::Group::Lookup::INI module.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-use Rex::Group::Lookup::INI;
-
-groups_file &quot;/path/to/your/file.ini&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">INI</span>;
+⁠
+⁠groups_file &quot;<span class="hljs-string">/path/to/your/file.ini</span>&quot;;</code></pre>
 
 <p>Rex expects the following format inside your INI file.</p>
 
@@ -192,42 +185,40 @@ backend02
 
 <p>These additional options (in this example maintenance can be queried with the option method from the connection object.</p>
 
-<pre><code>task &quot;prepare&quot;, group =&gt; &quot;frontends&quot;, sub {
-   if(connection-&gt;server-&gt;option(&quot;maintenance&quot;)) {
-      say &quot;This server is in maintenance mode, so i&#39;m going to stop all services&quot;;
-      service [&quot;apache2&quot;, &quot;postfix&quot;] =&gt; &quot;stop&quot;;
-   }
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠   <span class="hljs-keyword">if</span>(connection-&gt;server-&gt;option(&quot;<span class="hljs-string">maintenance</span>&quot;)) {
+⁠      say &quot;<span class="hljs-string">This server is in maintenance mode, so i&#39;m going to stop all services</span>&quot;;
+⁠      service [&quot;<span class="hljs-string">apache2</span>&quot;, &quot;<span class="hljs-string">postfix</span>&quot;] =&gt; &quot;<span class="hljs-string">stop</span>&quot;;
+⁠   }
+⁠};</code></pre>
 
 <h2 id="queringadatabasetodefineservergroups">Quering a database to define server groups</h2>
 
 <p>If you want to get your server groups right out of an existing database you can use DBI to connect to your database server. In this example you will learn how to connect to a MySQL database and to get the hosts out of a table.</p>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-use DBI;
-
-my $username = &quot;dbuser&quot;;
-my $password = &quot;dbpassword&quot;;
-my $database = &quot;hostdb&quot;;
-my $hostname = &quot;mysql.intern.lan&quot;;
-my $port     = 3306;
-my $dsn      = &quot;DBI:mysql:database=$database;host=$hostname;port=$port&quot;;
-my $dbh      = DBI-&gt;connect($username, $password);
-
-my $sth      = $dbh-&gt;prepare(&quot;SELECT * FROM hostlist WHERE enabled=1&quot;);
-
-my %server_group = ();
-while(my $row = $sth-&gt;fetchrow_hashref) {
-   my $group_name  = $row-&gt;{server_group};
-   my $server_name = $row-&gt;{server_name};
-   push @{ $server_group{ $group_name } }, $server_name;
-}
-
-map {
-   group $_ =&gt; @{ $server_group{$_} };
-} keys %server_group;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠<span class="hljs-keyword">use</span> DBI;
+⁠
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$username</span> = &quot;<span class="hljs-string">dbuser</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$password</span> = &quot;<span class="hljs-string">dbpassword</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$database</span> = &quot;<span class="hljs-string">hostdb</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$hostname</span> = &quot;<span class="hljs-string">mysql.intern.lan</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$port</span>     = <span class="hljs-number">3306</span>;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dsn</span>      = &quot;<span class="hljs-string">DBI:mysql:database=</span><span class="hljs-type">$database</span><span class="hljs-string">;host=</span><span class="hljs-type">$hostname</span><span class="hljs-string">;port=</span><span class="hljs-type">$port</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dbh</span>      = DBI-&gt;<span class="hljs-function">connect</span>(<span class="hljs-type">$username</span>, <span class="hljs-type">$password</span>);
+⁠
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$sth</span>      = <span class="hljs-type">$dbh</span>-&gt;<span class="hljs-type">prepare</span>(&quot;<span class="hljs-string">SELECT * FROM hostlist WHERE enabled=1</span>&quot;);
+⁠
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%server_group</span> = ();
+⁠<span class="hljs-keyword">while</span>(<span class="hljs-keyword">my</span> <span class="hljs-type">$row</span> = <span class="hljs-type">$sth</span>-&gt;<span class="hljs-type">fetchrow_hashref</span>) {
+⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$group_name</span>  = <span class="hljs-type">$row</span>-&gt;{server_group};
+⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$server_name</span> = <span class="hljs-type">$row</span>-&gt;{server_name};
+⁠   <span class="hljs-function">push</span> <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{ <span class="hljs-type">$group_name</span> } }, <span class="hljs-type">$server_name</span>;
+⁠}
+⁠
+⁠<span class="hljs-function">map</span> {
+⁠   group <span class="hljs-variable">$_</span> =&gt; <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-variable">$_</span>} };
+⁠} <span class="hljs-function">keys</span> <span class="hljs-type">%server_group</span>;</code></pre>
 
 <p>This example expects the following column names:</p>
 
@@ -240,10 +231,9 @@ map {
 
 <p>If there is no built-in function that fits your needs for group creation, you can do it all by yourself. Because the Rexfile is just a plain perl script and the group command is just a perl function that expects the group name as first parameter, and uses all other parameters for the servers, you can create your own function.</p>
 
-<pre><code>my @list = (&quot;some&quot;, &quot;list&quot;, &quot;entries&quot;);
-group mygroup =&gt; grep { /list/ } @list;
-group myserver =&gt; map {&quot;s$_.domain.com&quot;} qw(1 3 7);
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@list</span> = (&quot;<span class="hljs-string">some</span>&quot;, &quot;<span class="hljs-string">list</span>&quot;, &quot;<span class="hljs-string">entries</span>&quot;);
+⁠group mygroup =&gt; <span class="hljs-function">grep</span> { /list/ } <span class="hljs-type">@list</span>;
+⁠group myserver =&gt; <span class="hljs-function">map</span> {&quot;<span class="hljs-string">s</span><span class="hljs-variable">$_</span><span class="hljs-string">.domain.com</span>&quot;} qw(1 3 7);</code></pre>
 
 
 
@@ -255,14 +245,8 @@ group myserver =&gt; map {&quot;s$_.domain.com&quot;} qw(1 3 7);
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

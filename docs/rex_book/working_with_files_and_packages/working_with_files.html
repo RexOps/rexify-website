@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -120,11 +119,10 @@ maintained using the static site generator
 
 <p>If you need to verify that a given line exists or gets removed from a file you can use append_if_no_such_line and delete_lines_according_to.</p>
 
-<pre><code># Rexfile
-task &quot;setup&quot;, sub {
-  append_if_no_such_line &quot;/etc/modules&quot;, &quot;loop&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/modules</span>&quot;, &quot;<span class="hljs-string">loop</span>&quot;;
+⁠};</code></pre>
 
 <p>This code will just append the line loop to /etc/modules if it doesn&#39;t exists.</p>
 
@@ -132,13 +130,12 @@ task &quot;setup&quot;, sub {
 
 <p>It is also possible to define more complex rules. For example if you want to use a regular expression.</p>
 
-<pre><code># Rexfile
-task &quot;setup&quot;, sub {
-  append_if_no_such_line &quot;/etc/modprobe.d/thinkfan.conf&quot;,
-    line   =&gt; &quot;options thinkpad_acpi fan_control=1&quot;,
-    regexp =&gt; qr{thinkpad_acpi};
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/modprobe.d/thinkfan.conf</span>&quot;,
+⁠    line   =&gt; &quot;<span class="hljs-string">options thinkpad_acpi fan_control=1</span>&quot;,
+⁠    regexp =&gt; qr{thinkpad_acpi};
+⁠};</code></pre>
 
 <h3 id="usingatemplateandexecutingextracodeifthefilechanged">Using a template and executing extra code if the file changed</h3>
 
@@ -146,25 +143,23 @@ task &quot;setup&quot;, sub {
 
 <p>You can also execute code if the file was changed, for example to restart services.</p>
 
-<pre><code># Rexfile
-task &quot;setup&quot;, sub {
-  append_if_no_such_line &quot;/etc/nagios/hosts.d/frontends.cfg&quot;,
-    line      =&gt; template(&quot;templates/nagios/host.cfg.tpl&quot;, %tpl_variables),
-    regexp    =&gt; qr/\s*host_name\s*$host/,
-    on_change =&gt; sub { service nagios =&gt; &quot;reload&quot;; };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/nagios/hosts.d/frontends.cfg</span>&quot;,
+⁠    line      =&gt; template(&quot;<span class="hljs-string">templates/nagios/host.cfg.tpl</span>&quot;, <span class="hljs-type">%tpl_variables</span>),
+⁠    regexp    =&gt; qr/<span class="hljs-number">\s</span><span class="hljs-string">*</span>host_name<span class="hljs-number">\s</span><span class="hljs-string">*</span><span class="hljs-type">$host</span>/,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service nagios =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
+⁠};</code></pre>
 
 <h3 id="deletinglines">Deleting lines</h3>
 
 <p>If you need to remove a line you can use delete_lines_according_to.</p>
 
-<pre><code># Rexfile
-task &quot;setup&quot;, sub {
-  delete_lines_according_to qr{loop}, &quot;/etc/modules&quot;,
-    on_change =&gt; sub { say &quot;file was modified.&quot;; };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  delete_lines_according_to qr{loop}, &quot;<span class="hljs-string">/etc/modules</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">file was modified.</span>&quot;; };
+⁠};</code></pre>
 
 <h2 id="managingfileswithsnippets">Managing files with snippets</h2>
 
@@ -174,31 +169,30 @@ task &quot;setup&quot;, sub {
 
 <p>For this you can use the Rex::Commands::Concat module from http://modules.rexify.org/module/Rex::Commands::Concat.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [&#39;1.0&#39;];
-use Rex::Commands::Concat;
-
-task &quot;prepare&quot;, sub {
-  concat_fragment &quot;config-header&quot;,
-    target  =&gt; &quot;/etc/some.conf&quot;,
-    content =&gt; &quot;# managed by Rex\n&quot;,
-    order   =&gt; &quot;01&quot;;
-
-  concat_fragment &quot;listen-entry&quot;,
-    target  =&gt; &quot;/etc/some.conf&quot;,
-    content =&gt; &quot;Listen *:80\n&quot;,
-    order   =&gt; &quot;20&quot;;
-};
-
-task &quot;setup&quot;, sub {
-  concat &quot;/etc/some.conf&quot;,
-    ensure    =&gt; &quot;present&quot;,
-    owner     =&gt; &quot;root&quot;,
-    group     =&gt; &quot;root&quot;,
-    mode      =&gt; 644,
-    on_change =&gt; sub { say &quot;changed...&quot;; };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Concat</span>;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  concat_fragment &quot;<span class="hljs-string">config-header</span>&quot;,
+⁠    target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠    content =&gt; &quot;<span class="hljs-string"># managed by Rex</span><span class="hljs-string">\n</span>&quot;,
+⁠    order   =&gt; &quot;<span class="hljs-string">01</span>&quot;;
+⁠
+⁠  concat_fragment &quot;<span class="hljs-string">listen-entry</span>&quot;,
+⁠    target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠    content =&gt; &quot;<span class="hljs-string">Listen *:80</span><span class="hljs-string">\n</span>&quot;,
+⁠    order   =&gt; &quot;<span class="hljs-string">20</span>&quot;;
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  concat &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠    ensure    =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠    owner     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode      =&gt; <span class="hljs-number">644</span>,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">changed...</span>&quot;; };
+⁠};</code></pre>
 
 <p>You can create as many concat_fragment() as you need. And you can create them anywhere you want. At the end of your code you have to call the concat() resource to generate the file out of all the fragments that have been written so far.</p>
 
@@ -206,45 +200,42 @@ task &quot;setup&quot;, sub {
 
 <p>If you want to manage complete files you can use the file() resource to do so. The file() resource supports also setting the permissions and executing actions for changes.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;setup&quot;, sub {
-  file &quot;/etc/my.conf&quot;,
-    source =&gt; &quot;files/etc/my.conf&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠    source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;;
+⁠};</code></pre>
 
 <p>This example will just upload the file files/etc/my.conf to the server and stores it at /etc/my.conf.</p>
 
 <p>You can also define the permissions for the file.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;setup&quot;, sub {
-  file &quot;/etc/my.conf&quot;,
-    source =&gt; &quot;files/etc/my.conf&quot;,
-    owner  =&gt; &quot;root&quot;,
-    group  =&gt; &quot;root&quot;,
-    mode   =&gt; 600;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠    source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
+⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode   =&gt; <span class="hljs-number">600</span>;
+⁠};</code></pre>
 
 <p>If you want to execute a command when the file was changed, you can use the on_change option.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;setup&quot;, sub {
-  file &quot;/etc/my.conf&quot;,
-    source =&gt; &quot;files/etc/my.conf&quot;,
-    owner  =&gt; &quot;root&quot;,
-    group  =&gt; &quot;root&quot;,
-    mode   =&gt; 600,
-    on_change =&gt; sub { service mysqld =&gt; &quot;restart&quot;; };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠    source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
+⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode   =&gt; <span class="hljs-number">600</span>,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service mysqld =&gt; &quot;<span class="hljs-string">restart</span>&quot;; };
+⁠};</code></pre>
 
 <p>This will restart the mysqld service if the file was modified.</p>
 
@@ -252,17 +243,16 @@ task &quot;setup&quot;, sub {
 
 <p>It is also possible to just supervise files if they are present or have special permissions. To do this, just create the file() resource without the source or content parameter.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [&#39;1.0&#39;];
-
-task &quot;setup&quot;, sub {
-  file &quot;/etc/my.conf&quot;,
-    ensure =&gt; &quot;present&quot;,
-    owner  =&gt; &quot;root&quot;,
-    group  =&gt; &quot;root&quot;,
-    mode   =&gt; 600;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠
+⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠    ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode   =&gt; <span class="hljs-number">600</span>;
+⁠};</code></pre>
 
 
 
@@ -274,14 +264,8 @@ task &quot;setup&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -131,23 +130,20 @@ maintained using the static site generator
 
 <p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
 
-<pre><code>my $output = run &quot;df -h&quot;;
-say $output;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &quot;<span class="hljs-string">df -h</span>&quot;;
+⁠say <span class="hljs-type">$output</span>;</code></pre>
 
 <h2 id="howcanigetthecurrentserverfromwithinatask">How can I get the current server from within a task?</h2>
 
-<pre><code>my $current_server = connection-&gt;server;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$current_server</span> = connection-&gt;server;</code></pre>
 
 <h2 id="howcanipassparameterstoatask">How can I pass parameters to a task?</h2>
 
-<pre><code>task &#39;mytask&#39;, sub {
-  my $parameters = shift;
-  my $parameter1_value = $parameters-&gt;{parameter1};
-  my $parameter2_value = $parameters-&gt;{parameter2};
-};
-</code></pre>
+<pre><code class="hljs">⁠task &#39;<span class="hljs-string">mytask</span>&#39;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span> = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
+⁠};</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
 
@@ -163,14 +159,13 @@ say $output;
 
 <p>Then, you can run your shell code remotely as:</p>
 
-<pre><code>use Rex::Misc::ShellBlock;
-
-task &quot;myexec&quot;, sub {
-  shell_block &lt;&lt;EOF;
-    echo &quot;hi&quot;
-EOF
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+⁠
+⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
+⁠</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
+⁠</span><span class="hljs-keyword">EOF</span>
+⁠};</code></pre>
 
 <p>See the linked documentation page for how to use this module with Perl, Python, or other languages.</p>
 
@@ -178,26 +173,24 @@ EOF
 
 <p>If you have a local script &#39;files/script&#39;, you can run it on the remote using the ShellBlock module referred to in the FAQ above. After you install as pointed out above, you can run the script remotely with the command:</p>
 
-<pre><code>use Rex::Misc::ShellBlock;
-task &quot;myexec&quot;, sub {
-  shell_block template(&#39;files/script&#39;);
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+⁠};</code></pre>
 
 <h2 id="howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</h2>
 
 <p>Given the same scenario as above, but with the additional requirement to run the script as a different user, the solution looks like below:</p>
 
-<pre><code>use Rex::Misc::ShellBlock;
-task &quot;myexec&quot;, sub {
-  sudo {
-    command =&gt; sub {
-      shell_block template(&#39;files/script&#39;);
-    },
-    user    =&gt; &#39;root&#39;
-  };
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  sudo {
+⁠    command =&gt; <span class="hljs-keyword">sub </span>{
+⁠      shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+⁠    },
+⁠    user    =&gt; &#39;<span class="hljs-string">root</span>&#39;
+⁠  };
+⁠};</code></pre>
 
 <h2 id="howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</h2>
 
@@ -205,10 +198,9 @@ task &quot;myexec&quot;, sub {
 
 <h2 id="howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
 
-<pre><code>Rex::Logger::info(&quot;some message&quot;);           # for INFO  (green)
-Rex::Logger::info(&quot;some message&quot;, &quot;warn&quot;);   # for WARN  (yellow)
-Rex::Logger::info(&quot;some message&quot;, &quot;error&quot;);  # for ERROR (red)
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;);           <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
+⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot;);   <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
+⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot;);  <span class="hljs-comment"># for ERROR (red)</span></code></pre>
 
 
 
@@ -220,14 +212,8 @@ Rex::Logger::info(&quot;some message&quot;, &quot;error&quot;);  # for ERROR (r
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

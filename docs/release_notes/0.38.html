@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -129,11 +128,10 @@ maintained using the static site generator
 <li><p>Debian: Daniel Baeurer added the possibility to add the architecture and an apt key.</p></li>
 <li><p>Added update_system command to update a complete system.</p>
 
-<pre><code>task &quot;update_all&quot;, &quot;server1&quot;, sub {
-  update_package_db;
-  update_system;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">update_all</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  update_package_db;
+⁠  update_system;
+⁠};    </code></pre></li>
 </ul>
 
 <h1 id="boxes">Boxes</h1>
@@ -141,15 +139,13 @@ maintained using the static site generator
 <ul>
 <li><p>new function to get a server group out of box names</p>
 
-<pre><code>group foo =&gt; map { $_-&gt;{name} } list_boxes;
-</code></pre></li>
+<pre><code class="hljs">⁠group foo =&gt; <span class="hljs-function">map</span> { <span class="hljs-variable">$_</span>-&gt;{name} } list_boxes;    </code></pre></li>
 <li><p>Amazon support for Rex/Boxes</p></li>
 <li><p>Possibility to describe your Rex/Boxes via a YAML file. So that you don&#39;t need to alter your Rexfile if you want to change the Box provider (for example to switch from VirtualBox to Amazon).</p>
 
-<pre><code>use Rex::Commands::Box init_file =&gt; &quot;file.yml&quot;;
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Box</span> init_file =&gt; &quot;<span class="hljs-string">file.yml</span>&quot;;    </code></pre>
 
-
-type: VBox
+<pre><code>type: VBox
 vms:
    fe01:
       url: http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova
@@ -188,23 +184,19 @@ vms:
 </code></pre></li>
 <li><p>A new function to control boxes.</p>
 
-<pre><code>task &quot;prepare_boxes&quot;, sub {
-
-
-  # this will create a defined boxes from the YAML file.
-  boxes &quot;init&quot;;
-};
-
-
-task &quot;stop_boxes&quot;, sub {
-  boxes stop =&gt; qw/box1 box2/;
-};
-
-
-task &quot;start_boxes&quot;, sub {
-  boxes start =&gt; qw/box1 box2/;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># this will create a defined boxes from the YAML file.</span><span class="hljs-comment">
+⁠</span>  boxes &quot;<span class="hljs-string">init</span>&quot;;
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">stop_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  boxes stop =&gt; qw/box1 box2/;
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">start_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  boxes start =&gt; qw/box1 box2/;
+⁠};    </code></pre></li>
 </ul>
 
 <h1 id="cloud">Cloud</h1>
@@ -223,14 +215,8 @@ task &quot;start_boxes&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

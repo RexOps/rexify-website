@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -118,77 +117,64 @@ maintained using the static site generator
 <ul>
 <li><p>use Rex as a library for your own project.</p>
 
-<pre><code>use Rex;
-use Rex::Commands::Run;
-use Rex::Commands::Fs;
-use Rex::Commands::Pkg;
-
-
-Rex::connect(
-  server      =&gt; &quot;remotehost&quot;,
-  user        =&gt; &quot;root&quot;,
-  private_key =&gt; &quot;/home/jan/.ssh/id_rsa&quot;,
-  public_key  =&gt; &quot;/home/jan/.ssh/id_rsa.pub&quot;,
-);
-
-
-if ( is_file(&quot;/etc/sudoers&quot;) ) {
-
-
-  # do something
-}
-
-
-install package =&gt; &quot;apache2&quot;;
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Run</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Fs</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Pkg</span>;
+⁠
+⁠<span class="hljs-function">Rex::connect</span>(
+⁠  server      =&gt; &quot;<span class="hljs-string">remotehost</span>&quot;,
+⁠  user        =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠  private_key =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa</span>&quot;,
+⁠  public_key  =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa.pub</span>&quot;,
+⁠);
+⁠
+⁠<span class="hljs-keyword">if</span> ( is_file(&quot;<span class="hljs-string">/etc/sudoers</span>&quot;) ) {
+⁠
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>}
+⁠
+⁠install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;    </code></pre></li>
 <li><p>Extended Iptables module with a flush command</p>
 
-<pre><code>use Rex::Commands::Iptables;
-iptables -F;
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Iptables</span>;
+⁠iptables -F;    </code></pre></li>
 <li><p>Inline templates</p>
 
 <p>It is now possible to write templates inside your Rexfile.</p>
 
-<pre><code>task &quot;foo&quot;, sub {
-  file &quot;/etc/foo&quot;,
-    content =&gt; template( &quot;@mytemplate.conf&quot;, user =&gt; &#39;bar&#39;, );
-};
-
-
- __DATA__
- @mytemplate.conf
- &lt;?php
- $DB[&#39;user&#39;] = &quot;&lt;%= $::user %&gt;&quot;;
- @end
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/foo</span>&quot;,
+⁠    content =&gt; template( &quot;<span class="hljs-type">@mytemplate</span><span class="hljs-string">.conf</span>&quot;, user =&gt; &#39;<span class="hljs-string">bar</span>&#39;, );
+⁠};
+⁠
+⁠ <span class="hljs-keyword">__DATA__</span>
+⁠ @mytemplate.conf
+⁠ &lt;?php
+⁠ $DB[&#39;user&#39;] = &quot;&lt;%= $::user %&gt;&quot;;
+⁠ @end    </code></pre></li>
 <li><p>cloud_instance command now returns instance info after create</p></li>
 <li><p>added CLI parameters to before/around hooks</p>
 
-<pre><code>task &quot;foo&quot;, sub {
-  my ($param) = shift;
-
-
-  # ...
-};
-
-
-before foo =&gt; sub {
-  my ( $server, $server_ref, $param ) = @_;
-
-
-  # do something before &quot;foo&quot;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">$param</span>) = <span class="hljs-function">shift</span>;
+⁠
+⁠  <span class="hljs-comment"># ...</span><span class="hljs-comment">
+⁠</span>};
+⁠
+⁠before foo =&gt; <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$server_ref</span>, <span class="hljs-type">$param</span> ) = <span class="hljs-type">@_</span>;
+⁠
+⁠  <span class="hljs-comment"># do something before &quot;foo&quot;</span><span class="hljs-comment">
+⁠</span>};    </code></pre></li>
 <li><p>added LVM create functions</p>
 
-<pre><code>pvcreate &quot;/dev/sda1&quot;;
-vgcreate vg0 =&gt; &quot;/dev/sda1&quot;, &quot;/dev/sda2&quot;;
-lvcreate &quot;lv0&quot;,
-  size   =&gt; &quot;20G&quot;,
-  onvg   =&gt; &quot;vg0&quot;,
-  fstype =&gt; &quot;ext3&quot;;
-</code></pre></li>
+<pre><code class="hljs">⁠pvcreate &quot;<span class="hljs-string">/dev/sda1</span>&quot;;
+⁠vgcreate vg0 =&gt; &quot;<span class="hljs-string">/dev/sda1</span>&quot;, &quot;<span class="hljs-string">/dev/sda2</span>&quot;;
+⁠lvcreate &quot;<span class="hljs-string">lv0</span>&quot;,
+⁠  size   =&gt; &quot;<span class="hljs-string">20G</span>&quot;,
+⁠  onvg   =&gt; &quot;<span class="hljs-string">vg0</span>&quot;,
+⁠  fstype =&gt; &quot;<span class="hljs-string">ext3</span>&quot;;    </code></pre></li>
 <li><p>fixed bugs</p></li>
 </ul>
 
@@ -202,14 +188,8 @@ lvcreate &quot;lv0&quot;,
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

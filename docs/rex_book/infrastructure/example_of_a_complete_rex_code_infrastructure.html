@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -191,11 +190,10 @@ PerlRequire:
 
 <h4 id="loadallrequiredmodules">Load all required modules</h4>
 
-<pre><code>use Rex -feature =&gt; [&#39;1.0&#39;];
-use Rex::CMDB;
-use Rex::Test;
-use Rex::Group::Lookup::INI;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Test</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">INI</span>;</code></pre>
 
 <p>These lines loads all required modules.</p>
 
@@ -208,25 +206,23 @@ use Rex::Group::Lookup::INI;
 
 <h4 id="loadtheservergroups">Load the server groups</h4>
 
-<pre><code>groups_file &quot;server.ini&quot;;
-</code></pre>
+<pre><code class="hljs">⁠groups_file &quot;<span class="hljs-string">server.ini</span>&quot;;</code></pre>
 
 <p>Load all server groups from the file <strong>server.ini</strong>.</p>
 
 <h4 id="configurethecmdb">Configure the CMDB</h4>
 
-<pre><code>set cmdb =&gt; {
-  type =&gt; &quot;YAML&quot;,
-  path =&gt; [
-    &quot;cmdb/{operatingsystem}/{hostname}.yml&quot;,
-    &quot;cmdb/{operatingsystem}/default.yml&quot;,
-    &quot;cmdb/{environment}/{hostname}.yml&quot;,
-    &quot;cmdb/{environment}/default.yml&quot;,
-    &quot;cmdb/{hostname}.yml&quot;,
-    &quot;cmdb/default.yml&quot;,
-  ],
-};
-</code></pre>
+<pre><code class="hljs">⁠set cmdb =&gt; {
+⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
+⁠  path =&gt; [
+⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
+⁠  ],
+⁠};</code></pre>
 
 <p>Configure the CMDB. Here we define a custom search path. This will tell the CMDB to lookup the keys in the following order:</p>
 
@@ -261,42 +257,37 @@ use Rex::Group::Lookup::INI;
 
 <h4 id="includeallrequiredrexmodules">Include all required Rex modules</h4>
 
-<pre><code>include qw/
-  Rex::OS::Base
-  Rex::NTP::Base
-  /;
-</code></pre>
+<pre><code class="hljs">⁠include qw/
+⁠  Rex::OS::Base
+⁠  Rex::NTP::Base
+⁠  /;</code></pre>
 
 <p>Include all needed Rex modules. With <strong>include</strong> all the tasks inside these modules won&#39;t get displayed with <code>rex -T</code>.</p>
 
 <h4 id="themaintask">The main task</h4>
 
-<pre><code>task &quot;setup&quot;,
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup</span>&quot;,</code></pre>
 
 <p>The main task. If you don&#39;t define the servers (or groups) in the task definition you can use the cli paramter -G or -H.</p>
 
-<pre><code>task &quot;setup&quot;, group =&gt; &quot;frontend&quot;,
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,</code></pre>
 
 <p>It is also possible to define the server or group to connect to.</p>
 
-<pre><code>make {
-  # run setup() task of Rex::OS::Base module
-  Rex::OS::Base::setup();
-
-  # run setup() task of Rex::NTP::Base module
-  Rex::NTP::Base::setup();
-};
-</code></pre>
+<pre><code class="hljs">⁠make {
+⁠  <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠
+⁠  <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠};</code></pre>
 
 <p>Inside the task we just call the tasks from the modules we have included above. All tasks can be called as a normal perl function, as long as the taskname doesn&#39;t conflict with other perl functions.</p>
 
 <h4 id="thelastline">The last line</h4>
 
-<pre><code># the last line of a Rexfile
-1;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># the last line of a Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-number">1</span>;</code></pre>
 
 <p>The last line of a Rexfile is normaly a true value. This is not always needed, but it is safer to include it.</p>
 
@@ -308,52 +299,46 @@ use Rex::Group::Lookup::INI;
 
 <h4 id="exampletbase.ttestfile">Example t/base.t test file</h4>
 
-<pre><code>use Rex::Test::Base;
-use Rex -feature =&gt; [&#39;1.0&#39;];
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Test</span>::<span class="hljs-function">Base</span>;
+⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];</code></pre>
 
 <p>Load the <strong>Rex::Test::Base</strong> framework and the Rex basic commands.</p>
 
-<pre><code>test {
-  my $t = shift;
-  $t-&gt;name(&quot;ubuntu test&quot;);
-</code></pre>
+<pre><code class="hljs">⁠test {
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);</code></pre>
 
 <p>Create a new test named <strong>ubuntu test</strong>. For every test Rex will create a new vm.</p>
 
-<pre><code>  $t-&gt;base_vm(&quot;http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova&quot;);
-  $t-&gt;vm_auth(user =&gt; &quot;root&quot;, password =&gt; &quot;box&quot;);
-</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>(user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot;);</code></pre>
 
 <p>Define the url where to download the base VM image and the authentication.</p>
 
-<pre><code>  $t-&gt;run_task(&quot;setup&quot;);
-</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);</code></pre>
 
 <p>Define which task to run on the VM.</p>
 
-<pre><code>  $t-&gt;has_package(&quot;vim&quot;);
-  $t-&gt;has_package(&quot;ntp&quot;);
-  $t-&gt;has_package(&quot;unzip&quot;);
-
-  $t-&gt;has_file(&quot;/etc/ntp.conf&quot;);
-
-  $t-&gt;has_service_running(&quot;ntp&quot;);
-
-  $t-&gt;has_content(&quot;/etc/passwd&quot;, qr{root:x:0:}ms);
-
-  run &quot;ls -l&quot;;
-  $t-&gt;ok($? == 0, &quot;ls -l returns success.&quot;);
-</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>(&quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms);
+⁠
+⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>(<span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot;);</code></pre>
 
 <p>Run the tests. You can also use normal rex functions here.</p>
 
 <p>At the end finish the tests with:</p>
 
-<pre><code>  $t-&gt;finish;
-};
-1;
-</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
+⁠};
+⁠<span class="hljs-number">1</span>;</code></pre>
 
 <p>You can now run the tests with <code>rex Test:run</code>.</p>
 
@@ -376,14 +361,8 @@ use Rex -feature =&gt; [&#39;1.0&#39;];
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

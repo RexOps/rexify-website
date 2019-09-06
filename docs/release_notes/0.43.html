@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -126,12 +125,11 @@ maintained using the static site generator
 
 <p>You can also set the cache type inside your <em>Rexfile</em></p>
 
-<pre><code># Rexfile
-
-user &quot;root&quot;;
-password &quot;...&quot;;
-cache &quot;YAML&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span>
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠password &quot;<span class="hljs-string">...</span>&quot;;
+⁠cache &quot;<span class="hljs-string">YAML</span>&quot;;</code></pre>
 
 <p>It is also possible to create custom cache classes. For example if you want to save the inventory cache inside a database. Just take a look at <a href="https://github.com/RexOps/Rex/blob/master/lib/Rex/Interface/Cache/YAML.pm">Rex::Interface::Cache::YAML</a> to see how it is implemented.</p>
 
@@ -148,17 +146,15 @@ cache &quot;YAML&quot;;
 
 <p>Or, within the <em>Rexfile</em></p>
 
-<pre><code># Rexfile
-use Rex -base;
-report -on =&gt; &quot;YAML&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -base;
+⁠report -on =&gt; &quot;<span class="hljs-string">YAML</span>&quot;;</code></pre>
 
 <p>The YAML report will be created inside a directory called <em>report</em>. If you want to use a different directory you can set it with a special variable.</p>
 
-<pre><code>use Rex -base;
-report -on      =&gt; &quot;YAML&quot;;
-set report_path =&gt; &quot;/path/to/&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -base;
+⁠report -on      =&gt; &quot;<span class="hljs-string">YAML</span>&quot;;
+⁠set report_path =&gt; &quot;<span class="hljs-string">/path/to/</span>&quot;;</code></pre>
 
 <p>It is also possible to create custom reporting classes. Just take a look at <a href="https://github.com/RexIO/rex-io-reports/blob/master/rex/lib/Rex/Report/RexIO.pm">Rex::Report::RexIO</a>.</p>
 
@@ -204,18 +200,15 @@ fi
 <ul>
 <li><p>setting options for OpenSSH connection mode</p>
 
-<pre><code>Rex::Config-&gt;set_openssh_opt( StrictHostKeyChecking =&gt; &quot;no&quot; );
-</code></pre></li>
+<pre><code class="hljs">⁠<span class="hljs-function">Rex::Config</span>-&gt;set_openssh_opt( StrictHostKeyChecking =&gt; &quot;<span class="hljs-string">no</span>&quot; );    </code></pre></li>
 <li><p>set temporary directory - #166</p>
 
-<pre><code>user &quot;foo&quot;;
-password &quot;b4r&quot;;
-tmp_dir &quot;/home/foo/tmp&quot;;
-
-
-task &quot;mytask&quot;, &quot;myserver&quot;, sub {
-};
-</code></pre></li>
+<pre><code class="hljs">⁠user &quot;<span class="hljs-string">foo</span>&quot;;
+⁠password &quot;<span class="hljs-string">b4r</span>&quot;;
+⁠tmp_dir &quot;<span class="hljs-string">/home/foo/tmp</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">mytask</span>&quot;, &quot;<span class="hljs-string">myserver</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠};    </code></pre></li>
 <li><p>if a given feature flag isn&#39;t supported, Rex will now die() - #177</p></li>
 <li><p>Rex now has an interface to support other shells than bash in a pluggable way. (Gnouc) - #180</p></li>
 <li><p>Prefer ip command over ifconfig (ferki) - #194</p></li>
@@ -245,14 +238,8 @@ task &quot;mytask&quot;, &quot;myserver&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

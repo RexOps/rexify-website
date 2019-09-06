@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -129,12 +128,11 @@ maintained using the static site generator
 
 <!-- -->
 
-<pre><code>set cmdb {
-  type           =&gt; &#39;YAML&#39;,
-  path           =&gt; &#39;cmdb&#39;,
-  merge_behavior =&gt; &#39;LEFT_PRECEDENT&#39;,
-};
-</code></pre>
+<pre><code class="hljs">⁠set cmdb {
+⁠  type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
+⁠  path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
+⁠  merge_behavior =&gt; &#39;<span class="hljs-string">LEFT_PRECEDENT</span>&#39;,
+⁠};</code></pre>
 
 <ul>
 <li>Use a custom merge strategy</li>
@@ -142,16 +140,15 @@ maintained using the static site generator
 
 <!-- -->
 
-<pre><code>set cmdb {
-  type           =&gt; &#39;YAML&#39;,
-  path           =&gt; &#39;cmdb&#39;,
-  merge_behavior =&gt; {
-    SCALAR =&gt; {...},
-    ARRAY  =&gt; {...},
-    HASH   =&gt; {...}
-  },
-};
-</code></pre>
+<pre><code class="hljs">⁠set cmdb {
+⁠  type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
+⁠  path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
+⁠  merge_behavior =&gt; {
+⁠    <span class="hljs-function">SCALAR</span> =&gt; {...},
+⁠    ARRAY  =&gt; {...},
+⁠    HASH   =&gt; {...}
+⁠  },
+⁠};</code></pre>
 
 <ul>
 <li>Add YAML CMDB merging support (fix #499) - Ferenc Erki</li>
@@ -223,14 +220,8 @@ maintained using the static site generator
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

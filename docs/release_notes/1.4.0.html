@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -215,10 +214,10 @@ but you can disable it with <code>no_task_chaining_cmdline_args</code>.</p>
 
 <p>For example:</p>
 
-<pre><code class="bash">rex lib:task1 --option1=value1 lib:task2 --option2=value2
+<pre><code>rex lib:task1 --option1=value1 lib:task2 --option2=value2
 rex lib:task1 --option=value1 lib:task2 --option=value2
-rex lib:task1 <arg> --option=value
-</arg></code></pre>
+rex lib:task1 &lt;arg&gt; --option=value
+</code></pre>
 
 <ul>
 <li>Don&#39;t parse @ARGV on import. - Eric Johnson</li>
@@ -253,8 +252,7 @@ is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
 
 <p><code>param_lookup</code> is a command to manage task parameters.</p>
 
-<pre><code class="perl">my $var = param_lookup &quot;param_name&quot;, &quot;default_value&quot;;
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
 
 <p>First param_lookup checks the task parameters for <code>param_name</code>.
 If it&#39;s not found, it tries to look it up from CMDB (if CMDB is used).
@@ -301,22 +299,20 @@ they are listed by remote machine (ordered by hostname).</p>
 
 <p>There&#39;s a new firewall resource to manage firewall rules.</p>
 
-<pre><code class="perl">firewall &quot;open-port-82-for-1.2.3.4&quot;,
-    ensure =&gt; &quot;present&quot;,
-    action =&gt; &quot;accept&quot;,
-    port   =&gt; 82,
-    source =&gt; &quot;1.2.3.4&quot;;
-</code></pre>
+<pre><code class="hljs">⁠firewall &quot;<span class="hljs-string">open-port-82-for-1.2.3.4</span>&quot;,
+⁠  ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠  action =&gt; &quot;<span class="hljs-string">accept</span>&quot;,
+⁠  port   =&gt; <span class="hljs-number">82</span>,
+⁠  source =&gt; &quot;<span class="hljs-string">1.2.3.4</span>&quot;;</code></pre>
 
 <p>The UFW firewall provider has been moved from rex-recipes to core too,
 and it is now available on top of the default iptables provider.</p>
 
 <p>On top of that, IPv6 support has been added.</p>
 
-<pre><code class="perl">open_port, [22, 80];    # defaults to IPv4 rule
-open_port -4, [22, 80]; # IPv4 rule
-open_port -6, [22, 80]; # IPv6 rule
-</code></pre>
+<pre><code class="hljs">⁠open_port,     [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># defaults to IPv4 rule</span><span class="hljs-comment">
+⁠</span>open_port - 4, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv4 rule</span><span class="hljs-comment">
+⁠</span>open_port - <span class="hljs-number">6</span>, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv6 rule</span></code></pre>
 
 <ul>
 <li>Added a firewall module to manage different firewall models with one interface. - Jan</li>
@@ -561,14 +557,8 @@ and continuous reading of output.</p>
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

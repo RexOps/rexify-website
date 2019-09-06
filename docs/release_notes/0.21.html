@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -120,88 +119,72 @@ maintained using the static site generator
 
 <p>Now you can checkout subversion and git repositories with Rex.</p>
 
-<pre><code>set
-  repository =&gt; &quot;myrepo&quot;,
-  url        =&gt; &quot;git@foo.bar:myrepo.git&quot;;
-
-
-task &quot;checkout&quot;, sub {
-  checkout &quot;myrepo&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠set
+⁠  repository =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
+⁠  url        =&gt; &quot;<span class="hljs-string">git</span><span class="hljs-type">@foo</span><span class="hljs-string">.bar:myrepo.git</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">checkout</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  checkout &quot;<span class="hljs-string">myrepo</span>&quot;;
+⁠};    </code></pre>
 
 <p>See <a href="/api/Rex/Commands/SCM.pm.html">Rex::Commands::SCM</a> for more information.</p></li>
 <li><p>allow multiple groups for a task</p>
 
-<pre><code>group &quot;frontend&quot; =&gt; &quot;fe01&quot;, &quot;fe02&quot;;
-group &quot;backend&quot;  =&gt; &quot;be01&quot;, &quot;be02&quot;;
-
-
-task &quot;prepare&quot;,
-  group =&gt; [ &quot;frontend&quot;, &quot;backend&quot; ],
-  sub {
-  say run &quot;uptime&quot;;
-  };
-</code></pre></li>
+<pre><code class="hljs">⁠group &quot;<span class="hljs-string">frontend</span>&quot; =&gt; &quot;<span class="hljs-string">fe01</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;
+⁠group &quot;<span class="hljs-string">backend</span>&quot;  =&gt; &quot;<span class="hljs-string">be01</span>&quot;, &quot;<span class="hljs-string">be02</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; [ &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">backend</span>&quot; ],
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  say run &quot;<span class="hljs-string">uptime</span>&quot;;
+⁠  };    </code></pre></li>
 <li><p>every task can have its own auth information</p>
 
-<pre><code>user &quot;root&quot;;
-password &quot;test&quot;;
-
-
-task &quot;prepare&quot;, &quot;server1&quot;, sub {
-
-
-  # will authenticate as root/test
-};
-
-
-task &quot;prepare2&quot;, &quot;server1&quot;, sub {
-
-
-  # will also authenticate as root/test
-};
-
-
-# all tasks from here down will authenticate as deploy/testdeploy
-user &quot;deploy&quot;;
-password &quot;testdeploy&quot;;
-task &quot;deploy&quot;, &quot;server1&quot;, sub {
-
-
-  # will authenticate as deploy/testdeploy
-};
-</code></pre></li>
+<pre><code class="hljs">⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠password &quot;<span class="hljs-string">test</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># will authenticate as root/test</span><span class="hljs-comment">
+⁠</span>};
+⁠
+⁠task &quot;<span class="hljs-string">prepare2</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># will also authenticate as root/test</span><span class="hljs-comment">
+⁠</span>};
+⁠
+⁠<span class="hljs-comment"># all tasks from here down will authenticate as deploy/testdeploy</span><span class="hljs-comment">
+⁠</span>user &quot;<span class="hljs-string">deploy</span>&quot;;
+⁠password &quot;<span class="hljs-string">testdeploy</span>&quot;;
+⁠task &quot;<span class="hljs-string">deploy</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># will authenticate as deploy/testdeploy</span><span class="hljs-comment">
+⁠</span>};    </code></pre></li>
 <li><p>fixed running of multiple tasks by do_task</p></li>
 <li><p>user module: add ssh key</p>
 
-<pre><code>task &quot;createuser&quot;, &quot;server1&quot;, sub {
-  create_user &quot;foo&quot;,
-    home    =&gt; &quot;/home/foo&quot;,
-    ssh_key =&gt; &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...&quot;;
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">createuser</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  create_user &quot;<span class="hljs-string">foo</span>&quot;,
+⁠    home    =&gt; &quot;<span class="hljs-string">/home/foo</span>&quot;,
+⁠    ssh_key =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...</span>&quot;;
+⁠};    </code></pre></li>
 <li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p></li>
 <li><p>ssh port isn&#39;t fix anymore (patch from Jose Luis Martinez)</p>
 
-<pre><code>group &quot;frontend&quot;, &quot;fe01:2222&quot;, &quot;fe02&quot;;
-</code></pre>
+<pre><code class="hljs">⁠group &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">fe01:2222</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;    </code></pre>
 
 <p>Rex will now connect to fe01 on port 2222 and to fe02 on port 22.</p>
 
-<pre><code>port 2222;
-task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-
-
-  # will always connect to port 2222
-};
-</code></pre></li>
+<pre><code class="hljs">⁠port <span class="hljs-number">2222</span>;
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># will always connect to port 2222</span><span class="hljs-comment">
+⁠</span>};    </code></pre></li>
 <li><p>file and upload now scans for environment specific files first</p>
 
-<pre><code>task &quot;upload&quot;, &quot;server1&quot;, sub {
-  file &quot;/etc/passwd&quot;, source =&gt; &quot;files/etc/passwd&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">upload</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/passwd</span>&quot;;
+⁠};    </code></pre>
 
 <p>If called with <em>rex -E stage</em> it will first try to upload &quot;files/etc/passwd.stage&quot; and if not found &quot;files/etc/passwd&quot;</p></li>
 <li><p>fixed windows syslog bug #6, thanks to aero</p></li>
@@ -222,14 +205,8 @@ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

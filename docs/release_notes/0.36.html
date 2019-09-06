@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -121,54 +120,53 @@ maintained using the static site generator
 
 <p>You can download OpenNebula module with the following command:</p>
 
-<pre><code>bash# rexify --use Rex::Cloud::OpenNebula
-
-use strict;
-use warnings;
-
-use Rex::Commands::Cloud;
-use Rex::Cloud::OpenNebula;
-use Data::Dumper;
-
-user &quot;root&quot;;
-
-cloud_service &quot;OpenNebula&quot;;
-cloud_auth &quot;oneadmin&quot;, &quot;opennebula&quot;;
-cloud_region &quot;http://172.16.120.131:2633/RPC2&quot;;
-
-task &quot;list-os&quot;, sub {
-  print Dumper get_cloud_operating_systems;
-};
-
-task &quot;create&quot;, sub {
-  my $params = shift;
-  my $vm     = cloud_instance create =&gt; {
-    image =&gt; &quot;template-1&quot;,
-    name  =&gt; $params-&gt;{name},
-  };
-
-  print Dumper($vm);
-};
-
-task &quot;start&quot;, sub {
-  my $params = shift;
-  cloud_instance start =&gt; $params-&gt;{name};
-};
-
-task &quot;stop&quot;, sub {
-  my $params = shift;
-  cloud_instance stop =&gt; $params-&gt;{name};
-};
-
-task &quot;terminate&quot;, sub {
-  my $params = shift;
-  cloud_instance terminate =&gt; $params-&gt;{name};
-};
-
-task &quot;list&quot;, sub {
-  print Dumper cloud_instance_list;
-};
-</code></pre>
+<pre><code class="hljs">⁠bash<span class="hljs-comment"># rexify --use Rex::Cloud::OpenNebula</span><span class="hljs-comment">
+⁠</span>
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Cloud</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Cloud</span>::<span class="hljs-function">OpenNebula</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
+⁠
+⁠user &quot;<span class="hljs-string">root</span>&quot;;
+⁠
+⁠cloud_service &quot;<span class="hljs-string">OpenNebula</span>&quot;;
+⁠cloud_auth &quot;<span class="hljs-string">oneadmin</span>&quot;, &quot;<span class="hljs-string">opennebula</span>&quot;;
+⁠cloud_region &quot;<span class="hljs-string">http://172.16.120.131:2633/RPC2</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">list-os</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-function">print</span> Dumper get_cloud_operating_systems;
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$vm</span>     = cloud_instance create =&gt; {
+⁠    image =&gt; &quot;<span class="hljs-string">template-1</span>&quot;,
+⁠    name  =&gt; <span class="hljs-type">$params</span>-&gt;{name},
+⁠  };
+⁠
+⁠  <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$vm</span>);
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">start</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠  cloud_instance start =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">stop</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠  cloud_instance stop =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">terminate</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠  cloud_instance terminate =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-function">print</span> Dumper cloud_instance_list;
+⁠};</code></pre>
 
 <ul>
 <li>New function: run_task</li>
@@ -176,21 +174,20 @@ task &quot;list&quot;, sub {
 
 <p>With this function you can run a specific task on a given host and get the output as a return value.</p>
 
-<pre><code>task &quot;prepare&quot;, &quot;server5&quot;, sub {
-
-  # do something
-  my $free_mem = run_task &quot;get_free_mem&quot;, on =&gt; &quot;server3&quot;;
-  if ( $free_mem &lt; 100 ) {
-    say &quot;Less than 100 MB free mem on server3&quot;;
-
-    # create a new server instance on server5 to unload server3
-  }
-};
-
-task &quot;get_free_mem&quot;, sub {
-    return memory-&gt;{free};
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server5</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$free_mem</span> = run_task &quot;<span class="hljs-string">get_free_mem</span>&quot;, on =&gt; &quot;<span class="hljs-string">server3</span>&quot;;
+⁠  <span class="hljs-keyword">if</span> ( <span class="hljs-type">$free_mem</span> &lt; <span class="hljs-number">100</span> ) {
+⁠    say &quot;<span class="hljs-string">Less than 100 MB free mem on server3</span>&quot;;
+⁠
+⁠    <span class="hljs-comment"># create a new server instance on server5 to unload server3</span><span class="hljs-comment">
+⁠</span>  }
+⁠};
+⁠
+⁠task &quot;<span class="hljs-string">get_free_mem</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠    <span class="hljs-keyword">return</span> memory-&gt;{free};
+⁠};</code></pre>
 
 <ul>
 <li><p>get private IP of Amazon EC2 instances (jdelgado7)</p></li>
@@ -208,14 +205,8 @@ task &quot;get_free_mem&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

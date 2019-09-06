@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -130,11 +129,10 @@ Tasks
 <li><p>Fixed a bug with relative source file names inside external modules</p></li>
 <li><p>allow additional parameters for rsync</p>
 
-<pre><code>task &quot;syncr&quot;, &quot;server1&quot;, sub {
-  sync &quot;/packages/www&quot;, &quot;/var/www/html&quot;,
-    { parameters =&gt; &quot;--backup --delete ...&quot;, };
-};
-</code></pre></li>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">syncr</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  sync &quot;<span class="hljs-string">/packages/www</span>&quot;, &quot;<span class="hljs-string">/var/www/html</span>&quot;,
+⁠    { parameters =&gt; &quot;<span class="hljs-string">--backup --delete ...</span>&quot;, };
+⁠};    </code></pre></li>
 <li><p>fixed a bug in the libvirt module if only one guest-type is available.</p></li>
 <li><p>more code refactoring</p></li>
 </ul>
@@ -149,14 +147,8 @@ Tasks
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

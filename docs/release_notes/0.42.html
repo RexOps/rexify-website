@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -123,47 +122,43 @@ maintained using the static site generator
 
 <p>This fixes long standing pull request #70.</p>
 
-<pre><code>use Rex -feature =&gt; &#39;0.42&#39;;
-
-set connection =&gt; &#39;OpenSSH&#39;;
-
-task &#39;yourtask&#39;, &#39;yourserver&#39;, sub {
-  say run &#39;uptime&#39;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; &#39;<span class="hljs-string">0.42</span>&#39;;
+⁠
+⁠set connection =&gt; &#39;<span class="hljs-string">OpenSSH</span>&#39;;
+⁠
+⁠task &#39;<span class="hljs-string">yourtask</span>&#39;, &#39;<span class="hljs-string">yourserver</span>&#39;, <span class="hljs-keyword">sub </span>{
+⁠  say run &#39;<span class="hljs-string">uptime</span>&#39;;
+⁠};</code></pre>
 
 <h4 id="kerberosauthentication-chenryn">Kerberos authentication - chenryn</h4>
 
 <p>If you want to use kerberos authentication you have to use Net::OpenSSH.</p>
 
-<pre><code>set connection =&gt; &quot;OpenSSH&quot;;
-
-user &quot;youruser&quot;;
-krb5_auth;
-</code></pre>
+<pre><code class="hljs">⁠set connection =&gt; &quot;<span class="hljs-string">OpenSSH</span>&quot;;
+⁠
+⁠user &quot;<span class="hljs-string">youruser</span>&quot;;
+⁠krb5_auth;</code></pre>
 
 <h4 id="customuserforsudocommand">Custom user for sudo command</h4>
 
 <p>It is now possible to use custom users for the sudo command.</p>
 
-<pre><code>task &quot;mytask&quot;, &quot;server1&quot;, sub {
-  sudo {
-    user    =&gt; &quot;foo&quot;,
-    command =&gt; &quot;id&quot;,
-  };
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  sudo {
+⁠    user    =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠    command =&gt; &quot;<span class="hljs-string">id</span>&quot;,
+⁠  };
+⁠};</code></pre>
 
 <h4 id="newfunctiondelete_lines_according_to-liedekef">new function delete_lines_according_to - liedekef</h4>
 
 <p>This function is similar to delete_lines_matching but with an other syntax and the possibility to use the on_change hook if the file was changed.</p>
 
-<pre><code>task &quot;cleanup&quot;, &quot;server1&quot;, sub {
-  delete_lines_according_to qr{^foo:}, &quot;/etc/passwd&quot;, on_change =&gt; sub {
-    say &quot;removed user foo.&quot;;
-  };
-};
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">cleanup</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  delete_lines_according_to qr{<span class="hljs-string">^</span>foo:}, &quot;<span class="hljs-string">/etc/passwd</span>&quot;, on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠    say &quot;<span class="hljs-string">removed user foo.</span>&quot;;
+⁠  };
+⁠};</code></pre>
 
 <h4 id="newfeatureflaguse_server_authtoenableauthpropertiesininifiles">new feature flag use_server_auth to enable auth properties in INI files</h4>
 
@@ -173,12 +168,12 @@ krb5_auth;
 
 <p>You have to use use_server_auth feature flag for this.</p>
 
-<pre><code># Rexfile
-use Rex -feature =&gt; [qw/use_server_auth/];
-use Rex::Group::Lookup::INI;
-groups_file(&#39;servergroups.ini&#39;);
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [qw/use_server_auth/];
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">INI</span>;
+⁠groups_file(&#39;<span class="hljs-string">servergroups.ini</span>&#39;);</code></pre>
 
-; my group file
+<pre><code>; my group file
 [frontends]
 fe01
 fe02
@@ -218,17 +213,15 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 
 <p>memcache02 will use custom authentication and there will be a special option &quot;services&quot; for this server that can be queried like this:</p>
 
-<pre><code>task &quot;mytask&quot;,
-  group =&gt; &quot;memcache&quot;,
-  sub {
-  say connection-&gt;server-&gt;option(&quot;services&quot;);
-  };
-</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">memcache</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  say connection-&gt;server-&gt;option(&quot;<span class="hljs-string">services</span>&quot;);
+⁠  };</code></pre>
 
 <h4 id="cwdoptionforruncommand">cwd option for run command</h4>
 
-<pre><code>run &quot;ls -l&quot;, cwd =&gt; &quot;/home&quot;;
-</code></pre>
+<pre><code class="hljs">⁠run &quot;<span class="hljs-string">ls -l</span>&quot;, cwd =&gt; &quot;<span class="hljs-string">/home</span>&quot;;</code></pre>
 
 <h3 id="speedimprovements">Speed improvements</h3>
 
@@ -262,14 +255,8 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

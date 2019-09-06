@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -154,7 +153,8 @@ reporting module get notified.</p>
 <p>To build a new resource you first have to create a new Rex module. Todo this,
 just create a new folder.</p>
 
-<pre><code class="bash">$ mkdir -p lib/HelloWorld</code></pre>
+<pre><code>$ mkdir -p lib/HelloWorld
+</code></pre>
 
 <p>Now we need to create 2 files. One <em>__module__.pm</em> for the resource definition
 and one <em>meta.yml</em> where we can define the dependencies our resource will have.
@@ -163,71 +163,85 @@ it between projects.</p>
 
 <p>In the <em>meta.yml</em> file you can just put the following lines.</p>
 
-<pre><code class="yaml">Name: HelloWorld
+<pre><code>Name: HelloWorld
 Description: A hello world resource
 License: YourLicense
 # we don&#39;t require anything
-# Requires:</code></pre>
+# Requires:
+</code></pre>
 
 <p>The <em>__module__.pm</em> file which creates the resource.</p>
 
-<pre><code class="perl">package HelloWorld;
-
-use strict;
-use warnings;
-
-use Rex -minimal; # for Rex <1.4 # $__provider="{" -base; `operating_system` available carp; default="" function. functions functions, gather have list load my providers resource rex rex::commands::gather; rex::resource::common; so the use we> &quot;HelloWorld::greet::Provider::default&quot;,
-  CentOS  =&gt; &quot;HelloWorld::greet::Provider::centos&quot;,
-};
-
-# create a resource HelloWorld::greet
-resource &quot;greet&quot;, sub {
-  my $rule_name = resource_name;
-
-  my $rule_config = {
-    ensure  =&gt; param_lookup( &quot;ensure&quot;, &quot;present&quot; ),
-    message =&gt; param_lookup( &quot;message&quot;, &quot;<default value>&quot; ),
-  };
-
-  # get the right provider if it is not defined via the operating system
-  # and the list from above.
-  my $provider =
-    param_lookup( &quot;provider&quot;, case ( lc(operating_system), $__provider ) );
-
-  # load the provider class
-  $provider-&gt;require;
-
-  # create a new instance of the provider class
-  my $provider_o = $provider-&gt;new();
-
-  # and execute the requested state.
-  if ( $rule_config-&gt;{ensure} eq &quot;present&quot; ) {
-    if ( $provider_o-&gt;present($rule_config) ) {
-      emit created, &quot;HelloWorld::greet resource created.&quot;;
-    }
-  }
-  elsif ( $rule_config-&gt;{ensure} eq &quot;absent&quot; ) {
-    if ( $provider_o-&gt;absent($rule_config) ) {
-      emit removed, &quot;HelloWorld::greet resource removed.&quot;;
-    }
-  }
-  else {
-    die &quot;Error: $rule_config-&gt;{ensure} not a valid option for &#39;ensure&#39;.&quot;;
-  }
-
-};
-
-1; # this need to be the last line in the file</default></1.4></code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">package</span> HelloWorld;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> Rex -minimal; <span class="hljs-comment"># for Rex &lt; 1.4 use Rex -base;</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Resource</span>::<span class="hljs-function">Common</span>; <span class="hljs-comment"># load resource functions</span><span class="hljs-comment">
+⁠</span>
+⁠<span class="hljs-comment"># load the Gather functions, so we have the `operating_system` </span><span class="hljs-comment">
+⁠</span><span class="hljs-comment"># function.</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Gather</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> Carp;
+⁠
+⁠<span class="hljs-comment"># list the available providers</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">my</span> <span class="hljs-variable">$_</span><span class="hljs-type">_provider</span> = {
+⁠  default =&gt; &quot;<span class="hljs-string">HelloWorld::greet::Provider::default</span>&quot;,
+⁠  CentOS  =&gt; &quot;<span class="hljs-string">HelloWorld::greet::Provider::centos</span>&quot;,
+⁠};
+⁠
+⁠<span class="hljs-comment"># create a resource HelloWorld::greet</span><span class="hljs-comment">
+⁠</span>resource &quot;<span class="hljs-string">greet</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$rule_name</span> = resource_name;
+⁠
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$rule_config</span> = {
+⁠    ensure  =&gt; param_lookup( &quot;<span class="hljs-string">ensure</span>&quot;, &quot;<span class="hljs-string">present</span>&quot; ),
+⁠    message =&gt; param_lookup( &quot;<span class="hljs-string">message</span>&quot;, &quot;<span class="hljs-string">&lt;default value&gt;</span>&quot; ),
+⁠  };
+⁠
+⁠  <span class="hljs-comment"># get the right provider if it is not defined via the operating system</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-comment"># and the list from above.</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$provider</span> =
+⁠    param_lookup( &quot;<span class="hljs-string">provider</span>&quot;, case ( <span class="hljs-function">lc</span>(operating_system), <span class="hljs-variable">$_</span><span class="hljs-type">_provider</span> ) );
+⁠
+⁠  <span class="hljs-comment"># load the provider class</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-type">$provider</span>-&gt;<span class="hljs-type">require</span>;
+⁠  
+⁠  <span class="hljs-comment"># create a new instance of the provider class</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$provider_o</span> = <span class="hljs-type">$provider</span>-&gt;<span class="hljs-type">new</span>();
+⁠
+⁠  <span class="hljs-comment"># and execute the requested state.</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">if</span> ( <span class="hljs-type">$rule_config</span>-&gt;{ensure} eq &quot;<span class="hljs-string">present</span>&quot; ) {
+⁠    <span class="hljs-keyword">if</span> ( <span class="hljs-type">$provider_o</span>-&gt;<span class="hljs-type">present</span>(<span class="hljs-type">$rule_config</span>) ) {
+⁠      emit created, &quot;<span class="hljs-string">HelloWorld::greet resource created.</span>&quot;;
+⁠    }
+⁠  }
+⁠  <span class="hljs-keyword">elsif</span> ( <span class="hljs-type">$rule_config</span>-&gt;{ensure} eq &quot;<span class="hljs-string">absent</span>&quot; ) {
+⁠    <span class="hljs-keyword">if</span> ( <span class="hljs-type">$provider_o</span>-&gt;<span class="hljs-type">absent</span>(<span class="hljs-type">$rule_config</span>) ) {
+⁠      emit removed, &quot;<span class="hljs-string">HelloWorld::greet resource removed.</span>&quot;;
+⁠    }
+⁠  }
+⁠  <span class="hljs-keyword">else</span> {
+⁠    <span class="hljs-function">die</span> &quot;<span class="hljs-string">Error: </span><span class="hljs-type">$rule_config</span>-&gt;<span class="hljs-string">{ensure} not a valid option for &#39;ensure&#39;.</span>&quot;;
+⁠  }
+⁠
+⁠};
+⁠
+⁠<span class="hljs-number">1</span>; <span class="hljs-comment"># this need to be the last line in the file</span></code></pre>
 
 <p>Now, after creating the resource definition we need to create our providers.
 To do so, you need to create the following directory.</p>
 
-<pre><code class="bash">$ mkdir -p lib/HelloWorld/greet/Provider</code></pre>
+<pre><code>$ mkdir -p lib/HelloWorld/greet/Provider
+</code></pre>
 
 <p>And place the two providers inside this directory.</p>
 
-<pre><code class="bash">$ touch lib/HelloWorld/greet/Provider/default.pm
-$ touch lib/HelloWorld/greet/Provider/centos.pm</code></pre>
+<pre><code>$ touch lib/HelloWorld/greet/Provider/default.pm
+$ touch lib/HelloWorld/greet/Provider/centos.pm
+</code></pre>
 
 <p>In this example we will create the <em>default.pm</em> provider and the <em>centos.pm</em>
 provider which will just inherit every method from the <em>default.pm</em> provider.</p>
@@ -235,102 +249,102 @@ provider which will just inherit every method from the <em>default.pm</em> provi
 <p>In Rex &lt; 2.0 we don&#39;t use any object system for perl so we need to create the
 bare class by our self.</p>
 
-<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/default.pm
-package HelloWorld::greet::Provider::default;
-
-use strict;
-use warnings;
-
-use Rex::Commands::File;
-
-# the constructor
-sub new {
-  my $that  = shift;
-  my $proto = ref($that) || $that;
-  my $self  = {@_};
-
-  bless( $self, $proto );
-
-  return $self;
-}
-
-# the ensure methods
-sub present {
-  my ( $self, $rule_config ) = @_;
-
-  my $changed = 0;
-
-  file &quot;/etc/motd&quot;,
-    content =&gt; $rule_config-&gt;{message},
-    owner   =&gt; &quot;root&quot;,
-    group   =&gt; &quot;root&quot;,
-    mode    =&gt; &#39;0644&#39;,
-    on_change =&gt; sub { $changed = 1; };
-
-  return $changed;
-}
-
-sub absent {
-  my ( $self, $rule_config ) = @_;
-
-  my $changed = 0;
-
-  file &quot;/etc/motd&quot;,
-    ensure    =&gt; &quot;absent&quot;,
-    on_change =&gt; sub { $changed = 1; };
-
-  return $changed;
-}
-
-1; # this need to be the last line in the file</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># File: lib/HelloWorld/greet/Provider/default.pm</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">package</span> <span class="hljs-function">HelloWorld::greet</span>::<span class="hljs-function">Provider</span>::<span class="hljs-function">default</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">File</span>;
+⁠
+⁠<span class="hljs-comment"># the constructor</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">sub </span><span class="hljs-function">new</span> {
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$that</span>  = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$proto</span> = <span class="hljs-function">ref</span>(<span class="hljs-type">$that</span>) || <span class="hljs-type">$that</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$self</span>  = {<span class="hljs-type">@_</span>};
+⁠
+⁠  <span class="hljs-function">bless</span>( <span class="hljs-type">$self</span>, <span class="hljs-type">$proto</span> );
+⁠
+⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$self</span>;
+⁠}
+⁠
+⁠<span class="hljs-comment"># the ensure methods</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">sub </span><span class="hljs-function">present</span> {
+⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$self</span>, <span class="hljs-type">$rule_config</span> ) = <span class="hljs-type">@_</span>;
+⁠  
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = 0;
+⁠  
+⁠  file &quot;<span class="hljs-string">/etc/motd</span>&quot;,
+⁠    content =&gt; <span class="hljs-type">$rule_config</span>-&gt;{message},
+⁠    owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode    =&gt; &#39;<span class="hljs-string">0644</span>&#39;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-type">$changed</span> = <span class="hljs-number">1</span>; };
+⁠    
+⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$changed</span>;
+⁠}
+⁠
+⁠<span class="hljs-keyword">sub </span><span class="hljs-function">absent</span> {
+⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$self</span>, <span class="hljs-type">$rule_config</span> ) = <span class="hljs-type">@_</span>;
+⁠
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = 0;
+⁠  
+⁠  file &quot;<span class="hljs-string">/etc/motd</span>&quot;,
+⁠    ensure    =&gt; &quot;<span class="hljs-string">absent</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-type">$changed</span> = <span class="hljs-number">1</span>; };
+⁠    
+⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$changed</span>;
+⁠}
+⁠
+⁠<span class="hljs-number">1</span>; <span class="hljs-comment"># this need to be the last line in the file</span></code></pre>
 
 <p>The next file is the <em>centos</em> provider. We will just inherit from the <em>default</em>
 provider without overriding any functions. This is just for demonstration 
 purpose how to do inheritance.</p>
 
-<pre><code class="perl"># File: lib/HelloWorld/greet/Provider/centos.pm
-package HelloWorld::greet::Provider::centos;
-
-use strict;
-use warnings;
-
-use Rex::Commands::File;
-use parent qw(HelloWorld::greet::Provider::default);
-
-# the constructor
-sub new {
-  my $that  = shift;
-  my $proto = ref($that) || $that;
-
-  # here we call the constructor of the parent class
-  my $self  = $proto-&gt;SUPER::new(@_);
-
-  bless( $self, $proto );
-
-  return $self;
-}
-
-1; # this need to be the last line in the file</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># File: lib/HelloWorld/greet/Provider/centos.pm</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">package</span> <span class="hljs-function">HelloWorld::greet</span>::<span class="hljs-function">Provider</span>::<span class="hljs-function">centos</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
+⁠
+⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">File</span>;
+⁠<span class="hljs-keyword">use</span> parent qw(HelloWorld::greet::Provider::default);
+⁠
+⁠<span class="hljs-comment"># the constructor</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">sub </span><span class="hljs-function">new</span> {
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$that</span>  = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$proto</span> = <span class="hljs-function">ref</span>(<span class="hljs-type">$that</span>) || <span class="hljs-type">$that</span>;
+⁠  
+⁠  <span class="hljs-comment"># here we call the constructor of the parent class</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$self</span>  = <span class="hljs-type">$proto</span>-&gt;<span class="hljs-type">SUPER</span>::<span class="hljs-type">new</span>(<span class="hljs-type">@_</span>);
+⁠
+⁠  <span class="hljs-function">bless</span>( <span class="hljs-type">$self</span>, <span class="hljs-type">$proto</span> );
+⁠
+⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$self</span>;
+⁠}
+⁠
+⁠<span class="hljs-number">1</span>; <span class="hljs-comment"># this need to be the last line in the file</span></code></pre>
 
 <h3 id="usingyourresource">Using your resource</h3>
 
 <p>After creating your module with the <code>greet</code> resource you can <code>use</code> this 
 resource in your <code>Rexfile</code>.</p>
 
-<pre><code class="perl"># Rexfile
-use Rex -feature =&gt; [&#39;1.4&#39;];
-use HelloWorld;
-
-group myservers =&gt; &quot;srv[01..10]&quot;;
-
-task &quot;prepare&quot;, group =&gt; &quot;myservers&quot;, sub {
-  HelloWorld::greet &quot;mygreeting&quot;,
-    message =&gt; &quot;Welcome to my server&quot;,
-    ensure  =&gt; &quot;present&quot;,
-    on_change =&gt; sub {
-      say &quot;server greeting has changed.&quot;;
-    };
-};</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
+⁠<span class="hljs-keyword">use</span> HelloWorld;
+⁠
+⁠group myservers =&gt; &quot;<span class="hljs-string">srv[01..10]</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-function">HelloWorld::greet</span> &quot;<span class="hljs-string">mygreeting</span>&quot;,
+⁠    message =&gt; &quot;<span class="hljs-string">Welcome to my server</span>&quot;,
+⁠    ensure  =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠      say &quot;<span class="hljs-string">server greeting has changed.</span>&quot;;
+⁠    };
+⁠};</code></pre>
 
 
 
@@ -342,14 +356,8 @@ task &quot;prepare&quot;, group =&gt; &quot;myservers&quot;, sub {
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 

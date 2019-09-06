@@ -12,7 +12,6 @@
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet">
       <link charset="utf-8" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" media="screen" rel="stylesheet" type="text/css">
       <link charset="utf-8" href="/public/css/skin/rexify.org/default.css?20140412" media="screen" rel="stylesheet" type="text/css">
-      <script src="/public/js/skin/rexify.org/highlight.pack.js"></script>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -125,31 +124,25 @@ maintained using the static site generator
 
 <p>For example with Solaris you can use Blastwave, OpenCSW or the standard utilities for package management.</p>
 
-<pre><code># in the base section of your Rexfile
-package_provider_for SunOS =&gt; &quot;Blastwave&quot;;
-
-
-task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-
-
-  # if solaris, install apache-22 from Blastwave
-  install package =&gt; &quot;apache-22&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># in the base section of your Rexfile</span><span class="hljs-comment">
+⁠</span>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">Blastwave</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># if solaris, install apache-22 from Blastwave</span><span class="hljs-comment">
+⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+⁠};    </code></pre>
 
 <p>Or, if you want to use OpenCSW</p>
 
-<pre><code># in the base section of your Rexfile
-package_provider_for SunOS =&gt; &quot;OpenCSW&quot;;
-
-
-task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-
-
-  # if solaris, install apache-22 from OpenCSW
-  install package =&gt; &quot;apache-22&quot;;
-};
-</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-comment"># in the base section of your Rexfile</span><span class="hljs-comment">
+⁠</span>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">OpenCSW</span>&quot;;
+⁠
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠
+⁠  <span class="hljs-comment"># if solaris, install apache-22 from OpenCSW</span><span class="hljs-comment">
+⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+⁠};    </code></pre>
 
 <p>Or, for Solaris 11, use the built-in &quot;pkg&quot; Package Management:</p>
 
@@ -163,34 +156,37 @@ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
   # if solaris, install apache-22 from built-in pkg
   install package =&gt; &quot;apache-22&quot;;
 };
-</code></pre></li>
-<li><p>Custom providers for service management</p>
+</code></pre>
 
-<p>For example with Solaris, if you want to use the old init-style service management you don&#39;t need to specify anything.</p>
+<pre><code class="hljs">⁠-   Custom providers <span class="hljs-keyword">for</span> service management
+⁠
+⁠    <span class="hljs-keyword">For</span> example with Solaris, <span class="hljs-keyword">if</span> you want to <span class="hljs-keyword">use</span> the old init-style service management you don&#39;<span class="hljs-string">t need to specify anything.</span>    </code></pre>
+
+<p>perl
+    task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+      service ssh =&gt; &quot;restart&quot;;
+    };</p>
+
+<pre><code class="hljs">⁠<span class="hljs-string">    But, if you want to use the newer SVCADM management use this:</span>    </code></pre>
+
+<p>perl
+    # in the base section of your Rexfile
+    service_provider_for SunOS =&gt; &quot;svcadm&quot;;</p>
 
 <pre><code>task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
   service ssh =&gt; &quot;restart&quot;;
 };
 </code></pre>
 
-<p>But, if you want to use the newer SVCADM management use this:</p>
+<pre><code class="hljs">⁠<span class="hljs-string">-   Added *operating\_system\_version()* to get the OS version.</span>    </code></pre>
 
-<pre><code># in the base section of your Rexfile
-service_provider_for SunOS =&gt; &quot;svcadm&quot;;
-
-
-task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-  service ssh =&gt; &quot;restart&quot;;
-};
-</code></pre></li>
-<li><p>Added <em>operating_system_version()</em> to get the OS version.</p>
-
-<pre><code>task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-  if ( operating_system_version() &lt; 10 ) {
-    say &quot;too old...&quot;;
-  }
-};
-</code></pre></li>
+<p>perl
+    task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+      if ( operating_system_version() &lt; 10 ) {
+        say &quot;too old...&quot;;
+      }
+    };
+    ```</p></li>
 <li><p>fixed local copy error handling</p></li>
 </ul>
 
@@ -204,14 +200,8 @@ task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub
 
    <div class="clearfix"></div>
    <div class="bottom_bar">
-      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a><span id="syntax_high" style="display: none;"> / <a href="#" id="link_syntax_high">Enable Syntax Highlighting</a></span>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
+      <a href="https://groups.google.com/group/rex-users/">Google Group</a> / <a href="http://twitter.com/RexOps">Twitter</a> / <a href="https://github.com/RexOps/Rex">GitHub</a> / <a href="http://www.freelists.org/list/rex-users">Mailinglist</a> / <a href="irc://irc.freenode.net/rex">irc.freenode.net #rex</a>   -.ô.-   <a href="http://www.disclaimer.de/disclaimer.htm" target="_blank">Disclaimer</a>
    </div>
-
-<script>
-  hljs.tabReplace = '    ';
-  hljs.initHighlightingOnLoad();
-</script>
-
 
    </body>
 
