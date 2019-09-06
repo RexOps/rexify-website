@@ -86,21 +86,21 @@ In the Rexfile you'll find the task setup\_server.
     task "setup_server",
       group => "server",
       make {
-        # we will add more code here in a bit
-    };
+      # we will add more code here in a bit
+      };
     ```
 
 This task is configured to run on all servers registered in the group server.
 
     ```perl
     Rex::LDAP::OpenLDAP::setup {
-        ldap_admin_password         => 'admin',
-        ldap_base_dn                => 'dc=rexify,dc=org',
-        ldap_base_dn_admin_password => 'test',
-        ldap_configure_tls          => TRUE,
-      };
-
-      Rex::LDAP::OpenLDAP::UserManagement::Server::add_ssh_public_key;
+      ldap_admin_password         => 'admin',
+      ldap_base_dn                => 'dc=rexify,dc=org',
+      ldap_base_dn_admin_password => 'test',
+      ldap_configure_tls          => TRUE,
+    };
+    
+    Rex::LDAP::OpenLDAP::UserManagement::Server::add_ssh_public_key;
     ```
 
 First it install OpenLDAP and create a root database for you. It also configures the admin password of your LDAP server.
@@ -122,12 +122,12 @@ First we need to create a default folder structure inside it, so you can manage 
       ensure      => 'present',
       objectClass => [ 'top', 'organizationalUnit' ],
       ou          => 'People';
-
+    
     ldap_entry "ou=Groups,dc=rexify,dc=org",
       ensure      => 'present',
       objectClass => [ 'top', 'organizationalUnit' ],
       ou          => 'Groups';
-
+    
     ldap_entry "ou=Services,dc=rexify,dc=org",
       ensure      => 'present',
       objectClass => [ 'top', 'organizationalUnit' ],
@@ -160,7 +160,7 @@ Now lets create a sample group and user.
       ensure    => 'present',
       dn        => 'ou=Groups,dc=rexify,dc=org',
       gidNumber => 3000;
-
+    
     ldap_account "sampleuser",
       ensure        => 'present',
       dn            => 'ou=People,dc=rexify,dc=org',
@@ -173,7 +173,7 @@ Now lets create a sample group and user.
       mail          => 'sample.user@gmail.com',
       userPassword  => '{CRYPT}vPYgtKD.j9iL2',
       sshPublicKey  => 'ssh-rsa AAAAB3NzaC1y...',
-      groups => ['cn=ldapusers,ou=Groups,dc=rexify,dc=org'];
+      groups        => ['cn=ldapusers,ou=Groups,dc=rexify,dc=org'];
     ```
 
 This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd.  
@@ -185,8 +185,8 @@ Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a
     task "setup_client",
       group => "client",
       make {
-        # we will add more code here in a bit
-    };
+      # we will add more code here in a bit
+      };
     ```
 
 This task is configured to run on all servers inside the group client.

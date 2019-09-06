@@ -45,22 +45,27 @@ Than you can reference on it from within your Rexfile.
 
     ```perl
     use Rex -feature => ['1.0'];
-
+    
     user "root";
     key_auth;
-
-    group databases=> "mydb01", "mydb02";
-
-    task "prepare_databases", group => "databases", sub {
-       file "/etc/my.cnf",
-          owner   => "root",
-          group   => "root",
-          mode    => "644",
-          content => template("files/my.cnf.tpl", conf => {
-                                 max_connections => "500",
-                                 table_cache     => "2500",
-                              });
-    };
+    
+    group databases => "mydb01", "mydb02";
+    
+    task "prepare_databases",
+      group => "databases",
+      sub {
+      file "/etc/my.cnf",
+        owner   => "root",
+        group   => "root",
+        mode    => "644",
+        content => template(
+        "files/my.cnf.tpl",
+        conf => {
+          max_connections => "500",
+          table_cache     => "2500",
+        }
+        );
+      };
     ```
 
 ## Inline Templates
@@ -71,20 +76,19 @@ When you want to deliver a rexfile that includes the templates, you can use inli
 
     ```perl
     use Rex -feature => ['1.0'];
-
+    
     task tempfiles => sub {
-        file '/tmp/test.txt' =>
-            content => template(
-                '@test',
-                test => {
-                    author => 'reneeb',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
+      file '/tmp/test.txt' => content => template(
+        '@test',
+        test => {
+          author => 'reneeb',
+          target => 'rex',
+        },
+        ),
+        chmod => 644,
         ;
     };
-
+    
     __DATA__
     @test
     This is a test written by <%= $test->{author} %>
@@ -100,36 +104,34 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
 
     ```perl
     use Rex -feature => ['1.0'];
-    task tempfiles => sub {
-        file '/tmp/test.txt' =>
-            content => template(
-                '@test',
-                test => {
-                    author => 'reneeb',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
+    task tempfiles   => sub {
+      file '/tmp/test.txt' => content => template(
+        '@test',
+        test => {
+          author => 'reneeb',
+          target => 'rex',
+        },
+        ),
+        chmod => 644,
         ;
-
-        file '/tmp/rex.txt' =>
-            content => template(
-                '@rex',
-                test => {
-                    author => 'krimdomu',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
+    
+      file '/tmp/rex.txt' => content => template(
+        '@rex',
+        test => {
+          author => 'krimdomu',
+          target => 'rex',
+        },
+        ),
+        chmod => 644,
         ;
     };
-
+    
     __DATA__
     @test
     This is a test written by <%= $test->{author} %>
     for a project called <%= $test->{target} %>
     @end
-
+    
     @rex
     Contribution by <%= $test->{author} %>
     for a project called <%= $test->{target} %>

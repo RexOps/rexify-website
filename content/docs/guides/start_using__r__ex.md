@@ -65,10 +65,12 @@ Now change into this directory and create a file called Rexfile with the followi
     group myservers => "mywebserver", "mymailserver", "myfileserver";
     
     desc "Get the uptime of all servers";
-    task "uptime", group => "myservers", sub {
-       my $output = run "uptime";
-       say $output;
-    };
+    task "uptime",
+      group => "myservers",
+      sub {
+      my $output = run "uptime";
+      say $output;
+      };
     ```
 
 This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command "uptime".
@@ -86,9 +88,11 @@ To add a second task, just add the next lines to your Rexfile.
 
     ```perl
     desc "Start Apache Service";
-    task "start_apache", group => "myservers", sub {
-        service "apache2" => "start";
-    };
+    task "start_apache",
+      group => "myservers",
+      sub {
+      service "apache2" => "start";
+      };
     ```
 
 This task will start the service apache2 on all the servers in the myservers group.
@@ -137,31 +141,32 @@ In this example you will learn how to install and configure ntp. You can adapt t
     ```perl
     # Rexfile
     use Rex -feature => ['1.3'];
-
+    
     user "root";
     private_key "/root/.ssh/id_rsa";
     public_key "/root/.ssh/id_rsa.pub";
-
+    
     group all_servers => "srv[001..150]";
-
-    task "setup_ntp", group => "all_servers", sub {
-       # first we will install the package
-       pkg "ntpd",
-         ensure => "present";
-
-       # then we will upload a configuration file.
-       # the configuration file is located in a subdirectory files/etc.
-       file "/etc/ntp.conf",
-          source    => "files/etc/ntp.conf",
-          on_change => sub {
-             # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
-             service ntpd => "restart";
-          };
-
-       # now we register the service to start at boot time.
-       service "ntpd",
-         ensure => "started";
-    };
+    
+    task "setup_ntp",
+      group => "all_servers",
+      sub {
+      # first we will install the package
+      pkg "ntpd", ensure => "present";
+    
+      # then we will upload a configuration file.
+      # the configuration file is located in a subdirectory files/etc.
+      file "/etc/ntp.conf",
+        source    => "files/etc/ntp.conf",
+        on_change => sub {
+    
+        # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
+        service ntpd => "restart";
+        };
+    
+      # now we register the service to start at boot time.
+      service "ntpd", ensure => "started";
+      };
     ```
 
 That's all.

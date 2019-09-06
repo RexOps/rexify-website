@@ -23,8 +23,7 @@ Run a remote command and returns its output.
 #### Example to just run a command if a file doesn't exists
 
     ```perl
-    run "/tmp/install_service.sh",
-      creates => "/opt/myservice/conf.xml";
+    run "/tmp/install_service.sh", creates => "/opt/myservice/conf.xml";
     ```
 
 #### Example to run a command and get its output
@@ -54,13 +53,13 @@ Manage files on remote systems.
 
         ```perl
         file "/etc/ntpd.conf",
-          ensure => "present",
-          source => "files/ntpd.conf",
-          owner  => "root",
-          group  => "root",
-          mode   => 644,
+          ensure    => "present",
+          source    => "files/ntpd.conf",
+          owner     => "root",
+          group     => "root",
+          mode      => 644,
           on_change => sub {
-            service ntpd => "restart";
+          service ntpd => "restart";
           };
         ```
 
@@ -75,9 +74,9 @@ Install a package on the remote system.
 
         ```perl
         pkg "ntpd",
-          ensure => "latest",
+          ensure    => "latest",
           on_change => sub {
-            service ntpd => "restart";
+          service ntpd => "restart";
           };
         ```
 
@@ -99,8 +98,7 @@ This function can be called as a resource or as a normal function to directly st
 #### Example for calling as resource
 
     ```perl
-    service "nptd",
-      ensure => "started";
+    service "nptd", ensure => "started";
     ```
 
 #### Example for calling as function
@@ -158,15 +156,15 @@ Manage user accounts.
 
         ```perl
         account "krimdomu",
-           ensure         => "present",  # default
-           uid            => 509,
-           home           => '/home/krimdomu',
-           comment        => 'User Account',
-           expire         => '2011-05-30',
-           groups         => [ 'users', 'wheel' ],
-           password       => 'blahblah',
-           create_home    => TRUE,
-           ssh_key        => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
+          ensure      => "present",                                      # default
+          uid         => 509,
+          home        => '/home/krimdomu',
+          comment     => 'User Account',
+          expire      => '2011-05-30',
+          groups      => [ 'users', 'wheel' ],
+          password    => 'blahblah',
+          create_home => TRUE,
+          ssh_key     => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...";
         ```
 
 ### group($group\_name, %options)
@@ -180,6 +178,5 @@ Manage groups.
 - system - Create a system group.
 
         ```perl
-        group "users",
-          ensure => "present";
+        group "users", ensure => "present";
         ```

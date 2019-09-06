@@ -168,7 +168,7 @@ It is also possible to define the server or group to connect to.
     make {
       # run setup() task of Rex::OS::Base module
       Rex::OS::Base::setup();
-
+    
       # run setup() task of Rex::NTP::Base module
       Rex::NTP::Base::setup();
     };
@@ -204,6 +204,7 @@ Load the **Rex::Test::Base** framework and the Rex basic commands.
     test {
       my $t = shift;
       $t->name("ubuntu test");
+    
       # we will add more code here in a bit
     };
     1;
@@ -213,7 +214,7 @@ Create a new test named **ubuntu test**. For every test Rex will create a new vm
 
     ```perl
       $t->base_vm("http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova");
-      $t->vm_auth(user => "root", password => "box");
+      $t->vm_auth( user => "root", password => "box" );
     ```
 
 Define the url where to download the base VM image and the authentication.
@@ -228,15 +229,15 @@ Define which task to run on the VM.
       $t->has_package("vim");
       $t->has_package("ntp");
       $t->has_package("unzip");
-
+      
       $t->has_file("/etc/ntp.conf");
-
+      
       $t->has_service_running("ntp");
-
-      $t->has_content("/etc/passwd", qr{root:x:0:}ms);
-
+      
+      $t->has_content( "/etc/passwd", qr{root:x:0:}ms );
+      
       run "ls -l";
-      $t->ok($? == 0, "ls -l returns success.");
+      $t->ok( $? == 0, "ls -l returns success." );
     ```
 
 Run the tests. You can also use normal rex functions here.

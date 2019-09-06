@@ -29,17 +29,19 @@ If you have many servers you want to connect to, you ususally don't want to conn
 
     ```perl
     use Rex -feature => ['1.0'];
-
+    
     user "root";
     password "foob4r";
-
+    
     group frontends => "frontend[01..50]";
-
+    
     parallelism 15;
-
-    task "prepare", group => "frontends", sub {
-       # do something
-    };
+    
+    task "prepare",
+      group => "frontends",
+      sub {
+      # do something
+      };
     ```
 
 This will connect to 15 servers in parallel and executes the task.

@@ -11,8 +11,7 @@ To install a package you can use the `pkg` function.
 
     ```perl
     task "prepare", "server1", sub {
-      pkg "apache2",
-        ensure => "present";
+      pkg "apache2", ensure => "present";
     };
     ```
 
@@ -20,8 +19,7 @@ If you want to install multiple packages you can do it by providing an array ref
 
     ```perl
     task "prepare", "server1", sub {
-      pkg [ qw/apache2 vim php5/ ],
-        ensure => "present";
+      pkg [qw/apache2 vim php5/], ensure => "present";
     };
     ```
 
@@ -29,8 +27,7 @@ If you want to install a special version of a package you just need to specify t
 
     ```perl
     task "prepare", "server1", sub {
-      pkg "apache2",
-        ensure => "2.2.4";
+      pkg "apache2", ensure => "2.2.4";
     };
     ```
 
@@ -40,8 +37,7 @@ If you don't need a package anymore you can remove it with the remove function.
 
     ```perl
     task "prepare", "server1", sub {
-      pkg "apache2",
-        ensure => "absent";
+      pkg "apache2", ensure => "absent";
     };
     ```
 
@@ -53,11 +49,13 @@ Sometimes you have to add custom repositories to your Server. This can be done w
 
     ```perl
     task "prepare", "server2", sub {
-       # add a repository for debian/ubuntu
-       repository add => "myrepo",
-          url => "http://foo.bar/repo",
-          distro => "squeeze",
-          repository => "stable";
+    
+      # add a repository for debian/ubuntu
+      repository
+        add        => "myrepo",
+        url        => "http://foo.bar/repo",
+        distro     => "squeeze",
+        repository => "stable";
     };
     ```
 
@@ -65,9 +63,11 @@ Sometimes you have to add custom repositories to your Server. This can be done w
 
     ```perl
     task "prepare", "server2", sub {
-       # add a repository for redhat/centos
-       repository add => "myrepo",
-          url => "http://foo.bar/repo";
+    
+      # add a repository for redhat/centos
+      repository
+        add => "myrepo",
+        url => "http://foo.bar/repo";
     };
     ```
 
@@ -75,12 +75,14 @@ After you've added a new repository you need to run update\_package\_db to updat
 
     ```perl
     task "prepare", "server2", sub {
-       # add a repository for redhat/centos
-       repository add => "myrepo",
-          url => "http://foo.bar/repo";
-           
-       # update package database
-       update_package_db;
+    
+      # add a repository for redhat/centos
+      repository
+        add => "myrepo",
+        url => "http://foo.bar/repo";
+    
+      # update package database
+      update_package_db;
     };
     ```
 

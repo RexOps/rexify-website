@@ -70,16 +70,18 @@ If this task gets executed against a "virgin" host (where no Apache is installed
     group frontend => "frontend[01..05]";
     
     desc "Prepare Frontend Server";
-    task "prepare", group => "frontend", sub {
-      pkg "apache2",
-        ensure => "latest";
+    task "prepare",
+      group => "frontend",
+      sub {
+      pkg "apache2", ensure => "latest";
     
-      service "apache2",
-        ensure => "started";
-    };
+      service "apache2", ensure => "started";
+      };
     
     desc "Keep Configuration in sync";
-    task "configure", group => "frontend", sub {
+    task "configure",
+      group => "frontend",
+      sub {
       prepare();
     
       file "/etc/apache2/apache2.conf",
@@ -101,20 +103,22 @@ You can also run everything with sudo. Just define the sudo password and activat
     sudo_password "mysudopw";
     
     desc "Prepare Frontend Server";
-    task "prepare", group => "frontend", sub {
-      pkg "apache2",
-        ensure => "latest";
+    task "prepare",
+      group => "frontend",
+      sub {
+      pkg "apache2", ensure => "latest";
     
-      service "apache2",
-        ensure => "started";
-    };
+      service "apache2", ensure => "started";
+      };
     
     desc "Keep Configuration in sync";
-    task "configure", group => "frontend", sub {
+    task "configure",
+      group => "frontend",
+      sub {
       prepare();
     
       file "/etc/apache2/apache2.conf",
         source    => "files/etc/apache2/apache2.conf",
         on_change => sub { service apache2 => "reload"; };
-    };
+      };
     ```

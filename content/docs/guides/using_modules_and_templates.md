@@ -28,25 +28,23 @@ This file is a normal Perl module. The only special thing is the filename, but d
     ```perl
     package Service::NTP;
     use Rex -feature => ['1.3'];
-
+    
     task prepare => sub {
-       my $service_name = case operating_system, {
-                             Debian  => "ntp",
-                             default => "ntpd",
-                          };
-       pkg "ntp",
-         ensure => "present";
-
-       file "/etc/ntp.conf",
-          source    => "files/etc/ntp.conf",
-          on_change => sub {
-             service $service_name => "restart";
-          };
-
-       service $service_name,
-         ensure => "started";
+      my $service_name = case operating_system, {
+        Debian    => "ntp",
+          default => "ntpd",
+      };
+      pkg "ntp", ensure => "present";
+    
+      file "/etc/ntp.conf",
+        source    => "files/etc/ntp.conf",
+        on_change => sub {
+        service $service_name => "restart";
+        };
+    
+      service $service_name, ensure => "started";
     };
-
+    
     1;
     ```
 
@@ -90,33 +88,31 @@ But if you want to change a parameter in your ntp.conf file you have to edit 4 f
     ```perl
     package Service::NTP;
     use Rex -feature => ['1.0'];
-
+    
     task prepare => sub {
-       my $service_name = case operating_system, {
-                             Debian  => "ntp",
-                             default => "ntpd",
-                          };
-
-       my $ntp_server   = case environment, {
-                             prod    => ["ntp01.company.tld", "ntp02.company.tld"],
-                             preprod => ["ntp01.preprod.company.tld"],
-                             test    => ["ntp01.test.company.tld"],
-                             default => ["ntp01.company.tld"],
-                          };
-
-       pkg "ntp",
-         ensure => "present";
-
-       file "/etc/ntp.conf",
-          content   => template("files/etc/ntp.conf", ntp_servers => $ntp_server),
-          on_change => sub {
-             service $service_name => "restart";
-          };
-
-       service $service_name,
-         ensure => "started";
+      my $service_name = case operating_system, {
+        Debian    => "ntp",
+          default => "ntpd",
+      };
+    
+      my $ntp_server = case environment, {
+        prod      => [ "ntp01.company.tld", "ntp02.company.tld" ],
+          preprod => ["ntp01.preprod.company.tld"],
+          test    => ["ntp01.test.company.tld"],
+          default => ["ntp01.company.tld"],
+      };
+    
+      pkg "ntp", ensure => "present";
+    
+      file "/etc/ntp.conf",
+        content   => template( "files/etc/ntp.conf", ntp_servers => $ntp_server ),
+        on_change => sub {
+        service $service_name => "restart";
+        };
+    
+      service $service_name, ensure => "started";
     };
-
+    
     1;
     ```
 
@@ -141,7 +137,7 @@ There are also some predefined variables you can use in your templates. For exam
 
     ```perl
     task "get_infos", "server01", sub {
-       dump_system_information;
+      dump_system_information;
     };
     ```
 
@@ -227,9 +223,9 @@ To use your module you have to add it to your Rexfile. This can be simply achiev
     use Rex -feature => ['1.3'];
     user "root";
     password "foo";
-
+    
     require Service::NTP;
-
+    
     1;
     ```
 

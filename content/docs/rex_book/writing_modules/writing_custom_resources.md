@@ -66,10 +66,10 @@ The *\_\_module\_\_.pm* file which creates the resource.
     use strict;
     use warnings;
     
-    use Rex -minimal; # for Rex < 1.4 use Rex -base;
+    use Rex -minimal;          # for Rex < 1.4 use Rex -base;
     use Rex::Resource::Common; # load resource functions
     
-    # load the Gather functions, so we have the `operating_system` 
+    # load the Gather functions, so we have the `operating_system`
     # function.
     use Rex::Commands::Gather;
     
@@ -86,7 +86,7 @@ The *\_\_module\_\_.pm* file which creates the resource.
       my $rule_name = resource_name;
     
       my $rule_config = {
-        ensure  => param_lookup( "ensure", "present" ),
+        ensure  => param_lookup( "ensure",  "present" ),
         message => param_lookup( "message", "<default value>" ),
       };
     
@@ -97,7 +97,7 @@ The *\_\_module\_\_.pm* file which creates the resource.
     
       # load the provider class
       $provider->require;
-      
+    
       # create a new instance of the provider class
       my $provider_o = $provider->new();
     
@@ -160,16 +160,16 @@ bare class by our self.
     # the ensure methods
     sub present {
       my ( $self, $rule_config ) = @_;
-      
+    
       my $changed = 0;
-      
+    
       file "/etc/motd",
-        content => $rule_config->{message},
-        owner   => "root",
-        group   => "root",
-        mode    => '0644',
+        content   => $rule_config->{message},
+        owner     => "root",
+        group     => "root",
+        mode      => '0644',
         on_change => sub { $changed = 1; };
-        
+    
       return $changed;
     }
     
@@ -177,11 +177,11 @@ bare class by our self.
       my ( $self, $rule_config ) = @_;
     
       my $changed = 0;
-      
+    
       file "/etc/motd",
         ensure    => "absent",
         on_change => sub { $changed = 1; };
-        
+    
       return $changed;
     }
     
@@ -206,9 +206,9 @@ purpose how to do inheritance.
     sub new {
       my $that  = shift;
       my $proto = ref($that) || $that;
-      
+    
       # here we call the constructor of the parent class
-      my $self  = $proto->SUPER::new(@_);
+      my $self = $proto->SUPER::new(@_);
     
       bless( $self, $proto );
     
@@ -231,13 +231,15 @@ resource in your `Rexfile`.
     
     group myservers => "srv[01..10]";
     
-    task "prepare", group => "myservers", sub {
+    task "prepare",
+      group => "myservers",
+      sub {
       HelloWorld::greet "mygreeting",
-        message => "Welcome to my server",
-        ensure  => "present",
+        message   => "Welcome to my server",
+        ensure    => "present",
         on_change => sub {
-          say "server greeting has changed.";
+        say "server greeting has changed.";
         };
-    };
+      };
     ```
 
