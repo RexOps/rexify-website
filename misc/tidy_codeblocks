@@ -1,0 +1,55 @@
+#!/bin/env perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+use Path::Tiny;
+use Perl::Tidy;
+
+# copy arguments to keep perltidy happy
+my @files = @ARGV;
+@ARGV = ();
+
+for my $file (@files) {
+  my $text = path($file)->slurp;
+
+  $text =~ s/
+        (?<=```perl\n)
+        (?<code>.+?)
+        (?=\n\s+```)
+    /
+        tidy($+{code});
+    /egmsx;
+
+  path($file)->spew($text);
+}
+
+sub tidy {
+  my $code = shift;
+  my $result;
+  my $stderr;
+
+  my ($indent) = $code =~ m{^(\s+)};
+
+  $code =~ s/^$indent//gm; # remove indent
+
+  my $error = Perl::Tidy::perltidy(
+    source      => \$code,
+    destination => \$result,
+    errorfile   => \$stderr,
+  );
+
+  if ( defined $stderr ) {
+    say 'CODE';
+    say $code;
+
+    say 'ERROR';
+    say $stderr;
+  }
+
+  $result =~ s/^/$indent/gm; # add back indent
+  chomp $result;             # remove trailing newline
+
+  return $result;
+}
