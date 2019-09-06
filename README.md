@@ -10,6 +10,10 @@ To work with the website locally, clone the repo and use the following steps:
 
         cpanm --installdeps .
 
+1. Make sure Perl will find modules in `/.lib`, so local modules can be used
+
+        export PERL5LIB="./lib:${PERL5LIB}"
+
 1. Change something
 1. Build site and start a local web server:
 
