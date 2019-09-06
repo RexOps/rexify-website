@@ -145,14 +145,14 @@ But remember an important note: hashes are always unsorted.
     sub my_function {      # define the function called "my_function"
     }
 
-    sub my_function {      # define the function called "my_function" 
+    sub my_function2 {      # define the function called "my_function2" 
       my $param1 = $_[0]; # get the 1st parameter and save it in $param1
       my $param2 = $_[1]; # get the 2nd parameter and save it in $param2
       my $param3 = $_[2]; # get the 3rd parameter and save it in $param3
     }
 
-    sub my_function {
-      my ($param1, $param2, $param3) = @_; # the same as above
+    sub my_function3 {
+      my ($param1, $param2, $param3) = @_; # the same as above in "my_function2"
     }
 
     my_function();     # call the function "my_function"

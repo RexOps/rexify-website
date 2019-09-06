@@ -86,6 +86,8 @@ In the Rexfile you'll find the task setup\_server.
     task "setup_server",
       group => "server",
       make {
+        # we will add more code here in a bit
+    };
     ```
 
 This task is configured to run on all servers registered in the group server.
@@ -183,6 +185,8 @@ Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a
     task "setup_client",
       group => "client",
       make {
+        # we will add more code here in a bit
+    };
     ```
 
 This task is configured to run on all servers inside the group client.

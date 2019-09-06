@@ -204,6 +204,9 @@ Load the **Rex::Test::Base** framework and the Rex basic commands.
     test {
       my $t = shift;
       $t->name("ubuntu test");
+      # we will add more code here in a bit
+    };
+    1;
     ```
 
 Create a new test named **ubuntu test**. For every test Rex will create a new vm.
@@ -242,8 +245,6 @@ At the end finish the tests with:
 
     ```perl
       $t->finish;
-    };
-    1;
     ```
 
 You can now run the tests with `rex Test:run`.

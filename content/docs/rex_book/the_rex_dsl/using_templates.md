@@ -113,7 +113,7 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
         ;
 
         file '/tmp/rex.txt' =>
-            content => template(>
+            content => template(
                 '@rex',
                 test => {
                     author => 'krimdomu',
