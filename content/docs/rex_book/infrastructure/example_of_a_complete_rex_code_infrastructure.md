@@ -55,14 +55,14 @@ You can define dependencies to Rex modules and to Perl modules.
     Author: jan gehring 
     License: Apache 2.0
     Require:
-      Rex::NTP::Base:
-        git: https://github.com/krimdomu/rex-ntp-base.git
-        branch: master
-      Rex::OS::Base:
-        git: https://github.com/krimdomu/rex-os-base.git
-        branch: master
+      Rex::NTP::Base:
+        git: https://github.com/krimdomu/rex-ntp-base.git
+        branch: master
+      Rex::OS::Base:
+        git: https://github.com/krimdomu/rex-os-base.git
+        branch: master
     PerlRequire:
-      - Moo
+      - Moo
 
 In this file you see that we define some dependencies to custom Rex modules located in git repositories. The `rexify --resolve-deps` command will read the **meta.yml** file and download all these dependencies into the **lib** directory.
 
@@ -100,15 +100,15 @@ Load all server groups from the file **server.ini**.
 
     ```perl
     set cmdb => {
-      type => "YAML",
-      path => [
-        "cmdb/{operatingsystem}/{hostname}.yml",
-        "cmdb/{operatingsystem}/default.yml",
-        "cmdb/{environment}/{hostname}.yml",
-        "cmdb/{environment}/default.yml",
-        "cmdb/{hostname}.yml",
-        "cmdb/default.yml",
-      ],
+      type => "YAML",
+      path => [
+        "cmdb/{operatingsystem}/{hostname}.yml",
+        "cmdb/{operatingsystem}/default.yml",
+        "cmdb/{environment}/{hostname}.yml",
+        "cmdb/{environment}/default.yml",
+        "cmdb/{hostname}.yml",
+        "cmdb/default.yml",
+      ],
     };
     ```
 
@@ -143,9 +143,9 @@ It is possible to use every Rex::Hardware variable inside the path.
 
     ```perl
     include qw/
-      Rex::OS::Base
-      Rex::NTP::Base
-      /;
+      Rex::OS::Base
+      Rex::NTP::Base
+      /;
     ```
 
 Include all needed Rex modules. With **include** all the tasks inside these modules won't get displayed with `rex -T`.
@@ -166,11 +166,11 @@ It is also possible to define the server or group to connect to.
 
     ```perl
     make {
-      # run setup() task of Rex::OS::Base module
-      Rex::OS::Base::setup();
+      # run setup() task of Rex::OS::Base module
+      Rex::OS::Base::setup();
 
-      # run setup() task of Rex::NTP::Base module
-      Rex::NTP::Base::setup();
+      # run setup() task of Rex::NTP::Base module
+      Rex::NTP::Base::setup();
     };
     ```
 
@@ -202,8 +202,8 @@ Load the **Rex::Test::Base** framework and the Rex basic commands.
 
     ```perl
     test {
-      my $t = shift;
-      $t->name("ubuntu test");
+      my $t = shift;
+      $t->name("ubuntu test");
       # we will add more code here in a bit
     };
     1;
@@ -225,18 +225,18 @@ Define the url where to download the base VM image and the authentication.
 Define which task to run on the VM.
 
     ```perl
-      $t->has_package("vim");
-      $t->has_package("ntp");
-      $t->has_package("unzip");
+      $t->has_package("vim");
+      $t->has_package("ntp");
+      $t->has_package("unzip");
 
-      $t->has_file("/etc/ntp.conf");
+      $t->has_file("/etc/ntp.conf");
 
-      $t->has_service_running("ntp");
+      $t->has_service_running("ntp");
 
-      $t->has_content("/etc/passwd", qr{root:x:0:}ms);
+      $t->has_content("/etc/passwd", qr{root:x:0:}ms);
 
-      run "ls -l";
-      $t->ok($? == 0, "ls -l returns success.");
+      run "ls -l";
+      $t->ok($? == 0, "ls -l returns success.");
     ```
 
 Run the tests. You can also use normal rex functions here.
@@ -244,7 +244,7 @@ Run the tests. You can also use normal rex functions here.
 At the end finish the tests with:
 
     ```perl
-      $t->finish;
+      $t->finish;
     ```
 
 You can now run the tests with `rex Test:run`.

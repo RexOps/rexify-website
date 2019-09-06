@@ -10,7 +10,7 @@ Rex comes with a hardware gathering module. To display all the things Rex knows 
     use Rex -feature => ['1.0'];
 
     task "dump-info", sub {
-       dump_system_information;
+       dump_system_information;
     };
     ```
 
@@ -23,11 +23,11 @@ A sample output (CentOS 5.9 running inside KVM)
     $memory_total = '497'
     $kernelrelease = '2.6.18-348.6.1.el5'
     $Kernel = {
-          kernelversion => '#1 SMP Tue May 21 15:29:55 EDT 2013'
-          architecture => 'x86_64'
-          kernel => 'Linux'
-          kernelrelease => '2.6.18-348.6.1.el5'
-       }
+          kernelversion => '#1 SMP Tue May 21 15:29:55 EDT 2013'
+          architecture => 'x86_64'
+          kernel => 'Linux'
+          kernelrelease => '2.6.18-348.6.1.el5'
+       }
     $hostname = 'centos-5-amd64.rexify.org'
     $operatingsystem = 'CentOS'
     $operatingsystemrelease = '5.9'
@@ -37,30 +37,30 @@ A sample output (CentOS 5.9 running inside KVM)
     $kernel = 'Linux'
     $swap_free = '1023'
     $VirtInfo = {
-          virtualization_role => 'guest'
-          virtualization_type => 'kvm'
-       }
+          virtualization_role => 'guest'
+          virtualization_type => 'kvm'
+       }
     $memory_shared = '0'
     $Network = {
-          networkdevices => [
-             'eth0'
-          ]
-          networkconfiguration => {
-             eth0 => {
-                broadcast => '192.168.122.255'
-                ip => '192.168.122.22'
-                netmask => '255.255.255.0'
-                mac => '52:54:00:E8:69:15'
-             }
-          }
-       }
+          networkdevices => [
+             'eth0'
+          ]
+          networkconfiguration => {
+             eth0 => {
+                broadcast => '192.168.122.255'
+                ip => '192.168.122.22'
+                netmask => '255.255.255.0'
+                mac => '52:54:00:E8:69:15'
+             }
+          }
+       }
     $memory_used = '218'
     $kernelname = 'Linux'
     $Swap = {
-          free => '1023'
-          used => '0'
-          total => '1023'
-       }
+          free => '1023'
+          used => '0'
+          total => '1023'
+       }
     $swap_total = '1023'
     $memory_buffers = '12'
     $eth0_ip = '192.168.122.22'
@@ -68,23 +68,23 @@ A sample output (CentOS 5.9 running inside KVM)
     $memory_free = '278'
     $manufacturer = 'Bochs'
     $Memory = {
-          shared => '0'
-          buffers => '12'
-          free => '278'
-          used => '218'
-          total => '497'
-          cached => '127'
-       }
+          shared => '0'
+          buffers => '12'
+          free => '278'
+          used => '218'
+          total => '497'
+          cached => '127'
+       }
     $eth0_broadcast = '192.168.122.255'
     $eth0_netmask = '255.255.255.0'
     $Host = {
-          domain => ''
-          manufacturer => 'Bochs'
-          kernelname => 'Linux'
-          hostname => 'centos-5-amd64.rexify.org'
-          operatingsystemrelease => '5.9'
-          operatingsystem => 'CentOS'
-       }
+          domain => ''
+          manufacturer => 'Bochs'
+          kernelname => 'Linux'
+          hostname => 'centos-5-amd64.rexify.org'
+          operatingsystemrelease => '5.9'
+          operatingsystem => 'CentOS'
+       }
 
 To use these information inside the Rexfile you can query them with the get\_system\_information function or use the methods from the connection object
 
@@ -92,16 +92,16 @@ To use these information inside the Rexfile you can query them with the get\_sys
     use Rex -feature => ['1.0'];
 
     task "get_hostname", sub {
-       my %info = get_system_information;
-       say $info{hostname} . "." . $info{domain};
+       my %info = get_system_information;
+       say $info{hostname} . "." . $info{domain};
     };
 
     use Rex -feature => ['1.0'];
 
     task "prepare", sub {
-       my $libpath = case connection->server->architecture,
-                         "i386"   => "/usr/lib",
-                         "x86_64" => "/usr/lib64";
+       my $libpath = case connection->server->architecture,
+                         "i386"   => "/usr/lib",
+                         "x86_64" => "/usr/lib64";
     };
     ```
 

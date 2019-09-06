@@ -49,12 +49,12 @@ A massively subjective comparison of these two may help to make your decision:
 
 ##### openssh-sftp-server
 
--       easier to set up
--       a bit smaller size in itself
--       depends on libopenssl and zlib (and they are "huge" and probably not needed by other packages)
--       only supports SFTP v3 (that should be fine in general though)
--       widespread use
--       BSD licensed
+-       easier to set up
+-       a bit smaller size in itself
+-       depends on libopenssl and zlib (and they are "huge" and probably not needed by other packages)
+-       only supports SFTP v3 (that should be fine in general though)
+-       widespread use
+-       BSD licensed
 
 It can be set up with the following commands:
 

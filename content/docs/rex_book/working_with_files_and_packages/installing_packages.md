@@ -11,8 +11,8 @@ Installing packages is easy. You can use the pkg function for this.
     password "f00b4r";
 
     task "prepare_system", group => "frontends", sub {
-       pkg "apache2",
-         ensure => "present";
+       pkg "apache2",
+         ensure => "present";
     };
     ```
 
@@ -25,8 +25,8 @@ If you have to install multiple packages you can use an array so that you don't 
     password "f00b4r";
 
     task "prepare_system", group => "frontends", sub {
-       pkg ["apache2", "libphp5-apache2", "mysql-server"],
-         ensure => "present";
+       pkg ["apache2", "libphp5-apache2", "mysql-server"],
+         ensure => "present";
     };
     ```
 
@@ -39,11 +39,11 @@ If you need to write a distribution independent module you can also use the case
     password "f00b4r";
 
     task "prepare_system", group => "frontends", sub {
-       my $packages = case operating_system,
-          Debian => ["apache2", "libphp5-apache2"],
-          CentOS => ["httpd", "php5"],
+       my $packages = case operating_system,
+          Debian => ["apache2", "libphp5-apache2"],
+          CentOS => ["httpd", "php5"],
 
-       pkg $packages,
-         ensure => "present";
+       pkg $packages,
+         ensure => "present";
     };
     ```

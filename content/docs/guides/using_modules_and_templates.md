@@ -15,10 +15,10 @@ This will create some new directories and files in your lib directory.
     .
     ├── Rexfile
     └── lib
-        └── Service
-            └── NTP
-                ├── __module__.pm
-                └── meta.yml
+        └── Service
+            └── NTP
+                ├── __module__.pm
+                └── meta.yml
 
 The meta.yml file can be ignored. This file is only important if you want to share your module on the Rex modules directory.
 
@@ -30,21 +30,21 @@ This file is a normal Perl module. The only special thing is the filename, but d
     use Rex -feature => ['1.3'];
 
     task prepare => sub {
-       my $service_name = case operating_system, {
-                             Debian  => "ntp",
-                             default => "ntpd",
-                          };
-       pkg "ntp",
-         ensure => "present";
+       my $service_name = case operating_system, {
+                             Debian  => "ntp",
+                             default => "ntpd",
+                          };
+       pkg "ntp",
+         ensure => "present";
 
-       file "/etc/ntp.conf",
-          source    => "files/etc/ntp.conf",
-          on_change => sub {
-             service $service_name => "restart";
-          };
+       file "/etc/ntp.conf",
+          source    => "files/etc/ntp.conf",
+          on_change => sub {
+             service $service_name => "restart";
+          };
 
-       service $service_name,
-         ensure => "started";
+       service $service_name,
+         ensure => "started";
     };
 
     1;
@@ -73,16 +73,16 @@ If you now want to distribute different ntp.conf files per environment you can a
     .
     ├── Rexfile
     └── lib
-        └── Service
-            └── NTP
-                ├── __module__.pm
-                ├── files
-                │   └── etc
-                │       ├── ntp.conf
-                │       ├── ntp.conf.preprod
-                │       ├── ntp.conf.prod
-                │       └── ntp.conf.test
-                └── meta.yml
+        └── Service
+            └── NTP
+                ├── __module__.pm
+                ├── files
+                │   └── etc
+                │       ├── ntp.conf
+                │       ├── ntp.conf.preprod
+                │       ├── ntp.conf.prod
+                │       └── ntp.conf.test
+                └── meta.yml
     ```
 
 But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.
@@ -92,29 +92,29 @@ But if you want to change a parameter in your ntp.conf file you have to edit 4 f
     use Rex -feature => ['1.0'];
 
     task prepare => sub {
-       my $service_name = case operating_system, {
-                             Debian  => "ntp",
-                             default => "ntpd",
-                          };
+       my $service_name = case operating_system, {
+                             Debian  => "ntp",
+                             default => "ntpd",
+                          };
 
-       my $ntp_server   = case environment, {
-                             prod    => ["ntp01.company.tld", "ntp02.company.tld"],
-                             preprod => ["ntp01.preprod.company.tld"],
-                             test    => ["ntp01.test.company.tld"],
-                             default => ["ntp01.company.tld"],
-                          };
+       my $ntp_server   = case environment, {
+                             prod    => ["ntp01.company.tld", "ntp02.company.tld"],
+                             preprod => ["ntp01.preprod.company.tld"],
+                             test    => ["ntp01.test.company.tld"],
+                             default => ["ntp01.company.tld"],
+                          };
 
-       pkg "ntp",
-         ensure => "present";
+       pkg "ntp",
+         ensure => "present";
 
-       file "/etc/ntp.conf",
-          content   => template("files/etc/ntp.conf", ntp_servers => $ntp_server),
-          on_change => sub {
-             service $service_name => "restart";
-          };
+       file "/etc/ntp.conf",
+          content   => template("files/etc/ntp.conf", ntp_servers => $ntp_server),
+          on_change => sub {
+             service $service_name => "restart";
+          };
 
-       service $service_name,
-         ensure => "started";
+       service $service_name,
+         ensure => "started";
     };
 
     1;
@@ -141,7 +141,7 @@ There are also some predefined variables you can use in your templates. For exam
 
     ```perl
     task "get_infos", "server01", sub {
-       dump_system_information;
+       dump_system_information;
     };
     ```
 
@@ -152,11 +152,11 @@ For example this is the output of a CentOS VM
     $memory_total = '498'
     $kernelrelease = '2.6.32-220.17.1.el6.i686'
     $Kernel = {
-          kernelversion => '#1 SMP Tue May 15 22:09:39 BST 2012'
-          architecture => 'i686'
-          kernel => 'Linux'
-          kernelrelease => '2.6.32-220.17.1.el6.i686'
-       }
+          kernelversion => '#1 SMP Tue May 15 22:09:39 BST 2012'
+          architecture => 'i686'
+          kernel => 'Linux'
+          kernelrelease => '2.6.32-220.17.1.el6.i686'
+       }
     $hostname = 'c6test0232'
     $operatingsystem = 'CentOS'
     $operatingsystemrelease = '6.2'
@@ -166,30 +166,30 @@ For example this is the output of a CentOS VM
     $kernel = 'Linux'
     $swap_free = '2005'
     $VirtInfo = {
-          virtualization_role => 'guest'
-          virtualization_type => 'parallels'
-       }
+          virtualization_role => 'guest'
+          virtualization_type => 'parallels'
+       }
     $memory_shared = '0'
     $Network = {
-          networkdevices => [
-             'eth0'
-          ]
-          networkconfiguration => {
-             eth0 => {
-                broadcast => '10.211.55.255'
-                ip => '10.211.55.60'
-                netmask => '255.255.255.0'
-                mac => '00:1C:42:9E:0E:28'
-             }
-          }
-       }
+          networkdevices => [
+             'eth0'
+          ]
+          networkconfiguration => {
+             eth0 => {
+                broadcast => '10.211.55.255'
+                ip => '10.211.55.60'
+                netmask => '255.255.255.0'
+                mac => '00:1C:42:9E:0E:28'
+             }
+          }
+       }
     $memory_used = '440'
     $kernelname = 'Linux'
     $Swap = {
-          free => '2005'
-          used => '10'
-          total => '2015'
-       }
+          free => '2005'
+          used => '10'
+          total => '2015'
+       }
     $swap_total = '2015'
     $memory_buffers = '47'
     $eth0_ip = '10.211.55.60'
@@ -197,23 +197,23 @@ For example this is the output of a CentOS VM
     $memory_free = '57'
     $manufacturer = 'Parallels Software International Inc.'
     $Memory = {
-          shared => '0'
-          buffers => '47'
-          free => '57'
-          used => '440'
-          total => '498'
-          cached => '357'
-       }
+          shared => '0'
+          buffers => '47'
+          free => '57'
+          used => '440'
+          total => '498'
+          cached => '357'
+       }
     $eth0_broadcast = '10.211.55.255'
     $eth0_netmask = '255.255.255.0'
     $Host = {
-          domain => 'test.rexify.org'
-          manufacturer => 'Parallels Software International Inc.'
-          kernelname => 'Linux'
-          hostname => 'c6test0232'
-          operatingsystemrelease => '6.2'
-          operatingsystem => 'CentOS'
-       }
+          domain => 'test.rexify.org'
+          manufacturer => 'Parallels Software International Inc.'
+          kernelname => 'Linux'
+          hostname => 'c6test0232'
+          operatingsystemrelease => '6.2'
+          operatingsystem => 'CentOS'
+       }
 
 You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.
 
@@ -238,6 +238,6 @@ Than you can list your Tasks and execute them.
     $ rex -T
     [2013-03-30 02:35:32] INFO - eval your Rexfile.
     Tasks
-      Service:NTP:prepare
+      Service:NTP:prepare
 
     $ rex -H yourserver01 Service:NTP:prepare

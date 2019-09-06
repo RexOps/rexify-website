@@ -22,9 +22,9 @@ Custom parameters for servers are possible with a slightly enhanced syntax since
 
     ```perl
     group frontends =>
-       "frontend01" => { user => "bob" },
-       "frontend02" => { user => "alice" },
-       "frontend03";
+       "frontend01" => { user => "bob" },
+       "frontend02" => { user => "alice" },
+       "frontend03";
     ```
 
 Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.
@@ -33,7 +33,7 @@ To add your groups to the tasks you have to use the group option within the task
 
     ```perl
     task "mytask", group => "mygroup", sub {
-       # do something
+       # do something
     };
     ```
 
@@ -41,7 +41,7 @@ If you need to define multiple groups for a task, you can just use an array.
 
     ```perl
     task "mytask", group => ["mygroup", "mygroup2"], sub {
-       # do something
+       # do something
     };
     ```
 
@@ -86,10 +86,10 @@ These additional options (in this example maintenance can be queried with the op
 
     ```perl
     task "prepare", group => "frontends", sub {
-       if(connection->server->option("maintenance")) {
-          say "This server is in maintenance mode, so i'm going to stop all services";
-          service ["apache2", "postfix"] => "stop";
-       }
+       if(connection->server->option("maintenance")) {
+          say "This server is in maintenance mode, so i'm going to stop all services";
+          service ["apache2", "postfix"] => "stop";
+       }
     };
     ```
 
@@ -105,21 +105,21 @@ If you want to get your server groups right out of an existing database you can 
     my $password = "dbpassword";
     my $database = "hostdb";
     my $hostname = "mysql.intern.lan";
-    my $port     = 3306;
-    my $dsn      = "DBI:mysql:database=$database;host=$hostname;port=$port";
-    my $dbh      = DBI->connect($username, $password);
+    my $port     = 3306;
+    my $dsn      = "DBI:mysql:database=$database;host=$hostname;port=$port";
+    my $dbh      = DBI->connect($username, $password);
 
-    my $sth      = $dbh->prepare("SELECT * FROM hostlist WHERE enabled=1");
+    my $sth      = $dbh->prepare("SELECT * FROM hostlist WHERE enabled=1");
 
     my %server_group = ();
     while(my $row = $sth->fetchrow_hashref) {
-       my $group_name  = $row->{server_group};
-       my $server_name = $row->{server_name};
-       push @{ $server_group{ $group_name } }, $server_name;
+       my $group_name  = $row->{server_group};
+       my $server_name = $row->{server_name};
+       push @{ $server_group{ $group_name } }, $server_name;
     }
 
     map {
-       group $_ => @{ $server_group{$_} };
+       group $_ => @{ $server_group{$_} };
     } keys %server_group;
     ```
 

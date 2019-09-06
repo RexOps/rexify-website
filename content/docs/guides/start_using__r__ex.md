@@ -66,8 +66,8 @@ Now change into this directory and create a file called Rexfile with the followi
     
     desc "Get the uptime of all servers";
     task "uptime", group => "myservers", sub {
-       my $output = run "uptime";
-       say $output;
+       my $output = run "uptime";
+       say $output;
     };
     ```
 
@@ -87,7 +87,7 @@ To add a second task, just add the next lines to your Rexfile.
     ```perl
     desc "Start Apache Service";
     task "start_apache", group => "myservers", sub {
-        service "apache2" => "start";
+        service "apache2" => "start";
     };
     ```
 
@@ -98,10 +98,10 @@ If you want to display all tasks in your Rexfile use the following command.
 
     $ rex -T
     Tasks
-      start_apache                   Start Apache Service
-      uptime                         Get the uptime of all servers
+      start_apache                   Start Apache Service
+      uptime                         Get the uptime of all servers
     Server Groups
-      myservers                       mywebserver, mymailserver, myfileserver
+      myservers                       mywebserver, mymailserver, myfileserver
 
 ## Authentication
 
@@ -145,22 +145,22 @@ In this example you will learn how to install and configure ntp. You can adapt t
     group all_servers => "srv[001..150]";
 
     task "setup_ntp", group => "all_servers", sub {
-       # first we will install the package
-       pkg "ntpd",
-         ensure => "present";
+       # first we will install the package
+       pkg "ntpd",
+         ensure => "present";
 
-       # then we will upload a configuration file.
-       # the configuration file is located in a subdirectory files/etc.
-       file "/etc/ntp.conf",
-          source    => "files/etc/ntp.conf",
-          on_change => sub {
-             # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
-             service ntpd => "restart";
-          };
+       # then we will upload a configuration file.
+       # the configuration file is located in a subdirectory files/etc.
+       file "/etc/ntp.conf",
+          source    => "files/etc/ntp.conf",
+          on_change => sub {
+             # we define a on_change hook, so that the ntpd server gets restarted if the file is modified.
+             service ntpd => "restart";
+          };
 
-       # now we register the service to start at boot time.
-       service "ntpd",
-         ensure => "started";
+       # now we register the service to start at boot time.
+       service "ntpd",
+         ensure => "started";
     };
     ```
 

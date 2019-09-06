@@ -20,22 +20,22 @@ First you have to create it
     $ vim files/my.cnf.tpl
 
     [mysqld]
-    datadir                 = /var/lib/mysql
-    socket                  = /var/run/mysqld/mysqld.sock
-    user                    = mysql
+    datadir                 = /var/lib/mysql
+    socket                  = /var/run/mysqld/mysqld.sock
+    user                    = mysql
     # Disabling symbolic-links is recommended to prevent assorted security risks
-    symbolic-links          = 0
-    datadir                 = /var/lib/mysql
-    tmpdir                  = /tmp
+    symbolic-links          = 0
+    datadir                 = /var/lib/mysql
+    tmpdir                  = /tmp
     skip-external-locking
-    max_allowed_packet      = 64M
-    thread_stack            = 192K
-    max_connections         = <%= exists $conf->{"max_connections"} ? $conf->{"max_connections"} : "1000" %>
+    max_allowed_packet      = 64M
+    thread_stack            = 192K
+    max_connections         = <%= exists $conf->{"max_connections"} ? $conf->{"max_connections"} : "1000" %>
 
-    max_connect_errors      = 1000
-    table_cache             = <%= exists $conf->{"table_cache"} ? $conf->{"table_cache"} : "5000" %>
-    table_open_cache        = <%= exists $conf->{"table_open_cache"} ? $conf->{"table_open_cache"} : "5000" %>
-    thread_concurrency      = 10
+    max_connect_errors      = 1000
+    table_cache             = <%= exists $conf->{"table_cache"} ? $conf->{"table_cache"} : "5000" %>
+    table_open_cache        = <%= exists $conf->{"table_open_cache"} ? $conf->{"table_open_cache"} : "5000" %>
+    thread_concurrency      = 10
 
     #
     # ... and more ...
@@ -52,14 +52,14 @@ Than you can reference on it from within your Rexfile.
     group databases=> "mydb01", "mydb02";
 
     task "prepare_databases", group => "databases", sub {
-       file "/etc/my.cnf",
-          owner   => "root",
-          group   => "root",
-          mode    => "644",
-          content => template("files/my.cnf.tpl", conf => {
-                                 max_connections => "500",
-                                 table_cache     => "2500",
-                              });
+       file "/etc/my.cnf",
+          owner   => "root",
+          group   => "root",
+          mode    => "644",
+          content => template("files/my.cnf.tpl", conf => {
+                                 max_connections => "500",
+                                 table_cache     => "2500",
+                              });
     };
     ```
 
@@ -73,16 +73,16 @@ When you want to deliver a rexfile that includes the templates, you can use inli
     use Rex -feature => ['1.0'];
 
     task tempfiles => sub {
-        file '/tmp/test.txt' =>
-            content => template(
-                '@test',
-                test => {
-                    author => 'reneeb',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
-        ;
+        file '/tmp/test.txt' =>
+            content => template(
+                '@test',
+                test => {
+                    author => 'reneeb',
+                    target => 'rex',
+                },
+            ),
+            chmod => 644,
+        ;
     };
 
     __DATA__
@@ -101,27 +101,27 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
     ```perl
     use Rex -feature => ['1.0'];
     task tempfiles => sub {
-        file '/tmp/test.txt' =>
-            content => template(
-                '@test',
-                test => {
-                    author => 'reneeb',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
-        ;
+        file '/tmp/test.txt' =>
+            content => template(
+                '@test',
+                test => {
+                    author => 'reneeb',
+                    target => 'rex',
+                },
+            ),
+            chmod => 644,
+        ;
 
-        file '/tmp/rex.txt' =>
-            content => template(
-                '@rex',
-                test => {
-                    author => 'krimdomu',
-                    target => 'rex',
-                },
-            ),
-            chmod => 644,
-        ;
+        file '/tmp/rex.txt' =>
+            content => template(
+                '@rex',
+                test => {
+                    author => 'krimdomu',
+                    target => 'rex',
+                },
+            ),
+            chmod => 644,
+        ;
     };
 
     __DATA__

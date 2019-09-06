@@ -38,7 +38,7 @@ If you have many servers you want to connect to, you ususally don't want to conn
     parallelism 15;
 
     task "prepare", group => "frontends", sub {
-       # do something
+       # do something
     };
     ```
 

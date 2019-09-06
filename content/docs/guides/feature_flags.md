@@ -41,7 +41,7 @@ This is the current list of feature flags:
 | source\_global\_profile                | 0.44      | Source /etc/profile before running a command. |
 | exec\_autodie                          | 0.44      | If you execute a command with run() Rex will die() if the command returns a RETVAL != 0. |
 | exec\_and\_sleep                       | 0.43      | Sometimes some commands that fork away didn't keep running. With this flag rex will wait a few ms before exiting the shell. |
-| disable\_strict\_host\_key\_checking   | 0.43      | Disabling strict host key checking for openssh connection mode. |
+| disable\_strict\_host\_key\_checking   | 0.43      | Disabling strict host key checking for openssh connection mode. |
 | reporting                              | 0.43      | Enable reporting |
 | empty\_groups                          | 0.42      | Enable usage of empty groups. |
 | use\_server\_auth                      | 0.42      | Enable the usage of special authentication options for servers. |

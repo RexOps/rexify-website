@@ -24,7 +24,7 @@ If you have any questions about how to implement something, join us on irc.freen
 ## Sponsoring
 
 As mentioned above (R)?ex is completely developed by volunteers. Which means there is no guarantee that a specific feature will be released at a defined date. If you need a special feature you can sponsor it, so we can focus our efforts on that feature. In this case contact us at feature@rexify.org.
-Those sponsored features will also be released under the same license as (R)?ex itself. So it is guaranteed that it will remain  compatible with following releases and you will also have the benefit of a community finding potential bugs or contributing enhancements.
+Those sponsored features will also be released under the same license as (R)?ex itself. So it is guaranteed that it will remain  compatible with following releases and you will also have the benefit of a community finding potential bugs or contributing enhancements.
 
 ## Hardware
 
@@ -34,4 +34,4 @@ One special case is hardware. There can't be enough hardware/environments where 
 
 We want to give a special thanks to the listed companies.
 
-[<img src="/public/images/skin/rexify.org/adjust_transparent.png" width="278" height="86" />](https://www.adjust.com/) 
+[<img src="/public/images/skin/rexify.org/adjust_transparent.png" width="278" height="86" />](https://www.adjust.com/) 
