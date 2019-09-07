@@ -8,7 +8,7 @@ To work with the website locally, clone the repo and use the following steps:
 
 1. Install dependencies
 
-        cpanm --installdeps .
+        cpanm --installdeps --with-develop .
 
 1. Make sure Perl will find modules in `/.lib`, so local modules can be used
 
