@@ -1,1 +1,0 @@
-repositor.io 1.1.0 released. [repositor.io](http://www.repositor.io) is a repository management tool for apt, yum, yast and docker. This is a bugfix release with fixes for ubuntu and centos7 installation media mirroring.
