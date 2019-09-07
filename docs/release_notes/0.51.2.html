@@ -127,9 +127,7 @@ maintained using the static site generator
 <li>cmdb/{environment}/{hostname}.yml</li>
 <li>cmdb/{environment}/default.yml</li>
 <li>cmdb/{hostname}.yml</li>
-<li><p>cmdb/default.yml</p>
-
-<p> </p></li>
+<li>cmdb/default.yml</li>
 </ul>
 
 <p>For example, if you have a <strong>CentOS</strong> server with the hostname <strong>web01</strong>, this means that if you request the key <strong>maxconn</strong> Rex will first try to find the key inside <strong>cmdb/CentOS/web01.yml</strong> and if it doesn&#39;t find the Rex will try the next file in the lookup path.</p>
@@ -138,8 +136,6 @@ maintained using the static site generator
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
 ⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
 ⁠};    </code></pre>
-
-<p> </p>
 
 <p>If you&#39;re using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
 
@@ -150,9 +146,7 @@ maintained using the static site generator
 ⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
 ⁠};    </code></pre>
 
-<p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p>
-
-<p> </p></li>
+<p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p></li>
 <li><p><strong>Store server groups in an ini file</strong></p>
 
 <p>This feature is also available since a long time and now loaded by default. If there is a file named <strong>server.ini</strong> beside your <strong>Rexfile</strong> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
@@ -197,7 +191,7 @@ redis02 user=toor password=foob4r sudo=true services=redis
 ⁠  service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
 ⁠  };
 ⁠
-⁠         </code></pre></li>
+⁠         </code></pre></li>
 </ul>
 
 <h2 id="bugfixes">Bugfixes</h2>

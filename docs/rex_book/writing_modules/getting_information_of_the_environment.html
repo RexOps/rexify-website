@@ -120,7 +120,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">dump-info</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   dump_system_information;
+⁠  dump_system_information;
 ⁠};</code></pre>
 
 <p>This will print out everything Rex knows about the remote system. You can use these information inside your Rexfile or a template.</p>
@@ -132,11 +132,11 @@ $memory_cached = &#39;127&#39;
 $memory_total = &#39;497&#39;
 $kernelrelease = &#39;2.6.18-348.6.1.el5&#39;
 $Kernel = {
-      kernelversion =&gt; &#39;#1 SMP Tue May 21 15:29:55 EDT 2013&#39;
-      architecture =&gt; &#39;x86_64&#39;
-      kernel =&gt; &#39;Linux&#39;
-      kernelrelease =&gt; &#39;2.6.18-348.6.1.el5&#39;
-   }
+      kernelversion =&gt; &#39;#1 SMP Tue May 21 15:29:55 EDT 2013&#39;
+      architecture =&gt; &#39;x86_64&#39;
+      kernel =&gt; &#39;Linux&#39;
+      kernelrelease =&gt; &#39;2.6.18-348.6.1.el5&#39;
+   }
 $hostname = &#39;centos-5-amd64.rexify.org&#39;
 $operatingsystem = &#39;CentOS&#39;
 $operatingsystemrelease = &#39;5.9&#39;
@@ -146,30 +146,30 @@ $eth0_mac = &#39;52:54:00:E8:69:15&#39;
 $kernel = &#39;Linux&#39;
 $swap_free = &#39;1023&#39;
 $VirtInfo = {
-      virtualization_role =&gt; &#39;guest&#39;
-      virtualization_type =&gt; &#39;kvm&#39;
-   }
+      virtualization_role =&gt; &#39;guest&#39;
+      virtualization_type =&gt; &#39;kvm&#39;
+   }
 $memory_shared = &#39;0&#39;
 $Network = {
-      networkdevices =&gt; [
-         &#39;eth0&#39;
-      ]
-      networkconfiguration =&gt; {
-         eth0 =&gt; {
-            broadcast =&gt; &#39;192.168.122.255&#39;
-            ip =&gt; &#39;192.168.122.22&#39;
-            netmask =&gt; &#39;255.255.255.0&#39;
-            mac =&gt; &#39;52:54:00:E8:69:15&#39;
-         }
-      }
-   }
+      networkdevices =&gt; [
+         &#39;eth0&#39;
+      ]
+      networkconfiguration =&gt; {
+         eth0 =&gt; {
+            broadcast =&gt; &#39;192.168.122.255&#39;
+            ip =&gt; &#39;192.168.122.22&#39;
+            netmask =&gt; &#39;255.255.255.0&#39;
+            mac =&gt; &#39;52:54:00:E8:69:15&#39;
+         }
+      }
+   }
 $memory_used = &#39;218&#39;
 $kernelname = &#39;Linux&#39;
 $Swap = {
-      free =&gt; &#39;1023&#39;
-      used =&gt; &#39;0&#39;
-      total =&gt; &#39;1023&#39;
-   }
+      free =&gt; &#39;1023&#39;
+      used =&gt; &#39;0&#39;
+      total =&gt; &#39;1023&#39;
+   }
 $swap_total = &#39;1023&#39;
 $memory_buffers = &#39;12&#39;
 $eth0_ip = &#39;192.168.122.22&#39;
@@ -177,23 +177,23 @@ $swap_used = &#39;0&#39;
 $memory_free = &#39;278&#39;
 $manufacturer = &#39;Bochs&#39;
 $Memory = {
-      shared =&gt; &#39;0&#39;
-      buffers =&gt; &#39;12&#39;
-      free =&gt; &#39;278&#39;
-      used =&gt; &#39;218&#39;
-      total =&gt; &#39;497&#39;
-      cached =&gt; &#39;127&#39;
-   }
+      shared =&gt; &#39;0&#39;
+      buffers =&gt; &#39;12&#39;
+      free =&gt; &#39;278&#39;
+      used =&gt; &#39;218&#39;
+      total =&gt; &#39;497&#39;
+      cached =&gt; &#39;127&#39;
+   }
 $eth0_broadcast = &#39;192.168.122.255&#39;
 $eth0_netmask = &#39;255.255.255.0&#39;
 $Host = {
-      domain =&gt; &#39;&#39;
-      manufacturer =&gt; &#39;Bochs&#39;
-      kernelname =&gt; &#39;Linux&#39;
-      hostname =&gt; &#39;centos-5-amd64.rexify.org&#39;
-      operatingsystemrelease =&gt; &#39;5.9&#39;
-      operatingsystem =&gt; &#39;CentOS&#39;
-   }
+      domain =&gt; &#39;&#39;
+      manufacturer =&gt; &#39;Bochs&#39;
+      kernelname =&gt; &#39;Linux&#39;
+      hostname =&gt; &#39;centos-5-amd64.rexify.org&#39;
+      operatingsystemrelease =&gt; &#39;5.9&#39;
+      operatingsystem =&gt; &#39;CentOS&#39;
+   }
 </code></pre>
 
 <p>To use these information inside the Rexfile you can query them with the get_system_information function or use the methods from the connection object</p>
@@ -201,16 +201,16 @@ $Host = {
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">get_hostname</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">%info</span> = get_system_information;
-⁠   say <span class="hljs-type">$info</span>{hostname} . &quot;<span class="hljs-string">.</span>&quot; . <span class="hljs-type">$info</span>{domain};
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">%info</span> = get_system_information;
+⁠  say <span class="hljs-type">$info</span>{hostname} . &quot;<span class="hljs-string">.</span>&quot; . <span class="hljs-type">$info</span>{domain};
 ⁠};
 ⁠
 ⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$libpath</span> = case connection-&gt;server-&gt;architecture,
-⁠                     &quot;<span class="hljs-string">i386</span>&quot;   =&gt; &quot;<span class="hljs-string">/usr/lib</span>&quot;,
-⁠                     &quot;<span class="hljs-string">x86_64</span>&quot; =&gt; &quot;<span class="hljs-string">/usr/lib64</span>&quot;;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$libpath</span> = case connection-&gt;server-&gt;architecture,
+⁠    &quot;<span class="hljs-string">i386</span>&quot;   =&gt; &quot;<span class="hljs-string">/usr/lib</span>&quot;,
+⁠    &quot;<span class="hljs-string">x86_64</span>&quot; =&gt; &quot;<span class="hljs-string">/usr/lib64</span>&quot;;
 ⁠};</code></pre>
 
 <h2 id="usingenvironmentinformationinsidetemplates">Using environment information inside templates</h2>

@@ -140,8 +140,7 @@ maintained using the static site generator
 ⁠
 ⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(
-⁠    &quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
 ⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
 ⁠
 ⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
@@ -190,14 +189,12 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;,
-⁠    start  =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠    stop   =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
-⁠    status =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
-⁠    restart =&gt;
-⁠    &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠    reload =&gt;
-⁠    &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
+⁠    ensure  =&gt; &quot;<span class="hljs-string">started</span>&quot;,
+⁠    start   =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠    stop    =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
+⁠    status  =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
+⁠    restart =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠    reload  =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
 

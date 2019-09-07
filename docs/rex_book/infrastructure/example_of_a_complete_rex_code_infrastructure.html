@@ -170,14 +170,14 @@ Description: The frontend service
 Author: jan gehring 
 License: Apache 2.0
 Require:
-  Rex::NTP::Base:
-    git: https://github.com/krimdomu/rex-ntp-base.git
-    branch: master
-  Rex::OS::Base:
-    git: https://github.com/krimdomu/rex-os-base.git
-    branch: master
+  Rex::NTP::Base:
+    git: https://github.com/krimdomu/rex-ntp-base.git
+    branch: master
+  Rex::OS::Base:
+    git: https://github.com/krimdomu/rex-os-base.git
+    branch: master
 PerlRequire:
-  - Moo
+  - Moo
 </code></pre>
 
 <p>In this file you see that we define some dependencies to custom Rex modules located in git repositories. The <code>rexify --resolve-deps</code> command will read the <strong>meta.yml</strong> file and download all these dependencies into the <strong>lib</strong> directory.</p>
@@ -213,15 +213,15 @@ PerlRequire:
 <h4 id="configurethecmdb">Configure the CMDB</h4>
 
 <pre><code class="hljs">⁠set cmdb =&gt; {
-⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
-⁠  path =&gt; [
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
-⁠  ],
+⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
+⁠  path =&gt; [
+⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,
+⁠    &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
+⁠  ],
 ⁠};</code></pre>
 
 <p>Configure the CMDB. Here we define a custom search path. This will tell the CMDB to lookup the keys in the following order:</p>
@@ -258,9 +258,9 @@ PerlRequire:
 <h4 id="includeallrequiredrexmodules">Include all required Rex modules</h4>
 
 <pre><code class="hljs">⁠include qw/
-⁠  Rex::OS::Base
-⁠  Rex::NTP::Base
-⁠  /;</code></pre>
+⁠  Rex::OS::Base
+⁠  Rex::NTP::Base
+⁠  /;</code></pre>
 
 <p>Include all needed Rex modules. With <strong>include</strong> all the tasks inside these modules won&#39;t get displayed with <code>rex -T</code>.</p>
 
@@ -275,11 +275,11 @@ PerlRequire:
 <p>It is also possible to define the server or group to connect to.</p>
 
 <pre><code class="hljs">⁠make {
-⁠  <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠  <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 ⁠
-⁠  <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠  <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 ⁠};</code></pre>
 
 <p>Inside the task we just call the tasks from the modules we have included above. All tasks can be called as a normal perl function, as long as the taskname doesn&#39;t conflict with other perl functions.</p>
@@ -305,13 +305,17 @@ PerlRequire:
 <p>Load the <strong>Rex::Test::Base</strong> framework and the Rex basic commands.</p>
 
 <pre><code class="hljs">⁠test {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);</code></pre>
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
+⁠
+⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠</span>};
+⁠<span class="hljs-number">1</span>;</code></pre>
 
 <p>Create a new test named <strong>ubuntu test</strong>. For every test Rex will create a new vm.</p>
 
 <pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>(user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot;);</code></pre>
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );</code></pre>
 
 <p>Define the url where to download the base VM image and the authentication.</p>
 
@@ -319,26 +323,24 @@ PerlRequire:
 
 <p>Define which task to run on the VM.</p>
 
-<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
-⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
-⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>(&quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms);
-⁠
-⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>(<span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot;);</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
+⁠  
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
+⁠  
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠  
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
+⁠  
+⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
+⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );</code></pre>
 
 <p>Run the tests. You can also use normal rex functions here.</p>
 
 <p>At the end finish the tests with:</p>
 
-<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
-⁠};
-⁠<span class="hljs-number">1</span>;</code></pre>
+<pre><code class="hljs">⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;</code></pre>
 
 <p>You can now run the tests with <code>rex Test:run</code>.</p>
 

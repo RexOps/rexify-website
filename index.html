@@ -205,16 +205,18 @@ maintained using the static site generator
 ⁠group frontend =&gt; &quot;<span class="hljs-string">frontend[01..05]</span>&quot;;
 ⁠
 ⁠desc &quot;<span class="hljs-string">Prepare Frontend Server</span>&quot;;
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
 ⁠
-⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
-⁠};
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠  };
 ⁠
 ⁠desc &quot;<span class="hljs-string">Keep Configuration in sync</span>&quot;;
-⁠task &quot;<span class="hljs-string">configure</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠task &quot;<span class="hljs-string">configure</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
 ⁠  prepare();
 ⁠
 ⁠  file &quot;<span class="hljs-string">/etc/apache2/apache2.conf</span>&quot;,
@@ -234,22 +236,24 @@ maintained using the static site generator
 ⁠sudo_password &quot;<span class="hljs-string">mysudopw</span>&quot;;
 ⁠
 ⁠desc &quot;<span class="hljs-string">Prepare Frontend Server</span>&quot;;
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
+⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;
 ⁠
-⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
-⁠};
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠  };
 ⁠
 ⁠desc &quot;<span class="hljs-string">Keep Configuration in sync</span>&quot;;
-⁠task &quot;<span class="hljs-string">configure</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;, <span class="hljs-keyword">sub </span>{
+⁠task &quot;<span class="hljs-string">configure</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
 ⁠  prepare();
 ⁠
 ⁠  file &quot;<span class="hljs-string">/etc/apache2/apache2.conf</span>&quot;,
 ⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/apache2/apache2.conf</span>&quot;,
 ⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service apache2 =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
-⁠};</code></pre>
+⁠  };</code></pre>
 
 
 

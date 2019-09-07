@@ -131,7 +131,7 @@ maintained using the static site generator
 <ul>
 <li><p>VirtualBox support for Rex::Commands::Virtualization</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Virtualization</span>;
+<pre><code class="hljs">⁠use <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Virtualization</span>;
 ⁠
 ⁠set virtualization =&gt; &quot;<span class="hljs-string">VBox</span>&quot;;
 ⁠
@@ -222,14 +222,14 @@ maintained using the static site generator
 <li><p><strong>auth for</strong> now works with regular expresions.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span>    
+⁠</span>
 ⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
 ⁠};
 ⁠task example =&gt; <span class="hljs-keyword">sub </span>{
 ⁠};
 ⁠task example2 =&gt; <span class="hljs-keyword">sub </span>{
 ⁠};
-⁠    
+⁠
 ⁠set auth <span class="hljs-keyword">for</span> qr{<span class="hljs-string">^</span>example<span class="hljs-number">\d</span><span class="hljs-string">$</span>} =&gt; user =&gt; &quot;<span class="hljs-string">example</span>&quot;,
 ⁠  password =&gt; &quot;<span class="hljs-string">foob4r</span>&quot;;    </code></pre></li>
 <li><p>It is now possible to use the <strong>repository</strong> function for multiple distributions.</p>

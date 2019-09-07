@@ -164,9 +164,9 @@ maintained using the static site generator
 <p>If this option is set, the file will never be overwritten.</p>
 
 <pre><code class="hljs">⁠file &quot;<span class="hljs-string">/var/named/</span><span class="hljs-type">$zone</span>-&gt;<span class="hljs-string">{name}.zone</span>&quot;,
-⁠  content =&gt; template( &#39;<span class="hljs-string">@zone-file.tpl</span>&#39;, conf =&gt; <span class="hljs-type">$conf</span>, <span class="hljs-type">%</span>{<span class="hljs-type">$zone</span>} ),
-⁠  owner   =&gt; &quot;<span class="hljs-string">named</span>&quot;,
-⁠  group   =&gt; &quot;<span class="hljs-string">named</span>&quot;,
+⁠  content      =&gt; template( &#39;<span class="hljs-string">@zone-file.tpl</span>&#39;, conf =&gt; <span class="hljs-type">$conf</span>, <span class="hljs-type">%</span>{<span class="hljs-type">$zone</span>} ),
+⁠  owner        =&gt; &quot;<span class="hljs-string">named</span>&quot;,
+⁠  group        =&gt; &quot;<span class="hljs-string">named</span>&quot;,
 ⁠  no_overwrite =&gt; TRUE;        </code></pre></li>
 <li><p>ensure directory option for file().</p>
 
@@ -181,10 +181,8 @@ maintained using the static site generator
 <p>This allow operations on multiple files without duplicating the code.</p>
 
 <pre><code class="hljs">⁠file [
-⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/bootdevice</span>&quot;,
-⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/bridge</span>&quot;,
-⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/sysinfo</span>&quot;,
-⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/os</span>&quot;
+⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/bootdevice</span>&quot;, &quot;<span class="hljs-string">/etc/rex/io/inventory/bridge</span>&quot;,
+⁠  &quot;<span class="hljs-string">/etc/rex/io/inventory/sysinfo</span>&quot;,    &quot;<span class="hljs-string">/etc/rex/io/inventory/os</span>&quot;
 ⁠  ],
 ⁠  owner =&gt; &quot;<span class="hljs-string">root</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">root</span>&quot;,

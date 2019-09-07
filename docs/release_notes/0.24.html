@@ -144,8 +144,7 @@ maintained using the static site generator
 <p>It is now possible to write templates inside your Rexfile.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/foo</span>&quot;,
-⁠    content =&gt; template( &quot;<span class="hljs-type">@mytemplate</span><span class="hljs-string">.conf</span>&quot;, user =&gt; &#39;<span class="hljs-string">bar</span>&#39;, );
+⁠  file &quot;<span class="hljs-string">/etc/foo</span>&quot;, content =&gt; template( &quot;<span class="hljs-type">@mytemplate</span><span class="hljs-string">.conf</span>&quot;, user =&gt; &#39;<span class="hljs-string">bar</span>&#39;, );
 ⁠};
 ⁠
 ⁠ <span class="hljs-keyword">__DATA__</span>

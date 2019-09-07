@@ -176,8 +176,7 @@ maintained using the static site generator
 ⁠<span class="hljs-comment">#</span><span class="hljs-comment">
 ⁠</span><span class="hljs-comment"># CALL:</span><span class="hljs-comment">
 ⁠</span><span class="hljs-comment"># rex init --name=gpw --url=http://domain.tld/ubuntu-server-12.10-amd64.qcow2</span><span class="hljs-comment">
-⁠</span>desc
-⁠  &quot;<span class="hljs-string">Initialize and start the VM: rex init --name=vmname [--url=http://...]</span>&quot;;
+⁠</span>desc &quot;<span class="hljs-string">Initialize and start the VM: rex init --name=vmname [--url=http://...]</span>&quot;;
 ⁠task &quot;<span class="hljs-string">init</span>&quot;, make {
 ⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
 ⁠
@@ -241,11 +240,11 @@ maintained using the static site generator
 ⁠
 ⁠cloud_volume
 ⁠  attach =&gt; <span class="hljs-type">$vol_id</span>,
-⁠  to     =&gt; <span class="hljs-type">$instance</span> &gt; {id};        </code></pre></li>
+⁠  to     =&gt; <span class="hljs-type">$instance</span>-&gt;{id};        </code></pre></li>
 <li><p>Terminating an instance and removing the volume.</p>
 
 <pre><code class="hljs">⁠cloud_service &quot;<span class="hljs-string">RackSpace</span>&quot;;
-⁠cloud_instance terminate =&gt; <span class="hljs-type">$instance</span> &gt; {id};
+⁠cloud_instance terminate =&gt; <span class="hljs-type">$instance</span>-&gt;{id};
 ⁠cloud_volume <span class="hljs-function">delete</span>      =&gt; <span class="hljs-type">$vol_id</span>;        </code></pre></li>
 </ul></li>
 <li><p>fixed a case where amazon returns instance item in an array - Kasim Tuman</p></li>

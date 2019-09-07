@@ -140,9 +140,9 @@ maintained using the static site generator
 <h2 id="howcanipassparameterstoatask">How can I pass parameters to a task?</h2>
 
 <pre><code class="hljs">⁠task &#39;<span class="hljs-string">mytask</span>&#39;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span> = <span class="hljs-function">shift</span>;
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span>       = <span class="hljs-function">shift</span>;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
 ⁠};</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
@@ -162,8 +162,8 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
 ⁠
 ⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
-⁠</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
+⁠  shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
+⁠</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
 ⁠</span><span class="hljs-keyword">EOF</span>
 ⁠};</code></pre>
 
@@ -175,7 +175,7 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
 ⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+⁠  shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
 ⁠};</code></pre>
 
 <h2 id="howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</h2>
@@ -188,7 +188,7 @@ maintained using the static site generator
 ⁠    command =&gt; <span class="hljs-keyword">sub </span>{
 ⁠      shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
 ⁠    },
-⁠    user    =&gt; &#39;<span class="hljs-string">root</span>&#39;
+⁠    user =&gt; &#39;<span class="hljs-string">root</span>&#39;
 ⁠  };
 ⁠};</code></pre>
 
@@ -198,9 +198,9 @@ maintained using the static site generator
 
 <h2 id="howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
 
-<pre><code class="hljs">⁠<span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;);           <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
-⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot;);   <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
-⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot;);  <span class="hljs-comment"># for ERROR (red)</span></code></pre>
+<pre><code class="hljs">⁠<span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;); <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
+⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot; );  <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
+⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot; ); <span class="hljs-comment"># for ERROR (red)</span></code></pre>
 
 
 

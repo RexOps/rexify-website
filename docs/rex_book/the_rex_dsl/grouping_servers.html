@@ -116,35 +116,38 @@ maintained using the static site generator
               <p>Rex offers you a powerfull way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
 
 <pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;, &quot;<span class="hljs-string">frontend02</span>&quot;, &quot;<span class="hljs-string">frontend03</span>&quot;;
-⁠group backends =&gt; &quot;<span class="hljs-string">backend01</span>&quot;, &quot;<span class="hljs-string">backend02</span>&quot;;</code></pre>
+⁠group backends  =&gt; &quot;<span class="hljs-string">backend01</span>&quot;,  &quot;<span class="hljs-string">backend02</span>&quot;;</code></pre>
 
 <p>Rex offers also a simple notation to define server ranges, so that you don&#39;t need to type so much.</p>
 
 <pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend[01..03]</span>&quot;;
-⁠group backends =&gt; &quot;<span class="hljs-string">backend[01..02]</span>&quot;;</code></pre>
+⁠group backends  =&gt; &quot;<span class="hljs-string">backend[01..02]</span>&quot;;</code></pre>
 
 <p>This notation will just expand to frontend01, frontend02 and frontend03 for the frontends group and to backend01 and backend02 for the backends group.</p>
 
 <p>Custom parameters for servers are possible with a slightly enhanced syntax since version 0.47:</p>
 
-<pre><code class="hljs">⁠group frontends =&gt;
-⁠   &quot;<span class="hljs-string">frontend01</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">bob</span>&quot; },
-⁠   &quot;<span class="hljs-string">frontend02</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">alice</span>&quot; },
-⁠   &quot;<span class="hljs-string">frontend03</span>&quot;;</code></pre>
+<pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend01</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">bob</span>&quot; },
+⁠  &quot;<span class="hljs-string">frontend02</span>&quot;  =&gt; { user       =&gt; &quot;<span class="hljs-string">alice</span>&quot; },
+⁠  &quot;<span class="hljs-string">frontend03</span>&quot;;</code></pre>
 
 <p>Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
 
 <p>To add your groups to the tasks you have to use the group option within the task generation.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, group =&gt; &quot;<span class="hljs-string">mygroup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>};</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">mygroup</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  };</code></pre>
 
 <p>If you need to define multiple groups for a task, you can just use an array.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, group =&gt; [&quot;<span class="hljs-string">mygroup</span>&quot;, &quot;<span class="hljs-string">mygroup2</span>&quot;], <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>};</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
+⁠  group =&gt; [ &quot;<span class="hljs-string">mygroup</span>&quot;, &quot;<span class="hljs-string">mygroup2</span>&quot; ],
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>  };</code></pre>
 
 <h2 id="usinganinifiletodefineservergroups">Using an INI file to define server groups</h2>
 
@@ -185,12 +188,14 @@ backend02
 
 <p>These additional options (in this example maintenance can be queried with the option method from the connection object.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">if</span>(connection-&gt;server-&gt;option(&quot;<span class="hljs-string">maintenance</span>&quot;)) {
-⁠      say &quot;<span class="hljs-string">This server is in maintenance mode, so i&#39;m going to stop all services</span>&quot;;
-⁠      service [&quot;<span class="hljs-string">apache2</span>&quot;, &quot;<span class="hljs-string">postfix</span>&quot;] =&gt; &quot;<span class="hljs-string">stop</span>&quot;;
-⁠   }
-⁠};</code></pre>
+<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">if</span> ( connection-&gt;server-&gt;option(&quot;<span class="hljs-string">maintenance</span>&quot;) ) {
+⁠    say &quot;<span class="hljs-string">This server is in maintenance mode, so i&#39;m going to stop all services</span>&quot;;
+⁠    service [ &quot;<span class="hljs-string">apache2</span>&quot;, &quot;<span class="hljs-string">postfix</span>&quot; ] =&gt; &quot;<span class="hljs-string">stop</span>&quot;;
+⁠  }
+⁠  };</code></pre>
 
 <h2 id="queringadatabasetodefineservergroups">Quering a database to define server groups</h2>
 
@@ -203,22 +208,20 @@ backend02
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$password</span> = &quot;<span class="hljs-string">dbpassword</span>&quot;;
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$database</span> = &quot;<span class="hljs-string">hostdb</span>&quot;;
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$hostname</span> = &quot;<span class="hljs-string">mysql.intern.lan</span>&quot;;
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$port</span>     = <span class="hljs-number">3306</span>;
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dsn</span>      = &quot;<span class="hljs-string">DBI:mysql:database=</span><span class="hljs-type">$database</span><span class="hljs-string">;host=</span><span class="hljs-type">$hostname</span><span class="hljs-string">;port=</span><span class="hljs-type">$port</span>&quot;;
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dbh</span>      = DBI-&gt;<span class="hljs-function">connect</span>(<span class="hljs-type">$username</span>, <span class="hljs-type">$password</span>);
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$port</span>     = <span class="hljs-number">3306</span>;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dsn</span>      = &quot;<span class="hljs-string">DBI:mysql:database=</span><span class="hljs-type">$database</span><span class="hljs-string">;host=</span><span class="hljs-type">$hostname</span><span class="hljs-string">;port=</span><span class="hljs-type">$port</span>&quot;;
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$dbh</span>      = DBI-&gt;<span class="hljs-function">connect</span>( <span class="hljs-type">$username</span>, <span class="hljs-type">$password</span> );
 ⁠
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$sth</span>      = <span class="hljs-type">$dbh</span>-&gt;<span class="hljs-type">prepare</span>(&quot;<span class="hljs-string">SELECT * FROM hostlist WHERE enabled=1</span>&quot;);
+⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$sth</span> = <span class="hljs-type">$dbh</span>-&gt;<span class="hljs-type">prepare</span>(&quot;<span class="hljs-string">SELECT * FROM hostlist WHERE enabled=1</span>&quot;);
 ⁠
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%server_group</span> = ();
-⁠<span class="hljs-keyword">while</span>(<span class="hljs-keyword">my</span> <span class="hljs-type">$row</span> = <span class="hljs-type">$sth</span>-&gt;<span class="hljs-type">fetchrow_hashref</span>) {
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$group_name</span>  = <span class="hljs-type">$row</span>-&gt;{server_group};
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$server_name</span> = <span class="hljs-type">$row</span>-&gt;{server_name};
-⁠   <span class="hljs-function">push</span> <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{ <span class="hljs-type">$group_name</span> } }, <span class="hljs-type">$server_name</span>;
+⁠<span class="hljs-keyword">while</span> ( <span class="hljs-keyword">my</span> <span class="hljs-type">$row</span> = <span class="hljs-type">$sth</span>-&gt;<span class="hljs-type">fetchrow_hashref</span> ) {
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$group_name</span>  = <span class="hljs-type">$row</span>-&gt;{server_group};
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$server_name</span> = <span class="hljs-type">$row</span>-&gt;{server_name};
+⁠  <span class="hljs-function">push</span> <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-type">$group_name</span>} }, <span class="hljs-type">$server_name</span>;
 ⁠}
 ⁠
-⁠<span class="hljs-function">map</span> {
-⁠   group <span class="hljs-variable">$_</span> =&gt; <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-variable">$_</span>} };
-⁠} <span class="hljs-function">keys</span> <span class="hljs-type">%server_group</span>;</code></pre>
+⁠<span class="hljs-function">map</span> { group <span class="hljs-variable">$_</span> =&gt; <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-variable">$_</span>} }; } <span class="hljs-function">keys</span> <span class="hljs-type">%server_group</span>;</code></pre>
 
 <p>This example expects the following column names:</p>
 
@@ -231,9 +234,9 @@ backend02
 
 <p>If there is no built-in function that fits your needs for group creation, you can do it all by yourself. Because the Rexfile is just a plain perl script and the group command is just a perl function that expects the group name as first parameter, and uses all other parameters for the servers, you can create your own function.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@list</span> = (&quot;<span class="hljs-string">some</span>&quot;, &quot;<span class="hljs-string">list</span>&quot;, &quot;<span class="hljs-string">entries</span>&quot;);
-⁠group mygroup =&gt; <span class="hljs-function">grep</span> { /list/ } <span class="hljs-type">@list</span>;
-⁠group myserver =&gt; <span class="hljs-function">map</span> {&quot;<span class="hljs-string">s</span><span class="hljs-variable">$_</span><span class="hljs-string">.domain.com</span>&quot;} qw(1 3 7);</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@list</span> = ( &quot;<span class="hljs-string">some</span>&quot;, &quot;<span class="hljs-string">list</span>&quot;, &quot;<span class="hljs-string">entries</span>&quot; );
+⁠group mygroup  =&gt; <span class="hljs-function">grep</span> { /list/ } <span class="hljs-type">@list</span>;
+⁠group myserver =&gt; <span class="hljs-function">map</span>  { &quot;<span class="hljs-string">s</span><span class="hljs-variable">$_</span><span class="hljs-string">.domain.com</span>&quot; } qw(1 3 7);</code></pre>
 
 
 

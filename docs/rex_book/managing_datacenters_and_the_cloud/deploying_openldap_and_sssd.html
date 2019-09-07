@@ -185,19 +185,21 @@ maintained using the static site generator
 <p>In the Rexfile you&#39;ll find the task setup_server.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup_server</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">server</span>&quot;,
-⁠  make {</code></pre>
+⁠  group =&gt; &quot;<span class="hljs-string">server</span>&quot;,
+⁠  make {
+⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠</span>  };</code></pre>
 
 <p>This task is configured to run on all servers registered in the group server.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">setup</span> {
-⁠    ldap_admin_password         =&gt; &#39;<span class="hljs-string">admin</span>&#39;,
-⁠    ldap_base_dn                =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
-⁠    ldap_base_dn_admin_password =&gt; &#39;<span class="hljs-string">test</span>&#39;,
-⁠    ldap_configure_tls          =&gt; TRUE,
-⁠  };
+⁠  ldap_admin_password         =&gt; &#39;<span class="hljs-string">admin</span>&#39;,
+⁠  ldap_base_dn                =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
+⁠  ldap_base_dn_admin_password =&gt; &#39;<span class="hljs-string">test</span>&#39;,
+⁠  ldap_configure_tls          =&gt; TRUE,
+⁠};
 ⁠
-⁠  <span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">UserManagement</span>::<span class="hljs-function">Server</span>::<span class="hljs-function">add_ssh_public_key</span>;</code></pre>
+⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">UserManagement</span>::<span class="hljs-function">Server</span>::<span class="hljs-function">add_ssh_public_key</span>;</code></pre>
 
 <p>First it install OpenLDAP and create a root database for you. It also configures the admin password of your LDAP server.</p>
 
@@ -216,19 +218,19 @@ maintained using the static site generator
 <p>First we need to create a default folder structure inside it, so you can manage your groups and users. For this you can use the ldap_entry resource. This resource ensures that the entry exists and has the options set that are defined.</p>
 
 <pre><code class="hljs">⁠ldap_entry &quot;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&quot;,
-⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
-⁠  ou          =&gt; &#39;<span class="hljs-string">People</span>&#39;;
+⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
+⁠  ou          =&gt; &#39;<span class="hljs-string">People</span>&#39;;
 ⁠
 ⁠ldap_entry &quot;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&quot;,
-⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
-⁠  ou          =&gt; &#39;<span class="hljs-string">Groups</span>&#39;;
+⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
+⁠  ou          =&gt; &#39;<span class="hljs-string">Groups</span>&#39;;
 ⁠
 ⁠ldap_entry &quot;<span class="hljs-string">ou=Services,dc=rexify,dc=org</span>&quot;,
-⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
-⁠  ou          =&gt; &#39;<span class="hljs-string">Services</span>&#39;;</code></pre>
+⁠  ensure      =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  objectClass =&gt; [ &#39;<span class="hljs-string">top</span>&#39;, &#39;<span class="hljs-string">organizationalUnit</span>&#39; ],
+⁠  ou          =&gt; &#39;<span class="hljs-string">Services</span>&#39;;</code></pre>
 
 <p>This code creates 3 <em>folders</em> (the LDAP name for such a <em>folder</em> is <em>organizationalUnit</em>, hence the acronym ou). One for the user accounts <em>ou=People,dc=rexify,dc=org</em>, one for the groups <em>ou=Groups,dc=rexify,dc=org</em> and one for special service accounts <em>ou=Services,dc=rexify,dc=org</em>.</p>
 
@@ -237,36 +239,36 @@ maintained using the static site generator
 <p>Then you need to create a service user for sssd. SSSD use this user to search the LDAP database to find the user that tries to login.</p>
 
 <pre><code class="hljs">⁠ldap_account &quot;<span class="hljs-string">sssd</span>&quot;,
-⁠  ensure        =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  dn            =&gt; &#39;<span class="hljs-string">ou=Services,dc=rexify,dc=org</span>&#39;,
-⁠  givenName     =&gt; &#39;<span class="hljs-string">SSSD</span>&#39;,
-⁠  sn            =&gt; &#39;<span class="hljs-string">Service User</span>&#39;,
-⁠  uidNumber     =&gt; &#39;<span class="hljs-string">4000</span>&#39;,
-⁠  gidNumber     =&gt; 0,
-⁠  loginShell    =&gt; &#39;<span class="hljs-string">/bin/false</span>&#39;,
-⁠  homeDirectory =&gt; &#39;<span class="hljs-string">/tmp</span>&#39;,
-⁠  userPassword  =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;;</code></pre>
+⁠  ensure        =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  dn            =&gt; &#39;<span class="hljs-string">ou=Services,dc=rexify,dc=org</span>&#39;,
+⁠  givenName     =&gt; &#39;<span class="hljs-string">SSSD</span>&#39;,
+⁠  sn            =&gt; &#39;<span class="hljs-string">Service User</span>&#39;,
+⁠  uidNumber     =&gt; &#39;<span class="hljs-string">4000</span>&#39;,
+⁠  gidNumber     =&gt; 0,
+⁠  loginShell    =&gt; &#39;<span class="hljs-string">/bin/false</span>&#39;,
+⁠  homeDirectory =&gt; &#39;<span class="hljs-string">/tmp</span>&#39;,
+⁠  userPassword  =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;;</code></pre>
 
 <p>Now lets create a sample group and user.</p>
 
 <pre><code class="hljs">⁠ldap_group &quot;<span class="hljs-string">ldapusers</span>&quot;,
-⁠  ensure    =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  dn        =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
-⁠  gidNumber =&gt; <span class="hljs-number">3000</span>;
+⁠  ensure    =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  dn        =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
+⁠  gidNumber =&gt; <span class="hljs-number">3000</span>;
 ⁠
 ⁠ldap_account &quot;<span class="hljs-string">sampleuser</span>&quot;,
-⁠  ensure        =&gt; &#39;<span class="hljs-string">present</span>&#39;,
-⁠  dn            =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
-⁠  givenName     =&gt; &#39;<span class="hljs-string">SampleUser</span>&#39;,
-⁠  sn            =&gt; &#39;<span class="hljs-string">Surename</span>&#39;,
-⁠  uidNumber     =&gt; <span class="hljs-number">5000</span>,
-⁠  gidNumber     =&gt; <span class="hljs-number">3000</span>,
-⁠  homeDirectory =&gt; &#39;<span class="hljs-string">/home/sampleuser</span>&#39;,
-⁠  loginShell    =&gt; &#39;<span class="hljs-string">/bin/bash</span>&#39;,
-⁠  mail          =&gt; &#39;<span class="hljs-string">sample.user@gmail.com</span>&#39;,
-⁠  userPassword  =&gt; &#39;<span class="hljs-string">{CRYPT}vPYgtKD.j9iL2</span>&#39;,
-⁠  sshPublicKey  =&gt; &#39;<span class="hljs-string">ssh-rsa AAAAB3NzaC1y...</span>&#39;,
-⁠  groups =&gt; [&#39;<span class="hljs-string">cn=ldapusers,ou=Groups,dc=rexify,dc=org</span>&#39;];</code></pre>
+⁠  ensure        =&gt; &#39;<span class="hljs-string">present</span>&#39;,
+⁠  dn            =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
+⁠  givenName     =&gt; &#39;<span class="hljs-string">SampleUser</span>&#39;,
+⁠  sn            =&gt; &#39;<span class="hljs-string">Surename</span>&#39;,
+⁠  uidNumber     =&gt; <span class="hljs-number">5000</span>,
+⁠  gidNumber     =&gt; <span class="hljs-number">3000</span>,
+⁠  homeDirectory =&gt; &#39;<span class="hljs-string">/home/sampleuser</span>&#39;,
+⁠  loginShell    =&gt; &#39;<span class="hljs-string">/bin/bash</span>&#39;,
+⁠  mail          =&gt; &#39;<span class="hljs-string">sample.user@gmail.com</span>&#39;,
+⁠  userPassword  =&gt; &#39;<span class="hljs-string">{CRYPT}vPYgtKD.j9iL2</span>&#39;,
+⁠  sshPublicKey  =&gt; &#39;<span class="hljs-string">ssh-rsa AAAAB3NzaC1y...</span>&#39;,
+⁠  groups        =&gt; [&#39;<span class="hljs-string">cn=ldapusers,ou=Groups,dc=rexify,dc=org</span>&#39;];</code></pre>
 
 <p>This will create a group names ldapusers inside the organizational unit (ou) ou=Groups,dc=rexify,dc=org and a user sampleuser inside ou=People,dc=rexify,dc=org. You can create the crypted password string with the tool slapdpasswd. <br>
 Setup SSSD</p>
@@ -274,19 +276,21 @@ Setup SSSD</p>
 <p>Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a task setup_client inside the Rexfile.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup_client</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">client</span>&quot;,
-⁠  make {</code></pre>
+⁠  group =&gt; &quot;<span class="hljs-string">client</span>&quot;,
+⁠  make {
+⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠</span>  };</code></pre>
 
 <p>This task is configured to run on all servers inside the group client.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">UserManagement</span>::<span class="hljs-function">Client</span>::<span class="hljs-function">setup</span> {
-⁠  ldap_base_dn       =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
-⁠  ldap_uri           =&gt; &#39;<span class="hljs-string">ldaps://10.211.55.168</span>&#39;,
-⁠  ldap_bind_dn       =&gt; &#39;<span class="hljs-string">cn=sssd,ou=Services,dc=rexify,dc=org</span>&#39;,
-⁠  ldap_bind_password =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;,
-⁠  ldap_base_user_dn  =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
-⁠  ldap_base_group_dn =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
-⁠  configure_ssh_ldap =&gt; TRUE,
+⁠  ldap_base_dn       =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
+⁠  ldap_uri           =&gt; &#39;<span class="hljs-string">ldaps://10.211.55.168</span>&#39;,
+⁠  ldap_bind_dn       =&gt; &#39;<span class="hljs-string">cn=sssd,ou=Services,dc=rexify,dc=org</span>&#39;,
+⁠  ldap_bind_password =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;,
+⁠  ldap_base_user_dn  =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
+⁠  ldap_base_group_dn =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
+⁠  configure_ssh_ldap =&gt; TRUE,
 ⁠};</code></pre>
 
 <ul>
@@ -311,8 +315,8 @@ bind_pw: &#39;abcdef&#39;
 base_dn: &#39;dc=rexify,dc=org&#39;
 filter: (&amp;(uid={{LOGIN_NAME}})(objectClass=posixAccount))
 #tls:
-#        verify: optional
-#        cafile: /etc/openldap/certs/cacert.pem
+#        verify: optional
+#        cafile: /etc/openldap/certs/cacert.pem
 </code></pre>
 
 

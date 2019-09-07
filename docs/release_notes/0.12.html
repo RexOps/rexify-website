@@ -162,7 +162,7 @@ maintained using the static site generator
 ⁠    to  =&gt; <span class="hljs-number">10080</span>,
 ⁠  };
 ⁠
-⁠<span class="hljs-comment"># set default state rules (RELATED,ESTABLISHED) to accept on all devices</span><span class="hljs-comment">
+⁠  <span class="hljs-comment"># set default state rules (RELATED,ESTABLISHED) to accept on all devices</span><span class="hljs-comment">
 ⁠</span>  default_state_rule;
 ⁠
 ⁠  <span class="hljs-comment"># set default state rules (RELATED,ESTABLISHED) to accept on eth0</span><span class="hljs-comment">
@@ -207,8 +207,7 @@ maintained using the static site generator
 ⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
 ⁠  <span class="hljs-comment"># if you want an ebs volume, create it. if not, you don&#39;t need this.</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> =
-⁠    cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, zone =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;; };
+⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> = cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, zone =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;; };
 ⁠
 ⁠  <span class="hljs-comment"># create the cloud instances and attach the just created ebs volume.</span><span class="hljs-comment">
 ⁠</span>  cloud_instance create =&gt; {

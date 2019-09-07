@@ -132,22 +132,22 @@ maintained using the static site generator
 $ vim files/my.cnf.tpl
 
 [mysqld]
-datadir                 = /var/lib/mysql
-socket                  = /var/run/mysqld/mysqld.sock
-user                    = mysql
+datadir                 = /var/lib/mysql
+socket                  = /var/run/mysqld/mysqld.sock
+user                    = mysql
 # Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links          = 0
-datadir                 = /var/lib/mysql
-tmpdir                  = /tmp
+symbolic-links          = 0
+datadir                 = /var/lib/mysql
+tmpdir                  = /tmp
 skip-external-locking
-max_allowed_packet      = 64M
-thread_stack            = 192K
-max_connections         = &lt;%= exists $conf-&gt;{&quot;max_connections&quot;} ? $conf-&gt;{&quot;max_connections&quot;} : &quot;1000&quot; %&gt;
+max_allowed_packet      = 64M
+thread_stack            = 192K
+max_connections         = &lt;%= exists $conf-&gt;{&quot;max_connections&quot;} ? $conf-&gt;{&quot;max_connections&quot;} : &quot;1000&quot; %&gt;
 
-max_connect_errors      = 1000
-table_cache             = &lt;%= exists $conf-&gt;{&quot;table_cache&quot;} ? $conf-&gt;{&quot;table_cache&quot;} : &quot;5000&quot; %&gt;
-table_open_cache        = &lt;%= exists $conf-&gt;{&quot;table_open_cache&quot;} ? $conf-&gt;{&quot;table_open_cache&quot;} : &quot;5000&quot; %&gt;
-thread_concurrency      = 10
+max_connect_errors      = 1000
+table_cache             = &lt;%= exists $conf-&gt;{&quot;table_cache&quot;} ? $conf-&gt;{&quot;table_cache&quot;} : &quot;5000&quot; %&gt;
+table_open_cache        = &lt;%= exists $conf-&gt;{&quot;table_open_cache&quot;} ? $conf-&gt;{&quot;table_open_cache&quot;} : &quot;5000&quot; %&gt;
+thread_concurrency      = 10
 
 #
 # ... and more ...
@@ -161,18 +161,23 @@ thread_concurrency      = 10
 ⁠user &quot;<span class="hljs-string">root</span>&quot;;
 ⁠key_auth;
 ⁠
-⁠group databases=&gt; &quot;<span class="hljs-string">mydb01</span>&quot;, &quot;<span class="hljs-string">mydb02</span>&quot;;
+⁠group databases =&gt; &quot;<span class="hljs-string">mydb01</span>&quot;, &quot;<span class="hljs-string">mydb02</span>&quot;;
 ⁠
-⁠task &quot;<span class="hljs-string">prepare_databases</span>&quot;, group =&gt; &quot;<span class="hljs-string">databases</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   file &quot;<span class="hljs-string">/etc/my.cnf</span>&quot;,
-⁠      owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      mode    =&gt; &quot;<span class="hljs-string">644</span>&quot;,
-⁠      content =&gt; template(&quot;<span class="hljs-string">files/my.cnf.tpl</span>&quot;, conf =&gt; {
-⁠                             max_connections =&gt; &quot;<span class="hljs-string">500</span>&quot;,
-⁠                             table_cache     =&gt; &quot;<span class="hljs-string">2500</span>&quot;,
-⁠                          });
-⁠};</code></pre>
+⁠task &quot;<span class="hljs-string">prepare_databases</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">databases</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  file &quot;<span class="hljs-string">/etc/my.cnf</span>&quot;,
+⁠    owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    mode    =&gt; &quot;<span class="hljs-string">644</span>&quot;,
+⁠    content =&gt; template(
+⁠    &quot;<span class="hljs-string">files/my.cnf.tpl</span>&quot;,
+⁠    conf =&gt; {
+⁠      max_connections =&gt; &quot;<span class="hljs-string">500</span>&quot;,
+⁠      table_cache     =&gt; &quot;<span class="hljs-string">2500</span>&quot;,
+⁠    }
+⁠    );
+⁠  };</code></pre>
 
 <h2 id="inlinetemplates">Inline Templates</h2>
 
@@ -183,16 +188,15 @@ thread_concurrency      = 10
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task tempfiles =&gt; <span class="hljs-keyword">sub </span>{
-⁠    file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt;
-⁠        content =&gt; template(
-⁠            &#39;<span class="hljs-string">@test</span>&#39;,
-⁠            test =&gt; {
-⁠                author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
-⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
-⁠            },
-⁠        ),
-⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
-⁠    ;
+⁠  file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt; content =&gt; template(
+⁠    &#39;<span class="hljs-string">@test</span>&#39;,
+⁠    test =&gt; {
+⁠      author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
+⁠      target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠    },
+⁠    ),
+⁠    <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
 ⁠};
 ⁠
 ⁠<span class="hljs-keyword">__DATA__</span>
@@ -208,28 +212,26 @@ thread_concurrency      = 10
 <h3 id="usingmultipleinlinetemplates">Using multiple inline templates</h3>
 
 <pre><code class="hljs">⁠use Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
-⁠task tempfiles =&gt; <span class="hljs-keyword">sub </span>{
-⁠    file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt;
-⁠        content =&gt; template(
-⁠            &#39;<span class="hljs-string">@test</span>&#39;,
-⁠            test =&gt; {
-⁠                author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
-⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
-⁠            },
-⁠        ),
-⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
-⁠    ;
+⁠task tempfiles   =&gt; <span class="hljs-keyword">sub </span>{
+⁠  file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt; content =&gt; template(
+⁠    &#39;<span class="hljs-string">@test</span>&#39;,
+⁠    test =&gt; {
+⁠      author =&gt; &#39;<span class="hljs-string">reneeb</span>&#39;,
+⁠      target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠    },
+⁠    ),
+⁠    <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
 ⁠
-⁠    file &#39;<span class="hljs-string">/tmp/rex.txt</span>&#39; =&gt;
-⁠        content =&gt; template(&gt;
-⁠            &#39;<span class="hljs-string">@rex</span>&#39;,
-⁠            test =&gt; {
-⁠                author =&gt; &#39;<span class="hljs-string">krimdomu</span>&#39;,
-⁠                target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
-⁠            },
-⁠        ),
-⁠        <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
-⁠    ;
+⁠  file &#39;<span class="hljs-string">/tmp/rex.txt</span>&#39; =&gt; content =&gt; template(
+⁠    &#39;<span class="hljs-string">@rex</span>&#39;,
+⁠    test =&gt; {
+⁠      author =&gt; &#39;<span class="hljs-string">krimdomu</span>&#39;,
+⁠      target =&gt; &#39;<span class="hljs-string">rex</span>&#39;,
+⁠    },
+⁠    ),
+⁠    <span class="hljs-function">chmod</span> =&gt; <span class="hljs-number">644</span>,
+⁠    ;
 ⁠};
 ⁠
 ⁠<span class="hljs-keyword">__DATA__</span>

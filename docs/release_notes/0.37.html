@@ -127,16 +127,16 @@ maintained using the static site generator
 <p>You can use thise module by installing it via <em>rexify</em>.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># From within a project</span><span class="hljs-comment">
-⁠</span>bash<span class="hljs-comment"># rexify --use=Rex::DNS:Bind</span><span class="hljs-comment">
+⁠</span>bash <span class="hljs-comment"># rexify --use=Rex::DNS:Bind</span><span class="hljs-comment">
 ⁠</span>
-⁠<span class="hljs-comment"># To create a new project</span><span class="hljs-comment">
-⁠</span>bash<span class="hljs-comment"># rexify mynewproject --use=Rex::DNS::Bind</span><span class="hljs-comment">
+⁠  <span class="hljs-comment"># To create a new project</span><span class="hljs-comment">
+⁠</span>  bash <span class="hljs-comment"># rexify mynewproject --use=Rex::DNS::Bind</span><span class="hljs-comment">
 ⁠</span>
-⁠set dns =&gt; {
+⁠  set dns =&gt; {
 ⁠  server   =&gt; &quot;<span class="hljs-string">127.0.0.1</span>&quot;,
 ⁠  key_name =&gt; &quot;<span class="hljs-string">mysuperkey</span>&quot;,
 ⁠  key      =&gt; &quot;<span class="hljs-string">/foobar==</span>&quot;,
-⁠};
+⁠  };
 ⁠
 ⁠task sometask =&gt; <span class="hljs-keyword">sub </span>{
 ⁠  <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">add_record</span>(
@@ -165,7 +165,7 @@ maintained using the static site generator
 ⁠    on     =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
 ⁠    params =&gt; { key1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;, key2 =&gt; &quot;<span class="hljs-string">value2</span>&quot; };
 ⁠};
-⁠    
+⁠
 ⁠task &quot;<span class="hljs-string">tasktwo</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
 ⁠  <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$param</span>);

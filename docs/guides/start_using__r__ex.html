@@ -176,10 +176,12 @@ maintained using the static site generator
 ⁠group myservers =&gt; &quot;<span class="hljs-string">mywebserver</span>&quot;, &quot;<span class="hljs-string">mymailserver</span>&quot;, &quot;<span class="hljs-string">myfileserver</span>&quot;;
 ⁠
 ⁠desc &quot;<span class="hljs-string">Get the uptime of all servers</span>&quot;;
-⁠task &quot;<span class="hljs-string">uptime</span>&quot;, group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &quot;<span class="hljs-string">uptime</span>&quot;;
-⁠   say <span class="hljs-type">$output</span>;
-⁠};</code></pre>
+⁠task &quot;<span class="hljs-string">uptime</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &quot;<span class="hljs-string">uptime</span>&quot;;
+⁠  say <span class="hljs-type">$output</span>;
+⁠  };</code></pre>
 
 <p>This Example will login as my-user with the password my-password on all the servers in the group myservers and run the command &quot;uptime&quot;.</p>
 
@@ -196,9 +198,11 @@ $ rex uptime
 <p>To add a second task, just add the next lines to your Rexfile.</p>
 
 <pre><code class="hljs">⁠desc &quot;<span class="hljs-string">Start Apache Service</span>&quot;;
-⁠task &quot;<span class="hljs-string">start_apache</span>&quot;, group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    service &quot;<span class="hljs-string">apache2</span>&quot; =&gt; &quot;<span class="hljs-string">start</span>&quot;;
-⁠};</code></pre>
+⁠task &quot;<span class="hljs-string">start_apache</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  service &quot;<span class="hljs-string">apache2</span>&quot; =&gt; &quot;<span class="hljs-string">start</span>&quot;;
+⁠  };</code></pre>
 
 <p>This task will start the service apache2 on all the servers in the myservers group.
 Display all tasks in a Rexfile</p>
@@ -207,10 +211,10 @@ Display all tasks in a Rexfile</p>
 
 <pre><code>$ rex -T
 Tasks
-  start_apache                   Start Apache Service
-  uptime                         Get the uptime of all servers
+  start_apache                   Start Apache Service
+  uptime                         Get the uptime of all servers
 Server Groups
-  myservers                       mywebserver, mymailserver, myfileserver
+  myservers                       mywebserver, mymailserver, myfileserver
 </code></pre>
 
 <h2 id="authentication">Authentication</h2>
@@ -249,24 +253,25 @@ Server Groups
 ⁠
 ⁠group all_servers =&gt; &quot;<span class="hljs-string">srv[001..150]</span>&quot;;
 ⁠
-⁠task &quot;<span class="hljs-string">setup_ntp</span>&quot;, group =&gt; &quot;<span class="hljs-string">all_servers</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-comment"># first we will install the package</span><span class="hljs-comment">
-⁠</span>   pkg &quot;<span class="hljs-string">ntpd</span>&quot;,
-⁠     ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+⁠task &quot;<span class="hljs-string">setup_ntp</span>&quot;,
+⁠  group =&gt; &quot;<span class="hljs-string">all_servers</span>&quot;,
+⁠  <span class="hljs-keyword">sub </span>{
+⁠  <span class="hljs-comment"># first we will install the package</span><span class="hljs-comment">
+⁠</span>  pkg &quot;<span class="hljs-string">ntpd</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
 ⁠
-⁠   <span class="hljs-comment"># then we will upload a configuration file.</span><span class="hljs-comment">
-⁠</span>   <span class="hljs-comment"># the configuration file is located in a subdirectory files/etc.</span><span class="hljs-comment">
-⁠</span>   file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠      source    =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠         <span class="hljs-comment"># we define a on_change hook, so that the ntpd server gets restarted if the file is modified.</span><span class="hljs-comment">
-⁠</span>         service ntpd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠      };
+⁠  <span class="hljs-comment"># then we will upload a configuration file.</span><span class="hljs-comment">
+⁠</span>  <span class="hljs-comment"># the configuration file is located in a subdirectory files/etc.</span><span class="hljs-comment">
+⁠</span>  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{
 ⁠
-⁠   <span class="hljs-comment"># now we register the service to start at boot time.</span><span class="hljs-comment">
-⁠</span>   service &quot;<span class="hljs-string">ntpd</span>&quot;,
-⁠     ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
-⁠};</code></pre>
+⁠    <span class="hljs-comment"># we define a on_change hook, so that the ntpd server gets restarted if the file is modified.</span><span class="hljs-comment">
+⁠</span>    service ntpd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠    };
+⁠
+⁠  <span class="hljs-comment"># now we register the service to start at boot time.</span><span class="hljs-comment">
+⁠</span>  service &quot;<span class="hljs-string">ntpd</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠  };</code></pre>
 
 <p>That&#39;s all.</p>
 

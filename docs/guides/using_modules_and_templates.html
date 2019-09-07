@@ -126,10 +126,10 @@ maintained using the static site generator
 <pre><code>.
 ├── Rexfile
 └── lib
-    └── Service
-        └── NTP
-            ├── __module__.pm
-            └── meta.yml
+    └── Service
+        └── NTP
+            ├── __module__.pm
+            └── meta.yml
 </code></pre>
 
 <p>The meta.yml file can be ignored. This file is only important if you want to share your module on the Rex modules directory.</p>
@@ -141,21 +141,19 @@ This file is a normal Perl module. The only special thing is the filename, but d
 ⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.3</span>&#39;];
 ⁠
 ⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$service_name</span> = case operating_system, {
-⁠                         Debian  =&gt; &quot;<span class="hljs-string">ntp</span>&quot;,
-⁠                         default =&gt; &quot;<span class="hljs-string">ntpd</span>&quot;,
-⁠                      };
-⁠   pkg &quot;<span class="hljs-string">ntp</span>&quot;,
-⁠     ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$service_name</span> = case operating_system, {
+⁠    Debian    =&gt; &quot;<span class="hljs-string">ntp</span>&quot;,
+⁠      default =&gt; &quot;<span class="hljs-string">ntpd</span>&quot;,
+⁠  };
+⁠  pkg &quot;<span class="hljs-string">ntp</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
 ⁠
-⁠   file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠      source    =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠         service <span class="hljs-type">$service_name</span> =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠      };
+⁠  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠    service <span class="hljs-type">$service_name</span> =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠    };
 ⁠
-⁠   service <span class="hljs-type">$service_name</span>,
-⁠     ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠  service <span class="hljs-type">$service_name</span>, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
 ⁠};
 ⁠
 ⁠<span class="hljs-number">1</span>;</code></pre>
@@ -180,16 +178,16 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
 <pre><code class="hljs">⁠.
 ⁠├── Rexfile
 ⁠└── lib
-⁠    └── Service
-⁠        └── NTP
-⁠            ├── __module__.pm
-⁠            ├── files
-⁠            │   └── etc
-⁠            │       ├── ntp.conf
-⁠            │       ├── ntp.conf.preprod
-⁠            │       ├── ntp.conf.prod
-⁠            │       └── ntp.conf.test
-⁠            └── meta.yml</code></pre>
+⁠    └── Service
+⁠        └── NTP
+⁠            ├── __module__.pm
+⁠            ├── files
+⁠            │   └── etc
+⁠            │       ├── ntp.conf
+⁠            │       ├── ntp.conf.preprod
+⁠            │       ├── ntp.conf.prod
+⁠            │       └── ntp.conf.test
+⁠            └── meta.yml</code></pre>
 
 <p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
 
@@ -197,29 +195,27 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
 ⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$service_name</span> = case operating_system, {
-⁠                         Debian  =&gt; &quot;<span class="hljs-string">ntp</span>&quot;,
-⁠                         default =&gt; &quot;<span class="hljs-string">ntpd</span>&quot;,
-⁠                      };
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$service_name</span> = case operating_system, {
+⁠    Debian    =&gt; &quot;<span class="hljs-string">ntp</span>&quot;,
+⁠      default =&gt; &quot;<span class="hljs-string">ntpd</span>&quot;,
+⁠  };
 ⁠
-⁠   <span class="hljs-keyword">my</span> <span class="hljs-type">$ntp_server</span>   = case environment, {
-⁠                         prod    =&gt; [&quot;<span class="hljs-string">ntp01.company.tld</span>&quot;, &quot;<span class="hljs-string">ntp02.company.tld</span>&quot;],
-⁠                         preprod =&gt; [&quot;<span class="hljs-string">ntp01.preprod.company.tld</span>&quot;],
-⁠                         test    =&gt; [&quot;<span class="hljs-string">ntp01.test.company.tld</span>&quot;],
-⁠                         default =&gt; [&quot;<span class="hljs-string">ntp01.company.tld</span>&quot;],
-⁠                      };
+⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$ntp_server</span> = case environment, {
+⁠    prod      =&gt; [ &quot;<span class="hljs-string">ntp01.company.tld</span>&quot;, &quot;<span class="hljs-string">ntp02.company.tld</span>&quot; ],
+⁠      preprod =&gt; [&quot;<span class="hljs-string">ntp01.preprod.company.tld</span>&quot;],
+⁠      test    =&gt; [&quot;<span class="hljs-string">ntp01.test.company.tld</span>&quot;],
+⁠      default =&gt; [&quot;<span class="hljs-string">ntp01.company.tld</span>&quot;],
+⁠  };
 ⁠
-⁠   pkg &quot;<span class="hljs-string">ntp</span>&quot;,
-⁠     ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+⁠  pkg &quot;<span class="hljs-string">ntp</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
 ⁠
-⁠   file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠      content   =&gt; template(&quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;, ntp_servers =&gt; <span class="hljs-type">$ntp_server</span>),
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠         service <span class="hljs-type">$service_name</span> =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠      };
+⁠  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠    content   =&gt; template( &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;, ntp_servers =&gt; <span class="hljs-type">$ntp_server</span> ),
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠    service <span class="hljs-type">$service_name</span> =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠    };
 ⁠
-⁠   service <span class="hljs-type">$service_name</span>,
-⁠     ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
+⁠  service <span class="hljs-type">$service_name</span>, ensure =&gt; &quot;<span class="hljs-string">started</span>&quot;;
 ⁠};
 ⁠
 ⁠<span class="hljs-number">1</span>;</code></pre>
@@ -245,7 +241,7 @@ server &lt;%= $server %&gt;
 <p>There are also some predefined variables you can use in your templates. For example the ip address of a network device if you want to bind a service on a specific ip. You can dump all predefined variable of a system with the following code.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">get_infos</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠   dump_system_information;
+⁠  dump_system_information;
 ⁠};</code></pre>
 
 <p>For example this is the output of a CentOS VM</p>
@@ -255,11 +251,11 @@ $memory_cached = &#39;357&#39;
 $memory_total = &#39;498&#39;
 $kernelrelease = &#39;2.6.32-220.17.1.el6.i686&#39;
 $Kernel = {
-      kernelversion =&gt; &#39;#1 SMP Tue May 15 22:09:39 BST 2012&#39;
-      architecture =&gt; &#39;i686&#39;
-      kernel =&gt; &#39;Linux&#39;
-      kernelrelease =&gt; &#39;2.6.32-220.17.1.el6.i686&#39;
-   }
+      kernelversion =&gt; &#39;#1 SMP Tue May 15 22:09:39 BST 2012&#39;
+      architecture =&gt; &#39;i686&#39;
+      kernel =&gt; &#39;Linux&#39;
+      kernelrelease =&gt; &#39;2.6.32-220.17.1.el6.i686&#39;
+   }
 $hostname = &#39;c6test0232&#39;
 $operatingsystem = &#39;CentOS&#39;
 $operatingsystemrelease = &#39;6.2&#39;
@@ -269,30 +265,30 @@ $eth0_mac = &#39;00:1C:42:9E:0E:28&#39;
 $kernel = &#39;Linux&#39;
 $swap_free = &#39;2005&#39;
 $VirtInfo = {
-      virtualization_role =&gt; &#39;guest&#39;
-      virtualization_type =&gt; &#39;parallels&#39;
-   }
+      virtualization_role =&gt; &#39;guest&#39;
+      virtualization_type =&gt; &#39;parallels&#39;
+   }
 $memory_shared = &#39;0&#39;
 $Network = {
-      networkdevices =&gt; [
-         &#39;eth0&#39;
-      ]
-      networkconfiguration =&gt; {
-         eth0 =&gt; {
-            broadcast =&gt; &#39;10.211.55.255&#39;
-            ip =&gt; &#39;10.211.55.60&#39;
-            netmask =&gt; &#39;255.255.255.0&#39;
-            mac =&gt; &#39;00:1C:42:9E:0E:28&#39;
-         }
-      }
-   }
+      networkdevices =&gt; [
+         &#39;eth0&#39;
+      ]
+      networkconfiguration =&gt; {
+         eth0 =&gt; {
+            broadcast =&gt; &#39;10.211.55.255&#39;
+            ip =&gt; &#39;10.211.55.60&#39;
+            netmask =&gt; &#39;255.255.255.0&#39;
+            mac =&gt; &#39;00:1C:42:9E:0E:28&#39;
+         }
+      }
+   }
 $memory_used = &#39;440&#39;
 $kernelname = &#39;Linux&#39;
 $Swap = {
-      free =&gt; &#39;2005&#39;
-      used =&gt; &#39;10&#39;
-      total =&gt; &#39;2015&#39;
-   }
+      free =&gt; &#39;2005&#39;
+      used =&gt; &#39;10&#39;
+      total =&gt; &#39;2015&#39;
+   }
 $swap_total = &#39;2015&#39;
 $memory_buffers = &#39;47&#39;
 $eth0_ip = &#39;10.211.55.60&#39;
@@ -300,23 +296,23 @@ $swap_used = &#39;10&#39;
 $memory_free = &#39;57&#39;
 $manufacturer = &#39;Parallels Software International Inc.&#39;
 $Memory = {
-      shared =&gt; &#39;0&#39;
-      buffers =&gt; &#39;47&#39;
-      free =&gt; &#39;57&#39;
-      used =&gt; &#39;440&#39;
-      total =&gt; &#39;498&#39;
-      cached =&gt; &#39;357&#39;
-   }
+      shared =&gt; &#39;0&#39;
+      buffers =&gt; &#39;47&#39;
+      free =&gt; &#39;57&#39;
+      used =&gt; &#39;440&#39;
+      total =&gt; &#39;498&#39;
+      cached =&gt; &#39;357&#39;
+   }
 $eth0_broadcast = &#39;10.211.55.255&#39;
 $eth0_netmask = &#39;255.255.255.0&#39;
 $Host = {
-      domain =&gt; &#39;test.rexify.org&#39;
-      manufacturer =&gt; &#39;Parallels Software International Inc.&#39;
-      kernelname =&gt; &#39;Linux&#39;
-      hostname =&gt; &#39;c6test0232&#39;
-      operatingsystemrelease =&gt; &#39;6.2&#39;
-      operatingsystem =&gt; &#39;CentOS&#39;
-   }
+      domain =&gt; &#39;test.rexify.org&#39;
+      manufacturer =&gt; &#39;Parallels Software International Inc.&#39;
+      kernelname =&gt; &#39;Linux&#39;
+      hostname =&gt; &#39;c6test0232&#39;
+      operatingsystemrelease =&gt; &#39;6.2&#39;
+      operatingsystem =&gt; &#39;CentOS&#39;
+   }
 </code></pre>
 
 <p>You can use such predefined variable right in your template. Lets assume you want to bind apache only on your eth1 ip.</p>
@@ -341,7 +337,7 @@ $Host = {
 <pre><code>$ rex -T
 [2013-03-30 02:35:32] INFO - eval your Rexfile.
 Tasks
-  Service:NTP:prepare
+  Service:NTP:prepare
 
 $ rex -H yourserver01 Service:NTP:prepare
 </code></pre>
