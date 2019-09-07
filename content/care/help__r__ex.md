@@ -29,9 +29,3 @@ Those sponsored features will also be released under the same license as (R)?ex 
 ## Hardware
 
 One special case is hardware. There can't be enough hardware/environments where we can test (R)?ex. Especially given our plans about Rex.IO and rex-jobcontrol - a bare metal deployer and webfrontend for (R)?ex. If you can donate any kind of hardware please contact us at sponsor@rexify.org.
-
-### Our hardware sponsors:
-
-We want to give a special thanks to the listed companies.
-
-[<img src="/public/images/skin/rexify.org/adjust_transparent.png" width="278" height="86" />](https://www.adjust.com/) 
