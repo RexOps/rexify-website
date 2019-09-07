@@ -1,4 +1,5 @@
 requires 'HTML::Entities';
+requires 'HTML::Lint::Pluggable';
 requires 'Statocles';
 requires 'Syntax::Highlight::Engine::Kate';
 requires 'Text::MultiMarkdown';
