@@ -26,17 +26,11 @@ To run Rex you don't need much.
 
 You can run Rex from your workstation or on a central master host.
 
-For your central Rex machine (the master) you need at least Perl 5.8. For a better experience we recommend using Perl 5.10.1 and above.
+For your central Rex machine (the master) you need at least Perl 5.10.1. For the best experience we recommend using the [latest stable release of Perl](https://www.perl.org/get.html).
 
-On this host you also need some Perl modules installed. If you're using the provided packages or install Rex via cpanm the dependencies will be installed automatically.
+On this host you also need some Perl modules installed. If you're using the packages provided by your OS distribution, or you install Rex from CPAN, then those dependencies will be installed automatically.
 
-You can install Rex on a Linux host via a simple one-liner. For other systems please read the instructions on the Get Rex page.
-
-    $ curl -L https://get.rexify.org | perl - --sudo -n Rex
-
-This command will install Rex on your system.
-
-We recommend to use our packages from the repository.
+You can find information on the [Get Rex](/get/index.html) page about how to install Rex itself.
 
 ## Managed Hosts
 
