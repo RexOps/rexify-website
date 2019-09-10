@@ -90,7 +90,8 @@ To add a second task, just add the next lines to your Rexfile.
     ```
 
 This task will start the service apache2 on all the servers in the myservers group.
-Display all tasks in a Rexfile
+
+## Display all tasks in a Rexfile
 
 If you want to display all tasks in your Rexfile use the following command.
 
@@ -124,7 +125,7 @@ It is also possible to use your keys with a passphrase. Just add it to your Rexf
     key_auth;
     ```
 
-If you don't want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line key\_auth;.
+If you don't want to add your passphrase to the Rexfile you can also use ssh-agent. Rex will automatically use it when it is running. Just remove the line `key_auth;`.
 
 ## Managing Services
 
