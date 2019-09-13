@@ -4,7 +4,7 @@ site:
         title: (R)?ex Deployment & Configuration Management
         markdown:
             $class: Text::MultiMarkdown
-        base_url: https://rexify.org
+        base_url: https://www.rexify.org
         theme:
             $ref: rexify
         apps:
