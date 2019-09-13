@@ -9,8 +9,8 @@
 
       <meta content="Release notes for 0.40" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://rexify.org/docs/release_notes/0.40.html" property="og:url">
-      <meta content="https://rexify.org/public/images/skin/rexify.org/favicon.png" property="og:image">
+      <meta content="https://www.rexify.org/docs/release_notes/0.40.html" property="og:url">
+      <meta content="https://www.rexify.org/public/images/skin/rexify.org/favicon.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
       <link href="/public/images/skin/rexify.org/favicon.png" rel="shortcut icon">
@@ -123,7 +123,7 @@ maintained using the static site generator
 
 <p>The first CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * &quot;default&quot;.</p>
 
-<pre><code class="hljs">⁠use Cwd &#39;<span class="hljs-string">getcwd</span>&#39;;
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Cwd &#39;<span class="hljs-string">getcwd</span>&#39;;
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
 ⁠
 ⁠set cmdb =&gt; {
