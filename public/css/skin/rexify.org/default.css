@@ -1,11 +1,9 @@
-body {
-   background-image: url(/public/images/skin/rexify.org/bg.gif);
-   background-repeat: no-repeat;
-   background-color: #faf9f8;
-}
-
 h1 {
    font-size: 24px;
+}
+
+#page {
+   background-color: #faf9f8;
 }
 
 #content h1 {
@@ -60,11 +58,13 @@ h1 {
    height: 79px;
    background-image: url(/public/images/skin/rexify.org/nav_bg.png);
    background-repeat: no-repeat;
+   background-color: #f2f0f1;
 }
 
 #widgets_container {
+   background-color: #f2f0f1;
    float: left;
-   width: 320px;
+   width: 350px;
 }
 
 #widgets {
