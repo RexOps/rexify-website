@@ -10,7 +10,7 @@
       <meta property="og:title" content="<%= $page->title %>" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="<%= $site->url($page->path) %>" />
-      <meta property="og:image" content="<%= $site->url('/public/images/skin/rexify.org/favicon.png') %>" />
+      <meta property="og:image" content="<%= $site->url('/public/images/skin/rexify.org/open_graph.png') %>" />
 
       <meta name="viewport" content="width=1024, initial-scale=0.5">
       <link rel="shortcut icon" href="/public/images/skin/rexify.org/favicon.png" />
