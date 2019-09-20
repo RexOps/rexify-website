@@ -1,6 +1,6 @@
-package Statocles::Plugin::HTMLLint;
-our $VERSION = '0.094';
-# ABSTRACT: Check HTML for common errors and issues
+package Statocles::Plugin::HTMLLint::RexOps;
+our $VERSION = '0.001';
+# ABSTRACT: Check HTML for common errors and issues for the rexify-website
 
 use Statocles::Base 'Class';
 with 'Statocles::Plugin';
@@ -77,7 +77,7 @@ sub register {
         args:
             plugins:
                 lint:
-                    $class: Statocles::Plugin::HTMLLint
+                    $class: Statocles::Plugin::HTMLLint::RexOps
 
 =head1 DESCRIPTION
 
