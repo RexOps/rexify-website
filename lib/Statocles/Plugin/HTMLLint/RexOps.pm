@@ -78,7 +78,7 @@ sub register {
         args:
             plugins:
                 lint:
-                    $class: Statocles::Plugin::HTMLLint
+                    $class: Statocles::Plugin::HTMLLint::RexOps
 
 =head1 DESCRIPTION
 
