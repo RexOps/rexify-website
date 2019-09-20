@@ -1,9 +1,9 @@
 <!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html content="text/html; charset=utf-8" content-type" prefix="og: http://ogp.me/ns#" xml:lang="en&gt;
-   &lt;head&gt;
-      &lt;meta http-equiv=" xmlns="http://www.w3.org/1999/xhtml">
+<html prefix="og: http://ogp.me/ns#" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
       <title>Release notes for 0.10</title>
 
@@ -20,7 +20,7 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
 
-   
+   </head>
    <body>
 
       <div id="page">
@@ -122,7 +122,7 @@ maintained using the static site generator
 <ul>
 <li><p>Added a network module</p>
 
-<pre><code class="hljs">⁠use <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Network</span>;
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Network</span>;
 ⁠
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@routes</span> = route;
 ⁠<span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@routes</span> );
