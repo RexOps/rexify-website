@@ -53,6 +53,7 @@ sub check_pages {
         for my $error ( @errors ) {
             $event->emitter->log->warn( "-" . $error->as_string );
         }
+        die "Linting failed!";
     }
 }
 
