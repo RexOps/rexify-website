@@ -6,7 +6,7 @@ This is a small howto showing the first steps with Rex.
 
 # Basic Architecture
 
-<img style="float: right;" src="/public/images/skin/rexify.org/archi.png" width="410" height="272" />
+<img style="float: right;" src="/public/images/skin/rexify.org/archi.png" alt="Basic architecture" width="410" height="272" />
 
 Rex is a server orchestration tool that doesn't need an agent on the hosts you want to manage. In fact it uses ssh to execute the given commands.
 

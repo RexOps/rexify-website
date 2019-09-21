@@ -17,6 +17,13 @@ site:
         plugins:
             highlight:
                 $class: Statocles::Plugin::Highlight::RexOps
+            lint:
+                $class: Statocles::Plugin::HTMLLint::RexOps
+                fatal: 1
+                plugins:
+                    - HTML5
+                    - RDFa
+                    - TinyEntitesEscapeRule
         deploy:
             $ref: gh_pages
         data:
