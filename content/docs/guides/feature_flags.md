@@ -48,7 +48,7 @@ This is the current list of feature flags:
 | no\_tty                                | 0.41      | Disable pty usage for ssh connections. |
 | no\_local\_template\_vars              | 0.40      | Use global variables in templates |
 | sudo\_without\_sh                      | 0.40      | Run sudo commands directly without the use of 'sh'. This might break things. |
-| sudo\_without\_locales                 | 0.40      | Run sudo commands without locales. this will break things if you don't use english locales. |
+| sudo\_without\_locales                 | 0.40      | Run sudo commands without locales. This will break things if you don't use English locales. |
 | exit\_status                           | 0.39      | This option tells Rex to return a non zero value on exit if a task fails. |
 | 0.35                                   | 0.35      | This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters. |
 | 0.31                                   | 0.31      | To enable special authentication options for a server group. This will overwrite the default authentication options for a task. |
