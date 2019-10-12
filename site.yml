@@ -18,7 +18,7 @@ site:
             highlight:
                 $class: Statocles::Plugin::Highlight::RexOps
             lint:
-                $class: Statocles::Plugin::HTMLLint::RexOps
+                $class: Statocles::Plugin::HTMLLint
                 fatal: 1
                 plugins:
                     - HTML5
