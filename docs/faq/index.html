@@ -127,6 +127,7 @@ maintained using the static site generator
 <li><a href="#howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</a></li>
 <li><a href="#howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</a></li>
 <li><a href="#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</a></li>
+<li><a href="#howdoiloadallmycustommoduleseasily">How do I load all my custom modules easily?</a></li>
 </ul>
 
 <h2 id="whydoestheruncommandnotformattheoutput">Why does the run command not format the output?</h2>
@@ -206,6 +207,14 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;); <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
 ⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot; );  <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
 ⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot; ); <span class="hljs-comment"># for ERROR (red)</span></code></pre>
+
+<h2 id="howdoiloadallmycustommoduleseasily">How do I load all my custom modules easily?</h2>
+
+<p>There are plenty of CPAN modules providing this kind of functionality. For a comprehensive list and overview from some time ago, please read Neil Bowers&#39; article about <a href="http://neilb.org/reviews/module-loading.html">CPAN modules that (can) load other modules</a>.</p>
+
+<p>Since Rex is just Perl, simply use one of them, like <a href="https://metacpan.org/pod/Module::Find">Module::Find</a> or <a href="https://metacpan.org/pod/Module::Pluggable">Module::Pluggable</a>.</p>
+
+<p>This might affect when modules are loaded (e.g. at compilation time or at runtime), and/or in which order the modules are loaded. If you run into any troubles because of this, please make sure to specify the dependencies of the custom modules correctly.</p>
 
 
 
