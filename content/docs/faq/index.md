@@ -12,6 +12,7 @@ Here we will maintain a list of frequently asked questions with their answers.
 * [How do I run a local script on the remote under a different user?](#howdoirunalocalscriptontheremoteunderadifferentuser)
 * [How do I check the exit status of a remotely run command?](#howdoichecktheexitstatusofaremotelyruncommand)
 * [How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?](#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages)
+* [How do I load all my custom modules easily?](#howdoiloadallmycustommoduleseasily)
 
 ## Why does the run command not format the output?
 
@@ -102,3 +103,11 @@ Rex assigns the exit code from the remote invocation of `run` or `shell_block` s
     Rex::Logger::info( "some message", "warn" );  # for WARN  (yellow)
     Rex::Logger::info( "some message", "error" ); # for ERROR (red)
     ```
+
+## How do I load all my custom modules easily?
+
+There are plenty of CPAN modules providing this kind of functionality. For a comprehensive list and overview from some time ago, please read Neil Bowers' article about [CPAN modules that (can) load other modules](http://neilb.org/reviews/module-loading.html).
+
+Since Rex is just Perl, simply use one of them, like [Module::Find](https://metacpan.org/pod/Module::Find) or [Module::Pluggable](https://metacpan.org/pod/Module::Pluggable).
+
+This might affect when modules are loaded (e.g. at compilation time or at runtime), and/or in which order the modules are loaded. If you run into any troubles because of this, please make sure to specify the dependencies of the custom modules correctly.
