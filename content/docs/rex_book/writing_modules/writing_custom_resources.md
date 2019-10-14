@@ -2,7 +2,7 @@
 title: Writing custom resources
 ---
 
-Resoures are the units that are responsible to manage your configurations. 
+Resources are the units that are responsible to manage your configurations. 
 Resources have a state. Compared to remote execution functions, that means, 
 that a resource is only applied if the remote system is not in the specific
 state.
@@ -40,7 +40,7 @@ reporting module get notified.
 
 ### Hello World Resource
 
-To build a new resource you first have to create a new Rex module. Todo this,
+To build a new resource you first have to create a new Rex module. To do this,
 just create a new folder.
 
     $ mkdir -p lib/HelloWorld

@@ -25,7 +25,7 @@ Rex will connect to your servers via SSH and execute the commands you've defined
 
 ## Parallelism
 
-If you have many servers you want to connect to, you ususally don't want to connect sequentially. You can define the number of parallel connections Rex should use.
+If you have many servers you want to connect to, you usually don't want to connect sequentially. You can define the number of parallel connections Rex should use.
 
     ```perl
     use Rex -feature => ['1.0'];

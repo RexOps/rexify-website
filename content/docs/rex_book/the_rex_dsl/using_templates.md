@@ -10,7 +10,7 @@ For example:
 
     Hello <%= $name %>!
 
-If $name contains "World" this template would result in the string Hello World!. This is very usefull if you have to maintain a large set of nearly identical configuration files.
+If $name contains "World" this template would result in the string Hello World!. This is very useful if you have to maintain a large set of nearly identical configuration files.
 
 ## Working with a template
 
