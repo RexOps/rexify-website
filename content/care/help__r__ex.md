@@ -13,7 +13,6 @@ You'll find us on irc.freenode.net in the \#rex channel. Just be a bit patient, 
 The success of every project is its documentation. If there is no documentation a project won't be successful. So one part where you can help is writing user friendly documentation.
 It is often hard to find a good balance between documenting new features (or removing deprecated documentation) and writing new code. So if you find outdated documentation, want to add guides, tweak the design or rewrite the complete webpage, don't hesitate to contact us.
 You can clone the website code from GitHub. Please read the README file on how to get the website up and running on your local machine.
-Please note that the API documentation is automatically generated for the website from the embedded pod sections of the files in the (R)?ex repo.
 
 ## Code
 
