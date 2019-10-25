@@ -1,5 +1,5 @@
 ---
-title: (R)?ex - A simple framework to simplify system administration and datacenter automation
+title: (R)?ex, the friendly automation framework
 data:
   root: 1
 ---
