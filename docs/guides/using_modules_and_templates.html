@@ -163,7 +163,7 @@ This file is a normal Perl module. The only special thing is the filename, but d
 ⁠
 ⁠<span class="hljs-number">1</span>;</code></pre>
 
-<p>First the module checks if the OS is a debian (or ubuntu) and set the service name to &quot;ntp&quot; otherwise to &quot;ntpd&quot;. After that it installs the &quot;ntp&quot; package and uploads the configuration file. Notice the on_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
+<p>First the module checks if the OS is a Debian (or Ubuntu) and set the service name to &quot;ntp&quot; otherwise to &quot;ntpd&quot;. After that it installs the &quot;ntp&quot; package and uploads the configuration file. Notice the on_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
 Now it is time to create a basic ntp.conf file. Create the directory lib/Service/NTP/files/etc and place the ntp.conf file in there.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># /etc/ntp.conf, managed by Rex</span><span class="hljs-comment">
@@ -178,7 +178,7 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
 ⁠server ntp01.company.tld
 ⁠server ntp02.company.tld</code></pre>
 
-<p>If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it fallback to ntp.conf.</p>
+<p>If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it falls back to ntp.conf.</p>
 
 <pre><code class="hljs">⁠.
 ⁠├── Rexfile
@@ -194,7 +194,7 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
 ⁠            │       └── ntp.conf.test
 ⁠            └── meta.yml</code></pre>
 
-<p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.</p>
+<p>But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not really cool. To prevent that you can use templates.</p>
 
 <pre><code class="hljs">⁠package <span class="hljs-function">Service::NTP</span>;
 ⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
