@@ -48,7 +48,7 @@ This file is a normal Perl module. The only special thing is the filename, but d
     1;
     ```
 
-First the module checks if the OS is a debian (or ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the on\_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
+First the module checks if the OS is a Debian (or Ubuntu) and set the service name to "ntp" otherwise to "ntpd". After that it installs the "ntp" package and uploads the configuration file. Notice the on\_change hook here. This will restart the ntp service if the file changes. At last Rex verifies that the service will start on system boot.
 Now it is time to create a basic ntp.conf file. Create the directory lib/Service/NTP/files/etc and place the ntp.conf file in there.
 
     ```
@@ -65,7 +65,7 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
     server ntp02.company.tld
     ```
 
-If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it fallback to ntp.conf.
+If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it falls back to ntp.conf.
 
     ```
     .
@@ -83,7 +83,7 @@ If you now want to distribute different ntp.conf files per environment you can a
                 └── meta.yml
     ```
 
-But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not realy cool. To prevent that you can use templates.
+But if you want to change a parameter in your ntp.conf file you have to edit 4 files. This is not really cool. To prevent that you can use templates.
 
     ```perl
     package Service::NTP;
