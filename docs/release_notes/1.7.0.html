@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.51.2</title>
+      <title>Release notes for 1.7.0</title>
 
-      <meta content="Release notes for 0.51.2" property="og:title">
+      <meta content="Release notes for 1.7.0" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/0.51.2.html" property="og:url">
+      <meta content="https://www.rexify.org/docs/release_notes/1.7.0.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -116,99 +116,120 @@ maintained using the static site generator
 » <a href="/index.html">Home</a>
 » <a href="/docs/index.html">Docs</a>
 » <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.51.2.html">Release notes for 0.51.2</a>
+» <a href="/docs/release_notes/1.7.0.html">Release notes for 1.7.0</a>
 </p>
 
               
-              <h1>Release notes for 0.51.2</h1>
-              <p>These are the changes in 0.51 release.</p>
+              <h1>Release notes for 1.7.0</h1>
+              <p><a href="https://github.com/RexOps/Rex/commit/cabbc6a8aa9eb2c0d9d3fc2439be51924edc3ff8">Happy birthday, Rex!</a></p>
 
-<h2 id="base">Base</h2>
+<p>This is a new minor release, adding new features, and fixing bugs. Upgrade is recommended for all users.</p>
+
+<p>Many thanks to all contributors who made this release possible!</p>
+
+<p>We would like to welcome
+Crimson Thompson,
+elisdg,
+iblinder,
+labbeduddel,
+LeMerP,
+Max E. Aubrey,
+Oliver Cherrier,
+Roy Storey,
+Steve Dondley
+as new contributors.</p>
+
+<h2 id="releasehighlights">Release highlights</h2>
+
+<h3 id="contributingguide">Contributing guide</h3>
+
+<p>We now have a <a href="https://github.com/RexOps/Rex/blob/master/CONTRIBUTING.md">contributing guide</a> which collects all important information about collaborating on the codebase in a single place.</p>
+
+<h3 id="filehooks">File hooks</h3>
+
+<p>Now all commands in <a href="https://metacpan.org/pod/Rex::Commands::File">Rex::Commands::File</a> have the ability to trigger hooks.</p>
+
+<h3 id="testingwithtravisci">Testing with Travis CI</h3>
+
+<p>The Rex codebase is now <a href="https://travis-ci.org/RexOps/Rex">tested on Travis CI</a>, helping tremendously by automating not just unit testing, but also author tests. It helps making the contribution process smoother.</p>
+
+<h3 id="cmdbcaching">CMDB caching</h3>
+
+<p>CMDB lookups are now cached as part of the base class, so all built-in and custom CMDB modules should get the same benefits. It&#39;s important not just for performance reasons, but also helps avoiding corner cases where the CMDB contents might change while Rex is running.</p>
+
+<h2 id="enhancements">Enhancements</h2>
 
 <ul>
-<li><p><strong>Load CMDB by default.</strong></p>
-
-<p>If you want to store data separated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
-
-<ul>
-<li>cmdb/{operatingsystem}/{hostname}.yml</li>
-<li>cmdb/{operatingsystem}/default.yml</li>
-<li>cmdb/{environment}/{hostname}.yml</li>
-<li>cmdb/{environment}/default.yml</li>
-<li>cmdb/{hostname}.yml</li>
-<li>cmdb/default.yml</li>
-</ul>
-
-<p>For example, if you have a <strong>CentOS</strong> server with the hostname <strong>web01</strong>, this means that if you request the key <strong>maxconn</strong> Rex will first try to find the key inside <strong>cmdb/CentOS/web01.yml</strong> and if it doesn&#39;t find the Rex will try the next file in the lookup path.</p>
-
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
-⁠};    </code></pre>
-
-<p>If you&#39;re using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
-
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Ext</span>::<span class="hljs-function">ParamLookup</span>;
-⁠
-⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
-⁠};    </code></pre>
-
-<p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p></li>
-<li><p><strong>Store server groups in an ini file</strong></p>
-
-<p>This feature is also available since a long time and now loaded by default. If there is a file named <strong>server.ini</strong> beside your <strong>Rexfile</strong> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
-
-<pre><code>; my group file (server.ini)
-[frontends]
-fe01
-fe02
-
-
-fe03
-fe04
-fe05
-
-
-# the backends
-[backends]
-be01 services=httpd,redis
-be02 services=httpd,redis
-;be03 services=httpd,redis
-be04 services=httpd,redis
-
-
-[db]
-db[01..02]
-
-
-[redis]
-@backends
-redis01 user=toor password=foob4r sudo=true services=redis
-redis02 user=toor password=foob4r sudo=true services=redis
-</code></pre>
-
-<p>In your <strong>Rexfile</strong> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <strong>services</strong> which you can access within a task.</p>
-
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠
-⁠task &quot;<span class="hljs-string">restart_services</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">redis</span>&quot;,
-⁠  make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">@services</span> = <span class="hljs-function">split</span> /,/, connection-&gt;server-&gt;services;
-⁠  service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠  };
-⁠
-⁠         </code></pre></li>
+<li>Test run failures with alternative commands - Ferenc Erki</li>
+<li>Cache CMDB lookups (fix #1239) - Ferenc Erki</li>
+<li>Test CMDB both with and without caching - Ferenc Erki</li>
+<li>Instantiate CMDB object during initialization - Ferenc Erki</li>
+<li>Use file command for file operations - Ferenc Erki</li>
+<li>Test for code tidyness - Ferenc Erki</li>
+<li>Use Travis CI for testing - Ferenc Erki</li>
+<li>added option to list all tasks, including hidden - Joachim Bargsten</li>
+<li>Added Oracle Linux (fix #1168, close #1174) - labbeduddel</li>
+<li>Adds SLE 15 / Leap 15.0 support - LeMerP</li>
+<li>Update README about contributing guide - Ferenc Erki</li>
+<li>Initial version of the contributing guide - Ferenc Erki</li>
+<li>Added Virtuozzo as Red Hat clone. - iblinder</li>
+<li>Print warning instead of dying when delete_user called on non existing user - Crimson Thompson</li>
 </ul>
 
 <h2 id="bugfixes">Bugfixes</h2>
 
 <ul>
-<li>#394 - export of is_symlink function</li>
-<li>#395 - is_file compatibility bug, doesn&#39;t detect symlinks anymore</li>
-<li>#393 - Added &quot;.&quot; in the allowed char of lvm create - samuelet</li>
+<li>Fix test dependency - Ferenc Erki</li>
+<li>Use perl to query environment - Ferenc Erki</li>
+<li>Remove redundant argument to rsync command - Steve Dondley</li>
+<li>Detect upstart (fix #1190) - Ferenc Erki</li>
+<li>Simplify quoting (close #1206) - Ferenc Erki</li>
+<li>Better message and remove unused variable (ref #1206) - Roy Storey</li>
+<li>Quote parameters that might have spaces (fix #807) - Roy Storey</li>
+<li>Resolve symlinks for file management commands (fix #1195, close #1199) - Ferenc Erki</li>
+<li>Add resolve_symlink helper - Ferenc Erki</li>
+<li>Add symlink tests for file management commands - Ferenc Erki</li>
+<li>Update link of installation intructions - Ferenc Erki</li>
+<li>Update testing instructions - Ferenc Erki</li>
+<li>Update list of useful resources - Ferenc Erki</li>
+<li>Fix typos - Ferenc Erki</li>
+<li>Update supported Perl versions - Ferenc Erki</li>
+<li>Convert namespace separators from module to task (fix #1193) - Ferenc Erki</li>
+<li>Add tests for package hooks (ref #1194) - Mitch Broadhead</li>
+<li>create_host: drop useless get_host invocation (close #1181) - Ali Polatel</li>
+<li>Run extra tests on Travis - Ferenc Erki</li>
+<li>Ignore tidyness checks for generated extra tests - Ferenc Erki</li>
+<li>Rename perltidy test - Ferenc Erki</li>
+<li>Replace [ExtraTests] with [RunExtraTests] (fix #964) - Kent Fredric</li>
+<li>Fix fallback method for getting username - Ferenc Erki</li>
+<li>Return username for local connections - Ferenc Erki</li>
+<li>only source ~/.profile if it really exists - Joachim Bargsten</li>
+<li>Accept critic for ProhibitExplicitReturnUndef - Ferenc Erki</li>
+<li>Accept critic for ProhibitNoStrict - Ferenc Erki</li>
+<li>Accept critic for ProhibitSubroutinePrototypes - Ferenc Erki</li>
+<li>Remove unnecessary subroutine prototype - Ferenc Erki</li>
+<li>Fix critic for ProhibitMutatingListFunctions - Ferenc Erki</li>
+<li>Fix critic for ProhibitSleepViaSelect - Erik Huelsmann</li>
+<li>Disable tidyness checks in perlcritic - Ferenc Erki</li>
+<li>improved error handling in run_task if task does not exist - Joachim Bargsten</li>
+<li>Fixes virtualization type,role for Digital Ocean Droplets (close #1192) - Mitch Broadhead</li>
+<li>Fix UID handling for OpenBSD (fix #1213) - Olivier Cherrier</li>
+<li>Added the Option &#39;continuous_read&#39; to the documentation - elisdg</li>
+<li>Fix placeholder matching for %h in ssh config. (#1214) - Max E. Aubrey</li>
+<li>Set minimum required Perl version to 5.10.1 - Ferenc Erki</li>
+<li>errorless git checkout if on checkout branch - Joachim Bargsten</li>
+<li>added clone_args as extra option for git checkout - Joachim Bargsten</li>
+<li>git checkout also supports environment settings for e.g. proxies - Joachim Bargsten</li>
+<li>added ssh as possible protocols for git-based rex modules - Joachim Bargsten</li>
+<li>Improve package handling on OpenBSD - Olivier Cherrier</li>
+<li>Enhance the OpenBSD User handling support - Olivier Cherrier</li>
+<li>Document the &#39;requiretty&#39; setting with the sudo command - Erik Huelsmann</li>
+<li>delete_host: fix regex so it does not match on prefixes - Ali Polatel</li>
+<li>Ignore YAML-1.25 (fix #1197) - Ferenc Erki</li>
+<li>Use virsh connect URI from config - Ferenc Erki</li>
+<li>Convert namespace separators from module to task (fix #1188) - Ferenc Erki</li>
+<li>Add test for using needs with nested modules (ref #1188) - Ferenc Erki</li>
+<li>Fix Pkgconf for Debian - Andy Beverley</li>
 </ul>
 
 

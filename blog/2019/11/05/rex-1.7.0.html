@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.57.0</title>
+      <title>Rex-1.7.0</title>
 
-      <meta content="Release notes for 0.57.0" property="og:title">
+      <meta content="Rex-1.7.0" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/0.57.0.html" property="og:url">
+      <meta content="https://www.rexify.org/blog/2019/11/05/rex-1.7.0.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -114,40 +114,16 @@ maintained using the static site generator
 
 <p>
 » <a href="/index.html">Home</a>
-» <a href="/docs/index.html">Docs</a>
-» <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.57.0.html">Release notes for 0.57.0</a>
+» <a href="/blog/index.html">Blog</a>
+» <a href="/blog/2019/index.html">2019</a>
+» <a href="/blog/2019/11/index.html">11</a>
+» <a href="/blog/2019/11/05/index.html">05</a>
+» <a href="/blog/2019/11/05/rex-1.7.0.html">Rex-1.7.0</a>
 </p>
 
               
-              <h1>Release notes for 0.57.0</h1>
-              <p>These are the changes in 0.57 release.</p>
-
-<p>We want to thank every contributor that makes this release possible.</p>
-
-<h2 id="common">Common</h2>
-
-<ul>
-<li>New option for sync_up and sync_down function to not parse tpl files</li>
-</ul>
-
-<!-- -->
-
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  sync_up &quot;<span class="hljs-string">local</span>&quot;, &quot;<span class="hljs-string">remote</span>&quot;, { parse_templates =&gt; FALSE, };
-⁠  }</code></pre>
-
-<h2 id="bugfixes">Bugfixes</h2>
-
-<h3 id="common">Common</h3>
-
-<ul>
-<li>allow definition of gpgkey for redhat/yum repositories - #522 - tekcurmudgeon</li>
-<li>fixed Group defined after task definition - #521</li>
-<li>fixed rsync will execute failed when use -H 127.0.0.1:2222 - #520</li>
-<li>fixed failed authentication when used ~ symbol - #517</li>
-<li>fixed before_task_start() fails with an ambiguous error when your Rexfile does not return a true value - #513</li>
-</ul>
+              <h1>Rex-1.7.0</h1>
+              <p>The <a href="/docs/release_notes/1.7.0.html">Rex-1.7.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>.</p>
 
 
 
