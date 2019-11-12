@@ -1,7 +1,7 @@
 site:
     class: Statocles::Site
     args:
-        title: (R)?ex Deployment & Configuration Management
+        title: (R)?ex, the friendly automation framework
         markdown:
             $class: Text::MultiMarkdown
         base_url: https://www.rexify.org
