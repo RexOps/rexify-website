@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>(R)?ex Deployment &amp; Configuration Management</title>
+    <title>(R)?ex, the friendly automation framework</title>
     <link>https://www.rexify.org/blog</link>
     <description>Placeholder RSS feed for rexify.org</description>
   </channel>
