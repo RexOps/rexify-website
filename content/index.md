@@ -3,122 +3,100 @@ title: (R)?ex, the friendly automation framework
 data:
   root: 1
 ---
-<div style="float: left;">
-<div class="row-fluid">
-<div class="span4">
-<h2>Why use Rex?</h2>
-<p>If you have to do a task more than once, automate it!</p>
-<p>Don&lsquo;t forget an installation step anymore. Automation reduces the risk of failure and let you do your real work.</p>
-</div>
-<div class="span4">
-<h2>Advantages</h2>
-<ul class="no-list">
-<li>Uses ssh, no agent required</li>
-<li>Seamless integration, no conflicts</li>
-<li>Easy to use and to extend</li>
-<li>Easy to learn, it&lsquo;s just plain Perl</li>
-</ul>
-</div>
-<div class="span4">
-<h2>Open source</h2>
-<p>We believe in the idea of open source. So Rex, and all its parts are released under the Apache 2.0 license.</p>
-<p>You&lsquo;re invited to join the community to make Rex better and better.</p>
-</div>
-</div>
 
-<div class="row-fluid">
-<div class="span4">&nbsp;</div>
-<div class="span4">
-<p><a class="btn" href="/docs/guides/just_enough_perl_for_rex.html">Just enough Perl for Rex &raquo;</a></p>
-</div>
-<div class="span4">
-<p><a class="btn" href="/care/help__r__ex.html">View details &raquo;</a></p>
-</div>
-</div>
-</div>
+## Puts _you_ in charge
 
-## Uptime?
+Rex acknowledges that instead of silver bullets, there is more than one way to manage it.
 
-This command line example will execute `uptime` on all the given hosts (`frontend01`, `frontend02`, ...)
+It's friendly to any combinations of local and remote execution, push and pull style of management, or imperative and declarative approach.
+Instead of forcing any specific model on you, it trusts you to be in the best position to decide what to automate and how, allowing you to build the automation tool _your_ situation requires.
 
-    $ rex -H "frontend[01..15]" -e "say run 'uptime'"
+## Easy to get on board
+
+Automate what you are doing today, and add more tomorrow.
+
+Rex runs locally, even if managing remotes via SSH. This means it's instantly usable, without big rollout processes or anyone else to convince, making it ideal and friendly for incremental automation.
+
+<a class="btn" href="/docs/guides/start_using__r__ex.html">Get started &raquo;</a>
+
+## It's just Perl
+
+Perl is a battle-tested, mature language, and Rex code is just Perl code.
+
+This means whenever you reach the limitations of the built-in Rex features, a powerful programming language and module ecosystem is always at your fingertips to seamlessly extend it with modules from [CPAN](https://metacpan.org) or with your own code.
+
+As a bonus, you can also use the usual well-established tools and workflows, like IDE integration for syntax highlighting, linting and formatting, or authoring and publishing [Rex modules on CPAN](https://metacpan.org/search?q=rex).
+
+With the use of Inline modules, it's friendly to code written in other languages too. So after all, it's not just Perl.
+
+<a class="btn" href="/docs/guides/just_enough_perl_for_rex.html">Just enough Perl for Rex &raquo;</a>
+
+## Open source
+
+We believe in the idea of open source. So Rex, and all its parts are released under the Apache 2.0 license. You're invited to join the community to make Rex better and better.
+
+<a class="btn" href="/care/help__r__ex.html">View details &raquo;</a>
+
+## Show me the code!
+
+### Uptime?
+
+This command line example will execute `uptime` on all the given hosts (`frontend01`, `frontend02`, ...):
+
+    $ rex -H "frontend[01..05]" -e "say run 'uptime'"
 
 The same, but with a Rexfile
 
     ```perl
-    use Rex -feature => ['1.0'];
-    desc "Get Uptime";
-    task "uptime", sub {
-      say run "uptime";
+    use Rex -feature => ['1.4'];
+    
+    desc 'Get uptime';
+    task 'uptime', 'frontend[01..05]', sub {
+      say run 'uptime';
     };
     ```
 
 Now you can run your task with this command:
 
-    $ rex -H "frontend[01..15] middleware[01..05] db[01..04]" -u ssh-user -p ssh-password uptime
+    $ rex uptime
 
-## Keep Your Configuration In Sync
+## Keep your configuration in sync
 
-This example will install the Apache webserver on 5 machines and keep their configuration in sync. If the deployed configuration file changes, it will automatically reload the service.
-
-If this task gets executed against a "virgin" host (where no Apache is installed yet), it will first install it.
+This example will install the Apache web server on 5 machines and keep their configuration in sync. If the deployed configuration file changes, it will automatically reload the service.
 
     ```perl
-    use Rex -feature => ['1.0'];
+    use Rex -feature => ['1.4'];
     
-    user "root";
-    group frontend => "frontend[01..05]";
+    user 'root';
+    group frontend => 'frontend[01..05]';
     
-    desc "Prepare Frontend Server";
-    task "prepare",
-      group => "frontend",
+    desc 'Prepare frontend server';
+    task 'prepare',
+      group => 'frontend',
       sub {
-      pkg "apache2", ensure => "latest";
+      pkg 'apache2', ensure => 'present';
     
-      service "apache2", ensure => "started";
+      service 'apache2', ensure => 'started';
       };
     
-    desc "Keep Configuration in sync";
-    task "configure",
-      group => "frontend",
+    desc 'Keep configuration in sync';
+    task 'configure',
+      group => 'frontend',
       sub {
       prepare();
     
-      file "/etc/apache2/apache2.conf",
-        source    => "files/etc/apache2/apache2.conf",
-        on_change => sub { service apache2 => "reload"; };
+      file '/etc/apache2/apache2.conf',
+        source    => 'files/etc/apache2/apache2.conf',
+        on_change => sub { service apache2 => 'reload'; };
       };
     ```
 
-## Running under sudo?
+### Need to use sudo?
 
-You can also run everything with sudo. Just define the sudo password and activate sudo.
+You can also run everything with sudo. Just replace the authentication information with the following:
 
     ```perl
-    use Rex -feature => ['1.0'];
-    
-    user "ubuntu";
-    group frontend => "frontend[01..05]";
+    user 'ubuntu';
     sudo TRUE;
-    sudo_password "mysudopw";
-    
-    desc "Prepare Frontend Server";
-    task "prepare",
-      group => "frontend",
-      sub {
-      pkg "apache2", ensure => "latest";
-    
-      service "apache2", ensure => "started";
-      };
-    
-    desc "Keep Configuration in sync";
-    task "configure",
-      group => "frontend",
-      sub {
-      prepare();
-    
-      file "/etc/apache2/apache2.conf",
-        source    => "files/etc/apache2/apache2.conf",
-        on_change => sub { service apache2 => "reload"; };
-      };
+    sudo_password 'mysudopw';
     ```
