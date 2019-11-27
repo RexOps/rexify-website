@@ -27,7 +27,7 @@ This is the current list of feature flags:
 | tty                                    | 1.0       | Enable pty usage for ssh connections. (Default) |
 | template\_ng                           | 0.56      | Enabling the new template engine (better error reporting, etc.) |
 | 0.56                                   | 0.56      | Will activate autodie feature. Furthermore, all features from earlier versions are activated. |
-| autodie                                | 0.56      | Will enable autodie feature: die on all failed [filesytem commands](../../api/Rex/Commands/Fs.pm.html) |
+| autodie                                | 0.56      | Will enable autodie feature: die on all failed [filesytem commands](https://metacpan.org/pod/Rex::Commands::Fs) |
 | 0.55                                   | 0.55      | Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated. |
 | 0.54                                   | 0.54      | Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated. |
 | 0.53                                   | 0.53      | Will activate register\_cmdb\_top\_scope. And all things 0.51 and down activated. |
