@@ -17,6 +17,8 @@ site:
         plugins:
             highlight:
                 $class: Statocles::Plugin::Highlight::RexOps
+            link_check:
+                $class: Statocles::Plugin::LinkCheck
             lint:
                 $class: Statocles::Plugin::HTMLLint
                 fatal: 1
