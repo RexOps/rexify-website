@@ -16,8 +16,8 @@
       <meta name="viewport" content="width=1024, initial-scale=0.5">
       <link rel="shortcut icon" href="/public/images/skin/rexify.org/favicon.png" />
       <link href="/public/css/skin/rexify.org/hs/tomorrow.css" rel="stylesheet"/>
-      <link rel="stylesheet" href="/public/css/skin/rexify.org/bootstrap.min.css?20130325" type="text/css" media="screen" charset="utf-8" />
-      <link rel="stylesheet" href="/public/css/skin/rexify.org/default.css?20140412" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/public/css/skin/rexify.org/bootstrap.min.css" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/public/css/skin/rexify.org/default.css" type="text/css" media="screen" charset="utf-8" />
       % for my $link ( $page->links( 'stylesheet' ) ) {
       <link rel="stylesheet" href="<%= $link->href %>" type="<%= $link->type || 'text/css' %>" media="screen" charset="utf-8" />
 % }
@@ -78,7 +78,7 @@
                   <li>Groups: <a href="https://groups.google.com/group/rex-users/">Rex Users</a></li>
                   <li>Serverfault: <a href="http://serverfault.com/questions/tagged/rex">Tag with <i>rex</i></a></li>
                   <li>Issues: <a href="https://github.com/RexOps/Rex/issues">on GitHub</a></li>
-                  <li>Feature: you miss a <a href="/feature.html">feature</a>?</li>
+                  <li>Feature: you miss a <a href="/care/help__r__ex.html">feature</a>?</li>
                </ul>
                <p><a href="/support/index.html">Professional support</a> is also available.</p>
             </div>

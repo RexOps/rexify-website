@@ -6,6 +6,7 @@
 % my $so_far = '';
 % for my $part (@levels) {
     % next if $part eq '';
+    % next if $so_far =~ qr{^/blog/?} and $part =~ qr{^\d+$};
     % my $title = $part =~ tr/_/ /r;
     % push @{$breadcrumb}, { title => ucfirst($title), link => "$so_far/$part/index.html" };
     % $so_far .= "/$part";
