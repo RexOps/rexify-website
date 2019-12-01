@@ -77,44 +77,44 @@ The *\_\_module\_\_.pm* file which creates the resource.
     
     # list the available providers
     my $__provider = {
-      default => "HelloWorld::greet::Provider::default",
-      CentOS  => "HelloWorld::greet::Provider::centos",
+        default => "HelloWorld::greet::Provider::default",
+        CentOS  => "HelloWorld::greet::Provider::centos",
     };
     
     # create a resource HelloWorld::greet
     resource "greet", sub {
-      my $rule_name = resource_name;
+        my $rule_name = resource_name;
     
-      my $rule_config = {
-        ensure  => param_lookup( "ensure",  "present" ),
-        message => param_lookup( "message", "<default value>" ),
-      };
+        my $rule_config = {
+            ensure  => param_lookup( "ensure",  "present" ),
+            message => param_lookup( "message", "<default value>" ),
+        };
     
-      # get the right provider if it is not defined via the operating system
-      # and the list from above.
-      my $provider =
-        param_lookup( "provider", case ( lc(operating_system), $__provider ) );
+        # get the right provider if it is not defined via the operating system
+        # and the list from above.
+        my $provider =
+          param_lookup( "provider", case ( lc(operating_system), $__provider ) );
     
-      # load the provider class
-      $provider->require;
+        # load the provider class
+        $provider->require;
     
-      # create a new instance of the provider class
-      my $provider_o = $provider->new();
+        # create a new instance of the provider class
+        my $provider_o = $provider->new();
     
-      # and execute the requested state.
-      if ( $rule_config->{ensure} eq "present" ) {
-        if ( $provider_o->present($rule_config) ) {
-          emit created, "HelloWorld::greet resource created.";
+        # and execute the requested state.
+        if ( $rule_config->{ensure} eq "present" ) {
+            if ( $provider_o->present($rule_config) ) {
+                emit created, "HelloWorld::greet resource created.";
+            }
         }
-      }
-      elsif ( $rule_config->{ensure} eq "absent" ) {
-        if ( $provider_o->absent($rule_config) ) {
-          emit removed, "HelloWorld::greet resource removed.";
+        elsif ( $rule_config->{ensure} eq "absent" ) {
+            if ( $provider_o->absent($rule_config) ) {
+                emit removed, "HelloWorld::greet resource removed.";
+            }
         }
-      }
-      else {
-        die "Error: $rule_config->{ensure} not a valid option for 'ensure'.";
-      }
+        else {
+            die "Error: $rule_config->{ensure} not a valid option for 'ensure'.";
+        }
     
     };
     
@@ -148,41 +148,41 @@ bare class by our self.
     
     # the constructor
     sub new {
-      my $that  = shift;
-      my $proto = ref($that) || $that;
-      my $self  = {@_};
+        my $that  = shift;
+        my $proto = ref($that) || $that;
+        my $self  = {@_};
     
-      bless( $self, $proto );
+        bless( $self, $proto );
     
-      return $self;
+        return $self;
     }
     
     # the ensure methods
     sub present {
-      my ( $self, $rule_config ) = @_;
+        my ( $self, $rule_config ) = @_;
     
-      my $changed = 0;
+        my $changed = 0;
     
-      file "/etc/motd",
-        content   => $rule_config->{message},
-        owner     => "root",
-        group     => "root",
-        mode      => '0644',
-        on_change => sub { $changed = 1; };
+        file "/etc/motd",
+          content   => $rule_config->{message},
+          owner     => "root",
+          group     => "root",
+          mode      => '0644',
+          on_change => sub { $changed = 1; };
     
-      return $changed;
+        return $changed;
     }
     
     sub absent {
-      my ( $self, $rule_config ) = @_;
+        my ( $self, $rule_config ) = @_;
     
-      my $changed = 0;
+        my $changed = 0;
     
-      file "/etc/motd",
-        ensure    => "absent",
-        on_change => sub { $changed = 1; };
+        file "/etc/motd",
+          ensure    => "absent",
+          on_change => sub { $changed = 1; };
     
-      return $changed;
+        return $changed;
     }
     
     1; # this need to be the last line in the file
@@ -204,15 +204,15 @@ purpose how to do inheritance.
     
     # the constructor
     sub new {
-      my $that  = shift;
-      my $proto = ref($that) || $that;
+        my $that  = shift;
+        my $proto = ref($that) || $that;
     
-      # here we call the constructor of the parent class
-      my $self = $proto->SUPER::new(@_);
+        # here we call the constructor of the parent class
+        my $self = $proto->SUPER::new(@_);
     
-      bless( $self, $proto );
+        bless( $self, $proto );
     
-      return $self;
+        return $self;
     }
     
     1; # this need to be the last line in the file
@@ -234,12 +234,12 @@ resource in your `Rexfile`.
     task "prepare",
       group => "myservers",
       sub {
-      HelloWorld::greet "mygreeting",
-        message   => "Welcome to my server",
-        ensure    => "present",
-        on_change => sub {
-        say "server greeting has changed.";
-        };
+        HelloWorld::greet "mygreeting",
+          message   => "Welcome to my server",
+          ensure    => "present",
+          on_change => sub {
+            say "server greeting has changed.";
+          };
       };
     ```
 

@@ -59,7 +59,7 @@ Manage files on remote systems.
           group     => "root",
           mode      => 644,
           on_change => sub {
-          service ntpd => "restart";
+            service ntpd => "restart";
           };
         ```
 
@@ -76,7 +76,7 @@ Install a package on the remote system.
         pkg "ntpd",
           ensure    => "latest",
           on_change => sub {
-          service ntpd => "restart";
+            service ntpd => "restart";
           };
         ```
 

@@ -12,9 +12,9 @@ my @files = @ARGV;
 @ARGV = ();
 
 for my $file (@files) {
-  my $text = path($file)->slurp;
+    my $text = path($file)->slurp;
 
-  $text =~ s/
+    $text =~ s/
         (?<=```perl\n)
         (?<code>.+?)
         (?=\n\s+```)
@@ -22,34 +22,34 @@ for my $file (@files) {
         tidy($+{code});
     /egmsx;
 
-  path($file)->spew($text);
+    path($file)->spew($text);
 }
 
 sub tidy {
-  my $code = shift;
-  my $result;
-  my $stderr;
+    my $code = shift;
+    my $result;
+    my $stderr;
 
-  my ($indent) = $code =~ m{^(\s+)};
+    my ($indent) = $code =~ m{^(\s+)};
 
-  $code =~ s/^$indent//gm; # remove indent
+    $code =~ s/^$indent//gm; # remove indent
 
-  my $error = Perl::Tidy::perltidy(
-    source      => \$code,
-    destination => \$result,
-    errorfile   => \$stderr,
-  );
+    my $error = Perl::Tidy::perltidy(
+        source      => \$code,
+        destination => \$result,
+        errorfile   => \$stderr,
+    );
 
-  if ( defined $stderr ) {
-    say 'CODE';
-    say $code;
+    if ( defined $stderr ) {
+        say 'CODE';
+        say $code;
 
-    say 'ERROR';
-    say $stderr;
-  }
+        say 'ERROR';
+        say $stderr;
+    }
 
-  $result =~ s/^/$indent/gm; # add back indent
-  chomp $result;             # remove trailing newline
+    $result =~ s/^/$indent/gm; # add back indent
+    chomp $result;             # remove trailing newline
 
-  return $result;
+    return $result;
 }

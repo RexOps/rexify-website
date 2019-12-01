@@ -40,7 +40,7 @@ If you have many servers you want to connect to, you usually don't want to conne
     task "prepare",
       group => "frontends",
       sub {
-      # do something
+        # do something
       };
     ```
 

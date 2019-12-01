@@ -41,11 +41,11 @@ Insert the following code in your new Rexfile.
     cloud_region "ec2.eu-west-1.amazonaws.com";
     
     task "create", sub {
-      cloud_instance create => {
-        image_id => "ami-02103876",
-        name     => "static01",
-        key      => "dev-test",
-      };
+        cloud_instance create => {
+            image_id => "ami-02103876",
+            name     => "static01",
+            key      => "dev-test",
+        };
     };
     ```
 
@@ -57,14 +57,14 @@ Sometimes you need an instance with a persistent storage volume. To achieve this
 
     ```perl
     task "create", sub {
-      my $vol_id = cloud_volume create => { size => 1, zone => "eu-west-1a", };
-      cloud_instance create => {
-        image_id => "ami-02103876",
-        name     => "static01",
-        key      => "dev-test",
-        volume   => $vol_id,
-        zone     => "eu-west-1a",
-      };
+        my $vol_id = cloud_volume create => { size => 1, zone => "eu-west-1a", };
+        cloud_instance create => {
+            image_id => "ami-02103876",
+            name     => "static01",
+            key      => "dev-test",
+            volume   => $vol_id,
+            zone     => "eu-west-1a",
+        };
     };
     ```
 
@@ -74,8 +74,8 @@ To get a list of all regions and zone you can use the following functions.
 
     ```perl
     task "list", sub {
-      print Dumper get_cloud_regions;
-      print Dumper get_cloud_availability_zones;
+        print Dumper get_cloud_regions;
+        print Dumper get_cloud_availability_zones;
     };
     ```
 
@@ -85,8 +85,8 @@ To get a list of all your instances and volumes you can use these functions.
 
     ```perl
     task "list", sub {
-      print Dumper cloud_instance_list;
-      print Dumper cloud_volume_list;
+        print Dumper cloud_instance_list;
+        print Dumper cloud_volume_list;
     };
     ```
 
@@ -96,8 +96,8 @@ If you don't need your instances or volumes anymore, you can just destroy them.
 
     ```perl
     task "destroy", sub {
-      cloud_volume delete      => "$volume_id";
-      cloud_instance terminate => "$instance_id";
+        cloud_volume delete      => "$volume_id";
+        cloud_instance terminate => "$instance_id";
     };
     ```
 
@@ -117,20 +117,20 @@ Now we need to add some software to our fresh EC2 instance.
     task "prepare",
       group => "ec2",
       sub {
-      run "apt-get update";
-      install package => "apache2";
+        run "apt-get update";
+        install package => "apache2";
     
-      service apache2 => "ensure", "started";
+        service apache2 => "ensure", "started";
     
-      # deploy your webapp, see Rex::Apache::Deploy for more information.
-      deploy "my-site.tar.gz";
+        # deploy your webapp, see Rex::Apache::Deploy for more information.
+        deploy "my-site.tar.gz";
     
-      # or upload some files
-      file "/etc/passwd", source => "/etc/passwd";
+        # or upload some files
+        file "/etc/passwd", source => "/etc/passwd";
     
-      # do what ever you want
-      use Rex::Commands::Iptables;
-      close_port "all";
+        # do what ever you want
+        use Rex::Commands::Iptables;
+        close_port "all";
       };
     ```
 

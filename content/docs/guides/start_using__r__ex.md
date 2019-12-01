@@ -57,8 +57,8 @@ Now change into this directory and create a file called Rexfile with the followi
     task 'uptime',
       group => 'myservers',
       sub {
-      my $output = run 'uptime';
-      say $output;
+        my $output = run 'uptime';
+        say $output;
       };
     ```
 
@@ -77,7 +77,7 @@ To add a second task, just add the next lines to your Rexfile.
     task 'start_apache',
       group => 'myservers',
       sub {
-      service 'apache2' => 'start';
+        service 'apache2' => 'start';
       };
     ```
 
@@ -143,15 +143,15 @@ In this example you will learn how to install and configure an NTP server. You c
     task 'setup_ntp',
       group => 'all_servers',
       sub {
-      pkg 'ntpd', ensure => 'present'; # let's install the package first
+        pkg 'ntpd', ensure => 'present'; # let's install the package first
     
-      file '/etc/ntp.conf',            # then upload a configuration file
-        source => 'files/etc/ntp.conf', # use a source file under files/etc
-        on_change => sub { # and execute something if the file has changed
-        service ntpd => 'restart'; # in this case, restart the service
-        };
+        file '/etc/ntp.conf',            # then upload a configuration file
+          source => 'files/etc/ntp.conf', # use a source file under files/etc
+          on_change => sub { # and execute something if the file has changed
+            service ntpd => 'restart'; # in this case, restart the service
+          };
     
-      service 'ntpd', ensure => 'started'; # start the service now and also after reboot
+        service 'ntpd', ensure => 'started'; # start the service now and also after reboot
       };
     ```
 

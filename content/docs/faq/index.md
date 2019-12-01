@@ -35,9 +35,9 @@ If you want to print the output to your terminal you have to call it in a scalar
 
     ```perl
     task 'mytask', sub {
-      my $parameters       = shift;
-      my $parameter1_value = $parameters->{parameter1};
-      my $parameter2_value = $parameters->{parameter2};
+        my $parameters       = shift;
+        my $parameter1_value = $parameters->{parameter1};
+        my $parameter2_value = $parameters->{parameter2};
     };
     ```
 
@@ -57,7 +57,7 @@ Then, you can run your shell code remotely as:
     use Rex::Misc::ShellBlock;
     
     task "myexec", sub {
-      shell_block <<EOF;
+        shell_block <<EOF;
         echo "hi"
     EOF
     };
@@ -72,7 +72,7 @@ If you have a local script 'files/script', you can run it on the remote using th
     ```perl
     use Rex::Misc::ShellBlock;
     task "myexec", sub {
-      shell_block template('files/script');
+        shell_block template('files/script');
     };
     ```
 
@@ -83,12 +83,12 @@ Given the same scenario as above, but with the additional requirement to run the
     ```perl
     use Rex::Misc::ShellBlock;
     task "myexec", sub {
-      sudo {
-        command => sub {
-          shell_block template('files/script');
-        },
-        user => 'root'
-      };
+        sudo {
+            command => sub {
+                shell_block template('files/script');
+            },
+            user => 'root'
+        };
     };
     ```
 
