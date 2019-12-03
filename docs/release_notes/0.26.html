@@ -132,56 +132,55 @@ maintained using the static site generator
 ⁠sudo -on; <span class="hljs-comment"># turn sudo globally on</span><span class="hljs-comment">
 ⁠</span>
 ⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  install &quot;<span class="hljs-string">apache2</span>&quot;;
-⁠  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠    source =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
-⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode   =&gt; <span class="hljs-number">640</span>;
+⁠    install &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠      source =&gt; &quot;<span class="hljs-string">files/etc/ntp.conf</span>&quot;,
+⁠      owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode   =&gt; <span class="hljs-number">640</span>;
 ⁠};    </code></pre>
 
 <p>Or, if you don&#39;t want to turn sudo globally on.</p>
 
 <pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/tmp/foo.txt</span>&quot;,
-⁠    content =&gt; &quot;<span class="hljs-string">this file was written without sudo privileges</span><span class="hljs-string">\n</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/tmp/foo.txt</span>&quot;,
+⁠      content =&gt; &quot;<span class="hljs-string">this file was written without sudo privileges</span><span class="hljs-string">\n</span>&quot;;
 ⁠
-⁠  <span class="hljs-comment"># everything in this section will be executed with sudo privileges</span><span class="hljs-comment">
-⁠</span>  sudo <span class="hljs-keyword">sub </span>{
-⁠    install &quot;<span class="hljs-string">apache2</span>&quot;;
-⁠    file &quot;<span class="hljs-string">/tmp/foo2.txt</span>&quot;,
-⁠      content =&gt; &quot;<span class="hljs-string">this file was written with sudo privileges</span><span class="hljs-string">\n</span>&quot;;
-⁠  };
+⁠    <span class="hljs-comment"># everything in this section will be executed with sudo privileges</span><span class="hljs-comment">
+⁠</span>    sudo <span class="hljs-keyword">sub </span>{
+⁠        install &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠        file &quot;<span class="hljs-string">/tmp/foo2.txt</span>&quot;, content =&gt; &quot;<span class="hljs-string">this file was written with sudo privileges</span><span class="hljs-string">\n</span>&quot;;
+⁠    };
 ⁠};    </code></pre></li>
 <li><p>Added a new function <em>include</em> to include Rex recipes without registering the tasks.</p>
 
 <pre><code class="hljs">⁠include qw/Webserver::Apache Database::MySQL/;
 ⁠
 ⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">Webserver::Apache</span>::<span class="hljs-function">setup</span>();
+⁠    <span class="hljs-function">Webserver::Apache</span>::<span class="hljs-function">setup</span>();
 ⁠};    </code></pre></li>
 <li><p>Added a sed-like function.</p>
 
 <pre><code class="hljs">⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
-⁠  sed qr{search}, &quot;<span class="hljs-string">replace</span>&quot;, &quot;<span class="hljs-string">/path/to/file</span>&quot;;
+⁠    sed qr{search}, &quot;<span class="hljs-string">replace</span>&quot;, &quot;<span class="hljs-string">/path/to/file</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Package installation now possible with <em>install $pkg</em>.</p>
 
 <pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  install &quot;<span class="hljs-string">foo</span>&quot;;
+⁠    install &quot;<span class="hljs-string">foo</span>&quot;;
 ⁠
-⁠  <span class="hljs-comment"># old way</span><span class="hljs-comment">
-⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">foo</span>&quot;;
+⁠    <span class="hljs-comment"># old way</span><span class="hljs-comment">
+⁠</span>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">foo</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Added <em>chdir</em> parameter to <em>extract</em> function.</p>
 
 <pre><code class="hljs">⁠task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  extract &quot;<span class="hljs-string">/tmp/myfile.tar.gz</span>&quot;, <span class="hljs-function">chdir</span> =&gt; &quot;<span class="hljs-string">/etc</span>&quot;;
+⁠    extract &quot;<span class="hljs-string">/tmp/myfile.tar.gz</span>&quot;, <span class="hljs-function">chdir</span> =&gt; &quot;<span class="hljs-string">/etc</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p><em>sync</em> exclude option now accepts a string or an array of strings. Thanks to Hiroaki Nakamura.</p></li>
 <li><p>Added support for custom init commands.</p>
 
 <pre><code class="hljs">⁠task graceful_apache =&gt; <span class="hljs-keyword">sub </span>{
-⁠  service httpd =&gt; &quot;<span class="hljs-string">graceful</span>&quot;;
+⁠    service httpd =&gt; &quot;<span class="hljs-string">graceful</span>&quot;;
 ⁠};    </code></pre></li>
 </ul>
 

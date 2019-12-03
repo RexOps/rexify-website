@@ -146,26 +146,26 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> Rex -base;
 ⁠
 ⁠test {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.ova</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
 ⁠
-⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
+⁠    run &quot;<span class="hljs-string">ls -l</span>&quot;;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
 ⁠};
 ⁠
 ⁠<span class="hljs-number">1</span>;</code></pre>
@@ -187,37 +187,37 @@ maintained using the static site generator
 ⁠</span><span class="hljs-comment"># rex init --name=gpw --url=http://domain.tld/ubuntu-server-12.10-amd64.qcow2</span><span class="hljs-comment">
 ⁠</span>desc &quot;<span class="hljs-string">Initialize and start the VM: rex init --name=vmname [--url=http://...]</span>&quot;;
 ⁠task &quot;<span class="hljs-string">init</span>&quot;, make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
 ⁠
-⁠  box {
-⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">$box</span>) = <span class="hljs-type">@_</span>;
-⁠    <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">name</span>( <span class="hljs-type">$param</span>-&gt;{name} );
+⁠    box {
+⁠        <span class="hljs-keyword">my</span> (<span class="hljs-type">$box</span>) = <span class="hljs-type">@_</span>;
+⁠        <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">name</span>( <span class="hljs-type">$param</span>-&gt;{name} );
 ⁠
-⁠    <span class="hljs-comment"># where to download the base image</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">url</span>( <span class="hljs-type">$param</span>-&gt;{url} );
+⁠        <span class="hljs-comment"># where to download the base image</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">url</span>( <span class="hljs-type">$param</span>-&gt;{url} );
 ⁠
-⁠    <span class="hljs-comment"># default is nat</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">network</span>(
-⁠      <span class="hljs-number">1</span> =&gt; {
-⁠        type =&gt; &quot;<span class="hljs-string">nat</span>&quot;,
-⁠      },
-⁠      <span class="hljs-number">2</span> =&gt; {
-⁠        type   =&gt; &quot;<span class="hljs-string">bridged</span>&quot;,
-⁠        bridge =&gt; &quot;<span class="hljs-string">br1</span>&quot;,
-⁠      }
-⁠    );
+⁠        <span class="hljs-comment"># default is nat</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">network</span>(
+⁠            <span class="hljs-number">1</span> =&gt; {
+⁠                type =&gt; &quot;<span class="hljs-string">nat</span>&quot;,
+⁠            },
+⁠            <span class="hljs-number">2</span> =&gt; {
+⁠                type   =&gt; &quot;<span class="hljs-string">bridged</span>&quot;,
+⁠                bridge =&gt; &quot;<span class="hljs-string">br1</span>&quot;,
+⁠            }
+⁠        );
 ⁠
-⁠    <span class="hljs-comment"># define the authentication to the box</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-comment"># if you&#39;re downloading one from box.rexify.org this is the default.</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">auth</span>(
-⁠      user     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      password =&gt; &quot;<span class="hljs-string">box</span>&quot;,
-⁠    );
+⁠        <span class="hljs-comment"># define the authentication to the box</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-comment"># if you&#39;re downloading one from box.rexify.org this is the default.</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">auth</span>(
+⁠            user     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠            password =&gt; &quot;<span class="hljs-string">box</span>&quot;,
+⁠        );
 ⁠
-⁠    <span class="hljs-comment"># if you want to provision the machine,</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-comment"># you can define the tasks to do that</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">setup</span>(qw/install_webserver/);
-⁠  };
+⁠        <span class="hljs-comment"># if you want to provision the machine,</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-comment"># you can define the tasks to do that</span><span class="hljs-comment">
+⁠</span>        <span class="hljs-type">$box</span>-&gt;<span class="hljs-type">setup</span>(qw/install_webserver/);
+⁠    };
 ⁠
 ⁠};    </code></pre></li>
 </ul>
@@ -241,10 +241,10 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> = cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, };
 ⁠
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$instance</span> = cloud_instance create =&gt; {
-⁠  image_id =&gt; &quot;<span class="hljs-string">80fbcb55-b206-41f9-9bc2-2dd7aac6c061</span>&quot;,
-⁠  name     =&gt; &quot;<span class="hljs-string">myvm01</span>&quot;,
-⁠  flavor   =&gt; &quot;<span class="hljs-string">performance1-1</span>&quot;,
-⁠  networks =&gt; [&quot;<span class="hljs-string">a733f9d7-098e-4bf1-881d-5a91e84b44bb</span>&quot;]; <span class="hljs-comment"># networks is optional</span><span class="hljs-comment">
+⁠    image_id =&gt; &quot;<span class="hljs-string">80fbcb55-b206-41f9-9bc2-2dd7aac6c061</span>&quot;,
+⁠    name     =&gt; &quot;<span class="hljs-string">myvm01</span>&quot;,
+⁠    flavor   =&gt; &quot;<span class="hljs-string">performance1-1</span>&quot;,
+⁠    networks =&gt; [&quot;<span class="hljs-string">a733f9d7-098e-4bf1-881d-5a91e84b44bb</span>&quot;]; <span class="hljs-comment"># networks is optional</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠cloud_volume
@@ -285,15 +285,12 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
 ⁠</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
 ⁠set cmdb =&gt; {
-⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
-⁠  path =&gt; [
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
-⁠  ],
+⁠    type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
+⁠    path =&gt; [
+⁠        &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;, &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
+⁠        &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,     &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
+⁠        &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,                   &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
+⁠    ],
 ⁠};    </code></pre></li>
 <li><p>Connect failure reports &quot;Error running task/batch: Wrong username/password or wrong key&quot; - #359 - eduardoj</p></li>
 <li><p>Extended rexify command to work with git.</p></li>

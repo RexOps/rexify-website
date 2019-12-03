@@ -134,30 +134,30 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.54</span>&#39;];
 ⁠
 ⁠set path_map =&gt; {
-⁠  &quot;<span class="hljs-string">files/</span>&quot; =&gt; [
-⁠    &quot;<span class="hljs-string">files/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">files/{environment}/</span>&quot;,
-⁠    &quot;<span class="hljs-string">files/{hostname}/</span>&quot;,
-⁠  ],
-⁠  &quot;<span class="hljs-string">templates/</span>&quot; =&gt; [
-⁠    &quot;<span class="hljs-string">templates/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">templates/{environment}/</span>&quot;,
-⁠    &quot;<span class="hljs-string">templates/{hostname}/</span>&quot;,
-⁠  ],
+⁠    &quot;<span class="hljs-string">files/</span>&quot; =&gt; [
+⁠        &quot;<span class="hljs-string">files/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">files/{environment}/</span>&quot;,
+⁠        &quot;<span class="hljs-string">files/{hostname}/</span>&quot;,
+⁠    ],
+⁠    &quot;<span class="hljs-string">templates/</span>&quot; =&gt; [
+⁠        &quot;<span class="hljs-string">templates/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">templates/{environment}/</span>&quot;,
+⁠        &quot;<span class="hljs-string">templates/{hostname}/</span>&quot;,
+⁠    ],
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/security/access.conf</span>&quot;,
-⁠    source =&gt; &quot;<span class="hljs-string">files/etc/security/access.conf</span>&quot;,
-⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode   =&gt; <span class="hljs-number">644</span>;
+⁠    file &quot;<span class="hljs-string">/etc/security/access.conf</span>&quot;,
+⁠      source =&gt; &quot;<span class="hljs-string">files/etc/security/access.conf</span>&quot;,
+⁠      owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode   =&gt; <span class="hljs-number">644</span>;
 ⁠
-⁠  file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠    content =&gt; template(&quot;<span class="hljs-string">templates/etc/ntp.conf</span>&quot;),
-⁠    owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode    =&gt; <span class="hljs-number">644</span>;
+⁠    file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
+⁠      content =&gt; template(&quot;<span class="hljs-string">templates/etc/ntp.conf</span>&quot;),
+⁠      owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode    =&gt; <span class="hljs-number">644</span>;
 ⁠  };</code></pre>
 
 <p>This example will search for the files it should upload or process as templates in the following direction:</p>

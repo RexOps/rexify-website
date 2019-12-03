@@ -162,7 +162,7 @@ maintained using the static site generator
 <p>If you want to iterate over an array, do it like this:</p>
 
 <pre><code class="hljs">⁠for <span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> (<span class="hljs-type">@names</span>) {
-⁠  say &quot;<span class="hljs-string">Current name: </span><span class="hljs-type">$name</span>&quot;; <span class="hljs-comment"># double quotes make variables interpolated</span><span class="hljs-comment">
+⁠    say &quot;<span class="hljs-string">Current name: </span><span class="hljs-type">$name</span>&quot;; <span class="hljs-comment"># double quotes make variables interpolated</span><span class="hljs-comment">
 ⁠</span>}</code></pre>
 
 <h3 id="hashvariables">Hash variables</h3>
@@ -170,8 +170,8 @@ maintained using the static site generator
 <p>Hashes are like arrays, but with named indexes, called keys.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%person</span> = (
-⁠  name =&gt; &#39;<span class="hljs-string">John</span>&#39;,
-⁠  age  =&gt; <span class="hljs-number">28</span>,    <span class="hljs-comment"># good practice to keep a trailing comma</span><span class="hljs-comment">
+⁠    name =&gt; &#39;<span class="hljs-string">John</span>&#39;,
+⁠    age  =&gt; <span class="hljs-number">28</span>,    <span class="hljs-comment"># good practice to keep a trailing comma</span><span class="hljs-comment">
 ⁠</span>);</code></pre>
 
 <p>To access a hash element you have to use its key:</p>
@@ -182,7 +182,7 @@ maintained using the static site generator
 <p>If you want to iterate over a hash, do it like this:</p>
 
 <pre><code class="hljs">⁠for <span class="hljs-keyword">my</span> <span class="hljs-type">$key</span> ( <span class="hljs-function">keys</span> <span class="hljs-type">%person</span> ) {
-⁠  say &quot;<span class="hljs-string">key: </span><span class="hljs-type">$key</span><span class="hljs-string"> -&gt; value: </span>&quot; . <span class="hljs-type">$person</span>{<span class="hljs-type">$key</span>};
+⁠    say &quot;<span class="hljs-string">key: </span><span class="hljs-type">$key</span><span class="hljs-string"> -&gt; value: </span>&quot; . <span class="hljs-type">$person</span>{<span class="hljs-type">$key</span>};
 ⁠}</code></pre>
 
 <p>But remember an important note: hashes are always unsorted.</p>
@@ -190,38 +190,38 @@ maintained using the static site generator
 <h2 id="conditionalstatements">Conditional statements</h2>
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> eq &#39;<span class="hljs-string">John</span>&#39; ) {
-⁠  say &#39;<span class="hljs-string">Hello, my name is John!</span>&#39;;
+⁠    say &#39;<span class="hljs-string">Hello, my name is John!</span>&#39;;
 ⁠}
 ⁠<span class="hljs-keyword">else</span> {
-⁠  say &#39;<span class="hljs-string">Well, my name is not John...</span>&#39;;
+⁠    say &#39;<span class="hljs-string">Well, my name is not John...</span>&#39;;
 ⁠}
 ⁠
 ⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> ne &#39;<span class="hljs-string">John</span>&#39; ) {
-⁠  say &#39;<span class="hljs-string">Well, my name is not John...</span>&#39;;
+⁠    say &#39;<span class="hljs-string">Well, my name is not John...</span>&#39;;
 ⁠}
 ⁠<span class="hljs-keyword">else</span> {
-⁠  say &#39;<span class="hljs-string">Hello, my name is John!</span>&#39;;
+⁠    say &#39;<span class="hljs-string">Hello, my name is John!</span>&#39;;
 ⁠}
 ⁠
 ⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$age</span> &lt; <span class="hljs-number">30</span> ) {
-⁠  say &#39;<span class="hljs-string">I am younger than 30.</span>&#39;;
+⁠    say &#39;<span class="hljs-string">I am younger than 30.</span>&#39;;
 ⁠}
 ⁠<span class="hljs-keyword">elsif</span> ( <span class="hljs-type">$age</span> &gt;= <span class="hljs-number">30</span> &amp;&amp; <span class="hljs-type">$age</span> &lt;= <span class="hljs-number">50</span> ) {
-⁠  say &#39;<span class="hljs-string">Well, I am between 30 and 50.</span>&#39;;
+⁠    say &#39;<span class="hljs-string">Well, I am between 30 and 50.</span>&#39;;
 ⁠}
 ⁠<span class="hljs-keyword">else</span> {
-⁠  say &#39;<span class="hljs-string">I am older than 50.</span>&#39;;
+⁠    say &#39;<span class="hljs-string">I am older than 50.</span>&#39;;
 ⁠}</code></pre>
 
 <h2 id="loops">Loops</h2>
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$num</span> ( <span class="hljs-number">1</span> .. <span class="hljs-number">5</span> ) {
-⁠  say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$num</span>&quot;;
+⁠    say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$num</span>&quot;;
 ⁠}
 ⁠
 ⁠<span class="hljs-comment"># looping over an array</span><span class="hljs-comment">
 ⁠</span><span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$item</span> (<span class="hljs-type">@array</span>) {
-⁠  say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$item</span>&quot;;
+⁠    say &quot;<span class="hljs-string">&gt; </span><span class="hljs-type">$item</span>&quot;;
 ⁠}</code></pre>
 
 <h2 id="regularexpressions">Regular expressions</h2>
@@ -243,7 +243,7 @@ maintained using the static site generator
 ⁠</span>}
 ⁠
 ⁠<span class="hljs-keyword">sub </span><span class="hljs-function">my_function2</span> { <span class="hljs-comment"># @_ contains the parameters passed to the subroutine</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$param1</span>, <span class="hljs-type">$param2</span> ) = <span class="hljs-type">@_</span>;
+⁠</span>    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$param1</span>, <span class="hljs-type">$param2</span> ) = <span class="hljs-type">@_</span>;
 ⁠}
 ⁠
 ⁠my_function();     <span class="hljs-comment"># call the function &#39;my_function&#39;</span><span class="hljs-comment">

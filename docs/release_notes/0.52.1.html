@@ -137,12 +137,12 @@ maintained using the static site generator
 <li><p><strong>on_change</strong> hook for update_system</p>
 
 <pre><code class="hljs">⁠update_system on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">@modified_packates</span>) = <span class="hljs-type">@_</span>;
-⁠  <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> (<span class="hljs-type">@modified_packages</span>) {
-⁠    say &quot;<span class="hljs-string">Name: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{name}</span>&quot;;
-⁠    say &quot;<span class="hljs-string">Version: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{version}</span>&quot;;
-⁠    say &quot;<span class="hljs-string">Action: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{action}</span>&quot;; <span class="hljs-comment"># some of updated, installed or removed</span><span class="hljs-comment">
-⁠</span>  }
+⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">@modified_packates</span>) = <span class="hljs-type">@_</span>;
+⁠    <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> (<span class="hljs-type">@modified_packages</span>) {
+⁠        say &quot;<span class="hljs-string">Name: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{name}</span>&quot;;
+⁠        say &quot;<span class="hljs-string">Version: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{version}</span>&quot;;
+⁠        say &quot;<span class="hljs-string">Action: </span><span class="hljs-type">$pkg</span>-&gt;<span class="hljs-string">{action}</span>&quot;; <span class="hljs-comment"># some of updated, installed or removed</span><span class="hljs-comment">
+⁠</span>    }
 ⁠};    </code></pre></li>
 <li><p>Added support for <strong>end_if_matched</strong> option to run command - nathanIL</p>
 
@@ -154,11 +154,11 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠before_task_start mytask =&gt; <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># do some things</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do some things</span><span class="hljs-comment">
 ⁠</span>};
 ⁠after_task_finished mytask =&gt; <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># do some things</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do some things</span><span class="hljs-comment">
 ⁠</span>};    </code></pre></li>
 <li><p>Added <strong>fallback authentication</strong> support.</p>
 
@@ -166,17 +166,17 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠auth
 ⁠  fallback =&gt; {
-⁠  user        =&gt; &quot;<span class="hljs-string">fallback_user1</span>&quot;,
-⁠  password    =&gt; &quot;<span class="hljs-string">fallback_pw1</span>&quot;,
-⁠  public_key  =&gt; &quot;&quot;,
-⁠  private_key =&gt; &quot;&quot;,
+⁠    user        =&gt; &quot;<span class="hljs-string">fallback_user1</span>&quot;,
+⁠    password    =&gt; &quot;<span class="hljs-string">fallback_pw1</span>&quot;,
+⁠    public_key  =&gt; &quot;&quot;,
+⁠    private_key =&gt; &quot;&quot;,
 ⁠  },
 ⁠  {
-⁠  user        =&gt; &quot;<span class="hljs-string">fallback_user2</span>&quot;,
-⁠  password    =&gt; &quot;<span class="hljs-string">fallback_pw2</span>&quot;,
-⁠  public_key  =&gt; &quot;<span class="hljs-string">keys/public.key</span>&quot;,
-⁠  private_key =&gt; &quot;<span class="hljs-string">keys/private.key</span>&quot;,
-⁠  sudo        =&gt; TRUE,
+⁠    user        =&gt; &quot;<span class="hljs-string">fallback_user2</span>&quot;,
+⁠    password    =&gt; &quot;<span class="hljs-string">fallback_pw2</span>&quot;,
+⁠    public_key  =&gt; &quot;<span class="hljs-string">keys/public.key</span>&quot;,
+⁠    private_key =&gt; &quot;<span class="hljs-string">keys/private.key</span>&quot;,
+⁠    sudo        =&gt; TRUE,
 ⁠  };    </code></pre></li>
 </ul>
 

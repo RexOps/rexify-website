@@ -222,15 +222,12 @@ PerlRequire:
 <h4 id="configurethecmdb">Configure the CMDB</h4>
 
 <pre><code class="hljs">⁠set cmdb =&gt; {
-⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
-⁠  path =&gt; [
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,
-⁠    &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
-⁠  ],
+⁠    type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
+⁠    path =&gt; [
+⁠        &quot;<span class="hljs-string">cmdb/{operatingsystem}/{hostname}.yml</span>&quot;, &quot;<span class="hljs-string">cmdb/{operatingsystem}/default.yml</span>&quot;,
+⁠        &quot;<span class="hljs-string">cmdb/{environment}/{hostname}.yml</span>&quot;,     &quot;<span class="hljs-string">cmdb/{environment}/default.yml</span>&quot;,
+⁠        &quot;<span class="hljs-string">cmdb/{hostname}.yml</span>&quot;,                   &quot;<span class="hljs-string">cmdb/default.yml</span>&quot;,
+⁠    ],
 ⁠};</code></pre>
 
 <p>Configure the CMDB. Here we define a custom search path. This will tell the CMDB to lookup the keys in the following order:</p>
@@ -284,11 +281,11 @@ PerlRequire:
 <p>It is also possible to define the server or group to connect to.</p>
 
 <pre><code class="hljs">⁠make {
-⁠  <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠    <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
+⁠</span>    <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 ⁠
-⁠  <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
+⁠    <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
+⁠</span>    <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 ⁠};</code></pre>
 
 <p>Inside the task we just call the tasks from the modules we have included above. All tasks can be called as a normal perl function, as long as the taskname doesn&#39;t conflict with other perl functions.</p>
@@ -314,10 +311,10 @@ PerlRequire:
 <p>Load the <strong>Rex::Test::Base</strong> framework and the Rex basic commands.</p>
 
 <pre><code class="hljs">⁠test {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
 ⁠
-⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
 ⁠</span>};
 ⁠<span class="hljs-number">1</span>;</code></pre>
 

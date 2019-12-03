@@ -136,7 +136,7 @@ maintained using the static site generator
 ⁠set connection =&gt; &#39;<span class="hljs-string">OpenSSH</span>&#39;;
 ⁠
 ⁠task &#39;<span class="hljs-string">yourtask</span>&#39;, &#39;<span class="hljs-string">yourserver</span>&#39;, <span class="hljs-keyword">sub </span>{
-⁠  say run &#39;<span class="hljs-string">uptime</span>&#39;;
+⁠    say run &#39;<span class="hljs-string">uptime</span>&#39;;
 ⁠};</code></pre>
 
 <h4 id="kerberosauthentication-chenryn">Kerberos authentication - chenryn</h4>
@@ -153,10 +153,10 @@ maintained using the static site generator
 <p>It is now possible to use custom users for the sudo command.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  sudo {
-⁠    user    =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠    command =&gt; &quot;<span class="hljs-string">id</span>&quot;,
-⁠  };
+⁠    sudo {
+⁠        user    =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠        command =&gt; &quot;<span class="hljs-string">id</span>&quot;,
+⁠    };
 ⁠};</code></pre>
 
 <h4 id="newfunctiondelete_lines_according_to-liedekef">new function delete_lines_according_to - liedekef</h4>
@@ -164,9 +164,9 @@ maintained using the static site generator
 <p>This function is similar to delete_lines_matching but with an other syntax and the possibility to use the on_change hook if the file was changed.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">cleanup</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  delete_lines_according_to qr{<span class="hljs-string">^</span>foo:}, &quot;<span class="hljs-string">/etc/passwd</span>&quot;, on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠    say &quot;<span class="hljs-string">removed user foo.</span>&quot;;
-⁠  };
+⁠    delete_lines_according_to qr{<span class="hljs-string">^</span>foo:}, &quot;<span class="hljs-string">/etc/passwd</span>&quot;, on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠        say &quot;<span class="hljs-string">removed user foo.</span>&quot;;
+⁠    };
 ⁠};</code></pre>
 
 <h4 id="newfeatureflaguse_server_authtoenableauthpropertiesininifiles">new feature flag use_server_auth to enable auth properties in INI files</h4>
@@ -225,7 +225,7 @@ memcache: be01, be02, be04, redis01, redis02, memcache01, memcache02
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">memcache</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  say connection-&gt;server-&gt;option(&quot;<span class="hljs-string">services</span>&quot;);
+⁠    say connection-&gt;server-&gt;option(&quot;<span class="hljs-string">services</span>&quot;);
 ⁠  };</code></pre>
 
 <h4 id="cwdoptionforruncommand">cwd option for run command</h4>

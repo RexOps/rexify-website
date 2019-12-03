@@ -140,19 +140,19 @@ maintained using the static site generator
 ⁠group jiffybox =&gt; get_cloud_instances_as_group();
 ⁠
 ⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  cloud_instance create =&gt; {
-⁠    image_id =&gt; &quot;<span class="hljs-string">debian_squeeze_64bit</span>&quot;,
-⁠    name     =&gt; &quot;<span class="hljs-string">test01</span>&quot;,
-⁠    plan_id  =&gt; <span class="hljs-number">10</span>,
-⁠    password =&gt; &quot;<span class="hljs-string">f00b4r</span>&quot;,
-⁠  };
+⁠    cloud_instance create =&gt; {
+⁠        image_id =&gt; &quot;<span class="hljs-string">debian_squeeze_64bit</span>&quot;,
+⁠        name     =&gt; &quot;<span class="hljs-string">test01</span>&quot;,
+⁠        plan_id  =&gt; <span class="hljs-number">10</span>,
+⁠        password =&gt; &quot;<span class="hljs-string">f00b4r</span>&quot;,
+⁠    };
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">jiffybox</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  update_package_db;
-⁠  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠    update_package_db;
+⁠    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;
 ⁠  };    </code></pre>
 
 <pre><code>$&gt; rex create preare
@@ -160,22 +160,22 @@ maintained using the static site generator
 <li><p>Added function to update package database.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">update</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  update_package_db;
+⁠    update_package_db;
 ⁠};    </code></pre></li>
 <li><p>Revised error handling. Now every function throws an exception on failure.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">test</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/doesntexists</span>&quot;; <span class="hljs-comment"># this will terminate the whole execution because it will fail.</span><span class="hljs-comment">
+⁠    <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/doesntexists</span>&quot;; <span class="hljs-comment"># this will terminate the whole execution because it will fail.</span><span class="hljs-comment">
 ⁠</span>
-⁠  <span class="hljs-comment"># this will catch the exception and store it in $@</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-function">eval</span> {
-⁠    <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/doesntexists</span>&quot;;
+⁠    <span class="hljs-comment"># this will catch the exception and store it in $@</span><span class="hljs-comment">
+⁠</span>    <span class="hljs-function">eval</span> {
+⁠        <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/doesntexists</span>&quot;;
 ⁠
-⁠    <span class="hljs-comment"># and more stuff</span><span class="hljs-comment">
-⁠</span>  } or <span class="hljs-keyword">do</span> {
-⁠    say &quot;<span class="hljs-string">Tried to unlink /tmp/doesntexists but it failed.</span>&quot;;
-⁠    say &quot;<span class="hljs-string">Error: </span><span class="hljs-variable">$@</span>&quot;;
-⁠  };
+⁠        <span class="hljs-comment"># and more stuff</span><span class="hljs-comment">
+⁠</span>    } or <span class="hljs-keyword">do</span> {
+⁠        say &quot;<span class="hljs-string">Tried to unlink /tmp/doesntexists but it failed.</span>&quot;;
+⁠        say &quot;<span class="hljs-string">Error: </span><span class="hljs-variable">$@</span>&quot;;
+⁠    };
 ⁠};    </code></pre></li>
 <li><p>added <em>rm</em> as an alias function for unlink</p></li>
 <li><p>Added cache for the sftp object. This should speed up the execution.</p></li>

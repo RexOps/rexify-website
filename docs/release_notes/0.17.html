@@ -138,8 +138,8 @@ maintained using the static site generator
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># if solaris, install apache-22 from Blastwave</span><span class="hljs-comment">
-⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+⁠    <span class="hljs-comment"># if solaris, install apache-22 from Blastwave</span><span class="hljs-comment">
+⁠</span>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
 ⁠};    </code></pre>
 
 <p>Or, if you want to use OpenCSW</p>
@@ -149,8 +149,8 @@ maintained using the static site generator
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># if solaris, install apache-22 from OpenCSW</span><span class="hljs-comment">
-⁠</span>  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+⁠    <span class="hljs-comment"># if solaris, install apache-22 from OpenCSW</span><span class="hljs-comment">
+⁠</span>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
 ⁠};    </code></pre>
 
 <p>Or, for Solaris 11, use the built-in &quot;pkg&quot; Package Management:</p>
@@ -173,7 +173,7 @@ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
 
 <p>perl
     task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-      service ssh =&gt; &quot;restart&quot;;
+        service ssh =&gt; &quot;restart&quot;;
     };</p>
 
 <pre><code class="hljs">⁠<span class="hljs-string">    But, if you want to use the newer SVCADM management use this:</span>    </code></pre>
@@ -183,7 +183,7 @@ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
     service_provider_for SunOS =&gt; &quot;svcadm&quot;;</p>
 
 <pre><code>task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-  service ssh =&gt; &quot;restart&quot;;
+    service ssh =&gt; &quot;restart&quot;;
 };
 </code></pre>
 
@@ -191,9 +191,9 @@ task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
 
 <p>perl
     task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-      if ( operating_system_version() &lt; 10 ) {
-        say &quot;too old...&quot;;
-      }
+        if ( operating_system_version() &lt; 10 ) {
+            say &quot;too old...&quot;;
+        }
     };
     ```</p></li>
 <li><p>fixed local copy error handling</p></li>

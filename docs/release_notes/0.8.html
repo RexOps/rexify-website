@@ -129,11 +129,11 @@ maintained using the static site generator
 <p>Added chown, chgrp and chmod functions to work transparently over ssh.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">change</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">chown</span> &quot;<span class="hljs-string">jan</span>&quot;, &quot;<span class="hljs-string">/home/jan</span>&quot;, recursive =&gt; <span class="hljs-number">1</span>;
+⁠    <span class="hljs-function">chown</span> &quot;<span class="hljs-string">jan</span>&quot;, &quot;<span class="hljs-string">/home/jan</span>&quot;, recursive =&gt; <span class="hljs-number">1</span>;
 ⁠
-⁠  chgrp &quot;<span class="hljs-string">user</span>&quot;, &quot;<span class="hljs-string">/home/jan</span>&quot;, recursive =&gt; <span class="hljs-number">1</span>;
+⁠    chgrp &quot;<span class="hljs-string">user</span>&quot;, &quot;<span class="hljs-string">/home/jan</span>&quot;, recursive =&gt; <span class="hljs-number">1</span>;
 ⁠
-⁠  <span class="hljs-function">chmod</span> <span class="hljs-number">644</span>, &quot;<span class="hljs-string">/etc/passwd</span>&quot;;
+⁠    <span class="hljs-function">chmod</span> <span class="hljs-number">644</span>, &quot;<span class="hljs-string">/etc/passwd</span>&quot;;
 ⁠
 ⁠};    </code></pre></li>
 <li><p><strong>File Manipulation Functions</strong></p>
@@ -141,53 +141,53 @@ maintained using the static site generator
 <p>Added two functions to manipulate files: delete_lines_matching and append_if_no_such_line.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">manip</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  delete_lines_matching &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, matching =&gt; &quot;<span class="hljs-string">root</span>&quot;;
-⁠  delete_lines_matching &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, matching =&gt; qr{Failed};
+⁠    delete_lines_matching &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, matching =&gt; &quot;<span class="hljs-string">root</span>&quot;;
+⁠    delete_lines_matching &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, matching =&gt; qr{Failed};
 ⁠
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;,
-⁠    &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;, &quot;<span class="hljs-string">mygroup</span>&quot;;
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;,
-⁠    &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;, qr{<span class="hljs-string">^</span>mygroup};
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;,
+⁠      &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;, &quot;<span class="hljs-string">mygroup</span>&quot;;
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;,
+⁠      &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;, qr{<span class="hljs-string">^</span>mygroup};
 ⁠};    </code></pre></li>
 <li><p><strong>Services</strong></p>
 
 <p>Added reload function.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">reload-apache</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  service apache2 =&gt; &quot;<span class="hljs-string">reload</span>&quot;;
+⁠    service apache2 =&gt; &quot;<span class="hljs-string">reload</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p><strong>Database Functions</strong></p>
 
 <p>Extended the Database module to support inserts, deletes and updates.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">db</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">@data</span> = db <span class="hljs-function">select</span> =&gt; {
-⁠    fields =&gt; &quot;<span class="hljs-string">*</span>&quot;,
-⁠    from   =&gt; &quot;<span class="hljs-string">table</span>&quot;,
-⁠    where  =&gt; &quot;<span class="hljs-string">enabled=1</span>&quot;,
-⁠  };
-⁠
-⁠  db
-⁠    insert =&gt; &quot;<span class="hljs-string">table</span>&quot;,
-⁠    {
-⁠    field1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;,
-⁠    field2 =&gt; &quot;<span class="hljs-string">value2</span>&quot;,
-⁠    field3 =&gt; <span class="hljs-number">5</span>,
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@data</span> = db <span class="hljs-function">select</span> =&gt; {
+⁠        fields =&gt; &quot;<span class="hljs-string">*</span>&quot;,
+⁠        from   =&gt; &quot;<span class="hljs-string">table</span>&quot;,
+⁠        where  =&gt; &quot;<span class="hljs-string">enabled=1</span>&quot;,
 ⁠    };
 ⁠
-⁠  db
-⁠    update =&gt; &quot;<span class="hljs-string">table</span>&quot;,
-⁠    {
-⁠    set =&gt; {
-⁠      field1 =&gt; &quot;<span class="hljs-string">newvalue</span>&quot;,
-⁠      field2 =&gt; &quot;<span class="hljs-string">newvalue2</span>&quot;,
-⁠    },
-⁠    where =&gt; &quot;<span class="hljs-string">id=5</span>&quot;,
-⁠    };
+⁠    db
+⁠      insert =&gt; &quot;<span class="hljs-string">table</span>&quot;,
+⁠      {
+⁠        field1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;,
+⁠        field2 =&gt; &quot;<span class="hljs-string">value2</span>&quot;,
+⁠        field3 =&gt; <span class="hljs-number">5</span>,
+⁠      };
 ⁠
-⁠  db
-⁠    <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">table</span>&quot;,
-⁠    { where =&gt; &quot;<span class="hljs-string">id &lt; 5</span>&quot;, };
+⁠    db
+⁠      update =&gt; &quot;<span class="hljs-string">table</span>&quot;,
+⁠      {
+⁠        set =&gt; {
+⁠            field1 =&gt; &quot;<span class="hljs-string">newvalue</span>&quot;,
+⁠            field2 =&gt; &quot;<span class="hljs-string">newvalue2</span>&quot;,
+⁠        },
+⁠        where =&gt; &quot;<span class="hljs-string">id=5</span>&quot;,
+⁠      };
+⁠
+⁠    db
+⁠      <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">table</span>&quot;,
+⁠      { where =&gt; &quot;<span class="hljs-string">id &lt; 5</span>&quot;, };
 ⁠};    </code></pre></li>
 <li><p><strong>Distribution Support</strong></p>
 

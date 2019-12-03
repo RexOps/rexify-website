@@ -148,7 +148,7 @@ $ touch Rexfile
 
 <p>Insert the following code in your new Rexfile.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+<pre><code class="hljs">⁠use Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Cloud</span>;
 ⁠
 ⁠user &quot;<span class="hljs-string">root</span>&quot;;
@@ -163,11 +163,11 @@ $ touch Rexfile
 ⁠cloud_region &quot;<span class="hljs-string">ec2.eu-west-1.amazonaws.com</span>&quot;;
 ⁠
 ⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  cloud_instance create =&gt; {
-⁠    image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
-⁠    name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
-⁠    key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
-⁠  };
+⁠    cloud_instance create =&gt; {
+⁠        image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
+⁠        name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
+⁠        key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
+⁠    };
 ⁠};</code></pre>
 
 <p>This task create a new Amazon EC2 instance with no EBS block device.</p>
@@ -177,14 +177,14 @@ $ touch Rexfile
 <p>Sometimes you need an instance with a persistent storage volume. To achieve this your can use an EBS block volume.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> = cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, zone =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;, };
-⁠  cloud_instance create =&gt; {
-⁠    image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
-⁠    name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
-⁠    key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
-⁠    volume   =&gt; <span class="hljs-type">$vol_id</span>,
-⁠    zone     =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;,
-⁠  };
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$vol_id</span> = cloud_volume create =&gt; { size =&gt; <span class="hljs-number">1</span>, zone =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;, };
+⁠    cloud_instance create =&gt; {
+⁠        image_id =&gt; &quot;<span class="hljs-string">ami-02103876</span>&quot;,
+⁠        name     =&gt; &quot;<span class="hljs-string">static01</span>&quot;,
+⁠        key      =&gt; &quot;<span class="hljs-string">dev-test</span>&quot;,
+⁠        volume   =&gt; <span class="hljs-type">$vol_id</span>,
+⁠        zone     =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;,
+⁠    };
 ⁠};</code></pre>
 
 <h3 id="listingregionsandzones">Listing Regions and zones</h3>
@@ -192,8 +192,8 @@ $ touch Rexfile
 <p>To get a list of all regions and zone you can use the following functions.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">print</span> Dumper get_cloud_regions;
-⁠  <span class="hljs-function">print</span> Dumper get_cloud_availability_zones;
+⁠    <span class="hljs-function">print</span> Dumper get_cloud_regions;
+⁠    <span class="hljs-function">print</span> Dumper get_cloud_availability_zones;
 ⁠};</code></pre>
 
 <h3 id="listyourinstances">List your instances</h3>
@@ -201,8 +201,8 @@ $ touch Rexfile
 <p>To get a list of all your instances and volumes you can use these functions.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">print</span> Dumper cloud_instance_list;
-⁠  <span class="hljs-function">print</span> Dumper cloud_volume_list;
+⁠    <span class="hljs-function">print</span> Dumper cloud_instance_list;
+⁠    <span class="hljs-function">print</span> Dumper cloud_volume_list;
 ⁠};</code></pre>
 
 <h3 id="destroyyourinstancesvolumes">Destroy your instances / volumes</h3>
@@ -210,8 +210,8 @@ $ touch Rexfile
 <p>If you don&#39;t need your instances or volumes anymore, you can just destroy them.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">destroy</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  cloud_volume <span class="hljs-function">delete</span>      =&gt; &quot;<span class="hljs-type">$volume_id</span>&quot;;
-⁠  cloud_instance terminate =&gt; &quot;<span class="hljs-type">$instance_id</span>&quot;;
+⁠    cloud_volume <span class="hljs-function">delete</span>      =&gt; &quot;<span class="hljs-type">$volume_id</span>&quot;;
+⁠    cloud_instance terminate =&gt; &quot;<span class="hljs-type">$instance_id</span>&quot;;
 ⁠};</code></pre>
 
 <h3 id="putallyourec2instancesinahostgroup">Put all your EC2 instances in a host group</h3>
@@ -227,20 +227,20 @@ $ touch Rexfile
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">ec2</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  run &quot;<span class="hljs-string">apt-get update</span>&quot;;
-⁠  install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;
+⁠    run &quot;<span class="hljs-string">apt-get update</span>&quot;;
+⁠    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;
 ⁠
-⁠  service apache2 =&gt; &quot;<span class="hljs-string">ensure</span>&quot;, &quot;<span class="hljs-string">started</span>&quot;;
+⁠    service apache2 =&gt; &quot;<span class="hljs-string">ensure</span>&quot;, &quot;<span class="hljs-string">started</span>&quot;;
 ⁠
-⁠  <span class="hljs-comment"># deploy your webapp, see Rex::Apache::Deploy for more information.</span><span class="hljs-comment">
-⁠</span>  deploy &quot;<span class="hljs-string">my-site.tar.gz</span>&quot;;
+⁠    <span class="hljs-comment"># deploy your webapp, see Rex::Apache::Deploy for more information.</span><span class="hljs-comment">
+⁠</span>    deploy &quot;<span class="hljs-string">my-site.tar.gz</span>&quot;;
 ⁠
-⁠  <span class="hljs-comment"># or upload some files</span><span class="hljs-comment">
-⁠</span>  file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">/etc/passwd</span>&quot;;
+⁠    <span class="hljs-comment"># or upload some files</span><span class="hljs-comment">
+⁠</span>    file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">/etc/passwd</span>&quot;;
 ⁠
-⁠  <span class="hljs-comment"># do what ever you want</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Iptables</span>;
-⁠  close_port &quot;<span class="hljs-string">all</span>&quot;;
+⁠    <span class="hljs-comment"># do what ever you want</span><span class="hljs-comment">
+⁠</span>    <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Iptables</span>;
+⁠    close_port &quot;<span class="hljs-string">all</span>&quot;;
 ⁠  };</code></pre>
 
 <p>Now you can run Rex to create the instance and prepare the system for use.</p>

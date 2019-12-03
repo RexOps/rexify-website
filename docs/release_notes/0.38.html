@@ -138,8 +138,8 @@ maintained using the static site generator
 <li><p>Added update_system command to update a complete system.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">update_all</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  update_package_db;
-⁠  update_system;
+⁠    update_package_db;
+⁠    update_system;
 ⁠};    </code></pre></li>
 </ul>
 
@@ -195,16 +195,16 @@ vms:
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># this will create a defined boxes from the YAML file.</span><span class="hljs-comment">
-⁠</span>  boxes &quot;<span class="hljs-string">init</span>&quot;;
+⁠    <span class="hljs-comment"># this will create a defined boxes from the YAML file.</span><span class="hljs-comment">
+⁠</span>    boxes &quot;<span class="hljs-string">init</span>&quot;;
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">stop_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  boxes stop =&gt; qw/box1 box2/;
+⁠    boxes stop =&gt; qw/box1 box2/;
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">start_boxes</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  boxes start =&gt; qw/box1 box2/;
+⁠    boxes start =&gt; qw/box1 box2/;
 ⁠};    </code></pre></li>
 </ul>
 

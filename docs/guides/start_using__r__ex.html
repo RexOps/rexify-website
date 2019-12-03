@@ -176,8 +176,8 @@ $ cd projects/my-first-rex-project
 ⁠task &#39;<span class="hljs-string">uptime</span>&#39;,
 ⁠  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &#39;<span class="hljs-string">uptime</span>&#39;;
-⁠  say <span class="hljs-type">$output</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &#39;<span class="hljs-string">uptime</span>&#39;;
+⁠    say <span class="hljs-type">$output</span>;
 ⁠  };</code></pre>
 
 <p>The special first line <code>use Rex -feature =&gt; [&#39;1.4&#39;];</code> enables all features that are available for version 1.4. If you want to know more about feature flags, please check out the <a href="/docs/guides/feature_flags.html">How to enable or disable features</a> page.</p>
@@ -195,7 +195,7 @@ $ cd projects/my-first-rex-project
 ⁠task &#39;<span class="hljs-string">start_apache</span>&#39;,
 ⁠  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  service &#39;<span class="hljs-string">apache2</span>&#39; =&gt; &#39;<span class="hljs-string">start</span>&#39;;
+⁠    service &#39;<span class="hljs-string">apache2</span>&#39; =&gt; &#39;<span class="hljs-string">start</span>&#39;;
 ⁠  };</code></pre>
 
 <p>This task will start the service named <code>apache2</code> on all the servers in the <code>myservers</code> group.</p>
@@ -254,15 +254,15 @@ Server Groups
 ⁠task &#39;<span class="hljs-string">setup_ntp</span>&#39;,
 ⁠  group =&gt; &#39;<span class="hljs-string">all_servers</span>&#39;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  pkg &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;; <span class="hljs-comment"># let&#39;s install the package first</span><span class="hljs-comment">
+⁠    pkg &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;; <span class="hljs-comment"># let&#39;s install the package first</span><span class="hljs-comment">
 ⁠</span>
-⁠  file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,            <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
-⁠</span>    source =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
-⁠</span>    on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
-⁠</span>    service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;; <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
-⁠</span>    };
+⁠    file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,            <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
+⁠</span>      source =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
+⁠</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
+⁠</span>        service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;; <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
+⁠</span>      };
 ⁠
-⁠  service &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;; <span class="hljs-comment"># start the service now and also after reboot</span><span class="hljs-comment">
+⁠    service &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;; <span class="hljs-comment"># start the service now and also after reboot</span><span class="hljs-comment">
 ⁠</span>  };</code></pre>
 
 <p>That&#39;s all.</p>

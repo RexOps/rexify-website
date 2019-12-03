@@ -143,7 +143,7 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
 ⁠};    </code></pre>
 
 <p>If you&#39;re using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
@@ -152,7 +152,7 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Ext</span>::<span class="hljs-function">ParamLookup</span>;
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
 ⁠};    </code></pre>
 
 <p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p></li>
@@ -196,8 +196,8 @@ redis02 user=toor password=foob4r sudo=true services=redis
 ⁠task &quot;<span class="hljs-string">restart_services</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">redis</span>&quot;,
 ⁠  make {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">@services</span> = <span class="hljs-function">split</span> /,/, connection-&gt;server-&gt;services;
-⁠  service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@services</span> = <span class="hljs-function">split</span> /,/, connection-&gt;server-&gt;services;
+⁠    service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
 ⁠  };
 ⁠
 ⁠         </code></pre></li>

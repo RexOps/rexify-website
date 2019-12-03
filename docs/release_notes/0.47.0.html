@@ -145,26 +145,26 @@ maintained using the static site generator
 ⁠set box =&gt; &quot;<span class="hljs-string">KVM</span>&quot;;
 ⁠
 ⁠test {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
 ⁠
-⁠  run &quot;<span class="hljs-string">ls -l</span>&quot;;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
+⁠    run &quot;<span class="hljs-string">ls -l</span>&quot;;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
 ⁠
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
 ⁠};
 ⁠
 ⁠<span class="hljs-number">1</span>;    </code></pre></li>
@@ -197,13 +197,13 @@ maintained using the static site generator
 <li><p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  service &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠    ensure  =&gt; &quot;<span class="hljs-string">started</span>&quot;,
-⁠    start   =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠    stop    =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
-⁠    status  =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
-⁠    restart =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠    reload  =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
+⁠    service &quot;<span class="hljs-string">apache2</span>&quot;,
+⁠      ensure  =&gt; &quot;<span class="hljs-string">started</span>&quot;,
+⁠      start   =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠      stop    =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
+⁠      status  =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
+⁠      restart =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+⁠      reload  =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
 

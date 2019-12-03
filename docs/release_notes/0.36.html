@@ -145,36 +145,36 @@ maintained using the static site generator
 ⁠cloud_region &quot;<span class="hljs-string">http://172.16.120.131:2633/RPC2</span>&quot;;
 ⁠
 ⁠task &quot;<span class="hljs-string">list-os</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">print</span> Dumper get_cloud_operating_systems;
+⁠    <span class="hljs-function">print</span> Dumper get_cloud_operating_systems;
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$vm</span>     = cloud_instance create =&gt; {
-⁠    image =&gt; &quot;<span class="hljs-string">template-1</span>&quot;,
-⁠    name  =&gt; <span class="hljs-type">$params</span>-&gt;{name},
-⁠  };
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$vm</span>     = cloud_instance create =&gt; {
+⁠        image =&gt; &quot;<span class="hljs-string">template-1</span>&quot;,
+⁠        name  =&gt; <span class="hljs-type">$params</span>-&gt;{name},
+⁠    };
 ⁠
-⁠  <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$vm</span>);
+⁠    <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$vm</span>);
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">start</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
-⁠  cloud_instance start =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠    cloud_instance start =&gt; <span class="hljs-type">$params</span>-&gt;{name};
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">stop</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
-⁠  cloud_instance stop =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠    cloud_instance stop =&gt; <span class="hljs-type">$params</span>-&gt;{name};
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">terminate</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
-⁠  cloud_instance terminate =&gt; <span class="hljs-type">$params</span>-&gt;{name};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$params</span> = <span class="hljs-function">shift</span>;
+⁠    cloud_instance terminate =&gt; <span class="hljs-type">$params</span>-&gt;{name};
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">list</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-function">print</span> Dumper cloud_instance_list;
+⁠    <span class="hljs-function">print</span> Dumper cloud_instance_list;
 ⁠};</code></pre>
 
 <ul>
@@ -185,17 +185,17 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server5</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>  <span class="hljs-keyword">my</span> <span class="hljs-type">$free_mem</span> = run_task &quot;<span class="hljs-string">get_free_mem</span>&quot;, on =&gt; &quot;<span class="hljs-string">server3</span>&quot;;
-⁠  <span class="hljs-keyword">if</span> ( <span class="hljs-type">$free_mem</span> &lt; <span class="hljs-number">100</span> ) {
-⁠    say &quot;<span class="hljs-string">Less than 100 MB free mem on server3</span>&quot;;
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>    <span class="hljs-keyword">my</span> <span class="hljs-type">$free_mem</span> = run_task &quot;<span class="hljs-string">get_free_mem</span>&quot;, on =&gt; &quot;<span class="hljs-string">server3</span>&quot;;
+⁠    <span class="hljs-keyword">if</span> ( <span class="hljs-type">$free_mem</span> &lt; <span class="hljs-number">100</span> ) {
+⁠        say &quot;<span class="hljs-string">Less than 100 MB free mem on server3</span>&quot;;
 ⁠
-⁠    <span class="hljs-comment"># create a new server instance on server5 to unload server3</span><span class="hljs-comment">
-⁠</span>  }
+⁠        <span class="hljs-comment"># create a new server instance on server5 to unload server3</span><span class="hljs-comment">
+⁠</span>    }
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">get_free_mem</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">return</span> memory-&gt;{free};
+⁠    <span class="hljs-keyword">return</span> memory-&gt;{free};
 ⁠};</code></pre>
 
 <ul>

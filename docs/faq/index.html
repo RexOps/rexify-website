@@ -150,9 +150,9 @@ maintained using the static site generator
 <h2 id="howcanipassparameterstoatask">How can I pass parameters to a task?</h2>
 
 <pre><code class="hljs">⁠task &#39;<span class="hljs-string">mytask</span>&#39;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span>       = <span class="hljs-function">shift</span>;
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span>       = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
 ⁠};</code></pre>
 
 <p>Then you can run mytask from CLI like this:</p>
@@ -172,7 +172,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
 ⁠
 ⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
+⁠    shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
 ⁠</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
 ⁠</span><span class="hljs-keyword">EOF</span>
 ⁠};</code></pre>
@@ -185,7 +185,7 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
 ⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+⁠    shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
 ⁠};</code></pre>
 
 <h2 id="howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</h2>
@@ -194,12 +194,12 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
 ⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  sudo {
-⁠    command =&gt; <span class="hljs-keyword">sub </span>{
-⁠      shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
-⁠    },
-⁠    user =&gt; &#39;<span class="hljs-string">root</span>&#39;
-⁠  };
+⁠    sudo {
+⁠        command =&gt; <span class="hljs-keyword">sub </span>{
+⁠            shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+⁠        },
+⁠        user =&gt; &#39;<span class="hljs-string">root</span>&#39;
+⁠    };
 ⁠};</code></pre>
 
 <h2 id="howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</h2>

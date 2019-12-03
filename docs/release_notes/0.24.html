@@ -132,15 +132,15 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Pkg</span>;
 ⁠
 ⁠<span class="hljs-function">Rex::connect</span>(
-⁠  server      =&gt; &quot;<span class="hljs-string">remotehost</span>&quot;,
-⁠  user        =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠  private_key =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa</span>&quot;,
-⁠  public_key  =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa.pub</span>&quot;,
+⁠    server      =&gt; &quot;<span class="hljs-string">remotehost</span>&quot;,
+⁠    user        =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠    private_key =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa</span>&quot;,
+⁠    public_key  =&gt; &quot;<span class="hljs-string">/home/jan/.ssh/id_rsa.pub</span>&quot;,
 ⁠);
 ⁠
 ⁠<span class="hljs-keyword">if</span> ( is_file(&quot;<span class="hljs-string">/etc/sudoers</span>&quot;) ) {
 ⁠
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>}
 ⁠
 ⁠install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache2</span>&quot;;    </code></pre></li>
@@ -153,7 +153,7 @@ maintained using the static site generator
 <p>It is now possible to write templates inside your Rexfile.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/foo</span>&quot;, content =&gt; template( &quot;<span class="hljs-type">@mytemplate</span><span class="hljs-string">.conf</span>&quot;, user =&gt; &#39;<span class="hljs-string">bar</span>&#39;, );
+⁠    file &quot;<span class="hljs-string">/etc/foo</span>&quot;, content =&gt; template( &quot;<span class="hljs-type">@mytemplate</span><span class="hljs-string">.conf</span>&quot;, user =&gt; &#39;<span class="hljs-string">bar</span>&#39;, );
 ⁠};
 ⁠
 ⁠ <span class="hljs-keyword">__DATA__</span>
@@ -165,15 +165,15 @@ maintained using the static site generator
 <li><p>added CLI parameters to before/around hooks</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">$param</span>) = <span class="hljs-function">shift</span>;
+⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">$param</span>) = <span class="hljs-function">shift</span>;
 ⁠
-⁠  <span class="hljs-comment"># ...</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># ...</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠before foo =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$server_ref</span>, <span class="hljs-type">$param</span> ) = <span class="hljs-type">@_</span>;
+⁠    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$server_ref</span>, <span class="hljs-type">$param</span> ) = <span class="hljs-type">@_</span>;
 ⁠
-⁠  <span class="hljs-comment"># do something before &quot;foo&quot;</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something before &quot;foo&quot;</span><span class="hljs-comment">
 ⁠</span>};    </code></pre></li>
 <li><p>added LVM create functions</p>
 

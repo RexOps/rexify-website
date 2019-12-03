@@ -130,19 +130,19 @@ maintained using the static site generator
 ⁠  prepare =&gt; &quot;<span class="hljs-string">server1</span>&quot;,
 ⁠  &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>  };
 ⁠
 ⁠before prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> (<span class="hljs-type">$server</span>) = <span class="hljs-type">@_</span>;
-⁠  say &quot;<span class="hljs-string">Starting virtual machine...</span>&quot;;
-⁠  run &quot;<span class="hljs-string">xm start </span><span class="hljs-type">$server</span>&quot;;
+⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">$server</span>) = <span class="hljs-type">@_</span>;
+⁠    say &quot;<span class="hljs-string">Starting virtual machine...</span>&quot;;
+⁠    run &quot;<span class="hljs-string">xm start </span><span class="hljs-type">$server</span>&quot;;
 ⁠};
 ⁠
 ⁠after prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$failed_connection</span> ) = <span class="hljs-type">@_</span>;
-⁠  say &quot;<span class="hljs-string">Stopping virtual machine...</span>&quot;;
-⁠  run &quot;<span class="hljs-string">xm stop </span><span class="hljs-type">$server</span>&quot;;
+⁠    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$server</span>, <span class="hljs-type">$failed_connection</span> ) = <span class="hljs-type">@_</span>;
+⁠    say &quot;<span class="hljs-string">Stopping virtual machine...</span>&quot;;
+⁠    run &quot;<span class="hljs-string">xm stop </span><span class="hljs-type">$server</span>&quot;;
 ⁠};      </code></pre></li>
 <li><p>Systemd service provider for RedHat and SuSE.</p></li>
 <li><p>Added <a href="http://fusioninventory.org/">FusionInventory</a> support. If the agent is installed on the target maschine rex will use it for inventory.</p></li>
@@ -150,12 +150,12 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠task prepare_user =&gt; <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  create_user &quot;<span class="hljs-string">foo</span>&quot; =&gt; {
-⁠    home           =&gt; &#39;<span class="hljs-string">/home/foo</span>&#39;,
-⁠    groups         =&gt; [ &#39;<span class="hljs-string">users</span>&#39;, &#39;<span class="hljs-string">...</span>&#39; ],
-⁠    crypt_password =&gt; &#39;<span class="hljs-string">$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/</span>&#39;,
-⁠    ssh_key        =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...</span>&quot;,
-⁠  };
+⁠    create_user &quot;<span class="hljs-string">foo</span>&quot; =&gt; {
+⁠        home           =&gt; &#39;<span class="hljs-string">/home/foo</span>&#39;,
+⁠        groups         =&gt; [ &#39;<span class="hljs-string">users</span>&#39;, &#39;<span class="hljs-string">...</span>&#39; ],
+⁠        crypt_password =&gt; &#39;<span class="hljs-string">$1$.yBAfj8a$mQ2SY/lfz8FaSUTgHsP37c/</span>&#39;,
+⁠        ssh_key        =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChUw...</span>&quot;,
+⁠    };
 ⁠
 ⁠};      </code></pre></li>
 <li><p>Bugs were fixed.</p></li>

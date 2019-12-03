@@ -130,7 +130,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠sayformat &#39;<span class="hljs-string">%h: %s</span>&#39;;
 ⁠
 ⁠task &quot;<span class="hljs-string">test</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  say &quot;<span class="hljs-string">hello world</span>&quot;;
+⁠    say &quot;<span class="hljs-string">hello world</span>&quot;;
 ⁠};    </code></pre></li>
 </ul>
 
@@ -144,7 +144,7 @@ maintained using the static site generator
 <li><p>user-defined columns for ps() command - #175 - dirkcjelli</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">ps</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">@list</span> = <span class="hljs-function">grep</span> { <span class="hljs-variable">$_</span>-&gt;{&quot;<span class="hljs-string">ni</span>&quot;} == <span class="hljs-number">-5</span> } ps( &quot;<span class="hljs-string">command</span>&quot;, &quot;<span class="hljs-string">ni</span>&quot; );
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@list</span> = <span class="hljs-function">grep</span> { <span class="hljs-variable">$_</span>-&gt;{&quot;<span class="hljs-string">ni</span>&quot;} == <span class="hljs-number">-5</span> } ps( &quot;<span class="hljs-string">command</span>&quot;, &quot;<span class="hljs-string">ni</span>&quot; );
 ⁠};    </code></pre></li>
 <li><p>using tilde (~) sign for directories - #198 - Gnouc, Krimdomu</p></li>
 <li><p>Rex::SCM::Git now uses cwd option of run() command, so it also works remotely. - #211 - atrodo</p></li>
@@ -164,36 +164,36 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
 ⁠
 ⁠register_function_hooks {
-⁠  before =&gt; {
-⁠    file =&gt; <span class="hljs-keyword">sub </span>{
-⁠      <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@_</span> );
-⁠      <span class="hljs-function">print</span> &quot;<span class="hljs-string">before file</span><span class="hljs-string">\n</span>&quot;;
-⁠      <span class="hljs-keyword">return</span>;
+⁠    before =&gt; {
+⁠        file =&gt; <span class="hljs-keyword">sub </span>{
+⁠            <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@_</span> );
+⁠            <span class="hljs-function">print</span> &quot;<span class="hljs-string">before file</span><span class="hljs-string">\n</span>&quot;;
+⁠            <span class="hljs-keyword">return</span>;
+⁠        },
+⁠        create_user =&gt; <span class="hljs-keyword">sub </span>{
+⁠            <span class="hljs-function">print</span> &quot;<span class="hljs-string">before create_user</span><span class="hljs-string">\n</span>&quot;;
+⁠            <span class="hljs-function">die</span>;
+⁠        },
 ⁠    },
-⁠    create_user =&gt; <span class="hljs-keyword">sub </span>{
-⁠      <span class="hljs-function">print</span> &quot;<span class="hljs-string">before create_user</span><span class="hljs-string">\n</span>&quot;;
-⁠      <span class="hljs-function">die</span>;
-⁠    },
-⁠  },
-⁠  after =&gt; {
-⁠    file =&gt; <span class="hljs-keyword">sub </span>{
-⁠      <span class="hljs-function">print</span> &quot;<span class="hljs-string">after file</span><span class="hljs-string">\n</span>&quot;;
-⁠    },
-⁠    create_user =&gt; <span class="hljs-keyword">sub </span>{
-⁠      <span class="hljs-function">print</span> &quot;<span class="hljs-string">after create_user</span><span class="hljs-string">\n</span>&quot;;
-⁠    },
-⁠  }
+⁠    after =&gt; {
+⁠        file =&gt; <span class="hljs-keyword">sub </span>{
+⁠            <span class="hljs-function">print</span> &quot;<span class="hljs-string">after file</span><span class="hljs-string">\n</span>&quot;;
+⁠        },
+⁠        create_user =&gt; <span class="hljs-keyword">sub </span>{
+⁠            <span class="hljs-function">print</span> &quot;<span class="hljs-string">after create_user</span><span class="hljs-string">\n</span>&quot;;
+⁠        },
+⁠    }
 ⁠};</code></pre>
 
 <ul>
 <li><p>added on_change hook for sync_up and sync_down - #232</p>
 
 <pre><code class="hljs">⁠sync_up &quot;<span class="hljs-string">files/</span>&quot;, &quot;<span class="hljs-string">/remote/folder</span>&quot;, {
-⁠  on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">@changed_files</span>) = <span class="hljs-type">@_</span>;
+⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{
+⁠        <span class="hljs-keyword">my</span> (<span class="hljs-type">@changed_files</span>) = <span class="hljs-type">@_</span>;
 ⁠
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>  };
+⁠        <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠</span>    };
 ⁠};    </code></pre></li>
 <li><p>Rex::Group::Lookup::Command - read hostnames from a command. - #233 - fanyeren</p>
 
@@ -225,7 +225,7 @@ maintained using the static site generator
 ⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">exec_autodie</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  run &quot;<span class="hljs-string">this-command-fails</span>&quot;;
+⁠    run &quot;<span class="hljs-string">this-command-fails</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>added support for tcsh shell - #284</p></li>
 </ul>
@@ -258,7 +258,7 @@ maintained using the static site generator
 ⁠set backup_location =&gt; &quot;<span class="hljs-string">backup/</span><span class="hljs-type">%h</span>&quot;;
 ⁠
 ⁠task yourtask =&gt; <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/foo.conf</span>&quot;, content =&gt; &quot;<span class="hljs-string">new content</span><span class="hljs-string">\n</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/etc/foo.conf</span>&quot;, content =&gt; &quot;<span class="hljs-string">new content</span><span class="hljs-string">\n</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Rex::Commands::Pstree - module to run pstree - fanyeren</p></li>
 </ul>

@@ -139,14 +139,14 @@ maintained using the static site generator
 <li><p>Added mount and umount functions to the Fs module</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">mount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/tmp</span>&quot;;
-⁠  mount &quot;<span class="hljs-string">/dev/sda6</span>&quot;, &quot;<span class="hljs-string">/mnt/sda6</span>&quot;,
-⁠    fs      =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
-⁠    options =&gt; [qw/noatime async/];
+⁠    mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/tmp</span>&quot;;
+⁠    mount &quot;<span class="hljs-string">/dev/sda6</span>&quot;, &quot;<span class="hljs-string">/mnt/sda6</span>&quot;,
+⁠      fs      =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+⁠      options =&gt; [qw/noatime async/];
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">umount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  umount &quot;<span class="hljs-string">/tmp</span>&quot;;
+⁠    umount &quot;<span class="hljs-string">/tmp</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>Added a cron module</p>
 
@@ -155,11 +155,11 @@ maintained using the static site generator
 ⁠cron
 ⁠  add =&gt; &quot;<span class="hljs-string">root</span>&quot;,
 ⁠  {
-⁠  minute       =&gt; &#39;<span class="hljs-string">5</span>&#39;,
-⁠  hour         =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠  day_of_month =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠  month        =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠  day_of_week  =&gt; &#39;<span class="hljs-string">*</span>&#39;,
+⁠    minute       =&gt; &#39;<span class="hljs-string">5</span>&#39;,
+⁠    hour         =&gt; &#39;<span class="hljs-string">*</span>&#39;,
+⁠    day_of_month =&gt; &#39;<span class="hljs-string">*</span>&#39;,
+⁠    month        =&gt; &#39;<span class="hljs-string">*</span>&#39;,
+⁠    day_of_week  =&gt; &#39;<span class="hljs-string">*</span>&#39;,
 ⁠  };
 ⁠
 ⁠cron list =&gt; &quot;<span class="hljs-string">root</span>&quot;;
@@ -174,10 +174,10 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">get-installed</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> ( installed_packages() ) {
-⁠    say &quot;<span class="hljs-string">name     : </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">name</span>&quot;};
-⁠    say &quot;<span class="hljs-string">  version: </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">version</span>&quot;};
-⁠  }
+⁠    <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> ( installed_packages() ) {
+⁠        say &quot;<span class="hljs-string">name     : </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">name</span>&quot;};
+⁠        say &quot;<span class="hljs-string">  version: </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">version</span>&quot;};
+⁠    }
 ⁠
 ⁠};
 ⁠        </code></pre></li>

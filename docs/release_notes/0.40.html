@@ -131,12 +131,12 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
 ⁠
 ⁠set cmdb =&gt; {
-⁠  type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
-⁠  path =&gt; getcwd() . &quot;<span class="hljs-string">/cmdb</span>&quot;,
+⁠    type =&gt; &quot;<span class="hljs-string">YAML</span>&quot;,
+⁠    path =&gt; getcwd() . &quot;<span class="hljs-string">/cmdb</span>&quot;,
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$vhosts</span> = get cmdb &quot;<span class="hljs-string">vhosts</span>&quot;;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$vhosts</span> = get cmdb &quot;<span class="hljs-string">vhosts</span>&quot;;
 ⁠};</code></pre>
 
 <p>This will search the given cmdb path for the following files (in the named order):</p>
@@ -155,12 +155,12 @@ maintained using the static site generator
 <p>It is now possible to use VirtualBox in headless mode on MacOSX and Linux.</p>
 
 <pre><code class="hljs">⁠set virtualization =&gt; {
-⁠  type     =&gt; &quot;<span class="hljs-string">VBox</span>&quot;,
-⁠  headless =&gt; TRUE
+⁠    type     =&gt; &quot;<span class="hljs-string">VBox</span>&quot;,
+⁠    headless =&gt; TRUE
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  vm start =&gt; &quot;<span class="hljs-string">myvm</span>&quot;;
+⁠    vm start =&gt; &quot;<span class="hljs-string">myvm</span>&quot;;
 ⁠};</code></pre>
 
 <p>If you&#39;re using Rex/Boxes you can set this option in your YAML file.</p>

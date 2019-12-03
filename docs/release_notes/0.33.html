@@ -166,27 +166,27 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
 ⁠</span>task prepare =&gt; <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
 ⁠</span>task prepare =&gt; make {
 ⁠
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>  };
 ⁠
 ⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
 ⁠  make {
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>  };    </code></pre></li>
 <li><p>Usability improvements, thanks to Anders Ossowicki</p></li>
 </ul>
@@ -220,20 +220,20 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> Template;
 ⁠
 ⁠set template_function =&gt; <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> ( <span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span> ) = <span class="hljs-type">@_</span>;
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = Template-&gt;new;
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$out</span>;
-⁠  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">process</span>( \<span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span>, \<span class="hljs-type">$out</span> );
-⁠  <span class="hljs-keyword">return</span> <span class="hljs-type">$out</span>;
+⁠    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span> ) = <span class="hljs-type">@_</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = Template-&gt;new;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$out</span>;
+⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">process</span>( \<span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span>, \<span class="hljs-type">$out</span> );
+⁠    <span class="hljs-keyword">return</span> <span class="hljs-type">$out</span>;
 ⁠};
 ⁠
 ⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/foo/service.conf</span>&quot;,
-⁠    content =&gt; template(
-⁠    &quot;<span class="hljs-string">service.conf.tpl</span>&quot;,
-⁠    name =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠    port =&gt; <span class="hljs-number">1903</span>
-⁠    );
+⁠    file &quot;<span class="hljs-string">/etc/foo/service.conf</span>&quot;,
+⁠      content =&gt; template(
+⁠        &quot;<span class="hljs-string">service.conf.tpl</span>&quot;,
+⁠        name =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+⁠        port =&gt; <span class="hljs-number">1903</span>
+⁠      );
 ⁠};    </code></pre></li>
 </ul>
 

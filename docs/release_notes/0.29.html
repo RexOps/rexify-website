@@ -143,8 +143,8 @@ maintained using the static site generator
 <li><p>Added experimental feature: shared variables</p>
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">BEGIN</span> {
-⁠  <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Shared</span>::<span class="hljs-function">Var</span>;
-⁠  share(qw($scalar @array %hash));
+⁠    <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Shared</span>::<span class="hljs-function">Var</span>;
+⁠    share(qw($scalar @array %hash));
 ⁠}    </code></pre>
 
 <p>These variables get shared across the tasks.</p></li>

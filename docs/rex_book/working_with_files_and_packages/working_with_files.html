@@ -130,7 +130,7 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/modules</span>&quot;, &quot;<span class="hljs-string">loop</span>&quot;;
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/modules</span>&quot;, &quot;<span class="hljs-string">loop</span>&quot;;
 ⁠};</code></pre>
 
 <p>This code will just append the line loop to /etc/modules if it doesn&#39;t exists.</p>
@@ -141,9 +141,9 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/modprobe.d/thinkfan.conf</span>&quot;,
-⁠    line   =&gt; &quot;<span class="hljs-string">options thinkpad_acpi fan_control=1</span>&quot;,
-⁠    regexp =&gt; qr{thinkpad_acpi};
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/modprobe.d/thinkfan.conf</span>&quot;,
+⁠      line   =&gt; &quot;<span class="hljs-string">options thinkpad_acpi fan_control=1</span>&quot;,
+⁠      regexp =&gt; qr{thinkpad_acpi};
 ⁠};</code></pre>
 
 <h3 id="usingatemplateandexecutingextracodeifthefilechanged">Using a template and executing extra code if the file changed</h3>
@@ -154,10 +154,10 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/nagios/hosts.d/frontends.cfg</span>&quot;,
-⁠    line      =&gt; template( &quot;<span class="hljs-string">templates/nagios/host.cfg.tpl</span>&quot;, <span class="hljs-type">%tpl_variables</span> ),
-⁠    regexp    =&gt; qr/<span class="hljs-number">\s</span><span class="hljs-string">*</span>host_name<span class="hljs-number">\s</span><span class="hljs-string">*</span><span class="hljs-type">$host</span>/,
-⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service nagios =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/nagios/hosts.d/frontends.cfg</span>&quot;,
+⁠      line      =&gt; template( &quot;<span class="hljs-string">templates/nagios/host.cfg.tpl</span>&quot;, <span class="hljs-type">%tpl_variables</span> ),
+⁠      regexp    =&gt; qr/<span class="hljs-number">\s</span><span class="hljs-string">*</span>host_name<span class="hljs-number">\s</span><span class="hljs-string">*</span><span class="hljs-type">$host</span>/,
+⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ service nagios =&gt; &quot;<span class="hljs-string">reload</span>&quot;; };
 ⁠};</code></pre>
 
 <h3 id="deletinglines">Deleting lines</h3>
@@ -166,8 +166,8 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
 ⁠</span>task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  delete_lines_according_to qr{loop}, &quot;<span class="hljs-string">/etc/modules</span>&quot;,
-⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">file was modified.</span>&quot;; };
+⁠    delete_lines_according_to qr{loop}, &quot;<span class="hljs-string">/etc/modules</span>&quot;,
+⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">file was modified.</span>&quot;; };
 ⁠};</code></pre>
 
 <h2 id="managingfileswithsnippets">Managing files with snippets</h2>
@@ -183,24 +183,24 @@ maintained using the static site generator
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Concat</span>;
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  concat_fragment &quot;<span class="hljs-string">config-header</span>&quot;,
-⁠    target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
-⁠    content =&gt; &quot;<span class="hljs-string"># managed by Rex</span><span class="hljs-string">\n</span>&quot;,
-⁠    order   =&gt; &quot;<span class="hljs-string">01</span>&quot;;
+⁠    concat_fragment &quot;<span class="hljs-string">config-header</span>&quot;,
+⁠      target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠      content =&gt; &quot;<span class="hljs-string"># managed by Rex</span><span class="hljs-string">\n</span>&quot;,
+⁠      order   =&gt; &quot;<span class="hljs-string">01</span>&quot;;
 ⁠
-⁠  concat_fragment &quot;<span class="hljs-string">listen-entry</span>&quot;,
-⁠    target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
-⁠    content =&gt; &quot;<span class="hljs-string">Listen *:80</span><span class="hljs-string">\n</span>&quot;,
-⁠    order   =&gt; &quot;<span class="hljs-string">20</span>&quot;;
+⁠    concat_fragment &quot;<span class="hljs-string">listen-entry</span>&quot;,
+⁠      target  =&gt; &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠      content =&gt; &quot;<span class="hljs-string">Listen *:80</span><span class="hljs-string">\n</span>&quot;,
+⁠      order   =&gt; &quot;<span class="hljs-string">20</span>&quot;;
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  concat &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
-⁠    ensure    =&gt; &quot;<span class="hljs-string">present</span>&quot;,
-⁠    owner     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode      =&gt; <span class="hljs-number">644</span>,
-⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">changed...</span>&quot;; };
+⁠    concat &quot;<span class="hljs-string">/etc/some.conf</span>&quot;,
+⁠      ensure    =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠      owner     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode      =&gt; <span class="hljs-number">644</span>,
+⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">changed...</span>&quot;; };
 ⁠};</code></pre>
 
 <p>You can create as many concat_fragment() as you need. And you can create them anywhere you want. At the end of your code you have to call the concat() resource to generate the file out of all the fragments that have been written so far.</p>
@@ -213,7 +213,7 @@ maintained using the static site generator
 ⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;;
 ⁠};</code></pre>
 
 <p>This example will just upload the file files/etc/my.conf to the server and stores it at /etc/my.conf.</p>
@@ -224,11 +224,11 @@ maintained using the static site generator
 ⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
-⁠    source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
-⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode   =&gt; <span class="hljs-number">600</span>;
+⁠    file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠      source =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
+⁠      owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode   =&gt; <span class="hljs-number">600</span>;
 ⁠};</code></pre>
 
 <p>If you want to execute a command when the file was changed, you can use the on_change option.</p>
@@ -237,12 +237,12 @@ maintained using the static site generator
 ⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
-⁠    source    =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
-⁠    owner     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode      =&gt; <span class="hljs-number">600</span>,
-⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ service mysqld =&gt; &quot;<span class="hljs-string">restart</span>&quot;; };
+⁠    file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠      source    =&gt; &quot;<span class="hljs-string">files/etc/my.conf</span>&quot;,
+⁠      owner     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group     =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode      =&gt; <span class="hljs-number">600</span>,
+⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ service mysqld =&gt; &quot;<span class="hljs-string">restart</span>&quot;; };
 ⁠};</code></pre>
 
 <p>This will restart the mysqld service if the file was modified.</p>
@@ -255,11 +255,11 @@ maintained using the static site generator
 ⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 ⁠
 ⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
-⁠    ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
-⁠    owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠    mode   =&gt; <span class="hljs-number">600</span>;
+⁠    file &quot;<span class="hljs-string">/etc/my.conf</span>&quot;,
+⁠      ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+⁠      owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+⁠      mode   =&gt; <span class="hljs-number">600</span>;
 ⁠};</code></pre>
 
 

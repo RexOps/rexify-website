@@ -196,16 +196,16 @@ maintained using the static site generator
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup_server</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">server</span>&quot;,
 ⁠  make {
-⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
 ⁠</span>  };</code></pre>
 
 <p>This task is configured to run on all servers registered in the group server.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">setup</span> {
-⁠  ldap_admin_password         =&gt; &#39;<span class="hljs-string">admin</span>&#39;,
-⁠  ldap_base_dn                =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
-⁠  ldap_base_dn_admin_password =&gt; &#39;<span class="hljs-string">test</span>&#39;,
-⁠  ldap_configure_tls          =&gt; TRUE,
+⁠    ldap_admin_password         =&gt; &#39;<span class="hljs-string">admin</span>&#39;,
+⁠    ldap_base_dn                =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
+⁠    ldap_base_dn_admin_password =&gt; &#39;<span class="hljs-string">test</span>&#39;,
+⁠    ldap_configure_tls          =&gt; TRUE,
 ⁠};
 ⁠
 ⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">UserManagement</span>::<span class="hljs-function">Server</span>::<span class="hljs-function">add_ssh_public_key</span>;</code></pre>
@@ -287,19 +287,19 @@ Setup SSSD</p>
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">setup_client</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">client</span>&quot;,
 ⁠  make {
-⁠  <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># we will add more code here in a bit</span><span class="hljs-comment">
 ⁠</span>  };</code></pre>
 
 <p>This task is configured to run on all servers inside the group client.</p>
 
 <pre><code class="hljs">⁠<span class="hljs-function">Rex::LDAP</span>::<span class="hljs-function">OpenLDAP</span>::<span class="hljs-function">UserManagement</span>::<span class="hljs-function">Client</span>::<span class="hljs-function">setup</span> {
-⁠  ldap_base_dn       =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
-⁠  ldap_uri           =&gt; &#39;<span class="hljs-string">ldaps://10.211.55.168</span>&#39;,
-⁠  ldap_bind_dn       =&gt; &#39;<span class="hljs-string">cn=sssd,ou=Services,dc=rexify,dc=org</span>&#39;,
-⁠  ldap_bind_password =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;,
-⁠  ldap_base_user_dn  =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
-⁠  ldap_base_group_dn =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
-⁠  configure_ssh_ldap =&gt; TRUE,
+⁠    ldap_base_dn       =&gt; &#39;<span class="hljs-string">dc=rexify,dc=org</span>&#39;,
+⁠    ldap_uri           =&gt; &#39;<span class="hljs-string">ldaps://10.211.55.168</span>&#39;,
+⁠    ldap_bind_dn       =&gt; &#39;<span class="hljs-string">cn=sssd,ou=Services,dc=rexify,dc=org</span>&#39;,
+⁠    ldap_bind_password =&gt; &#39;<span class="hljs-string">abcdef</span>&#39;,
+⁠    ldap_base_user_dn  =&gt; &#39;<span class="hljs-string">ou=People,dc=rexify,dc=org</span>&#39;,
+⁠    ldap_base_group_dn =&gt; &#39;<span class="hljs-string">ou=Groups,dc=rexify,dc=org</span>&#39;,
+⁠    configure_ssh_ldap =&gt; TRUE,
 ⁠};</code></pre>
 
 <ul>

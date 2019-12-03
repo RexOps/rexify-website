@@ -147,7 +147,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">mygroup</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>  };</code></pre>
 
 <p>If you need to define multiple groups for a task, you can just use an array.</p>
@@ -155,7 +155,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">mytask</span>&quot;,
 ⁠  group =&gt; [ &quot;<span class="hljs-string">mygroup</span>&quot;, &quot;<span class="hljs-string">mygroup2</span>&quot; ],
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-comment"># do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
 ⁠</span>  };</code></pre>
 
 <h2 id="usinganinifiletodefineservergroups">Using an INI file to define server groups</h2>
@@ -200,10 +200,10 @@ backend02
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">if</span> ( connection-&gt;server-&gt;option(&quot;<span class="hljs-string">maintenance</span>&quot;) ) {
-⁠    say &quot;<span class="hljs-string">This server is in maintenance mode, so i&#39;m going to stop all services</span>&quot;;
-⁠    service [ &quot;<span class="hljs-string">apache2</span>&quot;, &quot;<span class="hljs-string">postfix</span>&quot; ] =&gt; &quot;<span class="hljs-string">stop</span>&quot;;
-⁠  }
+⁠    <span class="hljs-keyword">if</span> ( connection-&gt;server-&gt;option(&quot;<span class="hljs-string">maintenance</span>&quot;) ) {
+⁠        say &quot;<span class="hljs-string">This server is in maintenance mode, so i&#39;m going to stop all services</span>&quot;;
+⁠        service [ &quot;<span class="hljs-string">apache2</span>&quot;, &quot;<span class="hljs-string">postfix</span>&quot; ] =&gt; &quot;<span class="hljs-string">stop</span>&quot;;
+⁠    }
 ⁠  };</code></pre>
 
 <h2 id="queringadatabasetodefineservergroups">Quering a database to define server groups</h2>
@@ -225,9 +225,9 @@ backend02
 ⁠
 ⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%server_group</span> = ();
 ⁠<span class="hljs-keyword">while</span> ( <span class="hljs-keyword">my</span> <span class="hljs-type">$row</span> = <span class="hljs-type">$sth</span>-&gt;<span class="hljs-type">fetchrow_hashref</span> ) {
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$group_name</span>  = <span class="hljs-type">$row</span>-&gt;{server_group};
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$server_name</span> = <span class="hljs-type">$row</span>-&gt;{server_name};
-⁠  <span class="hljs-function">push</span> <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-type">$group_name</span>} }, <span class="hljs-type">$server_name</span>;
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$group_name</span>  = <span class="hljs-type">$row</span>-&gt;{server_group};
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$server_name</span> = <span class="hljs-type">$row</span>-&gt;{server_name};
+⁠    <span class="hljs-function">push</span> <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-type">$group_name</span>} }, <span class="hljs-type">$server_name</span>;
 ⁠}
 ⁠
 ⁠<span class="hljs-function">map</span> { group <span class="hljs-variable">$_</span> =&gt; <span class="hljs-type">@</span>{ <span class="hljs-type">$server_group</span>{<span class="hljs-variable">$_</span>} }; } <span class="hljs-function">keys</span> <span class="hljs-type">%server_group</span>;</code></pre>

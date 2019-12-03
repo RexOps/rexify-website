@@ -133,7 +133,7 @@ maintained using the static site generator
 ⁠  url        =&gt; &quot;<span class="hljs-string">git</span><span class="hljs-type">@foo</span><span class="hljs-string">.bar:myrepo.git</span>&quot;;
 ⁠
 ⁠task &quot;<span class="hljs-string">checkout</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  checkout &quot;<span class="hljs-string">myrepo</span>&quot;;
+⁠    checkout &quot;<span class="hljs-string">myrepo</span>&quot;;
 ⁠};    </code></pre>
 
 <p>See <a href="https://metacpan.org/pod/Rex::Commands::SCM">Rex::Commands::SCM</a> for more information.</p></li>
@@ -145,7 +145,7 @@ maintained using the static site generator
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
 ⁠  group =&gt; [ &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">backend</span>&quot; ],
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  say run &quot;<span class="hljs-string">uptime</span>&quot;;
+⁠    say run &quot;<span class="hljs-string">uptime</span>&quot;;
 ⁠  };    </code></pre></li>
 <li><p>every task can have its own auth information</p>
 
@@ -154,12 +154,12 @@ maintained using the static site generator
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># will authenticate as root/test</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># will authenticate as root/test</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠task &quot;<span class="hljs-string">prepare2</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># will also authenticate as root/test</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># will also authenticate as root/test</span><span class="hljs-comment">
 ⁠</span>};
 ⁠
 ⁠<span class="hljs-comment"># all tasks from here down will authenticate as deploy/testdeploy</span><span class="hljs-comment">
@@ -167,15 +167,15 @@ maintained using the static site generator
 ⁠password &quot;<span class="hljs-string">testdeploy</span>&quot;;
 ⁠task &quot;<span class="hljs-string">deploy</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># will authenticate as deploy/testdeploy</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># will authenticate as deploy/testdeploy</span><span class="hljs-comment">
 ⁠</span>};    </code></pre></li>
 <li><p>fixed running of multiple tasks by do_task</p></li>
 <li><p>user module: add ssh key</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">createuser</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  create_user &quot;<span class="hljs-string">foo</span>&quot;,
-⁠    home    =&gt; &quot;<span class="hljs-string">/home/foo</span>&quot;,
-⁠    ssh_key =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...</span>&quot;;
+⁠    create_user &quot;<span class="hljs-string">foo</span>&quot;,
+⁠      home    =&gt; &quot;<span class="hljs-string">/home/foo</span>&quot;,
+⁠      ssh_key =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...</span>&quot;;
 ⁠};    </code></pre></li>
 <li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p></li>
 <li><p>ssh port isn&#39;t fix anymore (patch from Jose Luis Martinez)</p>
@@ -187,12 +187,12 @@ maintained using the static site generator
 <pre><code class="hljs">⁠port <span class="hljs-number">2222</span>;
 ⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
 ⁠
-⁠  <span class="hljs-comment"># will always connect to port 2222</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># will always connect to port 2222</span><span class="hljs-comment">
 ⁠</span>};    </code></pre></li>
 <li><p>file and upload now scans for environment specific files first</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">upload</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/passwd</span>&quot;;
+⁠    file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/passwd</span>&quot;;
 ⁠};    </code></pre>
 
 <p>If called with <em>rex -E stage</em> it will first try to upload &quot;files/etc/passwd.stage&quot; and if not found &quot;files/etc/passwd&quot;</p></li>

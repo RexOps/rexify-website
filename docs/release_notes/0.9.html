@@ -133,18 +133,18 @@ maintained using the static site generator
 
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Transaction</span>;
 ⁠task &quot;<span class="hljs-string">do_something</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  on_rollback {
-⁠    <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/test</span>&quot;;
-⁠  };
+⁠    on_rollback {
+⁠        <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/test</span>&quot;;
+⁠    };
 ⁠
-⁠  touch &quot;<span class="hljs-string">/tmp/test</span>&quot;;
-⁠  <span class="hljs-function">die</span>;
+⁠    touch &quot;<span class="hljs-string">/tmp/test</span>&quot;;
+⁠    <span class="hljs-function">die</span>;
 ⁠};
 ⁠
 ⁠task &quot;<span class="hljs-string">make</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  transaction {
-⁠    do_task &quot;<span class="hljs-string">do_something</span>&quot;;
-⁠  };
+⁠    transaction {
+⁠        do_task &quot;<span class="hljs-string">do_something</span>&quot;;
+⁠    };
 ⁠};    </code></pre></li>
 <li><p><strong>Inventory</strong></p>
 
@@ -153,19 +153,19 @@ maintained using the static site generator
 <pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Inventory</span>;
 ⁠task &quot;<span class="hljs-string">inventory</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-keyword">my</span> <span class="hljs-type">$inventory</span> = inventor();
-⁠  <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$inventory</span>);
+⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$inventory</span> = inventor();
+⁠    <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$inventory</span>);
 ⁠};    </code></pre></li>
 <li><p>New function <strong>file</strong></p>
 
 <p>Use this function to upload a file to your servers.</p>
 
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">upload</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠  file &quot;<span class="hljs-type">$path</span><span class="hljs-string">/vhost.conf</span>&quot;,
-⁠    content =&gt; template(&quot;<span class="hljs-string">../../templates/vhost.conf.tpl</span>&quot;),
+⁠    file &quot;<span class="hljs-type">$path</span><span class="hljs-string">/vhost.conf</span>&quot;,
+⁠      content =&gt; template(&quot;<span class="hljs-string">../../templates/vhost.conf.tpl</span>&quot;),
 ⁠
-⁠    <span class="hljs-comment"># on change of the file, do something</span><span class="hljs-comment">
-⁠</span>    on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">file was modified</span>&quot;; };
+⁠      <span class="hljs-comment"># on change of the file, do something</span><span class="hljs-comment">
+⁠</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{ say &quot;<span class="hljs-string">file was modified</span>&quot;; };
 ⁠};    </code></pre></li>
 </ul>
 

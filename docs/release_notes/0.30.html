@@ -140,7 +140,7 @@ maintained using the static site generator
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  <span class="hljs-comment"># print do something</span><span class="hljs-comment">
+⁠    <span class="hljs-comment"># print do something</span><span class="hljs-comment">
 ⁠</span>  };
 ⁠<span class="hljs-function">Rex::TaskList</span>-&gt;get_task(&quot;<span class="hljs-string">foo</span>&quot;)-&gt;set_parallelism(<span class="hljs-number">10</span>);    </code></pre></li>
 <li><p>Added on_change support to the append_if_no_such_line function.</p>
@@ -148,8 +148,8 @@ maintained using the static site generator
 <pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;,
 ⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
 ⁠  <span class="hljs-keyword">sub </span>{
-⁠  append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;, &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;,
-⁠    on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-function">print</span> &quot;<span class="hljs-string">/etc/groups was changed...</span><span class="hljs-string">\n</span>&quot;; };
+⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;, &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;,
+⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-function">print</span> &quot;<span class="hljs-string">/etc/groups was changed...</span><span class="hljs-string">\n</span>&quot;; };
 ⁠  };    </code></pre></li>
 </ul>
 
