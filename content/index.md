@@ -52,7 +52,7 @@ The same, but with a Rexfile
     
     desc 'Get uptime';
     task 'uptime', 'frontend[01..05]', sub {
-      say run 'uptime';
+        say run 'uptime';
     };
     ```
 
@@ -74,20 +74,20 @@ This example will install the Apache web server on 5 machines and keep their con
     task 'prepare',
       group => 'frontend',
       sub {
-      pkg 'apache2', ensure => 'present';
+        pkg 'apache2', ensure => 'present';
     
-      service 'apache2', ensure => 'started';
+        service 'apache2', ensure => 'started';
       };
     
     desc 'Keep configuration in sync';
     task 'configure',
       group => 'frontend',
       sub {
-      prepare();
+        prepare();
     
-      file '/etc/apache2/apache2.conf',
-        source    => 'files/etc/apache2/apache2.conf',
-        on_change => sub { service apache2 => 'reload'; };
+        file '/etc/apache2/apache2.conf',
+          source    => 'files/etc/apache2/apache2.conf',
+          on_change => sub { service apache2 => 'reload'; };
       };
     ```
 

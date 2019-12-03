@@ -1,5 +1,5 @@
 --ignore-side-comment-lengths
---indent-columns=2
+--variable-maximum-line-length
 --minimum-space-to-comment=1
 --no-outdent-long-quotes
 --no-outdent-long-comments

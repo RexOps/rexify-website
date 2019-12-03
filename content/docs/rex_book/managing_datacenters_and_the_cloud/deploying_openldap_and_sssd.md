@@ -86,7 +86,7 @@ In the Rexfile you'll find the task setup\_server.
     task "setup_server",
       group => "server",
       make {
-      # we will add more code here in a bit
+        # we will add more code here in a bit
       };
     ```
 
@@ -94,10 +94,10 @@ This task is configured to run on all servers registered in the group server.
 
     ```perl
     Rex::LDAP::OpenLDAP::setup {
-      ldap_admin_password         => 'admin',
-      ldap_base_dn                => 'dc=rexify,dc=org',
-      ldap_base_dn_admin_password => 'test',
-      ldap_configure_tls          => TRUE,
+        ldap_admin_password         => 'admin',
+        ldap_base_dn                => 'dc=rexify,dc=org',
+        ldap_base_dn_admin_password => 'test',
+        ldap_configure_tls          => TRUE,
     };
     
     Rex::LDAP::OpenLDAP::UserManagement::Server::add_ssh_public_key;
@@ -185,7 +185,7 @@ Now, after you have setup OpenLDAP it is time to setup SSSD. For this there is a
     task "setup_client",
       group => "client",
       make {
-      # we will add more code here in a bit
+        # we will add more code here in a bit
       };
     ```
 
@@ -193,13 +193,13 @@ This task is configured to run on all servers inside the group client.
 
     ```perl
     Rex::LDAP::OpenLDAP::UserManagement::Client::setup {
-      ldap_base_dn       => 'dc=rexify,dc=org',
-      ldap_uri           => 'ldaps://10.211.55.168',
-      ldap_bind_dn       => 'cn=sssd,ou=Services,dc=rexify,dc=org',
-      ldap_bind_password => 'abcdef',
-      ldap_base_user_dn  => 'ou=People,dc=rexify,dc=org',
-      ldap_base_group_dn => 'ou=Groups,dc=rexify,dc=org',
-      configure_ssh_ldap => TRUE,
+        ldap_base_dn       => 'dc=rexify,dc=org',
+        ldap_uri           => 'ldaps://10.211.55.168',
+        ldap_bind_dn       => 'cn=sssd,ou=Services,dc=rexify,dc=org',
+        ldap_bind_password => 'abcdef',
+        ldap_base_user_dn  => 'ou=People,dc=rexify,dc=org',
+        ldap_base_group_dn => 'ou=Groups,dc=rexify,dc=org',
+        configure_ssh_ldap => TRUE,
     };
     ```
 

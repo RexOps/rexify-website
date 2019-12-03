@@ -100,15 +100,12 @@ Load all server groups from the file **server.ini**.
 
     ```perl
     set cmdb => {
-      type => "YAML",
-      path => [
-        "cmdb/{operatingsystem}/{hostname}.yml",
-        "cmdb/{operatingsystem}/default.yml",
-        "cmdb/{environment}/{hostname}.yml",
-        "cmdb/{environment}/default.yml",
-        "cmdb/{hostname}.yml",
-        "cmdb/default.yml",
-      ],
+        type => "YAML",
+        path => [
+            "cmdb/{operatingsystem}/{hostname}.yml", "cmdb/{operatingsystem}/default.yml",
+            "cmdb/{environment}/{hostname}.yml",     "cmdb/{environment}/default.yml",
+            "cmdb/{hostname}.yml",                   "cmdb/default.yml",
+        ],
     };
     ```
 
@@ -166,11 +163,11 @@ It is also possible to define the server or group to connect to.
 
     ```perl
     make {
-      # run setup() task of Rex::OS::Base module
-      Rex::OS::Base::setup();
+        # run setup() task of Rex::OS::Base module
+        Rex::OS::Base::setup();
     
-      # run setup() task of Rex::NTP::Base module
-      Rex::NTP::Base::setup();
+        # run setup() task of Rex::NTP::Base module
+        Rex::NTP::Base::setup();
     };
     ```
 
@@ -202,10 +199,10 @@ Load the **Rex::Test::Base** framework and the Rex basic commands.
 
     ```perl
     test {
-      my $t = shift;
-      $t->name("ubuntu test");
+        my $t = shift;
+        $t->name("ubuntu test");
     
-      # we will add more code here in a bit
+        # we will add more code here in a bit
     };
     1;
     ```

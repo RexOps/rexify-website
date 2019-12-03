@@ -11,7 +11,7 @@ If you need to verify that a given line exists or gets removed from a file you c
     ```perl
     # Rexfile
     task "setup", sub {
-      append_if_no_such_line "/etc/modules", "loop";
+        append_if_no_such_line "/etc/modules", "loop";
     };
     ```
 
@@ -24,9 +24,9 @@ It is also possible to define more complex rules. For example if you want to use
     ```perl
     # Rexfile
     task "setup", sub {
-      append_if_no_such_line "/etc/modprobe.d/thinkfan.conf",
-        line   => "options thinkpad_acpi fan_control=1",
-        regexp => qr{thinkpad_acpi};
+        append_if_no_such_line "/etc/modprobe.d/thinkfan.conf",
+          line   => "options thinkpad_acpi fan_control=1",
+          regexp => qr{thinkpad_acpi};
     };
     ```
 
@@ -39,10 +39,10 @@ You can also execute code if the file was changed, for example to restart servic
     ```perl
     # Rexfile
     task "setup", sub {
-      append_if_no_such_line "/etc/nagios/hosts.d/frontends.cfg",
-        line      => template( "templates/nagios/host.cfg.tpl", %tpl_variables ),
-        regexp    => qr/\s*host_name\s*$host/,
-        on_change => sub { service nagios => "reload"; };
+        append_if_no_such_line "/etc/nagios/hosts.d/frontends.cfg",
+          line      => template( "templates/nagios/host.cfg.tpl", %tpl_variables ),
+          regexp    => qr/\s*host_name\s*$host/,
+          on_change => sub { service nagios => "reload"; };
     };
     ```
 
@@ -53,8 +53,8 @@ If you need to remove a line you can use delete\_lines\_according\_to.
     ```perl
     # Rexfile
     task "setup", sub {
-      delete_lines_according_to qr{loop}, "/etc/modules",
-        on_change => sub { say "file was modified."; };
+        delete_lines_according_to qr{loop}, "/etc/modules",
+          on_change => sub { say "file was modified."; };
     };
     ```
 
@@ -72,24 +72,24 @@ For this you can use the Rex::Commands::Concat module from http://modules.rexify
     use Rex::Commands::Concat;
     
     task "prepare", sub {
-      concat_fragment "config-header",
-        target  => "/etc/some.conf",
-        content => "# managed by Rex\n",
-        order   => "01";
+        concat_fragment "config-header",
+          target  => "/etc/some.conf",
+          content => "# managed by Rex\n",
+          order   => "01";
     
-      concat_fragment "listen-entry",
-        target  => "/etc/some.conf",
-        content => "Listen *:80\n",
-        order   => "20";
+        concat_fragment "listen-entry",
+          target  => "/etc/some.conf",
+          content => "Listen *:80\n",
+          order   => "20";
     };
     
     task "setup", sub {
-      concat "/etc/some.conf",
-        ensure    => "present",
-        owner     => "root",
-        group     => "root",
-        mode      => 644,
-        on_change => sub { say "changed..."; };
+        concat "/etc/some.conf",
+          ensure    => "present",
+          owner     => "root",
+          group     => "root",
+          mode      => 644,
+          on_change => sub { say "changed..."; };
     };
     ```
 
@@ -104,7 +104,7 @@ If you want to manage complete files you can use the file() resource to do so. T
     use Rex -feature => ['1.0'];
     
     task "setup", sub {
-      file "/etc/my.conf", source => "files/etc/my.conf";
+        file "/etc/my.conf", source => "files/etc/my.conf";
     };
     ```
 
@@ -117,11 +117,11 @@ You can also define the permissions for the file.
     use Rex -feature => ['1.0'];
     
     task "setup", sub {
-      file "/etc/my.conf",
-        source => "files/etc/my.conf",
-        owner  => "root",
-        group  => "root",
-        mode   => 600;
+        file "/etc/my.conf",
+          source => "files/etc/my.conf",
+          owner  => "root",
+          group  => "root",
+          mode   => 600;
     };
     ```
 
@@ -132,12 +132,12 @@ If you want to execute a command when the file was changed, you can use the on\_
     use Rex -feature => ['1.0'];
     
     task "setup", sub {
-      file "/etc/my.conf",
-        source    => "files/etc/my.conf",
-        owner     => "root",
-        group     => "root",
-        mode      => 600,
-        on_change => sub { service mysqld => "restart"; };
+        file "/etc/my.conf",
+          source    => "files/etc/my.conf",
+          owner     => "root",
+          group     => "root",
+          mode      => 600,
+          on_change => sub { service mysqld => "restart"; };
     };
     ```
 
@@ -152,10 +152,10 @@ It is also possible to just supervise files if they are present or have special 
     use Rex -feature => ['1.0'];
     
     task "setup", sub {
-      file "/etc/my.conf",
-        ensure => "present",
-        owner  => "root",
-        group  => "root",
-        mode   => 600;
+        file "/etc/my.conf",
+          ensure => "present",
+          owner  => "root",
+          group  => "root",
+          mode   => 600;
     };
     ```

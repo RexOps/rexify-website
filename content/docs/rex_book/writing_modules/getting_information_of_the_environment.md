@@ -10,7 +10,7 @@ Rex comes with a hardware gathering module. To display all the things Rex knows 
     use Rex -feature => ['1.0'];
     
     task "dump-info", sub {
-      dump_system_information;
+        dump_system_information;
     };
     ```
 
@@ -92,16 +92,16 @@ To use these information inside the Rexfile you can query them with the get\_sys
     use Rex -feature => ['1.0'];
     
     task "get_hostname", sub {
-      my %info = get_system_information;
-      say $info{hostname} . "." . $info{domain};
+        my %info = get_system_information;
+        say $info{hostname} . "." . $info{domain};
     };
     
     use Rex -feature => ['1.0'];
     
     task "prepare", sub {
-      my $libpath = case connection->server->architecture,
-        "i386"   => "/usr/lib",
-        "x86_64" => "/usr/lib64";
+        my $libpath = case connection->server->architecture,
+          "i386"   => "/usr/lib",
+          "x86_64" => "/usr/lib64";
     };
     ```
 

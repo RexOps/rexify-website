@@ -54,7 +54,7 @@ If you want to iterate over an array, do it like this:
 
     ```perl
     for my $name (@names) {
-      say "Current name: $name"; # double quotes make variables interpolated
+        say "Current name: $name"; # double quotes make variables interpolated
     }
     ```
 
@@ -64,8 +64,8 @@ Hashes are like arrays, but with named indexes, called keys.
 
     ```perl
     my %person = (
-      name => 'John',
-      age  => 28,    # good practice to keep a trailing comma
+        name => 'John',
+        age  => 28,    # good practice to keep a trailing comma
     );
     ```
 
@@ -80,7 +80,7 @@ If you want to iterate over a hash, do it like this:
 
     ```perl
     for my $key ( keys %person ) {
-      say "key: $key -> value: " . $person{$key};
+        say "key: $key -> value: " . $person{$key};
     }
     ```
 
@@ -90,27 +90,27 @@ But remember an important note: hashes are always unsorted.
 
     ```perl
     if ( $name eq 'John' ) {
-      say 'Hello, my name is John!';
+        say 'Hello, my name is John!';
     }
     else {
-      say 'Well, my name is not John...';
+        say 'Well, my name is not John...';
     }
     
     if ( $name ne 'John' ) {
-      say 'Well, my name is not John...';
+        say 'Well, my name is not John...';
     }
     else {
-      say 'Hello, my name is John!';
+        say 'Hello, my name is John!';
     }
     
     if ( $age < 30 ) {
-      say 'I am younger than 30.';
+        say 'I am younger than 30.';
     }
     elsif ( $age >= 30 && $age <= 50 ) {
-      say 'Well, I am between 30 and 50.';
+        say 'Well, I am between 30 and 50.';
     }
     else {
-      say 'I am older than 50.';
+        say 'I am older than 50.';
     }
     ```
 
@@ -118,12 +118,12 @@ But remember an important note: hashes are always unsorted.
 
     ```perl
     for my $num ( 1 .. 5 ) {
-      say "> $num";
+        say "> $num";
     }
     
     # looping over an array
     for my $item (@array) {
-      say "> $item";
+        say "> $item";
     }
     ```
 
@@ -149,7 +149,7 @@ But remember an important note: hashes are always unsorted.
     }
     
     sub my_function2 { # @_ contains the parameters passed to the subroutine
-      my ( $param1, $param2 ) = @_;
+        my ( $param1, $param2 ) = @_;
     }
     
     my_function();     # call the function 'my_function'
