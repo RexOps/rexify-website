@@ -4,6 +4,7 @@ title: FAQ
 
 Here we will maintain a list of frequently asked questions with their answers.
 
+* [Is it called (R)?ex or Rex?](#isitcalledrexorrex)
 * [Why does the run command not format the output?](#whydoestheruncommandnotformattheoutput)
 * [How can I get the current server from within a task?](#howcanigetthecurrentserverfromwithinatask)
 * [How can I pass parameters to a task?](#howcanipassparameterstoatask)
@@ -13,6 +14,10 @@ Here we will maintain a list of frequently asked questions with their answers.
 * [How do I check the exit status of a remotely run command?](#howdoichecktheexitstatusofaremotelyruncommand)
 * [How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?](#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages)
 * [How do I load all my custom modules easily?](#howdoiloadallmycustommoduleseasily)
+
+## Is it called (R)?ex or Rex?
+
+Rex stands for **R**emote **ex**ecution. Since automating tasks locally are just as fine as doing the same remotely, (R)?ex is simply a stylized form of _(Remote)? execution_. Both refers to the same thing: the friendly automation framework.
 
 ## Why does the run command not format the output?
 
