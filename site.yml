@@ -19,6 +19,7 @@ site:
                 $class: Statocles::Plugin::Highlight::RexOps
             link_check:
                 $class: Statocles::Plugin::LinkCheck
+                fatal: 1
             lint:
                 $class: Statocles::Plugin::HTMLLint
                 fatal: 1
