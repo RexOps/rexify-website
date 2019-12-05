@@ -13,8 +13,8 @@
 
                   <div class="source">
 <pre><code class="hljs">task prepare =&gt; <span class="hljs-keyword">sub </span>{
-  pkg     "<span class="hljs-string">apache2</span>", ensure =&gt; "<span class="hljs-string">latest</span>";
-  service "<span class="hljs-string">apache2</span>", ensure =&gt; "<span class="hljs-string">started</span>";
+  pkg     '<span class="hljs-string">apache2</span>', ensure =&gt; '<span class="hljs-string">latest</span>';
+  service '<span class="hljs-string">apache2</span>', ensure =&gt; '<span class="hljs-string">started</span>';
 };
 </code></pre>
                   </div> <!-- source -->
