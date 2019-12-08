@@ -323,7 +323,7 @@ and it is now available on top of the default iptables provider.</p>
 
 <p>On top of that, IPv6 support has been added.</p>
 
-<pre><code class="hljs">⁠open_port,     [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># defaults to IPv4 rule</span><span class="hljs-comment">
+<pre><code class="hljs">⁠open_port, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># defaults to IPv4 rule</span><span class="hljs-comment">
 ⁠</span>open_port - 4, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv4 rule</span><span class="hljs-comment">
 ⁠</span>open_port - <span class="hljs-number">6</span>, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv6 rule</span></code></pre>
 
