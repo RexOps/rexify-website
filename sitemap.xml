@@ -10,7 +10,7 @@
         <loc>https://www.rexify.org/blog/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2020-01-05</lastmod>
+        <lastmod>2020-02-05</lastmod>
     </url>
     <url>
         <loc>https://www.rexify.org/blog/2019/05/19/new-site.html</loc>
@@ -49,22 +49,28 @@
         <lastmod>2020-01-05</lastmod>
     </url>
     <url>
+        <loc>https://www.rexify.org/blog/2020/02/05/rex-1.8.1.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2020-02-05</lastmod>
+    </url>
+    <url>
         <loc>https://www.rexify.org/blog/page/2/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2020-01-05</lastmod>
+        <lastmod>2020-02-05</lastmod>
     </url>
     <url>
         <loc>https://www.rexify.org/blog/tag/news/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2020-01-05</lastmod>
+        <lastmod>2020-02-05</lastmod>
     </url>
     <url>
         <loc>https://www.rexify.org/blog/tag/news/page/2/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2020-01-05</lastmod>
+        <lastmod>2020-02-05</lastmod>
     </url>
     <url>
         <loc>https://www.rexify.org/care/</loc>
@@ -590,6 +596,12 @@
     </url>
     <url>
         <loc>https://www.rexify.org/docs/release_notes/1.8.0.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2020-02-05</lastmod>
+    </url>
+    <url>
+        <loc>https://www.rexify.org/docs/release_notes/1.8.1.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
         <lastmod>2020-02-05</lastmod>
