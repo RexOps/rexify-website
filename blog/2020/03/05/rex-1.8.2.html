@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.2</title>
+      <title>Rex-1.8.2</title>
 
-      <meta content="Release notes for 0.2" property="og:title">
+      <meta content="Rex-1.8.2" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/0.2.html" property="og:url">
+      <meta content="https://www.rexify.org/blog/2020/03/05/rex-1.8.2.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -113,62 +113,13 @@
 
 <p>
 » <a href="/index.html">Home</a>
-» <a href="/docs/index.html">Docs</a>
-» <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.2.html">Release notes for 0.2</a>
+» <a href="/blog/index.html">Blog</a>
+» <a href="/blog/2020/03/05/rex-1.8.2.html">Rex-1.8.2</a>
 </p>
 
               
-              <h1>Release notes for 0.2</h1>
-              <h2 id="rex">Rex</h2>
-
-<ul>
-<li><p><strong>parallelism</strong></p>
-
-<p>Configure the parallelism of servers running one task at the same time.</p></li>
-<li><p><strong>Error handling</strong></p>
-
-<p>Now every command should <em>die</em> if it fails.</p></li>
-<li><p><strong>run</strong></p>
-
-<p>Now <em>$?</em> gets populated with the commands return code.</p></li>
-</ul>
-
-<h2 id="filesystem">Filesystem</h2>
-
-<ul>
-<li><p><strong>stat($file)</strong></p>
-
-<p>Returns a hash with the following entries:</p>
-
-<ul>
-<li><p>uid - user ID</p></li>
-<li><p>gid - group ID</p></li>
-<li><p>mode - permissions</p></li>
-<li><p>mtime - last modified time</p></li>
-<li><p>atime - last access time</p></li>
-<li><p>size - filesize</p></li>
-<li><p>name - filename</p></li>
-</ul></li>
-<li><p><strong>is_file($file)</strong></p>
-
-<p>Returns true (1) if $file is a file.</p></li>
-<li><p><strong>is_dir($dir)</strong></p>
-
-<p>Returns true (1) if $dir is a directory.</p></li>
-<li><p><strong>is_readable($file)</strong></p>
-
-<p>Returns true (1) if $file is readable.</p></li>
-<li><p><strong>is_writable($file)</strong></p>
-
-<p>Returns true (1) if $file is writable.</p></li>
-<li><p><strong>is_writeable($file)</strong></p>
-
-<p>Is an alias for is_writable($file).</p></li>
-<li><p><strong>readlink($path)</strong></p>
-
-<p>Returns the link target if $path is a symlink.</p></li>
-</ul>
+              <h1>Rex-1.8.2</h1>
+              <p>The <a href="/docs/release_notes/1.8.2.html">Rex-1.8.2 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, fixing a bug related to task hooks.</p>
 
 
 
