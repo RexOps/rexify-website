@@ -120,15 +120,26 @@
 
               
               <h1>A word on backward compatibility</h1>
-              <p>Everyone knows the pain if something gets deprecated and one have to port his old (and stable) code to a new version of a library or a framework. There is enough work to do instead of fixing code to work with newer versions of them.</p>
+              <p>Like any good software project, Rex improves with each new version. This is a
+good thing. But it would be a bummer if the Rexfiles you wrote broke after
+upgrading to a new version of Rex. You&#39;ve got better things to do than go back
+and fix Rexfiles to make them compatible with new versions. So Rex does its best
+to ensure newer versions of Rex are backward compatible with your existing
+Rexfiles by implementing <em>feature flags,</em> which is a small bit of code you place in
+your Rexfile to break backward compatibility.</p>
 
-<p>So there is one premise new versions of Rex has to fulfill. They must be backward compatible.</p>
+<h2 id="howfeatureflagswork">How Feature Flags Work</h2>
 
-<p>I know this might be impossible in the one or other way, but to minimize this danger there is a thing called feature flags. If there is the need to break backward compatibility in favor of a new feature there will be a feature flag for this change. And only if this feature flag gets enabled in the Rexfile it will break compatibility.</p>
+<p>By default, all old Rex features will work with your Rexfile. If you want to
+take advantage of new features, you must add a feature flag to your Rexfile to
+tell Rex that you don&#39;t mind breaking backward compatibility and removing older
+features. In other words, the default is for your Rexfile to always to be
+backward compatible unless you add a feature flag to tell it otherwise. As a
+general rule of thumb, when creating a new Rexfile, you should use a feature
+flag to turn off backward compatibility.</p>
 
-<p>So the default is always to be compatible.</p>
-
-<p>If you have a problem that occurs after an update, it is considered as a bug. Please report this bug in our issue tracker.</p>
+<p>If your Rexfiles are broken by an update, this is considered to be a bug.
+Please report this bug in our issue tracker.</p>
 
 <h2 id="featureflags">Feature flags</h2>
 
@@ -146,6 +157,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+	<td>1.4</td>
+	<td>1.4</td>
+	<td>Break all backward compatibility</td>
+</tr>
 <tr>
 	<td>no_task_chaining_cmdline_args</td>
 	<td>1.4</td>
@@ -324,12 +340,12 @@
 <p>You can enable feature flags in your Rexfile with the following code:</p>
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.31</span>&#39;];</code></pre>
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];  <span class="hljs-comment"># breaks all backward compatibility</span></code></pre>
 
 <p>or even multiple ones like this:</p>
 
 <pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [qw(exec_autodie source_profile)];</code></pre>
+⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [qw(exec_autodie source_profile)]; <span class="hljs-comment"># enable the exec_autodie and source_profile features</span></code></pre>
 
 
 
