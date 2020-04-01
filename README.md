@@ -19,6 +19,8 @@ To work with the website locally, clone the repo and use the following steps:
 
 ## Deployment
 
-To deploy the site to GitHub Pages, you would need write access to the [`gh-pages`](https://github.com/RexOps/rexify-website/tree/gh-pages) branch. The deployment itself can be done by running:
+The master branch is continuously deployed to GitHub pages by Travis CI.
+
+To manually deploy the site to GitHub Pages, you would need write access to the [`gh-pages`](https://github.com/RexOps/rexify-website/tree/gh-pages) branch. The deployment itself can be done by running:
 
     statocles deploy --clean
