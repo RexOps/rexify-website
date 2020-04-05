@@ -71,7 +71,7 @@ You can enable feature flags in your Rexfile with the following code:
 
     ```perl
     # Rexfile
-    use Rex -feature => ['1.4'];  # breaks all backward compatibility
+    use Rex -feature => ['1.4']; # breaks all backward compatibility
     ```
 
 or even multiple ones like this:
