@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Writing Modules</title>
+      <title>Release notes for 1.9.0</title>
 
-      <meta content="Writing Modules" property="og:title">
+      <meta content="Release notes for 1.9.0" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/rex_book/writing_modules/" property="og:url">
+      <meta content="https://www.rexify.org/docs/release_notes/1.9.0.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -114,17 +114,45 @@
 <p>
 » <a href="/index.html">Home</a>
 » <a href="/docs/index.html">Docs</a>
-» <a href="/docs/rex_book/index.html">Rex book</a>
-» <a href="/docs/rex_book/writing_modules/index.html">Writing Modules</a>
+» <a href="/docs/release_notes/index.html">Release notes</a>
+» <a href="/docs/release_notes/1.9.0.html">Release notes for 1.9.0</a>
 </p>
 
               
-              <h1>Writing Modules</h1>
-              <ul>
-<li><p><a href="/docs/rex_book/writing_modules/getting_information_of_the_environment.html">Getting information of the environment</a> <br>
-Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.</p></li>
-<li><p><a href="/docs/rex_book/writing_modules/writing_custom_resources.html">Writing custom resources</a> <br>
-Resoures are the units that are responsible to manage your configurations.</p></li>
+              <h1>Release notes for 1.9.0</h1>
+              <p>This is a new minor release, adding a new feature flag to force writing UTF-8
+encoded files, documenting configuration options, and fixing bugs. Upgrade is
+recommended for all users.</p>
+
+<p>Many thanks to all contributors who made this release possible!</p>
+
+<h1 id="changes">Changes</h1>
+
+<h2 id="newfeatures">New features</h2>
+
+<ul>
+<li>Add <code>write_utf8_files</code> feature flag to control encoding of files written
+by Rex</li>
+</ul>
+
+<p>It is intended to complement the <code>utf8</code> pragma in Rexfiles and modules:</p>
+
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">utf8</span>;
+⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">write_utf8_files</span>&#39;];</code></pre>
+
+<h2 id="bugfixes">Bug fixes</h2>
+
+<ul>
+<li>Fix setting custom <code>waitpid_blocking_sleep_time</code></li>
+<li>Fix <code>autodie</code> feature for local <code>unlink</code> commands</li>
+</ul>
+
+<h2 id="documentation">Documentation</h2>
+
+<ul>
+<li>Categorize file system commands based on ability to change contents</li>
+<li>Clarify documentation of file system commands</li>
+<li>Document configuration methods</li>
 </ul>
 
 
