@@ -30,3 +30,6 @@ title: Guides
 * [Cloud Management](cloud_management/index.html)
   * [Manage your Amazon EC2 instances](cloud_management/manage_your_amazon_ec2_instances.html)  
     This chapter will show you how to manage your Amazon EC2 instances.
+
+* [Tab completion](tab_completion.html)
+  Tab completion make issuing rex commands much faster and easier.
