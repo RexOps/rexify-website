@@ -132,6 +132,7 @@
 <li><a href="#howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</a></li>
 <li><a href="#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</a></li>
 <li><a href="#howdoiloadallmycustommoduleseasily">How do I load all my custom modules easily?</a></li>
+<li><a href="#howdoiindicatethetaskfailedtorunproperly">How do I indicate the task failed to run properly?</a></li>
 </ul>
 
 <h2 id="isitcalledrexorrex">Is it called (R)?ex or Rex?</h2>
@@ -159,10 +160,19 @@
 ⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
 ⁠};</code></pre>
 
-<p>Then you can run mytask from CLI like this:</p>
+<p>Then you can run <code>mytask</code> from CLI like this:</p>
 
 <pre><code>rex -H hostname mytask --parameter1=value1 --parameter2=value2
 </code></pre>
+
+<p>Or from Rex code either using<a href="https://metacpan.org/pod/Rex::Commands#run_task">run_task</a>:</p>
+
+<pre><code class="hljs">⁠run_task &#39;<span class="hljs-string">my_task</span>&#39;,
+⁠  params =&gt; { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; };</code></pre>
+
+<p>or calling the task as a function:</p>
+
+<pre><code class="hljs">⁠mytask( { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; } );</code></pre>
 
 <h2 id="howcanirunablockofcodewithonecommand">How can I run a block of code with one command?</h2>
 
@@ -223,6 +233,10 @@
 <p>Since Rex is just Perl, simply use one of them, like <a href="https://metacpan.org/pod/Module::Find">Module::Find</a> or <a href="https://metacpan.org/pod/Module::Pluggable">Module::Pluggable</a>.</p>
 
 <p>This might affect when modules are loaded (e.g. at compilation time or at runtime), and/or in which order the modules are loaded. If you run into any troubles because of this, please make sure to specify the dependencies of the custom modules correctly.</p>
+
+<h2 id="howdoiindicatethetaskfailedtorunproperly">How do I indicate the task failed to run properly?</h2>
+
+<p>Overall, the same way as in Perl. For example, raising an exception with <code>die()</code> in the task body will abort the task, and calling <code>exit()</code> will bail out from the whole rex process currently running.</p>
 
 
 
