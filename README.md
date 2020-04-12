@@ -24,3 +24,7 @@ The master branch is continuously deployed to GitHub pages by Travis CI.
 To manually deploy the site to GitHub Pages, you would need write access to the [`gh-pages`](https://github.com/RexOps/rexify-website/tree/gh-pages) branch. The deployment itself can be done by running:
 
     statocles deploy --clean
+
+## License
+
+The code in this repository is licensed under the [same terms as Perl itself](https://dev.perl.org/licenses), everything else is licensed under [CC-BY-NC-SA 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0).
