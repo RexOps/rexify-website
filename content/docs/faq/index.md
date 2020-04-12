@@ -14,6 +14,7 @@ Here we will maintain a list of frequently asked questions with their answers.
 * [How do I check the exit status of a remotely run command?](#howdoichecktheexitstatusofaremotelyruncommand)
 * [How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?](#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages)
 * [How do I load all my custom modules easily?](#howdoiloadallmycustommoduleseasily)
+* [How do I indicate the task failed to run properly?](#howdoiindicatethetaskfailedtorunproperly)
 
 ## Is it called (R)?ex or Rex?
 
@@ -116,3 +117,7 @@ There are plenty of CPAN modules providing this kind of functionality. For a com
 Since Rex is just Perl, simply use one of them, like [Module::Find](https://metacpan.org/pod/Module::Find) or [Module::Pluggable](https://metacpan.org/pod/Module::Pluggable).
 
 This might affect when modules are loaded (e.g. at compilation time or at runtime), and/or in which order the modules are loaded. If you run into any troubles because of this, please make sure to specify the dependencies of the custom modules correctly.
+
+## How do I indicate the task failed to run properly?
+
+Overall, the same way as in Perl. For example, raising an exception with `die()` in the task body will abort the task, and calling `exit()` will bail out from the whole rex process currently running.
