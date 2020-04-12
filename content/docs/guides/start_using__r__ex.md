@@ -40,8 +40,8 @@ If you want to run administrative tasks on the remote machines, you obviously wo
 
 First we need to create a new directory to store your Rexfile in it, and change to that directory:
 
-    $ mkdir -p projects/my-first-rex-project
-    $ cd projects/my-first-rex-project
+    $ mkdir my-first-rex-project
+    $ cd my-first-rex-project
 
 Now change into this directory and create a file called Rexfile with the following contents:
 
