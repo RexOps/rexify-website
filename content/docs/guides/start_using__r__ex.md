@@ -48,8 +48,8 @@ Now change into this directory and create a file called Rexfile with the followi
     ```perl
     use Rex -feature => ['1.4'];
     
-    user 'my-ssh-user';
-    password 'my-ssh-password';
+    user 'my-user';
+    password 'my-password';
     
     group myservers => 'mywebserver', 'mymailserver', 'myfileserver';
     
