@@ -47,9 +47,22 @@ If you want to print the output to your terminal you have to call it in a scalar
     };
     ```
 
-Then you can run mytask from CLI like this:
+Then you can run `mytask` from CLI like this:
 
     rex -H hostname mytask --parameter1=value1 --parameter2=value2
+
+Or from Rex code either using[run_task](https://metacpan.org/pod/Rex::Commands#run_task):
+
+    ```perl
+    run_task 'my_task',
+      params => { parameter1 => 'value1', parameter2 => 'value2' };
+    ```
+
+or calling the task as a function:
+
+    ```perl
+    mytask( { parameter1 => 'value1', parameter2 => 'value2' } );
+    ```
 
 ## How can I run a block of code with one command?
 
