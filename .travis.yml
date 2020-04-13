@@ -1,13 +1,11 @@
 language: perl
 perl:
   - "5.30"
-env:
-  - PERL5LIB="./lib:${PERL5LIB}"
 cache:
   directories:
     - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/lib
     - ${PERLBREW_ROOT}/perls/${PERLBREW_PERL}/bin
-script: statocles build
+script: statocles -l build
 deploy:
   provider: pages
   skip_cleanup: true
