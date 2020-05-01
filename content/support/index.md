@@ -21,7 +21,7 @@ You want to provide commercial support for Rex? Just drop us a few lines with a 
 Get consulting, training and custom implementation services directly from a core developer behind (R)?ex.
 
 <a href="https://www.linkedin.com/in/ferki/" class="btn">LinkedIn profile</a>
-<div style="clear:both;"></div>
+<div style="overflow:auto"></div>
 
 ### inovex - Enabling Your Digital Future
 
@@ -37,4 +37,4 @@ Mail: [sales@inovex.de](mailto:sales@inovex.de)
 Phone: +49 7231 31 91 0  
 Website: [http://www.inovex.de/](http://www.inovex.de/)
 
-<div style="clear:both;"></div>
+<div style="overflow:auto"></div>
