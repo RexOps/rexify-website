@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2020-05-05</b><br>
+                     <a href="/blog/2020/05/05/rex-1.10.0.html">Rex-1.10.0</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.10.0.html">Rex-1.10.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a> (<a href="https://metacpan.org/source/FERKI/Rex-1.10.0/ChangeLog">changelog</a>). Apart from documentation updates and bug fixes, it adds initial package glob support, and an <code>on_change</code> hook for the <code>mkdir</code> command.</p>
+
                    <p><b>2020-04-05</b><br>
                      <a href="/blog/2020/04/05/rex-1.9.0.html">Rex-1.9.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.9.0.html">Rex-1.9.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, and it adds a new feature flag to force writing UTF-8 encoded files, <a href="https://metacpan.org/pod/Rex::Config">documents configuration options</a>, and fixes bugs.</p>
@@ -79,10 +83,6 @@
                    <p><b>2020-01-05</b><br>
                      <a href="/blog/2020/01/05/rex-1.8.0.html">Rex-1.8.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.8.0.html">Rex-1.8.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, adding initial support to manage Void Linux systems.</p>
-
-                   <p><b>2019-12-05</b><br>
-                     <a href="/blog/2019/12/05/rex-1.7.1.html">Rex-1.7.1</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.7.1.html">Rex-1.7.1 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, fixing a Windows testing issue, and updating some docs.</p>
 
 
                <h2>Conferences</h2>
@@ -260,7 +260,7 @@ is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
 
 <p><code>param_lookup</code> is a command to manage task parameters.</p>
 
-<pre><code class="hljs">⁠my <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
+<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
 
 <p>First param_lookup checks the task parameters for <code>param_name</code>.
 If it&#39;s not found, it tries to look it up from CMDB (if CMDB is used).
