@@ -2,6 +2,7 @@
 title: Release notes
 ---
 
+* [Release notes for 1.10.0](1.10.0.html)
 * [Release notes for 1.9.0](1.9.0.html)
 * [Release notes for 1.8.2](1.8.2.html)
 * [Release notes for 1.8.1](1.8.1.html)
