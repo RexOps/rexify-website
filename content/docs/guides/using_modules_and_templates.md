@@ -2,11 +2,41 @@
 title: Using Modules and Templates
 ---
 
-Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.
+To scale Rex to manage a large array of servers, two important tools will be
+invaluable to you: modules and templates.
 
-In this example you will learn how to build a ntp module that uploads custom ntp.conf files for your test-, pre-prod-, and production environment.
+Software is all about providing tools to manage complexity. And so once your
+library of Rex tasks grows beyond a few dozen, you'll definitely want to
+use modules to help you manage and organize your tasks. While it's possible to
+create separate Rexfiles and place them in their own directories to help keep
+your task files manageable, modules offer a much better solution. With modules,
+you'll still have just one Rexfile, but your tasks will be grouped and
+categorized nicely into their own manageable files. More importantly, modules
+are able to call tasks from other modules and the main, central Rexfile.
 
-First, we create a new module. For this guide you need at least Rex 0.41 (because of the --create-module command and the case keyword.) Execute the following command in the same directory where your Rexfile lives.
+Templates also help you manage complexity by making it easier to generate and
+modify configuration files to change the behavior of the software on your
+machine(s). For example you may need to change the configuration file for a
+service to bind it to a special network interface or you may wish to configure
+different hostnames for your database servers depending on which environment
+your application is running in (testing, pre-production, production, etc.).
+This can all be easily achieved with templates.
+
+The following guide shows you both of these more advanced techniques with a
+real-world example that builds a module for managing an ntp service and shows
+you how to use templates for automating the generation of the `ntp.conf` files
+for a "test," "pre-prod," and "production" environment.
+
+For those not familiar with ntp, it's a software package that runs a service
+for synchronizing the clocks of computer called the ["Network Time
+Protocol."](http://www.ntp.org) But familiarity with the ntp software is not a
+prerequisite to learn how to use Rex's modules and templates features.
+
+## Creating a Module
+
+First, we create a new module. For this guide you need at least Rex 0.41
+(because of the --create-module command and the case keyword.) Execute the
+following command in the same directory where your Rexfile lives.
 
     rexify Service::NTP --create-module
 
@@ -28,23 +58,23 @@ This file is a normal Perl module. The only special thing is the filename, but d
     ```perl
     package Service::NTP;
     use Rex -feature => ['1.3'];
-    
+
     task prepare => sub {
         my $service_name = case operating_system, {
             Debian    => "ntp",
               default => "ntpd",
         };
         pkg "ntp", ensure => "present";
-    
+
         file "/etc/ntp.conf",
           source    => "files/etc/ntp.conf",
           on_change => sub {
             service $service_name => "restart";
           };
-    
+
         service $service_name, ensure => "started";
     };
-    
+
     1;
     ```
 
@@ -88,31 +118,31 @@ But if you want to change a parameter in your ntp.conf file you have to edit 4 f
     ```perl
     package Service::NTP;
     use Rex -feature => ['1.0'];
-    
+
     task prepare => sub {
         my $service_name = case operating_system, {
             Debian    => "ntp",
               default => "ntpd",
         };
-    
+
         my $ntp_server = case environment, {
             prod      => [ "ntp01.company.tld", "ntp02.company.tld" ],
               preprod => ["ntp01.preprod.company.tld"],
               test    => ["ntp01.test.company.tld"],
               default => ["ntp01.company.tld"],
         };
-    
+
         pkg "ntp", ensure => "present";
-    
+
         file "/etc/ntp.conf",
           content   => template( "files/etc/ntp.conf", ntp_servers => $ntp_server ),
           on_change => sub {
             service $service_name => "restart";
           };
-    
+
         service $service_name, ensure => "started";
     };
-    
+
     1;
     ```
 
@@ -223,9 +253,9 @@ To use your module you have to add it to your Rexfile. This can be simply achiev
     use Rex -feature => ['1.3'];
     user "root";
     password "foo";
-    
+
     require Service::NTP;
-    
+
     1;
     ```
 
