@@ -51,7 +51,7 @@ Then you can run `mytask` from CLI like this:
 
     rex -H hostname mytask --parameter1=value1 --parameter2=value2
 
-Or from Rex code either using[run_task](https://metacpan.org/pod/Rex::Commands#run_task):
+Or from Rex code either using [run_task](https://metacpan.org/pod/Rex::Commands#run_task):
 
     ```perl
     run_task 'my_task',
