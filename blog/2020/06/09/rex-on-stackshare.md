@@ -11,4 +11,4 @@ Thanks to the support from their amazing team, [Rex is now listed on StackShare]
 
 This means it is not just easier to find as an available solution to IT automation challenges, but also easier for you to find organizations already using it.
 
-If you use Rex, please consider listing it as part of your stack on StackShare!
+If you use Rex, please consider adding it as part of your stack on StackShare!
