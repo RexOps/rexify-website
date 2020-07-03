@@ -66,11 +66,7 @@ or calling the task as a function:
 
 ## How can I run a block of code with one command?
 
-You can use the ShellBlock module. This module can be installed by running:
-
-    $ rexify --use Rex::Misc::ShellBlock
-
-Then, you can run your shell code remotely as:
+One way to do it is to upload your script to the remote, and execute it there. You can use the [Rex::Misc::ShellBlock](https://github.com/RexOps/rex-recipes/tree/1.4/Rex/Misc/ShellBlock) module for that. After copying it into one of the Perl include directories, or into `./lib` of your Rex project, you can run your shell code remotely as:
 
     ```perl
     use Rex::Misc::ShellBlock;
@@ -82,7 +78,7 @@ Then, you can run your shell code remotely as:
     };
     ```
 
-See the linked documentation page for how to use this module with Perl, Python, or other languages.
+See the included documentation of the module about how to use it to run code written in Perl, Python, or other languages.
 
 ## How can I run a local script on the remote?
 
