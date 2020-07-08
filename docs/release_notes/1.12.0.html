@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 1.3.0</title>
+      <title>Release notes for 1.12.0</title>
 
-      <meta content="Release notes for 1.3.0" property="og:title">
+      <meta content="Release notes for 1.12.0" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/1.3.0.html" property="og:url">
+      <meta content="https://www.rexify.org/docs/release_notes/1.12.0.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -115,130 +115,16 @@
 » <a href="/index.html">Home</a>
 » <a href="/docs/index.html">Docs</a>
 » <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/1.3.0.html">Release notes for 1.3.0</a>
+» <a href="/docs/release_notes/1.12.0.html">Release notes for 1.12.0</a>
 </p>
 
               
-              <h1>Release notes for 1.3.0</h1>
-              <p>These are the changes in the 1.3.0 release.</p>
+              <h1>Release notes for 1.12.0</h1>
+              <p>This is a new minor release which adds support for local rsync operations, improves tab completion for Bash and Zsh, and fixes related bugs. It also discontinues support for running Rex on Windows 7, Windows Server 2008 R2, and older versions since both mainstream and extended support has already ended for these products.</p>
 
-<p>We want to thank every contributor who made this release possible. We also welcome Dmitry Kopytov as new contributor.</p>
+<p>Please see the <a href="https://metacpan.org/source/FERKI/Rex-1.12.0/ChangeLog">changelog</a> for full details. Upgrade is recommended for all users. </p>
 
-<p>During this release cycle we tried to focus more on smoothing out the rougher edges and improving the documentation and test suite. Several aspects of the documentation work are mainly happening in the background and not in the codebase itself for now. So there are no &quot;real&quot; new features this time, but because of the amount of changes, and especially because of enabling the new template engine by default, we felt a new major release was warranted.</p>
-
-<h2 id="enhancements">Enhancements</h2>
-
-<h3 id="newtemplateengineenabledbydefault">New template engine enabled by default</h3>
-
-<p>The enhanced template engine, <code>template_ng</code>, has been available since 0.56.0 via the similarly named feature flag. The main advantage of it is the ability to provide actually useful error messages when something goes wrong during template processing, while the format itself remains backward compatible with the previous template handling. There are some examples of those error messages on the <a href="https://github.com/RexOps/Rex/issues/465">original issue</a>.</p>
-
-<ul>
-<li>added template_ng tests - Jan</li>
-<li>fixed a problem when one template object was used twice - Jan</li>
-<li>new template engine for 1.3 - Jan</li>
-</ul>
-
-<h3 id="automaticparallelismsettings">Automatic parallelism settings</h3>
-
-<p>It is now possible set parallelism of task execution more dynamically, e.g. by setting it to <code>max</code>, Rex detects the number of servers a task should be run on, and automatically executes it on all of them in parallel. Some other notation are recognized and supported as well, like <code>max/3</code>, or <code>max 10%</code>. For details, check out the <a href="http://www.rexify.org/api/Rex/Commands.pm.html#parallelism-count-">documentation</a>.</p>
-
-<ul>
-<li>Set parallelism automatically (fix #491) - Ferenc Erki</li>
-</ul>
-
-<h3 id="tests">Tests</h3>
-
-<p>The local test suite has been greatly simplified as part of an ongoing improvement works. Those changes made the test suite ~30% faster and easier to maintain.</p>
-
-<ul>
-<li>Cleanup a file used during testing - Ferenc Erki</li>
-<li>Cleanup tests with optional dependencies - Ferenc Erki</li>
-<li>Use explicit test plans everywhere - Ferenc Erki</li>
-<li>Cleanup test imports - Ferenc Erki</li>
-<li>Remove tests doing nothing else than use_ok() - Ferenc Erki</li>
-<li>Automatically use all modules during testing - Ferenc Erki</li>
-<li>Remove redundant hostname evaluation tests - Ferenc Erki</li>
-<li>Remove unused Data::Dumper from tests - Ferenc Erki</li>
-</ul>
-
-<h3 id="general">General</h3>
-
-<p>A bunch of general improvements happened in this release cycle as well, most notably:</p>
-
-<ul>
-<li>systemd support for Debian (and its clones)</li>
-<li>configurable filenames for the reporting feature</li>
-<li>CloudLinux is recognized as a Red Hat clone</li>
-<li>creation of a BIOS boot partition is now optional when using GPT</li>
-<li>regular expression pattern fixes for perl-5.22.0 compatibility</li>
-<li>improved validation and error handling in several places</li>
-</ul>
-
-<p>All those happened in the following commits:</p>
-
-<ul>
-<li>Fix regex pattern for perl-5.22.0 - Ferenc Erki</li>
-<li>pass cmdb() arguments to callback - fixed #709 - Jan</li>
-<li>allow creation of inherited Rex::Group::Entry::Server objects - fixed #708 - Jan</li>
-<li>Reuse VM name as image filename when importing - Ferenc Erki</li>
-<li>Recognize CloudLinux as Red Hat clone (close #699) - Dmitry Kopytov</li>
-<li>Remove unused CLI option - Ferenc Erki</li>
-<li>Iptables.pm: show error from iptables on non-zero exit status - Brian Manning</li>
-<li>ignore backfiles from editors - Jan</li>
-<li>Log STDERR on errors where auto_die is enabled - Dmitry Kopytov</li>
-<li>Fix checking of virsh command result upon VM creation - Ferenc Erki</li>
-<li>Add bios_boot option to GPT initialization - Ferenc Erki</li>
-<li>make report filename configurable. don&#39;t sleep in test - Jan</li>
-<li>Check for CLI argument definedness (fix #668) - Ferenc Erki</li>
-<li>Include provided modules in META.yml - Ferenc Erki</li>
-<li>added systemd support for debian. fixes #659 - Jan</li>
-</ul>
-
-<h3 id="documentation">Documentation</h3>
-
-<p>We&#39;d like to say thanks to Eric Johnson for an improved help screen and to Brian Manning for making it possible to list methods and DSL functions in the table of contents and linking to them directly within the page. We also added long-due documentation for the CMDB feature.</p>
-
-<ul>
-<li>Filter changelogger output - Ferenc Erki</li>
-<li>Cleanup group command POD - Ferenc Erki</li>
-<li>Convert POD directives of methods and DSL functions (fix #685, close #705) - Brian Manning</li>
-<li>More helpful/verbose help message (close #698) - Eric Johnson</li>
-<li>Add CMDB docs - Ferenc Erki</li>
-<li>Iptables.pm: add long-form iptables examples to POD - Brian Manning</li>
-<li>Update clearpart command documentation - Ferenc Erki</li>
-</ul>
-
-<h2 id="bugfixes">Bugfixes</h2>
-
-<p>The following bugs/regressions were also fixed during this release cycle:</p>
-
-<h3 id="uploadingfilesfromwindowstolinux">Uploading files from Windows to Linux</h3>
-
-<p>File upload from Windows machines was fixed by checking the availability of <code>uname</code> and <code>md5sum</code> commands before trying to use them. This fix has been released as rex-1.2.1 as well.</p>
-
-<ul>
-<li>first detect if uname and md5sum can be run, then use it. fixed #665 - Jan</li>
-</ul>
-
-<h3 id="do_taskbefore_task_startwithmodules">do_task + before_task_start with modules</h3>
-
-<p>Fixed an issue when a task was specified in a module <em>and</em> had a <code>before_task_start</code> hook attached to it, then called with <code>do_task</code> from a different module.</p>
-
-<ul>
-<li>this commit fixes #667. this bug was introduced with the fix for #629 - Jan</li>
-</ul>
-
-<h3 id="general">General</h3>
-
-<p>This release also has some general fixes, most notably around <code>sudo</code> usage (like avoiding an endless loop when used together with <code>auth for</code> or suppressing warnings about missing locales).</p>
-
-<ul>
-<li>fixed the fix :-) the original fix was in the wrong subroutine - #692 - Jan</li>
-<li>Don&#39;t run into an endless loop: fix for #692 - Jan Gehring</li>
-<li>Fix auth test when REX_USER env is present - Dmitry Kopytov</li>
-<li>this prevents the stderr output of perl to get send over the wire. fixes #658 - Jan</li>
-<li>fix warning if local file is not given. fixed #647 - Jan</li>
-</ul>
+<p>Many thanks to <a href="https://metacpan.org/source/FERKI/Rex-1.12.0/CONTRIBUTORS">all contributors</a> who made this release possible!</p>
 
 
 

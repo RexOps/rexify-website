@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.54.3</title>
+      <title>Rex-1.12.0</title>
 
-      <meta content="Release notes for 0.54.3" property="og:title">
+      <meta content="Rex-1.12.0" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/0.54.3.html" property="og:url">
+      <meta content="https://www.rexify.org/blog/2020/07/05/rex-1.12.0.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -113,119 +113,13 @@
 
 <p>
 » <a href="/index.html">Home</a>
-» <a href="/docs/index.html">Docs</a>
-» <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.54.3.html">Release notes for 0.54.3</a>
+» <a href="/blog/index.html">Blog</a>
+» <a href="/blog/2020/07/05/rex-1.12.0.html">Rex-1.12.0</a>
 </p>
 
               
-              <h1>Release notes for 0.54.3</h1>
-              <p>These are the changes in 0.54 release.</p>
-
-<p>We want to thank every contributor that makes this release possible.</p>
-
-<h2 id="common">Common</h2>
-
-<h4 id="path_map-variablepathmapping">path_map - variable path mapping</h4>
-
-<p>path_map is a new feature developed by Erik Huelsmann to ease the management of files for different hosts. In the past, if you wanted to upload a file (for example /etc/security/access.conf) to your servers and wanted to have different access.conf files per environment, or for a special host, you had to build this logic by yourself. With the <em>path_map</em> feature you only have to define the lookup path and Rex is doing this for you.</p>
-
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.54</span>&#39;];
-⁠
-⁠set path_map =&gt; {
-⁠    &quot;<span class="hljs-string">files/</span>&quot; =&gt; [
-⁠        &quot;<span class="hljs-string">files/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">files/{environment}/</span>&quot;,
-⁠        &quot;<span class="hljs-string">files/{hostname}/</span>&quot;,
-⁠    ],
-⁠    &quot;<span class="hljs-string">templates/</span>&quot; =&gt; [
-⁠        &quot;<span class="hljs-string">templates/{environment}/{hostname}/</span>&quot;, &quot;<span class="hljs-string">templates/{environment}/</span>&quot;,
-⁠        &quot;<span class="hljs-string">templates/{hostname}/</span>&quot;,
-⁠    ],
-⁠};
-⁠
-⁠task &quot;<span class="hljs-string">setup</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    file &quot;<span class="hljs-string">/etc/security/access.conf</span>&quot;,
-⁠      source =&gt; &quot;<span class="hljs-string">files/etc/security/access.conf</span>&quot;,
-⁠      owner  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      group  =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      mode   =&gt; <span class="hljs-number">644</span>;
-⁠
-⁠    file &quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;,
-⁠      content =&gt; template(&quot;<span class="hljs-string">templates/etc/ntp.conf</span>&quot;),
-⁠      owner   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      group   =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠      mode    =&gt; <span class="hljs-number">644</span>;
-⁠  };</code></pre>
-
-<p>This example will search for the files it should upload or process as templates in the following direction:</p>
-
-<p><strong>Given:</strong></p>
-
-<ul>
-<li>environment = production</li>
-<li>hostname = fe01</li>
-</ul>
-
-<p><strong>Lookup-Path:</strong></p>
-
-<ul>
-<li>files/production/fe01/etc/security/access.conf</li>
-<li>files/production/etc/security/access.conf</li>
-<li>files/fe01/etc/security/access.conf</li>
-<li>files/etc/security/access.conf</li>
-</ul>
-
-<p><strong>And for the template it is just the same:</strong></p>
-
-<ul>
-<li>templates/production/fe01/etc/ntp.conf</li>
-<li>templates/production/etc/ntp.conf</li>
-<li>templates/fe01/etc/ntp.conf</li>
-<li>templates/etc/ntp.conf</li>
-</ul>
-
-<p>You can use <strong>any</strong> variable that the inventory can <a href="/docs/rex_book/writing_modules/getting_information_of_the_environment.html">gather from the system</a>.</p>
-
-<h2 id="cloud">Cloud</h2>
-
-<ul>
-<li><strong>Jiffybox</strong> - Added possibility to clone a jiffybox image. #439 - Peter Manthey</li>
-</ul>
-
-<h2 id="bugfixes">Bugfixes</h2>
-
-<h3 id="rex::test">Rex::Test</h3>
-
-<ul>
-<li>Only execute testfiles which end on .t - #434 - Robert Abraham</li>
-<li>Close last used ssh connection after test - #433 - Robert Abraham</li>
-<li>Check if file exists before checking contents - fix #432 - FErki</li>
-</ul>
-
-<h3 id="cloud">Cloud</h3>
-
-<ul>
-<li><strong>OpenStack</strong> - Fixed return value for flavors function - #406 - exzz</li>
-</ul>
-
-<h3 id="common">Common</h3>
-
-<ul>
-<li>Add error message when attempting to run a non-existing task - FErki</li>
-<li>Refactored the behaviour of set() function to do what it is saying. So with feature 0.54 enabled set is always overwriting the existing values. (#425)</li>
-<li>Add service_exists for Gentoo - FErki</li>
-<li>Fixing nested sudo operations. - #423</li>
-<li>Added check if service exists - #407</li>
-<li>Handle hostgroup members with leading numeric ranges - FErki</li>
-<li>Redirect nohup output to /dev/null</li>
-<li>Make apt-listchanges non-interactive - #417 - aowi</li>
-<li>Don&#39;t try to run dmidecode if it is not in PATH - Andrej Zverev</li>
-<li>Enhanced support for pkgng (FreeBSD) - Andrej Zverev</li>
-<li>Fixed Rex::Commands::MD5::md5() to obey path settings</li>
-<li>Add documentation for run() function. - #440 - Erik Huelsmann</li>
-</ul>
+              <h1>Rex-1.12.0</h1>
+              <p>The <a href="/docs/release_notes/1.12.0.html">Rex-1.12.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.0">available on CPAN</a>. It adds support for local rsync operations, improves tab completion for Bash and Zsh, and fixes related bugs. It also discontinues support for running Rex on Windows 7, Windows Server 2008 R2, and older versions since both mainstream and extended support has already ended for these products.</p>
 
 
 
