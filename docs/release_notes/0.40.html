@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2020-08-05</b><br>
+                     <a href="/blog/2020/08/05/rex-1.12.1.html">Rex-1.12.1</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.12.1.html">Rex-1.12.1 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.1">available on CPAN</a>. It adds documentation for feature flags, and fixes a release packaging issue.</p>
+
                    <p><b>2020-07-05</b><br>
                      <a href="/blog/2020/07/05/rex-1.12.0.html">Rex-1.12.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.12.0.html">Rex-1.12.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.0">available on CPAN</a>. It adds support for local rsync operations, improves tab completion for Bash and Zsh, and fixes related bugs. It also discontinues support for running Rex on Windows 7, Windows Server 2008 R2, and older versions since both mainstream and extended support has already ended for these products.</p>
@@ -79,10 +83,6 @@
                    <p><b>2020-05-05</b><br>
                      <a href="/blog/2020/05/05/rex-1.10.0.html">Rex-1.10.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.10.0.html">Rex-1.10.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a> (<a href="https://metacpan.org/source/FERKI/Rex-1.10.0/ChangeLog">changelog</a>). Apart from documentation updates and bug fixes, it adds initial package glob support, and an <code>on_change</code> hook for the <code>mkdir</code> command.</p>
-
-                   <p><b>2020-04-05</b><br>
-                     <a href="/blog/2020/04/05/rex-1.9.0.html">Rex-1.9.0</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.9.0.html">Rex-1.9.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, and it adds a new feature flag to force writing UTF-8 encoded files, <a href="https://metacpan.org/pod/Rex::Config">documents configuration options</a>, and fixes bugs.</p>
 
 
                <h2>Conferences</h2>
@@ -126,7 +126,7 @@
 
 <p>The first CMDB module is based on YAML files. With this change there will be also a default environment under which rex runs. The default environment is named * drum roll * &quot;default&quot;.</p>
 
-<pre><code class="hljs">⁠use Cwd &#39;<span class="hljs-string">getcwd</span>&#39;;
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Cwd &#39;<span class="hljs-string">getcwd</span>&#39;;
 ⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
 ⁠
 ⁠set cmdb =&gt; {

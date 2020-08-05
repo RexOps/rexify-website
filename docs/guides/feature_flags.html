@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2020-08-05</b><br>
+                     <a href="/blog/2020/08/05/rex-1.12.1.html">Rex-1.12.1</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.12.1.html">Rex-1.12.1 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.1">available on CPAN</a>. It adds documentation for feature flags, and fixes a release packaging issue.</p>
+
                    <p><b>2020-07-05</b><br>
                      <a href="/blog/2020/07/05/rex-1.12.0.html">Rex-1.12.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.12.0.html">Rex-1.12.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.0">available on CPAN</a>. It adds support for local rsync operations, improves tab completion for Bash and Zsh, and fixes related bugs. It also discontinues support for running Rex on Windows 7, Windows Server 2008 R2, and older versions since both mainstream and extended support has already ended for these products.</p>
@@ -79,10 +83,6 @@
                    <p><b>2020-05-05</b><br>
                      <a href="/blog/2020/05/05/rex-1.10.0.html">Rex-1.10.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.10.0.html">Rex-1.10.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a> (<a href="https://metacpan.org/source/FERKI/Rex-1.10.0/ChangeLog">changelog</a>). Apart from documentation updates and bug fixes, it adds initial package glob support, and an <code>on_change</code> hook for the <code>mkdir</code> command.</p>
-
-                   <p><b>2020-04-05</b><br>
-                     <a href="/blog/2020/04/05/rex-1.9.0.html">Rex-1.9.0</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.9.0.html">Rex-1.9.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, and it adds a new feature flag to force writing UTF-8 encoded files, <a href="https://metacpan.org/pod/Rex::Config">documents configuration options</a>, and fixes bugs.</p>
 
 
                <h2>Conferences</h2>
@@ -120,232 +120,7 @@
 
               
               <h1>A word on backward compatibility</h1>
-              <p>Like any good software project, Rex improves with each new version. This is a
-good thing. But it would be a bummer if the Rexfiles you wrote broke after
-upgrading to a new version of Rex. You&#39;ve got better things to do than go back
-and fix Rexfiles to make them compatible with new versions. So Rex does its best
-to ensure newer versions of Rex are backward compatible with your existing
-Rexfiles by implementing <em>feature flags,</em> which is a small bit of code you place in
-your Rexfile to break backward compatibility.</p>
-
-<h2 id="howfeatureflagswork">How Feature Flags Work</h2>
-
-<p>By default, all old Rex features will work with your Rexfile. If you want to
-take advantage of new features, you must add a feature flag to your Rexfile to
-tell Rex that you don&#39;t mind breaking backward compatibility and removing older
-features. In other words, the default is for your Rexfile to always to be
-backward compatible unless you add a feature flag to tell it otherwise. As a
-general rule of thumb, when creating a new Rexfile, you should use a feature
-flag to turn off backward compatibility.</p>
-
-<p>If your Rexfiles are broken by an update, this is considered to be a bug.
-Please report this bug in our issue tracker.</p>
-
-<h2 id="featureflags">Feature flags</h2>
-
-<p>This is the current list of feature flags:</p>
-
-<table>
-<col>
-<col>
-<col>
-<thead>
-<tr>
-	<th><strong>Flag</strong></th>
-	<th><strong>Since</strong></th>
-	<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-	<td>1.4</td>
-	<td>1.4</td>
-	<td>Break all backward compatibility</td>
-</tr>
-<tr>
-	<td>no_task_chaining_cmdline_args</td>
-	<td>1.4</td>
-	<td>Disable per-task argument parsing</td>
-</tr>
-<tr>
-	<td>task_chaining_cmdline_args</td>
-	<td>1.4</td>
-	<td>Enable per-task argument parsing: <code>rex --rex --args task1 --task1arg=value task2 --task2arg</code> so task1 only gets <code>task1arg</code> and task2 only gets <code>task2arg</code>.</td>
-</tr>
-<tr>
-	<td>1.3</td>
-	<td>1.3</td>
-	<td>Activating the new template engine by default.</td>
-</tr>
-<tr>
-	<td>no_template_ng</td>
-	<td>1.3</td>
-	<td>Disabling the new template engine.</td>
-</tr>
-<tr>
-	<td>1.0</td>
-	<td>1.0</td>
-	<td>Disabling usage of a tty. This increases compatibility for remote execution. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr>
-	<td>no_autodie</td>
-	<td>1.0</td>
-	<td>Will disable autodie feature.</td>
-</tr>
-<tr>
-	<td>tty</td>
-	<td>1.0</td>
-	<td>Enable pty usage for ssh connections. (Default)</td>
-</tr>
-<tr>
-	<td>template_ng</td>
-	<td>0.56</td>
-	<td>Enabling the new template engine (better error reporting, etc.)</td>
-</tr>
-<tr>
-	<td>0.56</td>
-	<td>0.56</td>
-	<td>Will activate autodie feature. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr>
-	<td>autodie</td>
-	<td>0.56</td>
-	<td>Will enable autodie feature: die on all failed <a href="https://metacpan.org/pod/Rex::Commands::Fs">filesytem commands</a></td>
-</tr>
-<tr>
-	<td>0.55</td>
-	<td>0.55</td>
-	<td>Will activate using Net::OpenSSH by default if present. Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr>
-	<td>0.54</td>
-	<td>0.54</td>
-	<td>Will activate checking services for existence before trying to manipulate them, and set() will overwrite already existing values (instead of concatenating). Furthermore, all features from earlier versions are activated.</td>
-</tr>
-<tr>
-	<td>0.53</td>
-	<td>0.53</td>
-	<td>Will activate register_cmdb_top_scope. And all things 0.51 and down activated.</td>
-</tr>
-<tr>
-	<td>register_cmdb_top_scope</td>
-	<td>0.53</td>
-	<td>Will register all cmdb top scope variables automatically in the templates.</td>
-</tr>
-<tr>
-	<td>0.51</td>
-	<td>0.51</td>
-	<td>Will load Rex::Constants and the CMDB by default. And all things 0.47 and down activated.</td>
-</tr>
-<tr>
-	<td>disable_taskname_warning</td>
-	<td>0.47</td>
-	<td>Disable warning about invalid task names (they should match <code>/^[a-zA-Z_][a-zA-Z0-9_]*$/</code>)</td>
-</tr>
-<tr>
-	<td>verbose_run</td>
-	<td>0.47</td>
-	<td>Explicitly output &quot;Successfully executed&quot; or &quot;Error executing&quot; messages for run() commands.</td>
-</tr>
-<tr>
-	<td>no_cache</td>
-	<td>0.46</td>
-	<td>Disable caching (like discovery results of remote OS, hardware, shell, etc.)</td>
-</tr>
-<tr>
-	<td>no_path_cleanup</td>
-	<td>0.44</td>
-	<td>Rex cleans the path before executing a command. With this feature Rex doesn&#39;t cleanup the path.</td>
-</tr>
-<tr>
-	<td>source_profile</td>
-	<td>0.44</td>
-	<td>Source $HOME/.profile before running a command.</td>
-</tr>
-<tr>
-	<td>source_global_profile</td>
-	<td>0.44</td>
-	<td>Source /etc/profile before running a command.</td>
-</tr>
-<tr>
-	<td>exec_autodie</td>
-	<td>0.44</td>
-	<td>If you execute a command with run() Rex will die() if the command returns a RETVAL != 0.</td>
-</tr>
-<tr>
-	<td>exec_and_sleep</td>
-	<td>0.43</td>
-	<td>Sometimes some commands that fork away didn&#39;t keep running. With this flag rex will wait a few ms before exiting the shell.</td>
-</tr>
-<tr>
-	<td>disable_strict_host_key_checking</td>
-	<td>0.43</td>
-	<td>Disabling strict host key checking for openssh connection mode.</td>
-</tr>
-<tr>
-	<td>reporting</td>
-	<td>0.43</td>
-	<td>Enable reporting</td>
-</tr>
-<tr>
-	<td>empty_groups</td>
-	<td>0.42</td>
-	<td>Enable usage of empty groups.</td>
-</tr>
-<tr>
-	<td>use_server_auth</td>
-	<td>0.42</td>
-	<td>Enable the usage of special authentication options for servers.</td>
-</tr>
-<tr>
-	<td>no_tty</td>
-	<td>0.41</td>
-	<td>Disable pty usage for ssh connections.</td>
-</tr>
-<tr>
-	<td>no_local_template_vars</td>
-	<td>0.40</td>
-	<td>Use global variables in templates</td>
-</tr>
-<tr>
-	<td>sudo_without_sh</td>
-	<td>0.40</td>
-	<td>Run sudo commands directly without the use of &#39;sh&#39;. This might break things.</td>
-</tr>
-<tr>
-	<td>sudo_without_locales</td>
-	<td>0.40</td>
-	<td>Run sudo commands without locales. This will break things if you don&#39;t use English locales.</td>
-</tr>
-<tr>
-	<td>exit_status</td>
-	<td>0.39</td>
-	<td>This option tells Rex to return a non zero value on exit if a task fails.</td>
-</tr>
-<tr>
-	<td>0.35</td>
-	<td>0.35</td>
-	<td>This option enables the features of 0.31 and the possibility to call tasks as a functions without the need to use a hash reference for the parameters.</td>
-</tr>
-<tr>
-	<td>0.31</td>
-	<td>0.31</td>
-	<td>To enable special authentication options for a server group. This will overwrite the default authentication options for a task.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="howtoenablefeatureflags">Howto enable Feature Flags</h2>
-
-<p>You can enable feature flags in your Rexfile with the following code:</p>
-
-<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;]; <span class="hljs-comment"># breaks all backward compatibility</span></code></pre>
-
-<p>or even multiple ones like this:</p>
-
-<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [qw(exec_autodie source_profile)]; <span class="hljs-comment"># enable the exec_autodie and source_profile features</span></code></pre>
+              <p>This content has been moved directly into Rex documentation under <a href="https://metacpan.org/pod/Rex#FEATURE-FLAGS">feature flags</a>.</p>
 
 
 

@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.19</title>
+      <title>Release notes for 1.12.1</title>
 
-      <meta content="Release notes for 0.19" property="og:title">
+      <meta content="Release notes for 1.12.1" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://www.rexify.org/docs/release_notes/0.19.html" property="og:url">
+      <meta content="https://www.rexify.org/docs/release_notes/1.12.1.html" property="og:url">
       <meta content="https://www.rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -115,61 +115,16 @@
 » <a href="/index.html">Home</a>
 » <a href="/docs/index.html">Docs</a>
 » <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.19.html">Release notes for 0.19</a>
+» <a href="/docs/release_notes/1.12.1.html">Release notes for 1.12.1</a>
 </p>
 
               
-              <h1>Release notes for 0.19</h1>
-              <h2 id="rex">Rex</h2>
+              <h1>Release notes for 1.12.1</h1>
+              <p>This is a new patch release which adds documentation for feature flags, and fixes a release packaging issue.</p>
 
-<ul>
-<li><p>Added output modules. First output module is a JUnit compatible output to use Rex together with Jenkins.</p>
+<p>Please see the <a href="https://metacpan.org/source/FERKI/Rex-1.12.1/ChangeLog">changelog</a> for full details.</p>
 
-<pre><code>rex -o JUnit $task
-</code></pre>
-
-<p>This will product a file junit_output.xml which can be used by Jenkins.</p></li>
-<li><p>Added support for environments.</p>
-
-<p>With environments one can use the same task for different hosts and/or with different credentials. For example if you want to use the same task on your integration, test and production servers.</p>
-
-<pre><code class="hljs">⁠<span class="hljs-comment"># define default user/password</span><span class="hljs-comment">
-⁠</span>user &quot;<span class="hljs-string">root</span>&quot;;
-⁠password &quot;<span class="hljs-string">foobar</span>&quot;;
-⁠pass_auth;
-⁠
-⁠<span class="hljs-comment"># define default frontend group containing only testwww01</span><span class="hljs-comment">
-⁠</span>group frontend =&gt; &quot;<span class="hljs-string">testwww01</span>&quot;;
-⁠
-⁠<span class="hljs-comment"># define live environment, with different user/password</span><span class="hljs-comment">
-⁠</span><span class="hljs-comment"># and a frontend server group containing www01, www02 and www03</span><span class="hljs-comment">
-⁠</span>environment live =&gt; <span class="hljs-keyword">sub </span>{
-⁠    user &quot;<span class="hljs-string">root</span>&quot;;
-⁠    password &quot;<span class="hljs-string">livefoo</span>&quot;;
-⁠    pass_auth;
-⁠
-⁠    group frontend =&gt; &quot;<span class="hljs-string">www01</span>&quot;, &quot;<span class="hljs-string">www02</span>&quot;, &quot;<span class="hljs-string">www03</span>&quot;;
-⁠};
-⁠
-⁠<span class="hljs-comment"># define stage environment with default user and password, but with</span><span class="hljs-comment">
-⁠</span><span class="hljs-comment"># an own frontend group containing only stagewww01</span><span class="hljs-comment">
-⁠</span>environment stage =&gt; <span class="hljs-keyword">sub </span>{
-⁠    group frontend =&gt; &quot;<span class="hljs-string">stagewww01</span>&quot;;
-⁠};
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">frontend</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    say run &quot;<span class="hljs-string">hostname</span>&quot;;
-⁠  };    </code></pre>
-
-<ul>
-<li>Calling <em>rex prepare</em> will execute on testwww01 with root/foobar credentials</li>
-<li>Calling <em>rex -E live prepare</em> will execute on www01, www02, www03 with root/livefoo credentials</li>
-<li>Calling <em>rex -E stage prepare</em> will execute on stagewww01 with root/foobar credentials</li>
-</ul></li>
-<li><p>Load Rex::Commands:Process as default now.</p></li>
-</ul>
+<p>Many thanks to <a href="https://metacpan.org/source/FERKI/Rex-1.12.1/CONTRIBUTORS">all contributors</a> who made this release possible! We are delighted to welcome Randy Lauen as new contributor!</p>
 
 
 
