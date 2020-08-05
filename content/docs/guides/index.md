@@ -5,7 +5,7 @@ title: Guides
 * [Howto start using (R)?ex](start_using__r__ex.html)  
   This is a small howto showing the first steps with Rex.
 
-* [How to enable or disable features](feature_flags.html)  
+* [How to enable or disable features](https://metacpan.org/pod/Rex#FEATURE-FLAGS)  
   This page lists available feature flags which determine various
   ways Rex behaves.
 
