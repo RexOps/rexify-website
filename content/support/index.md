@@ -14,11 +14,11 @@ If you're looking for commercial support feel free to contact any of the compani
 
 You want to provide commercial support for Rex? Just drop us a few lines with a description of your company and service and we will add you to this list.
 
-### Ferenc Erki - (R)?ex Core Developer
+### Ferenc Erki - Rex core developer and maintainer
 
 <img style="float:left; padding-right: 50px;" src="/public/images/skin/rexify.org/ferki.jpg" alt="FErki" width="80" height="80" />
 
-Get consulting, training and custom implementation services directly from a core developer behind (R)?ex.
+Get consulting, training, and custom development services directly from a core developer and maintainer of Rex.
 
 <a href="https://www.linkedin.com/in/ferki/" class="btn">LinkedIn profile</a>
 <div style="overflow:auto"></div>
