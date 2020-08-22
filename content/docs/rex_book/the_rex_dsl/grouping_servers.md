@@ -6,7 +6,7 @@ Rex offers you a powerful way to group your servers. The simplest way to use gro
 
     ```perl
     group frontends => "frontend01", "frontend02", "frontend03";
-    group backends  => "backend01",  "backend02";
+    group backends => "backend01", "backend02";
     ```
 
 Rex offers also a simple notation to define server ranges, so that you don't need to type so much.
@@ -22,7 +22,7 @@ Custom parameters for servers are possible with a slightly enhanced syntax since
 
     ```perl
     group frontends => "frontend01" => { user => "bob" },
-      "frontend02" => { user => "alice" },
+      "frontend02"  => { user => "alice" },
       "frontend03";
     ```
 

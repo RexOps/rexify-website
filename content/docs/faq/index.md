@@ -114,7 +114,7 @@ Rex assigns the exit code from the remote invocation of `run` or `shell_block` s
 ## How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?
 
     ```perl
-    Rex::Logger::info("some message"); # for INFO  (green)
+    Rex::Logger::info("some message");            # for INFO  (green)
     Rex::Logger::info( "some message", "warn" );  # for WARN  (yellow)
     Rex::Logger::info( "some message", "error" ); # for ERROR (red)
     ```

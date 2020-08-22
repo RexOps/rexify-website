@@ -138,8 +138,8 @@ But remember an important note: hashes are always unsorted.
     if ( $name =~ m/john/i ) { # _will_ match, because we use the 'i' modifier for case-insensitive matching
     }
     
-    $name =~ s/john/Fred/i; # this will replace the first match of 'john' (regardless of its case) with 'Fred'
-    $name =~ s/john/Fred/ig; # this will replace all matches of 'john' (regardless of its case) with 'Fred'
+    $name =~ s/john/Fred/i;    # this will replace the first match of 'john' (regardless of its case) with 'Fred'
+    $name =~ s/john/Fred/ig;   # this will replace all matches of 'john' (regardless of its case) with 'Fred'
     ```
 
 ## Subroutines
@@ -153,11 +153,11 @@ But remember an important note: hashes are always unsorted.
     }
     
     my_function();     # call the function 'my_function'
-    my_function; # also calls 'my_function', but harder to read due to missing parentheses
-    &my_function; # also calls 'my_function', but with a deprecated old notation
+    my_function;       # also calls 'my_function', but harder to read due to missing parentheses
+    &my_function;      # also calls 'my_function', but with a deprecated old notation
     
     my_function2( 'john', 28 ); # call 'my_function2' with 2 parameters
-    my_function2 'john', 28; # does the same, but harder to read due to missing parentheses
+    my_function2 'john', 28;    # does the same, but harder to read due to missing parentheses
     ```
 
 ## Useful helpers

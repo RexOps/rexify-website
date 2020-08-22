@@ -106,11 +106,11 @@ sub highlight {
         $hl->language($lang);
     }
 
-    $text =~ s/^$indent//gm;    # remove code block indent
-    $text =~ s/\A\n+|\n+\z//gm; # clean up leading/trailing newlines
+    $text =~ s/^$indent//gm;                      # remove code block indent
+    $text =~ s/\A\n+|\n+\z//gm;                   # clean up leading/trailing newlines
 
     my $highlighted_text = $hl->highlightText($text);
-    $highlighted_text =~ s/^/&#8288;/gm; # add a WORD JOINER character to each line
+    $highlighted_text =~ s/^/&#8288;/gm;          # add a WORD JOINER character to each line
 
     my $wrap_start = qq($html_indent<pre><code class="hljs">);
     my $wrap_end   = qq($html_indent</code></pre>);
