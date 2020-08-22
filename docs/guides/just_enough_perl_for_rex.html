@@ -233,8 +233,8 @@
 ⁠<span class="hljs-keyword">if</span> ( <span class="hljs-type">$name</span> =~ m/john/i ) { <span class="hljs-comment"># _will_ match, because we use the &#39;i&#39; modifier for case-insensitive matching</span><span class="hljs-comment">
 ⁠</span>}
 ⁠
-⁠<span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/i; <span class="hljs-comment"># this will replace the first match of &#39;john&#39; (regardless of its case) with &#39;Fred&#39;</span><span class="hljs-comment">
-⁠</span><span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/ig; <span class="hljs-comment"># this will replace all matches of &#39;john&#39; (regardless of its case) with &#39;Fred&#39;</span></code></pre>
+⁠<span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/i;    <span class="hljs-comment"># this will replace the first match of &#39;john&#39; (regardless of its case) with &#39;Fred&#39;</span><span class="hljs-comment">
+⁠</span><span class="hljs-type">$name</span> =~ s/john/<span class="hljs-string">Fred</span>/ig;   <span class="hljs-comment"># this will replace all matches of &#39;john&#39; (regardless of its case) with &#39;Fred&#39;</span></code></pre>
 
 <h2 id="subroutines">Subroutines</h2>
 
@@ -246,11 +246,11 @@
 ⁠}
 ⁠
 ⁠my_function();     <span class="hljs-comment"># call the function &#39;my_function&#39;</span><span class="hljs-comment">
-⁠</span>my_function; <span class="hljs-comment"># also calls &#39;my_function&#39;, but harder to read due to missing parentheses</span><span class="hljs-comment">
-⁠</span>&amp;my_function; <span class="hljs-comment"># also calls &#39;my_function&#39;, but with a deprecated old notation</span><span class="hljs-comment">
+⁠</span>my_function;       <span class="hljs-comment"># also calls &#39;my_function&#39;, but harder to read due to missing parentheses</span><span class="hljs-comment">
+⁠</span>&amp;my_function;      <span class="hljs-comment"># also calls &#39;my_function&#39;, but with a deprecated old notation</span><span class="hljs-comment">
 ⁠</span>
 ⁠my_function2( &#39;<span class="hljs-string">john</span>&#39;, <span class="hljs-number">28</span> ); <span class="hljs-comment"># call &#39;my_function2&#39; with 2 parameters</span><span class="hljs-comment">
-⁠</span>my_function2 &#39;<span class="hljs-string">john</span>&#39;, <span class="hljs-number">28</span>; <span class="hljs-comment"># does the same, but harder to read due to missing parentheses</span></code></pre>
+⁠</span>my_function2 &#39;<span class="hljs-string">john</span>&#39;, <span class="hljs-number">28</span>;    <span class="hljs-comment"># does the same, but harder to read due to missing parentheses</span></code></pre>
 
 <h2 id="usefulhelpers">Useful helpers</h2>
 

@@ -255,10 +255,10 @@ Server Groups
 ⁠  <span class="hljs-keyword">sub </span>{
 ⁠    pkg &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;; <span class="hljs-comment"># let&#39;s install the package first</span><span class="hljs-comment">
 ⁠</span>
-⁠    file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,            <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
-⁠</span>      source =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
-⁠</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
-⁠</span>        service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;; <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
+⁠    file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,                <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
+⁠</span>      source    =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
+⁠</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{                 <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
+⁠</span>        service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;;       <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
 ⁠</span>      };
 ⁠
 ⁠    service &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;; <span class="hljs-comment"># start the service now and also after reboot</span><span class="hljs-comment">

@@ -124,7 +124,7 @@
               <p>Rex offers you a powerful way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.</p>
 
 <pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;, &quot;<span class="hljs-string">frontend02</span>&quot;, &quot;<span class="hljs-string">frontend03</span>&quot;;
-⁠group backends  =&gt; &quot;<span class="hljs-string">backend01</span>&quot;,  &quot;<span class="hljs-string">backend02</span>&quot;;</code></pre>
+⁠group backends =&gt; &quot;<span class="hljs-string">backend01</span>&quot;, &quot;<span class="hljs-string">backend02</span>&quot;;</code></pre>
 
 <p>Rex offers also a simple notation to define server ranges, so that you don&#39;t need to type so much.</p>
 
@@ -136,7 +136,7 @@
 <p>Custom parameters for servers are possible with a slightly enhanced syntax since version 0.47:</p>
 
 <pre><code class="hljs">⁠group frontends =&gt; &quot;<span class="hljs-string">frontend01</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">bob</span>&quot; },
-⁠  &quot;<span class="hljs-string">frontend02</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">alice</span>&quot; },
+⁠  &quot;<span class="hljs-string">frontend02</span>&quot;  =&gt; { user =&gt; &quot;<span class="hljs-string">alice</span>&quot; },
 ⁠  &quot;<span class="hljs-string">frontend03</span>&quot;;</code></pre>
 
 <p>Because the Rexfile is a Perl script you can just use more advanced things like querying a database, ldap or your dns.</p>
