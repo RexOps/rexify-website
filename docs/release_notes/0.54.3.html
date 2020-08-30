@@ -130,7 +130,7 @@
 
 <p>path_map is a new feature developed by Erik Huelsmann to ease the management of files for different hosts. In the past, if you wanted to upload a file (for example /etc/security/access.conf) to your servers and wanted to have different access.conf files per environment, or for a special host, you had to build this logic by yourself. With the <em>path_map</em> feature you only have to define the lookup path and Rex is doing this for you.</p>
 
-<pre><code class="hljs">⁠use Rex -feature =&gt; [&#39;<span class="hljs-string">0.54</span>&#39;];
+<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.54</span>&#39;];
 ⁠
 ⁠set path_map =&gt; {
 ⁠    &quot;<span class="hljs-string">files/</span>&quot; =&gt; [
