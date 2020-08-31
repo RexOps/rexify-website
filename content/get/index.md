@@ -14,7 +14,7 @@ While it's possible to install Rex system-wide from CPAN, for that use case you 
 
 ### Official packages
 
-Rex is distributed via package managers for many different operating systems. The [Repology page of Rex](https://repology.org/project/rex/versions) is perhaps the most complete and up-to-date list of available Rex packages.
+Rex is distributed via package managers for many different operating systems. The [Repology page of Rex](https://repology.org/project/rex/versions) is an up-to-date list of available Rex packages.
 
 We encourage you to help those package management projects to distribute Rex. We are happy to support the process, so feel free to get us involved too.
 
@@ -29,6 +29,10 @@ You can clone our [GitHub repository](https://github.com/RexOps/Rex.git) to inst
     $ git clone https://github.com/RexOps/Rex.git
     $ cd Rex
     $ cpanm Dist::Zilla
-    $ dzil authordeps --missing | cpanm
-    $ dzil listdeps --missing | cpanm
+    $ dzil authordeps | cpanm
+    $ dzil listdeps | cpanm
     $ dzil install
+
+Some of the optional dependencies might not be available on all platforms, but to install them as well, use this command:
+
+    dzil listdeps --suggests | cpanm
