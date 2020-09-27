@@ -164,20 +164,20 @@ $ cd my-first-rex-project
 
 <p>Now change into this directory and create a file called Rexfile with the following contents:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
-⁠
-⁠user &#39;<span class="hljs-string">my-user</span>&#39;;
-⁠password &#39;<span class="hljs-string">my-password</span>&#39;;
-⁠
-⁠group myservers =&gt; &#39;<span class="hljs-string">mywebserver</span>&#39;, &#39;<span class="hljs-string">mymailserver</span>&#39;, &#39;<span class="hljs-string">myfileserver</span>&#39;;
-⁠
-⁠desc &#39;<span class="hljs-string">Get the uptime of all servers</span>&#39;;
-⁠task &#39;<span class="hljs-string">uptime</span>&#39;,
-⁠  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &#39;<span class="hljs-string">uptime</span>&#39;;
-⁠    say <span class="hljs-type">$output</span>;
-⁠  };</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
+
+user &#39;<span class="hljs-string">my-user</span>&#39;;
+password &#39;<span class="hljs-string">my-password</span>&#39;;
+
+group myservers =&gt; &#39;<span class="hljs-string">mywebserver</span>&#39;, &#39;<span class="hljs-string">mymailserver</span>&#39;, &#39;<span class="hljs-string">myfileserver</span>&#39;;
+
+desc &#39;<span class="hljs-string">Get the uptime of all servers</span>&#39;;
+task &#39;<span class="hljs-string">uptime</span>&#39;,
+  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
+  <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &#39;<span class="hljs-string">uptime</span>&#39;;
+    say <span class="hljs-type">$output</span>;
+  };</code></pre>
 
 <p>The special first line <code>use Rex -feature =&gt; [&#39;1.4&#39;];</code> enables all features that are available for version 1.4. If you want to know more about feature flags, please check out the <a href="/docs/guides/feature_flags.html">How to enable or disable features</a> page.</p>
 
@@ -190,12 +190,12 @@ $ cd my-first-rex-project
 
 <p>To add a second task, just add the next lines to your Rexfile.</p>
 
-<pre><code class="hljs">⁠desc &#39;<span class="hljs-string">Start Apache service</span>&#39;;
-⁠task &#39;<span class="hljs-string">start_apache</span>&#39;,
-⁠  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    service &#39;<span class="hljs-string">apache2</span>&#39; =&gt; &#39;<span class="hljs-string">start</span>&#39;;
-⁠  };</code></pre>
+<pre><code class="hljs">desc &#39;<span class="hljs-string">Start Apache service</span>&#39;;
+task &#39;<span class="hljs-string">start_apache</span>&#39;,
+  group =&gt; &#39;<span class="hljs-string">myservers</span>&#39;,
+  <span class="hljs-keyword">sub </span>{
+    service &#39;<span class="hljs-string">apache2</span>&#39; =&gt; &#39;<span class="hljs-string">start</span>&#39;;
+  };</code></pre>
 
 <p>This task will start the service named <code>apache2</code> on all the servers in the <code>myservers</code> group.</p>
 
@@ -215,21 +215,21 @@ Server Groups
 
 <p>In the previous example we showed how you can login with a user and a password. Of course, it&#39;s easy to use key authentication instead, just add <code>key_auth</code> instead of <code>password</code>:</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">my-user</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">my-user</span>&#39;;
+key_auth;</code></pre>
 
 <p>It is also possible to use your keys with a passphrase if you specify both <code>key_auth</code> and <code>password</code>:</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">my-user</span>&#39;;
-⁠key_auth;
-⁠password &#39;<span class="hljs-string">key-passphrase</span>&#39;;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">my-user</span>&#39;;
+key_auth;
+password &#39;<span class="hljs-string">key-passphrase</span>&#39;;</code></pre>
 
 <p>On Windows, you also have to point to your private and public keys:</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">my-user</span>&#39;;
-⁠private_key &#39;<span class="hljs-string">/home/user/.ssh/id_rsa</span>&#39;;
-⁠public_key &#39;<span class="hljs-string">/home/user/.ssh/id_rsa.pub</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">my-user</span>&#39;;
+private_key &#39;<span class="hljs-string">/home/user/.ssh/id_rsa</span>&#39;;
+public_key &#39;<span class="hljs-string">/home/user/.ssh/id_rsa.pub</span>&#39;;
+key_auth;</code></pre>
 
 <p>If you don&#39;t want to add your password or passphrase to the Rexfile, you can also get it from an external source, or you can use ssh-agent. Rex will automatically try to use it when you remove both <code>password</code> and <code>key_auth</code>.</p>
 
@@ -243,26 +243,26 @@ Server Groups
 
 <p>In this example you will learn how to install and configure an NTP server. You can adapt this example to any other service easily.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
-⁠
-⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠
-⁠group all_servers =&gt; &#39;<span class="hljs-string">srv[001..003]</span>&#39;;
-⁠
-⁠task &#39;<span class="hljs-string">setup_ntp</span>&#39;,
-⁠  group =&gt; &#39;<span class="hljs-string">all_servers</span>&#39;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    pkg &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;; <span class="hljs-comment"># let&#39;s install the package first</span><span class="hljs-comment">
-⁠</span>
-⁠    file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,                <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
-⁠</span>      source    =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
-⁠</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{                 <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
-⁠</span>        service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;;       <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
-⁠</span>      };
-⁠
-⁠    service &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;; <span class="hljs-comment"># start the service now and also after reboot</span><span class="hljs-comment">
-⁠</span>  };</code></pre>
+<pre><code class="hljs"><span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+</span><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
+
+user &#39;<span class="hljs-string">root</span>&#39;;
+
+group all_servers =&gt; &#39;<span class="hljs-string">srv[001..003]</span>&#39;;
+
+task &#39;<span class="hljs-string">setup_ntp</span>&#39;,
+  group =&gt; &#39;<span class="hljs-string">all_servers</span>&#39;,
+  <span class="hljs-keyword">sub </span>{
+    pkg &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;; <span class="hljs-comment"># let&#39;s install the package first</span><span class="hljs-comment">
+</span>
+    file &#39;<span class="hljs-string">/etc/ntp.conf</span>&#39;,                <span class="hljs-comment"># then upload a configuration file</span><span class="hljs-comment">
+</span>      source    =&gt; &#39;<span class="hljs-string">files/etc/ntp.conf</span>&#39;, <span class="hljs-comment"># use a source file under files/etc</span><span class="hljs-comment">
+</span>      on_change =&gt; <span class="hljs-keyword">sub </span>{                 <span class="hljs-comment"># and execute something if the file has changed</span><span class="hljs-comment">
+</span>        service ntpd =&gt; &#39;<span class="hljs-string">restart</span>&#39;;       <span class="hljs-comment"># in this case, restart the service</span><span class="hljs-comment">
+</span>      };
+
+    service &#39;<span class="hljs-string">ntpd</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;; <span class="hljs-comment"># start the service now and also after reboot</span><span class="hljs-comment">
+</span>  };</code></pre>
 
 <p>That&#39;s all.</p>
 

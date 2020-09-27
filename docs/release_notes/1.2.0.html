@@ -136,11 +136,11 @@
 
 <!-- -->
 
-<pre><code class="hljs">⁠set cmdb {
-⁠    type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
-⁠    path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
-⁠    merge_behavior =&gt; &#39;<span class="hljs-string">LEFT_PRECEDENT</span>&#39;,
-⁠};</code></pre>
+<pre><code class="hljs">set cmdb {
+    type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
+    path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
+    merge_behavior =&gt; &#39;<span class="hljs-string">LEFT_PRECEDENT</span>&#39;,
+};</code></pre>
 
 <ul>
 <li>Use a custom merge strategy</li>
@@ -148,15 +148,15 @@
 
 <!-- -->
 
-<pre><code class="hljs">⁠set cmdb {
-⁠    type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
-⁠    path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
-⁠    merge_behavior =&gt; {
-⁠        <span class="hljs-function">SCALAR</span> =&gt; {...},
-⁠        ARRAY  =&gt; {...},
-⁠        HASH   =&gt; {...}
-⁠    },
-⁠};</code></pre>
+<pre><code class="hljs">set cmdb {
+    type           =&gt; &#39;<span class="hljs-string">YAML</span>&#39;,
+    path           =&gt; &#39;<span class="hljs-string">cmdb</span>&#39;,
+    merge_behavior =&gt; {
+        <span class="hljs-function">SCALAR</span> =&gt; {...},
+        ARRAY  =&gt; {...},
+        HASH   =&gt; {...}
+    },
+};</code></pre>
 
 <ul>
 <li>Add YAML CMDB merging support (fix #499) - Ferenc Erki</li>

@@ -124,7 +124,7 @@
 
 <h2 id="base">Base</h2>
 
-<ul>
+<p></p><ul>
 <li><p><strong>Load CMDB by default.</strong></p>
 
 <p>If you want to store data separated from your code (which is always a good idea) you can use the default Rex CMDB based on YAML. This feature was introduced in 0.40 and is now loaded by default with the following lookup path.</p>
@@ -140,21 +140,24 @@
 
 <p>For example, if you have a <strong>CentOS</strong> server with the hostname <strong>web01</strong>, this means that if you request the key <strong>maxconn</strong> Rex will first try to find the key inside <strong>cmdb/CentOS/web01.yml</strong> and if it doesn&#39;t find the Rex will try the next file in the lookup path.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
-⁠};    </code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
+task &quot;<span class="hljs-string">setup</span>&quot;, make {
+<span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
+};    </code></pre>
 
 <p>If you&#39;re using <a href="http://modules.rexify.org/module/Rex::Ext::ParamLookup">Rex::Ext::ParamLookup</a> it is even easier to work with a CMDB. You can write your code without using a CMDB and later, if you decide to use one, you can just add it without changing your code.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Ext</span>::<span class="hljs-function">ParamLookup</span>;
-⁠
-⁠task &quot;<span class="hljs-string">setup</span>&quot;, make {
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
-⁠};    </code></pre>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
+<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Ext</span>::<span class="hljs-function">ParamLookup</span>;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">setup</span>&quot;, make {
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
+};    
 
-<p>This will first check if there is a task parameter named <strong>maxconn</strong> and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example <em>4096</em>).</p></li>
+<pre><code>This will first check if there is a task parameter named **maxconn** and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example *4096*).
+</code></pre>
+
+<p></p><ul>
 <li><p><strong>Store server groups in an ini file</strong></p>
 
 <p>This feature is also available since a long time and now loaded by default. If there is a file named <strong>server.ini</strong> beside your <strong>Rexfile</strong> Rex will load it and create the server groups out of it. With this it is also possible to define special parameters for your hosts.</p>
@@ -190,17 +193,17 @@ redis02 user=toor password=foob4r sudo=true services=redis
 
 <p>In your <strong>Rexfile</strong> you now have 4 groups (frontends, backend, db and redis). The servers redis01..02 uses a special authentication and be01..04, redis01..02 have a special parameter <strong>services</strong> which you can access within a task.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
-⁠
-⁠task &quot;<span class="hljs-string">restart_services</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">redis</span>&quot;,
-⁠  make {
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@services</span> = <span class="hljs-function">split</span> /,/, connection-&gt;server-&gt;services;
-⁠    service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠  };
-⁠
-⁠         </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];</code></pre></li>
 </ul>
+task &quot;<span class="hljs-string">restart_services</span>&quot;,
+  group =&gt; &quot;<span class="hljs-string">redis</span>&quot;,
+  make {
+    <span class="hljs-keyword">my</span> <span class="hljs-type">@services</span> = <span class="hljs-function">split</span> /,/, connection-&gt;server-&gt;services;
+    service [<span class="hljs-type">@services</span>] =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+  };
+
+<pre><code>     &lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 <h2 id="bugfixes">Bugfixes</h2>
 

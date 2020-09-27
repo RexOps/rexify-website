@@ -134,48 +134,49 @@
 
 <p>With Rex::Test it is possible to test your Rexfile on a local VM before executing the code on your servers.</p>
 
-<ul>
+<p></p><ul>
 <li><p>Rex::Box now also works with KVM</p>
 
-<pre><code class="hljs">⁠use <span class="hljs-function">Rex::Test</span>::<span class="hljs-function">Base</span>;
-⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
-⁠<span class="hljs-keyword">use</span> Rex -base;
-⁠
-⁠set box =&gt; &quot;<span class="hljs-string">KVM</span>&quot;;
-⁠
-⁠test {
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;
-⁠
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">name</span>(&quot;<span class="hljs-string">ubuntu test</span>&quot;);
-⁠
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">base_vm</span>(&quot;<span class="hljs-string">http://box.rexify.org/box/ubuntu-server-12.10-amd64.img</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">vm_auth</span>( user =&gt; &quot;<span class="hljs-string">root</span>&quot;, password =&gt; &quot;<span class="hljs-string">box</span>&quot; );
-⁠
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">run_task</span>(&quot;<span class="hljs-string">setup</span>&quot;);
-⁠
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">vim</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_package</span>(&quot;<span class="hljs-string">unzip</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_file</span>(&quot;<span class="hljs-string">/etc/ntp.conf</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_service_running</span>(&quot;<span class="hljs-string">ntp</span>&quot;);
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
-⁠
-⁠    run &quot;<span class="hljs-string">ls -l</span>&quot;;
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
-⁠
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
-⁠};
-⁠
-⁠<span class="hljs-number">1</span>;    </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Test</span>::<span class="hljs-function">Base</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
+<span class="hljs-keyword">use</span> Rex -base;</code></pre></li>
 </ul>
+set box =&gt; &quot;<span class="hljs-string">KVM</span>&quot;;
+
+<p>test {
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = <span class="hljs-function">shift</span>;</p>
+
+<pre><code>&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;name&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;ubuntu test&lt;/span&gt;&quot;);
+
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;base_vm&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;http://box.rexify.org/box/ubuntu-server-12.10-amd64.img&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;vm_auth&lt;/span&gt;( user =&amp;gt; &quot;&lt;span class=&quot;hljs-string&quot;&gt;root&lt;/span&gt;&quot;, password =&amp;gt; &quot;&lt;span class=&quot;hljs-string&quot;&gt;box&lt;/span&gt;&quot; );
+
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;run_task&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;setup&lt;/span&gt;&quot;);
+
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_package&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;vim&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_package&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;ntp&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_package&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;unzip&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_file&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;/etc/ntp.conf&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_service_running&lt;/span&gt;(&quot;&lt;span class=&quot;hljs-string&quot;&gt;ntp&lt;/span&gt;&quot;);
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_content&lt;/span&gt;( &quot;&lt;span class=&quot;hljs-string&quot;&gt;/etc/passwd&lt;/span&gt;&quot;, qr{root:x:0:}ms );
+
+run &quot;&lt;span class=&quot;hljs-string&quot;&gt;ls -l&lt;/span&gt;&quot;;
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;ok&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$?&lt;/span&gt; == 0, &quot;&lt;span class=&quot;hljs-string&quot;&gt;ls -l returns success.&lt;/span&gt;&quot; );
+
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;finish&lt;/span&gt;;
+</code></pre>
+
+<p>};</p>
+
+<p><span class="hljs-number">1</span>;    </p>
 
 <h2 id="base">Base</h2>
 
 <ul>
 <li><p>Read server groups from xml file - nathanIL</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">XML</span>;
-⁠group_xml &quot;<span class="hljs-string">file.xml</span>&quot;;    </code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">XML</span>;
+group_xml &quot;<span class="hljs-string">file.xml</span>&quot;;    </code></pre>
 
 <pre><code>&lt;configuration&gt;
    &lt;group name=&quot;database&quot;&gt;
@@ -192,23 +193,23 @@
 </code></pre></li>
 <li><p>It is now possible to define <strong>before</strong>, <strong>around</strong> and <strong>after</strong> hooks for all tasks in one namespace with the <code>ALL</code> keyword.</p>
 
-<pre><code class="hljs">⁠before ALL =&gt; <span class="hljs-keyword">sub </span>{ }    </code></pre></li>
+<pre><code class="hljs">before ALL =&gt; <span class="hljs-keyword">sub </span>{ }    </code></pre></li>
 <li><p>Extended service() resource, so that it is now possible to define what it should do for the different actions.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    service &quot;<span class="hljs-string">apache2</span>&quot;,
-⁠      ensure  =&gt; &quot;<span class="hljs-string">started</span>&quot;,
-⁠      start   =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠      stop    =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
-⁠      status  =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
-⁠      restart =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
-⁠      reload  =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+service &quot;<span class="hljs-string">apache2</span>&quot;,
+  ensure  =&gt; &quot;<span class="hljs-string">started</span>&quot;,
+  start   =&gt; &quot;<span class="hljs-string">/usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+  stop    =&gt; &quot;<span class="hljs-string">killall httpd</span>&quot;,
+  status  =&gt; &quot;<span class="hljs-string">ps -efww | grep httpd</span>&quot;,
+  restart =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;,
+  reload  =&gt; &quot;<span class="hljs-string">killall httpd &amp;&amp; /usr/local/bin/httpd -f /etc/my/httpd.conf</span>&quot;;
+};    </code></pre></li>
 <li><p>Syntax enhancement of <strong>group</strong> command #369 - Jens Berthold</p>
 
-<pre><code class="hljs">⁠group &quot;<span class="hljs-string">g1</span>&quot;,
-⁠  &quot;<span class="hljs-string">srv1</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">other</span>&quot; },
-⁠  &quot;<span class="hljs-string">srv2</span>&quot;;    </code></pre></li>
+<pre><code class="hljs">group &quot;<span class="hljs-string">g1</span>&quot;,
+&quot;<span class="hljs-string">srv1</span>&quot; =&gt; { user =&gt; &quot;<span class="hljs-string">other</span>&quot; },
+&quot;<span class="hljs-string">srv2</span>&quot;;    </code></pre></li>
 <li><p>Package-Management with pkgng on FreeBSD 10</p></li>
 <li><p>Amazon Linux is now detected properly.</p></li>
 <li><p>Added MacOSX (Darwin) Network inventory module</p></li>

@@ -122,65 +122,74 @@
               <h1>Release notes for 0.10</h1>
               <h2 id="rex">Rex</h2>
 
-<ul>
+<p></p><ul>
 <li><p>Added a network module</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Network</span>;
-⁠
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@routes</span> = route;
-⁠<span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@routes</span> );
-⁠
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$default_gw</span> = default_gateway;
-⁠default_gateway &quot;<span class="hljs-string">192.168.2.1</span>&quot;;
-⁠
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@netstat</span>         = netstat;
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">@tcp_connections</span> = <span class="hljs-function">grep</span> { <span class="hljs-variable">$_</span>-&gt;{&quot;<span class="hljs-string">proto</span>&quot;} eq &quot;<span class="hljs-string">tcp</span>&quot; } netstat;    </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Network</span>;</code></pre></li>
+</ul>
+<span class="hljs-keyword">my</span> <span class="hljs-type">@routes</span> = route;
+<span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@routes</span> );
+
+<p><span class="hljs-keyword">my</span> <span class="hljs-type">$default_gw</span> = default_gateway;
+default_gateway &quot;<span class="hljs-string">192.168.2.1</span>&quot;;</p>
+
+<p><span class="hljs-keyword">my</span> <span class="hljs-type">@netstat</span>         = netstat;
+<span class="hljs-keyword">my</span> <span class="hljs-type">@tcp_connections</span> = <span class="hljs-function">grep</span> { <span class="hljs-variable">$_</span>-&gt;{&quot;<span class="hljs-string">proto</span>&quot;} eq &quot;<span class="hljs-string">tcp</span>&quot; } netstat;    </p>
+
+<p></p><ul>
 <li><p>Added mount and umount functions to the Fs module</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">mount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/tmp</span>&quot;;
-⁠    mount &quot;<span class="hljs-string">/dev/sda6</span>&quot;, &quot;<span class="hljs-string">/mnt/sda6</span>&quot;,
-⁠      fs      =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
-⁠      options =&gt; [qw/noatime async/];
-⁠};
-⁠
-⁠task &quot;<span class="hljs-string">umount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    umount &quot;<span class="hljs-string">/tmp</span>&quot;;
-⁠};    </code></pre></li>
+<p></p><p></p><pre><code class="hljs">task &quot;<span class="hljs-string">mount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
+mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/tmp</span>&quot;;
+mount &quot;<span class="hljs-string">/dev/sda6</span>&quot;, &quot;<span class="hljs-string">/mnt/sda6</span>&quot;,
+  fs      =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+  options =&gt; [qw/noatime async/];
+};</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">umount</span>&quot;, &quot;<span class="hljs-string">server01</span>&quot;, <span class="hljs-keyword">sub </span>{
+    umount &quot;<span class="hljs-string">/tmp</span>&quot;;
+};    
+
+<p></p><ul>
 <li><p>Added a cron module</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Cron</span>;
-⁠
-⁠cron
-⁠  add =&gt; &quot;<span class="hljs-string">root</span>&quot;,
-⁠  {
-⁠    minute       =&gt; &#39;<span class="hljs-string">5</span>&#39;,
-⁠    hour         =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠    day_of_month =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠    month        =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠    day_of_week  =&gt; &#39;<span class="hljs-string">*</span>&#39;,
-⁠  };
-⁠
-⁠cron list =&gt; &quot;<span class="hljs-string">root</span>&quot;;
-⁠
-⁠cron <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">root</span>&quot;, <span class="hljs-number">3</span>;    </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Cron</span>;</code></pre></li>
+</ul>
+cron
+  add =&gt; &quot;<span class="hljs-string">root</span>&quot;,
+  {
+    minute       =&gt; &#39;<span class="hljs-string">5</span>&#39;,
+    hour         =&gt; &#39;<span class="hljs-string"><em></em></span>&#39;,
+    day_of_month =&gt; &#39;<span class="hljs-string"></span>&#39;,
+    month        =&gt; &#39;<span class="hljs-string"><em></em></span>&#39;,
+    day_of_week  =&gt; &#39;<span class="hljs-string"></span>&#39;,
+  };
+
+<p>cron list =&gt; &quot;<span class="hljs-string">root</span>&quot;;</p>
+
+<p>cron <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">root</span>&quot;, <span class="hljs-number">3</span>;    </p>
+
+<p></p><ul>
 <li><p>Inventory module</p>
 
-<p>Added more information to the returned hash as proposed by Franky on the mailinglist.</p></li>
+<p>Added more information to the returned hash as proposed by Franky on the mailinglist.</p>
+
+<p></p></li>
 <li><p>Package module</p>
 
 <p>Added a new function <em>installed_packages</em> to get information of all installed packages.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">get-installed</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> ( installed_packages() ) {
-⁠        say &quot;<span class="hljs-string">name     : </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">name</span>&quot;};
-⁠        say &quot;<span class="hljs-string">  version: </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">version</span>&quot;};
-⁠    }
-⁠
-⁠};
-⁠        </code></pre></li>
+<p></p><p></p><pre><code class="hljs">task &quot;<span class="hljs-string">get-installed</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+<p><span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> <span class="hljs-type">$pkg</span> ( installed_packages() ) {
+    say &quot;<span class="hljs-string">name     : </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">name</span>&quot;};
+    say &quot;<span class="hljs-string">  version: </span>&quot; . <span class="hljs-type">$pkg</span>-&gt;{&quot;<span class="hljs-string">version</span>&quot;};
+}</p>
+
+<p></p></code></pre></li>
 </ul>
+};
+        
 
 
 

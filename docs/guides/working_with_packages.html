@@ -127,29 +127,29 @@ If you want to use a special package provider (for example, if you&#39;re using 
 
 <p>To install a package you can use the <code>pkg</code> function.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+};</code></pre>
 
 <p>If you want to install multiple packages you can do it by providing an array reference.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    pkg [qw/apache2 vim php5/], ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+    pkg [qw/apache2 vim php5/], ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+};</code></pre>
 
 <p>If you want to install a special version of a package you just need to specify the version option.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">2.2.4</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">2.2.4</span>&quot;;
+};</code></pre>
 
 <h2 id="removingapackage">Removing a Package</h2>
 
 <p>If you don&#39;t need a package anymore you can remove it with the remove function.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">absent</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+    pkg &quot;<span class="hljs-string">apache2</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">absent</span>&quot;;
+};</code></pre>
 
 <h2 id="addingapackagerepository">Adding a Package Repository</h2>
 
@@ -157,38 +157,38 @@ If you want to use a special package provider (for example, if you&#39;re using 
 
 <h3 id="debian">Debian</h3>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># add a repository for debian/ubuntu</span><span class="hljs-comment">
-⁠</span>    repository
-⁠      add        =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
-⁠      url        =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;,
-⁠      distro     =&gt; &quot;<span class="hljs-string">squeeze</span>&quot;,
-⁠      repository =&gt; &quot;<span class="hljs-string">stable</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+    <span class="hljs-comment"># add a repository for debian/ubuntu</span><span class="hljs-comment">
+</span>    repository
+      add        =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
+      url        =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;,
+      distro     =&gt; &quot;<span class="hljs-string">squeeze</span>&quot;,
+      repository =&gt; &quot;<span class="hljs-string">stable</span>&quot;;
+};</code></pre>
 
 <h3 id="centos">CentOS</h3>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># add a repository for redhat/centos</span><span class="hljs-comment">
-⁠</span>    repository
-⁠      add =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
-⁠      url =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+    <span class="hljs-comment"># add a repository for redhat/centos</span><span class="hljs-comment">
+</span>    repository
+      add =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
+      url =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;;
+};</code></pre>
 
 <p>After you&#39;ve added a new repository you need to run update_package_db to update the package database so that you can install packages from these repositories.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># add a repository for redhat/centos</span><span class="hljs-comment">
-⁠</span>    repository
-⁠      add =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
-⁠      url =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;;
-⁠
-⁠    <span class="hljs-comment"># update package database</span><span class="hljs-comment">
-⁠</span>    update_package_db;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+    <span class="hljs-comment"># add a repository for redhat/centos</span><span class="hljs-comment">
+</span>    repository
+      add =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
+      url =&gt; &quot;<span class="hljs-string">http://foo.bar/repo</span>&quot;;
+
+    <span class="hljs-comment"># update package database</span><span class="hljs-comment">
+</span>    update_package_db;
+};</code></pre>
 
 <h2 id="supportedpackageproviders">Supported Package Providers</h2>
 

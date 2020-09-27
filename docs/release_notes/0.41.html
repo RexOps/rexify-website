@@ -125,47 +125,47 @@
 <ul>
 <li><p>Function to get the last output of a command that uses run() #104</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    install &quot;<span class="hljs-string">ntp</span>&quot;;
-⁠    say last_command_output;
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
+install &quot;<span class="hljs-string">ntp</span>&quot;;
+say last_command_output;
+};    </code></pre></li>
 <li><p>Refactored Cron module, added environment variable support to cron</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@env</span> = cron env =&gt; user =&gt; list;
-⁠    cron env =&gt; user =&gt; add    =&gt; { MYVAR =&gt; &quot;<span class="hljs-string">foo</span>&quot;, };
-⁠    cron env =&gt; user =&gt; <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">MYVAR</span>&quot;;
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
+<span class="hljs-keyword">my</span> <span class="hljs-type">@env</span> = cron env =&gt; user =&gt; list;
+cron env =&gt; user =&gt; add    =&gt; { MYVAR =&gt; &quot;<span class="hljs-string">foo</span>&quot;, };
+cron env =&gt; user =&gt; <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">MYVAR</span>&quot;;
+};    </code></pre></li>
 <li><p>New sync module</p></li>
 </ul>
 
 <p>This module doesn&#39;t use rsync, so it works with sudo and Windows, too. And it is also possible to use it with templates. If a file should be used as a template, you have to name it somefile.ext.tpl.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># upload directory recursively to remote system.</span><span class="hljs-comment">
-⁠</span>    sync_up &quot;<span class="hljs-string">/local/directory</span>&quot;, &quot;<span class="hljs-string">/remote/directory</span>&quot;;
-⁠
-⁠    sync_up &quot;<span class="hljs-string">/local/directory</span>&quot;, &quot;<span class="hljs-string">/remote/directory</span>&quot;, {
-⁠
-⁠        <span class="hljs-comment"># setting custom file permissions for every file</span><span class="hljs-comment">
-⁠</span>        files =&gt; {
-⁠            owner =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠            group =&gt; &quot;<span class="hljs-string">bar</span>&quot;,
-⁠            mode  =&gt; <span class="hljs-number">600</span>,
-⁠        },
-⁠
-⁠        <span class="hljs-comment"># setting custom directory permissions for every directory</span><span class="hljs-comment">
-⁠</span>        directories =&gt; {
-⁠            owner =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠            group =&gt; &quot;<span class="hljs-string">bar</span>&quot;,
-⁠            mode  =&gt; <span class="hljs-number">700</span>,
-⁠        },
-⁠    };
-⁠
-⁠    <span class="hljs-comment"># download a directory recursively from the remote system to the local machine</span><span class="hljs-comment">
-⁠</span>    sync_down &quot;<span class="hljs-string">/remote/directory</span>&quot;, &quot;<span class="hljs-string">/local/directory</span>&quot;;
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+    <span class="hljs-comment"># upload directory recursively to remote system.</span><span class="hljs-comment">
+</span>    sync_up &quot;<span class="hljs-string">/local/directory</span>&quot;, &quot;<span class="hljs-string">/remote/directory</span>&quot;;
+
+    sync_up &quot;<span class="hljs-string">/local/directory</span>&quot;, &quot;<span class="hljs-string">/remote/directory</span>&quot;, {
+
+        <span class="hljs-comment"># setting custom file permissions for every file</span><span class="hljs-comment">
+</span>        files =&gt; {
+            owner =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+            group =&gt; &quot;<span class="hljs-string">bar</span>&quot;,
+            mode  =&gt; <span class="hljs-number">600</span>,
+        },
+
+        <span class="hljs-comment"># setting custom directory permissions for every directory</span><span class="hljs-comment">
+</span>        directories =&gt; {
+            owner =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+            group =&gt; &quot;<span class="hljs-string">bar</span>&quot;,
+            mode  =&gt; <span class="hljs-number">700</span>,
+        },
+    };
+
+    <span class="hljs-comment"># download a directory recursively from the remote system to the local machine</span><span class="hljs-comment">
+</span>    sync_down &quot;<span class="hljs-string">/remote/directory</span>&quot;, &quot;<span class="hljs-string">/local/directory</span>&quot;;
+};</code></pre>
 
 <ul>
 <li>added Hardware::VirtInfo module #119 - Franky Van Liedekerke</li>
@@ -173,31 +173,32 @@
 
 <p>To get a list of all returned information:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
-⁠<span class="hljs-keyword">my</span> <span class="hljs-type">%hw_info</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/VirtInfo/);
-⁠<span class="hljs-function">print</span> Dumper( \<span class="hljs-type">%hw_info</span> );</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
+<span class="hljs-keyword">my</span> <span class="hljs-type">%hw_info</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/VirtInfo/);
+<span class="hljs-function">print</span> Dumper( \<span class="hljs-type">%hw_info</span> );</code></pre>
 
 <p>To get the hypervisor:</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">info</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">%hw_info</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/VirtInfo/);
-⁠
-⁠    say &quot;<span class="hljs-string">Role: </span>&quot; . <span class="hljs-type">$hw_info</span>{VirtInfo}-&gt;{virtualization_role};
-⁠    say &quot;<span class="hljs-string">Type: </span>&quot; . <span class="hljs-type">$hw_info</span>{VirtInfo}-&gt;{virtualization_type};
-⁠};</code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">info</span>&quot;, &quot;<span class="hljs-string">mysystem01</span>&quot;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">%hw_info</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/VirtInfo/);
+
+    say &quot;<span class="hljs-string">Role: </span>&quot; . <span class="hljs-type">$hw_info</span>{VirtInfo}-&gt;{virtualization_role};
+    say &quot;<span class="hljs-string">Type: </span>&quot; . <span class="hljs-type">$hw_info</span>{VirtInfo}-&gt;{virtualization_type};
+};</code></pre>
 
 <ul>
 <li><p>new keyword &quot;case&quot;</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">myserver01</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$package</span> = case operating_system, {
-⁠        Debian    =&gt; &quot;<span class="hljs-string">vim</span>&quot;,
-⁠          CentOS  =&gt; &quot;<span class="hljs-string">vim-enhanced</span>&quot;,
-⁠          default =&gt; &quot;<span class="hljs-string">vim</span>&quot;,
-⁠    };
-⁠
-⁠    install <span class="hljs-type">$package</span>;
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">myserver01</span>&quot;, <span class="hljs-keyword">sub </span>{
+<span class="hljs-keyword">my</span> <span class="hljs-type">$package</span> = case operating_system, {
+    Debian    =&gt; &quot;<span class="hljs-string">vim</span>&quot;,
+      CentOS  =&gt; &quot;<span class="hljs-string">vim-enhanced</span>&quot;,
+      default =&gt; &quot;<span class="hljs-string">vim</span>&quot;,
+};
+
+
+install <span class="hljs-type">$package</span>;
+};    </code></pre></li>
 <li><p>Refactored net_ssh2_exec() function - Peter H. Ezetta</p></li>
 <li><p>Refactored local command execution to use IPC::Open3</p></li>
 <li><p>Changed the is_installed() function for Debian to use the more accurate get_installed function. - Samuele Tognini</p></li>
@@ -207,14 +208,14 @@
 <li><p>More specific error messages for authentication - Franky Van Liedekerke</p></li>
 <li><p>Cloud/Amazon: support multiple security groups - RenatoCRON</p>
 
-<pre><code class="hljs">⁠<span class="hljs-type">$instance</span> = cloud_instance create =&gt; {
-⁠    image_id        =&gt; &quot;<span class="hljs-string">ami-5187bb25</span>&quot;,
-⁠    name            =&gt; &quot;<span class="hljs-string">test01</span>&quot;,
-⁠    key             =&gt; &quot;<span class="hljs-string">thekey</span>&quot;,
-⁠    zone            =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;,
-⁠    type            =&gt; &quot;<span class="hljs-string">m1.large</span>&quot;,
-⁠    security_groups =&gt; [ &quot;<span class="hljs-string">alltcpfoo</span>&quot;, &quot;<span class="hljs-string">default</span>&quot; ],
-⁠};      </code></pre></li>
+<pre><code class="hljs"><span class="hljs-type">$instance</span> = cloud_instance create =&gt; {
+image_id        =&gt; &quot;<span class="hljs-string">ami-5187bb25</span>&quot;,
+name            =&gt; &quot;<span class="hljs-string">test01</span>&quot;,
+key             =&gt; &quot;<span class="hljs-string">thekey</span>&quot;,
+zone            =&gt; &quot;<span class="hljs-string">eu-west-1a</span>&quot;,
+type            =&gt; &quot;<span class="hljs-string">m1.large</span>&quot;,
+security_groups =&gt; [ &quot;<span class="hljs-string">alltcpfoo</span>&quot;, &quot;<span class="hljs-string">default</span>&quot; ],
+};      </code></pre></li>
 </ul>
 
 <h1 id="documentation">Documentation</h1>

@@ -260,7 +260,7 @@ is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
 
 <p><code>param_lookup</code> is a command to manage task parameters.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">my</span> <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
 
 <p>First param_lookup checks the task parameters for <code>param_name</code>.
 If it&#39;s not found, it tries to look it up from CMDB (if CMDB is used).
@@ -307,20 +307,20 @@ they are listed by remote machine (ordered by hostname).</p>
 
 <p>There&#39;s a new firewall resource to manage firewall rules.</p>
 
-<pre><code class="hljs">⁠firewall &quot;<span class="hljs-string">open-port-82-for-1.2.3.4</span>&quot;,
-⁠  ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
-⁠  action =&gt; &quot;<span class="hljs-string">accept</span>&quot;,
-⁠  port   =&gt; <span class="hljs-number">82</span>,
-⁠  source =&gt; &quot;<span class="hljs-string">1.2.3.4</span>&quot;;</code></pre>
+<pre><code class="hljs">firewall &quot;<span class="hljs-string">open-port-82-for-1.2.3.4</span>&quot;,
+  ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;,
+  action =&gt; &quot;<span class="hljs-string">accept</span>&quot;,
+  port   =&gt; <span class="hljs-number">82</span>,
+  source =&gt; &quot;<span class="hljs-string">1.2.3.4</span>&quot;;</code></pre>
 
 <p>The UFW firewall provider has been moved from rex-recipes to core too,
 and it is now available on top of the default iptables provider.</p>
 
 <p>On top of that, IPv6 support has been added.</p>
 
-<pre><code class="hljs">⁠open_port, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ];     <span class="hljs-comment"># defaults to IPv4 rule</span><span class="hljs-comment">
-⁠</span>open_port - 4, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv4 rule</span><span class="hljs-comment">
-⁠</span>open_port - <span class="hljs-number">6</span>, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv6 rule</span></code></pre>
+<pre><code class="hljs">open_port, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ];     <span class="hljs-comment"># defaults to IPv4 rule</span><span class="hljs-comment">
+</span>open_port - 4, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv4 rule</span><span class="hljs-comment">
+</span>open_port - <span class="hljs-number">6</span>, [ <span class="hljs-number">22</span>, <span class="hljs-number">80</span> ]; <span class="hljs-comment"># IPv6 rule</span></code></pre>
 
 <ul>
 <li>Added a firewall module to manage different firewall models with one interface. - Jan</li>

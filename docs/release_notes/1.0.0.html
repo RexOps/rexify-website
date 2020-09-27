@@ -138,7 +138,7 @@
 
 <p>But you can always use the old communication with the following command:</p>
 
-<pre><code class="hljs">⁠set connection =&gt; &#39;<span class="hljs-string">SSH</span>&#39;;</code></pre>
+<pre><code class="hljs">set connection =&gt; &#39;<span class="hljs-string">SSH</span>&#39;;</code></pre>
 
 <h4 id="augeas">augeas</h4>
 
@@ -153,22 +153,22 @@
 
 <!-- -->
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Augeas</span>;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    augeas
-⁠      insert    =&gt; &quot;<span class="hljs-string">/files/etc/hosts</span>&quot;,
-⁠      label     =&gt; &quot;<span class="hljs-string">01</span>&quot;,
-⁠      after     =&gt; &quot;<span class="hljs-string">/7</span>&quot;,
-⁠      ipaddr    =&gt; &quot;<span class="hljs-string">192.168.2.23</span>&quot;,
-⁠      canonical =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;;
-⁠
-⁠    augeas modify =&gt;
-⁠      &quot;<span class="hljs-string">/files/etc/ssh/sshd_config/PermitRootLogin</span>&quot; =&gt; &quot;<span class="hljs-string">without-password</span>&quot;,
-⁠      on_change                                    =&gt; <span class="hljs-keyword">sub </span>{
-⁠        service sshd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
-⁠      };
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Augeas</span>;
+
+task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+    augeas
+      insert    =&gt; &quot;<span class="hljs-string">/files/etc/hosts</span>&quot;,
+      label     =&gt; &quot;<span class="hljs-string">01</span>&quot;,
+      after     =&gt; &quot;<span class="hljs-string">/7</span>&quot;,
+      ipaddr    =&gt; &quot;<span class="hljs-string">192.168.2.23</span>&quot;,
+      canonical =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;;
+
+    augeas modify =&gt;
+      &quot;<span class="hljs-string">/files/etc/ssh/sshd_config/PermitRootLogin</span>&quot; =&gt; &quot;<span class="hljs-string">without-password</span>&quot;,
+      on_change                                    =&gt; <span class="hljs-keyword">sub </span>{
+        service sshd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
+      };
+};</code></pre>
 
 <h4 id="pkgconf">PkgConf</h4>
 
@@ -180,25 +180,25 @@
 
 <!-- -->
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">PkgConf</span>;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    set_pkgconf(
-⁠        &quot;<span class="hljs-string">mysql-server-5.5</span>&quot;,
-⁠        [
-⁠            {
-⁠                question =&gt; &#39;<span class="hljs-string">mysql-server/root_password</span>&#39;,
-⁠                type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
-⁠                value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
-⁠            },
-⁠            {
-⁠                question =&gt; &#39;<span class="hljs-string">mysql-server/root_password_again</span>&#39;,
-⁠                type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
-⁠                value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
-⁠            },
-⁠        ]
-⁠    );
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">PkgConf</span>;
+
+task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-keyword">sub </span>{
+    set_pkgconf(
+        &quot;<span class="hljs-string">mysql-server-5.5</span>&quot;,
+        [
+            {
+                question =&gt; &#39;<span class="hljs-string">mysql-server/root_password</span>&#39;,
+                type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
+                value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
+            },
+            {
+                question =&gt; &#39;<span class="hljs-string">mysql-server/root_password_again</span>&#39;,
+                type     =&gt; &#39;<span class="hljs-string">string</span>&#39;,
+                value    =&gt; &#39;<span class="hljs-string">mysecret</span>&#39;
+            },
+        ]
+    );
+};</code></pre>
 
 <h4 id="ttyusage">tty usage</h4>
 
@@ -209,7 +209,7 @@
 
 <p>If you can&#39;t change this behaviour you can always use the <em>tty</em> feature to tell Rex to spawn a tty.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [ &#39;<span class="hljs-string">1.0</span>&#39;, &#39;<span class="hljs-string">tty</span>&#39; ];</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [ &#39;<span class="hljs-string">1.0</span>&#39;, &#39;<span class="hljs-string">tty</span>&#39; ];</code></pre>
 
 <h4 id="base">base</h4>
 

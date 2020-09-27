@@ -133,9 +133,9 @@
 
 <p>The simplest way to authenticate against your servers is to use password authentication. For this you need a valid user and a password on the remote host.</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠password &#39;<span class="hljs-string">my_password</span>&#39;;
-⁠pass_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+password &#39;<span class="hljs-string">my_password</span>&#39;;
+pass_auth;</code></pre>
 
 <p>Specifying <code>pass_auth</code> is optional.</p>
 
@@ -149,31 +149,31 @@
 
 <h3 id="net::ssh2">Net::SSH2</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
-⁠public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
+public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;
+key_auth;</code></pre>
 
 <h3 id="net::openssh">Net::OpenSSH</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+key_auth;</code></pre>
 
 <p>If you use a passphrase with your private key, you can specify it simply as if it was a password:</p>
 
 <h3 id="net::ssh2">Net::SSH2</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
-⁠public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;
-⁠password &#39;<span class="hljs-string">my_password</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
+public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;
+password &#39;<span class="hljs-string">my_password</span>&#39;;
+key_auth;</code></pre>
 
 <h3 id="net::openssh">Net::OpenSSH</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠password &#39;<span class="hljs-string">my_password</span>&#39;;
-⁠key_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+password &#39;<span class="hljs-string">my_password</span>&#39;;
+key_auth;</code></pre>
 
 <h2 id="usingansshagent">Using an SSH agent</h2>
 
@@ -181,13 +181,13 @@
 
 <h3 id="net::ssh2">Net::SSH2</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
-⁠public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+private_key &#39;<span class="hljs-string">/path/to/your/private.key</span>&#39;;
+public_key &#39;<span class="hljs-string">/path/to/your/public.key</span>&#39;;</code></pre>
 
 <h3 id="net::openssh">Net::OpenSSH</h3>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;</code></pre>
 
 <p>Important notes:</p>
 
@@ -200,8 +200,8 @@
 
 <p>As of version 0.42.0, Rex supports Kerberos authentication through Net::OpenSSH:</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠krb5_auth;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">root</span>&#39;;
+krb5_auth;</code></pre>
 
 
 

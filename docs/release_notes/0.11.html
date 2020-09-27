@@ -122,27 +122,29 @@
               <h1>Release notes for 0.11</h1>
               <h2 id="rex">Rex</h2>
 
-<ul>
+<p></p><ul>
 <li><p>Added LVM module and added LVM data to inventory.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">LVM</span>;
-⁠
-⁠task &quot;<span class="hljs-string">lvm</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@physical_devices</span> = pvs;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@volume_groups</span>    = vgs;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@logical_volumes</span>  = lvs;
-⁠};    </code></pre></li>
+<p></p><p></p><pre><code class="hljs">use <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">LVM</span>;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">lvm</span>&quot;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">@physical_devices</span> = pvs;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">@volume_groups</span>    = vgs;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">@logical_volumes</span>  = lvs;
+};    
+
+<ul>
 <li><p>Added hpacucli support to inventory</p></li>
 <li><p>Added CentOS 6 packages and support</p></li>
 <li><p>added order option to <em>db select</em></p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">db</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@data</span> = db <span class="hljs-function">select</span> =&gt; {
-⁠        fields =&gt; &quot;<span class="hljs-string">*</span>&quot;,
-⁠        from   =&gt; &quot;<span class="hljs-string">table</span>&quot;,
-⁠        order  =&gt; &quot;<span class="hljs-string">updated DESC</span>&quot;,
-⁠    };
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">db</span>&quot;, <span class="hljs-keyword">sub </span>{
+<span class="hljs-keyword">my</span> <span class="hljs-type">@data</span> = db <span class="hljs-function">select</span> =&gt; {
+    fields =&gt; &quot;<span class="hljs-string">*</span>&quot;,
+    from   =&gt; &quot;<span class="hljs-string">table</span>&quot;,
+    order  =&gt; &quot;<span class="hljs-string">updated DESC</span>&quot;,
+};
+};    </code></pre></li>
 <li><p>Fixed some bugs</p>
 
 <ul>

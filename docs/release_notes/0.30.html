@@ -122,34 +122,36 @@
               <h1>Release notes for 0.30</h1>
               <h2 id="general">General</h2>
 
-<ul>
+<p></p><ul>
 <li><p>2 functions to get more details of users.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># to get a list of all users</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">my</span> <span class="hljs-type">@users</span> = user_list();
-⁠
-⁠<span class="hljs-comment"># to get the groups of user &quot;foo&quot;</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">my</span> <span class="hljs-type">@groups</span> = user_groups(&quot;<span class="hljs-string">foo</span>&quot;);    </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-comment"># to get a list of all users</span><span class="hljs-comment">
+</span><span class="hljs-keyword">my</span> <span class="hljs-type">@users</span> = user_list();</code></pre></li>
+</ul>
+<span class="hljs-comment"># to get the groups of user &quot;foo&quot;</span><span class="hljs-comment">
+</span><span class="hljs-keyword">my</span> <span class="hljs-type">@groups</span> = user_groups(&quot;<span class="hljs-string">foo</span>&quot;);    
+
+<ul>
 <li><p>New option &quot;type&quot; for the extract function to force the archive type.</p></li>
 <li><p>New option &quot;mode&quot; for the extract function.</p></li>
 <li><p>rex -T now show the server groups as well</p></li>
 <li><p>Better error messages for compile failures in modules</p></li>
 <li><p>Added support for task specific parallelism</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-comment"># print do something</span><span class="hljs-comment">
-⁠</span>  };
-⁠<span class="hljs-function">Rex::TaskList</span>-&gt;get_task(&quot;<span class="hljs-string">foo</span>&quot;)-&gt;set_parallelism(<span class="hljs-number">10</span>);    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">foo</span>&quot;,
+group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
+<span class="hljs-keyword">sub </span>{
+<span class="hljs-comment"># print do something</span><span class="hljs-comment">
+</span>  };
+<span class="hljs-function">Rex::TaskList</span>-&gt;get_task(&quot;<span class="hljs-string">foo</span>&quot;)-&gt;set_parallelism(<span class="hljs-number">10</span>);    </code></pre></li>
 <li><p>Added on_change support to the append_if_no_such_line function.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;, &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;,
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-function">print</span> &quot;<span class="hljs-string">/etc/groups was changed...</span><span class="hljs-string">\n</span>&quot;; };
-⁠  };    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">foo</span>&quot;,
+group =&gt; &quot;<span class="hljs-string">myservers</span>&quot;,
+<span class="hljs-keyword">sub </span>{
+append_if_no_such_line &quot;<span class="hljs-string">/etc/groups</span>&quot;, &quot;<span class="hljs-string">mygroup:*:100:myuser1,myuser2</span>&quot;,
+  on_change =&gt; <span class="hljs-keyword">sub </span>{ <span class="hljs-function">print</span> &quot;<span class="hljs-string">/etc/groups was changed...</span><span class="hljs-string">\n</span>&quot;; };
+};    </code></pre></li>
 </ul>
 
 <h2 id="bugfixes">Bugfixes</h2>

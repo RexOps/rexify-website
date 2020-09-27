@@ -137,10 +137,10 @@ Tasks
 <li><p>Fixed a bug with relative source file names inside external modules</p></li>
 <li><p>allow additional parameters for rsync</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">syncr</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    sync &quot;<span class="hljs-string">/packages/www</span>&quot;, &quot;<span class="hljs-string">/var/www/html</span>&quot;,
-⁠      { parameters =&gt; &quot;<span class="hljs-string">--backup --delete ...</span>&quot;, };
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">syncr</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+sync &quot;<span class="hljs-string">/packages/www</span>&quot;, &quot;<span class="hljs-string">/var/www/html</span>&quot;,
+  { parameters =&gt; &quot;<span class="hljs-string">--backup --delete ...</span>&quot;, };
+};    </code></pre></li>
 <li><p>fixed a bug in the libvirt module if only one guest-type is available.</p></li>
 <li><p>more code refactoring</p></li>
 </ul>

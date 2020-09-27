@@ -122,111 +122,120 @@
               <h1>Release notes for 0.4</h1>
               <h2 id="rex">Rex</h2>
 
-<ul>
+<p></p><ul>
 <li><p><strong>Hardware and Information gathering</strong></p>
 
 <p>Now you can get information of the servers hardware and configuration.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Hardware</span>;
-⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;
-⁠
-⁠desc &quot;<span class="hljs-string">Get Hardware Information</span>&quot;;
-⁠task &quot;<span class="hljs-string">hw-info</span>&quot;, &quot;<span class="hljs-string">testsystem</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">%hw</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/ Host Kernel Memory Network Swap /);
-⁠
-⁠    <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">%hw</span> );
-⁠};    </code></pre>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Hardware</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-function">Data::Dumper</span>;</code></pre></li>
+</ul>
+desc &quot;<span class="hljs-string">Get Hardware Information</span>&quot;;
+task &quot;<span class="hljs-string">hw-info</span>&quot;, &quot;<span class="hljs-string">testsystem</span>&quot;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">%hw</span> = <span class="hljs-function">Rex::Hardware</span>-&gt;get(qw/ Host Kernel Memory Network Swap /);
 
-<p>Will produce the following example output:</p>
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;print&lt;/span&gt; Dumper( \&lt;span class=&quot;hljs-type&quot;&gt;%hw&lt;/span&gt; );
+</code></pre>
 
-<pre><code class="hljs">⁠<span class="hljs-type">$VAR1</span> = {
-⁠    &#39;<span class="hljs-string">Network</span>&#39; =&gt; {
-⁠        &#39;<span class="hljs-string">networkdevices</span>&#39;       =&gt; [ &#39;<span class="hljs-string">eth0</span>&#39;, &#39;<span class="hljs-string">wlan0</span>&#39; ],
-⁠        &#39;<span class="hljs-string">networkconfiguration</span>&#39; =&gt; {
-⁠            &#39;<span class="hljs-string">wlan0</span>&#39; =&gt; {
-⁠                &#39;<span class="hljs-string">broadcast</span>&#39; =&gt; &#39;<span class="hljs-string">192.168.2.255</span>&#39;,
-⁠                &#39;<span class="hljs-string">ip</span>&#39;        =&gt; &#39;<span class="hljs-string">192.168.2.229</span>&#39;,
-⁠                &#39;<span class="hljs-string">netmask</span>&#39;   =&gt; &#39;<span class="hljs-string">255.255.255.0</span>&#39;,
-⁠                &#39;<span class="hljs-string">mac</span>&#39;       =&gt; &#39;<span class="hljs-string">00:21:5C:5C:1E:5F</span>&#39;
-⁠            },
-⁠            &#39;<span class="hljs-string">eth0</span>&#39; =&gt; {
-⁠                &#39;<span class="hljs-string">broadcast</span>&#39; =&gt; <span class="hljs-function">undef</span>,
-⁠                &#39;<span class="hljs-string">ip</span>&#39;        =&gt; <span class="hljs-function">undef</span>,
-⁠                &#39;<span class="hljs-string">netmask</span>&#39;   =&gt; <span class="hljs-function">undef</span>,
-⁠                &#39;<span class="hljs-string">mac</span>&#39;       =&gt; &#39;<span class="hljs-string">00:1C:25:94:B0:85</span>&#39;
-⁠            }
-⁠        }
-⁠    },
-⁠    &#39;<span class="hljs-string">Memory</span>&#39; =&gt; {
-⁠        &#39;<span class="hljs-string">shared</span>&#39;  =&gt; &#39;<span class="hljs-string">0</span>&#39;,
-⁠        &#39;<span class="hljs-string">buffers</span>&#39; =&gt; &#39;<span class="hljs-string">36</span>&#39;,
-⁠        &#39;<span class="hljs-string">free</span>&#39;    =&gt; &#39;<span class="hljs-string">3168</span>&#39;,
-⁠        &#39;<span class="hljs-string">used</span>&#39;    =&gt; &#39;<span class="hljs-string">792</span>&#39;,
-⁠        &#39;<span class="hljs-string">total</span>&#39;   =&gt; &#39;<span class="hljs-string">3961</span>&#39;,
-⁠        &#39;<span class="hljs-string">cached</span>&#39;  =&gt; &#39;<span class="hljs-string">407</span>&#39;
-⁠    },
-⁠    &#39;<span class="hljs-string">Kernel</span>&#39; =&gt; {
-⁠        &#39;<span class="hljs-string">kernelversion</span>&#39; =&gt; &#39;<span class="hljs-string">#1 SMP PREEMPT 2011-02-21 10:34:10 +0100</span>&#39;,
-⁠        &#39;<span class="hljs-string">architecture</span>&#39;  =&gt; &#39;<span class="hljs-string">x86_64</span>&#39;,
-⁠        &#39;<span class="hljs-string">kernel</span>&#39;        =&gt; &#39;<span class="hljs-string">Linux</span>&#39;,
-⁠        &#39;<span class="hljs-string">kernelrelease</span>&#39; =&gt; &#39;<span class="hljs-string">2.6.37.1-1.2-desktop</span>&#39;
-⁠    },
-⁠    &#39;<span class="hljs-string">Swap</span>&#39; =&gt; {
-⁠        &#39;<span class="hljs-string">free</span>&#39;  =&gt; &#39;<span class="hljs-string">3812</span>&#39;,
-⁠        &#39;<span class="hljs-string">used</span>&#39;  =&gt; &#39;<span class="hljs-string">0</span>&#39;,
-⁠        &#39;<span class="hljs-string">total</span>&#39; =&gt; &#39;<span class="hljs-string">3812</span>&#39;
-⁠    },
-⁠    &#39;<span class="hljs-string">Host</span>&#39; =&gt; {
-⁠        &#39;<span class="hljs-string">domain</span>&#39;                 =&gt; &#39;<span class="hljs-string">site</span>&#39;,
-⁠        &#39;<span class="hljs-string">manufacturer</span>&#39;           =&gt; &#39;<span class="hljs-string">LENOVO</span>&#39;,
-⁠        &#39;<span class="hljs-string">hostname</span>&#39;               =&gt; &#39;<span class="hljs-string">linux-ymf0.site</span>&#39;,
-⁠        &#39;<span class="hljs-string">operatingsystemrelease</span>&#39; =&gt; &#39;<span class="hljs-string">11.4</span>&#39;,
-⁠        &#39;<span class="hljs-string">operatingsystem</span>&#39;        =&gt; &#39;<span class="hljs-string">SuSE</span>&#39;
-⁠    }
-⁠};    </code></pre></li>
+<p>};    </p>
+
+<pre><code>Will produce the following example output:
+
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-type&quot;&gt;$VAR1&lt;/span&gt; = {
+&#39;&lt;span class=&quot;hljs-string&quot;&gt;Network&lt;/span&gt;&#39; =&amp;gt; {
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;networkdevices&lt;/span&gt;&#39;       =&amp;gt; [ &#39;&lt;span class=&quot;hljs-string&quot;&gt;eth0&lt;/span&gt;&#39;, &#39;&lt;span class=&quot;hljs-string&quot;&gt;wlan0&lt;/span&gt;&#39; ],
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;networkconfiguration&lt;/span&gt;&#39; =&amp;gt; {
+        &#39;&lt;span class=&quot;hljs-string&quot;&gt;wlan0&lt;/span&gt;&#39; =&amp;gt; {
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;broadcast&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;192.168.2.255&lt;/span&gt;&#39;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;ip&lt;/span&gt;&#39;        =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;192.168.2.229&lt;/span&gt;&#39;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;netmask&lt;/span&gt;&#39;   =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;255.255.255.0&lt;/span&gt;&#39;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;mac&lt;/span&gt;&#39;       =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;00:21:5C:5C:1E:5F&lt;/span&gt;&#39;
+        },
+        &#39;&lt;span class=&quot;hljs-string&quot;&gt;eth0&lt;/span&gt;&#39; =&amp;gt; {
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;broadcast&lt;/span&gt;&#39; =&amp;gt; &lt;span class=&quot;hljs-function&quot;&gt;undef&lt;/span&gt;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;ip&lt;/span&gt;&#39;        =&amp;gt; &lt;span class=&quot;hljs-function&quot;&gt;undef&lt;/span&gt;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;netmask&lt;/span&gt;&#39;   =&amp;gt; &lt;span class=&quot;hljs-function&quot;&gt;undef&lt;/span&gt;,
+            &#39;&lt;span class=&quot;hljs-string&quot;&gt;mac&lt;/span&gt;&#39;       =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;00:1C:25:94:B0:85&lt;/span&gt;&#39;
+        }
+    }
+},
+&#39;&lt;span class=&quot;hljs-string&quot;&gt;Memory&lt;/span&gt;&#39; =&amp;gt; {
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;shared&lt;/span&gt;&#39;  =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;0&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;buffers&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;36&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;free&lt;/span&gt;&#39;    =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;3168&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;used&lt;/span&gt;&#39;    =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;792&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;total&lt;/span&gt;&#39;   =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;3961&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;cached&lt;/span&gt;&#39;  =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;407&lt;/span&gt;&#39;
+},
+&#39;&lt;span class=&quot;hljs-string&quot;&gt;Kernel&lt;/span&gt;&#39; =&amp;gt; {
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;kernelversion&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;#1 SMP PREEMPT 2011-02-21 10:34:10 +0100&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;architecture&lt;/span&gt;&#39;  =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;x86_64&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;kernel&lt;/span&gt;&#39;        =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;Linux&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;kernelrelease&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;2.6.37.1-1.2-desktop&lt;/span&gt;&#39;
+},
+&#39;&lt;span class=&quot;hljs-string&quot;&gt;Swap&lt;/span&gt;&#39; =&amp;gt; {
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;free&lt;/span&gt;&#39;  =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;3812&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;used&lt;/span&gt;&#39;  =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;0&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;total&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;3812&lt;/span&gt;&#39;
+},
+&#39;&lt;span class=&quot;hljs-string&quot;&gt;Host&lt;/span&gt;&#39; =&amp;gt; {
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;domain&lt;/span&gt;&#39;                 =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;site&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;manufacturer&lt;/span&gt;&#39;           =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;LENOVO&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;hostname&lt;/span&gt;&#39;               =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;linux-ymf0.site&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;operatingsystemrelease&lt;/span&gt;&#39; =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;11.4&lt;/span&gt;&#39;,
+    &#39;&lt;span class=&quot;hljs-string&quot;&gt;operatingsystem&lt;/span&gt;&#39;        =&amp;gt; &#39;&lt;span class=&quot;hljs-string&quot;&gt;SuSE&lt;/span&gt;&#39;
+}
+</code></pre>
+
+<p>};    </p>
+
+<p></p><ul>
 <li><p><strong>Install Packages</strong></p>
 
 <p>Support for apt, yum and zypper (OpenSuSE)</p>
 
 <p>Example:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># include for ,,install&#39;&#39; Function</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Pkg</span>;
-⁠
-⁠<span class="hljs-comment"># include for ,,operating_system_is&#39;&#39; Function</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Gather</span>;
-⁠
-⁠user &quot;<span class="hljs-string">root</span>&quot;;
-⁠
-⁠private_key &quot;<span class="hljs-string">/Users/jan/.ssh/id_rsa</span>&quot;;
-⁠public_key &quot;<span class="hljs-string">/Users/jan/.ssh/is_rsa.pub</span>&quot;;
-⁠
-⁠<span class="hljs-comment"># group servers</span><span class="hljs-comment">
-⁠</span>group &quot;<span class="hljs-string">test</span>&quot; =&gt; &quot;<span class="hljs-string">debian01</span>&quot;, &quot;<span class="hljs-string">centos01</span>&quot;, &quot;<span class="hljs-string">suse01</span>&quot;;
-⁠
-⁠<span class="hljs-comment"># run tasks in parallel</span><span class="hljs-comment">
-⁠</span>parallelism <span class="hljs-number">2</span>;
-⁠
-⁠desc &quot;<span class="hljs-string">Prepare System</span>&quot;;
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">test</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># check if operating system is CentOS, because on CentOS vim is</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-comment"># available through the package &quot;vim-enhanced&quot;.</span><span class="hljs-comment">
-⁠</span>    <span class="hljs-keyword">if</span> ( operating_system_is(&quot;<span class="hljs-string">CentOS</span>&quot;) ) {
-⁠        install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">vim-enhanced</span>&quot;;
-⁠    }
-⁠    <span class="hljs-keyword">else</span> {
-⁠        install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">vim</span>&quot;;
-⁠    }
-⁠
-⁠    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">mc</span>&quot;;
-⁠
-⁠  };    </code></pre>
-
-<p>This task will install <em>vim</em> and <em>mc</em> on all the 3 systems.</p></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-comment"># include for ,,install&#39;&#39; Function</span><span class="hljs-comment">
+</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Pkg</span>;</code></pre></li>
 </ul>
+<span class="hljs-comment"># include for ,,operating_system_is&#39;&#39; Function</span><span class="hljs-comment">
+</span><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Gather</span>;
+
+<p>user &quot;<span class="hljs-string">root</span>&quot;;</p>
+
+<p>private_key &quot;<span class="hljs-string">/Users/jan/.ssh/id_rsa</span>&quot;;
+public_key &quot;<span class="hljs-string">/Users/jan/.ssh/is_rsa.pub</span>&quot;;</p>
+
+<p><span class="hljs-comment"># group servers</span><span class="hljs-comment">
+</span>group &quot;<span class="hljs-string">test</span>&quot; =&gt; &quot;<span class="hljs-string">debian01</span>&quot;, &quot;<span class="hljs-string">centos01</span>&quot;, &quot;<span class="hljs-string">suse01</span>&quot;;</p>
+
+<p><span class="hljs-comment"># run tasks in parallel</span><span class="hljs-comment">
+</span>parallelism <span class="hljs-number">2</span>;</p>
+
+<p>desc &quot;<span class="hljs-string">Prepare System</span>&quot;;
+task &quot;<span class="hljs-string">prepare</span>&quot;,
+  group =&gt; &quot;<span class="hljs-string">test</span>&quot;,
+  <span class="hljs-keyword">sub </span>{</p>
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# check if operating system is CentOS, because on CentOS vim is&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>    <span class="hljs-comment"># available through the package &quot;vim-enhanced&quot;.</span><span class="hljs-comment">
+</span>    <span class="hljs-keyword">if</span> ( operating_system_is(&quot;<span class="hljs-string">CentOS</span>&quot;) ) {
+        install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">vim-enhanced</span>&quot;;
+    }
+    <span class="hljs-keyword">else</span> {
+        install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">vim</span>&quot;;
+    }</p>
+
+<pre><code>install &lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; =&amp;gt; &quot;&lt;span class=&quot;hljs-string&quot;&gt;mc&lt;/span&gt;&quot;;
+</code></pre>
+
+<p>};    </p>
+
+<pre><code>This task will install *vim* and *mc* on all the 3 systems.
+</code></pre>
 
 
 

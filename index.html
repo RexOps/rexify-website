@@ -182,12 +182,12 @@ Instead of forcing any specific model on you, it trusts you to be in the best po
 
 <p>The same, but with a Rexfile</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
-⁠
-⁠desc &#39;<span class="hljs-string">Get uptime</span>&#39;;
-⁠task &#39;<span class="hljs-string">uptime</span>&#39;, &#39;<span class="hljs-string">frontend[01..05]</span>&#39;, <span class="hljs-keyword">sub </span>{
-⁠    say run &#39;<span class="hljs-string">uptime</span>&#39;;
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
+
+desc &#39;<span class="hljs-string">Get uptime</span>&#39;;
+task &#39;<span class="hljs-string">uptime</span>&#39;, &#39;<span class="hljs-string">frontend[01..05]</span>&#39;, <span class="hljs-keyword">sub </span>{
+    say run &#39;<span class="hljs-string">uptime</span>&#39;;
+};</code></pre>
 
 <p>Now you can run your task with this command:</p>
 
@@ -198,38 +198,38 @@ Instead of forcing any specific model on you, it trusts you to be in the best po
 
 <p>This example will install the Apache web server on 5 machines and keep their configuration in sync. If the deployed configuration file changes, it will automatically reload the service.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
-⁠
-⁠user &#39;<span class="hljs-string">root</span>&#39;;
-⁠group frontend =&gt; &#39;<span class="hljs-string">frontend[01..05]</span>&#39;;
-⁠
-⁠desc &#39;<span class="hljs-string">Prepare frontend server</span>&#39;;
-⁠task &#39;<span class="hljs-string">prepare</span>&#39;,
-⁠  group =&gt; &#39;<span class="hljs-string">frontend</span>&#39;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    pkg &#39;<span class="hljs-string">apache2</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;;
-⁠
-⁠    service &#39;<span class="hljs-string">apache2</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;;
-⁠  };
-⁠
-⁠desc &#39;<span class="hljs-string">Keep configuration in sync</span>&#39;;
-⁠task &#39;<span class="hljs-string">configure</span>&#39;,
-⁠  group =&gt; &#39;<span class="hljs-string">frontend</span>&#39;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    prepare();
-⁠
-⁠    file &#39;<span class="hljs-string">/etc/apache2/apache2.conf</span>&#39;,
-⁠      source    =&gt; &#39;<span class="hljs-string">files/etc/apache2/apache2.conf</span>&#39;,
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{ service apache2 =&gt; &#39;<span class="hljs-string">reload</span>&#39;; };
-⁠  };</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.4</span>&#39;];
+
+user &#39;<span class="hljs-string">root</span>&#39;;
+group frontend =&gt; &#39;<span class="hljs-string">frontend[01..05]</span>&#39;;
+
+desc &#39;<span class="hljs-string">Prepare frontend server</span>&#39;;
+task &#39;<span class="hljs-string">prepare</span>&#39;,
+  group =&gt; &#39;<span class="hljs-string">frontend</span>&#39;,
+  <span class="hljs-keyword">sub </span>{
+    pkg &#39;<span class="hljs-string">apache2</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">present</span>&#39;;
+
+    service &#39;<span class="hljs-string">apache2</span>&#39;, ensure =&gt; &#39;<span class="hljs-string">started</span>&#39;;
+  };
+
+desc &#39;<span class="hljs-string">Keep configuration in sync</span>&#39;;
+task &#39;<span class="hljs-string">configure</span>&#39;,
+  group =&gt; &#39;<span class="hljs-string">frontend</span>&#39;,
+  <span class="hljs-keyword">sub </span>{
+    prepare();
+
+    file &#39;<span class="hljs-string">/etc/apache2/apache2.conf</span>&#39;,
+      source    =&gt; &#39;<span class="hljs-string">files/etc/apache2/apache2.conf</span>&#39;,
+      on_change =&gt; <span class="hljs-keyword">sub </span>{ service apache2 =&gt; &#39;<span class="hljs-string">reload</span>&#39;; };
+  };</code></pre>
 
 <h3 id="needtousesudo">Need to use sudo?</h3>
 
 <p>You can also run everything with sudo. Just replace the authentication information with the following:</p>
 
-<pre><code class="hljs">⁠user &#39;<span class="hljs-string">ubuntu</span>&#39;;
-⁠sudo TRUE;
-⁠sudo_password &#39;<span class="hljs-string">mysudopw</span>&#39;;</code></pre>
+<pre><code class="hljs">user &#39;<span class="hljs-string">ubuntu</span>&#39;;
+sudo TRUE;
+sudo_password &#39;<span class="hljs-string">mysudopw</span>&#39;;</code></pre>
 
 
 

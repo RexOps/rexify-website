@@ -126,25 +126,25 @@
 <li><p>Added support and packages for Ubuntu 12.04.</p></li>
 <li><p>Added callback function to run command</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    run &quot;<span class="hljs-string">ls -l </span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠        <span class="hljs-keyword">my</span> ( <span class="hljs-type">$stdout</span>, <span class="hljs-type">$stderr</span> ) = <span class="hljs-type">@_</span>;
-⁠        <span class="hljs-function">print</span> &quot;<span class="hljs-string">&gt;&gt; </span><span class="hljs-type">$stdout</span><span class="hljs-string">\n</span>&quot;;
-⁠    };
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
+run &quot;<span class="hljs-string">ls -l </span>&quot;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$stdout</span>, <span class="hljs-type">$stderr</span> ) = <span class="hljs-type">@_</span>;
+    <span class="hljs-function">print</span> &quot;<span class="hljs-string">&gt;&gt; </span><span class="hljs-type">$stdout</span><span class="hljs-string">\n</span>&quot;;
+};
+};    </code></pre></li>
 <li><p>Added possibility to change logging format</p>
 
-<pre><code class="hljs">⁠logformat &quot;<span class="hljs-string">[</span><span class="hljs-type">%D</span><span class="hljs-string">] - </span><span class="hljs-type">%h</span><span class="hljs-string"> </span><span class="hljs-type">%p</span>&quot;;    </code></pre>
+<pre><code class="hljs">logformat &quot;<span class="hljs-string">[</span><span class="hljs-type">%D</span><span class="hljs-string">] - </span><span class="hljs-type">%h</span><span class="hljs-string"> </span><span class="hljs-type">%p</span>&quot;;    </code></pre>
 
 <p>See <a href="https://metacpan.org/pod/Rex::Commands">Rex::Commands</a> for more information.</p></li>
 <li><p>Added colorized output if Term::ANSIColor is available.</p></li>
 <li><p>Added on_change option to sed command. Thanks to Samuele Tognini.</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    sed qr{search}, &quot;<span class="hljs-string">replace</span>&quot;, &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠        say &quot;<span class="hljs-string">file was changed</span>&quot;;
-⁠    };
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">foo</span>&quot;, <span class="hljs-keyword">sub </span>{
+sed qr{search}, &quot;<span class="hljs-string">replace</span>&quot;, &quot;<span class="hljs-string">/var/log/auth.log</span>&quot;, on_change =&gt; <span class="hljs-keyword">sub </span>{
+    say &quot;<span class="hljs-string">file was changed</span>&quot;;
+};
+};    </code></pre></li>
 <li><p>Fixed a bug with an older LVM version</p></li>
 <li><p>Ongoing code refactoring, to support other transport protocols.</p></li>
 </ul>

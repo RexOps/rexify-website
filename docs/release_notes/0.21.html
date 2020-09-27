@@ -122,77 +122,91 @@
               <h1>Release notes for 0.21</h1>
               <h2 id="rex">Rex</h2>
 
-<ul>
+<p></p><ul>
 <li><p>Source control</p>
 
 <p>Now you can checkout subversion and git repositories with Rex.</p>
 
-<pre><code class="hljs">⁠set
-⁠  repository =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
-⁠  url        =&gt; &quot;<span class="hljs-string">git</span><span class="hljs-type">@foo</span><span class="hljs-string">.bar:myrepo.git</span>&quot;;
-⁠
-⁠task &quot;<span class="hljs-string">checkout</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    checkout &quot;<span class="hljs-string">myrepo</span>&quot;;
-⁠};    </code></pre>
+<p></p><p></p><pre><code class="hljs">set
+repository =&gt; &quot;<span class="hljs-string">myrepo</span>&quot;,
+url        =&gt; &quot;<span class="hljs-string">git</span><span class="hljs-type">@foo</span><span class="hljs-string">.bar:myrepo.git</span>&quot;;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">checkout</span>&quot;, <span class="hljs-keyword">sub </span>{
+    checkout &quot;<span class="hljs-string">myrepo</span>&quot;;
+};    
 
-<p>See <a href="https://metacpan.org/pod/Rex::Commands::SCM">Rex::Commands::SCM</a> for more information.</p></li>
+<pre><code>See [Rex::Commands::SCM](https://metacpan.org/pod/Rex::Commands::SCM) for more information.
+</code></pre>
+
+<p></p><ul>
 <li><p>allow multiple groups for a task</p>
 
-<pre><code class="hljs">⁠group &quot;<span class="hljs-string">frontend</span>&quot; =&gt; &quot;<span class="hljs-string">fe01</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;
-⁠group &quot;<span class="hljs-string">backend</span>&quot;  =&gt; &quot;<span class="hljs-string">be01</span>&quot;, &quot;<span class="hljs-string">be02</span>&quot;;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; [ &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">backend</span>&quot; ],
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    say run &quot;<span class="hljs-string">uptime</span>&quot;;
-⁠  };    </code></pre></li>
+<p></p><p></p><pre><code class="hljs">group &quot;<span class="hljs-string">frontend</span>&quot; =&gt; &quot;<span class="hljs-string">fe01</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;
+group &quot;<span class="hljs-string">backend</span>&quot;  =&gt; &quot;<span class="hljs-string">be01</span>&quot;, &quot;<span class="hljs-string">be02</span>&quot;;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">prepare</span>&quot;,
+  group =&gt; [ &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">backend</span>&quot; ],
+  <span class="hljs-keyword">sub </span>{
+    say run &quot;<span class="hljs-string">uptime</span>&quot;;
+  };    
+
+<p></p><ul>
 <li><p>every task can have its own auth information</p>
 
-<pre><code class="hljs">⁠user &quot;<span class="hljs-string">root</span>&quot;;
-⁠password &quot;<span class="hljs-string">test</span>&quot;;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># will authenticate as root/test</span><span class="hljs-comment">
-⁠</span>};
-⁠
-⁠task &quot;<span class="hljs-string">prepare2</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># will also authenticate as root/test</span><span class="hljs-comment">
-⁠</span>};
-⁠
-⁠<span class="hljs-comment"># all tasks from here down will authenticate as deploy/testdeploy</span><span class="hljs-comment">
-⁠</span>user &quot;<span class="hljs-string">deploy</span>&quot;;
-⁠password &quot;<span class="hljs-string">testdeploy</span>&quot;;
-⁠task &quot;<span class="hljs-string">deploy</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># will authenticate as deploy/testdeploy</span><span class="hljs-comment">
-⁠</span>};    </code></pre></li>
+<p></p><p></p><pre><code class="hljs">user &quot;<span class="hljs-string">root</span>&quot;;
+password &quot;<span class="hljs-string">test</span>&quot;;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# will authenticate as root/test&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>};</p>
+
+<p>task &quot;<span class="hljs-string">prepare2</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{</p>
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# will also authenticate as root/test&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>};</p>
+
+<p><span class="hljs-comment"># all tasks from here down will authenticate as deploy/testdeploy</span><span class="hljs-comment">
+</span>user &quot;<span class="hljs-string">deploy</span>&quot;;
+password &quot;<span class="hljs-string">testdeploy</span>&quot;;
+task &quot;<span class="hljs-string">deploy</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{</p>
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# will authenticate as deploy/testdeploy&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>};    </p>
+
+<ul>
 <li><p>fixed running of multiple tasks by do_task</p></li>
 <li><p>user module: add ssh key</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">createuser</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    create_user &quot;<span class="hljs-string">foo</span>&quot;,
-⁠      home    =&gt; &quot;<span class="hljs-string">/home/foo</span>&quot;,
-⁠      ssh_key =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...</span>&quot;;
-⁠};    </code></pre></li>
+<pre><code class="hljs">task &quot;<span class="hljs-string">createuser</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+create_user &quot;<span class="hljs-string">foo</span>&quot;,
+  home    =&gt; &quot;<span class="hljs-string">/home/foo</span>&quot;,
+  ssh_key =&gt; &quot;<span class="hljs-string">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB...</span>&quot;;
+};    </code></pre></li>
 <li><p>use generic auth method from Net::SSH2 (patch from Jose Luis Martinez)</p></li>
 <li><p>ssh port isn&#39;t fix anymore (patch from Jose Luis Martinez)</p>
 
-<pre><code class="hljs">⁠group &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">fe01:2222</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;    </code></pre>
+<pre><code class="hljs">group &quot;<span class="hljs-string">frontend</span>&quot;, &quot;<span class="hljs-string">fe01:2222</span>&quot;, &quot;<span class="hljs-string">fe02</span>&quot;;    </code></pre>
 
 <p>Rex will now connect to fe01 on port 2222 and to fe02 on port 22.</p>
 
-<pre><code class="hljs">⁠port <span class="hljs-number">2222</span>;
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># will always connect to port 2222</span><span class="hljs-comment">
-⁠</span>};    </code></pre></li>
+<pre><code class="hljs">port <span class="hljs-number">2222</span>;
+task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
+
+
+<span class="hljs-comment"># will always connect to port 2222</span><span class="hljs-comment">
+</span>};    </code></pre></li>
 <li><p>file and upload now scans for environment specific files first</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">upload</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/passwd</span>&quot;;
-⁠};    </code></pre>
+<pre><code class="hljs">task &quot;<span class="hljs-string">upload</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, <span class="hljs-keyword">sub </span>{
+file &quot;<span class="hljs-string">/etc/passwd</span>&quot;, source =&gt; &quot;<span class="hljs-string">files/etc/passwd</span>&quot;;
+};    </code></pre>
 
 <p>If called with <em>rex -E stage</em> it will first try to upload &quot;files/etc/passwd.stage&quot; and if not found &quot;files/etc/passwd&quot;</p></li>
 <li><p>fixed windows syslog bug #6, thanks to aero</p></li>

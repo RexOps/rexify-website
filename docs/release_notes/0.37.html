@@ -134,51 +134,53 @@
 
 <p>You can use thise module by installing it via <em>rexify</em>.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># From within a project</span><span class="hljs-comment">
-⁠</span>bash <span class="hljs-comment"># rexify --use=Rex::DNS:Bind</span><span class="hljs-comment">
-⁠</span>
-⁠  <span class="hljs-comment"># To create a new project</span><span class="hljs-comment">
-⁠</span>  bash <span class="hljs-comment"># rexify mynewproject --use=Rex::DNS::Bind</span><span class="hljs-comment">
-⁠</span>
-⁠  set dns =&gt; {
-⁠    server   =&gt; &quot;<span class="hljs-string">127.0.0.1</span>&quot;,
-⁠    key_name =&gt; &quot;<span class="hljs-string">mysuperkey</span>&quot;,
-⁠    key      =&gt; &quot;<span class="hljs-string">/foobar==</span>&quot;,
-⁠  };
-⁠
-⁠task sometask =&gt; <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">add_record</span>(
-⁠        domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
-⁠        host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
-⁠        data   =&gt; &quot;<span class="hljs-string">127.0.0.4</span>&quot;,
-⁠    );
-⁠
-⁠    <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">delete_record</span>(
-⁠        domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
-⁠        host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
-⁠        type   =&gt; &quot;<span class="hljs-string">A</span>&quot;,
-⁠    );
-⁠
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">@entries</span> = <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">list_entries</span>( domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot; );
-⁠    <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@entries</span> );
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-comment"># From within a project</span><span class="hljs-comment">
+</span>bash <span class="hljs-comment"># rexify --use=Rex::DNS:Bind</span><span class="hljs-comment">
+</span>
+  <span class="hljs-comment"># To create a new project</span><span class="hljs-comment">
+</span>  bash <span class="hljs-comment"># rexify mynewproject --use=Rex::DNS::Bind</span><span class="hljs-comment">
+</span>
+  set dns =&gt; {
+    server   =&gt; &quot;<span class="hljs-string">127.0.0.1</span>&quot;,
+    key_name =&gt; &quot;<span class="hljs-string">mysuperkey</span>&quot;,
+    key      =&gt; &quot;<span class="hljs-string">/foobar==</span>&quot;,
+  };
+
+task sometask =&gt; <span class="hljs-keyword">sub </span>{
+    <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">add_record</span>(
+        domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
+        host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
+        data   =&gt; &quot;<span class="hljs-string">127.0.0.4</span>&quot;,
+    );
+
+    <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">delete_record</span>(
+        domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot;,
+        host   =&gt; &quot;<span class="hljs-string">foobar01</span>&quot;,
+        type   =&gt; &quot;<span class="hljs-string">A</span>&quot;,
+    );
+
+    <span class="hljs-keyword">my</span> <span class="hljs-type">@entries</span> = <span class="hljs-function">Rex::DNS</span>::<span class="hljs-function">Bind</span>::<span class="hljs-function">list_entries</span>( domain =&gt; &quot;<span class="hljs-string">rexify.org</span>&quot; );
+    <span class="hljs-function">print</span> Dumper( \<span class="hljs-type">@entries</span> );
+};</code></pre>
 
 <p>See <a href="http://modules.rexify.org/module/Rex::DNS::Bind">Rex::DNS::Bind</a> for the API documentation.</p>
 
-<ul>
+<p></p><ul>
 <li><p>run_task now accepts additional parameters for tasks (note: it will overwrite CLI parameters)</p>
 
-<pre><code class="hljs">⁠task &quot;<span class="hljs-string">taskone</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    run_task &quot;<span class="hljs-string">tasktwo</span>&quot;,
-⁠      on     =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠      params =&gt; { key1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;, key2 =&gt; &quot;<span class="hljs-string">value2</span>&quot; };
-⁠};
-⁠
-⁠task &quot;<span class="hljs-string">tasktwo</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
-⁠    <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$param</span>);
-⁠};    </code></pre></li>
-<li><p>Code changes for better extendability of core functions.</p></li>
+<p></p><p></p><pre><code class="hljs">task &quot;<span class="hljs-string">taskone</span>&quot;, <span class="hljs-keyword">sub </span>{
+run_task &quot;<span class="hljs-string">tasktwo</span>&quot;,
+  on     =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+  params =&gt; { key1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;, key2 =&gt; &quot;<span class="hljs-string">value2</span>&quot; };
+};</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">tasktwo</span>&quot;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$param</span> = <span class="hljs-function">shift</span>;
+    <span class="hljs-function">print</span> Dumper(<span class="hljs-type">$param</span>);
+};    
+
+<ul>
+<li>Code changes for better extendability of core functions.</li>
 <li>Hardware module is now pluggable</li>
 <li>Virtualization module detection is now pluggable</li>
 <li>Box module is now pluggable</li>

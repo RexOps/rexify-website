@@ -122,10 +122,12 @@
               <h1>Release notes for 0.33</h1>
               <h1 id="general">General</h1>
 
-<ul>
+<p></p><ul>
 <li><p>Speed improvement</p>
 
-<p>The <em>-c</em> (cache) CLI option speeds up execution very much.</p></li>
+<p>The <em>-c</em> (cache) CLI option speeds up execution very much.</p>
+
+<p></p></li>
 <li><p>Profiler class</p>
 
 <p>This is mostly for developers. There is now a profiler class to profile execution of <em>things</em>.</p>
@@ -133,61 +135,73 @@
 <p>If you want to generate a profiling output you can do this with:</p>
 
 <pre><code>rex -dd $yourtask
-</code></pre></li>
+</code></pre>
+
+<p></p></li>
 <li><p>Mounting (thanks to Laird Liu)</p>
 
 <p>It is now possible to write mount entries to /etc/fstab with the <em>persistent</em> option.</p>
 
-<pre><code class="hljs">⁠mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/mnt/sda5</span>&quot;, persistent =&gt; TRUE;    </code></pre></li>
+<pre><code class="hljs">mount &quot;<span class="hljs-string">/dev/sda5</span>&quot;, &quot;<span class="hljs-string">/mnt/sda5</span>&quot;, persistent =&gt; TRUE;    </code></pre>
+
+<p></p></li>
 <li><p>Partitioning</p>
 
 <p>It is now possible to mount the new created partition.</p>
 
-<pre><code class="hljs">⁠partition &quot;<span class="hljs-string">/</span>&quot;,
-⁠  fstype =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
-⁠  size   =&gt; <span class="hljs-number">15000</span>,
-⁠  ondisk =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
-⁠  type   =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
-⁠  mount  =&gt; TRUE;    </code></pre>
+<pre><code class="hljs">partition &quot;<span class="hljs-string">/</span>&quot;,
+fstype =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+size   =&gt; <span class="hljs-number">15000</span>,
+ondisk =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
+type   =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
+mount  =&gt; TRUE;    </code></pre>
 
 <p>And if you want to write fstab entries directly.</p>
 
-<pre><code class="hljs">⁠partition &quot;<span class="hljs-string">/</span>&quot;,
-⁠  fstype           =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
-⁠  size             =&gt; <span class="hljs-number">15000</span>,
-⁠  ondisk           =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
-⁠  type             =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
-⁠  mount_persistent =&gt; TRUE;    </code></pre></li>
+<pre><code class="hljs">partition &quot;<span class="hljs-string">/</span>&quot;,
+fstype           =&gt; &quot;<span class="hljs-string">ext3</span>&quot;,
+size             =&gt; <span class="hljs-number">15000</span>,
+ondisk           =&gt; &quot;<span class="hljs-string">sda</span>&quot;,
+type             =&gt; &quot;<span class="hljs-string">primary</span>&quot;,
+mount_persistent =&gt; TRUE;    </code></pre>
+
+<p></p></li>
 <li><p>New keyword <em>make</em>.</p>
 
 <p>This is just a cosmetic one. It is now possible to write tasks this way:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
-⁠</span>task prepare =&gt; <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>};
-⁠
-⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
-⁠</span>task prepare =&gt; make {
-⁠
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>};
-⁠
-⁠<span class="hljs-comment"># old</span><span class="hljs-comment">
-⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>  };
-⁠
-⁠<span class="hljs-comment"># new</span><span class="hljs-comment">
-⁠</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠  make {
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>  };    </code></pre></li>
-<li><p>Usability improvements, thanks to Anders Ossowicki</p></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-comment"># old</span><span class="hljs-comment">
+</span>task prepare =&gt; <span class="hljs-keyword">sub </span>{
+
+<p><span class="hljs-comment"># do something</span><span class="hljs-comment">
+</span>};</p>
+
+<p></p></code></pre></li>
+</ul>
+<span class="hljs-comment"># new</span><span class="hljs-comment">
+</span>task prepare =&gt; make {
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# do something&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>};</p>
+
+<p><span class="hljs-comment"># old</span><span class="hljs-comment">
+</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
+  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+  <span class="hljs-keyword">sub </span>{
+    <span class="hljs-comment"># do something</span><span class="hljs-comment">
+</span>  };</p>
+
+<p><span class="hljs-comment"># new</span><span class="hljs-comment">
+</span>task &quot;<span class="hljs-string">prepare</span>&quot;,
+  group =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+  make {
+    <span class="hljs-comment"># do something</span><span class="hljs-comment">
+</span>  };    </p>
+
+<ul>
+<li>Usability improvements, thanks to Anders Ossowicki</li>
 </ul>
 
 <h1 id="usermanagement">User Management</h1>
@@ -199,42 +213,41 @@
 
 <p>If the <em>ssh_key</em> option is set it will only create the .ssh directory if the home directory exists.</p>
 
-<pre><code class="hljs">⁠create_user &quot;<span class="hljs-string">foo</span>&quot;,
-⁠  home           =&gt; &quot;<span class="hljs-string">/data/homes/foo</span>&quot;,
-⁠  no_create_home =&gt; TRUE;    </code></pre></li>
+<pre><code class="hljs">create_user &quot;<span class="hljs-string">foo</span>&quot;,
+home           =&gt; &quot;<span class="hljs-string">/data/homes/foo</span>&quot;,
+no_create_home =&gt; TRUE;    </code></pre></li>
 <li><p>Fixed <em>expire</em> bug for create_user</p></li>
 </ul>
 
 <h1 id="templates">Templates</h1>
 
-<ul>
+<p></p><ul>
 <li><p>Template class now exchangeable (thanks to Laird Liu)</p>
 
 <p>If you want to use another Template class (for example Template::Toolkit) you can use it now.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
-⁠</span><span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
-⁠<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;
-⁠
-⁠<span class="hljs-keyword">use</span> Template;
-⁠
-⁠set template_function =&gt; <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span> ) = <span class="hljs-type">@_</span>;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = Template-&gt;new;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$out</span>;
-⁠    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">process</span>( \<span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span>, \<span class="hljs-type">$out</span> );
-⁠    <span class="hljs-keyword">return</span> <span class="hljs-type">$out</span>;
-⁠};
-⁠
-⁠task foo =&gt; <span class="hljs-keyword">sub </span>{
-⁠    file &quot;<span class="hljs-string">/etc/foo/service.conf</span>&quot;,
-⁠      content =&gt; template(
-⁠        &quot;<span class="hljs-string">service.conf.tpl</span>&quot;,
-⁠        name =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
-⁠        port =&gt; <span class="hljs-number">1903</span>
-⁠      );
-⁠};    </code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-comment"># Rexfile</span><span class="hljs-comment">
+</span><span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-keyword">warnings</span>;</code></pre></li>
 </ul>
+<span class="hljs-keyword">use</span> Template;
+
+<p>set template_function =&gt; <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> ( <span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span> ) = <span class="hljs-type">@_</span>;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$t</span> = Template-&gt;new;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$out</span>;
+    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">process</span>( \<span class="hljs-type">$content</span>, <span class="hljs-type">$vars</span>, \<span class="hljs-type">$out</span> );
+    <span class="hljs-keyword">return</span> <span class="hljs-type">$out</span>;
+};</p>
+
+<p>task foo =&gt; <span class="hljs-keyword">sub </span>{
+    file &quot;<span class="hljs-string">/etc/foo/service.conf</span>&quot;,
+      content =&gt; template(
+        &quot;<span class="hljs-string">service.conf.tpl</span>&quot;,
+        name =&gt; &quot;<span class="hljs-string">foo</span>&quot;,
+        port =&gt; <span class="hljs-number">1903</span>
+      );
+};    </p>
 
 <h1 id="modules">Modules</h1>
 

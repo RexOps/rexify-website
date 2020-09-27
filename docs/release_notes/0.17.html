@@ -122,80 +122,78 @@
               <h1>Release notes for 0.17</h1>
               <h2 id="rex">Rex</h2>
 
-<ul>
+<p></p><ul>
 <li><p>Added Solaris 11 support</p></li>
 <li><p>Added Solaris 10 support</p></li>
 <li><p>Added a caching layer</p>
 
-<p>There is a new command line switch <em>-c</em> to turn on caching. Right now only the Rex::Hardware::Host module uses this layer but this should already speed up execution on *BSD and Solaris systems.</p></li>
+<p>There is a new command line switch <em>-c</em> to turn on caching. Right now only the Rex::Hardware::Host module uses this layer but this should already speed up execution on *BSD and Solaris systems.</p>
+
+<p></p></li>
 <li><p>Added possibility to define custom providers for package and service management.</p>
 
 <p>For example with Solaris you can use Blastwave, OpenCSW or the standard utilities for package management.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-comment"># in the base section of your Rexfile</span><span class="hljs-comment">
-⁠</span>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">Blastwave</span>&quot;;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># if solaris, install apache-22 from Blastwave</span><span class="hljs-comment">
-⁠</span>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
-⁠};    </code></pre>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-comment"># in the base section of your Rexfile</span><span class="hljs-comment">
+</span>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">Blastwave</span>&quot;;</code></pre></li>
+</ul>
+task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
 
-<p>Or, if you want to use OpenCSW</p>
-
-<pre><code class="hljs">⁠<span class="hljs-comment"># in the base section of your Rexfile</span><span class="hljs-comment">
-⁠</span>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">OpenCSW</span>&quot;;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠
-⁠    <span class="hljs-comment"># if solaris, install apache-22 from OpenCSW</span><span class="hljs-comment">
-⁠</span>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
-⁠};    </code></pre>
-
-<p>Or, for Solaris 11, use the built-in &quot;pkg&quot; Package Management:</p>
-
-<pre><code># in the base section of your Rexfile
-package_provider_for SunOS =&gt; &quot;pkg&quot;;
-
-
-task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-
-
-  # if solaris, install apache-22 from built-in pkg
-  install package =&gt; &quot;apache-22&quot;;
-};
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# if solaris, install apache-22 from Blastwave&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
 </code></pre>
 
-<pre><code class="hljs">⁠-   Custom providers <span class="hljs-keyword">for</span> service management
-⁠
-⁠    <span class="hljs-keyword">For</span> example with Solaris, <span class="hljs-keyword">if</span> you want to <span class="hljs-keyword">use</span> the old init-style service management you don&#39;<span class="hljs-string">t need to specify anything.</span>    </code></pre>
+<p>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+};    </p>
 
-<p>perl
+<pre><code>Or, if you want to use OpenCSW
+
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# in the base section of your Rexfile&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>package_provider_for SunOS =&gt; &quot;<span class="hljs-string">OpenCSW</span>&quot;;</p>
+
+<p>task &quot;<span class="hljs-string">prepare</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, <span class="hljs-keyword">sub </span>{</p>
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# if solaris, install apache-22 from OpenCSW&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+<p>    install <span class="hljs-keyword">package</span> =&gt; &quot;<span class="hljs-string">apache-22</span>&quot;;
+};    </p>
+
+<pre><code>Or, for Solaris 11, use the built-in &quot;pkg&quot; Package Management:
+
+    # in the base section of your Rexfile
+    package_provider_for SunOS =&gt; &quot;pkg&quot;;
+
+    task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+
+      # if solaris, install apache-22 from built-in pkg
+      install package =&gt; &quot;apache-22&quot;;
+    };
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;-   Custom providers &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; service management
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;For&lt;/span&gt; example with Solaris, &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; you want to &lt;span class=&quot;hljs-keyword&quot;&gt;use&lt;/span&gt; the old init-style service management you don&#39;&lt;span class=&quot;hljs-string&quot;&gt;t need to specify anything.&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;perl
     task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
         service ssh =&gt; &quot;restart&quot;;
-    };</p>
-
-<pre><code class="hljs">⁠<span class="hljs-string">    But, if you want to use the newer SVCADM management use this:</span>    </code></pre>
-
-<p>perl
+    };
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;    But, if you want to use the newer SVCADM management use this:&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;perl
     # in the base section of your Rexfile
-    service_provider_for SunOS =&gt; &quot;svcadm&quot;;</p>
+    service_provider_for SunOS =&gt; &quot;svcadm&quot;;
 
-<pre><code>task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
-    service ssh =&gt; &quot;restart&quot;;
-};
-</code></pre>
-
-<pre><code class="hljs">⁠<span class="hljs-string">-   Added *operating\_system\_version()* to get the OS version.</span>    </code></pre>
-
-<p>perl
+    task &quot;prepare-services&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
+        service ssh =&gt; &quot;restart&quot;;
+    };
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;-   Added *operating\_system\_version()* to get the OS version.&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;perl
     task &quot;prepare&quot;, &quot;server1&quot;, &quot;server2&quot;, sub {
         if ( operating_system_version() &lt; 10 ) {
             say &quot;too old...&quot;;
         }
     };
-    ```</p></li>
-<li><p>fixed local copy error handling</p></li>
+    ```
+</code></pre>
+
+<ul>
+<li>fixed local copy error handling</li>
 </ul>
 
 

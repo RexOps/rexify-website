@@ -135,10 +135,10 @@
 
 <p>Resources have a special syntax and some keywords.</p>
 
-<pre><code class="hljs">⁠resource <span class="hljs-type">$resource_name</span>,
-⁠  option1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;,
-⁠  option2 =&gt; &quot;<span class="hljs-string">value2</span>&quot;,
-⁠  ensure  =&gt; &quot;<span class="hljs-string">present, absent, ...</span>&quot;;    </code></pre>
+<pre><code class="hljs">resource <span class="hljs-type">$resource_name</span>,
+option1 =&gt; &quot;<span class="hljs-string">value1</span>&quot;,
+option2 =&gt; &quot;<span class="hljs-string">value2</span>&quot;,
+ensure  =&gt; &quot;<span class="hljs-string">present, absent, ...</span>&quot;;    </code></pre>
 
 <p>Currently there is only one keyword that every resource have to obey.</p>
 
@@ -152,40 +152,47 @@
 
 <p>Resources get registerd as perl functions in the namespace where they are created. You can see a complete example <a href="#">here</a>.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">package</span> BaseSystem;
-⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Resource</span>::<span class="hljs-function">Common</span>;
-⁠resource &quot;<span class="hljs-string">motd</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> (<span class="hljs-type">$params</span>) = <span class="hljs-type">@_</span>;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> = resource_name;
-⁠
-⁠    <span class="hljs-keyword">if</span> ( <span class="hljs-type">$params</span>-&gt;{ensure} eq &quot;<span class="hljs-string">present</span>&quot; ) {
-⁠
-⁠        <span class="hljs-comment"># do some things.</span><span class="hljs-comment">
-⁠</span>        <span class="hljs-keyword">if</span> ( !is_file(<span class="hljs-type">$name</span>) ) {
-⁠            file <span class="hljs-type">$name</span>, content =&gt; <span class="hljs-type">$params</span>-&gt;{content};
-⁠            emit changed;
-⁠        }
-⁠    }
-⁠    <span class="hljs-keyword">elsif</span> ( <span class="hljs-type">$params</span>-&gt;{ensure} eq &quot;<span class="hljs-string">absent</span>&quot; ) {
-⁠        <span class="hljs-keyword">if</span> ( is_file(<span class="hljs-type">$name</span>) ) {
-⁠            rm <span class="hljs-type">$name</span>;
-⁠            emit changed;
-⁠        }
-⁠    }
-⁠};    </code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">package</span> BaseSystem;
+<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Resource</span>::<span class="hljs-function">Common</span>;
+resource &quot;<span class="hljs-string">motd</span>&quot;, <span class="hljs-keyword">sub </span>{
+<span class="hljs-keyword">my</span> (<span class="hljs-type">$params</span>) = <span class="hljs-type">@_</span>;
+<span class="hljs-keyword">my</span> <span class="hljs-type">$name</span> = resource_name;
+
+
+<span class="hljs-keyword">if</span> ( <span class="hljs-type">$params</span>-&gt;{ensure} eq &quot;<span class="hljs-string">present</span>&quot; ) {
+
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# do some things.&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+        <span class="hljs-keyword">if</span> ( !is_file(<span class="hljs-type">$name</span>) ) {
+        file <span class="hljs-type">$name</span>, content =&gt; <span class="hljs-type">$params</span>-&gt;{content};
+        emit changed;
+    }
+}
+<span class="hljs-keyword">elsif</span> ( <span class="hljs-type">$params</span>-&gt;{ensure} eq &quot;<span class="hljs-string">absent</span>&quot; ) {
+    <span class="hljs-keyword">if</span> ( is_file(<span class="hljs-type">$name</span>) ) {
+        rm <span class="hljs-type">$name</span>;
+        emit changed;
+    }
+}
+};    </code></pre>
 
 <p>Now you can call this new resource with <code>BaseSystem::motd</code></p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> BaseSystem;
-⁠task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-function">BaseSystem::motd</span> &quot;<span class="hljs-string">/etc/motd</span>&quot;,
-⁠      ensure    =&gt; present,
-⁠      content   =&gt; &quot;<span class="hljs-string">Hello World.</span>&quot;,
-⁠      on_change =&gt; <span class="hljs-keyword">sub </span>{
-⁠
-⁠        <span class="hljs-comment"># do something when changed event was triggered</span><span class="hljs-comment">
-⁠</span>      };
-⁠};    </code></pre></li>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> BaseSystem;
+task &quot;<span class="hljs-string">setup</span>&quot;, <span class="hljs-keyword">sub </span>{
+<span class="hljs-function">BaseSystem::motd</span> &quot;<span class="hljs-string">/etc/motd</span>&quot;,
+  ensure    =&gt; present,
+  content   =&gt; &quot;<span class="hljs-string">Hello World.</span>&quot;,
+  on_change =&gt; <span class="hljs-keyword">sub </span>{
+
+
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;# do something when changed event was triggered&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;
+</code></pre>
+
+      };
+};    </code></pre></li>
 <li><p>Added new feature flag <strong>register_cmdb_top_scope</strong>. This will register all the topscope variables in your CMDB to templates.</p></li>
 </ul>
 

@@ -145,20 +145,20 @@
 
 <p>If you want to print the output to your terminal you have to call it in a scalar context.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &quot;<span class="hljs-string">df -h</span>&quot;;
-⁠say <span class="hljs-type">$output</span>;</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">my</span> <span class="hljs-type">$output</span> = run &quot;<span class="hljs-string">df -h</span>&quot;;
+say <span class="hljs-type">$output</span>;</code></pre>
 
 <h2 id="howcanigetthecurrentserverfromwithinatask">How can I get the current server from within a task?</h2>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">my</span> <span class="hljs-type">$current_server</span> = connection-&gt;server;</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">my</span> <span class="hljs-type">$current_server</span> = connection-&gt;server;</code></pre>
 
 <h2 id="howcanipassparameterstoatask">How can I pass parameters to a task?</h2>
 
-<pre><code class="hljs">⁠task &#39;<span class="hljs-string">mytask</span>&#39;, <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span>       = <span class="hljs-function">shift</span>;
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
-⁠    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
-⁠};</code></pre>
+<pre><code class="hljs">task &#39;<span class="hljs-string">mytask</span>&#39;, <span class="hljs-keyword">sub </span>{
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameters</span>       = <span class="hljs-function">shift</span>;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter1_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter1};
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$parameter2_value</span> = <span class="hljs-type">$parameters</span>-&gt;{parameter2};
+};</code></pre>
 
 <p>Then you can run <code>mytask</code> from CLI like this:</p>
 
@@ -167,24 +167,24 @@
 
 <p>Or from Rex code either using <a href="https://metacpan.org/pod/Rex::Commands#run_task">run_task</a>:</p>
 
-<pre><code class="hljs">⁠run_task &#39;<span class="hljs-string">my_task</span>&#39;,
-⁠  params =&gt; { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; };</code></pre>
+<pre><code class="hljs">run_task &#39;<span class="hljs-string">my_task</span>&#39;,
+  params =&gt; { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; };</code></pre>
 
 <p>or calling the task as a function:</p>
 
-<pre><code class="hljs">⁠mytask( { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; } );</code></pre>
+<pre><code class="hljs">mytask( { parameter1 =&gt; &#39;<span class="hljs-string">value1</span>&#39;, parameter2 =&gt; &#39;<span class="hljs-string">value2</span>&#39; } );</code></pre>
 
 <h2 id="howcanirunablockofcodewithonecommand">How can I run a block of code with one command?</h2>
 
 <p>One way to do it is to upload your script to the remote, and execute it there. You can use the <a href="https://github.com/RexOps/rex-recipes/tree/1.4/Rex/Misc/ShellBlock">Rex::Misc::ShellBlock</a> module for that. After copying it into one of the Perl include directories, or into <code>./lib</code> of your Rex project, you can run your shell code remotely as:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
-⁠
-⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
-⁠</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
-⁠</span><span class="hljs-keyword">EOF</span>
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+
+task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+    shell_block &lt;&lt;<span class="hljs-keyword">EOF;</span><span class="hljs-string">
+</span><span class="hljs-string">    echo &quot;hi&quot;</span><span class="hljs-string">
+</span><span class="hljs-keyword">EOF</span>
+};</code></pre>
 
 <p>See the included documentation of the module about how to use it to run code written in Perl, Python, or other languages.</p>
 
@@ -192,24 +192,24 @@
 
 <p>If you have a local script &#39;files/script&#39;, you can run it on the remote using the ShellBlock module referred to in the FAQ above. After you install as pointed out above, you can run the script remotely with the command:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
-⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+    shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+};</code></pre>
 
 <h2 id="howdoirunalocalscriptontheremoteunderadifferentuser">How do I run a local script on the remote under a different user?</h2>
 
 <p>Given the same scenario as above, but with the additional requirement to run the script as a different user, the solution looks like below:</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
-⁠task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
-⁠    sudo {
-⁠        command =&gt; <span class="hljs-keyword">sub </span>{
-⁠            shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
-⁠        },
-⁠        user =&gt; &#39;<span class="hljs-string">root</span>&#39;
-⁠    };
-⁠};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Misc</span>::<span class="hljs-function">ShellBlock</span>;
+task &quot;<span class="hljs-string">myexec</span>&quot;, <span class="hljs-keyword">sub </span>{
+    sudo {
+        command =&gt; <span class="hljs-keyword">sub </span>{
+            shell_block template(&#39;<span class="hljs-string">files/script</span>&#39;);
+        },
+        user =&gt; &#39;<span class="hljs-string">root</span>&#39;
+    };
+};</code></pre>
 
 <h2 id="howdoichecktheexitstatusofaremotelyruncommand">How do I check the exit status of a remotely run command?</h2>
 
@@ -217,9 +217,9 @@
 
 <h2 id="howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages">How do I use Rex&#39;s built-in logger for ERROR/WARN/INFO/DEBUG messages?</h2>
 
-<pre><code class="hljs">⁠<span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;);            <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
-⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot; );  <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
-⁠</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot; ); <span class="hljs-comment"># for ERROR (red)</span></code></pre>
+<pre><code class="hljs"><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>(&quot;<span class="hljs-string">some message</span>&quot;);            <span class="hljs-comment"># for INFO  (green)</span><span class="hljs-comment">
+</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">warn</span>&quot; );  <span class="hljs-comment"># for WARN  (yellow)</span><span class="hljs-comment">
+</span><span class="hljs-function">Rex::Logger</span>::<span class="hljs-function">info</span>( &quot;<span class="hljs-string">some message</span>&quot;, &quot;<span class="hljs-string">error</span>&quot; ); <span class="hljs-comment"># for ERROR (red)</span></code></pre>
 
 <h2 id="howdoiloadallmycustommoduleseasily">How do I load all my custom modules easily?</h2>
 

@@ -148,20 +148,20 @@
 
 <p>If you have many servers you want to connect to, you usually don&#39;t want to connect sequentially. You can define the number of parallel connections Rex should use.</p>
 
-<pre><code class="hljs">⁠<span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
-⁠
-⁠user &quot;<span class="hljs-string">root</span>&quot;;
-⁠password &quot;<span class="hljs-string">foob4r</span>&quot;;
-⁠
-⁠group frontends =&gt; &quot;<span class="hljs-string">frontend[01..50]</span>&quot;;
-⁠
-⁠parallelism <span class="hljs-number">15</span>;
-⁠
-⁠task &quot;<span class="hljs-string">prepare</span>&quot;,
-⁠  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
-⁠  <span class="hljs-keyword">sub </span>{
-⁠    <span class="hljs-comment"># do something</span><span class="hljs-comment">
-⁠</span>  };</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+
+user &quot;<span class="hljs-string">root</span>&quot;;
+password &quot;<span class="hljs-string">foob4r</span>&quot;;
+
+group frontends =&gt; &quot;<span class="hljs-string">frontend[01..50]</span>&quot;;
+
+parallelism <span class="hljs-number">15</span>;
+
+task &quot;<span class="hljs-string">prepare</span>&quot;,
+  group =&gt; &quot;<span class="hljs-string">frontends</span>&quot;,
+  <span class="hljs-keyword">sub </span>{
+    <span class="hljs-comment"># do something</span><span class="hljs-comment">
+</span>  };</code></pre>
 
 <p>This will connect to 15 servers in parallel and executes the task.</p>
 
