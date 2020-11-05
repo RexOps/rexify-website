@@ -2,6 +2,7 @@
 title: Release notes
 ---
 
+* [Release notes for 1.13.1](1.13.1.html)
 * [Release notes for 1.13.0](1.13.0.html)
 * [Release notes for 1.12.2](1.12.2.html)
 * [Release notes for 1.12.1](1.12.1.html)
