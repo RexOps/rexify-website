@@ -262,7 +262,7 @@ is now living in core as <code>Rex::Helper::Rexfile::ParamLookup</code>.</p>
 
 <p><code>param_lookup</code> is a command to manage task parameters.</p>
 
-<pre><code class="hljs">my <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">my</span> <span class="hljs-type">$var</span> = param_lookup &quot;<span class="hljs-string">param_name</span>&quot;, &quot;<span class="hljs-string">default_value</span>&quot;;</code></pre>
 
 <p>First param_lookup checks the task parameters for <code>param_name</code>.
 If it&#39;s not found, it tries to look it up from CMDB (if CMDB is used).
