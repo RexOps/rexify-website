@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2020-12-05</b><br>
+                     <a href="/blog/2020/12/05/rex-1.13.2.html">Rex-1.13.2</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.13.2.html">Rex-1.13.2 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.2">available on CPAN</a>. It contains only documentation updates, mostly for the built-in template capabilities, but also fixes a few typos.</p>
+
                    <p><b>2020-11-05</b><br>
                      <a href="/blog/2020/11/05/rex-1.13.1.html">Rex-1.13.1</a></p><p>
                    </p><p></p><p><a href="https://github.com/RexOps/Rex/commit/cabbc6a8aa9eb2c0d9d3fc2439be51924edc3ff8">Happy 10th birthday, Rex!</a></p>
@@ -81,10 +85,6 @@
                    <p><b>2020-08-05</b><br>
                      <a href="/blog/2020/08/05/rex-1.12.1.html">Rex-1.12.1</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.12.1.html">Rex-1.12.1 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.1">available on CPAN</a>. It adds documentation for feature flags, and fixes a release packaging issue.</p>
-
-                   <p><b>2020-07-05</b><br>
-                     <a href="/blog/2020/07/05/rex-1.12.0.html">Rex-1.12.0</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.12.0.html">Rex-1.12.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.0">available on CPAN</a>. It adds support for local rsync operations, improves tab completion for Bash and Zsh, and fixes related bugs. It also discontinues support for running Rex on Windows 7, Windows Server 2008 R2, and older versions since both mainstream and extended support has already ended for these products.</p>
 
 
                <h2>Conferences</h2>
@@ -127,7 +127,7 @@
 <p></p><ul>
 <li><p>Added LVM module and added LVM data to inventory.</p>
 
-<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">LVM</span>;</code></pre></li>
+<p></p><p></p><pre><code class="hljs">use <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">LVM</span>;</code></pre></li>
 </ul>
 task &quot;<span class="hljs-string">lvm</span>&quot;, <span class="hljs-keyword">sub </span>{
     <span class="hljs-keyword">my</span> <span class="hljs-type">@physical_devices</span> = pvs;
