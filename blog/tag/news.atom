@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Placeholder Atom feed for rexify.org</title>
-  <id>https://www.rexify.org/blog</id>
-  <updated>2020-12-20T22:05:05Z</updated>
+  <id>https://rexify.org/blog</id>
+  <updated>2021-01-20T23:03:18Z</updated>
 </feed>
 
