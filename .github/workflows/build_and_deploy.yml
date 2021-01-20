@@ -1,0 +1,38 @@
+name: build and deploy
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: perldocker/perl-tester:latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Configure git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git branch --track gh-pages origin/gh-pages
+      - name: Log perl version
+        run: perl -V
+      - name: Install dependencies
+        run: cpm install --global
+      - name: Build site
+        run: statocles --lib build
+        if: github.ref != 'refs/heads/master'
+      - name: Deploy to GitHub Pages
+        run: statocles --lib deploy
+        if: github.ref == 'refs/heads/master'
