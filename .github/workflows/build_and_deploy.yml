@@ -13,9 +13,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: perldocker/perl-tester:latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -30,6 +27,8 @@ jobs:
           git config user.name ${AUTHOR_NAME}
           git config user.email ${AUTHOR_EMAIL}
           git branch --track gh-pages origin/gh-pages
+      - name: Setup Perl
+        uses: shogo82148/actions-setup-perl@v1
       - name: Log perl version
         run: perl -V
       - name: Install dependencies
