@@ -29,10 +29,14 @@ jobs:
           git branch --track gh-pages origin/gh-pages
       - name: Setup Perl
         uses: shogo82148/actions-setup-perl@v1
+      - name: Setup Perl environment
+        run: |
+          echo PERL5LIB="$(pwd)/local/lib/perl5:${PERL5LIB}" >> $GITHUB_ENV
+          echo "$(pwd)/local/bin" >> $GITHUB_PATH
       - name: Log perl version
         run: perl -V
       - name: Install dependencies
-        run: cpm install --global
+        run: cpm install
       - name: Build site
         run: statocles --lib build
         if: github.ref != 'refs/heads/master'
