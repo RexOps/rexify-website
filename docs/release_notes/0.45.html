@@ -241,7 +241,7 @@ only_notified =&gt; TRUE;</code></pre></li>
 </code></pre>
 
 <p>command =&gt; &quot;<span class="hljs-string">mysql -uroot &lt; /tmp/data.sql</span>&quot;,
-  <span class="hljs-keyword">unless</span> =&gt;
+  <span class="hljs-keyword">unless</span>  =&gt;
   &quot;<span class="hljs-string">mysql -uroot dbschema -e &#39;SELECT id FROM os_template WHERE id=2&#39; | grep -q 2</span>&quot;;        </p>
 
 <pre><code>-   support for customized environments. - \#316 - andrejzverev
