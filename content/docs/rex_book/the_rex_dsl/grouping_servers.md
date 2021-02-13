@@ -22,7 +22,7 @@ Custom parameters for servers are possible with a slightly enhanced syntax since
 
     ```perl
     group frontends => "frontend01" => { user => "bob" },
-      "frontend02"  => { user => "alice" },
+      "frontend02" => { user => "alice" },
       "frontend03";
     ```
 
