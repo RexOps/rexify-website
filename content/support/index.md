@@ -7,7 +7,7 @@ title: Support for Rex
 Rex is an open source project driven and supported by its community. If you need help you're invited to join the discussion on one of our support channels:
 
 - [GitHub discussions](https://github.com/RexOps/Rex/discussions)
-- [IRC (freenode #rex)](https://kiwiirc.com/nextclient/#irc://irc.freenode.net/#rex?nick=mc-guest-?)
+- [IRC (freenode #rex)](https://webchat.freenode.net/#rex)
 - [Rex Users on Google Groups](https://groups.google.com/group/rex-users)
 
 ## Commercial support
