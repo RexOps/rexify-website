@@ -4,9 +4,11 @@ title: Support for Rex
 
 ## Community support
 
-Rex is an open source project driven and supported by its community. If you need help you're invited to join us on our [user group](https://groups.google.com/forum/#!forum/rex-users) or on irc / freenode.
+Rex is an open source project driven and supported by its community. If you need help you're invited to join the discussion on one of our support channels:
 
-You can also ask questions on [serverfault](http://serverfault.com/questions/tagged/rex).
+- [GitHub discussions](https://github.com/RexOps/Rex/discussions)
+- [IRC (freenode #rex)](https://kiwiirc.com/nextclient/#irc://irc.freenode.net/#rex?nick=mc-guest-?)
+- [Rex Users on Google Groups](https://groups.google.com/group/rex-users)
 
 ## Commercial support
 
