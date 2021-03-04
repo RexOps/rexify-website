@@ -55,10 +55,20 @@
          <div id="widgets_container">
             <div id="widgets">
                % my $blog = $site->app('blog');
-               % my @posts = $blog->recent_posts(5, tags => 'news' );
-               % if ( @posts > 0 ) {
+               % my @news = $blog->recent_posts( 5, tags => 'news' );
+               % if ( @news > 0 ) {
                <h2>News</h2>
-                 % for my $page ( @posts ) {
+                 % for my $page ( @news ) {
+                   <p><b><%= $page->date->ymd %></b><br />
+                     <a href="<%= $blog->page_url($page) %>"><%= $page->title %></a><p>
+                   <p><%= $page->sections(0) %></p>
+                 % }
+               % }
+
+               % my @events = $blog->recent_posts( 3, tags => 'event' );
+               % if ( @events > 0 ) {
+               <h2>Events</h2>
+                 % for my $page ( @events ) {
                    <p><b><%= $page->date->ymd %></b><br />
                      <a href="<%= $blog->page_url($page) %>"><%= $page->title %></a><p>
                    <p><%= $page->sections(0) %></p>
