@@ -75,11 +75,6 @@
                  % }
                % }
 
-               <h2>Conferences</h2>
-                 <div class="news_widget">
-                    <div class="news_date">2016-06-21</div>
-                    <div class="news_content"><a href="http://preaction.me/">Doug Bell (preaction)</a> from <a href="http://chicago.pm.org/">Chicago.pm</a> will give an <a href="http://www.yapcna.org/yn2016/talk/6549">Introduction to Rex</a> talk at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016</a>.</div>
-                 </div>
             </div>
          </div> <!-- widgets -->
 
