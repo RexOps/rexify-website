@@ -18,7 +18,7 @@ Here we will maintain a list of frequently asked questions with their answers.
 
 ## Is it called (R)?ex or Rex?
 
-Rex stands for **R**emote **ex**ecution. Since automating tasks locally are just as fine as doing the same remotely, (R)?ex is simply a stylized form of _(Remote)? execution_. Both refers to the same thing: the friendly automation framework.
+Rex stands for **R**emote **ex**ecution. Both forms refer to the same thing: the friendly automation framework. Since automating tasks locally are just as fine as remotely, you can think of `(R)?ex` as a regular expression, marking the remote part optional.
 
 ## Why does the run command not format the output?
 
