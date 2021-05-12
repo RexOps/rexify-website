@@ -1,5 +1,6 @@
 ---
 title: Using templates
+date: 2019-12-01
 ---
 
 A template is a text file containing special variables or perl code inside it. So with this technique you can generate dynamic configuration files. For example if you want to configure apache only to listen on a special ethernet device (eth0 for example) templates are what you need.

@@ -1,5 +1,6 @@
 ---
 title: Authentication
+date: 2019-09-06
 ---
 
 Rex is capable to use two different SSH implementations under the hood: Net::SSH2 which is default on Windows, and the combination of Net::OpenSSH and Net::SFTP::Foreign on other platforms.

@@ -1,5 +1,6 @@
 ---
 title: Guides
+date: 2020-08-05
 ---
 
 * [Howto start using (R)?ex](start_using__r__ex.html)  

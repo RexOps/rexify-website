@@ -1,5 +1,6 @@
 ---
 title: Version Control with Git
+date: 2019-05-18
 ---
 
 We recommend you to use a version control system for your development. Especially if you're working in a team it will bring you many advantages. Also if you want to see the difference between two versions of the same file you can ask your vcs system.

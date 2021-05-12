@@ -1,5 +1,6 @@
 ---
 title: Getting information of the environment
+date: 2019-12-01
 ---
 
 Often you need to know some things of the environment where you are currently connected. For example if you need to install apache on Debian and CentOS you have to provide different packages names.

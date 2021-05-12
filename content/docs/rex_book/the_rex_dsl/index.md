@@ -1,5 +1,6 @@
 ---
 title: The Rex DSL
+date: 2019-09-11
 ---
 
 * [Authentication](/docs/rex_book/the_rex_dsl/authentication.html)  

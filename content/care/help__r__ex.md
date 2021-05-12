@@ -1,5 +1,6 @@
 ---
 title: Contribute to (R)?ex
+date: 2019-11-15
 ---
 
 There is no company behind (R)?ex. As a free and open source project, it is developed by volunteers around the globe. Every contribution is welcome.

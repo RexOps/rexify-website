@@ -1,5 +1,6 @@
 ---
 title: FAQ
+date: 2021-03-14
 ---
 
 Here we will maintain a list of frequently asked questions with their answers.

@@ -1,5 +1,6 @@
 ---
 title: Writing Modules
+date: 2019-05-18
 ---
 
 * [Getting information of the environment](/docs/rex_book/writing_modules/getting_information_of_the_environment.html)  

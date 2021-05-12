@@ -1,5 +1,6 @@
 ---
 title: Manage OpenWrt
+date: 2019-09-06
 ---
 
 [OpenWrt](https://openwrt.org/) is a Linux distribution for embedded devices and it is primarily aimed for and used on routers. This means that every component is optimized for size to fit into the limited resource constraints of these devices. As a result some things are working a bit differently than on a full-blown desktop or server distribution. This guide tries to help you getting started with using Rex to manage OpenWrt boxes.

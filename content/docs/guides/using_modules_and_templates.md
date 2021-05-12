@@ -1,5 +1,6 @@
 ---
 title: Using Modules and Templates
+date: 2019-12-01
 ---
 
 Uploading hardcoded configuration files to your servers often isn't enough. Sometimes you must add values dynamically inside a file. For example if you want to bind a service to a special network interface or to configure different database servers for your application for your different environments. This can be easily achieved with templates.

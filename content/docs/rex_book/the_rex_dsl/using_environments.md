@@ -1,5 +1,6 @@
 ---
 title: Using Environments
+date: 2019-12-01
 ---
 
 With environments it is easy to group your servers depending on the maturity of your configuration or your code.

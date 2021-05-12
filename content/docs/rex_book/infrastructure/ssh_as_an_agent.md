@@ -1,5 +1,6 @@
 ---
 title: SSH as an agent
+date: 2019-12-01
 ---
 
 To setup an environment to work with Rex you don't have to do much. You have to install Rex on your workstation or a central administration server. For most distributions you'll find packages on the package server. If you want to build Rex from source you have to install the following dependencies.

@@ -1,5 +1,6 @@
 ---
 title: Managing Datacenters and the Cloud
+date: 2019-05-18
 ---
 
 * [Deploying OpenLDAP and SSSD](/docs/rex_book/managing_datacenters_and_the_cloud/deploying_openldap_and_sssd.html)  

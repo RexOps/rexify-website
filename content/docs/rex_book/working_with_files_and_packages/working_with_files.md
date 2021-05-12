@@ -1,5 +1,6 @@
 ---
 title: Working with Files
+date: 2019-12-01
 ---
 
 One task in configuration management is managing files and keeping them in a consistent state. Rex gives you some easy to use functions to work with files.

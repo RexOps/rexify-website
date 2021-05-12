@@ -1,5 +1,6 @@
 ---
 title: Manage your Amazon EC2 instances
+date: 2019-12-01
 ---
 
 ## Starting Point

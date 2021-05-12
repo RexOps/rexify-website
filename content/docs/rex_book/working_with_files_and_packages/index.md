@@ -1,5 +1,6 @@
 ---
 title: Working with Files and Packages
+date: 2019-05-18
 ---
 
 * [Working with Files](/docs/rex_book/working_with_files_and_packages/working_with_files.html)  

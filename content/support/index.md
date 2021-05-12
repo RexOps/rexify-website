@@ -1,5 +1,6 @@
 ---
 title: Support for Rex
+date: 2021-02-14
 ---
 
 ## Community support

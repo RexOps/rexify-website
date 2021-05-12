@@ -1,5 +1,6 @@
 ---
 title: Installing Packages
+date: 2019-12-01
 ---
 
 Installing packages is easy. You can use the pkg function for this.

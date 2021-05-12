@@ -1,5 +1,6 @@
 ---
 title: Documentation
+date: 2019-07-05
 ---
 
 * [FAQ](/docs/faq/index.html)  

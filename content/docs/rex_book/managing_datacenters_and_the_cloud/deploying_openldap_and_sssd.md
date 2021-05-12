@@ -1,5 +1,6 @@
 ---
 title: Deploying OpenLDAP and SSSD
+date: 2019-12-01
 ---
 
 OpenLDAP (<http://www.openldap.org/>) is an open source directory server widely used for account management. It is easy to setup and administrate. There are also some Webfrontends like <http://phpldapadmin.sourceforge.net/> and <https://www.ldap-account-manager.org/lamcms/>.

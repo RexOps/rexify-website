@@ -1,5 +1,6 @@
 ---
 title: Rex Book (work in progress)
+date: 2019-09-11
 ---
 
 * [Infrastructure](/docs/rex_book/infrastructure/index.html)  

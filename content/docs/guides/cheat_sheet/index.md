@@ -1,5 +1,6 @@
 ---
 title: Cheat Sheet
+date: 2019-12-01
 ---
 
 ## Executing a command and parsing its output

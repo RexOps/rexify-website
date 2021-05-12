@@ -1,5 +1,6 @@
 ---
 title: Infrastructure
+date: 2019-05-18
 ---
 
 * [SSH as an agent](/docs/rex_book/infrastructure/ssh_as_an_agent.html)  

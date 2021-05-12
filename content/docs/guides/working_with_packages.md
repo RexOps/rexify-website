@@ -1,5 +1,6 @@
 ---
 title: Working with packages
+date: 2019-12-01
 ---
 
 If you want to install or remove packages on your server Rex gives you a few functions to do this. Rex tries to guess the right package provider based on the platform Rex connects to.

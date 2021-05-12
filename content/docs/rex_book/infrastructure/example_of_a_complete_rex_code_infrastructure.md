@@ -1,5 +1,6 @@
 ---
 title: Example of a complete Rex code infrastructure
+date: 2019-12-01
 ---
 
 For maintainable and reusable code it is important to start with the right infrastructure choices and tools. In this chapter you will learn how to setup and design your project to achieve this.

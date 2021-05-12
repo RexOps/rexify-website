@@ -1,5 +1,6 @@
 ---
 title: How to start using (R)?ex
+date: 2020-08-22
 ---
 
 This is a small how to showing the first steps with Rex.

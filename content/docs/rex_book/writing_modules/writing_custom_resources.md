@@ -1,5 +1,6 @@
 ---
 title: Writing custom resources
+date: 2019-12-01
 ---
 
 Resources are the units that are responsible to manage your configurations. 

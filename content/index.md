@@ -1,5 +1,6 @@
 ---
 title: (R)?ex, the friendly automation framework
+date: 2019-12-12
 data:
   root: 1
 ---

@@ -1,5 +1,6 @@
 ---
 title: Help people in need
+date: 2019-10-16
 ---
 
 (R)?ex is an open source project driven by volunteers to ease your daily work in configuring and deploying your infrastructure. If you also want to help others but don't have the time to contribute with code, documentation or other time consuming things we encourage you to help other people in need with a donation.

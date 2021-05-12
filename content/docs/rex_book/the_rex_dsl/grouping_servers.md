@@ -1,5 +1,6 @@
 ---
 title: Grouping servers
+date: 2021-02-13
 ---
 
 Rex offers you a powerful way to group your servers. The simplest way to use groups is to just define a group name and add all your desired servers to this group.
