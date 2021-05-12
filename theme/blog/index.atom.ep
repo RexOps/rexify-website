@@ -2,5 +2,5 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Placeholder Atom feed for rexify.org</title>
   <id><%= $site->base_url . $app->url_root %></id>
-  <updated><%= DateTime->now->strftime('%Y-%m-%dT%H:%M:%SZ') %></updated>
+  <updated><%= $self->date->strftime('%Y-%m-%dT%H:%M:%SZ') %></updated>
 </feed>
