@@ -130,7 +130,7 @@
 
 <p>Added Transaction and the possibility to rollback on transaction failures.</p>
 
-<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Transaction</span>;
+<p></p><p></p><pre><code class="hljs">use <span class="hljs-function">Rex::Transaction</span>;
 task &quot;<span class="hljs-string">do_something</span>&quot;, <span class="hljs-keyword">sub </span>{
 on_rollback {
     <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/test</span>&quot;;
