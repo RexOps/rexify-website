@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2021-07-05</b><br>
+                     <a href="/blog/2021/07/05/rex-1.13.4.html">Rex-1.13.4</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.13.4.html">Rex-1.13.4 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.4">available on CPAN</a>. It contains documentation updates, and a fix for inconsistent behavior between the <code>content</code> and <code>source</code> options of the file command.</p>
+
                    <p><b>2021-03-05</b><br>
                      <a href="/blog/2021/03/05/rex-1.13.3.html">Rex-1.13.3</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.13.3.html">Rex-1.13.3 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.3">available on CPAN</a>. It contains documentation updates, and a fix for debconf parsing. Behind the scenes, CI was migrated over to GitHub Actions as well.</p>
@@ -81,10 +85,6 @@
                    <p><b>2020-10-05</b><br>
                      <a href="/blog/2020/10/05/rex-1.13.0.html">Rex-1.13.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.13.0.html">Rex-1.13.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.0">available on CPAN</a>. It adds <code>on_no_change</code> hooks for file management commands to trigger further actions when files are left unchanged. Upgrade is recommended for all users.</p>
-
-                   <p><b>2020-09-05</b><br>
-                     <a href="/blog/2020/09/05/rex-1.12.2.html">Rex-1.12.2</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.12.2.html">Rex-1.12.2 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.12.2">available on CPAN</a>. It fixes various regressions, as well as bugs around file management. Upgrade is highly recommended for all users.</p>
 
 
                <h2>Events</h2>
@@ -130,7 +130,7 @@
 
 <p>Added Transaction and the possibility to rollback on transaction failures.</p>
 
-<p></p><p></p><pre><code class="hljs">use <span class="hljs-function">Rex::Transaction</span>;
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Transaction</span>;
 task &quot;<span class="hljs-string">do_something</span>&quot;, <span class="hljs-keyword">sub </span>{
 on_rollback {
     <span class="hljs-function">unlink</span> &quot;<span class="hljs-string">/tmp/test</span>&quot;;

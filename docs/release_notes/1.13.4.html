@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title>Release notes for 0.56.0</title>
+      <title>Release notes for 1.13.4</title>
 
-      <meta content="Release notes for 0.56.0" property="og:title">
+      <meta content="Release notes for 1.13.4" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://rexify.org/docs/release_notes/0.56.0.html" property="og:url">
+      <meta content="https://rexify.org/docs/release_notes/1.13.4.html" property="og:url">
       <meta content="https://rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -115,76 +115,25 @@
 » <a href="/index.html">Home</a>
 » <a href="/docs/index.html">Docs</a>
 » <a href="/docs/release_notes/index.html">Release notes</a>
-» <a href="/docs/release_notes/0.56.0.html">Release notes for 0.56.0</a>
+» <a href="/docs/release_notes/1.13.4.html">Release notes for 1.13.4</a>
 </p>
 
               
-              <h1>Release notes for 0.56.0</h1>
-              <p>These are the changes in 0.56 release.</p>
+              <h1>Release notes for 1.13.4</h1>
+              <p>This is a new patch release containing documentation updates, and a fix for inconsistent behavior between the <code>content</code> and <code>source</code> options of the file command.</p>
 
-<p>We want to thank every contributor that makes this release possible.</p>
-
-<h2 id="common">Common</h2>
-
-<h4 id="newtemplateenginewithbettererrorreporting.">New template engine with better error reporting.</h4>
-
-<p>The code is still in testing, so you can activate this new engine with a feature flag:</p>
-
-<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">template_ng</span>&#39;];</code></pre>
-
-<p>The template code is the same, so you can just use your old templates.</p>
+<p>Previously only the <code>content</code> option had the following:</p>
 
 <ul>
-<li>Added before_execute and after_execute task hooks - Jan</li>
-<li>Add basic tests for Rex::Logger (close #484) - Renee BÃ¤cker</li>
-<li>Clarify/correct documentation (close #486) - Sascha Askani</li>
-<li>Use OurPkgVersion for automatic module versioning - Ferenc Erki</li>
+<li>execute <code>before_change</code> and <code>after_change</code> hooks</li>
+<li>use a temporary file before moving the new file to its final target</li>
 </ul>
 
-<h2 id="bugfixes">Bugfixes</h2>
+<p>Now the <code>source</code> option behaves consistently with <code>content</code>, and does all the above.</p>
 
-<h3 id="common">Common</h3>
+<p>Please see the <a href="https://metacpan.org/release/FERKI/Rex-1.13.4">CPAN release page</a> for the changelog.</p>
 
-<ul>
-<li>Extend documentation of run() options (#466) - Ferenc Erki</li>
-<li>Only try to run umount if mount point is already mounted - Ferenc Erki</li>
-<li>Set changed flag for umount after the command has been run - Ferenc Erki</li>
-<li>Fix error when only grow option was given to partition() - Ferenc Erki</li>
-<li>Fix regex to find end of partition instead of size - Ferenc Erki</li>
-<li>Use kB as unit when determining partition boundaries - Ferenc Erki</li>
-<li>Fix missing <code>strict</code> and <code>warnings</code> pragmas - Ferenc Erki</li>
-<li>Add LICENSE section to POD - Ferenc Erki</li>
-<li>Replace defined-or operator to restore perl-5.8.0 compatibility - Ferenc Erki</li>
-<li>Improve evaluation of hostnames (fix #479, close #480) - Renee BÃ¤cker</li>
-<li>Fix POD (close #488) - Brian Manning</li>
-<li>Fix mode option for mkdir command - Ferenc Erki</li>
-<li>Fixed needs function - Jan</li>
-<li>Check versions of installed packages - Ferenc Erki</li>
-<li>fix for #473 - download root restricted files in sudo mode - Jan</li>
-<li>fix for #498 - added autodie feature flag - Jan</li>
-<li>fixed local mkdir return code - Jan</li>
-<li>fixed path quoting for #512 - Jan</li>
-<li>added glob_to_regex function (Text::Glob) - fix for #495 - Jan</li>
-<li>use test binary instead of &#39;[ ... ]&#39; for file tests - Jan</li>
-</ul>
-
-<h3 id="cloudvirtualization">Cloud/Virtualization</h3>
-
-<ul>
-<li>Fix test for Parallel::ForkManager - Ferenc Erki</li>
-<li>Fix test for Amazon Cloud Module - Ferenc Erki</li>
-<li>Add rex_kvm_agent feature flag - Ferenc Erki</li>
-<li>Fixed some deprecated docker calls - Jan</li>
-</ul>
-
-<h3 id="rex::test">Rex::Test</h3>
-
-<ul>
-<li>Allow multiple tasks to run with Rex::Test::Base (fix #476) - Robert Abraham</li>
-<li>Refactor has_package test for simpler version matching - Ferenc Erki</li>
-<li>Add has_stat to Rex::Test - Robert Abraham</li>
-<li>Add documentation for has_stat (close #474) - Ferenc Erki</li>
-</ul>
+<p>Many thanks to <a href="https://metacpan.org/source/FERKI/Rex-1.13.4/CONTRIBUTORS">all contributors</a> who made this release possible. We are delighted to welcome Gabor Szabo as new contributor!</p>
 
 
 

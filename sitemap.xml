@@ -10,7 +10,7 @@
         <loc>https://rexify.org/blog/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-08</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/2016/06/21/introduction_to_rex_talk_at_yapc_na_2016.html</loc>
@@ -151,28 +151,34 @@
         <lastmod>2021-03-05</lastmod>
     </url>
     <url>
+        <loc>https://rexify.org/blog/2021/07/05/rex-1.13.4.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2021-07-05</lastmod>
+    </url>
+    <url>
         <loc>https://rexify.org/blog/page/2/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-08</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/page/3/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-08</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/page/4/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-08</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/page/5/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-08</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/tag/event/</loc>
@@ -184,25 +190,25 @@
         <loc>https://rexify.org/blog/tag/news/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-05</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/tag/news/page/2/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-05</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/tag/news/page/3/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-05</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/blog/tag/news/page/4/</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2021-03-05</lastmod>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/care/</loc>
@@ -725,6 +731,12 @@
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
         <lastmod>2021-03-05</lastmod>
+    </url>
+    <url>
+        <loc>https://rexify.org/docs/release_notes/1.13.4.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2021-07-05</lastmod>
     </url>
     <url>
         <loc>https://rexify.org/docs/release_notes/1.2.0.html</loc>
