@@ -3,6 +3,7 @@ title: Release notes
 date: 2021-03-05
 ---
 
+* [Release notes for 1.13.4](1.13.4.html)
 * [Release notes for 1.13.3](1.13.3.html)
 * [Release notes for 1.13.2](1.13.2.html)
 * [Release notes for 1.13.1](1.13.1.html)
