@@ -8,9 +8,9 @@ date: 2021-02-14
 Rex is an open source project driven and supported by its community. If you need help you're invited to join the discussion on one of our support channels:
 
 - [GitHub discussions](https://github.com/RexOps/Rex/discussions)
-- [Matrix (#rexops:matrix.org)](https://matrix.to/#/#rexops:matrix.org)
-- [IRC (#rexops on irc.oftc.net)](https://webchat.oftc.net/?channels=rexops)
-- [Rex Users on Google Groups](https://groups.google.com/group/rex-users)
+- [Matrix chat (#rexops:matrix.org)](https://matrix.to/#/#rexops:matrix.org)
+- [IRC chat (#rexops on irc.oftc.net)](https://webchat.oftc.net/?channels=rexops)
+- [Mailing list (Rex Users on Google Groups)](https://groups.google.com/group/rex-users)
 
 ## Commercial support
 
