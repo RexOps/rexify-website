@@ -129,7 +129,7 @@
 
 <p>If you need to use a jump-host to connect to your servers, you can now use a proxy command to do so. This feature is only available if you&#39;re using the <strong>OpenSSH</strong> connection model.</p>
 
-<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.50</span>&#39;];
+<pre><code class="hljs">use Rex -feature =&gt; [&#39;<span class="hljs-string">0.50</span>&#39;];
 set connection   =&gt; &quot;<span class="hljs-string">OpenSSH</span>&quot;;
 proxy_command &quot;<span class="hljs-string">ssh user</span><span class="hljs-type">@jumphost</span><span class="hljs-string"> nc </span><span class="hljs-type">%h</span><span class="hljs-string"> </span><span class="hljs-type">%p</span><span class="hljs-string"> 2&gt;/dev/null</span>&quot;;    </code></pre></li>
 <li><p><strong>Added a new experimental execution model</strong></p>
