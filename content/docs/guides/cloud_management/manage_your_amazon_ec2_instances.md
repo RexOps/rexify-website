@@ -97,7 +97,7 @@ If you don't need your instances or volumes anymore, you can just destroy them.
 
     ```perl
     task "destroy", sub {
-        cloud_volume delete      => "$volume_id";
+        cloud_volume delete => "$volume_id";
         cloud_instance terminate => "$instance_id";
     };
     ```

@@ -105,7 +105,7 @@ Rex knows that it has to look up the template in the `__DATA__` section of the f
 
     ```perl
     use Rex -feature => ['1.0'];
-    task tempfiles   => sub {
+    task tempfiles => sub {
         file '/tmp/test.txt' => content => template(
             '@test',
             test => {
