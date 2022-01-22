@@ -16,6 +16,7 @@ Here we will maintain a list of frequently asked questions with their answers.
 * [How do I use Rex's built-in logger for ERROR/WARN/INFO/DEBUG messages?](#howdoiuserexsbuilt-inloggerforerrorwarninfodebugmessages)
 * [How do I load all my custom modules easily?](#howdoiloadallmycustommoduleseasily)
 * [How do I indicate the task failed to run properly?](#howdoiindicatethetaskfailedtorunproperly)
+* [How to add Rex support for a new operating system or virtualization method?](#howtoaddrexsupportforanewoperatingsystemorvirtualizationmethod)
 
 ## Is it called (R)?ex or Rex?
 
@@ -131,3 +132,7 @@ This might affect when modules are loaded (e.g. at compilation time or at runtim
 ## How do I indicate the task failed to run properly?
 
 Overall, the same way as in Perl. For example, raising an exception with `die()` in the task body will abort the task, and calling `exit()` will bail out from the whole rex process currently running.
+
+## How to add Rex support for a new operating system or virtualization method?
+
+Please see the Contributing guide sections about [Rex core vs extending Rex](https://github.com/RexOps/Rex/blob/master/CONTRIBUTING.md#rex-core-vs-extending-rex) and [Common scenarios](https://github.com/RexOps/Rex/blob/master/CONTRIBUTING.md#common-scenarios).
