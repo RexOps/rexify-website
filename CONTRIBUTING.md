@@ -6,9 +6,9 @@ For optimal workflow and experience, please follow the guidelines summarized in 
 
 ## Getting help and support
 
-If you need help with questions like “How do I …?”, “Why does it …?”, “What does … mean?”, or “How does … work?”, please use our various [support channels](https://www.rexify.org/support/index.html) for both community and commercial support.
+If you need help or have questions, please use our main [support channels](https://www.rexify.org/support/index.html) for both community and commercial support, or [start a discussion](https://github.com/RexOps/rexify-website/discussions).
 
-Please use the issue tracker for bug reports and feature requests only.
+Please use GitHub issues for bug reports and feature requests only.
 
 ## GitHub issues and pull requests
 
