@@ -11,7 +11,7 @@ If you would like to contribute code or documentation to (R)?ex, please read our
 
 ## Website
 
-If you would like to contribute to this website, please read this [README](https://github.com/RexOps/rexify-website/blob/master/README.md).
+If you would like to contribute to this website, please read its [Contributing guide](https://github.com/RexOps/rexify-website/blob/master/CONTRIBUTING.md).
 
 ## Sponsoring
 
