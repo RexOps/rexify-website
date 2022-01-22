@@ -220,7 +220,7 @@ for a project called &lt;%= $test-&gt;{target} %&gt;
 <h3 id="usingmultipleinlinetemplates">Using multiple inline templates</h3>
 
 <pre><code class="hljs">use Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
-task tempfiles   =&gt; <span class="hljs-keyword">sub </span>{
+task tempfiles =&gt; <span class="hljs-keyword">sub </span>{
     file &#39;<span class="hljs-string">/tmp/test.txt</span>&#39; =&gt; content =&gt; template(
         &#39;<span class="hljs-string">@test</span>&#39;,
         test =&gt; {

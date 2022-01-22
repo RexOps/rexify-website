@@ -163,9 +163,9 @@ task &quot;<span class="hljs-string">prepare</span>&quot;, <span class="hljs-key
       ipaddr    =&gt; &quot;<span class="hljs-string">192.168.2.23</span>&quot;,
       canonical =&gt; &quot;<span class="hljs-string">frontend01</span>&quot;;
 
-    augeas modify                                  =&gt;
-      &quot;<span class="hljs-string">/files/etc/ssh/sshd_config/PermitRootLogin</span>&quot; =&gt; &quot;<span class="hljs-string">without-password</span>&quot;,
-      on_change                                    =&gt; <span class="hljs-keyword">sub </span>{
+    augeas modify =&gt; &quot;<span class="hljs-string">/files/etc/ssh/sshd_config/PermitRootLogin</span>&quot; =&gt;
+      &quot;<span class="hljs-string">without-password</span>&quot;,
+      on_change =&gt; <span class="hljs-keyword">sub </span>{
         service sshd =&gt; &quot;<span class="hljs-string">restart</span>&quot;;
       };
 };</code></pre>

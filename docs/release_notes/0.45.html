@@ -159,7 +159,7 @@ cloud_region &quot;<span class="hljs-string">http://openstack.domain.tld:5000/v2
     &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;cloud_instance terminate =&amp;gt; &lt;span class=&quot;hljs-type&quot;&gt;$instance&lt;/span&gt;-&amp;gt;{id};
 </code></pre>
 
-<p>cloud_volume <span class="hljs-function">delete</span>      =&gt; <span class="hljs-type">$vol_id</span>;        </p>
+<p>cloud_volume <span class="hljs-function">delete</span> =&gt; <span class="hljs-type">$vol_id</span>;        </p>
 
 <ul>
 <li>added cloud_image_list() function</li>
@@ -271,9 +271,9 @@ only_notified =&gt; TRUE;</code></pre></li>
 <ul>
 <li><p><em>pkg</em> resource (replacement for install function).</p>
 
-<pre><code class="hljs">pkg &quot;<span class="hljs-string">vim</span>&quot;,      ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
-pkg &quot;<span class="hljs-string">httpd</span>&quot;,    ensure =&gt; &quot;<span class="hljs-string">2.4.6</span>&quot;;
-pkg &quot;<span class="hljs-string">vim-tiny</span>&quot;, ensure =&gt; &quot;<span class="hljs-string">absent</span>&quot;;
+<pre><code class="hljs">pkg &quot;<span class="hljs-string">vim</span>&quot;,                     ensure =&gt; &quot;<span class="hljs-string">present</span>&quot;;
+pkg &quot;<span class="hljs-string">httpd</span>&quot;,                   ensure =&gt; &quot;<span class="hljs-string">2.4.6</span>&quot;;
+pkg &quot;<span class="hljs-string">vim-tiny</span>&quot;,                ensure =&gt; &quot;<span class="hljs-string">absent</span>&quot;;
 pkg [ &quot;<span class="hljs-string">tftp-server</span>&quot;, &quot;<span class="hljs-string">wget</span>&quot; ], ensure =&gt; &quot;<span class="hljs-string">latest</span>&quot;;    </code></pre></li>
 <li><p>Added account() resource (as replacement for create_user).</p>
 

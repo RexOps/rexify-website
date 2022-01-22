@@ -209,7 +209,7 @@ task &quot;<span class="hljs-string">create</span>&quot;, <span class="hljs-keyw
 <p>If you don&#39;t need your instances or volumes anymore, you can just destroy them.</p>
 
 <pre><code class="hljs">task &quot;<span class="hljs-string">destroy</span>&quot;, <span class="hljs-keyword">sub </span>{
-    cloud_volume <span class="hljs-function">delete</span>      =&gt; &quot;<span class="hljs-type">$volume_id</span>&quot;;
+    cloud_volume <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-type">$volume_id</span>&quot;;
     cloud_instance terminate =&gt; &quot;<span class="hljs-type">$instance_id</span>&quot;;
 };</code></pre>
 

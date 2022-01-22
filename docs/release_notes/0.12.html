@@ -253,9 +253,9 @@ private_key &quot;<span class="hljs-string">/path/to/your/ec2-private.key.pem</s
 };</p>
 
 <p>task &quot;<span class="hljs-string">destroy</span>&quot;, <span class="hljs-keyword">sub </span>{
-    cloud_volume detach      =&gt; &quot;<span class="hljs-string">vol-xxaabb</span>&quot;;
+    cloud_volume detach =&gt; &quot;<span class="hljs-string">vol-xxaabb</span>&quot;;
     cloud_instance terminate =&gt; &quot;<span class="hljs-string">i-ffgghhjj</span>&quot;;
-    cloud_colume <span class="hljs-function">delete</span>      =&gt; &quot;<span class="hljs-string">vol-xxaabb</span>&quot;;
+    cloud_colume <span class="hljs-function">delete</span> =&gt; &quot;<span class="hljs-string">vol-xxaabb</span>&quot;;
 };</p>
 
 <p>task &quot;<span class="hljs-string">prepare</span>&quot;,
