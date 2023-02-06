@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Configure git
@@ -33,7 +33,7 @@ jobs:
           echo PERL_VERSION="$(perl -E 'print $^V')" >> $GITHUB_ENV
           echo "$(pwd)/local/bin" >> $GITHUB_PATH
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: local
           key: ${{ runner.os }}-cache-deps-${{ env.PERL_VERSION }}-{{ hashFiles('cpanfile') }}
