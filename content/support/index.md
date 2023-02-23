@@ -1,6 +1,6 @@
 ---
 title: Support for Rex
-date: 2021-02-14
+date: 2023-02-23
 ---
 
 ## Community support
@@ -11,6 +11,7 @@ Rex is an open source project driven and supported by its community. If you need
 - [Matrix chat (#rexops:matrix.org)](https://matrix.to/#/#rexops:matrix.org)
 - [IRC chat (#rexops on irc.oftc.net)](https://webchat.oftc.net/?channels=rexops)
 - [Mailing list (Rex Users on Google Groups)](https://groups.google.com/group/rex-users)
+- [Maintainer’s open source office hours](https://cal.com/ferki/opensource)
 
 ## Commercial support
 
@@ -24,7 +25,8 @@ You want to provide commercial support for Rex? Just drop us a few lines with a 
 
 Get consulting, training, and custom development services directly from a core developer and maintainer of Rex.
 
-<a href="https://www.linkedin.com/in/ferki/" class="btn">LinkedIn profile</a>
+<a href="https://ferki.it" class="btn">Website</a>
+<a href="https://cal.com/ferki" class="btn">Booking</a>
 <div style="overflow:auto"></div>
 
 ### inovex - Enabling Your Digital Future
