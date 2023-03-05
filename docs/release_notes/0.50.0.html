@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2023-03-05</b><br>
+                     <a href="/blog/2023/03/05/rex-1.14.1.html">Rex-1.14.1</a></p><p>
+                   </p><p></p><p>The <a href="/docs/release_notes/1.14.1.html">Rex-1.14.1 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.14.1">available on CPAN</a>. It contains bug fixes and documentation updates.</p>
+
                    <p><b>2023-02-05</b><br>
                      <a href="/blog/2023/02/05/rex-1.14.0.html">Rex-1.14.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.14.0.html">Rex-1.14.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.14.0">available on CPAN</a>. It contains improved Rexfile loading, documentation updates, and bumps the minimum required Perl version to 5.12.5.</p>
@@ -79,12 +83,6 @@
                    <p><b>2020-12-05</b><br>
                      <a href="/blog/2020/12/05/rex-1.13.2.html">Rex-1.13.2</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.13.2.html">Rex-1.13.2 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.2">available on CPAN</a>. It contains only documentation updates, mostly for the built-in template capabilities, but also fixes a few typos.</p>
-
-                   <p><b>2020-11-05</b><br>
-                     <a href="/blog/2020/11/05/rex-1.13.1.html">Rex-1.13.1</a></p><p>
-                   </p><p></p><p><a href="https://github.com/RexOps/Rex/commit/cabbc6a8aa9eb2c0d9d3fc2439be51924edc3ff8">Happy 10th birthday, Rex!</a></p>
-
-<p>The <a href="/docs/release_notes/1.13.1.html">Rex-1.13.1 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.1">available on CPAN</a>. It is focusing on CMDB bugfixes and documentation, while also fixing a missing feature flag. Upgrade is recommended for all users.</p>
 
 
                <h2>Events</h2>
@@ -129,7 +127,7 @@
 
 <p>If you need to use a jump-host to connect to your servers, you can now use a proxy command to do so. This feature is only available if you&#39;re using the <strong>OpenSSH</strong> connection model.</p>
 
-<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.50</span>&#39;];
+<pre><code class="hljs">use Rex -feature =&gt; [&#39;<span class="hljs-string">0.50</span>&#39;];
 set connection =&gt; &quot;<span class="hljs-string">OpenSSH</span>&quot;;
 proxy_command &quot;<span class="hljs-string">ssh user</span><span class="hljs-type">@jumphost</span><span class="hljs-string"> nc </span><span class="hljs-type">%h</span><span class="hljs-string"> </span><span class="hljs-type">%p</span><span class="hljs-string"> 2&gt;/dev/null</span>&quot;;    </code></pre></li>
 <li><p><strong>Added a new experimental execution model</strong></p>
