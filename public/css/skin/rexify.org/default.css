@@ -518,3 +518,7 @@ section p {
 #content section .read-more a {
     font-size: smaller;
 }
+
+p {
+   margin: 10px;
+}
