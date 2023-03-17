@@ -18,7 +18,7 @@ Dean Hamstead from the The Perl and Raku Foundation Marketing Committee has sent
 > 
 > Call For Papers is open for The Perl and Raku Conference and you can submit your talk Ideas at [https://tprc.to/papers](https://tprc.to/papers). Talk submission deadline is *March 31 Midnight UTC.*
 > 
-> The Conference will be held in *Toronto, Canada on July 11 to 13, 2023 *with more details at [https://tprc.to/](https://tprc.to/)
+> The Conference will be held in *Toronto, Canada on July 11 to 13, 2023* with more details at [https://tprc.to/](https://tprc.to/)
 > 
 > Kind Regards
 > 
@@ -26,6 +26,6 @@ Dean Hamstead from the The Perl and Raku Foundation Marketing Committee has sent
 > 
 > Marketing Committee Volunteer, The Perl and Raku Foundation
 
-(edited slightly for links)
+(edited slightly for links and location highlight)
 
 We are happy to provide support and feedback to speakers on our [support channels](https://www.rexify.org/support/index.html).
