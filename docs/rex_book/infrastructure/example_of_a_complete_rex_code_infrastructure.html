@@ -64,6 +64,10 @@
          <div id="widgets_container">
             <div id="widgets">
                <h2>News</h2>
+                   <p><b>2023-08-05</b><br>
+                     <a href="/blog/2023/08/05/rex-1.14.3.html">Rex-1.14.3</a></p><p>
+                   </p><p></p><p><a href="/docs/release_notes/1.14.3.html">Rex-1.14.3</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.14.3">available on CPAN</a>. It contains bug fixes for local package installation, command existence checks, and Git tests.</p>
+
                    <p><b>2023-05-05</b><br>
                      <a href="/blog/2023/05/05/rex-1.14.2.html">Rex-1.14.2</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.14.2.html">Rex-1.14.2 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.14.2">available on CPAN</a>. It contains bug fixes for running local commands on Windows, cloning git repositories, and test suite fixes for the upcoming perl-5.38.0 release.</p>
@@ -79,10 +83,6 @@
                    <p><b>2023-02-05</b><br>
                      <a href="/blog/2023/02/05/rex-1.14.0.html">Rex-1.14.0</a></p><p>
                    </p><p></p><p>The <a href="/docs/release_notes/1.14.0.html">Rex-1.14.0 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.14.0">available on CPAN</a>. It contains improved Rexfile loading, documentation updates, and bumps the minimum required Perl version to 5.12.5.</p>
-
-                   <p><b>2021-07-05</b><br>
-                     <a href="/blog/2021/07/05/rex-1.13.4.html">Rex-1.13.4</a></p><p>
-                   </p><p></p><p>The <a href="/docs/release_notes/1.13.4.html">Rex-1.13.4 release</a> is now <a href="https://metacpan.org/release/FERKI/Rex-1.13.4">available on CPAN</a>. It contains documentation updates, and a fix for inconsistent behavior between the <code>content</code> and <code>source</code> options of the file command.</p>
 
 
                <h2>Events</h2>
@@ -196,7 +196,7 @@ PerlRequire:
 
 <h4 id="loadallrequiredmodules">Load all required modules</h4>
 
-<pre><code class="hljs">use Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">1.0</span>&#39;];
 <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::CMDB</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Test</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Group</span>::<span class="hljs-function">Lookup</span>::<span class="hljs-function">INI</span>;</code></pre>

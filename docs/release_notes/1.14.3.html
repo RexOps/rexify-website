@@ -5,11 +5,11 @@
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-      <title></title>
+      <title>Release notes for 1.14.3</title>
 
-      <meta content="" property="og:title">
+      <meta content="Release notes for 1.14.3" property="og:title">
       <meta content="website" property="og:type">
-      <meta content="https://rexify.org/blog/tag/news/page/5/" property="og:url">
+      <meta content="https://rexify.org/docs/release_notes/1.14.3.html" property="og:url">
       <meta content="https://rexify.org/public/images/skin/rexify.org/open_graph.png" property="og:image">
 
       <meta content="width=1024, initial-scale=0.5" name="viewport">
@@ -111,92 +111,34 @@
 
 <p>
 » <a href="/index.html">Home</a>
-» <a href="/blog/index.html">Blog</a>
-» <a href="/blog/tag/index.html">Tag</a>
-» <a href="/blog/tag/news/index.html">News</a>
-» <a href="/blog/tag/news/page/index.html">Page</a>
-» <a href="/blog/tag/news/page/5/index.html"></a>
+» <a href="/docs/index.html">Docs</a>
+» <a href="/docs/release_notes/index.html">Release notes</a>
+» <a href="/docs/release_notes/1.14.3.html">Release notes for 1.14.3</a>
 </p>
 
               
-              <h1></h1>
-              <h1>Blog</h1>
+              <h1>Release notes for 1.14.3</h1>
+              <p>This is a new patch release containing bug fixes.</p>
 
-<div class="pagination pagination-centered pagination-small">
-  <ul>
-    <li><a href="/blog/tag/news/page/4/">Previous</a></li>
-    <li><a href="#">Next</a></li>
-  </ul>
-</div>
+<ul>
+<li><p>Fix local package installation</p>
 
-<section>
-  <h2><a href="/blog/2019/12/05/rex-1.7.1.html">Rex-1.7.1</a></h2>
-  <div class="metadata">
-    <span class="date">2019-12-05</span> - <span class="author">Ferenc Erki</span>
-  </div>
+<p>Properly pass environment variables to underlying commands to prevent related warnings or errors.</p></li>
+<li><p>Fix checking command existence</p>
 
-  <p>The <a href="/docs/release_notes/1.7.1.html">Rex-1.7.1 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>, fixing a Windows testing issue, and updating some docs.</p>
+<p>Support systems with command existence checks indicating success via their exit codes, while reporting an error. Rex now double-checks whether the reported command candidate actually exists in the file system or not.</p></li>
+<li><p>Fix tests related to Git functionality</p>
 
+<ul>
+<li>Properly skip without <code>git</code> binary.</li>
+<li>Ignore global and system configuration during tests.</li>
+<li>Pass even with ancient <code>git</code> versions which does not support <code>-C</code> command line option (before Git 1.8.5).</li>
+</ul></li>
+</ul>
 
-</section>
+<p>Please see the <a href="https://metacpan.org/release/FERKI/Rex-1.14.3">CPAN release page</a> for the full changelog.</p>
 
-<section>
-  <h2><a href="/blog/2019/11/05/rex-1.7.0.html">Rex-1.7.0</a></h2>
-  <div class="metadata">
-    <span class="date">2019-11-05</span> - <span class="author">Ferenc Erki</span>
-  </div>
-
-  <p>The <a href="/docs/release_notes/1.7.0.html">Rex-1.7.0 release</a> is now available on <a href="https://metacpan.org/release/Rex">CPAN</a>.</p>
-
-
-</section>
-
-<section>
-  <h2><a href="/blog/2019/07/02/deprecating_official_rex_packages.html">Deprecating official Rex packages</a></h2>
-  <div class="metadata">
-    <span class="date">2019-07-02</span> - <span class="author">Ferenc Erki</span>
-  </div>
-
-  <p>As part of our efforts to simplify maintenance around RexOps projects, we have decided to stop building Rex packages on our side. We recommend relying on OS packages maintained by the various distributions in their respective upstream repositories, or to install Rex from CPAN.</p>
-
-
-  <div class="read-more">
-    <p><a href="/blog/2019/07/02/deprecating_official_rex_packages.html">Read more...</a></p>
-  </div>
-</section>
-
-<section>
-  <h2><a href="/blog/2019/06/09/site-update.html">Post-migration updates &amp; clean-up</a></h2>
-  <div class="metadata">
-    <span class="date">2019-06-09</span> - <span class="author">Erik Huelsmann</span>
-  </div>
-
-  <p>Over the course of the past weeks many clean-ups have been
-done, reaping the benefits provided by our new
-<a href="http://preaction.me/statocles">Statocles</a>-based site:</p>
-
-
-  <div class="read-more">
-    <p><a href="/blog/2019/06/09/site-update.html">Read more...</a></p>
-  </div>
-</section>
-
-<section>
-  <h2><a href="/blog/2019/05/19/new-site.html">New site engine for rexify.org</a></h2>
-  <div class="metadata">
-    <span class="date">2019-05-19</span> - <span class="author">Erik Huelsmann</span>
-  </div>
-
-  <p>After months of work on a new site backend, we reached the MVP today for
-our site to be switched over to a new engine: from now on, our site will be
-maintained using the static site generator
-<a href="http://preaction.me/statocles/">Statocles</a>.</p>
-
-
-  <div class="read-more">
-    <p><a href="/blog/2019/05/19/new-site.html">Read more...</a></p>
-  </div>
-</section>
+<p>Many thanks to <a href="https://metacpan.org/source/FERKI/Rex-1.14.3/CONTRIBUTORS">all contributors</a> who made this release possible.</p>
 
 
 
