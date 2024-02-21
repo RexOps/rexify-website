@@ -17,7 +17,7 @@ While it's possible to install Rex system-wide from CPAN, for that use case you 
 
 Rex is distributed via package managers for many different operating systems. The [Repology page of Rex](https://repology.org/project/rex/versions) is an up-to-date list of available Rex packages.
 
-We encourage you to help those package management projects to distribute Rex. We are happy to support the process, so feel free to get us involved too.
+We encourage ou to help those package management projects to distribute Rex. We are happy to support the process, so feel free to get us involved too.
 
 ### Community packages
 
