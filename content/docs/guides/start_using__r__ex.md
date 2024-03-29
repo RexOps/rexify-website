@@ -86,7 +86,7 @@ This task will start the service named `apache2` on all the servers in the `myse
 
 ### Display all tasks in a Rexfile
 
-Use the following command to display all tasks in your Rexfile use the following command:
+To display all tasks in your Rexfile use the following command:
 
     $ rex -T
     Tasks
