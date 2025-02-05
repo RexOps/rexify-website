@@ -1,8 +1,9 @@
 ---
 title: Release notes
-date: 2024-11-05
+date: 2025-02-05
 ---
 
+* [Release notes for 1.16.0](1.16.0.html)
 * [Release notes for 1.15.0](1.15.0.html)
 * [Release notes for 1.14.3](1.14.3.html)
 * [Release notes for 1.14.2](1.14.2.html)
