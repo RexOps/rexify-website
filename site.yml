@@ -78,7 +78,7 @@ gh_pages:
     class: Statocles::Deploy::Git
     args:
         branch: gh-pages
-        base_url: https://rexify.org
+        base_url: https://www.rexify.org
 rexify:
     class: Statocles::Theme
     args:
