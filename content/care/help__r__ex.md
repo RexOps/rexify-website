@@ -23,6 +23,10 @@ If you are looking for something custom-made, you may be interested in checking 
 
 We thank our sponsors who hired professionals specifically to contribute to Rex. Their efforts provide value for our whole community, and helps sustainable maintenance. We greatly appreciate your support!
 
+[![Ctrl O Ltd][ctrlo_logo]](https://www.ctrlo.com/)
+
 ## Hardware
 
 There can't be enough hardware where we can test and build (R)?ex. If you can donate any kind of hardware, please contact us.
+
+[ctrlo_logo]: /public/images/skin/rexify.org/ctrlo_logo.webp height=77 width=222
