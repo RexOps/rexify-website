@@ -137,7 +137,7 @@ operations.</p>
 
 <p>A simple rsync interface is now available. To use it, you need the Perl module <span>Expect</span>.</p>
 
-<p></p><p></p><pre><code class="hljs">use <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Rsync</span>;</code></pre></li>
+<p></p><p></p><pre><code class="hljs"><span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Commands</span>::<span class="hljs-function">Rsync</span>;</code></pre></li>
 </ul>
 desc &quot;<span class="hljs-string">Sync /etc</span>&quot;;
 task &quot;<span class="hljs-string">etc</span>&quot;, &quot;<span class="hljs-string">server1</span>&quot;, &quot;<span class="hljs-string">server2</span>&quot;, &quot;<span class="hljs-string">server3</span>&quot;, <span class="hljs-keyword">sub </span>{
