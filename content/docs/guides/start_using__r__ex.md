@@ -25,7 +25,7 @@ To run Rex you don't need much.
 
 You can run Rex from your workstation or on a central control host.
 
-Rex requires at least Perl 5.10.1 on this machine, and of course some modules as dependencies. For the best experience we recommend using the [latest stable release of Perl](https://www.perl.org/get.html). If you're using the packages provided by your OS distribution, or you install Rex from CPAN, then those dependencies will be installed automatically.
+Rex requires at least Perl 5.14.4 on this machine, and of course some modules as dependencies. For the best experience we recommend using the [latest stable release of Perl](https://www.perl.org/get.html). If you're using the packages provided by your OS distribution, or you install Rex from CPAN, then those dependencies will be installed automatically.
 
 You can find information on the [Get Rex](/get/index.html) page about how to install Rex itself.
 
