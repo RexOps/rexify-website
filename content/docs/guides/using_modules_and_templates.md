@@ -66,7 +66,7 @@ Now it is time to create a basic ntp.conf file. Create the directory lib/Service
     server ntp02.company.tld
     ```
 
-If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will than decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it falls back to ntp.conf.
+If you now want to distribute different ntp.conf files per environment you can add multiple ntp.conf files to that directory. Rex will then decide with the help of the -E $env cli parameter which file to use. Rex first try to find a file named ntp.conf.$environment and if that file does not exist it falls back to ntp.conf.
 
     ```
     .
@@ -230,7 +230,7 @@ To use your module you have to add it to your Rexfile. This can be simply achiev
     1;
     ```
 
-Than you can list your Tasks and execute them.
+Then you can list your Tasks and execute them.
 
     $ rex -T
     [2013-03-30 02:35:32] INFO - eval your Rexfile.
