@@ -36,4 +36,4 @@ You can clone our [GitHub repository](https://github.com/RexOps/Rex.git) to inst
 
 Some of the optional dependencies might not be available on all platforms, but to install them as well, use this command:
 
-    dzil listdeps --suggests | cpanm
+    $ dzil listdeps --suggests | cpanm
