@@ -172,7 +172,7 @@ test {
     <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
 
     run &quot;<span class="hljs-string">ls -l</span>&quot;;
-    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
+    <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == <span class="hljs-number">0</span>, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );
 
     <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">finish</span>;
 };
@@ -296,7 +296,7 @@ cloud_volume <span class="hljs-function">delete</span> =&gt; <span class="hljs-t
 <li><p>Allow passing template content to template command - #345 - reneeb</p>
 
 <pre><code class="hljs">file &quot;<span class="hljs-string">/etc/file.cnf</span>&quot;,
-content =&gt; template( \&#39;<span class="hljs-string">&lt;%= $name %&gt; is cool!</span>&#39;, name =&gt; &#39;<span class="hljs-string">Rex</span>&#39; );    </code></pre></li>
+content =&gt; template( \&#39;&lt;%= <span class="hljs-type">$name</span> %&gt; is cool!&#39;<span class="hljs-string">, name =&gt; </span>&#39;Rex&#39;<span class="hljs-string"> );</span>    </code></pre></li>
 <li><p>Added &#39;no_cache&#39; feature. If you need to disable the cache, use this.</p>
 
 <pre><code class="hljs"><span class="hljs-comment"># Rexfile</span><span class="hljs-comment">

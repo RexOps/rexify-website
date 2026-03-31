@@ -290,10 +290,10 @@ PerlRequire:
 <p>It is also possible to define the server or group to connect to.</p>
 
 <pre><code class="hljs">make {
-    <span class="hljs-comment"># run setup() task of Rex::OS::Base module</span><span class="hljs-comment">
+    <span class="hljs-comment"># run setup() </span>task<span class="hljs-comment"> of Rex::OS::Base module</span><span class="hljs-comment">
 </span>    <span class="hljs-function">Rex::OS</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 
-    <span class="hljs-comment"># run setup() task of Rex::NTP::Base module</span><span class="hljs-comment">
+    <span class="hljs-comment"># run setup() </span>task<span class="hljs-comment"> of Rex::NTP::Base module</span><span class="hljs-comment">
 </span>    <span class="hljs-function">Rex::NTP</span>::<span class="hljs-function">Base</span>::<span class="hljs-function">setup</span>();
 };</code></pre>
 
@@ -349,7 +349,7 @@ PerlRequire:
   <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">has_content</span>( &quot;<span class="hljs-string">/etc/passwd</span>&quot;, qr{root:x:0:}ms );
 
   run &quot;<span class="hljs-string">ls -l</span>&quot;;
-  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == 0, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );</code></pre>
+  <span class="hljs-type">$t</span>-&gt;<span class="hljs-type">ok</span>( <span class="hljs-variable">$?</span> == <span class="hljs-number">0</span>, &quot;<span class="hljs-string">ls -l returns success.</span>&quot; );</code></pre>
 
 <p>Run the tests. You can also use normal rex functions here.</p>
 

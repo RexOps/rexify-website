@@ -290,7 +290,7 @@ bare class by our self.</p>
 </span><span class="hljs-keyword">sub </span><span class="hljs-function">present</span> {
     <span class="hljs-keyword">my</span> ( <span class="hljs-type">$self</span>, <span class="hljs-type">$rule_config</span> ) = <span class="hljs-type">@_</span>;
 
-    <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = 0;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = <span class="hljs-number">0</span>;
 
     file &quot;<span class="hljs-string">/etc/motd</span>&quot;,
       content   =&gt; <span class="hljs-type">$rule_config</span>-&gt;{message},
@@ -305,7 +305,7 @@ bare class by our self.</p>
 <span class="hljs-keyword">sub </span><span class="hljs-function">absent</span> {
     <span class="hljs-keyword">my</span> ( <span class="hljs-type">$self</span>, <span class="hljs-type">$rule_config</span> ) = <span class="hljs-type">@_</span>;
 
-    <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = 0;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$changed</span> = <span class="hljs-number">0</span>;
 
     file &quot;<span class="hljs-string">/etc/motd</span>&quot;,
       ensure    =&gt; &quot;<span class="hljs-string">absent</span>&quot;,

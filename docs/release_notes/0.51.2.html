@@ -161,7 +161,7 @@ task &quot;<span class="hljs-string">setup</span>&quot;, make {
 <span class="hljs-keyword">use</span> <span class="hljs-function">Rex::Ext</span>::<span class="hljs-function">ParamLookup</span>;</code></pre></li>
 </ul>
 task &quot;<span class="hljs-string">setup</span>&quot;, make {
-    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, 4096;
+    <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = param_lookup &quot;<span class="hljs-string">maxconn</span>&quot;, <span class="hljs-number">4096</span>;
 };    
 
 <pre><code>This will first check if there is a task parameter named **maxconn** and if not, it will try to look inside the CMDB. If it doesn&#39;t find the key anywhere it will just return the default provided by the second parameter (in this example *4096*).

@@ -171,7 +171,7 @@ set box =&gt; &quot;<span class="hljs-string">KVM</span>&quot;;
 &lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;has_content&lt;/span&gt;( &quot;&lt;span class=&quot;hljs-string&quot;&gt;/etc/passwd&lt;/span&gt;&quot;, qr{root:x:0:}ms );
 
 run &quot;&lt;span class=&quot;hljs-string&quot;&gt;ls -l&lt;/span&gt;&quot;;
-&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;ok&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$?&lt;/span&gt; == 0, &quot;&lt;span class=&quot;hljs-string&quot;&gt;ls -l returns success.&lt;/span&gt;&quot; );
+&lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;ok&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$?&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;, &quot;&lt;span class=&quot;hljs-string&quot;&gt;ls -l returns success.&lt;/span&gt;&quot; );
 
 &lt;span class=&quot;hljs-type&quot;&gt;$t&lt;/span&gt;-&amp;gt;&lt;span class=&quot;hljs-type&quot;&gt;finish&lt;/span&gt;;
 </code></pre>
