@@ -150,7 +150,7 @@ operations.</p>
 
 <p>For example, if you have a <strong>CentOS</strong> server with the hostname <strong>web01</strong>, this means that if you request the key <strong>maxconn</strong> Rex will first try to find the key inside <strong>cmdb/CentOS/web01.yml</strong> and if it doesn&#39;t find the Rex will try the next file in the lookup path.</p>
 
-<pre><code class="hljs">use Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
+<pre><code class="hljs"><span class="hljs-keyword">use</span> Rex -feature =&gt; [&#39;<span class="hljs-string">0.51</span>&#39;];
 task &quot;<span class="hljs-string">setup</span>&quot;, make {
 <span class="hljs-keyword">my</span> <span class="hljs-type">$maxconn</span> = get cmdb &quot;<span class="hljs-string">maxconn</span>&quot;;
 };    </code></pre>
